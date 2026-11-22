@@ -512,6 +512,14 @@ function namesAllergen(hit: PhraseHit): boolean {
 function allergenInAllergyWarning(item: CabinetItem, allergen: string, pattern: RegExp): readonly Flag[] {
   const hits = ALLERGY_WARNING_SECTIONS.flatMap((section) => sectionSentences(item.label, section)
     .flatMap((sentence) => hitsIn(sentence, pattern).filter(namesAllergen).slice(0, 1)));
+  // "Patients allergic to sulfonamides may also be allergic to furosemide" is a caution, not a contraindication.
+  const onlyMay = hits.length > 0 && hits.every((hit) => /\bmay (?:also )?be (?:allergic|hypersensitive)|\bcross[- ]?(?:sensitiv|hypersensitiv|reactiv)/i.test(hit.sentence.text) &&
+    !/\bcontraindicated\b|\bdo not (?:use|take)\b/i.test(hit.sentence.text));
+  if (onlyMay) return crossSensitivity(item, allergen, pattern).length ? crossSensitivity(item, allergen, pattern) : toFlag(item, hits, {
+    kind: "allergen", term: allergen, title: `${item.displayName} and an allergy to ${allergen}`, about: `an allergy to ${allergen}`,
+    severity: "ask" as const,
+    explain: `The ${item.displayName} label warns that people with an allergy to ${allergen} may also react to it.`,
+  });
   return toFlag(item, hits, {
     kind: "allergen",
     term: allergen,

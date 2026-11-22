@@ -10,8 +10,8 @@ const LABEL_TAG_STEPS: Readonly<Record<string, string>> = {
 const KEEP_TAKING = "Do not stop or change a prescribed medicine on your own.";
 const MAOI = /\bMAOI\b|monoamine oxidase/i;
 const LABEL_SAYS_STOP = /\b(?:contraindicated|(?:is |are )?not recommended|do not (?:use|take|start|give)|should not be (?:used|taken|given|coadministered|co-administered)|avoid (?:co-?administration|concomitant|use|taking)|discontinue|must not)\b/i;
-const HOLD_DOSE = "The label says not to use these together. Call the prescriber or pharmacist today, before the next dose, and ask what to do.";
-const HOLD_FOR_HEALTH = "The label says not to use this with the health detail in your profile. Call the prescriber or pharmacist today, before the next dose, and ask what to do.";
+const HOLD_DOSE = "The label says not to use these together. Call the prescriber or pharmacist today, before the next dose, and ask what to do. Do not skip a seizure, heart, blood thinner or insulin dose without asking them.";
+const HOLD_FOR_HEALTH = "The label says not to use this with the health detail in your profile. Call the prescriber or pharmacist today, before the next dose, and ask what to do. Do not skip a seizure, heart, blood thinner or insulin dose without asking them.";
 const HOLD_FOR_PREGNANCY = "The label warns against this medicine in pregnancy. Call the prescriber today and do not wait for your next visit. Do not stop it or skip a dose on your own, because stopping some medicines suddenly, such as seizure medicines, can be dangerous.";
 const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const HYPERKALEMIA = /\bhyperkalemia\b/i;
@@ -89,6 +89,9 @@ function interactionStep(flag: Flag): string {
   if (flag.severity !== "stop" && leadMentions(flag, /\bINR monitoring\b[^.]*\bbotanicals?\b/i)) {
     return "Tell the prescriber or pharmacist before you start or stop this supplement, and ask whether you need an INR blood test.";
   }
+  if (mentions(flag, SPACE_APART)) {
+    return "The label says to space these apart. Ask a pharmacist how many hours apart to take them.";
+  }
   if (labelSaysStop(flag) && flag.prescribed) return HOLD_DOSE;
   if ((flag.highlight ?? []).some((term) => MAOI.test(term) || /phenelzine|tranylcypromine|isocarboxazid|selegiline|rasagiline|linezolid/i.test(term))) {
     return "Do not take these within 2 weeks of an MAOI unless the doctor who prescribed it says so. Ask a pharmacist now.";
@@ -145,7 +148,15 @@ function prescribedStep(flag: Flag): string | undefined {
   }
 }
 
+// Low-dose aspirin is often prescribed with a blood thinner or clopidogrel, for example after a stent,
+// and people buy it over the counter. Never tell them to stop it on their own.
+const ASPIRIN_PAIR = "Low-dose aspirin is often prescribed with this medicine, for example after a heart stent. If a doctor told you to take it, keep taking it and tell your pharmacist. If you started it on your own, ask the prescriber today before the next dose. Call 911 for bleeding that will not stop, black or bloody stools, or throwing up blood.";
+const BLOOD_THINNER_NAME = /warfarin|coumadin|jantoven|eliquis|apixaban|xarelto|rivaroxaban|pradaxa|dabigatran|savaysa|edoxaban|plavix|clopidogrel|brilinta|ticagrelor|effient|prasugrel/i;
+const NITRATE_PAIR = "Do not take these within a day or two of each other unless the prescriber says so, because blood pressure can drop dangerously. If you have chest pain, call 911 and tell them which ones you took.";
+
 export function nextStep(flag: Flag): string {
+  if (flag.type === "interaction" && /\baspirin\b/i.test(flag.title) && BLOOD_THINNER_NAME.test(flag.title)) return ASPIRIN_PAIR;
+  if (flag.type === "interaction" && /nitroglycerin|isosorbide|nitro-?dur|nitrostat/i.test(flag.title) && /sildenafil|tadalafil|vardenafil|viagra|cialis|levitra/i.test(flag.title)) return NITRATE_PAIR;
   if (flag.type === "interaction") return interactionStep(flag);
   const prescribed = flag.prescribed ? prescribedStep(flag) : undefined;
   if (prescribed) return prescribed;
