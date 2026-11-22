@@ -590,3 +590,13 @@ test("a label that warns about people with a history of another drug's allergy g
   expect(flag).toMatchObject({ severity: "ask", match: { kind: "allergen" } });
   expect(profileFlags([cephalexin], { ...NOTHING, allergies: ["sulfa"] })).toEqual([]);
 });
+
+test("a codeine boxed warning that rules out children under 12 flags a 5 year old", () => {
+  const codeine: CabinetItem = {
+    id: "apap-codeine", displayName: "Acetaminophen and Codeine", kind: "rx", verified: true,
+    ingredients: [{ name: "codeine phosphate", value: 30, unit: "mg" }],
+    label: { boxed_warning: ["Acetaminophen and Codeine Phosphate Tablets are contraindicated in children younger than 12 years of age and in children younger than 18 years of age following tonsillectomy and/or adenoidectomy."] },
+  };
+  expect(ageFlag([codeine], 5)).toMatchObject({ severity: "stop" });
+  expect(ageFlag([codeine], 30)).toBeUndefined();
+});

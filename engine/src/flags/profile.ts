@@ -128,7 +128,8 @@ const DO_NOT_USE_WORDING = /do not (?:use|give)/i;
 const AGE_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
 const UNDER_THRESHOLD = `(?:younger than|under|less than)\\s+(?<age>\\d{1,3}|${AGE_WORDS.join("|")})\\s*(?<unit>years?|months?)(?:\\s+of\\s+age)?`;
 const AUDIENCE = "(?:children|infants?|pediatric patients|patients|persons)";
-const AGE_END = "(?=\\s*(?:\\(see\\b[^)]*\\)|\\[see\\b[^\\]]*\\])?\\s*[.!]?\\s*$)";
+// The age can end the sentence, or a second restriction can follow ("... and in children younger than 18 ... following tonsillectomy").
+const AGE_END = "(?=\\s*(?:\\(see\\b[^)]*\\)|\\[see\\b[^\\]]*\\])?\\s*[.!]?\\s*$|\\s+and\\s+(?:in\\s+)?(?:children|infants?|pediatric|patients|adolescents)\\b|\\s*[,;])";
 const INSTRUCTION_FIRST = "(?:is|are) contraindicated|contraindicated|do not (?:use|give)(?: this (?:product|medicine))?|ask a doctor before use";
 const RESTRICTIONS_WITH_UNITS = [
   new RegExp(`\\b(?<instruction>${INSTRUCTION_FIRST})\\s+(?:in|to|for)\\s+${AUDIENCE}\\s+${UNDER_THRESHOLD}${AGE_END}`, "gi"),
@@ -364,7 +365,10 @@ function ageClausesIn(item: CabinetItem, sentence: LabelSentence): readonly AgeC
       const { age, unit, instruction } = match.groups ?? {};
       const subject = sentence.text.slice(0, match.index).replace(heading, "").trim().toLowerCase();
       if (!age || !unit || !instruction) return [];
-      const isNamedProduct = subjects.some((name) => name?.trim().toLowerCase() === subject);
+      const isNamedProduct = subjects.some((name) => {
+        const named = name?.trim().toLowerCase();
+        return !!named && (named === subject || (named.length > 3 && subject.includes(named) && subject.split(" ").length <= 8));
+      });
       if (subject && !isNamedProduct && !/^(?:use|this product|this medicine)$/.test(subject)) return [];
       const hit = { sentence, span: { start: match.index, end: match.index + match[0].length }, text: match[0] };
       const threshold = /^\d/.test(age) ? Number(age) : AGE_WORDS.indexOf(age.toLowerCase());
