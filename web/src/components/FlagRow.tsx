@@ -1,4 +1,5 @@
 import type { Flag, FlagQuote, Product, Severity } from "@/lib/model";
+import { nextStep } from "@/lib/nextStep";
 
 const SEVERITY_LABEL: Record<Severity, string> = {
   stop: "Stop",
@@ -84,6 +85,7 @@ export function FlagRow({ flag, items }: { flag: Flag; items: readonly Product[]
         <h3 className="text-lg font-extrabold leading-tight">{flag.title}</h3>
       </div>
       <p className="mt-2">{flag.explain}</p>
+      <p className="mt-2 font-bold">What to do: {nextStep(flag)}</p>
       {flag.type !== "interaction" && names.length > 0 && (
         <p className="mt-1 text-sm text-ink-soft">Involves {names.join(", ")}.</p>
       )}

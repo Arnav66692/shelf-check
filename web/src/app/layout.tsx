@@ -10,6 +10,9 @@ const archivo = Archivo({
   axes: ["wdth"],
 });
 
+const TEXT_SIZE_SCRIPT =
+  'try{if(localStorage.getItem("shelf-check.text-size")==="large")document.documentElement.dataset.text="large"}catch(e){}';
+
 export const metadata: Metadata = {
   title: "Shelf Check",
   description: "Check every medicine you own against its official label. Double doses, interactions and unit mix-ups, each quoted from the label.",
@@ -17,7 +20,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${archivo.variable} h-full antialiased`}>
+    <html lang="en" className={`${archivo.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: TEXT_SIZE_SCRIPT }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <a
           href="#main"

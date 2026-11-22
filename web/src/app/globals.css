@@ -31,11 +31,15 @@ html {
   background: var(--paper);
 }
 
+html[data-text="large"] {
+  font-size: 120%;
+}
+
 body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-archivo), "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.45;
 }
 

@@ -48,20 +48,22 @@ export function CabinetView() {
           Two bottles can hide the same drug.
         </h1>
         <p className="mt-5 text-lg">
-          Add every medicine and supplement you own. Shelf Check reads their official labels together and shows double
-          doses, label warnings about mixing them, and warnings that apply to you.
+          Tylenol and NyQuil both contain acetaminophen, and most people never notice. Add every medicine and
+          supplement you take, or that someone you care for takes, and Shelf Check reads their official labels
+          together. It shows double doses, labels that warn about each other, and warnings meant for you, each one
+          quoted from the label so you can show a pharmacist.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link href="/start" className="btn">
             Start with four questions
           </Link>
-          <Link href="/add" className="btn btn-quiet">
-            Add a medicine
-          </Link>
           <Link href="/add?sample=1" className="btn btn-quiet">
-            Load a sample cabinet
+            See an example cabinet
           </Link>
         </div>
+        <p className="mt-4 text-sm text-ink-soft">
+          Takes about two minutes. Your list stays in this browser. It is sent to our server only to run the check, and is not stored there.
+        </p>
       </section>
     );
   }
@@ -72,6 +74,8 @@ export function CabinetView() {
   );
   const spoken = flags.filter((flag) => flag.severity !== "info").map((flag) => `${flag.title}. ${flag.explain}`);
   const stops = flags.filter((flag) => flag.severity === "stop").length;
+  const asks = flags.filter((flag) => flag.severity === "ask").length;
+  const notes = flags.filter((flag) => flag.severity === "info").length;
 
   return (
     <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
@@ -82,13 +86,29 @@ export function CabinetView() {
             Warnings
           </h2>
           <ReadAloud lines={spoken} />
-          <p className="text-sm text-ink-soft" aria-live="polite">
-            {state.status === "checking" && "Reading the labels together."}
-            {state.status === "done" &&
-              (flags.length === 0
-                ? "No label warnings found between these."
-                : `${flags.length} found${stops > 0 ? `, ${stops} to stop and check` : ""}.`)}
-          </p>
+        </div>
+        <div className="facts mt-4" aria-live="polite">
+          {state.status === "checking" && <p>Reading the labels of your {items.length} products together.</p>}
+          {state.status === "done" && (
+            <>
+              <p className="text-lg font-extrabold">
+                {stops > 0
+                  ? `${stops} ${stops === 1 ? "thing" : "things"} to stop and check before your next dose.`
+                  : asks > 0
+                    ? "Nothing to stop. Some things to ask a pharmacist about."
+                    : "No label warnings between these."}
+              </p>
+              <p className="mt-1">
+                {asks} to ask a pharmacist about, {notes} {notes === 1 ? "note" : "notes"} to read. Every one quotes the
+                label it came from.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <Link href="/print" className="btn btn-quiet">
+                  Print for your pharmacist
+                </Link>
+              </div>
+            </>
+          )}
         </div>
         {state.status === "failed" && (
           <p className="mt-4 facts" role="alert">

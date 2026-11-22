@@ -23,8 +23,8 @@ function expiryFlag(product: Product, expires: string, today: Date): Flag | null
     severity: expired ? "stop" : "ask",
     title: expired ? `${product.displayName} has expired` : `${product.displayName} expires soon`,
     explain: expired
-      ? `The date you entered was ${monthName(year, month)}. Do not rely on an expired medicine. Ask a pharmacist about replacing it.`
-      : `The date you entered is ${monthName(year, month)}. Plan to replace it.`,
+      ? `The expiry date you entered was ${monthName(year, month)}.`
+      : `The expiry date you entered is ${monthName(year, month)}.`,
     itemIds: [product.id],
     quotes: [],
   };
