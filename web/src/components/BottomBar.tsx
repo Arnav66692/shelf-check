@@ -75,8 +75,9 @@ export function BottomBar() {
         {items.length === 0 ? "Checks against FDA labels" : `${items.length} ${items.length === 1 ? "product" : "products"} in your cabinet`}
       </p>
       <div className="pointer-events-auto flex items-center gap-3 font-[family-name:var(--font-space)] text-[11px] font-bold uppercase">
-        <span className="hidden sm:inline text-ink-soft">
-          Text <span aria-hidden="true">•</span> {large ? "large" : "normal"}
+        <span className="text-ink-soft" aria-hidden="true">
+          <span className="max-sm:hidden">Text • </span>
+          {large ? "Large" : "Bigger text"}
         </span>
         <button
           type="button"

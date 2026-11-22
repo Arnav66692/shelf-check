@@ -57,11 +57,11 @@ export function EnterGate() {
           Check every medicine you own
         </h2>
         <p className="text-[14px] text-ink">Read aloud can speak each page for you. You can turn it on or off at any time.</p>
-        <button type="button" className="btn mt-4" onClick={() => enter(true)} autoFocus>
-          Enter with read aloud
+        <button type="button" className="btn mt-4" onClick={() => enter(false)} autoFocus>
+          Enter
         </button>
-        <button type="button" className="font-[family-name:var(--font-space)] text-[11px] font-bold uppercase text-ink-soft hover:text-accent py-2" onClick={() => enter(false)}>
-          Enter quietly
+        <button type="button" className="font-[family-name:var(--font-space)] text-[11px] font-bold uppercase text-ink-soft hover:text-accent py-2" onClick={() => enter(true)}>
+          Enter with read aloud
         </button>
       </div>
     </div>

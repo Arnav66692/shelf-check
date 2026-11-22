@@ -200,7 +200,7 @@ function ChapterBody({ chapter }: { chapter: Chapter }) {
             {[
               ["40 of 40", "Doubled acetaminophen caught, 40 random products"],
               ["10 of 40", "New major interactions caught, with 0 false alarms in 40 more pairs"],
-              ["0 of 61", "Wrong photo matches when code and printed text had to agree"],
+              ["0 of 61", "Wrong photo matches when code and printed text had to agree. Photo reading runs on a local computer, not this site"],
             ].map(([number, text]) => (
               <div key={number} className="facts">
                 <dt className="title text-[length:var(--fs-h1)]">{number}</dt>
@@ -330,12 +330,10 @@ export function Landing() {
             ref={(element) => {
               spacers.current[index] = element;
             }}
-            className={`relative ${chapter.id === "faq" ? "min-h-[200vh]" : "h-[200vh] max-sm:h-[166vh]"}`}
+            className={`relative ${chapter.id === "faq" ? "min-h-[160vh]" : "h-[150vh] max-sm:h-[130vh]"}`}
           >
             <div
-              className={`sticky top-0 h-[100svh] px-[var(--margin)] pt-28 pb-24 transition-[opacity,filter] ${isActive ? "opacity-100 blur-0 duration-[1200ms] delay-700 ease-[cubic-bezier(.33,1,.68,1)]" : "opacity-0 blur-[6px] duration-[800ms] delay-0 ease-[cubic-bezier(.33,1,.68,1)] pointer-events-none"}`}
-              aria-hidden={!isActive}
-              inert={!isActive}
+              className={`sticky top-0 h-[100svh] px-[var(--margin)] pt-28 pb-28 transition-[opacity,filter] ${isActive ? "opacity-100 blur-0 duration-[700ms] delay-150 ease-[cubic-bezier(.33,1,.68,1)]" : "opacity-0 blur-[6px] duration-[400ms] delay-0 ease-[cubic-bezier(.33,1,.68,1)] pointer-events-none"}`}
             >
               <Tags tags={chapter.tags} active={isActive} />
               <ChapterBody chapter={chapter} />

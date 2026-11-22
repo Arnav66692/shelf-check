@@ -90,7 +90,15 @@ export function CabinetView() {
                 ? "No label here warns about it with your other products."
                 : `${addedFlags.length === 1 ? "1 warning involves it. It is" : `${addedFlags.length} warnings involve it. They are`} marked New. `}
             {state.status === "done" && addedFlags.length > 0 && (
-              <a className="underline font-bold" href={`#flag-${addedFlags[0].id.replace(/[^a-z0-9]+/gi, "-")}`}>
+              <a
+                className="underline font-bold"
+                href={`#flag-${addedFlags[0].id.replace(/[^a-z0-9]+/gi, "-")}`}
+                onClick={() => {
+                  const target = document.getElementById(`flag-${addedFlags[0].id.replace(/[^a-z0-9]+/gi, "-")}`);
+                  target?.setAttribute("tabindex", "-1");
+                  window.setTimeout(() => target?.focus({ preventScroll: true }), 50);
+                }}
+              >
                 Show {addedFlags.length === 1 ? "it" : "the first one"}
               </a>
             )}
