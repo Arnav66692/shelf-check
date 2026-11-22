@@ -178,14 +178,31 @@ function toScoredGroup(products: readonly IdentifiedProduct[], query: ParsedQuer
   };
 }
 
+// The formula sold most often under a brand name ("tylenol" is plain acetaminophen,
+// "nyquil" is the cold and flu formula) comes before its one-off variants.
+const MAIN_FORMULA_BONUS = 0.3;
+
+function formulaKey(product: IdentifiedProduct): string {
+  return product.ingredients.map((ingredient) => ingredient.rawName.toLowerCase().trim().split(/\s+/)[0]).sort().join("+");
+}
+
 export function groupProducts(products: readonly IdentifiedProduct[], query: ParsedQuery): readonly ScoredGroup[] {
-  const byKey = products.reduce<ReadonlyMap<string, readonly IdentifiedProduct[]>>((groups, product) => {
-    if (!matchesReleaseForm(query, matchingForm(product))) return groups;
+  const kept = products.filter((product) => matchesReleaseForm(query, matchingForm(product)));
+  const byKey = kept.reduce<ReadonlyMap<string, readonly IdentifiedProduct[]>>((groups, product) => {
     const key = compositionKey(product);
     return new Map([...groups, [key, [...(groups.get(key) ?? []), product]]]);
   }, new Map());
+  const formulaCounts = kept.reduce<ReadonlyMap<string, number>>(
+    (counts, product) => new Map([...counts, [formulaKey(product), (counts.get(formulaKey(product)) ?? 0) + 1]]), new Map());
+  const counts = [...formulaCounts.entries()].filter(([key]) => key !== "").map(([, count]) => count);
+  const top = counts.length > 0 ? Math.max(...counts) : 0;
+  const mainFormulas = new Set([...formulaCounts.entries()].filter(([key, count]) => key !== "" && count === top && top > 1).map(([key]) => key));
   return [...byKey.values()]
-    .map((members) => toScoredGroup(members, query))
+    .map((members) => {
+      const scored = toScoredGroup(members, query);
+      const [first] = members;
+      return first && mainFormulas.has(formulaKey(first)) ? { ...scored, score: scored.score + MAIN_FORMULA_BONUS } : scored;
+    })
     .map((scored, index) => ({ scored, index }))
     .sort((left, right) => right.scored.score - left.scored.score || left.index - right.index)
     .map(({ scored }) => scored);

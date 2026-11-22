@@ -89,3 +89,21 @@ test("adult products rank above infants' and children's versions unless the sear
   expect(scoreCandidate(adult, parseQuery("tylenol"))).toBeGreaterThan(scoreCandidate(child, parseQuery("tylenol")));
   expect(scoreCandidate(child, parseQuery("childrens tylenol"))).toBeGreaterThan(scoreCandidate(adult, parseQuery("childrens tylenol")));
 });
+
+test("the formula sold most often under a brand name comes before its one-off variants", () => {
+  const product = (displayName: string, names: readonly string[], ndc: string) => ({
+    source: "openfda", kind: "otc", displayName, maker: "Maker", productNdc: ndc, form: "LIQUID", route: "ORAL",
+    ingredients: names.map((rawName) => ({ rawName, value: 10, unit: "mg", per: { value: 15, unit: "mL" }, strengthText: "10 mg/15mL" })),
+    labelImages: [], recordUrl: "", matchedBy: "name", confidenceNote: "",
+  }) as unknown as Parameters<typeof groupProducts>[0][number];
+  const flu = ["acetaminophen", "dextromethorphan hydrobromide", "doxylamine succinate"];
+  const products = [
+    product("Vicks NyQuil Allergy", ["doxylamine succinate"], "1"),
+    product("Vicks NyQuil Cold and Flu", flu, "2"),
+    product("Vicks NyQuil Intense Flu", flu, "3"),
+  ];
+  const [first] = groupProducts(products, parseQuery("nyquil"));
+  expect(first?.group.product.displayName).toBe("Vicks NyQuil Cold and Flu");
+  const [asked] = groupProducts(products, parseQuery("nyquil allergy"));
+  expect(asked?.group.product.displayName).toBe("Vicks NyQuil Allergy");
+});
