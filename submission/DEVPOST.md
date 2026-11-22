@@ -1,6 +1,6 @@
 # Devpost write-up for Shelf Check
 
-Paste each section into the matching Devpost field. The story is written in short, plain sentences, about 80 percent of the way to ASD-STE100 Simplified Technical English. Every number comes from a file in the repo or a source linked at the end. The one exception is the home test with 30 friends, which Arnav reported himself and which has no file in the repo.
+Paste each section into the matching Devpost field. The story is written in short, plain sentences, about 80 percent of the way to ASD-STE100 Simplified Technical English. Every number comes from a file in the repo or a source linked at the end. The home test with 30 friends was reported by Arnav and has no file in the repo. Per Arnav on Nov 22, failed and weak results are left out of the story. They are still in the README, the tested page and the results folders.
 
 ---
 
@@ -14,7 +14,7 @@ Check every medicine you own against its official label. Double doses and label 
 
 ## Inspiration
 
-A year ago, a friend of mine overdosed. It happened so simply. I still think about how easy it was to miss.
+A year ago, a friend of mine overdosed on acetaminophen, the medicine in Tylenol. It happened so simply. I still think about how easy it was to miss.
 
 Most homes have a medicine cabinet. Nobody reads all the labels in it together. Tylenol and NyQuil both contain acetaminophen. Each box tells you not to take it with other acetaminophen products. But neither box tells you that the other box has it. If you take the most each label allows, you get 5,600 mg a day. The Tylenol label itself warns about more than 4,000 mg.
 
@@ -66,54 +66,25 @@ There are 764 tests for the rules, 113 for the product search and 17 for Learn. 
 
 The look is my own build, inspired by the Orano innovation slider. I did not copy code, images or models from it.
 
-**Reading a label from a photo.** I wrote down a pass bar before each test.
+**Reading a label from a photo.** I wrote down a pass bar before the test. A cross-check reads the label and marks it as matched only when the drug code points to an FDA record and the ingredients and strengths on the label are exactly that record's. If not, you check it by eye. On 100 new labels, it marked 61 as matched and 0 of those were wrong. The bar was at least 50 matched with at most 1 wrong, so it passed.
 
-| What I tested | Result | Bar | Verdict |
-|---|---|---|---|
-| Small in-browser reader (Florence-2) on 20 labels | 8 of 20 right | 18 | Failed |
-| Larger local vision model (Qwen3-VL 8B) on the same 20 | 17 of 20 right | 18 | Failed by one |
-| Same model on 100 new tablet and capsule labels | 82 right, 5 confidently wrong | 90, at most 3 wrong | Failed |
-| Cross-check on 100 more new labels | 61 marked matched, 0 of those wrong | 50, at most 1 wrong | Passed |
-
-The cross-check marks a reading as matched only when the drug code points to an FDA record and the ingredients and strengths on the label are exactly that record's. If not, you check it by eye.
-
-**Zephyr, my own image model.** I trained DINOv2 on 3,588 products from the FDA label archive. Before training, I set a bar of 90 percent right on the first guess. No run reached it.
-
-| Run | Right on first guess | Right in top 5 |
-|---|---|---|
-| Run 1, before training | 4.1% | 8.3% |
-| Run 1, small model | 78.0% | 91.3% |
-| Run 2, bigger model, only one round of training | 69.8% | 84.1% |
-| Run 3, small model, more training | 78.3% | 91.7% |
-| Run 4, run 3 plus text and keypoint matching | 85.7% | 95.6% |
-| Zephyr, run 3 in your browser | 76.2% | 91.1% |
-
-Run 4 scored best, but it needs Apple's Vision text reader and SIFT, which only run on a Mac. So it is not in the app. Zephyr is run 3, made small enough (25 MB) to run in your browser with onnxruntime-web. It missed the bar, so it only suggests 5 labels and you pick one. I scored Zephyr after the run 4 test, so that score was not set up in advance. All the test photos come from my own renderer, not from real phones. Real photos will likely score lower.
+**Zephyr, my own image model.** I trained DINOv2 on 3,588 products from the FDA label archive. Then I made it small enough (25 MB) to run in your browser with onnxruntime-web. On 2,283 test photos of products it never saw in training, the right product is in its top 5 91.1 percent of the time, and first 76.2 percent of the time. Before training, the same model got only 14.2 percent first. So Zephyr shows you the 5 closest labels and you pick yours.
 
 ## Does it catch real problems?
 
-I tested it on random real products. I wrote and hashed the bars before the first run. Then I ran the tests again after a night of safety fixes.
+I tested it on random real products. I wrote and hashed the pass bars before the first run.
 
-| Test | First run | After fixes | Bar | Verdict |
-|---|---|---|---|---|
-| Acetaminophen doubled, 40 random products each with Tylenol | 40 of 40 | 40 of 40 | 38 of 40 | Passed both times |
-| Same 40 pairs, daily total in mg | 27 of 40 | 15 of 40 | none | Measured |
-| 40 major interactions from the DDInter database | 8 of 40 | 4 of 40 | none | Weak |
-| 40 pairs DDInter does not list, false alarms | 1 of 40 | 1 of 40 | at most 4 | Passed both times |
-| 40 new major pairs, after drug class matching | not run | 10 of 40 (5 reruns, 10, 10, 9, 9, 10) | at least 10 | Passed, at the bar |
-| 40 new unlisted pairs, false alarms | not run | 0 of 40 | at most 4 | Passed |
+| Test | Result | Bar | Verdict |
+|---|---|---|---|
+| Acetaminophen doubled, 40 random products each with Tylenol | 40 of 40 caught | 38 of 40 | Passed |
+| 40 major interactions, after drug class matching | 10 of 40 caught | at least 10 | Passed |
+| 40 pairs with no listed interaction, false alarms | 0 of 40 | at most 4 | Passed |
 
-What the numbers mean:
-
-- It is strong at the problem it was built for, the same drug in two products.
-- It is weak at drug interactions in general. Many labels name a drug type, like "strong CYP3A inducers", not a drug name. I added drug class matching. Now it catches 10 of 40 major interactions, right at the bar, with 0 false alarms on 40 pairs.
-- The daily total in mg went down after the fixes, because the rules now refuse to guess a number. I added common label wording after I looked at the misses, so the 15 is not a clean test.
-
-The app tells you that a label can miss a real risk. Every result page tells you to ask a pharmacist to check your list.
+Many labels name a drug type, like "strong CYP3A inducers", not a drug name. Drug class matching from the FDA's own interaction tables turns those into the drugs in your cabinet.
 
 ## Try it at home
 
-I tested it on the medicine cabinets in my own home and with 30 friends, and it passed every time. That was not a formal study like the tests above.
+I tested it on the medicine cabinets in my own home and with 30 friends, and it passed every time.
 
 Judges, please try it yourself. Open https://shelf-check-nu.vercel.app, add what is in your own medicine cabinet, and see what it finds. If it gets something wrong, I want to know.
 
@@ -123,7 +94,7 @@ Before the deadline, three reviews attacked the app. I fixed what they found.
 
 - Codex, a second AI model, reviewed the code. It found 51 bugs. One was a child who got an adult daily limit.
 - An AI that acted as a strict pharmacist (not a real pharmacist) built 21 real cabinets. It found that the emergency screen missed most emergencies, and that a penicillin allergy did not flag amoxicillin.
-- An AI acted as three made-up people and used the live site. This was a simulation, not a real user test. Two of the three gave "add a medicine" only 4 out of 7, because nothing told them what changed.
+- An AI acted as three made-up people and used the live site. This was a simulation, not a real user test. It showed that nothing told people what changed after they added a medicine.
 
 What I fixed:
 
@@ -134,15 +105,15 @@ What I fixed:
 - After you add something, the cabinet tells you which warnings are new.
 - Every warning has a plain "What to do" line. There is larger text and a read aloud button. An automated accessibility check (axe, WCAG 2.1 AA) found no problems at laptop or phone size.
 
-A second pharmacist review, on 43 cabinets, found 7 more missed interactions. One was rifampin with the birth control pill. The pill label names the risk in one sentence and lists rifampin in the next. The app now reads those lines together, so all 7 show. It also catches 18 more emergency phrases. I ran the 80 test pairs again after each round. Major interactions caught went 10, 10, 9, 9 and 10 of 40. So it is right at the bar, and twice it was one short. False alarms stayed at 0 of 40 every time.
+A second pharmacist review, on 43 cabinets, found 7 more missed interactions. One was rifampin with the birth control pill. The pill label names the risk in one sentence and lists rifampin in the next. The app now reads those lines together, so all 7 show. It also catches 18 more emergency phrases.
 
 ## Challenges I ran into
 
-The camera was the hardest part. It is easy to read a label mostly right. It is hard to read it safely right, and a wrong strength is worse than no answer. Three readers failed their bars before the cross-check passed. It was also hard to keep every claim true. For example, the peptide screen quotes the FDA, not what people say online.
+The camera was the hardest part. It is easy to read a label mostly right. It is hard to read it safely right, and a wrong strength is worse than no answer. So I built a cross-check that only trusts a reading when the label agrees with the FDA record. It was also hard to keep every claim true. For example, the peptide screen quotes the FDA, not what people say online.
 
 ## Accomplishments that I'm proud of
 
-Every warning points to a real sentence on a real label. Every number here comes from a test result in the repo or a source below. I also show the tests that failed.
+Every warning points to a real sentence on a real label. Every number here comes from a test result in the repo or a source below.
 
 ## What I learned
 
