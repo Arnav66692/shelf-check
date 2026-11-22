@@ -10,7 +10,9 @@ const LABEL_TAG_STEPS: Readonly<Record<string, string>> = {
 const KEEP_TAKING = "Do not stop or change a prescribed medicine on your own.";
 const MAOI = /\bMAOI\b|monoamine oxidase/i;
 const LABEL_SAYS_STOP = /\b(?:contraindicated|(?:is |are )?not recommended|do not (?:use|take|start|give)|should not be (?:used|taken|given|coadministered|co-administered)|avoid (?:co-?administration|concomitant|use|taking)|discontinue|must not)\b/i;
-const HOLD_DOSE = "The label says not to use these together, or not to use it with this health detail. Call the prescriber or pharmacist today, before the next dose, and ask what to do. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
+const HOLD_DOSE = "The label says not to use these together. Call the prescriber or pharmacist today, before the next dose, and ask what to do.";
+const HOLD_FOR_HEALTH = "The label says not to use this with the health detail in your profile. Call the prescriber or pharmacist today, before the next dose, and ask what to do.";
+const HOLD_FOR_PREGNANCY = "The label says not to use this in pregnancy. Call the prescriber today, before the next dose, and do not wait for your next visit.";
 const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const HYPERKALEMIA = /\bhyperkalemia\b/i;
 const BLOOD_THINNER_EFFECT = /\bINR\b|\b(?:effects?|response|activity) of (?:warfarin|oral anticoagulants?)|\banticoagulant (?:effects?|response|activity)\b|\bprolong\w* (?:the )?prothrombin time|\bprothrombin time[^.;]{0,30}increas\w*/i;
@@ -116,7 +118,7 @@ function prescribedStep(flag: Flag): string | undefined {
         : `Do not add a non-prescription product with ${subjectOf(flag)} to your prescribed one until a pharmacist says it is fine. ${KEEP_TAKING}`;
     case "profile":
       if (isAllergy(flag)) return flag.severity === "stop" ? ALLERGY_STEP : CROSS_ALLERGY_STEP;
-      if (quoteSaysStop(flag)) return HOLD_DOSE;
+      if (quoteSaysStop(flag)) return flag.matchKind === "pregnancy" ? HOLD_FOR_PREGNANCY : HOLD_FOR_HEALTH;
       return flag.severity === "stop"
         ? `Call your prescriber today about this warning. ${KEEP_TAKING}`
         : `Tell your prescriber or pharmacist about the health detail it mentions. ${KEEP_TAKING}`;
@@ -144,6 +146,9 @@ export function nextStep(flag: Flag): string {
         return flag.severity === "stop"
           ? "The label says do not use it if you are allergic to it. Do not use it. Ask a pharmacist for something else."
           : "The label warns that people with this allergy may also react to it. Ask a pharmacist before using it.";
+      }
+      if (flag.severity === "stop" && flag.matchKind === "pregnancy") {
+        return "The label says not to use this during pregnancy unless a doctor tells you to. Ask a pharmacist for something that is safe in pregnancy.";
       }
       if (flag.severity === "stop" && AGE_KINDS.has(flag.matchKind ?? "")) {
         return "The label says not to use this at this age. Do not use it. Ask a pharmacist for a product made for this age.";
