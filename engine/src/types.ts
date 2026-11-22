@@ -12,6 +12,7 @@ export const LABEL_SECTION_NAMES = [
   "drug_interactions",
   "boxed_warning",
   "warnings_and_cautions",
+  "precautions",
   "contraindications",
   "pregnancy_or_breast_feeding",
   "pregnancy",

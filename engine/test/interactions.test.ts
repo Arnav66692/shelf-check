@@ -293,3 +293,45 @@ test("a serotonin syndrome warning that says the risk is increased with St. John
   const reassured = { ...sertraline, label: { warnings_and_cautions: ["The risk is increased with concomitant use of other serotonergic drugs, but no interaction was seen with St. John’s Wort."] } };
   expect(fromLabelOf(interactionFlags([reassured, drug("St. John's Wort")]), "sertraline")).toHaveLength(0);
 });
+
+test("an Examples line and a bulleted list are read with the warning sentence before them", () => {
+  const pill = { ...drug("levonorgestrel"), label: { drug_interactions: [
+    "Contraceptive effectiveness may be reduced when hormonal contraceptives are coadministered with antibiotics. This could result in unintended pregnancy or unscheduled bleeding. Examples include rifampin, rifabutin, barbiturates, and carbamazepine.",
+  ] } };
+  const [flag] = fromLabelOf(interactionFlags([pill, drug("rifampin")]), "levonorgestrel");
+  expect(flag).toMatchObject({ severity: "stop" });
+  expect(flag?.quote?.text).toContain("unintended pregnancy");
+  expect(flag?.quote?.text).toContain("Examples include rifampin");
+
+  const methotrexate = { ...drug("methotrexate"), label: { drug_interactions: [
+    "If coadministration cannot be avoided, monitor closely for methotrexate adverse reactions when coadministered with: • Oral antibiotics • Aspirin and other nonsteroidal anti-inflammatory drugs • Hepatotoxic products",
+  ] } };
+  const [mtx] = fromLabelOf(interactionFlags([methotrexate, drug("aspirin")]), "methotrexate");
+  expect(mtx?.quote?.text).toContain("when coadministered with: Aspirin");
+  expect(fromLabelOf(interactionFlags([{ ...methotrexate, label: { drug_interactions: ["The following were studied: • aspirin"] } }, drug("aspirin")]), "methotrexate")).toEqual([]);
+});
+
+test("label wording for statin muscle damage, dose caps and spacing counts as a warning", () => {
+  const owner = (text: string) => ({ ...drug("fluconazole"), label: { drug_interactions: [text] } });
+  const run = (text: string, other: string) => fromLabelOf(interactionFlags([owner(text), drug(other)]), "fluconazole");
+  expect(run("The risk of myopathy and rhabdomyolysis increases when fluconazole is coadministered with statins, such as atorvastatin.", "atorvastatin")[0]?.severity).toBe("stop");
+  expect(run("For patients taking verapamil or diltiazem, do not exceed fluconazole 10 mg daily.", "diltiazem")).toHaveLength(1);
+  expect(run("Phosphate binders (e.g., calcium carbonate) may bind to fluconazole. Administer fluconazole at least 4 hours apart from these agents.", "calcium carbonate")[0]?.quote?.text).toContain("4 hours apart");
+});
+
+test("a label that exempts one member of a warned group by name gives a note, not an alarm", () => {
+  const eliquis = { ...drug("apixaban"), label: { drug_interactions: [
+    "Avoid coadministration with combined P-gp and strong CYP3A4 inhibitors. Although clarithromycin is a combined P-gp and strong CYP3A4 inhibitor, pharmacokinetic data suggest that no dose adjustment is necessary with concomitant administration.",
+  ] } };
+  const flags = fromLabelOf(interactionFlags([eliquis, drug("clarithromycin")]), "apixaban");
+  expect(flags.every((flag) => flag.severity !== "stop")).toBe(true);
+});
+
+test("an eye or skin product does not carry its drug group's systemic interactions, and furosemide is not a sulfa antibiotic", () => {
+  const simvastatin = { ...drug("simvastatin"), label: { contraindications: ["Concomitant use of strong CYP3A4 inhibitors (select azole anti-fungals, macrolide antibiotics) is contraindicated."] } };
+  const ointment: CabinetItem = { ...drug("erythromycin", "J01FA"), routes: ["OPHTHALMIC"] };
+  expect(fromLabelOf(interactionFlags([simvastatin, ointment]), "simvastatin")).toEqual([]);
+  const bactrim = { ...drug("sulfamethoxazole"), label: { drug_interactions: ["Sulfonamides can also displace methotrexate; avoid concurrent use."] } };
+  const furosemide: CabinetItem = { ...drug("furosemide"), ingredients: [{ name: "furosemide", value: 20, unit: "mg", classes: [{ id: "C03CA", type: "ATC1-4", name: "Sulfonamides, plain", source: "ATC" }] }] };
+  expect(fromLabelOf(interactionFlags([bactrim, furosemide]), "sulfamethoxazole")).toEqual([]);
+});

@@ -11,6 +11,7 @@ import { severityForSection } from "./severity.ts";
 
 export const INTERACTION_SECTIONS: readonly LabelSectionName[] = [
   "drug_interactions",
+  "precautions",
   "boxed_warning",
   "warnings",
   "warnings_and_cautions",
@@ -30,10 +31,10 @@ export const CO_USE_CUE =
 
 const CLAUSE_BREAK = /;|(?=\b(?:heart attack and stroke|stomach bleeding|allergy) (?:alert|warning)\b)|\bbut\b(?! particularly with)|\b(?:whereas|however|although|nevertheless)\b|,?\s+(?:and|or)\s+(?=(?:avoid|do not|monitor|ask|use caution|no |there (?:is|are)|if (?:you are )?allergic))/gi;
 const ALLERGY = /\ballerg(?:y|ic|ies)\b/i;
-const PROHIBITION = /\b(?:do|should|must) not (?:be (?:combined|co-?administered|taken|used|given)|take|use|administer|co-?administer|combine)\b/gi;
+const PROHIBITION = /\b(?:do|should|must) not (?:be (?:combined|co-?administered|taken|used|given)|take|use|administer|co-?administer|combine|exceed)\b/gi;
 const UNRESOLVED_POLARITY = /\b(?:no|not|neither|nor|never|without|lack(?:s|ed|ing)?|unknown|unclear|unaffected|unnecessary|except(?:ion|ing)?|excluding|other than|rather than|instead of|compared (?:to|with)|alone(?! but particularly with)|monotherapy)\b/i;
-const WARNING = /\b(?:avoid|(?:do|should|must) not (?:be (?:combined|co-?administered|taken|used)|take|use|administer|co-?administer|combine)|contraindicated|monitor|caution|ask (?:a |your )?(?:doctor|pharmacist)|potentiat\w*|interacts? with|(?:may|can|could) (?:increase|enhance|decrease|reduce|affect|interact)|(?:increas\w*|reduc\w*) (?:the )?(?:risk|effect|clearance|exposure|concentration)|may result in deterioration|life-threatening|synergism|antagonism)\b/i;
-const SERIOUS_HARM = /\b(?:fatal|death|life[- ]threatening|respiratory depression|serotonin syndrome|(?:serious|severe|major) (?:[\w-]+ ){0,2}bleeding)\b/i;
+const WARNING = /\b(?:avoid|(?:do|should|must) not (?:be (?:combined|co-?administered|taken|used)|take|use|administer|co-?administer|combine)|contraindicated|monitor|caution|ask (?:a |your )?(?:doctor|pharmacist)|potentiat\w*|interacts? with|(?:may|can|could) (?:increase|enhance|decrease|reduce|affect|interact)|(?:increas\w*|reduc\w*) (?:the )?(?:risk|effect|clearance|exposure|concentration)|may result in deterioration|life-threatening|synergism|antagonism|(?:the )?risk (?:of [\w\s/,-]{1,80}? )?(?:is |are )?increas\w*|increases? the risk|risk factors? (?:for|of|include)|may be (?:reduced|decreased|increased)|less effective|do not exceed|may bind|(?:at least )?\d+ hours? (?:apart|before|after|prior)|(?:reduc|decreas)\w* (?:the )?(?:absorption|effectiveness|efficacy)|unintended pregnanc\w*|(?:back-?up|non-?hormonal) (?:method|contracepti)\w*)\b/i;
+const SERIOUS_HARM = /\b(?:fatal|death|life[- ]threatening|respiratory depression|serotonin syndrome|(?:serious|severe|major) (?:[\w-]+ ){0,2}bleeding|rhabdomyolysis|(?:severe|life-threatening|fatal) hyperkalemia|unintended pregnanc\w*)\b/i;
 const AVOID_COMBINATION = /\b(?:avoid(?:ed)?|contraindicated|do not (?:use|take)|should not be (?:used|taken|given))\b/i;
 const RISK_REDUCTION = /\b(?:prevent(?:s|ed|ion of)?|(?:reduc(?:e[ds]?|tion)|lower(?:s|ed)?) (?:of |in )?(?:the )?(?:risk|incidence) of|to avoid)\s*$/i;
 const AVOID_OTHER_TARGET = /\bavoid\s+([^,;]+?)\s+(?:(?:while|when|if)\s+(?:(?:you|patients?)\s+(?:are\s+)?)?(?:taking|using|receiving)|during treatment with)\b/i;
@@ -83,8 +84,11 @@ function termsAbout(other: CabinetItem, labelOwner: CabinetItem): readonly Compi
   return other.ingredients
     .filter((ingredient) => other.kind !== "supplement" || !isNutritionIngredient(ingredient))
     .filter((ingredient) => !ownNames.has(ingredient.name.toLowerCase()))
+    // A trace mineral in a multivitamin is not a potassium supplement.
+    .filter((ingredient) => !(other.kind === "supplement" && other.ingredients.length > 2 && /^potassium\b/i.test(ingredient.name)))
     .flatMap(searchTermsFor)
-    .filter((term) => !localOnly || !term.mechanism)
+    // A product used only on the skin, eye or ear does not carry its drug group's systemic interactions.
+    .filter((term) => !localOnly || term.kind === "ingredient_name" || term.kind === "common_name")
     // An electrolyte in a combination drug (for example, a bowel preparation)
     // does not establish that the product is used for potassium supplementation.
     .filter((term) => term.mechanism?.term !== "potassium supplement" || other.kind === "supplement" || other.ingredients.length === 1)
@@ -118,6 +122,7 @@ function firstAllowedSpan(text: string, term: CompiledTerm, owner: CabinetItem):
       // A qualifier restricts the population even when an older, broader class alias matches.
       if (/^diuretics?$/i.test(term.term) && /\bpotassium[- ](?:sparing|retaining)\s+$/i.test(before)) return false;
       if (/^potassium$/i.test(term.term) && /^[- ](?:sparing|retaining|channels?)\b/i.test(after)) return false;
+      if (/^potassium$/i.test(term.term) && /\b(?:serum|plasma|blood)\s+$/i.test(before)) return false;
       if (/^insulins?$/i.test(term.term)) {
         return INSULIN_CONTEXT.test(text.slice(0, span.start)) && INSULIN_END.test(after);
       }
@@ -219,9 +224,11 @@ function withBleedingContext(match: SentenceMatch, previous: LabelSentence | und
       !(/\bmay cause (?:severe|serious) stomach bleeding\.$/i.test(previous.text) || SERIOUS_HARM.test(previous.text))) return match;
   const end = match.sentence.text.search(/\s+(?:heart attack and stroke|allergy) (?:warning|alert)\b/i);
   const risks = end < 0 ? match.sentence.text : match.sentence.text.slice(0, end);
-  const text = `${previous.text} ${risks}`;
+  const warningStart = previous.text.search(/\bstomach bleeding warning\b/i);
+  const lead = warningStart > 0 ? previous.text.slice(warningStart) : previous.text;
+  const text = `${lead} ${risks}`;
   if (match.span.end > risks.length || !paragraphs.some((paragraph) => paragraph.includes(text))) return match;
-  const offset = previous.text.length + 1;
+  const offset = lead.length + 1;
   return { ...match, serious: true, sentence: { ...match.sentence, text }, span: { start: offset + match.span.start, end: offset + match.span.end } };
 }
 
@@ -242,19 +249,87 @@ function membershipQuote(other: CabinetItem, best: SentenceMatch) {
   return undefined;
 }
 
+const EXAMPLES_LEAD = /^(?:examples?(?: of [^:.]{1,80}?)?(?: include)?\s*:?|e\.g\.,?|such as)\s/i;
+const LIST_ITEM_MAX = 160;
+const FOLLOW_ON = /^(?:administer|take|separate|space|give)\b[^.]*\bthese (?:agents|drugs|products|medications|medicines)\b/i;
+
+function squash(text: string): string {
+  return text.replace(/\s+/g, " ");
+}
+
+function inParagraph(paragraphs: readonly string[], parts: readonly string[]): boolean {
+  return paragraphs.some((paragraph) => {
+    const flat = squash(paragraph);
+    let from = 0;
+    for (const part of parts) {
+      const at = flat.indexOf(squash(part), from);
+      if (at < 0) return false;
+      from = at + part.length;
+    }
+    return true;
+  });
+}
+
+// Labels put the warning in one sentence and the drugs it covers in an
+// "Examples include" line or a bulleted list after a colon. Read them together.
+function leadInFor(sentences: readonly LabelSentence[], index: number): LabelSentence | undefined {
+  const sentence = sentences[index];
+  if (sentence === undefined) return undefined;
+  if (EXAMPLES_LEAD.test(sentence.text)) return sentences[index - 1];
+  for (let back = index - 1; back >= Math.max(0, index - 12); back -= 1) {
+    const candidate = sentences[back];
+    if (candidate === undefined) return undefined;
+    if (candidate.text.trimEnd().endsWith(":")) return candidate;
+    if (candidate.text.length > LIST_ITEM_MAX || /[.!?]$/.test(candidate.text.trim())) return undefined;
+  }
+  return undefined;
+}
+
+function withLeadIns(sentences: readonly LabelSentence[], paragraphs: readonly string[]): readonly LabelSentence[] {
+  return sentences.map((sentence, index) => {
+    const lead = index > 0 && sentence.text.length <= 600 ? leadInFor(sentences, index) : undefined;
+    const next = sentences[index + 1];
+    const follow = next && FOLLOW_ON.test(next.text) && inParagraph(paragraphs, [sentence.text, next.text]) ? next : undefined;
+    const parts = [lead && inParagraph(paragraphs, [lead.text, sentence.text]) ? lead.text : undefined, sentence.text, follow?.text]
+      .filter((part): part is string => part !== undefined);
+    return parts.length === 1 ? sentence : { ...sentence, text: parts.join(" ") };
+  });
+}
+
+const EXEMPT = /\bno (?:dose|dosage) adjustment (?:is )?(?:necessary|needed|required)|\bno clinically (?:significant|relevant|meaningful)\b/i;
+
+// A label can warn about a drug group, then exempt one member by name.
+function exemptionFor(sentences: readonly LabelSentence[], ingredient: string): LabelSentence | undefined {
+  const named = termRegExp(ingredient);
+  return sentences.find((sentence) => named.test(sentence.text) && EXEMPT.test(sentence.text));
+}
+
 function flagForSection(
   labelOwner: CabinetItem,
   other: CabinetItem,
   section: LabelSectionName,
   terms: readonly CompiledTerm[],
 ): readonly Flag[] {
-  const sentences = sectionSentences(labelOwner.label, section);
+  const sentences = withLeadIns(sectionSentences(labelOwner.label, section), labelOwner.label?.[section] ?? []);
   const matches = sentences.flatMap((sentence, index) =>
     matchesIn(sentence, index, terms, labelOwner).map((match) =>
       withBleedingContext(match, sentences[index - 1], labelOwner.label?.[section] ?? [])),
   );
   const best = bestMatch(matches);
   if (best === undefined) return [];
+  const exemption = best.mechanism ? exemptionFor(sentences, best.found.ingredient) : undefined;
+  if (exemption) {
+    return [{
+      type: "interaction",
+      severity: "info",
+      itemIds: [labelOwner.id, other.id],
+      title: `${labelOwner.displayName} and ${other.displayName}`,
+      detail: `The ${labelOwner.displayName} label names ${best.found.ingredient} and says no dose change is needed.`,
+      explain: `The ${labelOwner.displayName} label warns about a drug group that includes ${best.found.ingredient}, then says this one needs no dose change.`,
+      quote: toQuote(labelOwner.id, exemption),
+      match: best.match,
+    }];
+  }
   const matchedBecause = classExplanation(other, best);
   const supportingQuote = membershipQuote(other, best);
   const quote = toQuote(labelOwner.id, best.sentence, best.span);
@@ -280,7 +355,10 @@ function flagForSection(
 function flagsForPair(labelOwner: CabinetItem, other: CabinetItem): readonly Flag[] {
   const terms = termsAbout(other, labelOwner);
   if (terms.length === 0) return [];
-  return INTERACTION_SECTIONS.flatMap((section) => flagForSection(labelOwner, other, section, terms));
+  const flags = INTERACTION_SECTIONS.flatMap((section) => flagForSection(labelOwner, other, section, terms));
+  // Older labels repeat the Drug interactions text inside Precautions.
+  return flags.filter((flag, index) =>
+    flags.findIndex((earlier) => squash(earlier.quote?.text ?? "") === squash(flag.quote?.text ?? "")) === index);
 }
 
 export function interactionFlags(items: readonly CabinetItem[]): readonly Flag[] {

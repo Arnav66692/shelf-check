@@ -79,6 +79,7 @@ const SECTION_TITLES: Readonly<Record<LabelSectionName, string>> = {
   drug_interactions: "Drug interactions",
   boxed_warning: "Boxed warning",
   warnings_and_cautions: "Warnings and precautions",
+  precautions: "Precautions",
   contraindications: "Contraindications",
   pregnancy_or_breast_feeding: "If pregnant or breast-feeding",
   pregnancy: "Pregnancy",

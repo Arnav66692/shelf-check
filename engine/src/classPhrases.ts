@@ -113,8 +113,15 @@ export function classPhrasesFor(classes: readonly DrugClass[]): readonly string[
   return [...new Set(phrases)];
 }
 
+// ATC names some diuretic subgroups by chemical structure. On another label,
+// "sulfonamides" means the sulfa antibiotics, not furosemide or a thiazide.
+function isStructureOnlyName(drugClass: DrugClass): boolean {
+  return drugClass.type === ATC_CLASS_TYPE && drugClass.id.startsWith("C03") && /^sulfonamides\b/i.test(drugClass.name);
+}
+
 export function classNamesFor(classes: readonly DrugClass[]): readonly string[] {
   const names = classes
+    .filter((drugClass) => !isStructureOnlyName(drugClass))
     .map((drugClass) => drugClass.name.replace(NAME_QUALIFIER, "").trim())
     .filter((name) => name !== "" && !CATCH_ALL_NAME.test(name));
   return [...new Set(names)];
