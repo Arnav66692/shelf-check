@@ -16,7 +16,7 @@ Check every medicine you own against its official label. Double doses and label 
 
 Tylenol and NyQuil both contain acetaminophen. Each box warns you not to take it with other acetaminophen products, but neither one tells you the other box has it. Taken at the most each label allows, the two come to 5,600 milligrams a day, and the Tylenol label itself warns about going over 4,000. In a study of 500 adults, 45.6 percent said they would double up on two acetaminophen products in at least one scenario, and the CDC counts more than 1.5 million emergency visits a year from bad reactions to medicines. About 13.5 percent of people in the US use five or more prescription drugs in a month, before counting anything over the counter.
 
-Shelf Check is for anyone keeping track of medicines, for themselves or for a parent or a child. Today that person either asks a pharmacist, who may not see the cold medicine and supplements bought somewhere else, or types drugs one by one into an interaction checker. I wanted something that reads all your labels together and shows you the exact line that matters.
+Shelf Check is for the person who keeps the medicines straight for a family. A parent managing their kids' cold medicine. Someone caring for a mother on six prescriptions. They are easy to miss, because the pharmacist only sees what was filled at that pharmacy, not the cold medicine and supplements bought somewhere else, and the free interaction checkers make you type drugs one at a time and never read the box you are holding. I wanted something that reads all your labels together and shows you the exact line that matters.
 
 ## What it does
 
@@ -32,10 +32,10 @@ You build a list of everything in your medicine cabinet, including prescriptions
 Every warning quotes the line from the label it came from, so you can show it to a pharmacist. There's also:
 
 - a symptoms screen that finds what you already own that is labelled for how you feel, and sends emergency symptoms straight to a call 911 screen
-- a peptide screen that quotes the FDA label for approved peptides like Ozempic and Mounjaro, says plainly when a peptide has no approved use or dose, shows FDA recalls that name it, and does the vial and syringe math
 - a pill finder for a pill you can't identify, by imprint, colour and shape, with Poison Help at the top
 - an injection dose check that catches the 5 units versus 50 units mix-up the FDA has warned about
-- family profiles, a printable list for your doctor, read aloud, barcode scanning, and safe disposal from the FDA flush list
+- family profiles, a printable list for your doctor, read aloud, larger text, barcode scanning, and safe disposal from the FDA flush list
+- a peptide screen that quotes the FDA label for approved peptides like Ozempic and Mounjaro, and says plainly when a peptide has no approved use or dose
 
 It is a safety check and not medical advice. It never says anything is safe, because a label can be silent about a real risk.
 
