@@ -55,7 +55,7 @@ export const CONDITION_RULES: Readonly<Record<ConditionId, ConditionRule>> = {
   },
   high_blood_pressure: { label: "high blood pressure", phrases: ["high blood pressure"] },
   heart_disease: { label: "heart disease", phrases: ["heart disease", "heart problems?", "heart condition"] },
-  diabetes: { label: "diabetes", phrases: ["diabetes", "diabetic(?![-\\s]+ketoacidosis)"] },
+  diabetes: { label: "diabetes", phrases: ["diabetes", "diabetic(?![-\\s]+(?:keto)?acidosis)"] },
   glaucoma: { label: "glaucoma", phrases: ["glaucoma"] },
   enlarged_prostate: {
     label: "trouble urinating due to an enlarged prostate",
@@ -67,7 +67,7 @@ export const CONDITION_RULES: Readonly<Record<ConditionId, ConditionRule>> = {
   },
   breathing_problem: {
     label: "a breathing problem such as asthma, emphysema or chronic bronchitis",
-    phrases: ["breathing problems?", "asthma(?!\\s*\\(wheezing\\))", "emphysema", "chronic bronchitis", "chronic obstructive pulmonary disease", "COPD"],
+    phrases: ["breathing problems?", "asthma(?!\\s*\\(wheezing\\))", "emphysema", "chronic bronchitis", "chronic obstructive pulmonary disease", "COPD", "bronchospastic (?:disease|lung disease)"],
   },
   stomach_ulcers_or_bleeding: {
     label: "stomach ulcers or bleeding problems",
@@ -95,7 +95,7 @@ const BREASTFEEDING_SECTIONS: readonly LabelSectionName[] = [
 ];
 const AGE_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "pediatric_use", "dosage_and_administration", "warnings"];
 const INGREDIENT_SECTIONS: readonly LabelSectionName[] = ["active_ingredient", "inactive_ingredient"];
-const ALLERGY_WARNING_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "warnings", "warnings_and_cautions"];
+const ALLERGY_WARNING_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "warnings", "warnings_and_cautions", "precautions"];
 
 const ALCOHOL_PATTERN = /\b(?:3|three) or more alcoholic drinks\b/i;
 const PREGNANCY_PATTERN = /\b(?:pregnan(?:t|cy)|gestation)\b/i;

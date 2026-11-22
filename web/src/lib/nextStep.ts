@@ -47,6 +47,12 @@ function quoteSaysStop(flag: Flag): boolean {
   return flag.quotes.some((quote) => LABEL_SAYS_STOP.test(quote.excerpt) || quote.section === "contraindications");
 }
 
+const OPIOID = /\b(?:opioids?|oxycodone|hydrocodone|morphine|codeine|tramadol|fentanyl|methadone|buprenorphine|hydromorphone|oxymorphone|tapentadol|meperidine)\b/i;
+
+function involvesOpioid(flag: Flag): boolean {
+  return [flag.title, ...(flag.highlight ?? []), ...(flag.matchedBecause ?? [])].some((text) => OPIOID.test(text));
+}
+
 function leadMentions(flag: Flag, pattern: RegExp): boolean {
   const [lead] = flag.quotes;
   return lead !== undefined && pattern.test(lead.excerpt);
@@ -62,7 +68,10 @@ function interactionStep(flag: Flag): string {
   }
   const seizureRisk = leadMentions(flag, /\bseizures?\b/i) && !leadMentions(flag, SEDATION);
   if (flag.severity === "stop" && mentions(flag, SEDATION) && !seizureRisk) {
-    return "Call the prescriber or pharmacist today to confirm these are meant to be taken together. Do not drink alcohol with them. If someone is very hard to wake or breathing slowly, give naloxone (Narcan) if you have it and call 911.";
+    // Naloxone reverses opioids only, so it is offered only when an opioid is part of the pair.
+    return involvesOpioid(flag)
+      ? "Call the prescriber or pharmacist today to confirm these are meant to be taken together. Do not drink alcohol with them. If someone is very hard to wake or breathing slowly, give naloxone (Narcan) if you have it and call 911."
+      : "Together these can cause dangerous sleepiness or slowed breathing. Do not drive or drink alcohol with them, and ask the pharmacist today whether you need both. If someone is very hard to wake or breathing slowly, call 911.";
   }
   if (flag.severity === "stop" && mentions(flag, HYPERKALEMIA)) {
     return "Ask your prescriber for a potassium blood test soon. Do not take extra potassium or a salt substitute until then. Call 911 for chest pain, a very slow or uneven heartbeat, or sudden weakness.";
@@ -146,8 +155,11 @@ export function nextStep(flag: Flag): string {
         ? "Talk to a licensed prescriber or pharmacist before using it."
         : "Ask a doctor or pharmacist before using this, and tell them about the health detail it mentions.";
     case "label_tag":
-      if (flag.title === "Alcohol" && mentions(flag, /\bdisulfiram-like\b|\bdo not (?:drink|consume)\b|\bavoid (?:drinking |consuming )?alcohol|\balcohol (?:use )?is contraindicated/i)) {
+      if (flag.title === "Alcohol" && mentions(flag, /\bdisulfiram-like\b|\balcohol (?:use )?is contraindicated/i)) {
         return "The label says not to drink alcohol with this. Do not drink any while you take it, and ask the pharmacist how long to wait after the last dose.";
+      }
+      if (flag.title === "Alcohol" && mentions(flag, /\bdo not (?:drink|consume)\b|\bavoid (?:drinking |consuming )?alcohol/i)) {
+        return "The label says to avoid alcohol while you take this.";
       }
       if (flag.title === "Alcohol" && mentions(flag, /\b(?:respiratory depression|coma|death|fatal)\b/i)) {
         return "Do not drink alcohol while taking this. The label warns that together they can slow breathing, which can be fatal.";
