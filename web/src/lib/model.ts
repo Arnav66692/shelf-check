@@ -40,6 +40,7 @@ export type Flag = {
   readonly itemIds: readonly string[];
   readonly quotes: readonly FlagQuote[];
   readonly highlight?: readonly string[];
+  readonly prescribed?: boolean;
 };
 
 export type FlagQuote = { readonly excerpt: string; readonly section: string; readonly itemId: string };

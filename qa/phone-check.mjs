@@ -1,0 +1,34 @@
+import { createRequire } from "module";
+const require = createRequire(process.env.PLAYWRIGHT_PACKAGE_JSON ?? `${process.env.HOME}/.claude/skills/gstack/package.json`);
+const { chromium } = require("playwright-core");
+const BASE = process.argv[2] ?? "http://localhost:3411";
+const browser = await chromium.launch({ executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", headless: true });
+const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+const page = await ctx.newPage();
+const t0 = Date.now();
+await page.goto(BASE + "/", { waitUntil: "networkidle" });
+await page.getByRole("link", { name: "See an example cabinet" }).tap();
+await page.waitForURL(BASE + "/");
+await page.getByText(/to check with a pharmacist|Nothing urgent|No label here/).first().waitFor({ timeout: 60000 });
+console.log("example cabinet ready in", Date.now() - t0, "ms");
+console.log("summary:", (await page.locator(".facts").first().innerText()).split("\n")[0]);
+const badges = await page.locator("li.facts span.uppercase").allInnerTexts();
+console.log("badges:", JSON.stringify(badges.reduce((a, b) => ({ ...a, [b]: (a[b] ?? 0) + 1 }), {})));
+const warfarinCards = await page.locator("li.facts").filter({ hasText: "Warfarin" }).allInnerTexts();
+console.log("warfarin cards with prescribed line:", warfarinCards.filter((t) => t.includes("Do not stop a prescribed medicine")).length, "of", warfarinCards.length);
+await page.getByText("Expiry and supply").first().tap();
+console.log("overflow after opening expiry:", await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth));
+for (const name of ["warfarin", "lisinopril"]) {
+  await page.goto(BASE + "/add", { waitUntil: "networkidle" });
+  await page.getByPlaceholder("Medicine name or the code on the label").fill(name);
+  await page.getByRole("button", { name: "Search" }).tap();
+  await page.locator("ul button").first().waitFor({ timeout: 60000 });
+  await page.locator("ul button").first().tap();
+  await page.waitForTimeout(1200);
+  const box = await page.getByRole("button", { name: "Yes, add it to my cabinet" }).boundingBox();
+  const focused = await page.evaluate(() => document.activeElement?.textContent?.trim());
+  console.log(`${name}: confirm button top ${Math.round(box.y)} bottom ${Math.round(box.y + box.height)} of 844, focused: ${focused}`);
+}
+await page.goto(BASE + "/dose", { waitUntil: "networkidle" });
+console.log("dose check shows stop on open:", await page.getByText("Stop", { exact: true }).count());
+await browser.close();

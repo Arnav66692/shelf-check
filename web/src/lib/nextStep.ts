@@ -3,7 +3,7 @@ import type { Flag } from "./model";
 const LABEL_TAG_STEPS: Readonly<Record<string, string>> = {
   Alcohol: "Avoid alcohol while taking these unless a pharmacist says it is fine for you.",
   Grapefruit: "Ask a pharmacist before having grapefruit or grapefruit juice with these.",
-  "Drowsiness and driving": "Do not drive or use machinery until you know how these affect you.",
+  Drowsiness: "Do not drive or use machinery until you know how these affect you.",
   Sun: "Limit time in the sun and ask a pharmacist about sun protection while taking these.",
 };
 
@@ -11,7 +11,14 @@ function subjectOf(flag: Flag): string {
   return flag.highlight?.[0] ?? "this ingredient";
 }
 
+const PRESCRIBED_LINE = "Do not stop a prescribed medicine on your own. Call the prescriber or pharmacist first.";
+
 export function nextStep(flag: Flag): string {
+  const step = baseStep(flag);
+  return flag.prescribed ? `${step} ${PRESCRIBED_LINE}` : step;
+}
+
+function baseStep(flag: Flag): string {
   switch (flag.type) {
     case "duplicate_ingredient":
       return `Take only one product with ${subjectOf(flag)} at a time, unless a pharmacist tells you otherwise.`;
@@ -28,7 +35,7 @@ export function nextStep(flag: Flag): string {
     case "recall":
       return "Compare the lot number on your bottle with the recall. If it matches, stop using it and call your pharmacy.";
     case "expiry":
-      return flag.severity === "stop" ? "Do not rely on it. Ask a pharmacist about replacing it." : "Plan to replace it soon.";
+      return flag.severity === "stop" ? "Ask a pharmacist about replacing it before the next dose." : "Plan to replace it soon.";
     case "refill":
       return "Order a refill before it runs out.";
     default:

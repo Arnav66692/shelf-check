@@ -21,6 +21,7 @@ function expiryFlag(product: Product, expires: string, today: Date): Flag | null
     id: `expiry:${product.id}`,
     type: "expiry",
     severity: expired ? "stop" : "ask",
+    prescribed: product.kind === "rx",
     title: expired ? `${product.displayName} has expired` : `${product.displayName} expires soon`,
     explain: expired
       ? `The expiry date you entered was ${monthName(year, month)}.`

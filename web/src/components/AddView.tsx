@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ApiError, fetchLabelImages, searchProducts, suggestFromPhoto } from "@/lib/api";
 import { formatStrength, type Product } from "@/lib/model";
-import { SAMPLE_QUERIES } from "@/lib/sample";
+import sampleProducts from "@/lib/sampleProducts.json";
 import { useCabinet } from "@/lib/store";
 import { BarcodeScanner } from "./BarcodeScanner";
 import { ProductPanel } from "./ProductPanel";
@@ -26,6 +26,7 @@ function describe(product: Product): string {
 }
 
 const MAX_PICTURES = 4;
+const SAMPLE_PRODUCTS = sampleProducts as unknown as readonly Product[];
 
 function LabelPicture({ product }: { product: Product }) {
   const source = product.labelImages[0];
@@ -55,7 +56,8 @@ function LabelPicture({ product }: { product: Product }) {
         ))}
       </div>
       <figcaption className="mt-1 text-sm text-ink-soft">
-        Pictures from the official record. The package label is usually one of them.
+        Pictures from the official record. A record can cover several strengths, so check that the label you see
+        matches the strength above.
       </figcaption>
     </figure>
   );
@@ -78,15 +80,8 @@ export function AddView() {
   useEffect(() => {
     if (params.get("sample") !== "1" || sampleStarted.current) return;
     sampleStarted.current = true;
-    setResults({ status: "loading", what: "Loading a sample cabinet from the official records." });
-    Promise.all(SAMPLE_QUERIES.map((sample) => searchProducts(sample).then((found) => found.products[0])))
-      .then((products) => {
-        replaceAll(products.filter((product): product is Product => Boolean(product)));
-        router.replace("/");
-      })
-      .catch((error: unknown) =>
-        setResults({ status: "failed", message: error instanceof ApiError ? error.message : "The sample could not load." }),
-      );
+    replaceAll(SAMPLE_PRODUCTS);
+    router.replace("/");
   }, [params, replaceAll, router]);
 
   async function search(rawText: string) {
@@ -251,11 +246,11 @@ export function AddView() {
         {!chosen && <p className="mt-4 text-ink-soft">Pick a result to see its official record here.</p>}
         {chosen && (
           <div className="mt-4 grid gap-4">
-            <LabelPicture product={chosen} />
-            <ProductPanel product={chosen} />
             <button ref={confirmButton} type="button" className="btn" onClick={() => confirm(chosen)}>
               Yes, add it to my cabinet
             </button>
+            <ProductPanel product={chosen} />
+            <LabelPicture product={chosen} />
           </div>
         )}
       </section>

@@ -15,12 +15,12 @@ export function SupplyFields({ productId }: { productId: string }) {
   return (
     <details className="mt-2 text-ink">
       <summary className="cursor-pointer underline font-bold">Expiry and supply</summary>
-      <div className="mt-2 grid grid-cols-3 gap-2 text-sm">
+      <div className="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm">
         <label className="grid gap-1">
           Expires
           <input
             type="month"
-            className="border-2 border-ink bg-[var(--panel)] px-2 py-1"
+            className="w-full min-w-0 border-2 border-ink bg-[var(--panel)] px-2 py-1"
             value={current.expires ?? ""}
             onChange={(event) => update({ expires: event.target.value || undefined })}
           />
@@ -29,7 +29,7 @@ export function SupplyFields({ productId }: { productId: string }) {
           Doses left
           <input
             inputMode="numeric"
-            className="border-2 border-ink bg-[var(--panel)] px-2 py-1"
+            className="w-full min-w-0 border-2 border-ink bg-[var(--panel)] px-2 py-1"
             value={current.dosesLeft ?? ""}
             onChange={(event) => update({ dosesLeft: toNumber(event.target.value) })}
           />
@@ -38,7 +38,7 @@ export function SupplyFields({ productId }: { productId: string }) {
           Doses a day
           <input
             inputMode="decimal"
-            className="border-2 border-ink bg-[var(--panel)] px-2 py-1"
+            className="w-full min-w-0 border-2 border-ink bg-[var(--panel)] px-2 py-1"
             value={current.dosesPerDay ?? ""}
             onChange={(event) => update({ dosesPerDay: toNumber(event.target.value) })}
           />

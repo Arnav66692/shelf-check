@@ -2,7 +2,7 @@ import type { Flag, FlagQuote, Product, Severity } from "@/lib/model";
 import { nextStep } from "@/lib/nextStep";
 
 const SEVERITY_LABEL: Record<Severity, string> = {
-  stop: "Stop",
+  stop: "Check now",
   ask: "Ask first",
   info: "Note",
 };

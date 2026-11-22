@@ -10,16 +10,20 @@ function round(value: number): string {
 }
 
 export function DoseView() {
-  const [concentration, setConcentration] = useState("5");
-  const [doseValue, setDoseValue] = useState("0.25");
+  const [concentration, setConcentration] = useState("");
+  const [doseValue, setDoseValue] = useState("");
   const [doseUnit, setDoseUnit] = useState<DoseUnit>("mg");
-  const [alsoValue, setAlsoValue] = useState("25");
+  const [alsoValue, setAlsoValue] = useState("");
   const [alsoUnit, setAlsoUnit] = useState<DoseUnit>("units");
 
   const outcome = useMemo((): { check?: InjectionCheck; error?: string } => {
     const mgPerMl = Number(concentration);
     const dose = Number(doseValue);
-    if (!(mgPerMl > 0) || !(dose > 0)) return { error: "Enter the strength on the vial and the dose you were told." };
+    if (concentration.trim() === "" && doseValue.trim() === "") {
+      return { error: "Type the strength printed on the vial and the dose you were told. The syringe appears here." };
+    }
+    if (!(mgPerMl > 0)) return { error: "The vial strength must be a number above 0, in mg per mL." };
+    if (!(dose > 0)) return { error: "The dose must be a number above 0." };
     const also = Number(alsoValue);
     try {
       return {
@@ -49,12 +53,12 @@ export function DoseView() {
         <div className="mt-6 grid gap-4">
           <label className="grid gap-1 font-bold">
             Strength on the vial, in mg per mL
-            <input className="field font-normal" inputMode="decimal" value={concentration} onChange={(event) => setConcentration(event.target.value)} />
+            <input className="field font-normal" inputMode="decimal" placeholder="For example 5" value={concentration} onChange={(event) => setConcentration(event.target.value)} />
           </label>
           <div className="grid grid-cols-[1fr_auto] gap-3 items-end">
             <label className="grid gap-1 font-bold">
               Dose you were told
-              <input className="field font-normal" inputMode="decimal" value={doseValue} onChange={(event) => setDoseValue(event.target.value)} />
+              <input className="field font-normal" inputMode="decimal" placeholder="For example 0.25" value={doseValue} onChange={(event) => setDoseValue(event.target.value)} />
             </label>
             <select aria-label="Dose unit" className="field font-normal w-auto" value={doseUnit} onChange={(event) => setDoseUnit(event.target.value as DoseUnit)}>
               {(Object.keys(UNIT_LABEL) as DoseUnit[]).map((unit) => (

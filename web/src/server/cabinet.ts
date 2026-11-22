@@ -12,6 +12,7 @@ import {
 import { peptideCabinetFlags, peptideCabinetItem } from "@engine/peptideCabinet.ts";
 import { PEPTIDES, type PeptideId } from "@engine/peptides.ts";
 import type { Flag, FlagQuote, Product, Profile } from "@/lib/model";
+import sampleItems from "./sampleItems.json";
 
 const openFda = createOpenFdaClient();
 const rxNav = createRxNavClient();
@@ -39,7 +40,11 @@ function build(product: Product): Promise<CabinetItem> {
   return Promise.reject(new Error(`"${product.displayName}" has no official record id to check.`));
 }
 
+const SAVED_SAMPLE_ITEMS = sampleItems as unknown as Readonly<Record<string, CabinetItem>>;
+
 function builtOnce(product: Product): Promise<CabinetItem> {
+  const saved = SAVED_SAMPLE_ITEMS[product.id];
+  if (saved) return Promise.resolve(saved);
   const existing = builtItems.get(product.id);
   if (existing) return existing;
   const pending = build(product);
@@ -97,6 +102,7 @@ function sentenceCase(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+const PRESCRIBED_KINDS: ReadonlySet<string> = new Set(["rx"]);
 const TITLE_SUBJECT = / is in \d| daily total/;
 
 function highlightTerms(members: readonly EngineFlag[]): readonly string[] {
@@ -108,7 +114,12 @@ function highlightTerms(members: readonly EngineFlag[]): readonly string[] {
   return [...new Set(terms.filter((term): term is string => typeof term === "string" && term.trim().length > 2))];
 }
 
-function mergeGroup(key: string, members: readonly EngineFlag[], names: ReadonlyMap<string, string>): Flag {
+function mergeGroup(
+  key: string,
+  members: readonly EngineFlag[],
+  names: ReadonlyMap<string, string>,
+  kinds: ReadonlyMap<string, string>,
+): Flag {
   const [first] = members;
   const itemIds = [...new Set(members.flatMap((member) => member.itemIds))];
   const seen = new Set<string>();
@@ -119,7 +130,8 @@ function mergeGroup(key: string, members: readonly EngineFlag[], names: Readonly
     return true;
   });
   const severity = members.map((member) => member.severity).sort((a, b) => SEVERITY_RANK[a] - SEVERITY_RANK[b])[0];
-  const shared = { id: key, type: first.type, severity, itemIds, quotes, highlight: highlightTerms(members) };
+  const prescribed = itemIds.some((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
+  const shared = { id: key, type: first.type, severity, itemIds, quotes, highlight: highlightTerms(members), prescribed };
   if (first.type === "interaction") {
     const pair = itemIds.map((id) => names.get(id) ?? "a product").join(" and ");
     const count = quotes.length === 1 ? "A label warns" : `${quotes.length} label lines warn`;
@@ -132,15 +144,21 @@ function mergeGroup(key: string, members: readonly EngineFlag[], names: Readonly
   return { ...shared, title: sentenceCase(first.title), explain: first.explain };
 }
 
+function softenForPrescribed(flag: Flag, kinds: ReadonlyMap<string, string>): Flag {
+  const prescribedOnly = flag.itemIds.length > 0 && flag.itemIds.every((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
+  return flag.type === "profile" && flag.severity === "stop" && prescribedOnly ? { ...flag, severity: "ask" } : flag;
+}
+
 export function groupFlags(flags: readonly EngineFlag[], items: readonly CabinetItem[]): readonly Flag[] {
   const names = new Map(items.map((item) => [item.id, item.displayName]));
+  const kinds = new Map(items.map((item) => [item.id, item.kind]));
   const groups = new Map<string, EngineFlag[]>();
   for (const flag of flags) {
     const key = groupKey(flag);
     groups.set(key, [...(groups.get(key) ?? []), flag]);
   }
   return [...groups.entries()]
-    .map(([key, members]) => mergeGroup(key, members, names))
+    .map(([key, members]) => softenForPrescribed(mergeGroup(key, members, names, kinds), kinds))
     .sort((a, b) => SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity]);
 }
 

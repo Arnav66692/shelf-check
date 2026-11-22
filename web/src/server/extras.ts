@@ -16,7 +16,7 @@ const RECENT_YEARS = 3;
 const TAG_TITLES: Record<LabelTag, string> = {
   alcohol: "Alcohol",
   grapefruit: "Grapefruit",
-  drowsiness: "Drowsiness and driving",
+  drowsiness: "Drowsiness",
   sun: "Sun",
 };
 

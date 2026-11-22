@@ -8,9 +8,9 @@ Paste each section into the matching Devpost field. It is a draft in your voice,
 
 Shelf Check
 
-## Tagline (105 characters, check the limit shown in the form)
+## Tagline (110 characters, check the limit shown in the form)
 
-Check every medicine you own against its official label. Double doses and bad mixes, quoted from the box.
+Check every medicine you own against its official label. Double doses and label warnings, quoted from the box.
 
 ## Inspiration
 
@@ -79,7 +79,7 @@ So Shelf Check is reliable at the problem it was built for, the same drug hiding
 
 ## Usability
 
-A cold read of the live site by a reviewer playing a caregiver on a phone found things like a confirm button that was off screen after picking a product, empty searches that did nothing, and brand names like Coumadin that found nothing. I fixed those. Every warning now has a plain "What to do" line, the warnings start with a one line summary, there is a larger text switch and a read aloud button, and an automated accessibility check (axe, WCAG 2.1 AA) finds no problems on any page at laptop or phone size.
+Two cold reads of the live site by a reviewer playing a caregiver on a phone found things like a confirm button that was off screen after picking a product, empty searches that did nothing, brand names like Coumadin that found nothing, and a red stop sign on a prescribed blood thinner, which could push someone to stop a medicine they need. I fixed those and checked them on a phone sized screen. Warnings about prescribed medicines now say not to stop them without the prescriber. Every warning now has a plain "What to do" line, the warnings start with a one line summary, there is a larger text switch and a read aloud button, and an automated accessibility check (axe, WCAG 2.1 AA) finds no problems on any page at laptop or phone size.
 
 ## Challenges I ran into
 
@@ -104,7 +104,7 @@ typescript, next.js, react, tailwind css, node.js, python, pytorch, fastapi, oll
 ## Try it out
 
 - Live site: https://shelf-check-nu.vercel.app
-- Code: https://github.com/Arnav66692/shelf-check (private right now, make it public before you submit, or give the judges access)
+- Code: https://github.com/Arnav66692/shelf-check
 
 The live site runs everything except the photo reader and the possible causes list, which need the local vision model on my laptop. The video shows those from my laptop.
 

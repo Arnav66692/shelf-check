@@ -93,9 +93,9 @@ export function CabinetView() {
             <>
               <p className="text-lg font-extrabold">
                 {stops > 0
-                  ? `${stops} ${stops === 1 ? "thing" : "things"} to stop and check before your next dose.`
+                  ? `${stops} ${stops === 1 ? "thing" : "things"} to check with a pharmacist before the next dose.`
                   : asks > 0
-                    ? "Nothing to stop. Some things to ask a pharmacist about."
+                    ? "Nothing urgent. Some things to ask a pharmacist about."
                     : "No label here warns about another product in this cabinet."}
               </p>
               <p className="mt-1">
