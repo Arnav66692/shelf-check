@@ -103,8 +103,9 @@ export function Syringe({ draw }: { draw: Draw }) {
       <Notice severity="stop" title="Too large for this syringe">
         <p>
           This dose is {formatAmount(draw.mL)} mL, which is {formatAmount(draw.units)} units. A U-100 insulin syringe holds{" "}
-          {SYRINGE_ML} mL, which is {SYRINGE_UNITS} units, so no mark is shown. Do not inject. A number this large often
-          means a number was typed in the wrong unit. Ask the pharmacist or the prescriber.
+          {SYRINGE_ML} mL, which is {SYRINGE_UNITS} units, so no mark is shown. Do not draw this amount. A number this
+          large often means a number was typed in the wrong unit. Call the pharmacist or the prescriber now and ask how to
+          give this dose. Do not skip insulin without asking them.
         </p>
       </Notice>
     );

@@ -113,11 +113,11 @@ describe("checkInjectionDose", () => {
       expect(check.flags).toHaveLength(1);
       expect(check.flags[0]?.numbers?.["factor"]).toBeCloseTo(10, 10);
       expect(check.flags[0]?.numbers?.["statedMg"]).toBeCloseTo(10 * check.dose.mg, 10);
-      expect(check.flags[0]?.detail).toContain("10 times more");
+      expect(check.flags[0]?.detail).toContain("10 times apart");
     },
   );
 
-  test("an underdose is reported with how many times less it is", () => {
+  test("an underdose is reported with how many times apart the two are", () => {
     const check = checkInjectionDose({
       itemId: "vial",
       concentrationMgPerMl: 5,
@@ -127,7 +127,7 @@ describe("checkInjectionDose", () => {
     });
 
     expect(check.flags[0]?.numbers?.["factor"]).toBeCloseTo(0.1, 10);
-    expect(check.flags[0]?.detail).toContain("10 times less");
+    expect(check.flags[0]?.detail).toContain("10 times apart");
   });
 
   test("a consistent pair raises no flag", () => {

@@ -81,8 +81,13 @@ function describeDose(dose: StatedDose): string {
   return `${formatNumber(dose.value)} ${dose.unit}`;
 }
 
-function describeEquivalents(dose: DoseEquivalents): string {
-  return `${formatNumber(dose.mg)} mg, ${formatNumber(dose.mL)} mL, ${formatNumber(dose.u100Units)} units on a U-100 syringe`;
+function describeEquivalents(dose: DoseEquivalents, unit: StatedDose["unit"]): string {
+  const parts = [
+    unit === "mg" ? null : `${formatNumber(dose.mg)} mg`,
+    unit === "mL" ? null : `${formatNumber(dose.mL)} mL`,
+    unit === "units" ? null : `${formatNumber(dose.u100Units)} units on a U-100 syringe`,
+  ].filter((part): part is string => part !== null);
+  return parts.join(", ");
 }
 
 function pairMismatchFlag(input: InjectionCheckInput, prescribed: DoseEquivalents, alsoStated: StatedDose): readonly Flag[] {
@@ -90,14 +95,13 @@ function pairMismatchFlag(input: InjectionCheckInput, prescribed: DoseEquivalent
   const factor = stated.mg / prescribed.mg;
   if (Math.abs(factor - 1) <= RELATIVE_TOLERANCE) return [];
   const timesOff = factor > 1 ? factor : 1 / factor;
-  const direction = factor > 1 ? "more" : "less";
   return [
     {
       type: "unit_mismatch",
       severity: "stop",
       itemIds: [input.itemId],
       title: `${describeDose(input.prescribed)} and ${describeDose(alsoStated)} are not the same dose`,
-      detail: `At ${formatNumber(input.concentrationMgPerMl)} mg per mL, ${describeDose(input.prescribed)} is ${describeEquivalents(prescribed)}. ${describeDose(alsoStated)} is ${describeEquivalents(stated)}. That is ${formatNumber(timesOff)} times ${direction} than the prescribed dose. Do not inject until a pharmacist or the prescriber confirms the amount.`,
+      detail: `At ${formatNumber(input.concentrationMgPerMl)} mg per mL, ${describeDose(input.prescribed)} is ${describeEquivalents(prescribed, input.prescribed.unit)}. ${describeDose(alsoStated)} is ${describeEquivalents(stated, alsoStated.unit)}. The two are ${formatNumber(timesOff)} times apart. Do not inject until a pharmacist or the prescriber confirms the amount.`,
       explain: "The two ways this dose is written are not the same amount, so do not inject until a pharmacist confirms it.",
       numbers: {
         concentrationMgPerMl: input.concentrationMgPerMl,
