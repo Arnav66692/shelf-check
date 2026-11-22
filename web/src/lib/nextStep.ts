@@ -124,6 +124,9 @@ export function nextStep(flag: Flag): string {
         ? "Talk to a licensed prescriber or pharmacist before using it."
         : "Ask a doctor or pharmacist before using this, and tell them about the health detail it mentions.";
     case "label_tag":
+      if (flag.title === "Alcohol" && mentions(flag, /\b(?:contraindicated|disulfiram-like|do not (?:drink|consume))\b/i)) {
+        return "The label says not to drink alcohol with this. Do not drink any while you take it, and ask the pharmacist how long to wait after the last dose.";
+      }
       if (flag.title === "Alcohol" && mentions(flag, /\b(?:respiratory depression|coma|death|fatal)\b/i)) {
         return "Do not drink alcohol while taking this. The label warns that together they can slow breathing, which can be fatal.";
       }

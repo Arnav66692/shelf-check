@@ -28,7 +28,7 @@ interface TagRule {
 
 // "Benzyl alcohol" and the like are ingredients, and "alcohol-free" is a product claim. Neither is a line about drinking.
 const ALCOHOL_PATTERN =
-  /(?<!\b(?:benzyl|cetyl|stearyl|cetostearyl|isopropyl|polyvinyl|lanolin|rubbing|sugar)\s)\balcohol(?:ic)?\b(?![- ]free)/i;
+  /(?<!\b(?:benzyl|cetyl|stearyl|cetostearyl|isopropyl|polyvinyl|lanolin|rubbing|sugar)\s)\balcohol(?:ic(?!\s+patients))?\b(?![- ]free)/i;
 const DROWSINESS_PATTERN =
   /\bdrows(?:y|iness)\b|\bsleepiness\b|\bdriv(?:e|ing)\s+(?:a\s+)?(?:motor\s+)?(?:vehicle|car)\b|\boperat(?:e|ing)\s+(?:\w+\s+)?machine(?:s|ry)?\b|\bmachinery\b/i;
 const SUN_PATTERN = /\b(?:sunburn(?:s|ed)?|sunlamps?|sunscreens?|photosensitiv(?:e|ity)|tanning|ultraviolet|UV radiation)\b|\bprotect (?:your |the )?skin from (?:the )?sun(?:light)?\b/i;
