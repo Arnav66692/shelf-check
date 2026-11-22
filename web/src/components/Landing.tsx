@@ -1,347 +1,215 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { EnterGate } from "./EnterGate";
-import { HeroWords } from "./HeroWords";
-import { setFieldShape, type FieldShape } from "./ParticleField";
-import { TypeLabel } from "./TypeLabel";
+import { WireModel, type ModelName } from "./WireModel";
 
-type Chapter = { id: string; letter: string; name: string; shape: FieldShape; tags: readonly string[] };
+type Slide = {
+  id: string;
+  title: string;
+  model: ModelName;
+  body: string;
+  href: string;
+  cta: string;
+  callouts: readonly { label: string; spot: string }[];
+};
 
-const CHAPTERS: readonly Chapter[] = [
-  { id: "intro", letter: "A", name: "Intro", shape: "ring", tags: ["Acetaminophen", "Tylenol", "NyQuil"] },
-  { id: "problem", letter: "B", name: "Problem", shape: "pair", tags: ["5,600 mg", "4,000 mg limit"] },
-  { id: "checks", letter: "C", name: "Checks", shape: "band", tags: ["Warfarin", "St. John's Wort", "Recall"] },
-  { id: "decides", letter: "D", name: "How", shape: "wave", tags: ["openFDA", "DailyMed", "RxNorm"] },
-  { id: "proof", letter: "E", name: "Proof", shape: "orbits", tags: ["40 of 40", "0 false alarms"] },
-  { id: "who", letter: "F", name: "Who", shape: "cone", tags: ["Parents", "Kids", "You"] },
-  { id: "faq", letter: "G", name: "FAQ", shape: "stream", tags: ["Not medical advice"] },
-  { id: "start", letter: "H", name: "Start", shape: "ring", tags: ["Poison Help 1-800-222-1222"] },
+const SLIDES: readonly Slide[] = [
+  {
+    id: "check",
+    title: "Check",
+    model: "bottle",
+    body: "Tylenol and NyQuil both contain acetaminophen, and neither box tells you the other one has it. Add what is in your cabinet and Shelf Check reads every official FDA label together, then quotes the line that matters.",
+    href: "/add",
+    cta: "Enter",
+    callouts: [
+      { label: "Active ingredient", spot: "left-[30%] top-[38%] w-[22%] h-[14%]" },
+      { label: "Label warning", spot: "left-[34%] top-[56%] w-[16%] h-[10%]" },
+    ],
+  },
+  {
+    id: "proof",
+    title: "Prove",
+    model: "molecule",
+    body: "Acetaminophen hidden in two products was caught 40 of 40 times on random real products. On 40 harmless pairs it raised 0 false alarms. Every warning points to a real sentence on a real label.",
+    href: "/tested",
+    cta: "See the tests",
+    callouts: [{ label: "C8H9NO2", spot: "left-[26%] top-[30%] w-[26%] h-[34%]" }],
+  },
+  {
+    id: "symptoms",
+    title: "Symptoms",
+    model: "kit",
+    body: "Type how you feel. It finds what you already own that is labelled for it, and sends emergency words straight to 911, 988 or Poison Help.",
+    href: "/symptoms",
+    cta: "Enter",
+    callouts: [{ label: "Emergency first", spot: "left-[33%] top-[36%] w-[18%] h-[22%]" }],
+  },
+  {
+    id: "pills",
+    title: "Identify",
+    model: "capsule",
+    body: "Found a pill you cannot name. Search 83,912 FDA and NLM pill records by imprint, colour and shape, with Poison Help at the top.",
+    href: "/pills",
+    cta: "Enter",
+    callouts: [{ label: "Imprint", spot: "left-[34%] top-[44%] w-[14%] h-[10%]" }],
+  },
+  {
+    id: "dose",
+    title: "Measure",
+    model: "syringe",
+    body: "Shows where the plunger should stop on a U-100 syringe, and catches the 5 units versus 50 units mix-up the FDA has warned about.",
+    href: "/dose",
+    cta: "Enter",
+    callouts: [{ label: "Draw to mark", spot: "left-[36%] top-[34%] w-[12%] h-[26%]" }],
+  },
+  {
+    id: "peptides",
+    title: "Peptides",
+    model: "helix",
+    body: "Quotes the FDA label for approved peptides like Ozempic and Mounjaro, and says plainly when a peptide has no approved use or dose.",
+    href: "/peptides",
+    cta: "Enter",
+    callouts: [{ label: "FDA label", spot: "left-[33%] top-[26%] w-[18%] h-[46%]" }],
+  },
 ] as const;
 
-const TAG_SPOTS = [
-  "left-[9%] top-[22%]",
-  "right-[12%] top-[16%]",
-  "left-[38%] bottom-[22%]",
-  "right-[24%] bottom-[34%]",
-] as const;
+function pad(value: number): string {
+  return String(value).padStart(2, "0");
+}
 
-const FAQ = [
-  {
-    q: "Is this medical advice?",
-    a: "No. It shows you what the official labels already say, and quotes the line. It never says anything is safe, because a label can be silent about a real risk. Show the list to your pharmacist or doctor.",
-  },
-  {
-    q: "Where do the warnings come from?",
-    a: "From the FDA drug labels on openFDA and DailyMed, the NIH supplement label database, and NIH RxNorm for drug names and classes. Plain code reads them. No AI model decides a warning.",
-  },
-  {
-    q: "Is my list private?",
-    a: "Your list is saved in this browser only, with no account. It is sent to the server only to run the check, and it is not stored there.",
-  },
-  {
-    q: "What if it finds nothing?",
-    a: "That means no label here warns about another product you added. It does not prove they are safe together, so it still asks you to have a pharmacist look at the whole list.",
-  },
-  {
-    q: "Does it work for supplements and peptides?",
-    a: "Yes. Supplements come from the NIH label database. For peptides it quotes the FDA label for approved ones like Ozempic, and says plainly when a peptide has no approved use or dose.",
-  },
-  {
-    q: "What about an emergency?",
-    a: "If someone swallowed too much or something they should not have, call Poison Help at 1-800-222-1222. If they collapse, have a seizure or trouble breathing, call 911.",
-  },
-] as const;
-
-function ChapterLetter({ letter }: { letter: string }) {
+function Arrow({ flip }: { flip?: boolean }) {
   return (
-    <span className="grid place-items-center h-7 w-7 shrink-0 rounded-full border border-dashed border-[var(--accent)] font-[family-name:var(--font-courier)] text-accent text-[15px]">
-      {letter}
-    </span>
+    <svg viewBox="0 0 24 8" width="22" height="8" aria-hidden="true" className={flip ? "rotate-180" : ""}>
+      <path d="M0 4h22M18 1l4 3-4 3" fill="none" stroke="currentColor" strokeWidth="1" />
+    </svg>
   );
 }
 
-function Rail({ active, onGo }: { active: number; onGo: (index: number) => void }) {
+function Callouts({ slide }: { slide: Slide }) {
   return (
-    <nav aria-label="Chapters" data-skip-read className="fixed z-20 left-1/2 -translate-x-1/2 top-[calc(var(--margin)+56px)] hidden lg:block">
-      <ol className="relative flex items-start gap-2">
-        {CHAPTERS.map((chapter, index) => {
-          const current = index === active;
-          return (
-            <li key={chapter.id} className={`flex flex-col items-center ${index % 2 ? "translate-y-3" : ""}`}>
-              <button
-                type="button"
-                onClick={() => onGo(index)}
-                aria-label={`Chapter ${chapter.letter}, ${chapter.name}`}
-                aria-current={current ? "step" : undefined}
-                className={`grid place-items-center h-7 w-7 rounded-full border border-dashed font-[family-name:var(--font-courier)] text-[13px] transition-colors duration-500 ${current ? "bg-[var(--accent)] border-[var(--accent)] text-[var(--on-accent)]" : "border-[var(--rule)] text-ink hover:border-[var(--accent)]"}`}
-              >
-                {chapter.letter}
-              </button>
-              <span className={`mt-1.5 font-[family-name:var(--font-space)] text-[10px] font-bold uppercase text-accent transition-opacity duration-500 ${current ? "opacity-100" : "opacity-0"}`}>
-                {chapter.name}
-              </span>
-            </li>
-          );
-        })}
-      </ol>
-    </nav>
-  );
-}
-
-function Tags({ tags, active }: { tags: readonly string[]; active: boolean }) {
-  return (
-    <div aria-hidden="true" className="pointer-events-none max-sm:hidden">
-      {tags.map((tag, index) => (
-        <TypeLabel
-          key={tag}
-          text={tag}
-          active={active}
-          delay={800 + index * 260}
-          className={`absolute ${TAG_SPOTS[index % TAG_SPOTS.length]}`}
-          style={{ animationDelay: `${index * -4}s` }}
-        />
+    <div aria-hidden="true" className="absolute inset-0 pointer-events-none max-md:hidden">
+      {slide.callouts.map((callout, index) => (
+        <div
+          key={callout.label}
+          className={`absolute border border-[var(--accent)] rise ${callout.spot}`}
+          style={{ animationDelay: `${900 + index * 250}ms` }}
+        >
+          <span className="absolute -top-px left-full ml-2 whitespace-nowrap bg-[var(--accent)] px-2 py-0.5 font-[family-name:var(--font-display)] text-[11px] font-medium uppercase tracking-[0.15em] text-[var(--on-accent)]">
+            {callout.label}
+          </span>
+        </div>
       ))}
     </div>
   );
 }
 
-function Faq() {
-  const [open, setOpen] = useState<number | null>(null);
-  return (
-    <ul className="border-t border-dashed border-[var(--rule)]">
-      {FAQ.map((item, index) => {
-        const isOpen = open === index;
-        return (
-          <li key={item.q} className="border-b border-dashed border-[var(--rule)]">
-            <button
-              type="button"
-              aria-expanded={isOpen}
-              onClick={() => setOpen(isOpen ? null : index)}
-              className="w-full flex items-center justify-between gap-6 py-4 text-left font-[family-name:var(--font-courier)] uppercase text-[length:var(--fs-h3)] leading-[1.1] text-ink hover:text-accent"
-            >
-              <span className={isOpen ? "text-accent" : ""}>{item.q}</span>
-              <span
-                aria-hidden="true"
-                className={`grid place-items-center h-8 w-8 shrink-0 rounded-full border border-dashed border-[var(--rule)] text-[18px] transition-transform duration-500 ${isOpen ? "rotate-180" : ""}`}
-              >
-                {isOpen ? "−" : "+"}
-              </span>
-            </button>
-            <div
-              className={`grid transition-[grid-template-rows] duration-[750ms] ease-[cubic-bezier(.22,1,.36,1)] ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
-            >
-              <p className="overflow-hidden text-ink-soft max-w-[560px]">
-                <span className="block pb-5">{item.a}</span>
-              </p>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-function ChapterBody({ chapter }: { chapter: Chapter }) {
-  switch (chapter.id) {
-    case "intro":
-      return (
-        <div className="grid h-full content-center max-sm:content-start max-sm:pt-4 justify-items-center text-center gap-6 sm:gap-10">
-          <h1 className="title text-[length:var(--fs-hero)] w-full max-w-[1200px]">
-            <HeroWords />
-          </h1>
-          <div className="grid justify-items-center gap-5 max-w-[440px]">
-            <p className="text-[15px] leading-[1.45] text-ink">
-              For anyone who keeps track of medicines for a parent, a child or themselves. Shelf Check reads the
-              official labels of everything you take together, and quotes the line that matters.
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              <Link href="/add?sample=1" className="btn">
-                See an example cabinet
-              </Link>
-              <Link href="/start" className="btn btn-quiet">
-                Start my own
-              </Link>
-            </div>
-          </div>
-        </div>
-      );
-    case "problem":
-      return (
-        <Split chapter={chapter} title="The warning is on a different box">
-          Tylenol and NyQuil both contain acetaminophen, and neither box tells you about the other. Taken at the most each
-          label allows, that is 5,600 mg a day. The Tylenol label warns about going over 4,000. In one study, 45.6 percent
-          of 500 adults said they would double up like this.
-        </Split>
-      );
-    case "checks":
-      return (
-        <Split chapter={chapter} title="Every label, read together">
-          <span className="block">The same drug hiding in two products, with the daily total. Labels that warn about something else you own, like warfarin and St. John&apos;s Wort. Warnings for your health, from four questions. FDA recalls on that exact product. Expired or nearly empty bottles.</span>
-          <span className="block mt-3 text-ink-soft">It only knows what the labels say. In our test it caught about 1 in 4 major drug interactions, so show your list to a pharmacist too.</span>
-        </Split>
-      );
-    case "decides":
-      return (
-        <Split chapter={chapter} title="No AI decides a warning" cta={{ href: "/tested", label: "See how we tested it" }}>
-          Each product is matched to its official FDA or NIH record before it goes in. Then plain code reads the label text,
-          and drug classes come from the FDA&apos;s own interaction tables. Every warning quotes its sentence, so you can show
-          it to a pharmacist.
-        </Split>
-      );
-    case "proof":
-      return (
-        <div className="grid h-full content-center gap-10 max-w-[1144px] mx-auto w-full">
-          <div className="flex items-start gap-4">
-            <ChapterLetter letter={chapter.letter} />
-            <h2 className="title text-[length:var(--fs-h1)]">Tested, with the bar set first</h2>
-          </div>
-          <dl className="grid gap-6 sm:grid-cols-3">
-            {[
-              ["40 of 40", "Doubled acetaminophen caught, 40 random products"],
-              ["10 of 40", "New major interactions caught, with 0 false alarms in 40 more pairs"],
-              ["0 of 61", "Wrong photo matches when code and printed text had to agree. Photo reading runs on a local computer, not this site"],
-            ].map(([number, text]) => (
-              <div key={number} className="facts">
-                <dt className="title text-[length:var(--fs-h1)]">{number}</dt>
-                <dd className="mt-3 text-ink-soft">{text}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      );
-    case "who":
-      return (
-        <Split chapter={chapter} title="For the person who keeps the list">
-          A parent managing their kids&apos; cold medicine. Someone caring for a mother on six prescriptions. Anyone who
-          takes more than one thing. Add each person in their own cabinet, print the list for the pharmacist, or have it
-          read aloud.
-        </Split>
-      );
-    case "faq":
-      return (
-        <div className="grid h-full content-center gap-10 lg:grid-cols-2 max-w-[1300px] mx-auto w-full">
-          <div className="flex items-start gap-4 lg:self-center">
-            <ChapterLetter letter={chapter.letter} />
-            <div>
-              <h2 className="title text-[length:var(--fs-h1)]">Questions, answered</h2>
-              <p className="mt-4 max-w-[400px] text-ink-soft">What it is, where the warnings come from, and what it cannot tell you.</p>
-            </div>
-          </div>
-          <Faq />
-        </div>
-      );
-    default:
-      return (
-        <div className="grid h-full content-center justify-items-center text-center gap-8">
-          <h2 className="title text-[length:var(--fs-hero)]">Start your cabinet</h2>
-          <p className="max-w-[440px] text-ink-soft">About two minutes, four questions. Your list stays in this browser.</p>
-          <div className="flex flex-wrap justify-center gap-2">
-            <Link href="/start" className="btn">
-              Start my own
-            </Link>
-            <Link href="/add?sample=1" className="btn btn-quiet">
-              See an example cabinet
-            </Link>
-          </div>
-        </div>
-      );
-  }
-}
-
-function Split({
-  chapter,
-  title,
-  children,
-  cta,
-}: {
-  chapter: Chapter;
-  title: string;
-  children: React.ReactNode;
-  cta?: { href: string; label: string };
-}) {
-  return (
-    <div className="grid h-full content-center max-w-[1144px] mx-auto w-full">
-      <div className="flex items-start gap-4 lg:ml-[30%] max-w-[640px]">
-        <ChapterLetter letter={chapter.letter} />
-        <div>
-          <h2 className="title text-[length:var(--fs-h1)]">{title}</h2>
-          <p className="mt-4 text-[15px] leading-[1.5] text-ink">{children}</p>
-          {cta && (
-            <Link href={cta.href} className="btn btn-quiet mt-6">
-              {cta.label}
-            </Link>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function Landing() {
-  const [active, setActive] = useState(0);
-  const spacers = useRef<(HTMLElement | null)[]>([]);
+  const [index, setIndex] = useState(0);
+  const touchX = useRef<number | null>(null);
+  const slide = SLIDES[index];
+  const next = (index + 1) % SLIDES.length;
 
-  useEffect(() => {
-    let frame = 0;
-    function update() {
-      frame = 0;
-      const middle = window.innerHeight / 2;
-      let next = 0;
-      spacers.current.forEach((element, index) => {
-        if (element && element.getBoundingClientRect().top <= middle) next = index;
-      });
-      setActive((current) => (current === next ? current : next));
-    }
-    function schedule() {
-      if (!frame) frame = requestAnimationFrame(update);
-    }
-    update();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-    };
+  const go = useCallback((step: number) => {
+    setIndex((current) => (current + step + SLIDES.length) % SLIDES.length);
   }, []);
 
   useEffect(() => {
-    setFieldShape(CHAPTERS[active].shape);
-  }, [active]);
-
-  useEffect(() => () => setFieldShape("cloud"), []);
-
-  function go(index: number) {
-    spacers.current[index]?.scrollIntoView({ behavior: "smooth" });
-  }
+    function onKey(event: KeyboardEvent) {
+      const target = event.target as HTMLElement | null;
+      if (target && /INPUT|TEXTAREA|SELECT/.test(target.tagName)) return;
+      if (event.key === "ArrowRight") go(1);
+      if (event.key === "ArrowLeft") go(-1);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [go]);
 
   return (
-    <div className="-mx-[var(--margin)]">
+    <section
+      aria-roledescription="carousel"
+      aria-label="Shelf Check tools"
+      className="relative -mx-[var(--margin)] h-[calc(100svh-140px)] min-h-[560px] max-sm:h-auto max-sm:min-h-0"
+      onTouchStart={(event) => {
+        touchX.current = event.touches[0]?.clientX ?? null;
+      }}
+      onTouchEnd={(event) => {
+        const start = touchX.current;
+        const end = event.changedTouches[0]?.clientX;
+        if (start === null || end === undefined || Math.abs(end - start) < 50) return;
+        go(end < start ? 1 : -1);
+      }}
+    >
       <EnterGate />
-      <Rail active={active} onGo={go} />
-      {CHAPTERS.map((chapter, index) => {
-        const isActive = index === active;
-        return (
-          <section
-            key={chapter.id}
-            id={chapter.id}
-            aria-label={`${chapter.letter}. ${chapter.name}`}
-            ref={(element) => {
-              spacers.current[index] = element;
-            }}
-            className={`relative ${chapter.id === "faq" ? "min-h-[160vh]" : "h-[150vh] max-sm:h-[130vh]"}`}
-          >
-            <div
-              className={`sticky top-0 h-[100svh] px-[var(--margin)] pt-28 pb-28 max-sm:pt-6 transition-[opacity,filter] ${isActive ? "opacity-100 blur-0 duration-[700ms] delay-150 ease-[cubic-bezier(.33,1,.68,1)]" : "opacity-0 blur-[6px] duration-[400ms] delay-0 ease-[cubic-bezier(.33,1,.68,1)] pointer-events-none"}`}
+      <div key={slide.id} className="absolute inset-y-0 left-0 w-[60%] max-sm:relative max-sm:w-full max-sm:h-[300px] rise">
+        <WireModel name={slide.model} />
+        <Callouts slide={slide} />
+      </div>
+
+      <div className="absolute left-1/2 top-2 -translate-x-1/2 flex items-center gap-3 font-[family-name:var(--font-display)] text-[13px] font-medium tracking-[0.15em] max-sm:hidden" aria-hidden="true">
+        <span className="text-accent blink">{pad(index + 1)}</span>
+        <span className="h-px w-8 bg-[var(--rule)]" />
+        <span className="text-muted">{pad(next + 1)}</span>
+      </div>
+
+      <div
+        role="group"
+        aria-roledescription="slide"
+        aria-label={`${index + 1} of ${SLIDES.length}, ${slide.title}`}
+        className="absolute left-[55%] right-[9%] top-[24%] max-w-[520px] max-sm:static max-sm:px-[var(--margin)] max-sm:pt-4 max-sm:max-w-none"
+      >
+        <h1 key={`t-${slide.id}`} aria-live="polite" className="title rgb-title text-[clamp(40px,4.2vw,72px)] tracking-[0.2em]" data-text={slide.title}>
+          {slide.title}
+        </h1>
+        <p key={`b-${slide.id}`} className="mt-6 text-[var(--ink-soft)] rise">
+          {slide.body}
+        </p>
+        <div key={`c-${slide.id}`} className="mt-10 flex flex-wrap items-center gap-3 rise" style={{ animationDelay: "300ms" }}>
+          <Link href={slide.href} className="btn min-w-[194px] justify-start">
+            {slide.cta}
+          </Link>
+          {slide.id === "check" && (
+            <Link href="/add?sample=1" className="btn btn-quiet">
+              Try a sample cabinet
+            </Link>
+          )}
+        </div>
+        <p className="mt-8 hud-bar label">Poison Help 1-800-222-1222. Emergency, call 911.</p>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => go(-1)}
+        aria-label="Previous tool"
+        className="absolute left-[var(--margin)] top-1/2 -translate-y-1/2 grid place-items-center h-14 w-14 rounded-full border border-[var(--rule)] text-ink hover:border-[var(--accent)] hover:text-accent transition-colors max-sm:top-[150px]"
+      >
+        <Arrow flip />
+      </button>
+      <button
+        type="button"
+        onClick={() => go(1)}
+        aria-label="Next tool"
+        className="absolute right-[var(--margin)] top-1/2 -translate-y-1/2 grid place-items-center h-14 w-14 rounded-full border border-[var(--rule)] text-ink hover:border-[var(--accent)] hover:text-accent transition-colors max-sm:top-[150px]"
+      >
+        <Arrow />
+      </button>
+
+      <ol className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2 max-sm:static max-sm:translate-x-0 max-sm:justify-center max-sm:py-6" aria-label="Choose a tool">
+        {SLIDES.map((item, itemIndex) => (
+          <li key={item.id}>
+            <button
+              type="button"
+              onClick={() => setIndex(itemIndex)}
+              aria-label={item.title}
+              aria-current={itemIndex === index ? "true" : undefined}
+              className="grid h-11 w-8 place-items-center"
             >
-              <Tags tags={chapter.tags} active={isActive} />
-              <ChapterBody chapter={chapter} />
-            </div>
-          </section>
-        );
-      })}
-    </div>
+              <span className={`block h-[2px] transition-all duration-500 ${itemIndex === index ? "w-8 bg-[var(--accent)]" : "w-4 bg-[var(--rule)]"}`} />
+            </button>
+          </li>
+        ))}
+      </ol>
+    </section>
   );
 }

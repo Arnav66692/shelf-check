@@ -72,7 +72,7 @@ export function EnterGate() {
         <button type="button" className="btn mt-4" onClick={() => enter(false)} autoFocus>
           Enter
         </button>
-        <button type="button" className="font-[family-name:var(--font-space)] text-[11px] font-bold uppercase text-ink-soft hover:text-accent py-2" onClick={() => enter(true)}>
+        <button type="button" className="font-[family-name:var(--font-display)] text-[11px] font-medium tracking-[0.12em] uppercase text-ink-soft hover:text-accent py-2" onClick={() => enter(true)}>
           Enter with read aloud
         </button>
       </div>
