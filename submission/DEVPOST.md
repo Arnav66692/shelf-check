@@ -66,9 +66,11 @@ There are 764 tests for the rules, 113 for the product search and 17 for Learn. 
 
 The look is my own build, inspired by the Orano innovation slider. I did not copy code, images or models from it.
 
-**Reading a label from a photo.** I wrote down a pass bar before the test. A cross-check reads the label and marks it as matched only when the drug code points to an FDA record and the ingredients and strengths on the label are exactly that record's. If not, you check it by eye. On 100 new labels, it marked 61 as matched and 0 of those were wrong. The bar was at least 50 matched with at most 1 wrong, so it passed.
+**Reading a label from a photo.** A local vision model (Qwen3-VL 8B) read 17 of 20 labels fully right, and 82 of 100 tablet and capsule labels. I wrote down a pass bar before the next test. A cross-check reads the label and marks it as matched only when the drug code points to an FDA record and the ingredients and strengths on the label are exactly that record's. If not, you check it by eye. On 100 new labels, it marked 61 as matched and 0 of those were wrong. The bar was at least 50 matched with at most 1 wrong, so it passed.
 
-**Zephyr, my own image model.** I trained DINOv2 on 3,588 products from the FDA label archive. Then I made it small enough (25 MB) to run in your browser with onnxruntime-web. On 2,283 test photos of products it never saw in training, the right product is in its top 5 91.1 percent of the time, and first 76.2 percent of the time. Before training, the same model got only 14.2 percent first. So Zephyr shows you the 5 closest labels and you pick yours.
+**Zephyr, my own image model.** I trained DINOv2 on 3,588 products from the FDA label archive. Then I made it small enough (25 MB) to run in your browser with onnxruntime-web. On 2,283 test photos of products it never saw in training, the right product is in its top 5 91.1 percent of the time, and first 76.2 percent of the time. Before training, the same model got only 14.2 percent first, so training made it more than 5 times better. The 8 bit version scores within 0.3 points of the full size model, and on a laptop processor it took 0.026 seconds per photo, about twice as fast. Zephyr shows you the 5 closest labels and you pick yours.
+
+A bigger version that also reads the text on the box and matches keypoints runs on a Mac. It got the right product first 85.7 percent of the time and in the top 5 95.6 percent of the time.
 
 ## Does it catch real problems?
 
@@ -79,6 +81,18 @@ I tested it on random real products. I wrote and hashed the pass bars before the
 | Acetaminophen doubled, 40 random products each with Tylenol | 40 of 40 caught | 38 of 40 | Passed |
 | 40 major interactions, after drug class matching | 10 of 40 caught | at least 10 | Passed |
 | 40 pairs with no listed interaction, false alarms | 0 of 40 | at most 4 | Passed |
+| Cross-check on 100 new label photos | 61 matched, 0 of them wrong | 50, at most 1 wrong | Passed |
+
+By the numbers:
+
+- **100 percent** of doubled acetaminophen caught, 40 of 40.
+- **0 false alarms** on 40 harmless pairs, in all 5 reruns.
+- **0 wrong** among the 61 label photos the cross-check matched.
+- **91.1 percent** of photos have the right product in Zephyr's top 5, and **95.6 percent** with the Mac version.
+- **894 automated tests** pass, 764 for the rules, 113 for product search and 17 for Learn.
+- **0 accessibility problems** found by axe (WCAG 2.1 AA) on every page, at laptop and phone size.
+- **7 of 7** interactions found by the second pharmacist review are now caught.
+- **138,569** FDA products, **18,166** recall records and **83,912** pill records built in.
 
 Many labels name a drug type, like "strong CYP3A inducers", not a drug name. Drug class matching from the FDA's own interaction tables turns those into the drugs in your cabinet.
 
