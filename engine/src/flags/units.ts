@@ -18,17 +18,39 @@ export interface DoseEquivalents {
   readonly u100Units: number;
 }
 
-export interface InjectionCheckInput {
+interface SyringeInput {
   readonly itemId: string;
+  readonly syringe: SyringeType;
+  /** Defaults describe the 1 mL syringe with one-unit graduations shown by the dose screen. */
+  readonly syringeCapacityMl?: number;
+  readonly syringeGraduationMl?: number;
+}
+
+/** For a vial labeled in mass per volume, "units" refers only to U-100 syringe marks. */
+export interface InjectionCheckInput extends SyringeInput {
+  readonly medication?: "non_insulin";
   readonly concentrationMgPerMl: number;
   readonly prescribed: StatedDose;
-  readonly alsoStated?: StatedDose;
-  readonly syringe: SyringeType;
+  readonly alsoStated?: StatedDose | undefined;
+}
+
+export interface InsulinInjectionInput extends SyringeInput {
+  readonly medication: "insulin";
+  readonly insulinUnitsPerMl?: number | null;
+  readonly prescribed: { readonly value: number; readonly unit: "units" };
+  readonly alsoStated?: never;
+  readonly concentrationMgPerMl?: never;
 }
 
 export interface InjectionCheck {
   readonly dose: DoseEquivalents;
-  readonly drawTo: StatedDose;
+  readonly drawTo: StatedDose | null;
+  readonly flags: readonly Flag[];
+}
+
+export interface InsulinInjectionCheck {
+  readonly dose: { readonly insulinUnits: number; readonly mL: number } | null;
+  readonly drawTo: StatedDose | null;
   readonly flags: readonly Flag[];
 }
 
@@ -111,16 +133,70 @@ function syringeMismatchFlag(input: InjectionCheckInput, prescribed: DoseEquival
   ];
 }
 
-export function checkInjectionDose(input: InjectionCheckInput): InjectionCheck {
+function drawVolumeFlag(input: SyringeInput, mL: number): Flag | undefined {
+  const capacity = input.syringeCapacityMl ?? 1;
+  const graduation = input.syringeGraduationMl ?? 0.01;
+  requirePositive("syringeCapacityMl", capacity);
+  requirePositive("syringeGraduationMl", graduation);
+  if (graduation > capacity) throw new InvalidDoseInputError("A graduation cannot exceed syringe capacity.");
+  const steps = mL / graduation;
+  // Permit only floating-point roundoff when comparing to a printed graduation.
+  const atMark = Math.abs(steps - Math.round(steps)) <= 4 * Number.EPSILON * steps;
+  let title: string;
+  let detail: string;
+  if (mL - capacity > 4 * Number.EPSILON * capacity) {
+    title = "The dose exceeds the syringe capacity";
+    detail = `This dose exceeds the syringe capacity of ${capacity} mL.`;
+  } else if (steps < 1 && !atMark) {
+    title = "The dose is too small to measure";
+    detail = `This dose is below the first syringe mark of ${graduation} mL.`;
+  } else if (!atMark || steps === 0) {
+    title = "The dose does not fall on a syringe mark";
+    detail = `The syringe is marked in steps of ${graduation} mL. This dose does not line up with a mark.`;
+  } else {
+    return undefined;
+  }
+  return {
+    type: "dose_volume", severity: "stop", itemIds: [input.itemId], title,
+    detail: `${detail} Ask a pharmacist how to measure the prescribed dose before injecting.`,
+    explain: detail,
+    numbers: { prescribedMl: mL, syringeCapacityMl: capacity, syringeGraduationMl: graduation },
+  };
+}
+
+function checkInsulinDose(input: InsulinInjectionInput): InsulinInjectionCheck {
+  requirePositive("prescribed insulin units", input.prescribed.value);
+  if (input.insulinUnitsPerMl !== U100_UNITS_PER_ML || input.syringe !== "u100_insulin" || input.prescribed.unit !== "units") {
+    const detail = "A U-100 syringe mark can represent prescribed insulin units only for confirmed U-100 insulin. Ask the pharmacist to confirm the strength and the delivery device.";
+    return {
+      dose: null, drawTo: null,
+      flags: [{ type: "unit_mismatch", severity: "stop", itemIds: [input.itemId], title: "Insulin strength or syringe does not match", detail, explain: detail }],
+    };
+  }
+  const insulinUnits = input.prescribed.value;
+  const mL = insulinUnits / U100_UNITS_PER_ML;
+  const flag = drawVolumeFlag(input, mL);
+  return {
+    dose: { insulinUnits, mL },
+    drawTo: flag ? null : { value: insulinUnits, unit: "units" },
+    flags: flag ? [flag] : [],
+  };
+}
+
+export function checkInjectionDose(input: InjectionCheckInput): InjectionCheck;
+export function checkInjectionDose(input: InsulinInjectionInput): InsulinInjectionCheck;
+export function checkInjectionDose(input: InjectionCheckInput | InsulinInjectionInput): InjectionCheck | InsulinInjectionCheck {
+  if (input.medication === "insulin") return checkInsulinDose(input);
   const dose = convertDose(input.concentrationMgPerMl, input.prescribed);
+  requirePositive("converted volume", dose.mL);
+  requirePositive("converted mass", dose.mg);
+  const volumeFlag = drawVolumeFlag(input, dose.mL);
+  const flags = [
+    ...(input.alsoStated === undefined ? [] : pairMismatchFlag(input, dose, input.alsoStated)),
+    ...syringeMismatchFlag(input, dose),
+    ...(volumeFlag ? [volumeFlag] : []),
+  ];
   const drawTo: StatedDose =
     input.syringe === "u100_insulin" ? { value: dose.u100Units, unit: "units" } : { value: dose.mL, unit: "mL" };
-  return {
-    dose,
-    drawTo,
-    flags: [
-      ...(input.alsoStated === undefined ? [] : pairMismatchFlag(input, dose, input.alsoStated)),
-      ...syringeMismatchFlag(input, dose),
-    ],
-  };
+  return { dose, drawTo: flags.some((flag) => flag.severity === "stop") ? null : drawTo, flags };
 }

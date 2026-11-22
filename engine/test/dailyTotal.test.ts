@@ -4,6 +4,7 @@ import { checkCabinet } from "../src/index.ts";
 import type { CabinetItem, Ingredient } from "../src/types.ts";
 import { expectVerbatim, loadCabinet, withoutLabel } from "./support/cabinet.ts";
 import type { ProductId } from "./support/cabinet.ts";
+import judgeLabels from "../fixtures/judges/acetaminophen.json";
 
 function ingredientOf(item: CabinetItem | undefined, name: string): Ingredient {
   const ingredient = item?.ingredients.find((candidate) => candidate.name === name);
@@ -130,6 +131,62 @@ describe("daily total flag", () => {
 const adultProfile = { ageYears: 35, conditions: [], allergies: [] };
 
 describe("daily maximum evidence", () => {
+  const judgeItem = (id: keyof typeof judgeLabels): CabinetItem => ({ ...judgeLabels[id], kind: "otc", verified: true });
+
+  test("the 5700 mg NyQuil, DayQuil and Excedrin total cites the reference warning", async () => {
+    const cabinet = [judgeItem("NyQuil"), judgeItem("DayQuil"), judgeItem("Excedrin")];
+    const [flag] = dailyTotalFlags(cabinet, adultProfile);
+    expect(flag).toMatchObject({ severity: "stop", numbers: { totalMgPerDayAtEachMaximum: 5700, labelWarningMgPerDay: 4000 } });
+    const [reference] = await loadCabinet("tylenol");
+    expect(reference?.label?.warnings?.join(" ")).toContain(flag?.source?.text);
+    expect(flag?.source?.sourceUrl).toContain("api.fda.gov");
+    expect(flag?.explain).toContain("reference label");
+    expect(flag?.supportingQuotes?.every(q => cabinet.some(item => item.id === q.itemId))).toBe(true);
+  });
+
+  test("ZzzQuil Night Pain uses its one-dose direction at the 4000 mg boundary", async () => {
+    const [tylenol] = await loadCabinet("tylenol");
+    if (!tylenol) throw new Error("missing Tylenol fixture");
+    const nightPain = judgeItem("ZzzQuil");
+    const [flag] = dailyTotalFlags([tylenol, nightPain], adultProfile);
+    expect(flag).toMatchObject({ severity: "ask", numbers: {
+      ["maxMgPerDay." + nightPain.id]: 1000, totalMgPerDayAtEachMaximum: 4000, labelWarningMgPerDay: 4000,
+    } });
+    expect(flag?.source).toBeUndefined();
+    expect(flag?.quote?.text).toContain("take only one dose (30 mL) per day");
+  });
+
+  test("uses an unconditional do-not-exceed line in Warnings and keeps its source section", () => {
+    const item = judgeItem("NyQuil");
+    const warnings = ["Warnings • Do not exceed 4 doses per 24 hrs"];
+    const check = (directions: string, lines: string[]) => labelledMaximum({
+      ...item, label: { warnings: lines, dosage_and_administration: [directions] },
+    }, ingredientOf(item, "acetaminophen"), adultProfile);
+    expect(check("30 mL per dose", warnings)).toMatchObject({
+      status: "parsed", mgPerDay: 2600, limit: { quote: { text: "Do not exceed 4 doses per 24 hrs", section: "warnings" } },
+    });
+    expect(check("30 mL per dose every 6 hours", warnings)).toMatchObject({ status: "parsed", mgPerDay: 2600 });
+    expect(check("30 mL per dose at bedtime", warnings).status).toBe("not_parsed");
+    expect(check("30 mL per dose", ["If your doctor directs, do not exceed 4 doses per 24 hrs."]).status).toBe("not_parsed");
+    expect(check("30 mL per dose", ["If you have liver disease: • Do not exceed 4 doses per 24 hrs."]).status).toBe("not_parsed");
+    for (const lines of [
+      ["Do not exceed 4 doses per 24 hrs. Maximum daily dose is 1,000 mg."],
+      ["Do not exceed 4 doses per 24 hrs. Take only one per day if using another medicine."],
+      ["For children under 6 years:", "Do not exceed 4 doses per 24 hrs."],
+    ]) expect(check("30 mL per dose", lines).status).toBe("not_parsed");
+    expect(check("30 mL per dose. Do not exceed 2 doses per 24 hrs.", warnings).status).toBe("not_parsed");
+  });
+
+  test("a named 4000 mg warning on just one product supplies the combined ceiling", () => {
+    const nq = judgeItem("NyQuil");
+    const warning = "Do not exceed 4,000 mg of acetaminophen in 24 hours.";
+    const [flag] = dailyTotalFlags([{ ...nq, label: { ...nq.label, warnings: [warning] } }, judgeItem("DayQuil")], adultProfile);
+    expect(flag).toMatchObject({ severity: "stop", numbers: { totalMgPerDayAtEachMaximum: 5200, labelWarningMgPerDay: 4000 } });
+    expect(flag?.source).toBeUndefined();
+    expect(flag?.supportingQuotes).toContainEqual({ itemId: nq.id, section: "warnings", text: warning, excerpt: warning });
+    expect(labelledCeiling({ ...nq, label: { warnings: [warning.replace("4,000", "500")] } }, "acetaminophen")).toBeUndefined();
+  });
+
   test("uses only the Benadryl dose row for the supplied age", async () => {
     const cabinet = await loadCabinet("benadryl", "tylenolPm");
     const maxAt = (ageYears?: number) => checkCabinet(cabinet, { ...adultProfile, ageYears })

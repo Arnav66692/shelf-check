@@ -4,6 +4,7 @@ import { formatNumber, termRegExp } from "../text.ts";
 import type { TextSpan } from "../text.ts";
 import type { CabinetItem, Flag, FlagNumbers, LabelSectionName, ProfileMatchKind, Quote, Severity } from "../types.ts";
 import { severityForSection } from "./severity.ts";
+import { allergyFamily, isNsaid } from "./allergyFamilies.ts";
 
 export const CONDITION_IDS = [
   "liver_disease",
@@ -54,7 +55,7 @@ export const CONDITION_RULES: Readonly<Record<ConditionId, ConditionRule>> = {
   },
   high_blood_pressure: { label: "high blood pressure", phrases: ["high blood pressure"] },
   heart_disease: { label: "heart disease", phrases: ["heart disease", "heart problems?", "heart condition"] },
-  diabetes: { label: "diabetes", phrases: ["diabetes", "diabetic"] },
+  diabetes: { label: "diabetes", phrases: ["diabetes", "diabetic(?![-\\s]+ketoacidosis)"] },
   glaucoma: { label: "glaucoma", phrases: ["glaucoma"] },
   enlarged_prostate: {
     label: "trouble urinating due to an enlarged prostate",
@@ -81,6 +82,7 @@ const PREGNANCY_SECTIONS: readonly LabelSectionName[] = [
   "pregnancy_or_breast_feeding",
   "ask_doctor",
   "warnings",
+  "warnings_and_cautions",
   "pregnancy",
 ];
 const BREASTFEEDING_SECTIONS: readonly LabelSectionName[] = [
@@ -92,12 +94,18 @@ const BREASTFEEDING_SECTIONS: readonly LabelSectionName[] = [
 ];
 const AGE_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "pediatric_use", "dosage_and_administration", "warnings"];
 const INGREDIENT_SECTIONS: readonly LabelSectionName[] = ["active_ingredient", "inactive_ingredient"];
-const ALLERGY_WARNING_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "warnings"];
+const ALLERGY_WARNING_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "warnings", "warnings_and_cautions"];
 
 const ALCOHOL_PATTERN = /\b(?:3|three) or more alcoholic drinks\b/i;
-const PREGNANCY_PATTERN = /\bpregnan(?:t|cy)\b/i;
+const PREGNANCY_PATTERN = /\b(?:pregnan(?:t|cy)|gestation)\b/i;
+const REASSURING_PREGNANCY = /\b(?:not (?:demonstrated|shown) (?:any )?evidence|no evidence of (?:harm|risk|adverse|fetal|embryo|developmental|teratogenic)|pregnancy category [ab])\b/i;
+const PREGNANCY_RESTRICTION = /\b(?:avoid(?:ed)?|discontinue|contraindicated|should not (?:be (?:used|taken)|use|take)|not to (?:use|take)|do not (?:use|take)|limit (?:the )?(?:use|dose|duration))\b/i;
+const NEGATED_RESTRICTION = /\b(?:not (?:contraindicated|required to avoid)|(?:need not|no need to|not necessary to|not to) (?:be )?avoid(?:ed)?)\b/i;
+const TWENTY_WEEKS = /\b20 weeks?(?: (?:of )?(?:gestation|pregnancy))?\s+(?:or later|and (?:beyond|later)|onward)\b/i;
+const FETAL_RISK = /\b(?:may|can) (?:harm (?:your|the) (?:unborn baby|fetus)|cause (?:fetal renal dysfunction|oligohydramnios|problems in the unborn child))\b/i;
 const BREASTFEEDING_PATTERN = /\bbreast[- ]?feed(?:ing)?\b|\bnursing\b|\blactat(?:ion|ing)\b/i;
-const ALLERGY_WORDING = /\ballerg(?:y|ic|ies)\b/i;
+const ALLERGY_WORDING = /\b(?:allerg(?:y|ic|ies)|hypersensitiv\w*|anaphyla\w*)\b/i;
+const NEGATED_ALLERGY = /\b(?:no(?: evidence of)?|not|without(?: a history of)?)\s+(?:an?\s+)?(?:known\s+)?(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)/i;
 const UNCERTAIN_OR_NEGATIVE_DECLARATION = /\b(?:may|might|no|not|free|without|except|facility|equipment)\b/i;
 const MAX_SUPPORTING_QUOTES = 5;
 
@@ -152,6 +160,7 @@ interface FlagWording {
   readonly detail?: string;
   readonly severity?: Severity;
   readonly numbers?: FlagNumbers;
+  readonly fullPrimaryQuote?: boolean;
 }
 
 function hitsIn(sentence: LabelSentence, pattern: RegExp): readonly PhraseHit[] {
@@ -185,7 +194,9 @@ function toFlag(item: CabinetItem, hits: readonly PhraseHit[], wording: FlagWord
   const [best] = hits;
   if (best === undefined) return [];
   const section = best.sentence.section;
-  const supportingQuotes = distinctQuotes(hits.map((hit) => quoteOf(item, hit))).slice(0, MAX_SUPPORTING_QUOTES);
+  const primary = quoteOf(item, best);
+  const quote = wording.fullPrimaryQuote ? { ...primary, excerpt: primary.text } : primary;
+  const supportingQuotes = distinctQuotes([quote, ...hits.slice(1).map((hit) => quoteOf(item, hit))]).slice(0, MAX_SUPPORTING_QUOTES);
   const where = capitalise(`the "${sectionTitle(section)}" section of the ${item.displayName} label`);
   return [
     {
@@ -195,7 +206,7 @@ function toFlag(item: CabinetItem, hits: readonly PhraseHit[], wording: FlagWord
       title: wording.title,
       detail: wording.detail ?? `${where} mentions ${wording.about} ("${best.text}"). Your profile says this applies to you. Ask a pharmacist or doctor before using ${item.displayName}.`,
       explain: wording.explain,
-      quote: quoteOf(item, best),
+      quote,
       match: { text: best.text, term: wording.term, kind: wording.kind },
       ...(supportingQuotes.length > 1 ? { supportingQuotes } : {}),
       ...(wording.numbers === undefined ? {} : { numbers: wording.numbers }),
@@ -210,17 +221,57 @@ function conditionPattern(condition: ConditionId): RegExp {
 // "Ask a doctor if you have" and "Do not use if" address the reader. Running warning text may only mention the
 // condition, for example as a side effect, so the plain sentence does not claim more than that.
 const SECTIONS_ADDRESSED_TO_THE_READER: readonly LabelSectionName[] = ["contraindications", "do_not_use", "ask_doctor"];
-const CO_USE = /\b(?:co[- ]?administ\w*|concomitant\w*|in combination with|also taking|together with)\b/i;
+const CO_USE = /\b(?:co[- ]?administ\w*|concomitant\w*|in combination with|also taking|together with|patients? (?:taking|receiving|treated with)|(?:administer(?:ed)?|use[sd]?|tak(?:e|en)|given|contraindicated)(?:\s+(?!(?:to|in|for|patients?|people|women|children|adults|anyone|those|individuals?|persons?)\b)[\w-]+){0,8}\s+with)\b/i;
+const TREATMENT_LEAD = /(?:\b(?:treat(?:s|ing|ment)?(?: of)?|management of|relief of|indicated for|used for|control of)\s+(?:the\s+)?|^uses?\s*:?\s*)(?:(?:type [12]|primary|essential|chronic|acute)\s+)*$/i;
+const GLYCEMIC_CONTROL = /\bimprove glycemic control in [^.;:]{1,80}\bwith (?:type [12] )?$/i;
 
-function conditionFlags(item: CabinetItem, condition: ConditionId): readonly Flag[] {
+function treatsCondition(item: CabinetItem, condition: ConditionId): boolean {
+  const pattern = conditionPattern(condition);
+  return sectionSentences(item.label, "indications_and_usage").some((sentence) =>
+    hitsIn(sentence, pattern).some(({ span }) => {
+      const before = sentence.text.slice(0, span.start);
+      return !/\bnot (?:indicated|used|intended)\b|\bdoes not treat\b/i.test(before)
+        && (TREATMENT_LEAD.test(before) || (condition === "diabetes" && GLYCEMIC_CONTROL.test(before)));
+    }),
+  );
+}
+
+function namesOtherMedicine(hit: PhraseHit, item: CabinetItem, cabinet: readonly CabinetItem[]): boolean {
+  const text = hit.sentence.text;
+  const start = text.search(CO_USE);
+  // A passive subject can precede the co-use verb ("aliskiren must not
+  // be administered with ..."). Keep it in the same clause as the verb.
+  const subject = text.slice(0, start).split(/[;.!?,:]/).at(-1) ?? "";
+  const object = text.slice(start).split(/[;.!?]|\bin patients with\b/i)[0] ?? "";
+  const clause = `${subject} ${object}`;
+  const ownNames = new Set(item.ingredients.flatMap(({ name, printedName }) =>
+    [name, printedName ?? ""].map((value) => value.trim().toLowerCase())));
+  return cabinet.some((other) => other.id !== item.id && other.ingredients.some((ingredient) => {
+    if (ownNames.has(ingredient.name.trim().toLowerCase())) return false;
+    return [other.displayName, ingredient.name, ingredient.printedName].some((name) =>
+      name && !ownNames.has(name.trim().toLowerCase()) && termRegExp(name).test(clause));
+  }));
+}
+
+function conditionFlags(item: CabinetItem, condition: ConditionId, cabinet: readonly CabinetItem[]): readonly Flag[] {
+  if (treatsCondition(item, condition)) return [];
   const { label } = CONDITION_RULES[condition];
   const hits = firstHitPerSentence(item, CONDITION_SECTIONS, conditionPattern(condition)).filter((hit) => {
     if (hit.sentence.section !== "warnings_and_cautions") return true;
     const lead = hit.sentence.text.slice(0, hit.span.start);
     return /\bpatients? with\b[^.;:]{0,100}$/i.test(lead);
   });
-  const isCombination = (hit: PhraseHit) => STRONGEST_FIRST.includes(hit.sentence.section) && CO_USE.test(hit.sentence.text);
-  const conditional = hits.find(isCombination);
+  const isCombination = (hit: PhraseHit) => {
+    if (!STRONGEST_FIRST.includes(hit.sentence.section)) return false;
+    const coUse = CO_USE.exec(hit.sentence.text);
+    if (!coUse) return false;
+    // "Do not use with severe renal impairment" names a condition as the
+    // object of 'with'. It does not require a second medicine.
+    const end = coUse.index + coUse[0].length;
+    return !(/\bwith$/i.test(coUse[0]) && end <= hit.span.start
+      && /^\s*(?:(?:a history of|severe|moderate|mild|acute|chronic)\s+)*$/i.test(hit.sentence.text.slice(end, hit.span.start)));
+  };
+  const conditional = hits.find((hit) => isCombination(hit) && namesOtherMedicine(hit, item, cabinet));
   const independent = hits.filter((hit) => !isCombination(hit));
   if (conditional && !independent.some((hit) => severityForSection(hit.sentence.section) === "stop")) {
     const statement = `The ${item.displayName} label says “${conditional.sentence.text.replace(/[.!?]+$/, "")}”.`;
@@ -231,7 +282,7 @@ function conditionFlags(item: CabinetItem, condition: ConditionId): readonly Fla
       about: label,
       severity: "ask",
       explain: statement,
-      detail: `${statement} Ask a pharmacist whether this combination warning applies to your medicines.`,
+      detail: `${statement} Your cabinet includes the other medicine named in this warning. Ask a pharmacist about this combination.`,
     });
   }
   const isAddressed = independent[0] !== undefined && SECTIONS_ADDRESSED_TO_THE_READER.includes(independent[0].sentence.section);
@@ -258,12 +309,25 @@ function alcoholFlags(item: CabinetItem): readonly Flag[] {
 }
 
 function pregnancyFlags(item: CabinetItem): readonly Flag[] {
-  return toFlag(item, firstHitPerSentence(item, PREGNANCY_SECTIONS, PREGNANCY_PATTERN), {
+  const hits = firstHitPerSentence(item, PREGNANCY_SECTIONS, PREGNANCY_PATTERN)
+    .filter(({ sentence }) => !NEGATED_RESTRICTION.test(sentence.text)
+      && (!REASSURING_PREGNANCY.test(sentence.text) || PREGNANCY_RESTRICTION.test(sentence.text)));
+  const weekHits = item.ingredients.some(isNsaid)
+    ? [...hits, ...firstHitPerSentence(item, ["information_for_patients", "spl_medguide"], PREGNANCY_PATTERN)]
+      .filter(({ sentence }) => TWENTY_WEEKS.test(sentence.text) && !NEGATED_RESTRICTION.test(sentence.text))
+    : [];
+  const weekWarning = weekHits.find(({ sentence }) => PREGNANCY_RESTRICTION.test(sentence.text))
+    ?? weekHits.find(({ sentence }) => FETAL_RISK.test(sentence.text));
+  const wording = weekWarning
+    ? `The ${item.displayName} label warns about use at 20 weeks or later in pregnancy. Read the quoted instruction.`
+    : `The ${item.displayName} label has a warning about use during pregnancy.`;
+  return toFlag(item, weekWarning ? [weekWarning, ...hits.filter((hit) => hit !== weekWarning)] : hits, {
     kind: "pregnancy",
     term: "pregnant",
     title: `${item.displayName} and pregnancy`,
     about: "pregnancy",
-    explain: `The ${item.displayName} label has a warning about use during pregnancy.`,
+    explain: wording,
+    ...(weekWarning ? { severity: "stop", detail: wording, fullPrimaryQuote: true } : {}),
   });
 }
 
@@ -341,6 +405,11 @@ function ageFlags(item: CabinetItem, ageYears: number): readonly Flag[] {
       : clause.belowYears === NO_UPPER_AGE
         ? `age ${formatNumber(clause.fromYears)} or older`
         : `from ${formatNumber(clause.fromYears)} to under ${formatNumber(clause.belowYears)} years`;
+  const isRiskFactor = clause.belowYears === NO_UPPER_AGE;
+  const higherRisk = /\b(?:chance|risk) is (?:higher|greater|increased)\b/i.test(clause.hit.sentence.text);
+  const riskWording = higherRisk
+    ? `The ${item.displayName} label says the risk is higher for people ${range}.`
+    : `The ${item.displayName} label mentions people ${range} in the quoted line.`;
   return toFlag(
     item,
     strictest.map((entry) => entry.hit),
@@ -348,8 +417,9 @@ function ageFlags(item: CabinetItem, ageYears: number): readonly Flag[] {
       kind: "age",
       term: range,
       title: `${item.displayName} and age ${formatNumber(ageYears)}`,
-      about: `an age limit for people ${range}`,
-      explain: `The ${item.displayName} label has a limit for people ${range}, and the age in your profile is ${formatNumber(ageYears)}.`,
+      about: isRiskFactor ? `people ${range}` : `an age limit for people ${range}`,
+      ...(isRiskFactor ? { detail: riskWording } : {}),
+      explain: isRiskFactor ? riskWording : `The ${item.displayName} label has a limit for people ${range}, and the age in your profile is ${formatNumber(ageYears)}.`,
       severity: clause.severity,
       numbers: { ageYears, fromYears: clause.fromYears, belowYears: clause.belowYears },
     },
@@ -413,17 +483,52 @@ function declaredAllergen(item: CabinetItem, allergen: string, pattern: RegExp):
   });
 }
 
+function namesAllergen(hit: PhraseHit): boolean {
+  const { text } = hit.sentence;
+  if (!ALLERGY_WORDING.test(text) || NEGATED_ALLERGY.test(text)) return false;
+  const before = text.slice(0, hit.span.start).replace(/\([^()]*\)/g, "").replace(/\be\.g\.,?\s*/gi, "including ").replace(/\s+/g, " ");
+  const after = text.slice(hit.span.end);
+  // Flattened contraindication lists can contain both a drug name and an
+  // unrelated allergy. Require the allergen to be an object of the reaction.
+  return /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:\s+reactions?)?\s+(?:to|from|after|following|with)\s+(?:any\s+)?$/i.test(before)
+    || /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:\s+reactions?)?\s+to\s+[^.;:]{1,140}(?:\b(?:and|or)\s+(?:to\s+)?|including\s+)$/i.test(before)
+    || /^\s+(?:may|can) cause (?:an? )?(?:severe |serious )?(?:allergic|anaphylactic) reaction\b/i.test(after);
+}
+
 function allergenInAllergyWarning(item: CabinetItem, allergen: string, pattern: RegExp): readonly Flag[] {
-  const hits = firstHitPerSentence(item, ALLERGY_WARNING_SECTIONS, pattern).filter((hit) =>
-    ALLERGY_WORDING.test(hit.sentence.text),
-  );
+  const hits = ALLERGY_WARNING_SECTIONS.flatMap((section) => sectionSentences(item.label, section)
+    .flatMap((sentence) => hitsIn(sentence, pattern).filter(namesAllergen).slice(0, 1)));
   return toFlag(item, hits, {
     kind: "allergen",
     term: allergen,
     title: `${item.displayName} and an allergy to ${allergen}`,
     about: `an allergy to ${allergen}`,
+    ...(item.kind === "rx" || item.kind === "otc" ? { severity: "stop" as const } : {}),
     explain: `The ${item.displayName} label has an allergy warning that names ${allergen}, and your profile lists an allergy to ${allergen}.`,
   });
+}
+
+function familyAllergen(item: CabinetItem, allergen: string): readonly Flag[] {
+  if (item.kind !== "rx" && item.kind !== "otc") return [];
+  for (const ingredient of item.ingredients) {
+    const family = allergyFamily(ingredient, allergen);
+    if (!family) continue;
+    const text = ingredient.printedName ?? ingredient.name;
+    const [labelHit] = firstHitPerSentence(item, ["active_ingredient"], termRegExp(ingredient.name));
+    if (!labelHit && !item.productNdc && !item.verified) continue;
+    const quote = labelHit ? quoteOf(item, labelHit) : toQuote(item.id, {
+      text: item.productNdc ? text : ingredient.name,
+      section: item.productNdc && ingredient.printedName ? "ndc_active_ingredient" : "normalized_active_ingredient",
+    });
+    const explain = `${item.displayName} contains ${ingredient.name}, ${family}. Your profile lists an allergy to ${allergen}. Check with the pharmacy before the next dose.`;
+    return [{
+      type: "profile", severity: "stop", itemIds: [item.id],
+      title: `${item.displayName} and an allergy to ${allergen}`,
+      detail: explain, explain, quote,
+      match: { text: labelHit?.text ?? quote.text, term: allergen, kind: "allergen", ingredient: ingredient.name },
+    }];
+  }
+  return [];
 }
 
 function allergyFlags(item: CabinetItem, allergen: string): readonly Flag[] {
@@ -433,7 +538,9 @@ function allergyFlags(item: CabinetItem, allergen: string): readonly Flag[] {
   const structured = structuredAllergen(item, allergen);
   if (structured.length) return structured;
   const declared = declaredAllergen(item, allergen, pattern);
-  return declared.length ? declared : allergenInAllergyWarning(item, allergen, pattern);
+  if (declared.length) return declared;
+  const warning = allergenInAllergyWarning(item, allergen, pattern);
+  return warning.length ? warning : familyAllergen(item, allergen);
 }
 
 function validated(profile: HealthProfile): HealthProfile {
@@ -450,11 +557,11 @@ function unique<T>(values: readonly T[]): readonly T[] {
   return [...new Set(values)];
 }
 
-function flagsForItem(item: CabinetItem, profile: HealthProfile): readonly Flag[] {
+function flagsForItem(item: CabinetItem, profile: HealthProfile, cabinet: readonly CabinetItem[]): readonly Flag[] {
   const allergens = unique(profile.allergies.map((allergen) => allergen.trim()).filter((allergen) => allergen !== ""));
   return [
     ...allergens.flatMap((allergen) => allergyFlags(item, allergen)),
-    ...unique(profile.conditions).flatMap((condition) => conditionFlags(item, condition)),
+    ...unique(profile.conditions).flatMap((condition) => conditionFlags(item, condition, cabinet)),
     ...(profile.drinksThreeOrMoreDaily === true ? alcoholFlags(item) : []),
     ...(profile.pregnant === true ? pregnancyFlags(item) : []),
     ...(profile.breastfeeding === true ? breastfeedingFlags(item) : []),
@@ -464,5 +571,5 @@ function flagsForItem(item: CabinetItem, profile: HealthProfile): readonly Flag[
 
 export function profileFlags(items: readonly CabinetItem[], profile: HealthProfile): readonly Flag[] {
   const checked = validated(profile);
-  return items.flatMap((item) => flagsForItem(item, checked));
+  return items.flatMap((item) => flagsForItem(item, checked, items));
 }

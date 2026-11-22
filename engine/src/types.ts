@@ -19,6 +19,7 @@ export const LABEL_SECTION_NAMES = [
   "pediatric_use",
   "inactive_ingredient",
   "information_for_patients",
+  "spl_medguide",
 ] as const;
 
 export type LabelSectionName = (typeof LABEL_SECTION_NAMES)[number]
@@ -66,6 +67,13 @@ export interface CabinetItem {
   readonly kind: ItemKind;
   readonly ingredients: readonly Ingredient[];
   readonly label?: LabelSections;
+  readonly labelSource?: {
+    readonly name: "DailyMed";
+    readonly setId: string;
+    readonly version: number;
+    readonly labelDate: string;
+    readonly url: string;
+  };
   readonly dailyServings?: DailyServings;
   readonly verified: boolean;
 }
@@ -122,6 +130,7 @@ export interface Flag {
   readonly numbers?: FlagNumbers;
   readonly supportingQuotes?: readonly Quote[];
   readonly match?: TermMatch;
+  readonly matchedBecause?: string;
   readonly tag?: LabelTag;
   readonly source?: OfficialStatement;
 }

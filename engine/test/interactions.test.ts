@@ -1,8 +1,123 @@
 import bisoprolol from "../fixtures/official/openfda-bisoprolol-interactions.json";
+import judgeLines from "../fixtures/judge-interaction-lines.json";
 import { describe, expect, test } from "vitest";
 import { interactionFlags, INTERACTION_SECTIONS, isAboutCoUse } from "../src/flags/interactions.ts";
 import type { CabinetItem, Flag } from "../src/types.ts";
 import { expectVerbatim, loadCabinet } from "./support/cabinet.ts";
+
+function drug(name: string, atcId?: string): CabinetItem {
+  const classes = atcId ? [{ id: atcId, type: "ATC1-4", name: atcId, source: "ATC" }] : [];
+  return { id: name, displayName: name, kind: "rx", verified: true, ingredients: [{ name, classes, value: 1, unit: "mg" }] };
+}
+
+test("the quoted danger raises an interaction outside a stop section", async () => {
+  const clopidogrel = { ...drug("clopidogrel"), label: { drug_interactions: [judgeLines.clopidogrel] } };
+  expect(interactionFlags([clopidogrel, drug("omeprazole")])[0]).toMatchObject({
+    severity: "stop", quote: { text: judgeLines.clopidogrel },
+  });
+  const items = await loadCabinet("ibuprofen", "warfarin");
+  const [advil] = fromLabelOf(interactionFlags(items), "ibuprofen");
+  expect(advil?.severity).toBe("stop");
+  expect(advil?.quote?.text).toContain("may cause severe stomach bleeding.");
+  expect(advil?.quote?.text).toContain("take a blood thinning");
+  expectVerbatim(advil?.quote, items);
+});
+
+test("serious interaction wording requires an affirmative danger in the matched clause", async () => {
+  const [owner, other] = await loadCabinet("tylenol", "warfarin");
+  if (!owner || !other) throw new Error("missing fixtures");
+  const run = (text: string) => fromLabelOf(interactionFlags([{ ...owner, label: { drug_interactions: [text] } }, other]), owner.id);
+  for (const danger of ["fatal reactions", "death", "respiratory depression", "serotonin syndrome", "serious bleeding"]) {
+    expect(run(`Concomitant use with warfarin can cause ${danger}.`)[0]?.severity).toBe("stop");
+  }
+  for (const line of ["Do not use with warfarin.", "Coadministration with warfarin is contraindicated.",
+    "This drug should not be given with warfarin.", "Avoid warfarin to prevent serious bleeding."]) {
+    expect(run(line)[0]?.severity).toBe("stop");
+  }
+  expect(run("There is no evidence of serious bleeding with warfarin.")).toEqual([]);
+  expect(run("Concomitant use with warfarin may reduce the risk of death.")).toEqual([]);
+  expect(run("Monitor patients taking warfarin, but avoid aspirin.")[0]?.severity).toBe("ask");
+  expect(run("Avoid alcohol while taking warfarin.")).toEqual([]);
+  expect(run("Avoid driving while taking warfarin.")).toEqual([]);
+  expect(run("While taking warfarin, avoid alcohol.")).toEqual([]);
+  expect(run("Avoid this medicine while taking warfarin.")[0]?.severity).toBe("stop");
+});
+
+test("the generic insulin co-use warning links glargine and lispro only at the standalone insulin mention", () => {
+  const owner = { ...drug("semaglutide"), label: { drug_interactions: [judgeLines.ozempic] } };
+  expect(interactionFlags([owner, drug("liraglutide", "A10AE")])).toEqual([]);
+  for (const [product, atcId] of [[judgeLines.lantus, "A10AE"], [judgeLines.humalog, "A10AB"]] as const) {
+    const classes = [{ id: atcId, type: "ATC1-4", name: "Insulins and analogues for injection", source: "ATC" }];
+    const other: CabinetItem = { ...product, kind: "rx", verified: true, ingredients: product.ingredients.map((ingredient) => ({ ...ingredient, classes })) };
+    expect(interactionFlags([owner, other])[0]).toMatchObject({
+      severity: "ask", match: { kind: "class_phrase", term: "insulin", ingredient: product.ingredients[0]?.name },
+    });
+    for (const qualified of ["an insulin secretagogue", "insulin receptors", "insulin resistance", "endogenous insulin", "insulin detemir"]) {
+      const label = { warnings: [`Concomitant use with ${qualified} may increase the risk of hypoglycemia.`] };
+      expect(interactionFlags([{ ...owner, label }, other])).toEqual([]);
+    }
+  }
+});
+
+test("an opioid CNS depressant warning catches sleep drugs and sedating antihistamines", async () => {
+  const others = await loadCabinet("benadryl", "nyquil", "loratadine", "tylenol");
+  const owner = { ...drug("oxycodone"), label: { warnings: [judgeLines.oxycodone] } };
+  const items = [owner, drug("zolpidem", "N05CF"), drug("diazepam", "N05BA"), drug("morphine", "N02AA"), ...others];
+  const flags = fromLabelOf(interactionFlags(items), owner.id);
+  expect(flags.map((flag) => flag.itemIds[1])).toEqual(["zolpidem", "diazepam", "morphine", "benadryl", "nyquil"]);
+  for (const flag of flags) {
+    expect(flag.severity).toBe("stop");
+    expect(flag.quote?.text).toContain("including alcohol");
+    expect(flag.quote?.text).toContain("respiratory depression, coma, and death");
+    expectVerbatim(flag.quote, items);
+  }
+  const alcoholOnly = { ...owner, label: { when_using: ["When using this product avoid alcoholic beverages"] } };
+  expect(interactionFlags([alcoholOnly, drug("zolpidem", "N05CF")])).toEqual([]);
+});
+
+test("Pepto-Bismol links anticoagulation to Eliquis and separates its salicylate co-use bullet from allergy", async () => {
+  const [aspirin] = await loadCabinet("aspirin");
+  if (!aspirin) throw new Error("missing aspirin fixture");
+  const owner = {
+    ...drug("bismuth subsalicylate"), displayName: "Pepto-Bismol",
+    label: { warnings: [judgeLines.peptoAllergy], ask_doctor_or_pharmacist: [judgeLines.peptoBloodThinner] },
+  };
+  const eliquis = { ...drug("apixaban", "B01AF"), displayName: "ELIQUIS" };
+  const items = [owner, eliquis, aspirin];
+  const flags = fromLabelOf(interactionFlags(items), owner.id);
+  expect(flags).toHaveLength(2);
+  expect(flags[0]?.match).toMatchObject({ kind: "class_phrase", text: "anticoagulation" });
+  expect(flags[1]).toMatchObject({ severity: "stop", quote: { text: "taking other salicylate products" } });
+  const conditional = { ...owner, label: { warnings: ["Do not take if you are allergic to salicylates and not taking other salicylate products."] } };
+  expect(fromLabelOf(interactionFlags([conditional, aspirin]), owner.id)).toEqual([]);
+  for (const flag of flags) expectVerbatim(flag.quote, items);
+  for (const wording of ["anticoagulant", "thinning the blood", "blood thinner"]) {
+    const variant = { ...owner, label: { ask_doctor_or_pharmacist: [`Ask a doctor if you are taking a drug for ${wording}.`] } };
+    expect(fromLabelOf(interactionFlags([variant, eliquis]), owner.id)[0]?.match?.text).toBe(wording);
+  }
+});
+
+test("the class explanation distinguishes Eliquis from the warfarin named on the label", async () => {
+  const [tylenol, warfarin] = await loadCabinet("tylenolPm", "warfarin");
+  if (!tylenol || !warfarin) throw new Error("missing Tylenol PM or warfarin fixture");
+  const eliquis = { ...drug("apixaban", "B01AF"), displayName: "ELIQUIS" };
+  const [flag] = fromLabelOf(interactionFlags([tylenol, eliquis]), tylenol.id);
+  expect(flag?.match?.kind).toBe("class_phrase");
+  expect(flag?.matchedBecause).toBe("ELIQUIS contains apixaban, a blood thinner. The label names warfarin, another blood thinner.");
+  const direct = fromLabelOf(interactionFlags([tylenol, warfarin]), tylenol.id);
+  expect(direct[0]?.match?.kind).toBe("ingredient_name");
+  expect(direct[0]?.matchedBecause).toBeUndefined();
+});
+
+test("the Mucinex DM MAOI bullet does not inherit the age restriction from the preceding bullet", () => {
+  const mucinex = { ...drug("Mucinex DM"), label: { do_not_use: [judgeLines.mucinexExcerpt] } };
+  const items = [mucinex, drug("phenelzine", "N06AF")];
+  const [flag] = interactionFlags(items);
+  expect(flag).toMatchObject({ severity: "stop", match: { ingredient: "phenelzine" } });
+  expect(flag?.quote?.text).toMatch(/^if you are now taking a prescription monoamine oxidase inhibitor/);
+  expect(flag?.quote?.text).not.toMatch(/children|under 12/);
+  expectVerbatim(flag?.quote, items);
+});
 
 function fromLabelOf(flags: readonly Flag[], labelOwnerId: string): readonly Flag[] {
   return flags.filter((flag) => flag.itemIds[0] === labelOwnerId);

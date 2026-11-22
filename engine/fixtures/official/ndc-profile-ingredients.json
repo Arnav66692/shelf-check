@@ -1,0 +1,85 @@
+{
+  "source": "openFDA NDC snapshot dated 2026-11-20, selected product fields and named active ingredient.",
+  "products": {
+    "amoxicillin": {
+      "productNdc": "57237-031",
+      "displayName": "Amoxicillin",
+      "kind": "rx",
+      "printedName": "AMOXICILLIN",
+      "value": 500.0,
+      "unit": "mg"
+    },
+    "ampicillin": {
+      "productNdc": "0781-2145",
+      "displayName": "Ampicillin",
+      "kind": "rx",
+      "printedName": "AMPICILLIN TRIHYDRATE",
+      "value": 500.0,
+      "unit": "mg"
+    },
+    "cephalexin": {
+      "productNdc": "76420-592",
+      "displayName": "Cephalexin",
+      "kind": "rx",
+      "printedName": "CEPHALEXIN",
+      "value": 500.0,
+      "unit": "mg"
+    },
+    "sulfamethoxazole": {
+      "productNdc": "85766-015",
+      "displayName": "Sulfamethoxazole and Trimethoprim",
+      "kind": "rx",
+      "printedName": "SULFAMETHOXAZOLE",
+      "value": 800.0,
+      "unit": "mg"
+    },
+    "naproxen": {
+      "productNdc": "76420-264",
+      "displayName": "Naproxen",
+      "kind": "rx",
+      "printedName": "NAPROXEN",
+      "value": 500.0,
+      "unit": "mg"
+    },
+    "bismuth subsalicylate": {
+      "productNdc": "73598-1232",
+      "displayName": "PEPT-ACHE",
+      "kind": "otc",
+      "printedName": "BISMUTH SUBSALICYLATE",
+      "value": 262.0,
+      "unit": "mg"
+    },
+    "oxycodone hydrochloride": {
+      "productNdc": "76420-897",
+      "displayName": "Oxycodone Hydrochloride",
+      "kind": "rx",
+      "printedName": "OXYCODONE HYDROCHLORIDE",
+      "value": 5.0,
+      "unit": "mg"
+    },
+    "hydrochlorothiazide": {
+      "productNdc": "82804-972",
+      "displayName": "Hydrochlorothiazide",
+      "kind": "rx",
+      "printedName": "HYDROCHLOROTHIAZIDE",
+      "value": 25.0,
+      "unit": "mg"
+    },
+    "dicloxacillin sodium": {
+      "productNdc": "0093-3125",
+      "displayName": "Dicloxacillin Sodium",
+      "kind": "rx",
+      "printedName": "DICLOXACILLIN SODIUM",
+      "value": 500.0,
+      "unit": "mg"
+    },
+    "aliskiren hemifumarate": {
+      "productNdc": "49884-425",
+      "displayName": "ALISKIREN",
+      "kind": "rx",
+      "printedName": "ALISKIREN HEMIFUMARATE",
+      "value": 300.0,
+      "unit": "mg"
+    }
+  }
+}

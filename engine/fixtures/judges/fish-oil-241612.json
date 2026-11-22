@@ -1,0 +1,116 @@
+{
+  "dsldId": "241612",
+  "maker": "Nature's Bounty",
+  "displayName": "Fish Oil",
+  "recordUrl": "https://dsld.od.nih.gov/label/241612",
+  "ingredients": [
+    {
+      "rawName": "Calories",
+      "value": 20,
+      "unit": "Calorie(s)",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Calories from Fat",
+      "value": 20,
+      "unit": "Calorie(s)",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Total Fat",
+      "value": 2.5,
+      "unit": "Gram(s)",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Saturated Fat",
+      "value": 0.5,
+      "unit": "Gram(s)",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Polyunsaturated Fat",
+      "value": 1,
+      "unit": "Gram(s)",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Monounsaturated Fat",
+      "value": 0.5,
+      "unit": "Gram(s)",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Cholesterol",
+      "value": 15,
+      "unit": "mg",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Fish Oil",
+      "value": 2400,
+      "unit": "mg",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Total Omega-3 Fatty Acids",
+      "value": 720,
+      "unit": "mg",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Eicosapentaenoic Acid",
+      "value": null,
+      "unit": "",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Docosahexaenoic Acid",
+      "value": null,
+      "unit": "",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    },
+    {
+      "rawName": "Other Fatty Acids",
+      "value": null,
+      "unit": "",
+      "per": {
+        "value": 2,
+        "unit": "Softgel(s)"
+      }
+    }
+  ]
+}

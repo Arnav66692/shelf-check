@@ -1,0 +1,109 @@
+{
+  "NyQuil": {
+    "id": "69423-789",
+    "displayName": "Vicks NyQuil Cold and Flu",
+    "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fc9a6f7e-32c1-9ded-e053-6294a90a9dcc",
+    "ingredients": [
+      {
+        "name": "acetaminophen",
+        "strengthBasis": "ACETAMINOPHEN",
+        "value": 650,
+        "unit": "mg",
+        "per": {
+          "value": 30,
+          "unit": "mL"
+        }
+      }
+    ],
+    "label": {
+      "active_ingredient": [
+        "Acetaminophen 650 mg Dextromethorphan HBr 30 mg Doxylamine succinate 12.5 mg"
+      ],
+      "warnings": [
+        "This product contains acetaminophen. Severe liver damage may occur if you take more than 4 doses in 24 hours, which is the maximum daily amount for this product with other drugs containing acetaminophen 3 or more alcoholic drinks every day while using this product"
+      ],
+      "dosage_and_administration": [
+        "\u2022 take only as directed \u2022 only use the dose cup provided \u2022 do not exceed 4 doses per 24 hrs adults & children 12 yrs & over 30 mL every 6 hrs children 4 to under 12 yrs ask a doctor children under 4 yrs do not use"
+      ]
+    }
+  },
+  "DayQuil": {
+    "id": "69423-788",
+    "displayName": "Vicks DayQuil Cold and Flu",
+    "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fc9a43d8-0359-9def-e053-6294a90a7e91",
+    "ingredients": [
+      {
+        "name": "acetaminophen",
+        "strengthBasis": "ACETAMINOPHEN",
+        "value": 325,
+        "unit": "mg",
+        "per": {
+          "value": 15,
+          "unit": "mL"
+        }
+      }
+    ],
+    "label": {
+      "active_ingredient": [
+        "Acetaminophen 325 mg Dextromethorphan HBr 10 mg Phenylephrine HCl 5 mg"
+      ],
+      "warnings": [
+        "This product contains acetaminophen. Severe liver damage may occur if \u2022 adult takes more than 4 doses (30 mL each) in 24 hrs, which is the maximum daily amount for this product \u2022 child takes more than 4 doses (15 mL each) in 24 hrs, which is the maximum daily amount for this product \u2022 taken with other drugs containing acetaminophen \u2022 adult has 3 or more alcoholic drinks every day while using this product",
+        "Acetaminophen may cause severe skin reactions. Symptoms may include: skin reddening blisters rash If a skin reaction occurs, stop use and seek medical help right away."
+      ],
+      "dosage_and_administration": [
+        "\u2022 take only as directed \u2022 only use the dose cup provided \u2022 do not exceed 4 doses per 24 hrs adults & children 12 yrs & over 30 mL every 4 hrs children 6 to under 12 yrs 15 mL every 4 hrs children 4 to under 6 yrs ask a doctor children under 4 yrs do not use"
+      ]
+    }
+  },
+  "Excedrin": {
+    "id": "0067-2039",
+    "displayName": "EXCEDRIN MIGRAINE",
+    "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7ed841fb-a61c-4868-b4e5-4f2311a5e79c",
+    "ingredients": [
+      {
+        "name": "acetaminophen",
+        "strengthBasis": "ACETAMINOPHEN",
+        "value": 250,
+        "unit": "mg",
+        "per": {
+          "value": 1,
+          "unit": "each"
+        }
+      }
+    ],
+    "label": {
+      "dosage_and_administration": [
+        "do not take more than 2 caplets in 24 hours, unless directed by a doctor"
+      ]
+    }
+  },
+  "ZzzQuil": {
+    "id": "69423-985",
+    "displayName": "Vicks ZzzQuil Night Pain",
+    "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f3bb75e8-3d43-f91e-e053-2a95a90a584d",
+    "ingredients": [
+      {
+        "name": "acetaminophen",
+        "strengthBasis": "ACETAMINOPHEN",
+        "value": 1000,
+        "unit": "mg",
+        "per": {
+          "value": 30,
+          "unit": "mL"
+        }
+      }
+    ],
+    "label": {
+      "active_ingredient": [
+        "Acetaminophen 1000 mg Diphenhydramine HCl 50 mg"
+      ],
+      "warnings": [
+        "Liver warning: This product contains acetaminophen. Severe liver damage may occur if you take more than 4 doses (30 mL each) in 24 hours, which is the maimum daily amount for this product with other drugs containing acetaminophen 3 or more alcoholic drinks every day while using this product Allergy Alert: Acetaminophen may cause severe skin reactions. Symptoms may include: \u2022 skin reddening \u2022 blisters \u2022 rash If a skin reaction occurs, stop use and seek medical help right away"
+      ],
+      "dosage_and_administration": [
+        "take only one dose (30 mL) per day (24 hours) only use the dose cup provided adults & children 12 yrs & over 30 mL at bedtime children under 12 yrs do not use"
+      ]
+    }
+  }
+}

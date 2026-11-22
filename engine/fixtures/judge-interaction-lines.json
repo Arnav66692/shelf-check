@@ -1,0 +1,43 @@
+{
+  "oxycodone": "Concomitant use of opioids with benzodiazepines or other central nervous system (CNS) depressants, including alcohol, may result in profound sedation, respiratory depression, coma, and death.",
+  "clopidogrel": "Omeprazole or Esomeprazole Avoid concomitant use of clopidogrel with omeprazole or esomeprazole.",
+  "peptoAllergy": "Allergy alert: Contains salicylate. Do not take if you are allergic to salicylates (including aspirin) taking other salicylate products",
+  "peptoBloodThinner": "Ask a doctor or pharmacist before use if you are taking any drug for anticoagulation (thinning the blood) diabetes gout arthritis",
+  "peptoSetId": "67006e82-870d-8d63-e053-2991aa0a02d1",
+  "longBoxed": "Risks From Concomitant Use With Benzodiazepines Or Other CNS Depressants Concomitant use of opioids with benzodiazepines or other central nervous system (CNS) depressants, including alcohol, may result in profound sedation, respiratory depression, coma, and death.",
+  "boxedSetId": "4dd36cf5-8f73-404a-8b1d-3bd53bd90c25",
+  "mucinexExcerpt": "Do not use for children under 12 years of age if you are now taking a prescription monoamine oxidase inhibitor (MAOI) (certain drugs for depression, psychiatric or emotional conditions, or Parkinson's disease), or for 2 weeks after\u2026",
+  "lantus": {
+    "id": "ndc:0088-2220",
+    "displayName": "Lantus",
+    "productNdc": "0088-2220",
+    "ingredients": [
+      {
+        "name": "insulin glargine",
+        "value": 100,
+        "unit": "[iU]",
+        "per": {
+          "value": 1,
+          "unit": "mL"
+        }
+      }
+    ]
+  },
+  "humalog": {
+    "id": "ndc:0002-7510",
+    "displayName": "Humalog",
+    "productNdc": "0002-7510",
+    "ingredients": [
+      {
+        "name": "insulin lispro",
+        "value": 100,
+        "unit": "[iU]",
+        "per": {
+          "value": 1,
+          "unit": "mL"
+        }
+      }
+    ]
+  },
+  "ozempic": "Patients receiving OZEMPIC in combination with an insulin secretagogue (e.g., sulfonylurea) or insulin may have an increased risk of hypoglycemia, including severe hypoglycemia."
+}

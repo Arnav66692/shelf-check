@@ -4,6 +4,7 @@ import type { CabinetItem, Flag, LabelTag } from "../src/types.ts";
 import { expectVerbatim, loadCabinet, loadSupplements, withoutLabel } from "./support/cabinet.ts";
 import type { ProductId } from "./support/cabinet.ts";
 import { PRODUCT_NDCS } from "./support/products.ts";
+import passages from "../fixtures/official/profile-label-passages.json";
 
 const ALL_PRODUCTS = Object.keys(PRODUCT_NDCS) as ProductId[];
 
@@ -69,6 +70,15 @@ describe("labelTagFlags on the recorded labels", () => {
     expect(flag?.quote?.text).toContain("protect skin from the sun");
   });
 
+  test("insulin pump sunlight and hypoglycemia driving precautions do not produce patient sun or drowsiness tags", () => {
+    for (const entry of [passages.humalog, passages.lantus]) {
+      const item: CabinetItem = {
+        id: entry.productNdc, kind: "rx", verified: true, displayName: "Insulin", ingredients: [], label: entry.label,
+      };
+      expect(labelTagFlags([item])).toEqual([]);
+    }
+  });
+
   test("Tylenol PM's drowsiness line is the when using line about driving and machinery", async () => {
     const items = await loadCabinet("tylenolPm");
 
@@ -105,7 +115,7 @@ describe("labelTagFlags on the recorded labels", () => {
     const flags = labelTagFlags(items);
 
     expect(flags.map((flag) => `${flag.itemIds[0]}:${flag.tag}`)).toEqual(["melatonin:alcohol", "melatonin:drowsiness", "stJohnsWort:sun"]);
-    expect(flagFor(flags, "stJohnsWort", "sun")?.match?.text).toBe("sunlight");
+    expect(flagFor(flags, "stJohnsWort", "sun")?.match?.text).toBe("UV radiation");
     for (const flag of flags) expectVerbatim(flag.quote, items);
   });
 

@@ -1,5 +1,18 @@
 import type { Ingredient } from "./types.ts";
 
+// These are nutrition-panel totals. Named oils, fatty acids and protein
+// preparations remain available as ingredients in their own right.
+const NUTRITION_FACT = /^(?:calories?(?: from (?:saturated )?fat)?|energy(?: value)?|(?:total )?(?:(?:saturated|trans|polyunsaturated|monounsaturated|unsaturated) )?fats?|(?:saturated|trans|polyunsaturated|monounsaturated) fatty acids|cholesterol|sodium|(?:total |net |available )?carbohydrates?|(?:total |added )?sugars?|sugar alcohols?|(?:total |soluble |insoluble )?(?:dietary )?fib(?:er|re)|(?:total )?proteins?)$/i;
+
+export function isNutritionFact(name: string): boolean {
+  return NUTRITION_FACT.test(name.replace(/\s*\([^()]*\)\s*$/, "").trim().replace(/\s+/g, " "));
+}
+
+export function isNutritionIngredient(ingredient: Ingredient): boolean {
+  return [ingredient.name, ingredient.printedName, ...(ingredient.commonNames ?? [])]
+    .some((name) => name !== undefined && isNutritionFact(name));
+}
+
 export interface CommonName {
   readonly term: string;
   readonly notFollowedBy?: RegExp;

@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+import draws from "../fixtures/injection-draws.json";
 import { checkInjectionDose, convertDose, InvalidDoseInputError } from "../src/flags/units.ts";
 
 describe("convertDose", () => {
@@ -32,6 +33,54 @@ describe("convertDose", () => {
 });
 
 describe("checkInjectionDose", () => {
+  test.each([
+    ["over capacity", draws.overCapacity],
+    ["below the first graduation", draws.belowGraduation],
+    ["between graduations", draws.betweenMarks],
+  ] as const)("withholds a vial draw %s and returns its volume flag", (_, example) => {
+    const result = checkInjectionDose({
+      itemId: "vial", concentrationMgPerMl: example.strengthMgPerMl,
+      prescribed: { unit: "mg", value: example.doseMg }, syringe: "u100_insulin",
+    });
+    expect(result.dose.mL).toBeCloseTo(example.volumeMl);
+    expect(result.flags).toMatchObject([{ type: "dose_volume", severity: "stop" }]);
+    expect(result.drawTo).toBeNull();
+  });
+
+  test("uses the specified syringe capacity and graduation at both boundaries", () => {
+    const check = (mL: number) => checkInjectionDose({
+      itemId: "vial", concentrationMgPerMl: 5, syringe: "mL",
+      syringeCapacityMl: 0.3, syringeGraduationMl: 0.005, prescribed: { unit: "mL", value: mL },
+    });
+    expect(check(0.3).drawTo).toEqual({ unit: "mL", value: 0.3 });
+    expect(check(0.005).flags).toEqual([]);
+    expect(check(0.305).drawTo).toBeNull();
+    expect(check(0.004).drawTo).toBeNull();
+  });
+
+  test.each([draws.concentratedInsulin.unitsPerMl, 200, 300, null])(
+    "withholds all conversions and marks for insulin at %s units per mL",
+    (insulinUnitsPerMl) => {
+      const result = checkInjectionDose({
+        medication: "insulin", insulinUnitsPerMl, itemId: "insulin", syringe: "u100_insulin",
+        prescribed: { value: draws.concentratedInsulin.prescribedUnits, unit: "units" },
+      });
+      expect(result).toMatchObject({ dose: null, drawTo: null, flags: [{ severity: "stop", type: "unit_mismatch" }] });
+    },
+  );
+
+  test("returns only insulin units and volume for U-100 and suppresses unmeasurable marks", () => {
+    const check = (units: number) => checkInjectionDose({
+      medication: "insulin", insulinUnitsPerMl: draws.u100Insulin.unitsPerMl,
+      itemId: "insulin", syringe: "u100_insulin", prescribed: { value: units, unit: "units" },
+    });
+    const result = check(draws.u100Insulin.prescribedUnits);
+    expect(result.dose).toEqual({ insulinUnits: draws.u100Insulin.prescribedUnits, mL: draws.u100Insulin.volumeMl });
+    expect(result.drawTo).toEqual({ value: draws.u100Insulin.prescribedUnits, unit: "units" });
+    expect(check(101)).toMatchObject({ drawTo: null, flags: [{ type: "dose_volume", severity: "stop" }] });
+    expect(check(0.5)).toMatchObject({ drawTo: null, flags: [{ type: "dose_volume", severity: "stop" }] });
+  });
+
   test("0.25 mg stated together with 25 units at 5 mg per mL is flagged as five times too much", () => {
     const check = checkInjectionDose({
       itemId: "vial",
@@ -41,8 +90,8 @@ describe("checkInjectionDose", () => {
       syringe: "u100_insulin",
     });
 
-    expect(check.drawTo.unit).toBe("units");
-    expect(check.drawTo.value).toBeCloseTo(5, 10);
+    expect(check.drawTo).toBeNull();
+    expect(check.dose.u100Units).toBeCloseTo(5, 10);
     expect(check.flags).toHaveLength(1);
     expect(check.flags[0]).toMatchObject({ type: "unit_mismatch", severity: "stop", itemIds: ["vial"] });
     expect(check.flags[0]?.numbers?.["factor"]).toBeCloseTo(5, 10);
@@ -101,8 +150,8 @@ describe("checkInjectionDose", () => {
       syringe: "mL",
     });
 
-    expect(check.drawTo.unit).toBe("mL");
-    expect(check.drawTo.value).toBeCloseTo(0.05, 10);
+    expect(check.drawTo?.unit).toBe("mL");
+    expect(check.drawTo?.value).toBeCloseTo(0.05, 10);
     expect(check.flags).toHaveLength(1);
     expect(check.flags[0]).toMatchObject({ type: "unit_mismatch", severity: "ask" });
   });

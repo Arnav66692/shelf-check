@@ -13,6 +13,25 @@ const SECTIONS_REPEATED_INSIDE_WARNINGS: readonly LabelSectionName[] = [
 export interface LabelSentence {
   readonly section: LabelSectionName;
   readonly text: string;
+  readonly drugFactsInstruction?: "do_not_use";
+}
+
+// openFDA can flatten the separate items after "Do not take if you are".
+// Only recover this boundary after explicit allergy wording and before a co-use bullet.
+const ALLERGY_THEN_CO_USE = /(?<=\))\s+(?=(?:if )?(?:you )?(?:are )?taking\b)|\s+(?=or (?:(?:if )?you (?:are )?|are )?(?:taking|take)\b)|(?<=\ballergic to salicylates)\s+(?=taking other salicylate products\b)/i;
+
+function drugFactsSentences(section: LabelSectionName, text: string): readonly LabelSentence[] {
+  if (section === "do_not_use" || section === "warnings") {
+    const boundary = ALLERGY_THEN_CO_USE.exec(text);
+    if (boundary && /\ballerg(?:ic|y)\b/i.test(text.slice(0, boundary.index)) &&
+        (section === "do_not_use" || /\bdo not (?:use|take) if\b/i.test(text.slice(0, boundary.index)))) {
+      return [
+        { section, text: text.slice(0, boundary.index) },
+        { section, text: text.slice(boundary.index).trim(), drugFactsInstruction: "do_not_use" },
+      ];
+    }
+  }
+  return [{ section, text }];
 }
 
 // OTC labels repeat "Do not use", "Ask a doctor" and the other subsections word for word inside "warnings".
@@ -34,7 +53,9 @@ function passagesOf(label: LabelSections, section: LabelSectionName): readonly s
 
 export function sectionSentences(label: LabelSections | undefined, section: LabelSectionName): readonly LabelSentence[] {
   if (label === undefined) return [];
-  return passagesOf(label, section).flatMap((passage) => splitSentences(passage).map((text) => ({ section, text })));
+  const drugFacts = SECTIONS_REPEATED_INSIDE_WARNINGS.includes(section) || section === "warnings";
+  return passagesOf(label, section).flatMap((passage) =>
+    splitSentences(passage, drugFacts).flatMap((text) => drugFactsSentences(section, text)));
 }
 
 export function sentencesIn(
@@ -70,6 +91,7 @@ const SECTION_TITLES: Readonly<Record<LabelSectionName, string>> = {
   normalized_active_ingredient: "Normalized active ingredient record",
   inactive_ingredient: "Inactive ingredients",
   information_for_patients: "Information for patients",
+  spl_medguide: "Medication Guide",
 };
 
 export function sectionTitle(section: LabelSectionName): string {
@@ -79,5 +101,6 @@ export function sectionTitle(section: LabelSectionName): string {
 const START_OF_TEXT: TextSpan = { start: 0, end: 0 };
 
 export function toQuote(itemId: string, sentence: LabelSentence, focus: TextSpan = START_OF_TEXT): Quote {
-  return { text: sentence.text, excerpt: excerptAround(sentence.text, focus), itemId, section: sentence.section };
+  const complete = sentence.section === "boxed_warning" || sentence.section === "contraindications";
+  return { text: sentence.text, excerpt: complete ? sentence.text : excerptAround(sentence.text, focus), itemId, section: sentence.section };
 }

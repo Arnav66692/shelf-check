@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
-import { isEmergency, matchSymptoms, RED_FLAG_SYMPTOMS, symptomsMentioned } from "../src/symptoms.ts";
+import emergencyPhrases from "../fixtures/emergency-phrases.json";
+import { isEmergency, matchSymptoms, RED_FLAG_SYMPTOMS, screenEmergency, symptomsMentioned } from "../src/symptoms.ts";
 import { expectVerbatim, loadCabinet } from "./support/cabinet.ts";
 
 const WHOLE_CABINET = ["tylenol", "nyquil", "benadryl", "tylenolPm", "aspirin", "ibuprofen", "loratadine", "warfarin"] as const;
@@ -53,6 +54,38 @@ describe("matchSymptoms", () => {
 });
 
 describe("isEmergency", () => {
+  test.each(emergencyPhrases)("routes the judge's phrase \"$text\" to $reason before product matching", async ({ text, reason }) => {
+    const items = await loadCabinet("tylenol", "ibuprofen", "warfarin");
+    expect(screenEmergency(text)).toEqual({
+      emergency: true, reason, poison: reason === "poison", selfHarm: reason === "self_harm",
+    });
+    expect(isEmergency(text)).toBe(true);
+    expect(matchSymptoms(text, items)).toEqual([]);
+  });
+
+  test("marks both poison exposure and self-harm when both are reported", () => {
+    expect(screenEmergency("I want to die. I overdosed.")).toMatchObject({ reason: "poison", poison: true, selfHarm: true });
+    expect(screenEmergency("I was poisoned")).toMatchObject({ reason: "poison" });
+    expect(screenEmergency("My toddler ate a pill")).toMatchObject({ reason: "poison" });
+    expect(screenEmergency("My toddler drank a bottle of cough syrup")).toMatchObject({ reason: "poison" });
+    expect(screenEmergency("My toddler swallowed grandma’s Tylenol")).toMatchObject({ reason: "poison" });
+    expect(screenEmergency("I have difficulty swallowing pills")).toEqual({ emergency: false });
+    expect(screenEmergency("I don't want to die")).toEqual({ emergency: false });
+  });
+
+  test("routes fever with a confirmed age under three months before matching fever products", async () => {
+    const items = await loadCabinet("tylenol");
+    expect(screenEmergency("fever", { ageMonths: 2 })).toMatchObject({ reason: "infant_fever" });
+    expect(matchSymptoms("fever", items, { ageMonths: 2 })).toEqual([]);
+    expect(isEmergency("fever", { ageMonths: 3 })).toBe(false);
+    expect(isEmergency("my 6-week-old has no fever")).toBe(false);
+    expect(isEmergency("my 6-month-old has a fever")).toBe(false);
+    expect(isEmergency("My baby has a fever and is only 6 weeks old")).toBe(true);
+    expect(isEmergency("My baby is 6 weeks old. She has a fever.")).toBe(true);
+    expect(isEmergency("My baby is 6 weeks old. She has no fever.")).toBe(false);
+    expect(isEmergency("My baby is 6 weeks old. I have a fever.")).toBe(false);
+  });
+
   test.each([
     "I have chest pain and my arm hurts",
     "She has trouble breathing",

@@ -1,9 +1,11 @@
 import { describe, expect, test } from "vitest";
+import judgeLines from "../fixtures/judge-interaction-lines.json";
+import { sectionSentences, toQuote } from "../src/labelText.ts";
 import { checkCabinet } from "../src/index.ts";
 import type { HealthProfile } from "../src/flags/profile.ts";
 import { excerptAround, MAX_EXCERPT_LENGTH, splitSentences } from "../src/text.ts";
 import type { CabinetItem, Flag, Quote } from "../src/types.ts";
-import { expectVerbatim, loadMixedCabinet } from "./support/cabinet.ts";
+import { expectVerbatim, loadCabinet, loadMixedCabinet } from "./support/cabinet.ts";
 import { PRODUCT_NDCS, SUPPLEMENT_DSLD_IDS } from "./support/products.ts";
 import type { ProductId, SupplementId } from "./support/cabinet.ts";
 
@@ -75,16 +77,31 @@ describe("excerptAround", () => {
 });
 
 describe("quote.excerpt on real flags", () => {
-  test("every excerpt is at most 240 characters and is a piece of the full quote", async () => {
-    const quotes = (await everyFlag()).flatMap(quotesOf);
+  test("routine excerpts stay within 240 characters and each excerpt comes from the full quote", async () => {
+    const flags = await everyFlag();
+    const quotes = flags.flatMap(quotesOf);
 
     expect(quotes.length).toBeGreaterThan(50);
     expect(quotes.some((quote) => quote.text.length > MAX_EXCERPT_LENGTH)).toBe(true);
     for (const quote of quotes) {
-      expect(quote.excerpt.length).toBeLessThanOrEqual(MAX_EXCERPT_LENGTH);
+      const complete = quote.section === "boxed_warning" || quote.section === "contraindications" ||
+        flags.some((flag) => flag.type === "interaction" && flag.severity === "stop" && flag.quote === quote);
+      if (!complete) expect(quote.excerpt.length).toBeLessThanOrEqual(MAX_EXCERPT_LENGTH);
       expect(quote.text).toContain(withoutEllipses(quote.excerpt));
       if (quote.text.length <= MAX_EXCERPT_LENGTH) expect(quote.excerpt).toBe(quote.text);
     }
+  });
+
+  test("boxed warnings and contraindications retain their complete original sentence", async () => {
+    const [sertraline] = await loadCabinet("sertraline");
+    const [boxed] = sectionSentences({ boxed_warning: [judgeLines.longBoxed] }, "boxed_warning");
+    const contra = sectionSentences(sertraline?.label, "contraindications").find((sentence) => sentence.text.length > MAX_EXCERPT_LENGTH);
+    if (!boxed || !contra) throw new Error("expected long warnings in both saved labels");
+    for (const sentence of [boxed, contra]) {
+      expect(sentence.text.length).toBeGreaterThan(MAX_EXCERPT_LENGTH);
+      expect(toQuote("label", sentence).excerpt).toBe(sentence.text);
+    }
+    expect(boxed.text).toMatch(/respiratory depression, coma, and death\.$/);
   });
 
   test("every quote, drug or supplement, is found word for word in the label it names", async () => {
@@ -102,7 +119,8 @@ describe("quote.excerpt on real flags", () => {
   });
 
   test("the full label sentence stays available next to a shortened excerpt", async () => {
-    const shortened = (await everyFlag()).find((flag) => (flag.quote?.text.length ?? 0) > 800);
+    const shortened = (await everyFlag()).find((flag) => (flag.quote?.text.length ?? 0) > 800 &&
+      flag.quote?.excerpt !== flag.quote?.text);
 
     expect(shortened?.quote?.excerpt.length).toBeLessThanOrEqual(MAX_EXCERPT_LENGTH);
     expect(shortened?.quote?.text.length).toBeGreaterThan(800);

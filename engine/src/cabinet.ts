@@ -1,4 +1,6 @@
 import { escapeRegExp } from "./text.ts";
+import ozempicSpl from "../data/ozempic-injection-label.json" with { type: "json" };
+import { DAILYMED_LABEL_URL } from "./peptideLabels.ts";
 import { parseStrength } from "./sources/openfda.ts";
 import type { NdcActiveIngredient, NdcProduct, OpenFdaClient } from "./sources/openfda.ts";
 import type { RxNavClient } from "./sources/rxnav.ts";
@@ -106,23 +108,40 @@ function kindOf(product: NdcProduct, requested: ItemKind | undefined): ItemKind 
   return kind;
 }
 
+// The projection contains the full narratives of the engine-supported sections
+// of the saved injection SPL. Ozempic tablets have a different label.
+function cabinetLabel(product: NdcProduct, primary: LabelSections | null): Pick<CabinetItem, "label" | "labelSource"> {
+  if (primary && Object.values(primary).some((lines) => lines.some((line) => line.trim()))) return { label: primary };
+  const { productNdcs, setId, brandName, dosageForm, activeIngredient, version, labelDate, sections } = ozempicSpl;
+  const ids = product.splSetIds ?? [];
+  const sameLabel = ids.length ? ids.every((id) => id === setId) : productNdcs.includes(product.productNdc);
+  if (!sameLabel || product.brandName?.trim().toLowerCase() !== brandName.toLowerCase() ||
+      product.dosageForm?.trim().toUpperCase() !== dosageForm || product.activeIngredients.length !== 1 ||
+      product.activeIngredients[0]?.name.trim().toUpperCase() !== activeIngredient) return {};
+  return {
+    label: sections,
+    labelSource: { name: "DailyMed", setId, version, labelDate, url: DAILYMED_LABEL_URL + setId },
+  };
+}
+
 export async function buildCabinetItem(request: CabinetItemRequest, sources: CabinetSources): Promise<CabinetItem> {
   const product = await sources.openFda.getNdcProduct(request.productNdc);
-  if (product === null) throw new ProductNotFoundError(request.productNdc);
-  const [label, ingredients] = await Promise.all([
+  if (product === null || product.productNdc !== request.productNdc) throw new ProductNotFoundError(request.productNdc);
+  const [primaryLabel, ingredients] = await Promise.all([
     sources.openFda.getLabel(request.productNdc),
     Promise.all(product.activeIngredients.map((raw) => toIngredient(raw, sources))),
   ]);
+  const resolved = cabinetLabel(product, primaryLabel);
   return {
     id: request.id,
     displayName: request.displayName ?? product.brandName ?? product.genericName ?? request.productNdc,
     productNdc: product.productNdc,
     kind: kindOf(product, request.kind),
     ingredients: ingredients.map((ingredient) => {
-      const strengthBasis = labelStrengthBasis(ingredient, label ?? undefined);
+      const strengthBasis = labelStrengthBasis(ingredient, resolved.label);
       return strengthBasis ? { ...ingredient, strengthBasis } : ingredient;
     }),
     verified: true,
-    ...(label === null ? {} : { label }),
+    ...resolved,
   };
 }

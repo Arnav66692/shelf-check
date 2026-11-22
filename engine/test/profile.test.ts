@@ -3,12 +3,22 @@ import { CONDITION_IDS, InvalidProfileError, profileFlags } from "../src/flags/p
 import type { ConditionId, HealthProfile } from "../src/flags/profile.ts";
 import { checkCabinet } from "../src/index.ts";
 import carbinoxamine from "../fixtures/official/openfda-carbinoxamine-age-sections.json";
+import profileIngredients from "../fixtures/official/ndc-profile-ingredients.json";
+import passages from "../fixtures/official/profile-label-passages.json";
 import { createOpenFdaClient } from "../src/sources/openfda.ts";
 import { supplementItemFromLabel } from "../src/supplement.ts";
 import type { CabinetItem, Flag } from "../src/types.ts";
-import { expectVerbatim, fixtureSources, loadCabinet, loadMixedCabinet, loadSupplements } from "./support/cabinet.ts";
+import { expectVerbatim, fixtureSources, loadCabinet, loadMixedCabinet, loadSupplements, withoutLabel } from "./support/cabinet.ts";
 
 const NOTHING: HealthProfile = { conditions: [], allergies: [] };
+
+function ndcItem(key: keyof typeof profileIngredients.products): CabinetItem {
+  const { productNdc, displayName, kind, printedName, value, unit } = profileIngredients.products[key];
+  return {
+    id: productNdc, productNdc, displayName, kind: kind === "otc" ? "otc" : "rx", verified: true,
+    ingredients: [{ name: key, printedName, value, unit }],
+  };
+}
 
 function withConditions(...conditions: readonly ConditionId[]): HealthProfile {
   return { ...NOTHING, conditions };
@@ -97,7 +107,9 @@ describe("profile flags: conditions", () => {
   });
 
   test("the diabetes contraindication keeps its aliskiren prerequisite", async () => {
-    const items = await loadCabinet("lisinoprilHctz", "warfarin");
+    const base = await loadCabinet("lisinoprilHctz", "warfarin");
+    expect(profileFlags(base, withConditions("diabetes"))).toEqual([]);
+    const items = [...base, ndcItem("aliskiren hemifumarate")];
 
     const flags = profileFlags(items, withConditions("diabetes", "stomach_ulcers_or_bleeding"));
 
@@ -110,6 +122,43 @@ describe("profile flags: conditions", () => {
     expect(diabetes?.quote?.text).toBe(
       "Do not coadminister aliskiren with lisinopril and hydrochlorothiazide tablets in patients with diabetes.",
     );
+  });
+
+  test.each([
+    "Do not administer aliskiren with lisinopril in patients with diabetes.",
+    "Patients with diabetes should not use lisinopril with aliskiren.",
+    "Lisinopril should not be administered with aliskiren in patients with diabetes.",
+    "Aliskiren should not be administered with lisinopril in patients with diabetes.",
+  ])("requires another cabinet medicine for the co-use wording: %s", async (text) => {
+    const [base] = await loadCabinet("lisinoprilHctz");
+    if (!base) throw new Error("missing lisinopril fixture");
+    const item = { ...base, label: { contraindications: [text] } };
+    const profile = withConditions("diabetes");
+    expect(profileFlags([item], profile)).toEqual([]);
+    expect(profileFlags([item, ndcItem("aliskiren hemifumarate")], profile)[0])
+      .toMatchObject({ severity: "ask", quote: { text } });
+  });
+
+  test("a condition after with can be an independent contraindication", async () => {
+    const [base] = await loadCabinet("lisinoprilHctz");
+    if (!base) throw new Error("missing lisinopril fixture");
+    const conditionOnly = "Do not use with severe renal impairment.";
+    expect(profileFlags([{ ...base, label: { contraindications: [conditionOnly] } }], withConditions("kidney_disease"))[0])
+      .toMatchObject({ severity: "stop", quote: { text: conditionOnly } });
+  });
+
+  test("metformin's diabetic ketoacidosis contraindication does not match diabetes", () => {
+    const item: CabinetItem = {
+      id: passages.metformin.setId, kind: "rx", verified: true, displayName: "Metformin", ingredients: [],
+      label: passages.metformin.label,
+    };
+    const profile = withConditions("diabetes");
+    expect(profileFlags([item], profile)).toEqual([]);
+    // The indication and the more specific diagnosis each stand on their own.
+    const contraindications = item.label!.contraindications!;
+    expect(profileFlags([{ ...item, label: { contraindications } }], profile)).toEqual([]);
+    expect(profileFlags([{ ...item, label: { ...item.label, ask_doctor: ["Ask a doctor if you have diabetes."] } }], profile)).toEqual([]);
+    expect(profileFlags([item], withConditions("kidney_disease"))[0]?.quote?.text).toContain("renal impairment");
   });
 
   test("warfarin quotes renal monitoring from warnings and precautions", async () => {
@@ -170,6 +219,49 @@ describe("profile flags: alcohol, pregnancy and breast-feeding", () => {
     const [flag] = profileFlags(items, { ...NOTHING, pregnant: true });
 
     expect(flag?.supportingQuotes?.some((quote) => quote.text.includes("last 3 months of pregnancy"))).toBe(true);
+  });
+
+  test("NSAID pregnancy quotes lead with the 20-week restriction and keep its doctor exception", () => {
+    const item: CabinetItem = {
+      id: passages.advil.productNdc, displayName: "Advil", kind: "otc", verified: true,
+      ingredients: [{ name: "ibuprofen", value: 200, unit: "mg" }], label: passages.advil.label,
+    };
+    const flags = profileFlags([item], { ...NOTHING, pregnant: true });
+    expect(flags[0]).toMatchObject({ severity: "stop", quote: { section: "pregnancy_or_breast_feeding", text: passages.advil.label.pregnancy_or_breast_feeding[1] } });
+    expect(flags[0]?.quote?.excerpt).toContain("unless definitely directed to do so by a doctor");
+  });
+
+  test("20-week dose limits lead over fetal risk and Medication Guide warnings retain may harm", () => {
+    const base = ndcItem("naproxen");
+    const patient = passages.patientWarning.text;
+    const risk = passages.renalWarning.text;
+    const limit = passages.limitWarning.text;
+    const profile = { ...NOTHING, pregnant: true };
+    const labels = [
+      [{ spl_medguide: [patient] }, patient],
+      [{ warnings_and_cautions: [risk] }, risk],
+      [{ warnings_and_cautions: [risk], pregnancy: [limit], spl_medguide: [patient] }, limit],
+    ] as const;
+    for (const [label, expected] of labels) {
+      expect(profileFlags([{ ...base, label }], profile)[0]).toMatchObject({
+        severity: "stop", quote: { text: expected, excerpt: expected },
+      });
+    }
+    const negated = "Use is not contraindicated at 20 weeks or later in pregnancy.";
+    expect(profileFlags([{ ...base, label: { pregnancy: [negated] } }], profile)).toEqual([]);
+  });
+
+  test("reassuring animal study results are excluded from pregnancy warning quotes", () => {
+    const item: CabinetItem = {
+      id: passages.rxIbuprofen.productNdc, displayName: "Ibuprofen", kind: "rx", verified: true,
+      ingredients: [{ name: "ibuprofen", value: 800, unit: "mg" }], label: passages.rxIbuprofen.label,
+    };
+    const profile = { ...NOTHING, pregnant: true };
+    const [flag] = profileFlags([item], profile);
+    expect(flag?.quote?.text).toContain("late pregnancy");
+    expect(flag?.supportingQuotes?.map((q) => q.text).join(" ")).not.toMatch(/not demonstrated/);
+    expect(profileFlags([{ ...item, label: { pregnancy: item.label!.pregnancy!.slice(0, 1) } }], profile)).toEqual([]);
+    expect(flag?.explain).not.toContain("20 weeks");
   });
 
   test("breast-feeding: read from OTC labels, prescription nursing text and supplement warnings", async () => {
@@ -273,6 +365,13 @@ describe("profile flags: age", () => {
     expect(ageFlag(items, 40)).toBeUndefined();
   });
 
+  test("Advil describes age 60 or older as a higher bleeding risk", async () => {
+    const flag = ageFlag(await loadCabinet("ibuprofen"), 78);
+    expect(flag?.quote?.text).toMatch(/chance is higher if you are age 60 or older/i);
+    expect(flag?.explain).toContain("risk is higher for people age 60 or older");
+    expect(flag?.detail).not.toContain("limit");
+  });
+
   test("a label with no clear lower age gives nothing for a child", async () => {
     const items = await loadCabinet("warfarin");
 
@@ -281,6 +380,75 @@ describe("profile flags: age", () => {
 });
 
 describe("profile flags: allergies", () => {
+  test.each([
+    ["penicillin", "amoxicillin"], ["penicillin", "ampicillin"], ["penicillins", "dicloxacillin sodium"],
+    ["cephalosporins", "cephalexin"], ["sulfa", "sulfamethoxazole"], ["NSAIDs", "naproxen"],
+    ["aspirin", "bismuth subsalicylate"], ["salicylates", "bismuth subsalicylate"], ["opioids", "oxycodone hydrochloride"],
+  ] as const)("%s allergy stops %s using the recorded active ingredient", (allergen, key) => {
+    const item = ndcItem(key);
+    const [flag] = profileFlags([item], { ...NOTHING, allergies: [allergen] });
+    expect(flag).toMatchObject({ severity: "stop", quote: { section: "ndc_active_ingredient", text: item.ingredients[0]?.printedName } });
+    expect(flag?.title).not.toContain(`contains ${allergen}`);
+  });
+
+  test("matches the resolved RxClass without requiring a known generic name", async () => {
+    const [item] = await loadCabinet("ibuprofen");
+    if (!item?.ingredients[0]) throw new Error("missing ibuprofen fixture");
+    for (const type of ["ATC1-4", "EPC"]) {
+      const ingredient = { ...item.ingredients[0], name: "unlisted", printedName: "UNLISTED", classes: item.ingredients[0].classes?.filter((c) => c.type === type) ?? [] };
+      expect(profileFlags([{ ...withoutLabel(item), ingredients: [ingredient] }], { ...NOTHING, allergies: ["NSAID"] })[0])
+        .toMatchObject({ severity: "stop", match: { term: "NSAID" } });
+    }
+  });
+
+  test("verified legacy family matches can quote the normalized active ingredient", () => {
+    const { productNdc: _productNdc, ...item } = ndcItem("amoxicillin");
+    const profile = { ...NOTHING, allergies: ["penicillin"] };
+    expect(profileFlags([item], profile)[0]).toMatchObject({
+      severity: "stop", quote: { section: "normalized_active_ingredient", text: "amoxicillin" }, match: { text: "amoxicillin" },
+    });
+    expect(profileFlags([{ ...item, verified: false }], profile)).toEqual([]);
+  });
+
+  test.each([
+    ["clavulanic acid", "J01CG", "penicillin"],
+    ["clavulanic acid", "J01CR", "penicillin"],
+    ["glucosamine", "M01AX", "NSAID"],
+  ])("abstains on %s in mixed or unrelated class %s for %s allergy", (name, id, allergy) => {
+    const ingredient = { name, printedName: name, value: 1, unit: "mg", classes: [{ type: "ATC1-4", id, name: id, source: "ATC" }] };
+    const item: CabinetItem = { id: name, displayName: name, kind: "rx", verified: true, ingredients: [ingredient] };
+    expect(profileFlags([item], { ...NOTHING, allergies: [allergy] })).toEqual([]);
+    if (id === "M01AX") {
+      expect(profileFlags([{ ...item, ingredients: [{ ...ingredient, name: "nabumetone", printedName: "NABUMETONE" }] }],
+        { ...NOTHING, allergies: [allergy] })[0]?.severity).toBe("stop");
+    }
+  });
+
+  test("does not generalize a sulfa antibiotic allergy to a diuretic or a single opioid allergy to all opioids", () => {
+    const items = [ndcItem("hydrochlorothiazide"), ndcItem("oxycodone hydrochloride")];
+    expect(profileFlags(items, { ...NOTHING, allergies: ["sulfa", "morphine"] })).toEqual([]);
+  });
+
+  test("hypersensitivity and anaphylaxis can identify an allergy in warnings and precautions", async () => {
+    const [sertraline] = await loadCabinet("sertraline");
+    if (!sertraline) throw new Error("missing sertraline fixture");
+    const warning = "Sertraline is contraindicated in patients with a hypersensitivity to sertraline or any of the inactive ingredients in sertraline hydrochloride tablets.";
+    expect(sertraline.label?.contraindications?.join(" ")).toContain(warning);
+    for (const text of [warning, warning.replace("a hypersensitivity", "anaphylaxis")]) {
+      const item = { ...sertraline, ingredients: [], label: { warnings_and_cautions: [text] } };
+      expect(profileFlags([item], { ...NOTHING, allergies: ["sertraline"] })[0])
+        .toMatchObject({ severity: "stop", quote: { section: "warnings_and_cautions", text } });
+    }
+  });
+
+  test("amoxicillin quotes the hypersensitivity warning naming penicillins and cephalosporins", () => {
+    const item = { ...ndcItem("amoxicillin"), id: passages.amoxicillin.setId, productNdc: "62135-082", label: passages.amoxicillin.label };
+    for (const allergy of ["penicillin", "cephalosporins"]) {
+      expect(profileFlags([item], { ...NOTHING, allergies: [allergy] })[0])
+        .toMatchObject({ severity: "stop", quote: { section: "contraindications", text: item.label.contraindications[0] } });
+    }
+  });
+
   test("warfarin allergies match the normalized drug and its printed NDC ingredient", async () => {
     const items = await loadCabinet("warfarin");
     for (const allergy of ["warfarin", "Warfarin Sodium"]) {
@@ -337,7 +505,7 @@ describe("profile flags: allergies", () => {
 
     const [flag] = profileFlags(items, { ...NOTHING, allergies: ["aspirin"] });
 
-    expect(flag).toMatchObject({ severity: "ask", itemIds: ["ibuprofen"] });
+    expect(flag).toMatchObject({ severity: "stop", itemIds: ["ibuprofen"] });
     expect(flag?.quote?.text).toContain("especially in people allergic to aspirin");
   });
 

@@ -1,0 +1,16 @@
+[
+  { "text": "my 2 year old swallowed some of grandma's pills", "reason": "poison" },
+  { "text": "I think I'm having a stroke", "reason": "stroke_signs" },
+  { "text": "chest tightness and my left arm is numb", "reason": "chest_symptoms" },
+  { "text": "I took too much tylenol", "reason": "poison" },
+  { "text": "my lips and tongue are swelling", "reason": "airway_swelling" },
+  { "text": "I want to die", "reason": "self_harm" },
+  { "text": "short of breath", "reason": "breathing_difficulty" },
+  { "text": "having a seizure", "reason": "seizure" },
+  { "text": "vomiting blood", "reason": "bleeding" },
+  { "text": "heart attack", "reason": "chest_symptoms" },
+  { "text": "severe headache and stiff neck", "reason": "severe_headache" },
+  { "text": "baby has a fever and is 6 weeks old", "reason": "infant_fever" },
+  { "text": "chest pain and my left arm is numb", "reason": "chest_symptoms" },
+  { "text": "I can't breathe", "reason": "breathing_difficulty" }
+]

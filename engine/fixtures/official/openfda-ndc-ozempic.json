@@ -1,0 +1,88 @@
+{
+  "results": [
+    {
+      "product_ndc": "0169-4772",
+      "generic_name": "semaglutide",
+      "labeler_name": "Novo Nordisk Pharmaceutical Industries, LP",
+      "brand_name": "Ozempic",
+      "active_ingredients": [
+        {
+          "name": "SEMAGLUTIDE",
+          "strength": "2.68 mg/mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0169-4772-12",
+          "description": "1 SYRINGE, PLASTIC in 1 CARTON (0169-4772-12)  / 3 mL in 1 SYRINGE, PLASTIC (0169-4772-11)",
+          "marketing_start_date": "20220425",
+          "sample": false
+        },
+        {
+          "package_ndc": "0169-4772-97",
+          "description": "1 SYRINGE, PLASTIC in 1 CARTON (0169-4772-97)  / 3 mL in 1 SYRINGE, PLASTIC (0169-4772-90)",
+          "marketing_start_date": "20220425",
+          "sample": true
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {},
+      "marketing_category": "NDA",
+      "dosage_form": "INJECTION, SOLUTION",
+      "spl_id": "dd55a886-6b05-4813-b00e-abd220f019fc",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "SUBCUTANEOUS"
+      ],
+      "marketing_start_date": "20220425",
+      "product_id": "0169-4772_dd55a886-6b05-4813-b00e-abd220f019fc",
+      "application_number": "NDA209637",
+      "brand_name_base": "Ozempic",
+      "pharm_class": [
+        "GLP-1 Receptor Agonist [EPC]",
+        "Glucagon-Like Peptide 1 [CS]",
+        "Glucagon-like Peptide-1 (GLP-1) Agonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "0169-4130",
+      "generic_name": "semaglutide",
+      "labeler_name": "Novo Nordisk Pharmaceutical Industries, LP",
+      "brand_name": "Ozempic",
+      "active_ingredients": [
+        {
+          "name": "SEMAGLUTIDE",
+          "strength": "1.34 mg/mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0169-4130-13",
+          "description": "1 SYRINGE, PLASTIC in 1 CARTON (0169-4130-13)  / 3 mL in 1 SYRINGE, PLASTIC (0169-4130-01)",
+          "marketing_start_date": "20210103",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {},
+      "marketing_category": "NDA",
+      "dosage_form": "INJECTION, SOLUTION",
+      "spl_id": "dd55a886-6b05-4813-b00e-abd220f019fc",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "SUBCUTANEOUS"
+      ],
+      "marketing_start_date": "20200930",
+      "product_id": "0169-4130_dd55a886-6b05-4813-b00e-abd220f019fc",
+      "application_number": "NDA209637",
+      "brand_name_base": "Ozempic",
+      "pharm_class": [
+        "GLP-1 Receptor Agonist [EPC]",
+        "Glucagon-Like Peptide 1 [CS]",
+        "Glucagon-like Peptide-1 (GLP-1) Agonists [MoA]"
+      ]
+    }
+  ]
+}

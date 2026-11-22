@@ -8,6 +8,8 @@ import { buildSupplementItem, supplementItemFromLabel, SupplementNotFoundError }
 import type { CabinetItem, Flag } from "../src/types.ts";
 import { expectVerbatim, fixtureSources, loadMixedCabinet, loadSupplements, withoutLabel } from "./support/cabinet.ts";
 import { MISSING_DSLD_ID } from "./support/products.ts";
+import fishOilRecord from "../fixtures/judges/fish-oil-241612.json";
+import { isNutritionFact } from "../src/supplementNames.ts";
 
 function fromLabelOf(flags: readonly Flag[], labelOwnerId: string): readonly Flag[] {
   return flags.filter((flag) => flag.itemIds[0] === labelOwnerId);
@@ -18,6 +20,38 @@ function ingredientNames(item: CabinetItem | undefined): readonly string[] {
 }
 
 describe("buildSupplementItem", () => {
+  test("Nature’s Bounty fish oil with warfarin never matches the cholesterol warning", async () => {
+    const rows = fishOilRecord.ingredients.map((row) => ({
+      name: row.rawName,
+      quantity: row.value === null ? [] : [{ quantity: row.value, unit: row.unit,
+        servingSizeQuantity: row.per.value, servingSizeUnit: row.per.unit }],
+      nestedRows: [], forms: [],
+    }));
+    const fishOil = await supplementItemFromLabel({ id: "fish", dsldId: fishOilRecord.dsldId }, {
+      id: fishOilRecord.dsldId, fullName: fishOilRecord.displayName, brandName: fishOilRecord.maker,
+      ingredientRows: rows, otherIngredients: [], servingSizes: [], statements: [],
+    }, { rxNav: { ...fixtureSources().rxNav, findRxcui: async () => null } });
+    expect(fishOil.label?.active_ingredient).toEqual([
+      "Fish Oil", "Total Omega-3 Fatty Acids", "Eicosapentaenoic Acid", "Docosahexaenoic Acid", "Other Fatty Acids",
+    ]);
+    expect(ingredientNames(fishOil)).toEqual(fishOil.label?.active_ingredient?.map(name => name.toLowerCase()));
+    const [warfarin] = await loadMixedCabinet(["warfarin"], []);
+    if (!warfarin) throw new Error("missing warfarin fixture");
+    expect(warfarin.label?.warnings_and_cautions?.join(" ")).toMatch(/cholesterol microemboli/i);
+    expect(interactionFlags([warfarin, fishOil])).toEqual([]);
+    // The same rule also applies to previously saved cabinet items.
+    const legacy = { ...fishOil, ingredients: [{ name: "cholesterol", value: 15, unit: "mg" }] };
+    const warning = { ...warfarin, label: { drug_interactions: ["Avoid concomitant use with cholesterol."] } };
+    expect(interactionFlags([warning, legacy])).toEqual([]);
+  });
+
+  test("excludes nutrition totals while retaining named substances", () => {
+    for (const name of ["Calories", "Sodium", "Total Carbohydrates", "Added Sugars", "Dietary Fiber", "Trans Fat",
+      "Saturated Fat", "Cholesterol", "Protein", "Sugar Alcohols"]) expect(isNutritionFact(name), name).toBe(true);
+    for (const name of ["Sodium bicarbonate", "Fish oil", "Whey protein isolate", "Omega-3 fatty acids"]) {
+      expect(isNutritionFact(name), name).toBe(false);
+    }
+  });
   test("turns a DSLD label into an unverified supplement item", async () => {
     const [melatonin] = await loadSupplements("melatonin");
 
@@ -178,7 +212,7 @@ describe("drug labels that name supplements", () => {
     const flags = fromLabelOf(interactionFlags(items), "sertraline");
 
     expect(flags).toHaveLength(1);
-    expect(flags[0]).toMatchObject({ type: "interaction", severity: "ask", itemIds: ["sertraline", "stJohnsWort"] });
+    expect(flags[0]).toMatchObject({ type: "interaction", severity: "stop", itemIds: ["sertraline", "stJohnsWort"] });
     expect(flags[0]?.match).toMatchObject({ kind: "common_name", text: "St. John's Wort", ingredient: "st. john's wort extract" });
     expect(flags[0]?.quote?.section).toBe("warnings");
     expect(flags[0]?.quote?.text).toContain("concomitant use of other serotonergic drugs");

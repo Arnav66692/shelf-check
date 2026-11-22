@@ -5,6 +5,7 @@ interface ClassPhraseRule {
   readonly atcPrefixes: readonly string[];
   readonly epcNames: readonly string[];
   readonly phrases: readonly string[];
+  readonly memberName?: RegExp;
 }
 
 // Hand-written wording that labels use for a class. The class membership itself always comes from RxClass.
@@ -17,7 +18,7 @@ export const CLASS_PHRASE_RULES: readonly ClassPhraseRule[] = [
   {
     atcPrefixes: ["B01AA", "B01AB", "B01AE", "B01AF"],
     epcNames: ["Vitamin K Antagonist", "Anticoagulant", "Factor Xa Inhibitor", "Direct Thrombin Inhibitor"],
-    phrases: ["anti-coagulant", "blood thinner", "blood thinning"],
+    phrases: ["anti-coagulant", "anticoagulation", "blood thinner", "blood thinning", "thinning the blood"],
   },
   {
     atcPrefixes: ["B01AC"],
@@ -33,6 +34,18 @@ export const CLASS_PHRASE_RULES: readonly ClassPhraseRule[] = [
     atcPrefixes: ["N05A", "N05B", "N05C"],
     epcNames: ["Benzodiazepine", "Barbiturate"],
     phrases: ["sedative", "tranquilizer", "sleeping pill"],
+  },
+  {
+    // N02AJ also maps non-opioid ingredients of combination products to opioids.
+    // Use the opioid-only groups and keep mixed groups out of this mapping.
+    atcPrefixes: ["N02AA", "N02AB", "N02AC", "N02AD", "N02AE", "N02AF", "N02AX", "N05BA", "N03AE", "N05C", "R06AA", "R06AB", "R06AD"],
+    epcNames: ["Opioid Agonist", "Opioid Partial Agonist", "Benzodiazepine"],
+    phrases: ["CNS depressant", "central nervous system depressant", "central nervous system (CNS) depressant"],
+  },
+  {
+    atcPrefixes: ["N05C"],
+    epcNames: [],
+    phrases: ["hypnotic", "sedative/hypnotic", "sedative-hypnotic"],
   },
   // ATC splits antihistamines by chemistry. These three subgroups are the older, sedating ones
   // (diphenhydramine, doxylamine, chlorpheniramine, promethazine). R06AE and R06AX mix sedating and
@@ -65,6 +78,9 @@ export const CLASS_PHRASE_RULES: readonly ClassPhraseRule[] = [
   { atcPrefixes: ["N02BA"], epcNames: [], phrases: ["salicylate"] },
   { atcPrefixes: ["H02AB"], epcNames: ["Corticosteroid"], phrases: ["corticosteroid", "steroid drug"] },
   { atcPrefixes: ["A02A"], epcNames: [], phrases: ["antacid"] },
+  // A10A includes insulin combinations. A non-insulin coingredient can also
+  // acquire that ATC code and must not stand in for insulin on another label.
+  { atcPrefixes: ["A10A"], epcNames: ["Insulin", "Insulin Analog"], phrases: ["insulin"], memberName: /^(?:human )?insulin(?: |$)/i },
 ];
 
 const ATC_CLASS_TYPE = "ATC1-4";
@@ -76,6 +92,7 @@ export interface SearchTerm {
   readonly term: string;
   readonly kind: InteractionMatchKind;
   readonly ingredient: string;
+  readonly drugClass?: DrugClass;
   readonly notFollowedBy?: RegExp;
 }
 
@@ -117,7 +134,11 @@ export function searchTermsFor(ingredient: Ingredient): readonly SearchTerm[] {
   return [
     ...ownName,
     ...commonNames,
-    ...classNamesFor(classes).map(toTerm("class_name")),
-    ...classPhrasesFor(classes).map(toTerm("class_phrase")),
+    ...classes.flatMap((drugClass) => classNamesFor([drugClass]).map((name) => ({ ...toTerm("class_name")(name), drugClass }))),
+    ...CLASS_PHRASE_RULES.flatMap((rule) => {
+      if (rule.memberName && !rule.memberName.test(ingredient.name)) return [];
+      const drugClass = classes.find((candidate) => ruleApplies(rule, candidate));
+      return drugClass ? rule.phrases.map((phrase) => ({ ...toTerm("class_phrase")(phrase), drugClass })) : [];
+    }),
   ];
 }

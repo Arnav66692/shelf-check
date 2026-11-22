@@ -1,0 +1,30 @@
+[
+  {
+    "brand_name": "Humalog",
+    "product_ndc": "0002-7510",
+    "pharm_class": [
+      "Insulin Analog [EPC]",
+      "Insulin [Chemical/Ingredient]"
+    ],
+    "active_ingredients": [
+      {
+        "name": "INSULIN LISPRO",
+        "strength": "100 [iU]/mL"
+      }
+    ]
+  },
+  {
+    "brand_name": "Lantus",
+    "product_ndc": "0088-2220",
+    "pharm_class": [
+      "Insulin Analog [EPC]",
+      "Insulin [CS]"
+    ],
+    "active_ingredients": [
+      {
+        "name": "INSULIN GLARGINE",
+        "strength": "100 [iU]/mL"
+      }
+    ]
+  }
+]

@@ -1,4 +1,7 @@
-const SENTENCE_BOUNDARY = /(?<=[.!?][)\]"'”’]?)\s+(?=[A-Z0-9(\["“])|\s*[•■▪●◦]\s*/g;
+const SENTENCE_BOUNDARY = /(?<=[.!?][)\]"'”’]?)\s+(?=[A-Z0-9(\["“])|\s*[•■▪●◦♦]\s*/g;
+// Recognizable transitions between flattened Drug Facts bullets. A bare "if"
+// often qualifies the preceding instruction and is not, by itself, a boundary.
+const DRUG_FACTS_BULLET = /(?<=\b(?:in |for )?children under \d+ years?(?: of age)?)\s+(?=if you (?:are (?:now )?taking|have ever had)\b)|(?<=\bto make a child sleepy)\s+(?=with any other\b)|(?<=\beven one used on (?:the )?skin)\s+(?=(?:in|for) children under\b)/gi;
 const ABBREVIATION_BEFORE_BOUNDARY = /(?:^|[\s("“'‘])(?:St|Dr|Mr|Mrs|Ms|vs|No|Fig|Alt|approx|etc|e\.g|i\.e|U\.S)\.[)\]]?$/;
 const WORD_CHARACTER = "A-Za-z0-9";
 
@@ -10,13 +13,14 @@ function isRealBoundary(text: string, boundaryStart: number): boolean {
   return !ABBREVIATION_BEFORE_BOUNDARY.test(text.slice(Math.max(0, boundaryStart - 12), boundaryStart));
 }
 
-export function splitSentences(text: string): readonly string[] {
+export function splitSentences(text: string, drugFacts = false): readonly string[] {
   const boundaries = [...text.matchAll(SENTENCE_BOUNDARY)]
     .map((match) => ({ start: match.index, end: match.index + match[0].length }))
     .filter((boundary) => isRealBoundary(text, boundary.start));
   const starts = [0, ...boundaries.map((boundary) => boundary.end)];
   const ends = [...boundaries.map((boundary) => boundary.start), text.length];
-  return starts.map((start, index) => text.slice(start, ends[index]).trim()).filter((sentence) => sentence !== "");
+  const sentences = starts.map((start, index) => text.slice(start, ends[index]).trim()).filter((sentence) => sentence !== "");
+  return drugFacts || /^\s*Do not (?:use|take)\b/i.test(text) ? sentences.flatMap((sentence) => sentence.split(DRUG_FACTS_BULLET)) : sentences;
 }
 
 // Labels print the apostrophe in "St. John's wort" either straight or curly.

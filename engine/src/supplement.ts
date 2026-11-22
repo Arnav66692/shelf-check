@@ -2,6 +2,7 @@ import { resolveIdentity } from "./cabinet.ts";
 import type { IdentitySources, ResolvedIdentity } from "./cabinet.ts";
 import type { DsldClient, DsldIngredientRow, DsldLabel, DsldQuantity } from "./sources/dsld.ts";
 import { PER_EACH_UNIT } from "./sources/openfda.ts";
+import { isNutritionFact } from "./supplementNames.ts";
 import type { CabinetItem, DailyServings, Ingredient, LabelSectionName, LabelSections } from "./types.ts";
 
 // DSLD writes "NP" as the unit when the label names an ingredient without giving its amount.
@@ -39,7 +40,8 @@ function withNestedRows(rows: readonly DsldIngredientRow[]): readonly DsldIngred
 }
 
 function isIngredientRow(row: DsldIngredientRow): boolean {
-  return !ROW_CATEGORIES_THAT_ARE_NOT_INGREDIENTS.includes(row.category?.toLowerCase() ?? "");
+  return !ROW_CATEGORIES_THAT_ARE_NOT_INGREDIENTS.includes(row.category?.toLowerCase() ?? "") &&
+    !printedNames(row).some(isNutritionFact);
 }
 
 function printedNames(row: DsldIngredientRow): readonly string[] {

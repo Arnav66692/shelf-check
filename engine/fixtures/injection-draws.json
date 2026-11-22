@@ -1,0 +1,7 @@
+{
+  "overCapacity": { "strengthMgPerMl": 2.5, "doseMg": 5, "volumeMl": 2 },
+  "belowGraduation": { "strengthMgPerMl": 5, "doseMg": 0.025, "volumeMl": 0.005 },
+  "betweenMarks": { "strengthMgPerMl": 5, "doseMg": 0.075, "volumeMl": 0.015 },
+  "concentratedInsulin": { "unitsPerMl": 500, "prescribedUnits": 100 },
+  "u100Insulin": { "unitsPerMl": 100, "prescribedUnits": 10, "volumeMl": 0.1 }
+}

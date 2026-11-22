@@ -51,6 +51,7 @@ export interface NdcProduct {
   readonly genericName?: string;
   readonly dosageForm?: string;
   readonly productType?: string;
+  readonly splSetIds?: readonly string[];
   readonly activeIngredients: readonly NdcActiveIngredient[];
 }
 
@@ -92,6 +93,7 @@ function toNdcProduct(raw: Record<string, unknown>): NdcProduct {
   const genericName = stringField(raw, "generic_name");
   const dosageForm = stringField(raw, "dosage_form");
   const productType = stringField(raw, "product_type");
+  const splSetIds = isRecord(raw.openfda) ? stringArrayField(raw.openfda, "spl_set_id") : [];
   return {
     productNdc,
     activeIngredients,
@@ -99,6 +101,7 @@ function toNdcProduct(raw: Record<string, unknown>): NdcProduct {
     ...(genericName === undefined ? {} : { genericName }),
     ...(dosageForm === undefined ? {} : { dosageForm }),
     ...(productType === undefined ? {} : { productType }),
+    ...(splSetIds.length ? { splSetIds } : {}),
   };
 }
 

@@ -23,6 +23,7 @@ export const LABEL_TAG_SECTIONS: readonly LabelSectionName[] = [
 interface TagRule {
   readonly about: string;
   readonly pattern: RegExp;
+  readonly exclude?: RegExp;
 }
 
 // "Benzyl alcohol" and the like are ingredients, and "alcohol-free" is a product claim. Neither is a line about drinking.
@@ -30,14 +31,18 @@ const ALCOHOL_PATTERN =
   /(?<!\b(?:benzyl|cetyl|stearyl|cetostearyl|isopropyl|polyvinyl|lanolin|rubbing|sugar)\s)\balcohol(?:ic)?\b(?![- ]free)/i;
 const DROWSINESS_PATTERN =
   /\bdrows(?:y|iness)\b|\bsleepiness\b|\bdriv(?:e|ing)\s+(?:a\s+)?(?:motor\s+)?(?:vehicle|car)\b|\boperat(?:e|ing)\s+(?:\w+\s+)?machine(?:s|ry)?\b|\bmachinery\b/i;
-// "Sun Pharma" is a manufacturer name.
-const SUN_PATTERN = /\bsun(?:light|burn|burned|lamps?|screens?)?\b(?!\s+pharma)|\bphotosensitiv(?:e|ity)\b|\btanning\s+(?:beds?|booths?|lamps?)\b|\bultraviolet\b/i;
+const SUN_PATTERN = /\b(?:sunburn(?:s|ed)?|sunlamps?|sunscreens?|photosensitiv(?:e|ity)|tanning|ultraviolet|UV radiation)\b|\bprotect (?:your |the )?skin from (?:the )?sun(?:light)?\b/i;
+const DEVICE_OR_STORAGE = /\b(?:pump|tubing|housing|vial|packaging|container|storage|store[ds]?)\b/i;
 
 export const LABEL_TAG_RULES: Readonly<Record<LabelTag, TagRule>> = {
   alcohol: { about: "alcohol", pattern: ALCOHOL_PATTERN },
   grapefruit: { about: "grapefruit", pattern: /\bgrapefruit\b/i },
-  drowsiness: { about: "drowsiness, driving or operating machinery", pattern: DROWSINESS_PATTERN },
-  sun: { about: "sun or sunlight", pattern: SUN_PATTERN },
+  drowsiness: {
+    about: "drowsiness, driving or operating machinery",
+    pattern: DROWSINESS_PATTERN,
+    exclude: /\bhypoglyc(?:emia|aemia) (?:can|may) impair\b/i,
+  },
+  sun: { about: "sun or sunlight", pattern: SUN_PATTERN, exclude: DEVICE_OR_STORAGE },
 };
 
 interface TagHit {
@@ -45,9 +50,10 @@ interface TagHit {
   readonly span: TextSpan;
 }
 
-function firstHit(item: CabinetItem, pattern: RegExp): TagHit | undefined {
+function firstHit(item: CabinetItem, { pattern, exclude }: TagRule): TagHit | undefined {
   for (const section of LABEL_TAG_SECTIONS) {
     for (const sentence of sectionSentences(item.label, section)) {
+      if (exclude?.test(sentence.text)) continue;
       const span = spanOf(pattern, sentence.text);
       if (span !== undefined) return { sentence, span };
     }
@@ -60,8 +66,8 @@ function severityOf(section: LabelSectionName): Severity {
 }
 
 function tagFlag(item: CabinetItem, tag: LabelTag): readonly Flag[] {
-  const { about, pattern } = LABEL_TAG_RULES[tag];
-  const hit = firstHit(item, pattern);
+  const { about } = LABEL_TAG_RULES[tag];
+  const hit = firstHit(item, LABEL_TAG_RULES[tag]);
   if (hit === undefined) return [];
   const { section, text } = hit.sentence;
   const matched = text.slice(hit.span.start, hit.span.end);
