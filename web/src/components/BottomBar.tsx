@@ -69,7 +69,7 @@ export function BottomBar() {
   const large = useSyncExternalStore(subscribe, isLarge, () => false);
   const speaking = useSyncExternalStore(subscribeSpeech, isSpeaking, () => false);
   return (
-    <div className="fixed z-30 inset-x-0 bottom-0 px-[var(--margin)] pb-[var(--margin)] flex items-end justify-between gap-3 pointer-events-none print:hidden">
+    <aside aria-label="Page tools" className="fixed z-30 inset-x-0 bottom-0 px-[var(--margin)] pb-[var(--margin)] flex items-end justify-between gap-3 pointer-events-none print:hidden">
       <p className="pointer-events-auto flex items-center gap-2 h-8 px-3 rounded-full border border-dashed border-[var(--rule)] bg-[rgba(25,26,30,0.7)] backdrop-blur-[8px] font-[family-name:var(--font-space)] text-[11px] font-bold uppercase">
         <span className="h-[5px] w-[5px] bg-[var(--accent)]" aria-hidden="true" />
         {items.length === 0 ? "Checks against FDA labels" : `${items.length} ${items.length === 1 ? "product" : "products"} in your cabinet`}
@@ -102,6 +102,6 @@ export function BottomBar() {
           <Wave active={speaking} />
         </button>
       </div>
-    </div>
+    </aside>
   );
 }

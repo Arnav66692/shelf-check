@@ -59,7 +59,7 @@ export function SiteHeader() {
   return (
     <header className="relative z-30 print:hidden">
       <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3 px-[var(--margin)] pt-[var(--margin)]">
-        <Link href="/" className="flex items-center gap-2 text-ink">
+        <Link href="/" className="flex items-center gap-2 py-2 -my-2 text-ink">
           <Mark />
           <span className="wordmark text-[15px]">Shelf Check</span>
         </Link>
