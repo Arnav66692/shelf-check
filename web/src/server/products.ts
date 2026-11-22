@@ -1,11 +1,8 @@
-import { findByBarcode, findByNdc, PER_EACH_UNIT, searchByName } from "@lookup/index.ts";
+import { findByCode, PER_EACH_UNIT, searchByName } from "@lookup/index.ts";
 import type { CodeLookupResult, IdentifiedProduct } from "@lookup/types.ts";
 import type { Product, Strength } from "@/lib/model";
 
 const RESULT_LIMIT = 12;
-const DIGITS_ONLY = /^\d+$/;
-const NDC_SHAPE = /^\d{4,5}-\d{3,4}(-\d{1,2})?$/;
-const BARCODE_LENGTHS = [12, 13];
 
 function productId(record: IdentifiedProduct): string {
   if (record.productNdc) return `ndc:${record.productNdc}`;
@@ -112,14 +109,13 @@ function fromCode(result: CodeLookupResult): FindResult {
 
 export async function findProducts(rawQuery: string): Promise<FindResult> {
   const query = rawQuery.trim();
-  const compact = query.replace(/\s+/g, "");
-  if (NDC_SHAPE.test(compact)) return fromCode(await findByNdc(compact));
-  if (DIGITS_ONLY.test(compact) && compact.length >= 8) {
-    if (BARCODE_LENGTHS.includes(compact.length)) {
-      const byBarcode = fromCode(await findByBarcode(compact));
-      return byBarcode.products.length > 0 ? byBarcode : { products: [], note: BARCODE_NOT_FOUND };
-    }
-    return fromCode(await findByNdc(compact));
+  const code = await findByCode(query);
+  if (code !== null) {
+    const result = fromCode(code);
+    const digits = query.replace(/\D/g, "");
+    return result.products.length === 0 && digits.length >= 12 && code.status === "not_found" && code.reason === "no_match"
+      ? { products: [], note: BARCODE_NOT_FOUND }
+      : result;
   }
   const found = await searchByName(query, { limit: RESULT_LIMIT });
   if (found.groups.length === 0) {

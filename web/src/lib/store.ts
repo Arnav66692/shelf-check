@@ -14,6 +14,7 @@ export type Supply = {
   readonly expires?: string;
   readonly dosesLeft?: number;
   readonly dosesPerDay?: number;
+  readonly countedOn?: string;
 };
 
 export type Person = {
