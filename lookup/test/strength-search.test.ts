@@ -107,3 +107,13 @@ test("the formula sold most often under a brand name comes before its one-off va
   const [asked] = groupProducts(products, parseQuery("nyquil allergy"));
   expect(asked?.group.product.displayName).toBe("Vicks NyQuil Allergy");
 });
+
+test("a hospital-only route ranks after pills unless the search asks for an injection", () => {
+  const candidate = (name: string, route: string) => ({ name, otherNames: "metoprolol", amounts: [], penalty: 0, route });
+  const iv = candidate("Metoprolol Tartrate", "INTRAVENOUS");
+  const tablet = candidate("Metoprolol Tartrate", "ORAL");
+  const pen = candidate("Metoprolol Tartrate", "SUBCUTANEOUS");
+  expect(scoreCandidate(tablet, parseQuery("metoprolol"))).toBeGreaterThan(scoreCandidate(iv, parseQuery("metoprolol")));
+  expect(scoreCandidate(pen, parseQuery("metoprolol"))).toBe(scoreCandidate(tablet, parseQuery("metoprolol")));
+  expect(scoreCandidate(iv, parseQuery("metoprolol injection"))).toBeGreaterThanOrEqual(scoreCandidate(tablet, parseQuery("metoprolol injection")) - 1);
+});

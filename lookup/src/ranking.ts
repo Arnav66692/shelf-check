@@ -23,6 +23,7 @@ export interface Candidate {
   readonly name: string;
   readonly otherNames: string;
   readonly form?: string;
+  readonly route?: string;
   readonly amounts: readonly (DeclaredAmount & { readonly ingredientTokens?: readonly string[] })[];
   readonly penalty: number;
 }
@@ -53,6 +54,7 @@ function scoreStrength(candidate: Candidate, query: ParsedQuery): number {
 
 const CHILD_WORD = /^(?:infants?|child(?:ren)?s?|pediatric|kids?|junior|jr)$/i;
 const CHILD_ONLY_PENALTY = EXTRA_WORD_PENALTY * 2;
+const INJECTION_PENALTY = EXTRA_WORD_PENALTY * 3;
 
 export function scoreCandidate(candidate: Candidate, query: ParsedQuery): number {
   const wanted = query.nameTokens.map(comparableToken);
@@ -75,8 +77,11 @@ export function scoreCandidate(candidate: Candidate, query: ParsedQuery): number
   const nameScore = wanted.length === 0 ? 0 : (BRAND_WEIGHT * brandHits + GENERIC_WEIGHT * otherHits) / wanted.length;
   // Adult products come first unless the search asks for a child's version.
   const childOnly = [...brandTokens].some((token) => CHILD_WORD.test(token)) && !wanted.some((token) => CHILD_WORD.test(token));
+  // Most people search for what they take at home, so a hospital-only route comes later unless asked for.
+  const clinicOnly = dosageForms.length === 0 && /\b(?:intravenous|intramuscular|epidural|intrathecal|intra-?arterial)\b/i.test(candidate.route ?? "") &&
+    !/\bsubcutaneous\b/i.test(candidate.route ?? "") && !/\b(?:iv|injection|injectable|vial|shot)\b/i.test(query.text);
   return nameScore + strengthScore + formScore - EXTRA_WORD_PENALTY * Math.min(extraWords, MAX_EXTRA_WORDS) -
-    (childOnly ? CHILD_ONLY_PENALTY : 0) - candidate.penalty;
+    (childOnly ? CHILD_ONLY_PENALTY : 0) - (clinicOnly ? INJECTION_PENALTY : 0) - candidate.penalty;
 }
 
 function declaredAmount(ingredient: ProductIngredient): readonly NamedAmount[] {
@@ -99,6 +104,7 @@ export function productCandidate(product: IdentifiedProduct): Candidate {
       (product.offMarket === true ? OFF_MARKET_PENALTY : 0) +
       (product.ingredients.some((ingredient) => ingredient.unit.startsWith(HOMEOPATHIC_UNIT_PREFIX)) ? HOMEOPATHIC_PENALTY : 0),
     ...(product.form === undefined ? {} : { form: product.form }),
+    ...(product.route === undefined ? {} : { route: product.route }),
   };
 }
 
