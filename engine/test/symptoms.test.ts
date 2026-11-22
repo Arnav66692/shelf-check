@@ -359,3 +359,18 @@ test("round 9 slang emergencies are caught and ordinary lookalikes are not", () 
     expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
   }
 });
+
+test("final sweep emergencies are caught", () => {
+  for (const text of [
+    "feels like an elephant sitting on my chest", "my heart feels like its gonna explode and my arm hurts", "suddenly cant see out of one eye and feel dizzy",
+    "my inhaler isnt working and i can barely talk", "wheezing so bad i cant finish a sentence", "my sugar is 40 and im shaking and confused",
+    "face blowing up after eating peanuts", "she collapsed and is jerking all over", "pooping bright red blood a lot and feel dizzy",
+    "my 2 year old drank some of the lamp oil", "found my kid with an empty bottle of childrens benadryl", "4 month old fell off the bed and keeps vomiting",
+    "my friend popped a bunch of percs and is barely breathing", "i double dosed my warfarin by mistake", "i wanna unalive myself",
+    "I feel like hurting myself", "I want to hurt myself", "heart racing and I feel like I'm going to pass out",
+  ]) expect(screenEmergency(text).emergency, text).toBe(true);
+  expect(screenEmergency("I want to hurt myself")).toMatchObject({ selfHarm: true });
+  for (const ordinary of ["my sugar is 140 after lunch", "my sugar was 105 this morning", "i fell off my bike and scraped my knee", "my inhaler is almost empty", "i ate peanuts and feel fine"]) {
+    expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+  }
+});
