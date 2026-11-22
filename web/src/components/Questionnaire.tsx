@@ -8,11 +8,11 @@ import { useQuestionnaire, type Person } from "@/lib/store";
 const CONDITION_IDS = Object.keys(CONDITION_LABELS) as ConditionId[];
 
 const GOALS = [
-  { href: "/add", label: "Check what is in my medicine cabinet" },
-  { href: "/symptoms", label: "I feel unwell and want to know what I already have for it" },
-  { href: "/peptides", label: "I use or am thinking about peptides" },
-  { href: "/pills", label: "I found a pill and do not know what it is" },
-  { href: "/dose", label: "I need to check an injection dose" },
+  { href: "/add", label: "Check what is in my medicine cabinet", button: "Save and add my medicines" },
+  { href: "/symptoms", label: "I feel unwell and want to know what I already have for it", button: "Save and say how I feel" },
+  { href: "/peptides", label: "I use or am thinking about peptides", button: "Save and go to peptides" },
+  { href: "/pills", label: "I found a pill and do not know what it is", button: "Save and find the pill" },
+  { href: "/dose", label: "I need to check an injection dose", button: "Save and check a dose" },
 ] as const;
 
 type Answers = { name: string; profile: Profile; goal: string };
@@ -234,7 +234,7 @@ export function Questionnaire() {
           </button>
         )}
         <button type="button" className="btn" onClick={next}>
-          {last ? "Done" : "Next"}
+          {last ? (GOALS.find((goal) => goal.href === answers.goal)?.button ?? "Save and continue") : "Next"}
         </button>
       </div>
     </div>

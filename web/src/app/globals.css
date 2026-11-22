@@ -122,7 +122,8 @@ h3.narrow {
 
 .facts {
   min-width: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  hyphens: auto;
   background: rgba(25, 26, 30, 0.72);
   border: 1px dashed var(--rule);
   border-radius: 8px;
@@ -272,7 +273,8 @@ a {
 }
 
 .quote {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border-left: 1px dashed var(--accent);
   padding: 4px 0 4px 14px;
   color: var(--ink);
