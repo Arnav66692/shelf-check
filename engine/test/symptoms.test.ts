@@ -335,3 +335,17 @@ test("round 8 slang emergencies are caught", () => {
     expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
   }
 });
+
+test("round 7 judge's missed emergencies are caught", () => {
+  for (const text of [
+    "she is seizing", "my kid is having a fit", "he wont stop shaking and isnt responding", "kms", "i wanna kms",
+    "blue around her mouth", "blue around her mouth and shes super pale", "she is very pale and blue",
+    "drank a bottle of nyquil", "i drank half a bottle of nyquil", "her stool is black like tar", "pooping blood",
+    "nosebleed that wont stop", "i cant stop bleeding",
+    "chest is crushing and it goes down my left arm", "my kid is shaking all over and wont stop, like a fit",
+  ]) expect(screenEmergency(text).emergency, text).toBe(true);
+  expect(screenEmergency("kms").selfHarm).toBe(true);
+  for (const ordinary of ["my kid had a fit about bedtime", "i drank a bottle of water", "she is pale and tired", "my nose bled a little this morning"]) {
+    expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+  }
+});
