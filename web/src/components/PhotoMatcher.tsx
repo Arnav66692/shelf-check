@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MATCHER_TEST } from "@/lib/matcherScore";
+import { nextZephyrId, zephyrWorker } from "@/lib/zephyr";
 
 export type PhotoMatch = {
   readonly setId: string;
@@ -26,13 +27,6 @@ const STEPS: readonly { stage: Exclude<Stage, "done" | "error">; label: string }
   { stage: "compare", label: "Comparing official labels" },
 ];
 
-let sharedWorker: Worker | null = null;
-let nextId = 0;
-
-function worker(): Worker {
-  if (!sharedWorker) sharedWorker = new Worker("/matcher/worker.js?v=4");
-  return sharedWorker;
-}
 
 function titleCase(text: string): string {
   return text.toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase());
@@ -69,12 +63,12 @@ export function PhotoMatcher({ file, onPick, onClose }: { file: File; onPick: (m
   }, [file]);
 
   useEffect(() => {
-    const id = ++nextId;
+    const id = nextZephyrId();
     runId.current = id;
     setStage("model");
     setMatches([]);
     setTiming(null);
-    const target = worker();
+    const target = zephyrWorker();
     function onMessage(event: MessageEvent<WorkerMessage>) {
       const data = event.data;
       if (data.id !== undefined && data.id !== runId.current) return;

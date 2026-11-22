@@ -8,6 +8,7 @@ import { formatStrength, type Product } from "@/lib/model";
 import sampleProducts from "@/lib/sampleProducts.json";
 import { openExample, useCabinet } from "@/lib/store";
 import { BarcodeScanner } from "./BarcodeScanner";
+import { CabinetScan } from "./CabinetScan";
 import { PhotoMatcher, type PhotoMatch } from "./PhotoMatcher";
 import { ProductPanel } from "./ProductPanel";
 
@@ -75,6 +76,7 @@ export function AddView() {
   const [chosen, setChosen] = useState<Product | null>(null);
   const [scanning, setScanning] = useState(false);
   const [matchFile, setMatchFile] = useState<File | null>(null);
+  const [scanAll, setScanAll] = useState(false);
   const photoInput = useRef<HTMLInputElement>(null);
   const matchInput = useRef<HTMLInputElement>(null);
   const sampleStarted = useRef(false);
@@ -191,6 +193,9 @@ export function AddView() {
           </button>
         </form>
         <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <button type="button" className="underline font-bold" onClick={() => setScanAll(true)}>
+            Scan your whole cabinet
+          </button>
           <button type="button" className="underline font-bold" onClick={() => setScanning(true)}>
             Scan the barcode
           </button>
@@ -230,6 +235,8 @@ export function AddView() {
           )}
           <span className="text-sm text-ink-soft">Covers prescription, over the counter and supplements.</span>
         </div>
+
+        {scanAll && <CabinetScan onClose={() => setScanAll(false)} />}
 
         {matchFile && <PhotoMatcher file={matchFile} onPick={pickMatch} onClose={() => setMatchFile(null)} />}
 

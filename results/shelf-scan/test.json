@@ -1,0 +1,6 @@
+{
+  "threshold": 0.62,
+  "found_rate": 0.6275,
+  "wrong_per_shelf": 0.93,
+  "passes": true
+}
