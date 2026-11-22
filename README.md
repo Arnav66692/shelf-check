@@ -96,4 +96,4 @@ The test images are official label artwork, not phone photos of real bottles, so
 
 ## Credits
 
-Open weight models Qwen3-VL 8B, Florence-2 and DINOv2. Libraries: Next.js, React, Tailwind CSS, ZXing, PyTorch, Transformers, FastAPI, Vitest. Built with an AI coding agent (Claude Code), with code review help from Codex. The night-sky visual style follows the Flora template on getlayers.ai, rebuilt in original code with no copied code, images or fonts.
+Open weight models Qwen3-VL 8B, Florence-2 and DINOv2. Libraries: Next.js, React, Tailwind CSS, ZXing, PyTorch, Transformers, FastAPI, Vitest. Built with an AI coding agent (Claude Code), with code review help from Codex. The visual style follows byotone.com, measured and rebuilt in original code with no copied code, images or audio. The fonts are free stand-ins (General Sans, Space Mono, Courier Prime). Two earlier looks are kept on the branches flora-look and heartbeat-look.
