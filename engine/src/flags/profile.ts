@@ -503,7 +503,7 @@ function namesAllergen(hit: PhraseHit): boolean {
   // unrelated allergy. Require the allergen to be an object of the reaction.
   return /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:-type)?(?:\s+reactions?)?\s+(?:to|from|after|following|with)\s+(?:any\s+)?(?:other\s+)?$/i.test(before)
     || /\b(?:allerg\w*|hypersensitiv\w*)[^.;]{0,80}\bmembers? of (?:the )?$/i.test(before)
-    || /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:\s+reactions?)?\s+to\s+[^.;:]{1,140}(?:\b(?:and|or)\s+(?:to\s+)?|including\s+)$/i.test(before)
+    || /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:\s+reactions?)?\s+to\s+[^.;:]{1,140}(?:\b(?:and|or)\s+(?:to\s+)?(?:other\s+)?|including\s+)$/i.test(before)
     || /^\s+(?:may|can) cause (?:an? )?(?:severe |serious )?(?:allergic|anaphylactic) reaction\b/i.test(after);
 }
 
