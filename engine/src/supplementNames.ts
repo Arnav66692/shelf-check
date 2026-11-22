@@ -30,7 +30,7 @@ export const COMMON_NAME_RULES: readonly CommonNameRule[] = [
   { appliesTo: /ginkgo/i, names: [{ term: "ginkgo" }] },
   // Nitrate labels and the sildenafil label name these by class, and RxClass can miss the record.
   {
-    appliesTo: /^(?:nitroglycerin|isosorbide (?:mono|di)nitrate|amyl nitrite)/i,
+    appliesTo: /^(?:nitroglycerin|isosorbide(?: (?:mono|di)nitrate)?|amyl nitrite)\b/i,
     names: [{ term: "nitric oxide donors" }, { term: "organic nitrates" }, { term: "nitrates" }],
   },
   { appliesTo: /fish oil|omega-3|eicosapenta|docosahexa/i, names: [{ term: "fish oil" }, { term: "omega-3" }] },

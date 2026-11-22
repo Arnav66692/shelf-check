@@ -345,3 +345,8 @@ test("a changed blood thinner effect, raised lithium levels and bone marrow supp
   expect(run("lithium", "Lithium levels should be closely monitored when patients start or stop ibuprofen use with lithium.", "ibuprofen")).toBe("ask");
   expect(run("lisinopril", "Lithium: Symptoms of lithium toxicity (7.5). NSAIDs: increased risk of renal impairment with ibuprofen.", "ibuprofen")).not.toBe("stop");
 });
+
+test("a nitrate is matched to a label that warns about nitrates or nitric oxide donors, even without a drug class", () => {
+  const viagra = { ...drug("sildenafil"), label: { contraindications: ["Administration of VIAGRA to patients using nitric oxide donors, such as organic nitrates or organic nitrites in any form is contraindicated."] } };
+  expect(fromLabelOf(interactionFlags([viagra, drug("isosorbide")]), "sildenafil")[0]?.severity).toBe("stop");
+});
