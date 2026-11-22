@@ -175,7 +175,8 @@ function matchesIn(sentence: LabelSentence, sentenceIndex: number, terms: readon
     // "... compared to monotherapy" states the extra risk of the pair, it is not a study comparison.
     if (ALLERGY.test(text) || UNRESOLVED_POLARITY.test(text.replace(PROHIBITION, "").replace(/\bcompared (?:to|with) monotherapy\b/gi, ""))) continue;
     const harm = SERIOUS_HARM.exec(text);
-    const prohibition = AVOID_COMBINATION.test(text.replace(/\bto avoid\b/gi, ""));
+    // "avoid alcoholic drinks" is about alcohol, not about the other product named in the same line.
+    const prohibition = AVOID_COMBINATION.test(text.replace(/\bto avoid\b/gi, "").replace(/\bavoid (?:alcoholic (?:drinks|beverages)|alcohol)\b/gi, ""));
     if (harm && !prohibition && RISK_REDUCTION.test(text.slice(0, harm.index))) continue;
     const hasCoUseCue = CO_USE_CUE.test(text) || prohibition;
     const coUse = hasCoUseCue || sentence.section === "drug_interactions";
