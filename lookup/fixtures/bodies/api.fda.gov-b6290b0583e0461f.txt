@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 10,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "55301-986",
+      "generic_name": "Doxylamine Succinate",
+      "labeler_name": "ARMY AND AIR FORCE EXCHANGE SERVICE",
+      "brand_name": "Sleep Aid",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "55301-986-27",
+          "description": "2 BLISTER PACK in 1 CARTON (55301-986-27)  / 16 TABLET in 1 BLISTER PACK",
+          "marketing_start_date": "20190401",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "ARMY AND AIR FORCE EXCHANGE SERVICE"
+        ],
+        "rxcui": [
+          "1101446"
+        ],
+        "spl_set_id": [
+          "009df4c9-a524-4b8f-be7a-52c521e68ff1"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0614299799868"
+        ],
+        "unii": [
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "f814504b-d6f4-4ced-b700-806ed966f68b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190401",
+      "product_id": "55301-986_f814504b-d6f4-4ced-b700-806ed966f68b",
+      "application_number": "ANDA040564",
+      "brand_name_base": "Sleep Aid",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]"
+      ]
+    }
+  ]
+}

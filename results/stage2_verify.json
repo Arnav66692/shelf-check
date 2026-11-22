@@ -1,0 +1,1544 @@
+{
+ "summary": {
+  "labels": 100,
+  "verified": 61,
+  "verified_wrong": 0,
+  "status": {
+   "check": 29,
+   "verified": 61,
+   "unreadable": 10
+  },
+  "verified_by": {
+   "code_and_text": 59,
+   "name_and_text": 2
+  },
+  "check_right": 25,
+  "check_total": 29
+ },
+ "rows": [
+  {
+   "key": "cf7c3d65-11d2-49cd-b207-8ccc6a221fe0",
+   "kind": "rx",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "hyoscyamine",
+     0.12,
+     "mg"
+    ],
+    [
+     "methenamine",
+     120.0,
+     "mg"
+    ],
+    [
+     "methylene blue",
+     10.8,
+     "mg"
+    ],
+    [
+     "phenyl salicylate",
+     36.2,
+     "mg"
+    ],
+    [
+     "sodium phosphate, monobasic",
+     40.8,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "0fa4cd66-66ad-4ec9-b38c-6b5840df39df",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "ibuprofen",
+     400.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "947ebb7c-492b-4b83-aa1c-81e282df6421",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "progesterone",
+     100.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "586a5911-e30b-40ed-a056-9e67920ca951",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "amoxicillin",
+     875.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "c10e7eb1-0155-43ff-aa56-8cd468e8e84d",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "dantrolene",
+     100.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "8ab766c2-d554-4141-92b2-fbe038e80c9f",
+   "kind": "rx",
+   "right": true,
+   "status": "check",
+   "by": "code_only",
+   "facts": [
+    [
+     "ascorbic acid",
+     60.0,
+     "mg"
+    ],
+    [
+     "biotin",
+     280.0,
+     "mcg"
+    ],
+    [
+     "calcium carbonate",
+     80.0,
+     "mg"
+    ],
+    [
+     "cholecalciferol",
+     25.0,
+     "mcg"
+    ],
+    [
+     "doconexent",
+     350.0,
+     "mg"
+    ],
+    [
+     "ferrous asparto glycinate",
+     5.0,
+     "mg"
+    ],
+    [
+     "folic acid",
+     400.0,
+     "mcg"
+    ],
+    [
+     "iron",
+     13.0,
+     "mg"
+    ],
+    [
+     "levomefolate",
+     600.0,
+     "mcg"
+    ],
+    [
+     "lowbush blueberry extract",
+     25.0,
+     "mg"
+    ],
+    [
+     "magnesium oxide",
+     25.0,
+     "mg"
+    ],
+    [
+     "potassium iodide",
+     150.0,
+     "mcg"
+    ],
+    [
+     "pyridoxine",
+     26.0,
+     "mg"
+    ],
+    [
+     "vitamin b12",
+     13.0,
+     "mcg"
+    ],
+    [
+     "vitamin e",
+     4.5,
+     "mg"
+    ]
+   ],
+   "read": [
+    [
+     "docosahexaenoate",
+     350.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "82c0c5d1-df2d-4352-bd12-99f955af569e",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "amoxicillin",
+     500.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "4a828eb5-0383-f524-e063-6394a90a8449",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "diclofenac",
+     25.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "cbe5bd6a-f36a-4557-82d8-ef4e49d310e9",
+   "kind": "rx",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "temazepam",
+     15.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "45410338-6bff-476b-b8e1-6c6238205a99",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "azithromycin",
+     500.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "b8defac4-9deb-433b-928e-0ef4ee0123a2",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "levofloxacin",
+     500.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "404df13d-4ada-4324-9eed-e21f5d5043a4",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "ibuprofen",
+     800.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "b49b1e4c-de20-446d-b80a-75c7f0d41ddf",
+   "kind": "rx",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "methylergonovine",
+     0.2,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "362034e9-2830-19a5-e063-6394a90a8dfb",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "anastrozole",
+     1.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "c328f555-2da8-43ac-bc04-0e89d4d2aa53",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "spironolactone",
+     50.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "c0379093-3e19-45ae-a616-0f24a1d255f4",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "dabigatran etexilate",
+     150.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "f743f7e0-74cf-47e5-bf21-f2b75d2596dc",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "temozolomide",
+     180.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "08738ad4-1607-4d55-af71-6790477353bd",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "spironolactone",
+     100.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "dc91a427-8214-484b-af72-52075b2286a1",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "ibuprofen",
+     600.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "4d64a93b-c439-5737-e063-6294a90a79ac",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "sildenafil",
+     20.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "3baeda95-d098-437a-b360-87a9c3f3fd9b",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "cyclobenzaprine",
+     5.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "08d0a109-3307-47b5-8ff2-c0ad83e66f08",
+   "kind": "rx",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "clonazepam",
+     0.5,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "4aa896b1-4fd5-513e-e063-6294a90ab950",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "hydroxyzine",
+     25.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "41d4e09b-b90c-4243-acd8-f2e06ebf4089",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "glipizide",
+     10.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "baf8ec98-bd0c-4b87-a7ee-813335431b89",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "rifabutin",
+     150.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "2bf7d838-6274-4d8a-91cb-b27e1e81d273",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "doxepin",
+     10.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "5d2df7a8-7d7d-c4b9-e063-6394a90a0a7a",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "prednisone",
+     10.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "7e96b724-5f5f-43cb-8d8b-adff3e1fc779",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "valproate",
+     250.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "c0ca008e-0e28-412e-a58f-70f63817713b",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "cephalexin",
+     250.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "9161cb5e-63e5-41d7-9bde-66c7b7b7a2f3",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "cyclobenzaprine",
+     10.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "385301f5-e59d-42d5-8544-aadf0ee0c967",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "aripiprazole",
+     20.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "1076ba9a-0168-492f-ba9b-99fa02186092",
+   "kind": "rx",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  },
+  {
+   "key": "db007ac0-020e-4962-8903-7497ab96a74e",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "imipramine",
+     50.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "5d407f3f-fc59-331d-e063-6394a90ac10c",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "spironolactone",
+     25.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "5e569972-eb5d-a0bd-e063-6294a90a2340",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "metaxalone",
+     800.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "03afbc5a-a9dc-e823-e063-6394a90a0cb2",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "propranolol",
+     20.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "aea4e2a1-2089-40dc-9eee-deaab4f21397",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "metronidazole",
+     500.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "3c2130f9-a0d8-4a4e-bcad-36379202b7bb",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "cefdinir",
+     300.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "f3a77482-f490-f350-e053-2a95a90ad8cb",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "estradiol",
+     1.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "b397d4be-d2ef-419a-98ac-844069c99d56",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "amoxicillin",
+     875.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "7069521a-c7f9-4e8d-99b8-0cb5c971e7cf",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "atovaquone",
+     250.0,
+     "mg"
+    ],
+    [
+     "proguanil",
+     100.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "0c45d793-6f2f-4622-b5ed-6875acfbc02b",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "spironolactone",
+     25.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "73cd20d5-2521-4b93-a221-fa3fe490eba6",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "penicillin v",
+     250.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "5f6c3eed-2a5d-46ed-9a7c-59715f338a15",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "nevirapine",
+     200.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "87b87b57-021a-4cb2-9edd-6efa732c208f",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "carbamazepine",
+     100.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "74dc9949-010c-4f2c-9aef-63ab466ba657",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "propranolol",
+     20.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "8bd56c80-2f98-4b6e-809e-d0e981c3dcb3",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "rosuvastatin",
+     10.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "51cdb22b-035f-47d7-8048-38006e2589f2",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "nifedipine",
+     10.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "36284496-e56e-466c-9b56-6007bb5bb699",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "pyridostigmine",
+     60.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "9b022ae9-dd52-43ae-804b-ddf8e7cfd530",
+   "kind": "rx",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "trazodone",
+     150.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "ec08a6ee-3d71-0fa9-e053-2995a90a9cb1",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "loratadine",
+     10.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "aeb26c0e-4efe-4099-9b68-47824f4506c0",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "dextromethorphan",
+     15.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "3205339a-3914-4e25-e063-6394a90a07cd",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "code_only",
+   "facts": [
+    [
+     "dimethicone",
+     180.0,
+     "mg"
+    ]
+   ],
+   "read": []
+  },
+  {
+   "key": "d9d3d087-ca74-4916-9e6d-93d67efc463e",
+   "kind": "otc",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  },
+  {
+   "key": "e9534a13-ee8f-470f-8dd1-8ef0ce68526a",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "acetaminophen",
+     250.0,
+     "mg"
+    ],
+    [
+     "aspirin",
+     250.0,
+     "mg"
+    ],
+    [
+     "caffeine",
+     65.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "e7f470cf-f036-afd9-e053-2995a90a9186",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "code_only",
+   "facts": [
+    [
+     "dimethicone",
+     80.0,
+     "mg"
+    ]
+   ],
+   "read": [
+    [
+     "simethicone",
+     80.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "7f80346e-fe30-4a22-aa42-193c5fad93a2",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "caffeine",
+     200.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "fd199a7f-76ca-fefc-e053-6294a90a821d",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "aspirin",
+     81.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "37291cab-e350-d8e3-e063-6294a90a9cb1",
+   "kind": "otc",
+   "right": false,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "omeprazole",
+     20.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "47f5a78b-66b6-2e09-e063-6294a90a8ad5",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "calcium carbonate",
+     1250.0,
+     "mg"
+    ],
+    [
+     "magnesium hydroxide",
+     250.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "3803eb97-4d12-4e5d-9a62-f84cc1026676",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "bismuth subsalicylate",
+     262.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "ea0f2e8e-59e5-41d6-9cd5-545b81c902e4",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "cimetidine",
+     200.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "c118b290-f821-4e73-906e-8a93edaf34e4",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "ibuprofen",
+     200.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "0d59780a-ef22-4b67-8b42-9795dbec8db0",
+   "kind": "otc",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  },
+  {
+   "key": "7342bbf4-ebb9-446d-83bb-6ddcb3a44fa7",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "aspirin",
+     81.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "bd11081f-c5d1-4c98-8f5a-4c45269df79b",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "name_and_text",
+   "facts": [
+    [
+     "aspirin",
+     81.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "32819305-9bbd-8843-e063-6294a90a7f2e",
+   "kind": "otc",
+   "right": false,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "acetaminophen",
+     325.0,
+     "mg"
+    ],
+    [
+     "doxylamine",
+     6.25,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "0f8cfcc5-e975-6645-e063-6394a90adf6c",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "calcium carbonate",
+     1000.0,
+     "mg"
+    ],
+    [
+     "magnesium hydroxide",
+     200.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "6307485a-8be6-40ee-899b-00eb3ee8ce61",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "ibuprofen",
+     200.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "3d89849f-60a1-40fc-bd0a-a5ff9f758a49",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "aspirin",
+     81.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "56474a81-6e10-6c67-e063-6294a90a28c5",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "aspirin",
+     325.0,
+     "mg"
+    ],
+    [
+     "citric acid",
+     1000.0,
+     "mg"
+    ],
+    [
+     "sodium bicarbonate",
+     1916.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "f7682626-5c29-44af-a32d-3fa52e7f7482",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "guaifenesin",
+     1200.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "b11a4c4e-374c-403e-a757-5e9700f9f03b",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "aspirin",
+     81.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "0f8d39d7-173b-7750-e063-6394a90ade82",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "calcium carbonate",
+     1330.0,
+     "mg"
+    ],
+    [
+     "magnesium hydroxide",
+     235.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "5d433829-c493-bb07-e063-6294a90a04b6",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "code_only",
+   "facts": [
+    [
+     "dimethicone",
+     125.0,
+     "mg"
+    ]
+   ],
+   "read": [
+    [
+     "simethicone",
+     125.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "20f8fe27-f97f-4278-a5a8-79b5fc47ef3b",
+   "kind": "otc",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  },
+  {
+   "key": "cfe9214d-25e9-7729-e053-2a95a90a0dfb",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "name_and_text",
+   "facts": [
+    [
+     "bismuth subsalicylate",
+     262.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "ba4f927a-4bbe-0d87-e053-2995a90a8c20",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "naproxen",
+     220.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "fe78e02c-79ba-4d07-b2eb-3b347c6655e5",
+   "kind": "otc",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  },
+  {
+   "key": "52f5cda7-382e-199a-e063-6294a90ab75b",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "guaifenesin",
+     400.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "5e163c21-59dc-fcfd-e063-6294a90a282c",
+   "kind": "otc",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  },
+  {
+   "key": "4b1b0e2a-0f58-c3b1-e063-6294a90aa1fb",
+   "kind": "otc",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  },
+  {
+   "key": "667ffb59-9bff-45a7-89f0-ccfa0d841909",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "calcium carbonate",
+     500.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "28d9897d-46bf-d206-e063-6394a90a2b27",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "calcium carbonate",
+     1000.0,
+     "mg"
+    ],
+    [
+     "magnesium hydroxide",
+     200.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "02e3f4ce-8961-425c-98a9-3b9d66709ca5",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "calcium polycarbophil",
+     625.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "43745d42-f859-4168-a2dd-2c8ae47ae590",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "naproxen",
+     220.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "2b839e8b-f4ac-4379-ae50-ace4008705d8",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "cetirizine",
+     10.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "2f9ea017-a48d-a225-e063-6294a90a9ec3",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "calcium carbonate",
+     1000.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "252b143f-eee8-f407-e063-6394a90a0a08",
+   "kind": "otc",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  },
+  {
+   "key": "03774690-662b-1c30-e063-6294a90a3488",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "aspirin",
+     81.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "113df1bc-a217-33ea-e063-6294a90a4643",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "acetaminophen",
+     650.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "f5ab0098-14ab-440d-b739-aea8a77b01dc",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "code_only",
+   "facts": [
+    [
+     "dimethicone",
+     125.0,
+     "mg"
+    ],
+    [
+     "loperamide",
+     2.0,
+     "mg"
+    ]
+   ],
+   "read": [
+    [
+     "loperamide",
+     2.0,
+     "mg"
+    ],
+    [
+     "simethicone",
+     125.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "b00ec380-4e6e-4a3b-958c-50c75cff81a0",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "chlorpheniramine",
+     4.0,
+     "mg"
+    ],
+    [
+     "dextromethorphan",
+     30.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "45a0c910-7dd7-6a42-e063-6394a90a491c",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "naproxen",
+     220.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "0340ef94-d2b4-47af-a045-d0d031293984",
+   "kind": "otc",
+   "right": true,
+   "status": "verified",
+   "by": "code_and_text",
+   "facts": [
+    [
+     "omeprazole",
+     20.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "84ffa6d6-03e1-59e8-e053-2a91aa0afd6e",
+   "kind": "otc",
+   "right": false,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "bismuth subsalicylate",
+     265.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "653be152-7629-41f5-a864-62803f6eadfb",
+   "kind": "otc",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  },
+  {
+   "key": "7e8196ec-6695-40b0-a212-e14e9bb606fa",
+   "kind": "otc",
+   "right": true,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "diphenhydramine",
+     25.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "0429d816-f3a9-2076-e063-6394a90aef21",
+   "kind": "otc",
+   "right": false,
+   "status": "check",
+   "by": "text_only",
+   "facts": [
+    [
+     "bismuth subsalicylate",
+     200.0,
+     "mg"
+    ]
+   ]
+  },
+  {
+   "key": "0ccf0eca-3914-b27a-e063-6294a90a493e",
+   "kind": "otc",
+   "right": false,
+   "status": "unreadable",
+   "by": "text_only",
+   "facts": []
+  }
+ ]
+}

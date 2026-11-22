@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "50580-573",
+      "generic_name": "Diphenhydramine hydrochloride",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "BENADRYL Allergy",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "12.5 mg/5mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-573-04",
+          "description": "1 BOTTLE in 1 CARTON (50580-573-04)  / 118 mL in 1 BOTTLE",
+          "marketing_start_date": "20241202",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "1049906",
+          "1049908"
+        ],
+        "spl_set_id": [
+          "224ba2a3-1a93-29c8-e063-6394a90a9bef"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450534248"
+        ],
+        "unii": [
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "SOLUTION",
+      "spl_id": "2cc68544-e514-f895-e063-6394a90aa577",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20241202",
+      "product_id": "50580-573_2cc68544-e514-f895-e063-6394a90aa577",
+      "application_number": "M012",
+      "brand_name_base": "BENADRYL Allergy",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    }
+  ]
+}

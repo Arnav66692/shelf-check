@@ -1,0 +1,808 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 5,
+      "total": 60
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "43742-1514",
+      "generic_name": "Argentum Nitricum, Berberis Vulgaris, Iodium, Kali Carbonicum, Natrum Muriaticum, Adrenalinum, Cortisone Aceticum, DHEA, Glandula Suprarenalis Suis, Hypophysis Suis, Hypothalamus Suis, Melatonin, Testosterone, Arsenicum Album, Phosphorus, Proteus (Vulgaris), Sepia, Silicea, Alloxanum, Corticotropin Releasing Hormone, Adrenocorticotrophin, Aldosterone",
+      "labeler_name": "Deseret Biologicals, Inc.",
+      "dea_schedule": "CIII",
+      "brand_name": "HP Axis",
+      "active_ingredients": [
+        {
+          "name": "SILVER NITRATE",
+          "strength": "6 [hp_X]/mL"
+        },
+        {
+          "name": "BERBERIS VULGARIS ROOT BARK",
+          "strength": "6 [hp_X]/mL"
+        },
+        {
+          "name": "IODINE",
+          "strength": "6 [hp_X]/mL"
+        },
+        {
+          "name": "POTASSIUM CARBONATE",
+          "strength": "6 [hp_X]/mL"
+        },
+        {
+          "name": "SODIUM CHLORIDE",
+          "strength": "6 [hp_X]/mL"
+        },
+        {
+          "name": "EPINEPHRINE",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "CORTISONE ACETATE",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "PRASTERONE",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "SUS SCROFA ADRENAL GLAND",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "SUS SCROFA PITUITARY GLAND",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "SUS SCROFA HYPOTHALAMUS",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "MELATONIN",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "TESTOSTERONE",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "ARSENIC TRIOXIDE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "PHOSPHORUS",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "PROTEUS VULGARIS",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "SEPIA OFFICINALIS JUICE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "SILICON DIOXIDE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "ALLOXAN",
+          "strength": "18 [hp_X]/mL"
+        },
+        {
+          "name": "CORTICORELIN",
+          "strength": "12 [hp_C]/mL"
+        },
+        {
+          "name": "CORTICOTROPIN",
+          "strength": "15 [hp_C]/mL"
+        },
+        {
+          "name": "ALDOSTERONE",
+          "strength": "15 [hp_C]/mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "43742-1514-1",
+          "description": "30 mL in 1 BOTTLE, DROPPER (43742-1514-1)",
+          "marketing_start_date": "20190726",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Deseret Biologicals, Inc."
+        ],
+        "spl_set_id": [
+          "402f5b05-c71e-4dba-bc2b-049aee42952a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0810151883823"
+        ],
+        "nui": [
+          "N0000000209",
+          "N0000000245",
+          "N0000175552",
+          "N0000175555",
+          "N0000175570",
+          "M0003647",
+          "N0000175824",
+          "N0000000146",
+          "M0001109",
+          "M0000499",
+          "N0000175941"
+        ],
+        "pharm_class_moa": [
+          "Adrenergic alpha-Agonists [MoA]",
+          "Adrenergic beta-Agonists [MoA]",
+          "Androgen Receptor Agonists [MoA]"
+        ],
+        "pharm_class_epc": [
+          "alpha-Adrenergic Agonist [EPC]",
+          "beta-Adrenergic Agonist [EPC]",
+          "Catecholamine [EPC]",
+          "Androgen [EPC]",
+          "Adrenocorticotropic Hormone [EPC]"
+        ],
+        "pharm_class_cs": [
+          "Catecholamines [CS]",
+          "Androstanes [CS]",
+          "Adrenocorticotropic Hormone [CS]"
+        ],
+        "unii": [
+          "95IT3W8JZE",
+          "1TH8Q20J0U",
+          "9679TC07X4",
+          "BQN1B9B9HA",
+          "451W47IQ8X",
+          "YKH834O4BH",
+          "883WKN7W8X",
+          "459AG36T1B",
+          "398IYQ16YV",
+          "L0PFEMQ1DT",
+          "N6R0856Z79",
+          "JL5DK93RCL",
+          "3XMK78S47O",
+          "S7V92P67HO",
+          "27YLU75U4W",
+          "11T9HCO30O",
+          "QDL83WN8C2",
+          "ETJ7Z6XBU4",
+          "6SW5YHA5NG",
+          "305OE8862Y",
+          "K0U68Q2TXA",
+          "4964P6T9RB"
+        ]
+      },
+      "marketing_category": "UNAPPROVED HOMEOPATHIC",
+      "dosage_form": "LIQUID",
+      "spl_id": "754c41aa-652d-4e5e-89a6-dae139ad2444",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190726",
+      "product_id": "43742-1514_754c41aa-652d-4e5e-89a6-dae139ad2444",
+      "brand_name_base": "HP Axis",
+      "pharm_class": [
+        "Adrenergic alpha-Agonists [MoA]",
+        "Adrenergic beta-Agonists [MoA]",
+        "Adrenocorticotropic Hormone [CS]",
+        "Adrenocorticotropic Hormone [EPC]",
+        "Androgen Receptor Agonists [MoA]",
+        "Androgen [EPC]",
+        "Androstanes [CS]",
+        "Catecholamine [EPC]",
+        "Catecholamines [CS]",
+        "Corticosteroid Hormone Receptor Agonists [MoA]",
+        "Corticosteroid [EPC]",
+        "alpha-Adrenergic Agonist [EPC]",
+        "beta-Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "52119-017",
+      "generic_name": "Melatonin",
+      "labeler_name": "Swati Spentose Private Limited",
+      "active_ingredients": [
+        {
+          "name": "MELATONIN",
+          "strength": "1 kg/kg"
+        }
+      ],
+      "finished": false,
+      "packaging": [
+        {
+          "package_ndc": "52119-017-01",
+          "description": "1 kg in 1 DRUM (52119-017-01)",
+          "marketing_start_date": "01-JUL-19"
+        },
+        {
+          "package_ndc": "52119-017-02",
+          "description": "2 kg in 1 DRUM (52119-017-02)",
+          "marketing_start_date": "01-JUL-19"
+        },
+        {
+          "package_ndc": "52119-017-05",
+          "description": "5 kg in 1 DRUM (52119-017-05)",
+          "marketing_start_date": "01-JUL-19"
+        },
+        {
+          "package_ndc": "52119-017-10",
+          "description": "10 kg in 1 DRUM (52119-017-10)",
+          "marketing_start_date": "01-JUL-19"
+        },
+        {
+          "package_ndc": "52119-017-15",
+          "description": "15 kg in 1 DRUM (52119-017-15)",
+          "marketing_start_date": "01-JUL-19"
+        },
+        {
+          "package_ndc": "52119-017-20",
+          "description": "20 kg in 1 DRUM (52119-017-20)",
+          "marketing_start_date": "01-JUL-19"
+        },
+        {
+          "package_ndc": "52119-017-25",
+          "description": "25 kg in 1 DRUM (52119-017-25)",
+          "marketing_start_date": "01-JUL-19"
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {},
+      "marketing_category": "BULK INGREDIENT",
+      "dosage_form": "POWDER",
+      "spl_id": "241abdcf-c08c-3d42-e063-6394a90a92a4",
+      "product_type": "BULK INGREDIENT",
+      "marketing_start_date": "20190701",
+      "product_id": "52119-017_241abdcf-c08c-3d42-e063-6394a90a92a4",
+      "brand_name_base": null
+    },
+    {
+      "product_ndc": "43742-1317",
+      "generic_name": "Taraxacum Officinale, Hydrastis Canadensis, Melatonin, Dopamine Hydrochloride, L-Dopa, Serotonin (Hydrochloride)",
+      "labeler_name": "Deseret Biologicals, Inc.",
+      "brand_name": "Neuro I",
+      "brand_name_suffix": "I",
+      "active_ingredients": [
+        {
+          "name": "TARAXACUM OFFICINALE",
+          "strength": "3 [hp_X]/mL"
+        },
+        {
+          "name": "GOLDENSEAL",
+          "strength": "6 [hp_X]/mL"
+        },
+        {
+          "name": "MELATONIN",
+          "strength": "6 [hp_X]/mL"
+        },
+        {
+          "name": "DOPAMINE HYDROCHLORIDE",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "LEVODOPA",
+          "strength": "8 [hp_X]/mL"
+        },
+        {
+          "name": "SEROTONIN HYDROCHLORIDE",
+          "strength": "8 [hp_X]/mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "43742-1317-1",
+          "description": "30 mL in 1 BOTTLE, DROPPER (43742-1317-1)",
+          "marketing_start_date": "20180727",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Deseret Biologicals, Inc."
+        ],
+        "spl_set_id": [
+          "a3bae540-22fe-467e-adf1-cf9113c4c6a4"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0810151880358"
+        ],
+        "nui": [
+          "N0000193220",
+          "M0370111"
+        ],
+        "pharm_class_epc": [
+          "Aromatic Amino Acid [EPC]"
+        ],
+        "pharm_class_cs": [
+          "Amino Acids, Aromatic [CS]"
+        ],
+        "unii": [
+          "39981FM375",
+          "ZW3Z11D0JV",
+          "JL5DK93RCL",
+          "7L3E358N9L",
+          "46627O600J",
+          "GKN429M9VS"
+        ]
+      },
+      "marketing_category": "UNAPPROVED HOMEOPATHIC",
+      "dosage_form": "LIQUID",
+      "spl_id": "234ad34e-cd25-45e8-aa0a-9aea55711fff",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180727",
+      "product_id": "43742-1317_234ad34e-cd25-45e8-aa0a-9aea55711fff",
+      "brand_name_base": "Neuro",
+      "pharm_class": [
+        "Amino Acids",
+        "Aromatic [CS]",
+        "Aromatic Amino Acid [EPC]",
+        "Catecholamine [EPC]",
+        "Catecholamines [CS]"
+      ]
+    },
+    {
+      "product_ndc": "17089-503",
+      "generic_name": "aldesleukin - everlasting extract - fomitopsis pinicola fruiting body - interferon gamma-1b - melatonin - metenkefalin - reishi - serotonin - soybean - sus scrofa blood - sus scrofa small intestine mucosa lymph follicle - sus scrofa spleen -",
+      "labeler_name": "Guna spa",
+      "brand_name": "GUNA-VIRUS",
+      "active_ingredients": [
+        {
+          "name": "ALDESLEUKIN",
+          "strength": "5 [hp_C]/4g"
+        },
+        {
+          "name": "EVERLASTING EXTRACT",
+          "strength": "3 [hp_X]/4g"
+        },
+        {
+          "name": "FOMITOPSIS PINICOLA FRUITING BODY",
+          "strength": "8 [hp_X]/4g"
+        },
+        {
+          "name": "INTERFERON GAMMA-1B",
+          "strength": "3 [hp_C]/4g"
+        },
+        {
+          "name": "METENKEFALIN",
+          "strength": "4 [hp_C]/4g"
+        },
+        {
+          "name": "REISHI",
+          "strength": "8 [hp_X]/4g"
+        },
+        {
+          "name": "SEROTONIN",
+          "strength": "6 [hp_X]/4g"
+        },
+        {
+          "name": "SOYBEAN",
+          "strength": "3 [hp_X]/4g"
+        },
+        {
+          "name": "SUS SCROFA BLOOD",
+          "strength": "4 [hp_C]/4g"
+        },
+        {
+          "name": "SUS SCROFA SPLEEN",
+          "strength": "4 [hp_C]/4g"
+        },
+        {
+          "name": "MELATONIN",
+          "strength": "15 [hp_C]/4g"
+        },
+        {
+          "name": "SUS SCROFA SMALL INTESTINE MUCOSA LYMPH FOLLICLE",
+          "strength": "7 [hp_C]/4g"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "17089-503-20",
+          "description": "2 TUBE in 1 BOX (17089-503-20)  / 4 g in 1 TUBE",
+          "marketing_start_date": "20260701",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Guna spa"
+        ],
+        "spl_set_id": [
+          "53e741c4-8897-71f3-e063-6394a90a751d"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000178328",
+          "N0000009391",
+          "M0011506",
+          "N0000175667",
+          "N0000175541",
+          "M0011490",
+          "N0000185371",
+          "N0000175629",
+          "N0000184306",
+          "M0000728",
+          "M0006342",
+          "M0022575"
+        ],
+        "pharm_class_pe": [
+          "Increased Lymphocyte Activation [PE]",
+          "Increased Lymphocyte Cell Production [PE]",
+          "Increased Histamine Release [PE]",
+          "Cell-mediated Immunity [PE]"
+        ],
+        "pharm_class_cs": [
+          "Interleukin-2 [CS]",
+          "Interferon-gamma [CS]",
+          "Allergens [CS]",
+          "Dietary Proteins [CS]",
+          "Vegetable Proteins [CS]"
+        ],
+        "pharm_class_epc": [
+          "Lymphocyte Growth Factor [EPC]",
+          "Interferon gamma [EPC]",
+          "Non-Standardized Food Allergenic Extract [EPC]"
+        ],
+        "unii": [
+          "M89N0Q7EQR",
+          "KQV867ADR4",
+          "30D02U2IRN",
+          "21K6M2I7AG",
+          "9JEZ9OD3AS",
+          "TKD8LH0X2Z",
+          "333DO1RDJY",
+          "L7HT8F1ZOD",
+          "994R458ECK",
+          "92AMN5J79Y",
+          "JL5DK93RCL",
+          "308LM01C72"
+        ]
+      },
+      "marketing_category": "UNAPPROVED HOMEOPATHIC",
+      "dosage_form": "PELLET",
+      "spl_id": "53e75d71-d919-2bc0-e063-6294a90a1d7f",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20060701",
+      "product_id": "17089-503_53e75d71-d919-2bc0-e063-6294a90a1d7f",
+      "brand_name_base": "GUNA-VIRUS",
+      "pharm_class": [
+        "Allergens [CS]",
+        "Cell-mediated Immunity [PE]",
+        "Dietary Proteins [CS]",
+        "Increased Histamine Release [PE]",
+        "Increased Lymphocyte Activation [PE]",
+        "Increased Lymphocyte Cell Production [PE]",
+        "Interferon gamma [EPC]",
+        "Interferon-gamma [CS]",
+        "Interleukin-2 [CS]",
+        "Lymphocyte Growth Factor [EPC]",
+        "Non-Standardized Food Allergenic Extract [EPC]",
+        "Vegetable Proteins [CS]"
+      ]
+    },
+    {
+      "product_ndc": "44911-0649",
+      "generic_name": "Mannose, 5-Hydroxytryptophan, Acetaldehyde, Acetylcholine Chloride, Ascorbicum Acidum, Aspartame, Butylated Hydroxytoluene, Caffeic Acid, Candida Albicans, Cinnamic Acid, Coniferyl Alcohol, Coumarinum, Dopamine Hydrochloride, Estradiol, Gaba (Gamma-Aminobutyric Acid), Gallicum Acidum, Histaminum Hydrochloricum, Hydrocortisone, Indolum, L-Dopa, L-Phenylalanine, Melatonin, Menadione, Norepinephrine (Bitartrate), Petroselinum Crispum, Phenyl Isothiocyanate, Piperine, Progesterone, Pyrrole, Quercetin,",
+      "labeler_name": "Energique, Inc.",
+      "brand_name": "Multi-Phenolic",
+      "active_ingredients": [
+        {
+          "name": "MANNOSE, D-",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "OXITRIPTAN",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "ACETALDEHYDE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "ACETYLCHOLINE CHLORIDE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "ASCORBIC ACID",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "ASPARTAME",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "BUTYLATED HYDROXYTOLUENE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "CAFFEIC ACID",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "CANDIDA ALBICANS",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "CINNAMIC ACID",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "CONIFERYL ALCOHOL",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "COUMARIN",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "DOPAMINE HYDROCHLORIDE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "ESTRADIOL",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": ".GAMMA.-AMINOBUTYRIC ACID",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "GALLIC ACID MONOHYDRATE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "HISTAMINE DIHYDROCHLORIDE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "HYDROCORTISONE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "INDOLE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "LEVODOPA",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "PHENYLALANINE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "MELATONIN",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "MENADIONE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "NOREPINEPHRINE BITARTRATE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "PETROSELINUM CRISPUM WHOLE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "PHENYL ISOTHIOCYANATE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "PIPERINE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "PROGESTERONE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "PYRROLE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "QUERCETIN",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "RUTIN",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "SEROTONIN HYDROCHLORIDE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "TAURINE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "TYRAMINE",
+          "strength": "12 [hp_X]/mL"
+        },
+        {
+          "name": "CHLOROGENIC ACID",
+          "strength": "16 [hp_X]/mL"
+        },
+        {
+          "name": "PHLORIZIN",
+          "strength": "16 [hp_X]/mL"
+        },
+        {
+          "name": "MALVIN",
+          "strength": "12 [hp_C]/mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "44911-0649-1",
+          "description": "30 mL in 1 BOTTLE, DROPPER (44911-0649-1)",
+          "marketing_start_date": "20220111",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Energique, Inc."
+        ],
+        "spl_set_id": [
+          "492b412a-01cc-48f2-bcdc-6fffcc651963"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000193618",
+          "M0001797",
+          "N0000185372",
+          "N0000175629",
+          "N0000184306",
+          "N0000185001",
+          "M0008890",
+          "M0000728",
+          "M0447348",
+          "N0000175825",
+          "N0000000100",
+          "N0000175576",
+          "N0000175450",
+          "N0000193220",
+          "M0370111",
+          "M0017672",
+          "N0000175601"
+        ],
+        "pharm_class_epc": [
+          "Vitamin C [EPC]",
+          "Non-Standardized Fungal Allergenic Extract [EPC]",
+          "Estrogen [EPC]",
+          "Corticosteroid [EPC]",
+          "Aromatic Amino Acid [EPC]",
+          "Progesterone [EPC]"
+        ],
+        "pharm_class_cs": [
+          "Ascorbic Acid [CS]",
+          "Fungal Proteins [CS]",
+          "Allergens [CS]",
+          "Estradiol Congeners [CS]",
+          "Amino Acids, Aromatic [CS]",
+          "Progesterone [CS]"
+        ],
+        "pharm_class_pe": [
+          "Increased Histamine Release [PE]",
+          "Cell-mediated Immunity [PE]",
+          "Increased IgG Production [PE]"
+        ],
+        "pharm_class_moa": [
+          "Estrogen Receptor Agonists [MoA]",
+          "Corticosteroid Hormone Receptor Agonists [MoA]"
+        ],
+        "unii": [
+          "PHA4727WTP",
+          "C1LJO185Q9",
+          "GO1N1ZPR3B",
+          "AF73293C2R",
+          "PQ6CK8PD0R",
+          "Z0H242BBR1",
+          "1P9D0Z171K",
+          "U2S3A33KVM",
+          "4D7G21HDBC",
+          "U14A832J8D",
+          "E7SM92591P",
+          "A4VZ22K1WT",
+          "7L3E358N9L",
+          "4TI98Z838E",
+          "2ACZ6IPC6I",
+          "48339473OT",
+          "3POA0Q644U",
+          "WI4X0X7BPJ",
+          "8724FJW4M5",
+          "46627O600J",
+          "47E5O17Y3R",
+          "JL5DK93RCL",
+          "723JX6CXY5",
+          "IFY5PE3ZRW",
+          "1WZA4Y92EX",
+          "0D58F84LSU",
+          "U71XL721QK",
+          "4G7DS2Q64Y",
+          "86S1ZD6L2C",
+          "9IKM0I5T1E",
+          "5G06TVY3R7",
+          "GKN429M9VS",
+          "1EQV5MLY3D",
+          "X8ZC7V0OX3",
+          "318ADP12RI",
+          "CU9S17279X",
+          "I9I120531L"
+        ]
+      },
+      "marketing_category": "UNAPPROVED HOMEOPATHIC",
+      "dosage_form": "LIQUID",
+      "spl_id": "6ec419e2-8fad-41b7-b9bd-5ddfc89ffab8",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220111",
+      "product_id": "44911-0649_6ec419e2-8fad-41b7-b9bd-5ddfc89ffab8",
+      "brand_name_base": "Multi-Phenolic",
+      "pharm_class": [
+        "Allergens [CS]",
+        "Amino Acids",
+        "Aromatic [CS]",
+        "Aromatic Amino Acid [EPC]",
+        "Ascorbic Acid [CS]",
+        "Catecholamine [EPC]",
+        "Catecholamine [EPC]",
+        "Catecholamines [CS]",
+        "Catecholamines [CS]",
+        "Cell-mediated Immunity [PE]",
+        "Cholinergic Agonists [MoA]",
+        "Cholinergic Receptor Agonist [EPC]",
+        "Corticosteroid Hormone Receptor Agonists [MoA]",
+        "Corticosteroid [EPC]",
+        "Estradiol Congeners [CS]",
+        "Estrogen Receptor Agonists [MoA]",
+        "Estrogen [EPC]",
+        "Fungal Proteins [CS]",
+        "Increased Histamine Release [PE]",
+        "Increased IgG Production [PE]",
+        "Non-Standardized Fungal Allergenic Extract [EPC]",
+        "Progesterone [CS]",
+        "Progesterone [EPC]",
+        "Vitamin C [EPC]"
+      ]
+    }
+  ]
+}

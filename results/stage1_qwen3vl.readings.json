@@ -1,0 +1,82 @@
+{
+ "tylenol_es": {
+  "text": "NDC 50580-590-02\nTYLENOL Extra Strength Acetaminophen\nAcetaminophen 500 mg",
+  "seconds": 17.75191449999693
+ },
+ "nyquil": {
+  "text": "NDC 23900037451\nNyQuil Cold & Flu\nAcetaminophen 650 mg\nDextromethorphan HBr 30 mg\nDoxylamine succinate 12.5 mg",
+  "seconds": 6.086259791001794
+ },
+ "benadryl": {
+  "text": "NDC 50580-573-04\nBenadryl ALLERGY LIQUID\nDiphenhydramine HCl 12.5 mg",
+  "seconds": 6.448650291997183
+ },
+ "tylenol_pm": {
+  "text": "NDC 0198-0000-00\nTYLENOL PM\nAcetaminophen 500 mg\nDiphenhydramine HCl 25 mg",
+  "seconds": 15.145233875002305
+ },
+ "bayer_aspirin": {
+  "text": "NDC 0001-9160-01\nGENUINE ASPIRIN BAYER\nAspirin 325 mg",
+  "seconds": 13.855002083000727
+ },
+ "advil": {
+  "text": "NDC 82107928176\nAdvil DUAL ACTION with Acetaminophen\nAcetaminophen 250 mg\nIbuprofen 125 mg",
+  "seconds": 16.335996875001
+ },
+ "claritin": {
+  "text": "Children's Claritin Chewables\nLoratadine 5 mg",
+  "seconds": 14.021770042003482
+ },
+ "mucinex": {
+  "text": "NDC 68084-572-01\nMucinex\nguaifenesin 600 mg",
+  "seconds": 5.402660874999128
+ },
+ "warfarin": {
+  "text": "NDC 0093-1720-01\nWarfarin Sodium Tablets, USP\nwarfarin sodium 10 mg",
+  "seconds": 5.0409421250005835
+ },
+ "lisinopril": {
+  "text": "NDC 60760-586-90\nLisinopril and Hydrochlorothiazide Tablets, USP 10mg/12.5mg\nLisinopril 10 mg\nHydrochlorothiazide 12.5 mg",
+  "seconds": 10.005681665999873
+ },
+ "sertraline": {
+  "text": "NDC 63187-859-30\nSertraline 25mg Tablets\nSertraline hydrochloride 25 mg",
+  "seconds": 8.515499082997849
+ },
+ "metformin": {
+  "text": "NDC 70771-1859-6\nZituvi met\u00ae (sitagliptin and metformin HCl) tablets\nSitagliptin 50 mg\nMetformin Hydrochloride USP 500 mg",
+  "seconds": 6.568058583994571
+ },
+ "atorvastatin": {
+  "text": "NDC 71335-1336-3\nAtorvastatin Calcium Tablets, USP\natorvastatin calcium 88 mg",
+  "seconds": 15.269752083004278
+ },
+ "omeprazole": {
+  "text": "NDC 72789-257-90\nOMEPRazole\nOMEPRazole 40 MG",
+  "seconds": 18.08324545800133
+ },
+ "amoxicillin": {
+  "text": "NDC 62135-095-75\nAmoxicillin and Clavulanate Potassium for Oral Suspension, USP\nAmoxicillin 600 mg\nClavulanate 42.9 mg",
+  "seconds": 19.894395333998546
+ },
+ "levothyroxine": {
+  "text": "NDC 71205-354-90\nLevothyroxine Sodium 137mcg\nLevotyroxine Sodium 137 mcg",
+  "seconds": 30.458208957999886
+ },
+ "supp_melatonin": {
+  "text": "Melatonin 10 mg Tablets\nMelatonin 10 mg",
+  "seconds": 11.477193708000414
+ },
+ "supp_vitamin_d3": {
+  "text": "NDC 4371500321\nVitamin D3 5000 IU\nVitamin D3 5000 IU",
+  "seconds": 20.802602083000238
+ },
+ "supp_st_johns_wort": {
+  "text": "",
+  "seconds": 99.0537483750013
+ },
+ "supp_fish_oil": {
+  "text": "",
+  "seconds": 94.64647262500512
+ }
+}

@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 10,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "85096-301",
+      "generic_name": "menthol 5%",
+      "labeler_name": "Marcella Health",
+      "brand_name": "MENTHOL 5%",
+      "active_ingredients": [
+        {
+          "name": "MENTHOL, (+)-",
+          "strength": "500 mg/10g"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "85096-301-30",
+          "description": "30 PATCH in 1 BOX (85096-301-30)  / 11 g in 1 PATCH (85096-301-01)",
+          "marketing_start_date": "20250314",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Marcella Health"
+        ],
+        "rxcui": [
+          "420222"
+        ],
+        "spl_set_id": [
+          "30914c0a-fbda-5674-e063-6294a90aba5b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0385096301010",
+          "0385096301300"
+        ],
+        "unii": [
+          "C6B1OE8P3W"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "PATCH",
+      "spl_id": "30916d71-bf2f-1bc0-e063-6394a90ab033",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "TRANSDERMAL"
+      ],
+      "marketing_start_date": "20250314",
+      "product_id": "85096-301_30916d71-bf2f-1bc0-e063-6394a90ab033",
+      "application_number": "M017",
+      "brand_name_base": "MENTHOL 5%"
+    }
+  ]
+}

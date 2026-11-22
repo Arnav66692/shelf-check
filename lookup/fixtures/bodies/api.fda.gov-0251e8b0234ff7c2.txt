@@ -1,0 +1,4356 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 100,
+      "total": 67
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "69423-779",
+      "generic_name": "Chlorpheniramine maleate, Dextromethorphan HBr",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Kids BERRY COLD and COUGH plus RUNNY NOSE",
+      "brand_name_suffix": "COLD and COUGH plus RUNNY NOSE",
+      "active_ingredients": [
+        {
+          "name": "CHLORPHENIRAMINE MALEATE",
+          "strength": "2 mg/15mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "15 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-779-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (69423-779-08)",
+          "marketing_start_date": "20230606",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1114361"
+        ],
+        "spl_set_id": [
+          "f913fcd6-a2b8-df5e-e053-6394a90ac988"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900014336"
+        ],
+        "unii": [
+          "V1Q0O9OJ9Z",
+          "9D2RTI9KYH"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1a36e2-b635-eb10-e063-6394a90af161",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20230606",
+      "product_id": "69423-779_5d1a36e2-b635-eb10-e063-6394a90af161",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil Kids BERRY",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "66715-6581",
+      "generic_name": "Acetaminophen, Phenylephrine Hydrochloride, Doxylamine Succinate, and Dextromethorphan Hydrobromide",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "NyQuil Severe Plus VapoCOOL Cold and Flu, CVP HEALTH",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6581-2",
+          "description": "2 POUCH in 1 CARTON (66715-6581-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20220801",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "1546881"
+        ],
+        "spl_set_id": [
+          "e7355543-6dd7-4560-8fe0-9c1ebd4d2c0b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0094187380048"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "362O9ITL9D",
+          "04JA59TNSJ"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "06be9e28-b6c3-a4e4-e063-6294a90a3400",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220801",
+      "product_id": "66715-6581_06be9e28-b6c3-a4e4-e063-6294a90a3400",
+      "application_number": "M012",
+      "brand_name_base": "NyQuil Severe Plus VapoCOOL Cold and Flu, CVP HEALTH",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "67751-244",
+      "generic_name": "Acetaminophen, Doxylamine Succinate, Dextromethorphan Hydrobromide",
+      "labeler_name": "Navajo Manufacturing Company Inc.",
+      "brand_name": "Vicks NyQuil VapoCOOL COLD and FLU",
+      "brand_name_suffix": "COLD and FLU",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67751-244-02",
+          "description": "1 POUCH in 1 CARTON (67751-244-02)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20250506",
+          "sample": false
+        },
+        {
+          "package_ndc": "67751-244-04",
+          "description": "2 POUCH in 1 CARTON (67751-244-04)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20250506",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Navajo Manufacturing Company Inc."
+        ],
+        "rxcui": [
+          "2713312"
+        ],
+        "spl_set_id": [
+          "5e4b3a65-04ae-a9e8-e063-6394a90ac095"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "V9BI9B5YI2",
+          "9D2RTI9KYH"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "5e4b3a6f-712c-23a6-e063-6294a90aa552",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250506",
+      "product_id": "67751-244_5e4b3a6f-712c-23a6-e063-6294a90aa552",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil VapoCOOL",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "66715-6805",
+      "generic_name": "acetaminophen, doxylamine succinate, dextromethorphan hydrobromide tablet, coated",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "NyQuil Cold and Flu w/VapoCOOL, 4ct, CVP HEALTH",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6805-2",
+          "description": "2 POUCH in 1 CARTON (66715-6805-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20250601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "2713312"
+        ],
+        "spl_set_id": [
+          "37c768f5-dabd-22d0-e063-6394a90af9e5"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "37c768f5-dabe-22d0-e063-6394a90af9e5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250601",
+      "product_id": "66715-6805_37c768f5-dabe-22d0-e063-6394a90af9e5",
+      "application_number": "M012",
+      "brand_name_base": "NyQuil Cold and Flu w/VapoCOOL, 4ct, CVP HEALTH",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "37000-045",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Guaifenesin, Phenylephrine Hydrochloride, and doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil Severe Cold and Flu",
+      "brand_name_suffix": "Severe Cold and Flu",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "37000-045-24",
+          "description": "1 KIT in 1 PACKAGE (37000-045-24)  *  354 mL in 1 BOTTLE, PLASTIC (37000-810-12)  *  354 mL in 1 BOTTLE, PLASTIC (37000-815-12)",
+          "marketing_start_date": "20140731",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1369842",
+          "1431245",
+          "2637731"
+        ],
+        "spl_set_id": [
+          "4147ff00-8e21-7335-e054-00144ff88e88"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d18ca71-21e8-95fd-e063-6394a90a3e4b",
+      "product_type": "HUMAN OTC DRUG",
+      "marketing_start_date": "20140731",
+      "product_id": "37000-045_5d18ca71-21e8-95fd-e063-6394a90a3e4b",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil"
+    },
+    {
+      "product_ndc": "37000-033",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Phenylephrine Hydrochloride, and Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "37000-033-24",
+          "description": "1 KIT in 1 PACKAGE (37000-033-24)  *  354 mL in 1 BOTTLE, PLASTIC (69423-788-12)  *  354 mL in 1 BOTTLE, PLASTIC (69423-789-12)",
+          "marketing_start_date": "20130801",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400",
+          "1113705",
+          "2637726"
+        ],
+        "spl_set_id": [
+          "416c6674-e4aa-6375-e054-00144ff8d46c"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1b271e-d6b5-8327-e063-6294a90a178c",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20130801",
+      "product_id": "37000-033_5d1b271e-d6b5-8327-e063-6294a90a178c",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil"
+    },
+    {
+      "product_ndc": "69423-789",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, and Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-789-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (69423-789-08)",
+          "marketing_start_date": "20220101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-789-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (69423-789-12)",
+          "marketing_start_date": "20220101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-789-24",
+          "description": "2 BOTTLE, PLASTIC in 1 PACKAGE, COMBINATION (69423-789-24)  / 354 mL in 1 BOTTLE, PLASTIC (69423-789-12)",
+          "marketing_start_date": "20220101",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400"
+        ],
+        "spl_set_id": [
+          "fc9a6f7e-32c1-9ded-e053-6294a90a9dcc"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900014244"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1b21e4-4a55-77d2-e063-6294a90a29d7",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220101",
+      "product_id": "69423-789_5d1b21e4-4a55-77d2-e063-6294a90a29d7",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-791",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, and Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-791-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (69423-791-08)",
+          "marketing_start_date": "20220101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-791-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (69423-791-12)",
+          "marketing_start_date": "20220101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-791-24",
+          "description": "2 BOTTLE, PLASTIC in 1 PACKAGE, COMBINATION (69423-791-24)  / 354 mL in 1 BOTTLE, PLASTIC (69423-791-12)",
+          "marketing_start_date": "20220101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-791-36",
+          "description": "3 BOTTLE, PLASTIC in 1 PACKAGE, COMBINATION (69423-791-36)  / 354 mL in 1 BOTTLE, PLASTIC (69423-791-12)",
+          "marketing_start_date": "20220101",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400"
+        ],
+        "spl_set_id": [
+          "fc9e05a5-ca03-faa2-e053-6294a90a0d58"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900014251"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1b2a7f-ad8a-b77b-e063-6394a90a8932",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220101",
+      "product_id": "69423-791_5d1b2a7f-ad8a-b77b-e063-6394a90a8932",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-798",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Phenylephrine Hydrochloride, and Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-798-12",
+          "description": "1 KIT in 1 PACKAGE (69423-798-12)  *  354 mL in 1 BOTTLE, PLASTIC (69423-788-12)  *  354 mL in 1 BOTTLE, PLASTIC (69423-791-12)",
+          "marketing_start_date": "20210713",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-798-24",
+          "description": "1 KIT in 1 PACKAGE (69423-798-24)  *  354 mL in 1 BOTTLE, PLASTIC (69423-788-12)  *  354 mL in 1 BOTTLE, PLASTIC (69423-791-12)",
+          "marketing_start_date": "20210713",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400",
+          "1113705",
+          "2637726"
+        ],
+        "spl_set_id": [
+          "04dc3835-64be-d9e4-e063-6394a90a8599"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1b1b8c-d9b6-720f-e063-6294a90a29eb",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20130701",
+      "product_id": "69423-798_5d1b1b8c-d9b6-720f-e063-6294a90a29eb",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil"
+    },
+    {
+      "product_ndc": "69423-801",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil ULTRA CONCENTRATED COLD and FLU",
+      "brand_name_suffix": "ULTRA CONCENTRATED COLD and FLU",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-801-48",
+          "description": "1 BOTTLE in 1 CARTON (69423-801-48)  / 48 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20230706",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1426334"
+        ],
+        "spl_set_id": [
+          "febabad6-0bf0-a3f8-e053-6294a90a3aeb"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900031111"
+        ],
+        "unii": [
+          "V9BI9B5YI2",
+          "362O9ITL9D",
+          "9D2RTI9KYH"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "5d18fcce-f14a-bd94-e063-6394a90a64e7",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20230706",
+      "product_id": "69423-801_5d18fcce-f14a-bd94-e063-6394a90a64e7",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-802",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Doxylamine succinate, Phenylephrine HCl",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil NyQuil ULTRA CONCENTRATED COLD and FLU",
+      "brand_name_suffix": "ULTRA CONCENTRATED COLD and FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-802-96",
+          "description": "1 KIT in 1 CARTON (69423-802-96)",
+          "marketing_start_date": "20230711",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1086997",
+          "1426334",
+          "1648203"
+        ],
+        "spl_set_id": [
+          "ff356128-95ea-0fbe-e053-6294a90adcb8"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d18f601-76e6-8e52-e063-6294a90a5f83",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20230711",
+      "product_id": "69423-802_5d18f601-76e6-8e52-e063-6294a90a5f83",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil NyQuil"
+    },
+    {
+      "product_ndc": "69423-807",
+      "generic_name": "Acetaminophen, Dextromethrophan, Doxylamine succinate, Phenylephrine HCl",
+      "labeler_name": "Procter & Gamble Manufacturing Company",
+      "brand_name": "VICKS NyQuil SEVERE HONEY FLAVOR COLD and FLU",
+      "brand_name_suffix": "COLD and FLU",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/15mL"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/15mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/15mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-807-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (69423-807-08)",
+          "marketing_start_date": "20210707",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-807-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (69423-807-12)",
+          "marketing_start_date": "20210707",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1431245"
+        ],
+        "spl_set_id": [
+          "04ca1e9c-f297-cbd6-e063-6294a90a3739"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900041615"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "04JA59TNSJ",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5ce178ce-8cfc-a627-e063-6294a90a91cc",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210707",
+      "product_id": "69423-807_5ce178ce-8cfc-a627-e063-6294a90a91cc",
+      "application_number": "M012",
+      "brand_name_base": "VICKS NyQuil SEVERE HONEY FLAVOR",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "69423-804",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil HIGH BLOOD PRESSURE COLD and FLU",
+      "brand_name_suffix": "HIGH BLOOD PRESSURE COLD and FLU",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-804-24",
+          "description": "1 BOTTLE in 1 CARTON (69423-804-24)  / 24 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20230711",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1426334"
+        ],
+        "spl_set_id": [
+          "ff3406cf-9369-e75b-e053-6394a90a8052"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "V9BI9B5YI2",
+          "9D2RTI9KYH",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "5d1a0b61-6d2b-02da-e063-6294a90ab222",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20230711",
+      "product_id": "69423-804_5d1a0b61-6d2b-02da-e063-6294a90ab222",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-805",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil NyQuil HIGH BLOOD PRESSURE COLD and FLU",
+      "brand_name_suffix": "HIGH BLOOD PRESSURE COLD and FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-805-48",
+          "description": "1 KIT in 1 CARTON (69423-805-48)",
+          "marketing_start_date": "20230711",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1426334",
+          "1867684",
+          "2663936"
+        ],
+        "spl_set_id": [
+          "03ae7b9a-cf91-0e8c-e063-6394a90aac08"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1a05a4-f8e7-bfce-e063-6394a90aaa2e",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20230711",
+      "product_id": "69423-805_5d1a05a4-f8e7-bfce-e063-6394a90aaa2e",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil NyQuil"
+    },
+    {
+      "product_ndc": "69423-808",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Guaifenesin, Phenylephrine HCl and Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "VICKS DayQuil SEVERE NyQuil SEVERE HONEY FLAVOR COLD and FLU",
+      "brand_name_suffix": "COLD and FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-808-24",
+          "description": "1 KIT in 1 CARTON (69423-808-24)  *  354 mL in 1 BOTTLE *  354 mL in 1 BOTTLE",
+          "marketing_start_date": "20200428",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1369842",
+          "1431245",
+          "2637731"
+        ],
+        "spl_set_id": [
+          "fd03769c-2fd6-1c22-e053-6394a90a12f6"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5ce16cfb-a6c3-0c26-e063-6394a90a461d",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20200428",
+      "product_id": "69423-808_5ce16cfb-a6c3-0c26-e063-6394a90a461d",
+      "application_number": "M012",
+      "brand_name_base": "VICKS DayQuil SEVERE NyQuil SEVERE HONEY FLAVOR"
+    },
+    {
+      "product_ndc": "66715-9605",
+      "generic_name": "acetaminophen, doxylamine succinate, dextromethorphan hydrobromide tablet, coated",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "NyQuil Cold and Flu w/VapoCOOL, 4ct, Lil Drug Store",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-9605-2",
+          "description": "2 POUCH in 1 CARTON (66715-9605-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20250601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "2713312"
+        ],
+        "spl_set_id": [
+          "37c768f5-dabd-22d0-e063-6394a90af9e5"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "37c768f5-dabe-22d0-e063-6394a90af9e5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250601",
+      "product_id": "66715-9605_37c768f5-dabe-22d0-e063-6394a90af9e5",
+      "application_number": "M012",
+      "brand_name_base": "NyQuil Cold and Flu w/VapoCOOL, 4ct, Lil Drug Store",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "37000-518",
+      "generic_name": "Acetaminophen, Phenylephrine Hydrochloride, Dextromethorphan Hydrobromide, and Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Severe Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "37000-518-02",
+          "description": "2 CAPSULE, LIQUID FILLED in 1 POUCH (37000-518-02)",
+          "marketing_start_date": "20210101",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-518-08",
+          "description": "1 BLISTER PACK in 1 CARTON (37000-518-08)  / 8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20190701",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-518-24",
+          "description": "2 BLISTER PACK in 1 CARTON (37000-518-24)  / 12 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20180710",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1297288"
+        ],
+        "spl_set_id": [
+          "6eef8a59-2f8a-1a90-e053-2a91aa0a1d52"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900039520"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "04JA59TNSJ",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "5d1906f1-582a-c444-e063-6394a90af570",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180710",
+      "product_id": "37000-518_5d1906f1-582a-c444-e063-6394a90af570",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil Severe",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "37000-523",
+      "generic_name": "Acetaminophen, Phenylephrine Hydrochloride, Doxylamine Succinate, and Dextromethorphan Hydrobromide",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "NyQuil Severe plus Vicks VapoCool Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "37000-523-02",
+          "description": "2 TABLET, COATED in 1 POUCH (37000-523-02)",
+          "marketing_start_date": "20180801",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1546881"
+        ],
+        "spl_set_id": [
+          "724d0889-5ba5-3125-e053-2a91aa0a92c1"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "362O9ITL9D",
+          "04JA59TNSJ",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "5f769576-ce2c-88c2-e063-6394a90a40df",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180801",
+      "product_id": "37000-523_5f769576-ce2c-88c2-e063-6394a90a40df",
+      "application_number": "M012",
+      "brand_name_base": "NyQuil Severe plus Vicks VapoCool",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "85237-1917",
+      "generic_name": "acetaminophen, doxylamine succinate, dextromethorphan hydrobromide tablet, coated",
+      "labeler_name": "Select Consumer Group",
+      "brand_name": "NyQuil Cold and Flu w/VapoCOOL, 4ct",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "85237-1917-1",
+          "description": "1 POUCH in 1 CARTON (85237-1917-1)  / 2 TABLET, COATED in 1 POUCH (85237-1917-0)",
+          "marketing_start_date": "20250601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Select Consumer Group"
+        ],
+        "rxcui": [
+          "2713312"
+        ],
+        "spl_set_id": [
+          "5e168528-85d5-55cb-e063-6294a90aec14"
+        ],
+        "unii": [
+          "V9BI9B5YI2",
+          "362O9ITL9D",
+          "9D2RTI9KYH"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "5e1687ef-4d22-558e-e063-6294a90a4bf5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250601",
+      "product_id": "85237-1917_5e1687ef-4d22-558e-e063-6294a90a4bf5",
+      "application_number": "M012",
+      "brand_name_base": "NyQuil Cold and Flu w/VapoCOOL, 4ct",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-844",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil FOR PEOPLE WITH DIABETES COLD and FLU",
+      "brand_name_suffix": "FOR PEOPLE WITH DIABETES COLD and FLU",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "20 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-844-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (69423-844-12)",
+          "marketing_start_date": "20240709",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1042675"
+        ],
+        "spl_set_id": [
+          "16275c74-32a6-25f4-e063-6394a90a6717"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900034013"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1b31ae-452b-91fd-e063-6294a90a6449",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240709",
+      "product_id": "69423-844_5d1b31ae-452b-91fd-e063-6294a90a6449",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-845",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil FOR PEOPLE WITH DIABETES COLD and FLU",
+      "brand_name_suffix": "FOR PEOPLE WITH DIABETES COLD and FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-845-24",
+          "description": "1 KIT in 1 PACKAGE (69423-845-24)  *  354 mL in 1 BOTTLE, PLASTIC (69423-843-12)  *  354 mL in 1 BOTTLE, PLASTIC (69423-844-12)",
+          "marketing_start_date": "20240709",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1042675",
+          "1043400",
+          "2604561",
+          "2637756"
+        ],
+        "spl_set_id": [
+          "17dfc247-fcb6-9659-e063-6294a90a2523"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1b3041-c641-9087-e063-6294a90aac33",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240709",
+      "product_id": "69423-845_5d1b3041-c641-9087-e063-6294a90aac33",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil"
+    },
+    {
+      "product_ndc": "37000-815",
+      "generic_name": "acetaminophen, dextromethorphan hydrobromide, doxylamine succinate, and phenylephrine hydrochloride",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Severe Cold and Flu",
+      "brand_name_suffix": "Severe Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "10 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "20 mg/30mL"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "37000-815-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (37000-815-08)",
+          "marketing_start_date": "20140721",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-815-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (37000-815-12)",
+          "marketing_start_date": "20140721",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-815-36",
+          "description": "3 BOTTLE, PLASTIC in 1 PACKAGE, COMBINATION (37000-815-36)  / 354 mL in 1 BOTTLE, PLASTIC (37000-815-12)",
+          "marketing_start_date": "20140721",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1431245"
+        ],
+        "spl_set_id": [
+          "390d0187-a6f4-4387-a528-9eb70e250db1"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "04JA59TNSJ",
+          "V9BI9B5YI2",
+          "9D2RTI9KYH",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "SOLUTION",
+      "spl_id": "5d2cd7bb-d2cf-bda3-e063-6394a90a19f7",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20140721",
+      "product_id": "37000-815_5d2cd7bb-d2cf-bda3-e063-6394a90a19f7",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "37000-812",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Doxylamine Succinate, and Phenylephrine Hydrochloride",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Severe Cold and Flu",
+      "brand_name_suffix": "Severe Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "20 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "10 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "37000-812-01",
+          "description": "30 mL in 1 BOTTLE, PLASTIC (37000-812-01)",
+          "marketing_start_date": "20201013",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-812-04",
+          "description": "4 BOTTLE, PLASTIC in 1 PACKAGE (37000-812-04)  / 30 mL in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20210713",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-812-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (37000-812-08)",
+          "marketing_start_date": "20130722",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-812-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (37000-812-12)",
+          "marketing_start_date": "20130722",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-812-24",
+          "description": "2 BOTTLE, PLASTIC in 1 PACKAGE (37000-812-24)  / 354 mL in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20130722",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1431245"
+        ],
+        "spl_set_id": [
+          "d1657403-b953-4db1-9a86-343e9e769a1a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900038158"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "04JA59TNSJ"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "SOLUTION",
+      "spl_id": "5d18cdb2-f6b8-99f6-e063-6394a90a16f9",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20130722",
+      "product_id": "37000-812_5d18cdb2-f6b8-99f6-e063-6394a90a16f9",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "37000-814",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Guaifenesin, Phenylephrine Hydrochloride, and doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil Severe Cold and Flu",
+      "brand_name_suffix": "Severe Cold and Flu",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "37000-814-24",
+          "description": "1 KIT in 1 PACKAGE (37000-814-24)  *  354 mL in 1 BOTTLE, PLASTIC (37000-810-12)  *  354 mL in 1 BOTTLE, PLASTIC (37000-812-12)",
+          "marketing_start_date": "20130722",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1369842",
+          "1431245",
+          "2637731"
+        ],
+        "spl_set_id": [
+          "a17d0de4-85d1-47b7-ba72-3672ea65b397"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d18d0de-f601-9ef5-e063-6394a90a0be3",
+      "product_type": "HUMAN OTC DRUG",
+      "marketing_start_date": "20130722",
+      "product_id": "37000-814_5d18d0de-f601-9ef5-e063-6394a90a0be3",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil"
+    },
+    {
+      "product_ndc": "84126-308",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil ELDERBERRY COLD and FLU",
+      "brand_name_suffix": "ELDERBERRY COLD and FLU",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/15mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/15mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-308-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (84126-308-12)",
+          "marketing_start_date": "20240709",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1042675"
+        ],
+        "spl_set_id": [
+          "1a51a532-0a91-c563-e063-6294a90a59d7"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900033412"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1a053c-61f4-bf7a-e063-6394a90ae2a8",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240709",
+      "product_id": "84126-308_5d1a053c-61f4-bf7a-e063-6394a90ae2a8",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "84126-305",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Kids COLD and COUGH plus FEVER",
+      "brand_name_suffix": "COLD and COUGH plus FEVER",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/15mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/15mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-305-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (84126-305-08)",
+          "marketing_start_date": "20240606",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1042675"
+        ],
+        "spl_set_id": [
+          "1a01d4f7-37ed-bb92-e063-6294a90a208c"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900033399"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1b0c3f-7182-a0c6-e063-6394a90a812b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240606",
+      "product_id": "84126-305_5d1b0c3f-7182-a0c6-e063-6394a90a812b",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil Kids",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "37000-934",
+      "generic_name": "Acetaminophen, Phenylephrine Hydrochloride, Dextromethorphan Hydrobromide, Guaifenesin and Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil Severe and Vicks NyQuil Severe Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "37000-934-12",
+          "description": "1 KIT in 1 PACKAGE (37000-934-12)  *  1 BLISTER PACK in 1 CARTON / 8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  1 BLISTER PACK in 1 CARTON / 4 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20190704",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-934-24",
+          "description": "1 KIT in 1 PACKAGE (37000-934-24)  *  1 BLISTER PACK in 1 CARTON / 8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  1 BLISTER PACK in 1 CARTON / 4 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20190704",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-934-48",
+          "description": "1 KIT in 1 PACKAGE (37000-934-48)  *  1 BLISTER PACK in 1 CARTON / 8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  1 BLISTER PACK in 1 CARTON / 4 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20190704",
+          "sample": false
+        },
+        {
+          "package_ndc": "37000-934-72",
+          "description": "1 KIT in 1 PACKAGE (37000-934-72)  *  1 BLISTER PACK in 1 CARTON / 8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  1 BLISTER PACK in 1 CARTON / 4 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20190704",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1297288",
+          "1656815",
+          "2634364"
+        ],
+        "spl_set_id": [
+          "9003df61-5d82-5c4d-e053-2995a90a8999"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d18ffb3-3e78-be19-e063-6394a90a046e",
+      "product_type": "HUMAN OTC DRUG",
+      "marketing_start_date": "20190704",
+      "product_id": "37000-934_5d18ffb3-3e78-be19-e063-6394a90a046e",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil Severe and Vicks NyQuil Severe"
+    },
+    {
+      "product_ndc": "66715-9905",
+      "generic_name": "Acetaminophen, Phenylephrine Hydrochloride, Doxylamine Succinate, and Dextromethorphan Hydrobromide",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "NyQuil Severe Plus VapoCOOL Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-9905-2",
+          "description": "2 POUCH in 1 CARTON (66715-9905-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20190501",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "1546881"
+        ],
+        "spl_set_id": [
+          "e7355543-6dd7-4560-8fe0-9c1ebd4d2c0b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0094187380048"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "362O9ITL9D",
+          "04JA59TNSJ"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "06be9e28-b6c3-a4e4-e063-6294a90a3400",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190501",
+      "product_id": "66715-9905_06be9e28-b6c3-a4e4-e063-6294a90a3400",
+      "application_number": "M012",
+      "brand_name_base": "NyQuil Severe Plus VapoCOOL Cold and Flu",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "84126-312",
+      "generic_name": "Dextromethorphan HBr, Guaifenesin, Diphenhydramine HCl",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil Kids and Vicks NyQuil Kids FREE OF ARTIFICIAL DYES and SUGAR COLD and COUGH plus",
+      "brand_name_suffix": "FREE OF ARTIFICIAL DYES and SUGAR COLD and COUGH plus",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-312-12",
+          "description": "1 KIT in 1 PACKAGE (84126-312-12)  *  177 mL in 1 BOTTLE, PLASTIC (84126-310-06)  *  177 mL in 1 BOTTLE, PLASTIC (84126-311-06)",
+          "marketing_start_date": "20240625",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1014005",
+          "2685488",
+          "2685490"
+        ],
+        "spl_set_id": [
+          "1a143600-24b0-75dc-e063-6394a90afb53"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1a21e7-9ce7-3cbd-e063-6294a90a2313",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240625",
+      "product_id": "84126-312_5d1a21e7-9ce7-3cbd-e063-6294a90a2313",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil Kids and Vicks NyQuil Kids"
+    },
+    {
+      "product_ndc": "84126-309",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil ELDERBERRY COLD and FLU",
+      "brand_name_suffix": "ELDERBERRY COLD and FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-309-24",
+          "description": "1 KIT in 1 PACKAGE (84126-309-24)  *  354 mL in 1 BOTTLE, PLASTIC (84126-307-12)  *  354 mL in 1 BOTTLE, PLASTIC (84126-308-12)",
+          "marketing_start_date": "20240709",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1042675",
+          "2604561",
+          "2687211"
+        ],
+        "spl_set_id": [
+          "1b569c65-437c-1dbc-e063-6394a90a04aa"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1bbdd7-0121-20f9-e063-6394a90abacd",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240709",
+      "product_id": "84126-309_5d1bbdd7-0121-20f9-e063-6394a90abacd",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil"
+    },
+    {
+      "product_ndc": "84126-311",
+      "generic_name": "Diphenhydramine Hydrochloride",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "VICKS NyQuil Kids FREE OF ARTIFICIAL DYES AND SUGAR COLD and COUGH plus RUNNY NOSE",
+      "brand_name_suffix": "FREE OF ARTIFICIAL DYES AND SUGAR COLD and COUGH plus RUNNY NOSE",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "12.5 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-311-06",
+          "description": "177 mL in 1 BOTTLE, PLASTIC (84126-311-06)",
+          "marketing_start_date": "20240625",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2685488"
+        ],
+        "spl_set_id": [
+          "81ef58de-7e65-446f-98f0-fb88027124ce"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900034945"
+        ],
+        "unii": [
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1a1e3f-4187-35f9-e063-6294a90a5cef",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240625",
+      "product_id": "84126-311_5d1a1e3f-4187-35f9-e063-6294a90a5cef",
+      "application_number": "M012",
+      "brand_name_base": "VICKS NyQuil Kids",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "84126-314",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, and Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Cold and Flu Nighttime Relief",
+      "brand_name_suffix": "Cold and Flu Nighttime Relief",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-314-04",
+          "description": "118 mL in 1 BOTTLE, PLASTIC (84126-314-04)",
+          "marketing_start_date": "20240615",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400"
+        ],
+        "spl_set_id": [
+          "1d5e9cd9-0d76-19e0-e063-6294a90a78fd"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900045149"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1adada-eb33-641b-e063-6394a90a4d3e",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240615",
+      "product_id": "84126-314_5d1adada-eb33-641b-e063-6394a90a4d3e",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-899",
+      "generic_name": "Acetaminophen, Chlorpheniramine maleate, and Dextromethorphan Hydrobromide",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Alcohol Free Cold and Flu Nighttime Relief",
+      "brand_name_suffix": "Cold and Flu Nighttime Relief",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        },
+        {
+          "name": "CHLORPHENIRAMINE MALEATE",
+          "strength": "4 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-899-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (69423-899-12)",
+          "marketing_start_date": "20210120",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1046384"
+        ],
+        "spl_set_id": [
+          "ec57c15e-cb6d-44a9-e053-2a95a90ae774"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900014343"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "V1Q0O9OJ9Z",
+          "9D2RTI9KYH"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d18d9ea-6f08-6642-e063-6294a90a97a7",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210120",
+      "product_id": "69423-899_5d18d9ea-6f08-6642-e063-6294a90a97a7",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil Alcohol Free",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "84126-326",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Guaifenesin, Phenylephrine HCl and Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "VICKS DayQuil NyQuil SEVERE HONEY COLD and FLU",
+      "brand_name_suffix": "COLD and FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-326-24",
+          "description": "1 KIT in 1 CARTON (84126-326-24)  *  354 mL in 1 BOTTLE *  354 mL in 1 BOTTLE",
+          "marketing_start_date": "20200428",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1369842",
+          "1431245",
+          "2637731"
+        ],
+        "spl_set_id": [
+          "25a092c3-a9cb-6314-e063-6294a90a5297"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5ce18d10-07f5-d958-e063-6294a90a6e54",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20200428",
+      "product_id": "84126-326_5ce18d10-07f5-d958-e063-6294a90a6e54",
+      "application_number": "M012",
+      "brand_name_base": "VICKS DayQuil NyQuil SEVERE HONEY"
+    },
+    {
+      "product_ndc": "84126-342",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, and Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-342-04",
+          "description": "118 mL in 1 BOTTLE, PLASTIC (84126-342-04)",
+          "marketing_start_date": "20250602",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400"
+        ],
+        "spl_set_id": [
+          "330d42da-5041-3059-e063-6394a90a2d55"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900037458"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1adada-eb31-641b-e063-6394a90a4d3e",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250602",
+      "product_id": "84126-342_5d1adada-eb31-641b-e063-6394a90a4d3e",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "84126-344",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil Kids and Vicks NyQuil Kids COLD and COUGH plus FEVER",
+      "brand_name_suffix": "COLD and COUGH plus FEVER",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-344-16",
+          "description": "1 KIT in 1 PACKAGE (84126-344-16)  *  236 mL in 1 BOTTLE, PLASTIC (84126-304-08)  *  236 mL in 1 BOTTLE, PLASTIC (84126-305-08)",
+          "marketing_start_date": "20250301",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1042675",
+          "2604561",
+          "2687211"
+        ],
+        "spl_set_id": [
+          "2d430264-074d-fb22-e063-6294a90a57f6"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1b0950-2ed6-5ab8-e063-6294a90a87c5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250301",
+      "product_id": "84126-344_5d1b0950-2ed6-5ab8-e063-6294a90a87c5",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil Kids and Vicks NyQuil Kids"
+    },
+    {
+      "product_ndc": "58933-542",
+      "marketing_end_date": "20270630",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Diphenhydramine HCl, Phenylephrine HCl",
+      "labeler_name": "Procter & Gamble Manufactura S de RL de CV",
+      "brand_name": "Vicks DayQuil NyQuil HOT REMEDY RAPID RELIEF MULTI-SYMPTOM Cold and Flu plus Congestion",
+      "brand_name_suffix": "Cold and Flu plus Congestion",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "58933-542-16",
+          "description": "1 KIT in 1 PACKAGE (58933-542-16)  *  5 g in 1 PACKET (58933-551-01)  *  5 g in 1 PACKET (58933-550-01)",
+          "marketing_start_date": "20220720",
+          "marketing_end_date": "20270630",
+          "sample": false
+        }
+      ],
+      "openfda": {
+        "manufacturer_name": [
+          "Procter & Gamble Manufactura S de RL de CV"
+        ],
+        "rxcui": [
+          "1189316",
+          "1659960",
+          "2640034"
+        ],
+        "spl_set_id": [
+          "f691734b-5cf4-6eb8-e053-2a95a90aee80"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "48831758-b166-b87c-e063-6294a90aec30",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220720",
+      "product_id": "58933-542_48831758-b166-b87c-e063-6294a90aec30",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil NyQuil HOT REMEDY RAPID RELIEF MULTI-SYMPTOM"
+    },
+    {
+      "product_ndc": "84126-345",
+      "generic_name": "Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Kids ALLERGY",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-345-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (84126-345-08)",
+          "marketing_start_date": "20250601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2715412"
+        ],
+        "spl_set_id": [
+          "2f9a6d65-f849-af0a-e063-6394a90ae435"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900038677"
+        ],
+        "unii": [
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d18d45f-8284-5fe0-e063-6294a90a4139",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250601",
+      "product_id": "84126-345_5d18d45f-8284-5fe0-e063-6294a90a4139",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil Kids ALLERGY",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-780",
+      "generic_name": "Chlorpheniramine maleate, Dextromethorphan HBr, Guaifenesin, Phenylephrine HCl",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil NyQuil BERRY Kids COLD and COUGH plus",
+      "brand_name_suffix": "COLD and COUGH plus",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-780-16",
+          "description": "1 KIT in 1 PACKAGE (69423-780-16)  *  236 mL in 1 BOTTLE, PLASTIC (69423-778-08)  *  236 mL in 1 BOTTLE, PLASTIC (69423-779-08)",
+          "marketing_start_date": "20230606",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-780-24",
+          "description": "1 KIT in 1 PACKAGE (69423-780-24)  *  236 mL in 1 BOTTLE, PLASTIC (69423-778-08)  *  236 mL in 1 BOTTLE, PLASTIC (69423-779-08)",
+          "marketing_start_date": "20230606",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1114361",
+          "2566816",
+          "2644878"
+        ],
+        "spl_set_id": [
+          "02fbe8b3-49e2-8712-e063-6294a90add50"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1a31f2-8048-e50e-e063-6394a90ab2b6",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20230606",
+      "product_id": "69423-780_5d1a31f2-8048-e50e-e063-6394a90ab2b6",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil NyQuil BERRY Kids"
+    },
+    {
+      "product_ndc": "58933-556",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Diphenhydramine HCl",
+      "labeler_name": "Procter & Gamble Manufactura S de RL de CV",
+      "brand_name": "Vicks DayQuil NyQuil HOT REMEDY Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "58933-556-06",
+          "description": "1 KIT in 1 PACKAGE (58933-556-06)  *  1 POWDER, FOR SOLUTION in 1 PACKET (58933-555-01)  *  5 g in 1 PACKET (58933-552-01)",
+          "marketing_start_date": "20250611",
+          "sample": false
+        },
+        {
+          "package_ndc": "58933-556-16",
+          "description": "1 KIT in 1 PACKAGE (58933-556-16)  *  1 POWDER, FOR SOLUTION in 1 PACKET (58933-555-01)  *  5 g in 1 PACKET (58933-552-01)",
+          "marketing_start_date": "20250611",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Procter & Gamble Manufactura S de RL de CV"
+        ],
+        "rxcui": [
+          "2670598",
+          "2670677",
+          "2679420",
+          "2679425",
+          "2679426"
+        ],
+        "spl_set_id": [
+          "457180c9-87ea-5b52-e063-6294a90a7e9d"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5ce1a882-bf04-d2e8-e063-6394a90ac917",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250611",
+      "product_id": "58933-556_5ce1a882-bf04-d2e8-e063-6394a90ac917",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil NyQuil HOT REMEDY"
+    },
+    {
+      "product_ndc": "84126-346",
+      "generic_name": "Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil ALLERGY",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-346-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (84126-346-12)",
+          "marketing_start_date": "20250701",
+          "sample": false
+        },
+        {
+          "package_ndc": "84126-346-24",
+          "description": "2 BOTTLE, PLASTIC in 1 CARTON (84126-346-24)  / 354 mL in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20250701",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2715412"
+        ],
+        "spl_set_id": [
+          "2f9b3bbb-4494-065d-e063-6294a90afcd2"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900038905"
+        ],
+        "unii": [
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d18d6f8-e38a-a208-e063-6394a90abffc",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250701",
+      "product_id": "84126-346_5d18d6f8-e38a-a208-e063-6394a90abffc",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil ALLERGY",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "58933-551",
+      "marketing_end_date": "20270630",
+      "generic_name": "Acetaminophen, Diphenhydramine HCl, Phenylephrine HCl",
+      "labeler_name": "Procter & Gamble Manufactura S de RL de CV",
+      "brand_name": "Vicks NyQuil HOT REMEDY RAPID RELIEF MULTI-SYMPTOM Cold and Flu plus Congestion",
+      "brand_name_suffix": "Cold and Flu plus Congestion",
+      "active_ingredients": [
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "10 mg/5g"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/5g"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/5g"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "58933-551-01",
+          "description": "5 g in 1 PACKET (58933-551-01)",
+          "marketing_start_date": "20230322",
+          "marketing_end_date": "20270630",
+          "sample": false
+        },
+        {
+          "package_ndc": "58933-551-08",
+          "description": "8 PACKET in 1 PACKAGE (58933-551-08)  / 5 g in 1 PACKET",
+          "marketing_start_date": "20230322",
+          "marketing_end_date": "20270630",
+          "sample": false
+        }
+      ],
+      "openfda": {
+        "manufacturer_name": [
+          "Procter & Gamble Manufactura S de RL de CV"
+        ],
+        "rxcui": [
+          "1659960"
+        ],
+        "spl_set_id": [
+          "f771aa19-295a-9f4e-e053-6294a90a1674"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "04JA59TNSJ",
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "POWDER, FOR SOLUTION",
+      "spl_id": "48832f07-1ccc-77f8-e063-6394a90a9ff4",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20230322",
+      "product_id": "58933-551_48832f07-1ccc-77f8-e063-6394a90a9ff4",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil HOT REMEDY RAPID RELIEF MULTI-SYMPTOM",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "58933-555",
+      "generic_name": "Acetaminophen, Diphenhydramine HCl",
+      "labeler_name": "Procter & Gamble Manufactura S de RL de CV",
+      "brand_name": "Vicks NyQuil HOT REMEDY Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "58933-555-01",
+          "description": "1 POWDER, FOR SOLUTION in 1 PACKET (58933-555-01)",
+          "marketing_start_date": "20250611",
+          "sample": false
+        },
+        {
+          "package_ndc": "58933-555-08",
+          "description": "8 PACKET in 1 PACKAGE (58933-555-08)  / 1 POWDER, FOR SOLUTION in 1 PACKET",
+          "marketing_start_date": "20250611",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Procter & Gamble Manufactura S de RL de CV"
+        ],
+        "rxcui": [
+          "2670677"
+        ],
+        "spl_set_id": [
+          "4535d4fe-9de7-f2c6-e063-6394a90a944a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900035188"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "POWDER, FOR SOLUTION",
+      "spl_id": "5ce19bae-fcb1-9c3a-e063-6394a90aa693",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250611",
+      "product_id": "58933-555_5ce19bae-fcb1-9c3a-e063-6394a90aa693",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil HOT REMEDY",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "84126-353",
+      "generic_name": "Acetaminophen, Doxylamine Succinate, Dextromethorphan Hydrobromide",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil VapoCOOL COLD and FLU",
+      "brand_name_suffix": "COLD and FLU",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-353-02",
+          "description": "2 TABLET, COATED in 1 POUCH (84126-353-02)",
+          "marketing_start_date": "20250506",
+          "sample": false
+        },
+        {
+          "package_ndc": "84126-353-24",
+          "description": "12 BLISTER PACK in 1 CARTON (84126-353-24)  / 2 TABLET, COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20250506",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2713312"
+        ],
+        "spl_set_id": [
+          "32819305-9bbd-8843-e063-6294a90a7f2e"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "V9BI9B5YI2",
+          "9D2RTI9KYH"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "5fa0b080-fe9a-61f7-e063-6294a90aabb4",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250506",
+      "product_id": "84126-353_5fa0b080-fe9a-61f7-e063-6294a90aabb4",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil VapoCOOL",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "84126-354",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Nyquil VapoCOOL COLD and FLU",
+      "brand_name_suffix": "COLD and FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-354-24",
+          "description": "12 BLISTER PACK in 1 CARTON (84126-354-24)  / 1 KIT in 1 BLISTER PACK *  2 TABLET, COATED in 1 POUCH (84126-352-02)  *  1 TABLET, COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20250506",
+          "sample": false
+        },
+        {
+          "package_ndc": "84126-354-48",
+          "description": "24 BLISTER PACK in 1 CARTON (84126-354-48)  / 1 KIT in 1 BLISTER PACK *  2 TABLET, COATED in 1 POUCH (84126-352-02)  *  1 TABLET, COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20250506",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2709673",
+          "2713312",
+          "2713313"
+        ],
+        "spl_set_id": [
+          "32f95ea0-3f39-914b-e063-6294a90a2c61"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5fdc54dd-4ada-b540-e063-6294a90a04a0",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250506",
+      "product_id": "84126-354_5fdc54dd-4ada-b540-e063-6294a90a04a0",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Nyquil VapoCOOL"
+    },
+    {
+      "product_ndc": "84126-360",
+      "generic_name": "Acetaminophen, Doxylamine Succinate, Dextromethorphan HBr",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Intense Flu Rapid Release LiquiCaps",
+      "brand_name_suffix": "Intense Flu Rapid Release LiquiCaps",
+      "active_ingredients": [
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "15 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-360-24",
+          "description": "12 BLISTER PACK in 1 CARTON (84126-360-24)  / 2 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20260817",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2749691"
+        ],
+        "spl_set_id": [
+          "354906d1-455b-460c-8283-984e73c09d7e"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900047808"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "5d6c4275-5578-cd77-e063-6294a90a7bb5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260817",
+      "product_id": "84126-360_5d6c4275-5578-cd77-e063-6294a90a7bb5",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-968",
+      "generic_name": "Acetaminophen, Dextromethrophan, Doxylamine succinate, Phenylephrine HCl",
+      "labeler_name": "Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Severe Honey Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/15mL"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/15mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/15mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-968-06",
+          "description": "177 mL in 1 BOTTLE, PLASTIC (69423-968-06)",
+          "marketing_start_date": "20240709",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-968-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (69423-968-08)",
+          "marketing_start_date": "20210707",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-968-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (69423-968-12)",
+          "marketing_start_date": "20210707",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1431245"
+        ],
+        "spl_set_id": [
+          "d3b2ca47-d51e-f69f-e053-2995a90a587e"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "04JA59TNSJ",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5ce18481-ee57-c241-e063-6294a90a5c29",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210707",
+      "product_id": "69423-968_5ce18481-ee57-c241-e063-6294a90a5c29",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil Severe Honey",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "84126-357",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil INTENSE FLU",
+      "brand_name_suffix": "INTENSE FLU",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "1000 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-357-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (84126-357-08)",
+          "marketing_start_date": "20250707",
+          "sample": false
+        },
+        {
+          "package_ndc": "84126-357-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (84126-357-12)",
+          "marketing_start_date": "20250701",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1042684"
+        ],
+        "spl_set_id": [
+          "326e3a20-7bcb-0e24-e063-6394a90af327"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900041868"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1aef37-73c8-3753-e063-6294a90a0bed",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250701",
+      "product_id": "84126-357_5d1aef37-73c8-3753-e063-6294a90a0bed",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "84126-358",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil INTENSE FLU",
+      "brand_name_suffix": "INTENSE FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-358-24",
+          "description": "1 KIT in 1 PACKAGE (84126-358-24)  *  354 mL in 1 BOTTLE, PLASTIC (84126-356-12)  *  354 mL in 1 BOTTLE, PLASTIC (84126-357-12)",
+          "marketing_start_date": "20250701",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1042684",
+          "1242575",
+          "1359455"
+        ],
+        "spl_set_id": [
+          "32bea3dc-9889-22dd-e063-6394a90afa1b"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1aec86-ccec-70b1-e063-6394a90a4bfa",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250701",
+      "product_id": "84126-358_5d1aec86-ccec-70b1-e063-6394a90a4bfa",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil"
+    },
+    {
+      "product_ndc": "84126-364",
+      "generic_name": "Acetaminophen, Pseudoephedrine HCl, Doxylamine Succinate, Dextromethorphan HBr",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil-D COLD and SINUS plus SEVERE CONGESTION",
+      "brand_name_suffix": "COLD and SINUS plus SEVERE CONGESTION",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "15 mg/1"
+        },
+        {
+          "name": "PSEUDOEPHEDRINE HYDROCHLORIDE",
+          "strength": "30 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-364-12",
+          "description": "12 CAPSULE, LIQUID FILLED in 1 BOTTLE (84126-364-12)",
+          "marketing_start_date": "20250908",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2723021"
+        ],
+        "spl_set_id": [
+          "3c176ea9-62a0-b86f-e063-6294a90ab8f7"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "V9BI9B5YI2",
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "6V9V2RYJ8N"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "5ce1023d-ccd4-8f93-e063-6294a90aa069",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250908",
+      "product_id": "84126-364_5ce1023d-ccd4-8f93-e063-6294a90aa069",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil-D",
+      "pharm_class": [
+        "Adrenergic alpha-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "84126-361",
+      "generic_name": "Acetaminophen, Doxylamine Succinate, Dextromethorphan HBr",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil Intense Flu Rapid Release LiquiCaps",
+      "brand_name_suffix": "Intense Flu Rapid Release LiquiCaps",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-361-12",
+          "description": "1 KIT in 1 PACKAGE (84126-361-12)  *  2 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  2 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20260518",
+          "sample": false
+        },
+        {
+          "package_ndc": "84126-361-48",
+          "description": "1 KIT in 1 PACKAGE (84126-361-48)  *  2 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  2 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20260518",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2749690",
+          "2749691",
+          "2749692"
+        ],
+        "spl_set_id": [
+          "bfff40f6-8586-4e4b-8db1-d96ba4819a09"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900047815"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d6c28ea-515e-b26c-e063-6294a90a035c",
+      "product_type": "HUMAN OTC DRUG",
+      "marketing_start_date": "20260518",
+      "product_id": "84126-361_5d6c28ea-515e-b26c-e063-6294a90a035c",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil"
+    },
+    {
+      "product_ndc": "69423-973",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, and Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil HIGH BLOOD PRESSURE Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-973-06",
+          "description": "177 mL in 1 BOTTLE, PLASTIC (69423-973-06)",
+          "marketing_start_date": "20220712",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-973-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (69423-973-08)",
+          "marketing_start_date": "20220712",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400"
+        ],
+        "spl_set_id": [
+          "d83c4691-785d-d1a0-e053-2995a90ad196"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900044890"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1af7a9-11af-430e-e063-6294a90a5eed",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220712",
+      "product_id": "69423-973_5d1af7a9-11af-430e-e063-6294a90a5eed",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil HIGH BLOOD PRESSURE",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-974",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil HIGH BLOOD PRESSURE COLD and FLU",
+      "brand_name_suffix": "COLD and FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-974-12",
+          "description": "1 KIT in 1 PACKAGE (69423-974-12)  *  177 mL in 1 BOTTLE, PLASTIC (69423-972-06)  *  177 mL in 1 BOTTLE, PLASTIC (69423-973-06)  *  236 mL in 1 BOTTLE, PLASTIC (69423-972-08)  *  236 mL in 1 BOTTLE, PLASTIC (69423-973-08)",
+          "marketing_start_date": "20240709",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-974-16",
+          "description": "1 KIT in 1 PACKAGE (69423-974-16)  *  177 mL in 1 BOTTLE, PLASTIC (69423-972-06)  *  177 mL in 1 BOTTLE, PLASTIC (69423-973-06)  *  236 mL in 1 BOTTLE, PLASTIC (69423-972-08)  *  236 mL in 1 BOTTLE, PLASTIC (69423-973-08)",
+          "marketing_start_date": "20220712",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400",
+          "1113705",
+          "2604561",
+          "2637726"
+        ],
+        "spl_set_id": [
+          "efbda62c-5d1a-2026-e053-2995a90a95d7"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1af4e0-e634-857f-e063-6394a90addef",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220712",
+      "product_id": "69423-974_5d1af4e0-e634-857f-e063-6394a90addef",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil HIGH BLOOD PRESSURE"
+    },
+    {
+      "product_ndc": "69423-986",
+      "marketing_end_date": "20270509",
+      "generic_name": "Acetaminophen, Phenylephrine Hydrochloride, Doxylamine Succinate, and Dextromethorphan Hydrobromide",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil VapoCOOL Severe COLD and FLU plus CONGESTION",
+      "brand_name_suffix": "COLD and FLU plus CONGESTION",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-986-24",
+          "description": "1 BLISTER PACK in 1 CARTON (69423-986-24)  / 24 TABLET, COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20210322",
+          "marketing_end_date": "20270509",
+          "sample": false
+        }
+      ],
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1546881"
+        ],
+        "spl_set_id": [
+          "efb5f0b9-9825-ab23-e053-2995a90a26ab"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900038394"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "04JA59TNSJ",
+          "V9BI9B5YI2",
+          "9D2RTI9KYH"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "5afb0dda-8124-cbe7-e063-6394a90a6293",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210322",
+      "product_id": "69423-986_5afb0dda-8124-cbe7-e063-6394a90a6293",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil VapoCOOL Severe",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "84126-365",
+      "generic_name": "Acetaminophen, Dextromethorphan HBr, Doxylamine Succinate, Guaifenesin, Pseudoephedrine HCl",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil-D NyQuil-D COLD and SINUS plus SEVERE CONGESTION",
+      "brand_name_suffix": "COLD and SINUS plus SEVERE CONGESTION",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-365-24",
+          "description": "1 KIT in 1 CARTON (84126-365-24)",
+          "marketing_start_date": "20250908",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2723021",
+          "2723022",
+          "2723023"
+        ],
+        "spl_set_id": [
+          "3c1cbe58-f5a2-c96e-e063-6294a90a74e6"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900040007"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5ce0fef6-0905-9072-e063-6394a90ac9e2",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250908",
+      "product_id": "84126-365_5ce0fef6-0905-9072-e063-6394a90ac9e2",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil-D NyQuil-D"
+    },
+    {
+      "product_ndc": "69423-983",
+      "generic_name": "Doxylamine Succinate, Phenylephrine Hydrochloride and Dextromethorphan Hydrobromide",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Kids Honey Cold Cough Congestion",
+      "brand_name_suffix": "Honey Cold Cough Congestion",
+      "active_ingredients": [
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/15mL"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/15mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-983-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (69423-983-08)",
+          "marketing_start_date": "20210707",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2566814"
+        ],
+        "spl_set_id": [
+          "e2378da8-f686-1ab6-e053-2995a90a1091"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900042704"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "04JA59TNSJ",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d19fdb2-4dc7-ba79-e063-6394a90a6f2a",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210707",
+      "product_id": "69423-983_5d19fdb2-4dc7-ba79-e063-6394a90a6f2a",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil Kids",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "69423-988",
+      "marketing_end_date": "20270506",
+      "generic_name": "Acetaminophen, Phenylephrine Hydrochloride, and Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Nyquil VapoCOOL Severe COLD and FLU plus CONGESTION",
+      "brand_name_suffix": "COLD and FLU plus CONGESTION",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-988-24",
+          "description": "1 KIT in 1 PACKAGE (69423-988-24)  *  1 TABLET in 1 BLISTER PACK *  1 TABLET, COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20210322",
+          "marketing_end_date": "20270506",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-988-48",
+          "description": "1 KIT in 1 PACKAGE (69423-988-48)  *  1 TABLET in 1 BLISTER PACK *  1 TABLET, COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20210322",
+          "marketing_end_date": "20270506",
+          "sample": false
+        }
+      ],
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1110988",
+          "1546881",
+          "2634817"
+        ],
+        "spl_set_id": [
+          "f4328b44-cdfa-41aa-e053-2995a90a2728"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5afb1373-0d87-d32f-e063-6394a90afff0",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210322",
+      "product_id": "69423-988_5afb1373-0d87-d32f-e063-6394a90afff0",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Nyquil VapoCOOL Severe"
+    },
+    {
+      "product_ndc": "69423-989",
+      "generic_name": "acetaminophen, dextromethorphan hydrobromide, doxylamine succinate, and phenylephrine hydrochloride",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "NyQuil VapoCOOL SEVERE COLD and FLU plus CONGESTION",
+      "brand_name_suffix": "COLD and FLU plus CONGESTION",
+      "active_ingredients": [
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "10 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "20 mg/30mL"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-989-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (69423-989-08)",
+          "marketing_start_date": "20210322",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-989-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (69423-989-12)",
+          "marketing_start_date": "20210322",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1431245"
+        ],
+        "spl_set_id": [
+          "ef6df67c-0afa-4825-e053-2995a90aced9"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900039414"
+        ],
+        "unii": [
+          "04JA59TNSJ",
+          "V9BI9B5YI2",
+          "9D2RTI9KYH",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "SOLUTION",
+      "spl_id": "5ce1634c-0609-ece7-e063-6394a90a386e",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210322",
+      "product_id": "69423-989_5ce1634c-0609-ece7-e063-6394a90a386e",
+      "application_number": "M012",
+      "brand_name_base": "NyQuil VapoCOOL SEVERE",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "69423-991",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Doxylamine Succinate, Guaifenesin, Phenylephrine hydrochloride",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "DayQuil and NyQuil VapoCOOL SEVERE COLD and FLU plus CONGESTION",
+      "brand_name_suffix": "COLD and FLU plus CONGESTION",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-991-24",
+          "description": "1 KIT in 1 PACKAGE (69423-991-24)  *  354 mL in 1 BOTTLE, PLASTIC (69423-990-12)  *  354 mL in 1 BOTTLE, PLASTIC (69423-989-12)  *  236 mL in 1 BOTTLE, PLASTIC (69423-990-08)  *  236 mL in 1 BOTTLE, PLASTIC (69423-989-08)",
+          "marketing_start_date": "20210322",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1369842",
+          "1431245",
+          "2637731"
+        ],
+        "spl_set_id": [
+          "fbd53e5f-bc03-75b4-e053-6394a90af028"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5ce167c1-afb2-fecc-e063-6394a90ae5a7",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210322",
+      "product_id": "69423-991_5ce167c1-afb2-fecc-e063-6394a90ae5a7",
+      "application_number": "M012",
+      "brand_name_base": "DayQuil and NyQuil VapoCOOL SEVERE"
+    },
+    {
+      "product_ndc": "66715-6205",
+      "generic_name": "acetaminophen, doxylamine succinate, dextromethorphan hydrobromide tablet, coated",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "NyQuil Cold and Flu w/VapoCOOL, 4ct, Travel BASIX",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6205-2",
+          "description": "2 POUCH in 1 CARTON (66715-6205-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20250601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "2713312"
+        ],
+        "spl_set_id": [
+          "37c768f5-dabd-22d0-e063-6394a90af9e5"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "37c768f5-dabe-22d0-e063-6394a90af9e5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250601",
+      "product_id": "66715-6205_37c768f5-dabe-22d0-e063-6394a90af9e5",
+      "application_number": "M012",
+      "brand_name_base": "NyQuil Cold and Flu w/VapoCOOL, 4ct, Travel BASIX",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-993",
+      "generic_name": "Doxylamine Succinate, Phenylephrine Hydrochloride, Dextromethorphan Hydrobromide",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil Kids Honey and Vicks NyQuil Kids Honey COLD and COUGH plus",
+      "brand_name_suffix": "COLD and COUGH plus",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-993-16",
+          "description": "1 KIT in 1 PACKAGE (69423-993-16)  *  236 mL in 1 BOTTLE, PLASTIC (69423-946-08)  *  236 mL in 1 BOTTLE, PLASTIC (69423-983-08)",
+          "marketing_start_date": "20220712",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400",
+          "1113705",
+          "2566814",
+          "2566816",
+          "2637726"
+        ],
+        "spl_set_id": [
+          "efa53214-b2e0-cfd0-e053-2a95a90abbdf"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d572be9-3dbd-c3f4-e063-6394a90a98c0",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210712",
+      "product_id": "69423-993_5d572be9-3dbd-c3f4-e063-6394a90a98c0",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil Kids Honey and Vicks NyQuil Kids Honey"
+    },
+    {
+      "product_ndc": "69423-999",
+      "generic_name": "Dextromethorphan Hydrobromide, Doxylamine succinate and Phenylephrine Hydrochloride",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Cough DM plus Congestion",
+      "brand_name_suffix": "Cough DM plus Congestion",
+      "active_ingredients": [
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/15mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/15mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-999-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (69423-999-08)",
+          "marketing_start_date": "20200708",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-999-12",
+          "description": "354 mL in 1 BOTTLE, PLASTIC (69423-999-12)",
+          "marketing_start_date": "20200708",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2566814"
+        ],
+        "spl_set_id": [
+          "c4d38921-ec90-0658-e053-2a95a90a848a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900041202"
+        ],
+        "unii": [
+          "04JA59TNSJ",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d2d40a8-0266-4952-e063-6294a90abd2a",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20200708",
+      "product_id": "69423-999_5d2d40a8-0266-4952-e063-6294a90abd2a",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "84126-374",
+      "generic_name": "Acetaminophen, Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil SINUS PAIN and HEADACHE",
+      "brand_name_suffix": "SINUS PAIN and HEADACHE",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/15mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/15mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-374-08",
+          "description": "236 mL in 1 BOTTLE, PLASTIC (84126-374-08)",
+          "marketing_start_date": "20260707",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2746451"
+        ],
+        "spl_set_id": [
+          "4c4ca296-ea6c-1f19-e063-6294a90a8161"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900048607"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d6c4701-fe96-d26a-e063-6294a90a661f",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260707",
+      "product_id": "84126-374_5d6c4701-fe96-d26a-e063-6294a90a661f",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-995",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, and Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil COLD and FLU",
+      "brand_name_suffix": "COLD and FLU",
+      "active_ingredients": [
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "15 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-995-02",
+          "description": "2 CAPSULE, LIQUID FILLED in 1 POUCH (69423-995-02)",
+          "marketing_start_date": "20210101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-995-08",
+          "description": "4 BLISTER PACK in 1 CARTON (69423-995-08)  / 2 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20210101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-995-16",
+          "description": "8 BLISTER PACK in 1 CARTON (69423-995-16)  / 2 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20210101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-995-24",
+          "description": "8 BLISTER PACK in 1 CARTON (69423-995-24)  / 3 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20210101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-995-48",
+          "description": "24 BLISTER PACK in 1 CARTON (69423-995-48)  / 2 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20210101",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1094549"
+        ],
+        "spl_set_id": [
+          "efe4e649-7514-32dd-e053-2995a90a0492"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900014398"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "5d1b1356-ec59-a707-e063-6394a90a3604",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210101",
+      "product_id": "69423-995_5d1b1356-ec59-a707-e063-6394a90a3604",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "69423-996",
+      "generic_name": "Acetaminophen, Phenylephrine Hydrochloride, Dextromethorphan Hydrobromide, and Doxylamine Succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks DayQuil and Vicks NyQuil COLD and FLU",
+      "brand_name_suffix": "COLD and FLU",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69423-996-12",
+          "description": "1 KIT in 1 PACKAGE (69423-996-12)  *  4 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20200101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-996-24",
+          "description": "1 KIT in 1 PACKAGE (69423-996-24)  *  4 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20200101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-996-48",
+          "description": "1 KIT in 1 PACKAGE (69423-996-48)  *  4 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20200101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-996-60",
+          "description": "1 KIT in 1 PACKAGE (69423-996-60)  *  4 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20210101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69423-996-72",
+          "description": "1 KIT in 1 PACKAGE (69423-996-72)  *  4 CAPSULE, LIQUID FILLED in 1 BLISTER PACK *  8 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20200101",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1086997",
+          "1094549",
+          "2634564"
+        ],
+        "spl_set_id": [
+          "efb92829-1007-1c5d-e053-2a95a90a3c9b"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "5d1b13af-ffc4-6409-e063-6294a90a8e66",
+      "product_type": "HUMAN OTC DRUG",
+      "marketing_start_date": "20200101",
+      "product_id": "69423-996_5d1b13af-ffc4-6409-e063-6294a90a8e66",
+      "application_number": "M012",
+      "brand_name_base": "Vicks DayQuil and Vicks NyQuil"
+    },
+    {
+      "product_ndc": "84126-381",
+      "generic_name": "Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Allergy",
+      "brand_name_suffix": "Allergy",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-381-24",
+          "description": "2 BLISTER PACK in 1 CARTON (84126-381-24)  / 12 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20260701",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "2745969"
+        ],
+        "spl_set_id": [
+          "559149ac-1784-c677-e063-6294a90a0673"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900048973"
+        ],
+        "unii": [
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "5d6c59b2-a24b-e852-e063-6294a90a3e12",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260701",
+      "product_id": "84126-381_5d6c59b2-a24b-e852-e063-6294a90a3e12",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "66715-6405",
+      "generic_name": "Acetaminophen, Phenylephrine Hydrochloride, Doxylamine Succinate, and Dextromethorphan Hydrobromide",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "NyQuil Severe Plus VapoCOOL Cold and Flu, TRAVEL BASIX",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/1"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "6.25 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6405-2",
+          "description": "2 POUCH in 1 CARTON (66715-6405-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20221129",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "1546881"
+        ],
+        "spl_set_id": [
+          "e7355543-6dd7-4560-8fe0-9c1ebd4d2c0b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0094187380048"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "V9BI9B5YI2",
+          "362O9ITL9D",
+          "04JA59TNSJ"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "06be9e28-b6c3-a4e4-e063-6294a90a3400",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20221129",
+      "product_id": "66715-6405_06be9e28-b6c3-a4e4-e063-6294a90a3400",
+      "application_number": "M012",
+      "brand_name_base": "NyQuil Severe Plus VapoCOOL Cold and Flu, TRAVEL BASIX",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    }
+  ]
+}

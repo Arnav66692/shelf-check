@@ -1,0 +1,712 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 5,
+      "total": 4
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "43742-2046",
+      "marketing_end_date": "20270201",
+      "generic_name": "Agnus Castus, Ambra Grisea, Estradiol, L-Dopa, Melatonin, Petroselinum Sativum, Adenosinum Triphosphoricum Dinatrum, Alpha-Lipoicum Acidum, Nadidum, Pantothenic Acid, Sarcolacticum Acidum, Ubidecarenonum, Baryta Carbonica, Conium Maculatum, Selenium Metallicum, Folliculinum, Testosterone, Funiculus Umbilicalis Suis, Glandula Suprarenalis Suis, Hepar Suis, Hypothalamus Suis, Lymph Node (Suis), Medulla Ossis Suis, Oophorinum (Suis), Orchitinum (Suis), Pancreas Suis, Spleen (Suis), Human Growth Hormone,",
+      "labeler_name": "Deseret Biologicals",
+      "dea_schedule": "CIII",
+      "brand_name": "High Vitality Tab",
+      "active_ingredients": [
+        {
+          "name": "CHASTE TREE FRUIT",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "AMBERGRIS",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "ESTRADIOL",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "LEVODOPA",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "MELATONIN",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "PETROSELINUM CRISPUM WHOLE",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "ADENOSINE TRIPHOSPHATE DISODIUM",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "ALPHA LIPOIC ACID",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "NADIDE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "PANTOTHENIC ACID",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "LACTIC ACID, L-",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "UBIDECARENONE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "BARIUM CARBONATE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "CONIUM MACULATUM FLOWERING TOP",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "SELENIUM",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "ESTRONE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "TESTOSTERONE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA UMBILICAL CORD",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA ADRENAL GLAND",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "PORK LIVER",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA HYPOTHALAMUS",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA LYMPH",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA BONE MARROW",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA OVARY",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA TESTICLE",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA PANCREAS",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA SPLEEN",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SOMATROPIN",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "PROTEUS MORGANII",
+          "strength": "30 [hp_C]/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "43742-2046-1",
+          "description": "90 TABLET in 1 BOTTLE (43742-2046-1)",
+          "marketing_start_date": "20220210",
+          "marketing_end_date": "20270201",
+          "sample": false
+        }
+      ],
+      "openfda": {
+        "manufacturer_name": [
+          "Deseret Biologicals"
+        ],
+        "spl_set_id": [
+          "4040e55f-9d59-483e-bba1-ec6cd6869375"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "M0447348",
+          "N0000175825",
+          "N0000000100",
+          "N0000193220",
+          "M0370111",
+          "N0000175824",
+          "N0000000146",
+          "M0001109",
+          "N0000175606",
+          "M0028842"
+        ],
+        "pharm_class_cs": [
+          "Estradiol Congeners [CS]",
+          "Amino Acids, Aromatic [CS]",
+          "Androstanes [CS]",
+          "Human Growth Hormone [CS]"
+        ],
+        "pharm_class_epc": [
+          "Estrogen [EPC]",
+          "Aromatic Amino Acid [EPC]",
+          "Androgen [EPC]",
+          "Recombinant Human Growth Hormone [EPC]"
+        ],
+        "pharm_class_moa": [
+          "Estrogen Receptor Agonists [MoA]",
+          "Androgen Receptor Agonists [MoA]"
+        ],
+        "unii": [
+          "433OSF3U8A",
+          "XTC0D02P6C",
+          "4TI98Z838E",
+          "46627O600J",
+          "JL5DK93RCL",
+          "1WZA4Y92EX",
+          "5L51B4DR1G",
+          "73Y7P0K73Y",
+          "0U46U6E8UK",
+          "19F5HK2737",
+          "F9S9FFU82N",
+          "EJ27X76M46",
+          "6P669D8HQ8",
+          "Q28R5GF371",
+          "H6241UJ22B",
+          "2DI9HA706A",
+          "3XMK78S47O",
+          "118OYG6W3H",
+          "398IYQ16YV",
+          "6EC706HI7F",
+          "N6R0856Z79",
+          "33A7VYU29L",
+          "VP2CN2G7Y8",
+          "S7YTV04R8O",
+          "KM02613O28",
+          "9Y3J3362RY",
+          "92AMN5J79Y",
+          "NQX9KB6PCL",
+          "56X6LID5ZY"
+        ]
+      },
+      "marketing_category": "UNAPPROVED HOMEOPATHIC",
+      "dosage_form": "TABLET",
+      "spl_id": "91fbebb5-5a50-4ba7-aac7-58eb44ecd96a",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220210",
+      "product_id": "43742-2046_91fbebb5-5a50-4ba7-aac7-58eb44ecd96a",
+      "brand_name_base": "High Vitality Tab",
+      "pharm_class": [
+        "Amino Acids",
+        "Aromatic [CS]",
+        "Androgen Receptor Agonists [MoA]",
+        "Androgen [EPC]",
+        "Androstanes [CS]",
+        "Aromatic Amino Acid [EPC]",
+        "Estradiol Congeners [CS]",
+        "Estrogen Receptor Agonists [MoA]",
+        "Estrogen [EPC]",
+        "Human Growth Hormone [CS]",
+        "Recombinant Human Growth Hormone [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "44911-0500",
+      "generic_name": "Calcarea Carbonica, Chamomilla, Cocculus Indicus, Coffea Cruda, Ferrum Phosphoricum, Kali Phosphoricum, Magnesia Carbonica, Melatonin, Natrum Muriaticum, Nux Vomica, Pulsatilla (Pratensis)",
+      "labeler_name": "Energique, Inc.",
+      "brand_name": "Melatonin Pro",
+      "active_ingredients": [
+        {
+          "name": "OYSTER SHELL CALCIUM CARBONATE, CRUDE",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "MATRICARIA CHAMOMILLA",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "ANAMIRTA COCCULUS SEED",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "ARABICA COFFEE BEAN",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "FERROSOFERRIC PHOSPHATE",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "DIBASIC POTASSIUM PHOSPHATE",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "MAGNESIUM CARBONATE",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "MELATONIN",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "SODIUM CHLORIDE",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "STRYCHNOS NUX-VOMICA SEED",
+          "strength": "12 [hp_X]/1"
+        },
+        {
+          "name": "PULSATILLA PRATENSIS WHOLE",
+          "strength": "12 [hp_X]/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "44911-0500-1",
+          "description": "60 TABLET in 1 BOTTLE, PLASTIC (44911-0500-1)",
+          "marketing_start_date": "20190607",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Energique, Inc."
+        ],
+        "spl_set_id": [
+          "1f374642-83f7-4e64-b330-0f6ef21000a9"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000185371",
+          "N0000185375",
+          "N0000175629",
+          "N0000184306",
+          "M0000728",
+          "M0006342",
+          "M0016962",
+          "M0516536",
+          "N0000185001"
+        ],
+        "pharm_class_epc": [
+          "Non-Standardized Food Allergenic Extract [EPC]",
+          "Non-Standardized Plant Allergenic Extract [EPC]"
+        ],
+        "pharm_class_pe": [
+          "Increased Histamine Release [PE]",
+          "Cell-mediated Immunity [PE]",
+          "Increased IgG Production [PE]"
+        ],
+        "pharm_class_cs": [
+          "Allergens [CS]",
+          "Dietary Proteins [CS]",
+          "Plant Proteins [CS]",
+          "Seed Storage Proteins [CS]"
+        ],
+        "unii": [
+          "2E32821G6I",
+          "G0R4UBI2ZZ",
+          "810258W28U",
+          "3SW678MX72",
+          "91GQH8I5F7",
+          "CI71S98N1Z",
+          "0E53J927NA",
+          "JL5DK93RCL",
+          "451W47IQ8X",
+          "269XH13919",
+          "8E272251DI"
+        ]
+      },
+      "marketing_category": "UNAPPROVED HOMEOPATHIC",
+      "dosage_form": "TABLET",
+      "spl_id": "bdfbe914-ba46-48a2-885f-a5c8b74c8f7b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190607",
+      "product_id": "44911-0500_bdfbe914-ba46-48a2-885f-a5c8b74c8f7b",
+      "brand_name_base": "Melatonin Pro",
+      "pharm_class": [
+        "Allergens [CS]",
+        "Allergens [CS]",
+        "Cell-mediated Immunity [PE]",
+        "Cell-mediated Immunity [PE]",
+        "Dietary Proteins [CS]",
+        "Increased Histamine Release [PE]",
+        "Increased Histamine Release [PE]",
+        "Increased IgG Production [PE]",
+        "Non-Standardized Food Allergenic Extract [EPC]",
+        "Non-Standardized Plant Allergenic Extract [EPC]",
+        "Non-Standardized Plant Allergenic Extract [EPC]",
+        "Plant Proteins [CS]",
+        "Plant Proteins [CS]",
+        "Seed Storage Proteins [CS]",
+        "Seed Storage Proteins [CS]"
+      ]
+    },
+    {
+      "product_ndc": "43742-2078",
+      "marketing_end_date": "20301020",
+      "generic_name": "Adenosinum Triphosphoricum Dinatrum, Pantothenic Acid, Pineal Gland (Suis), Sarcolacticum Acidum, Ubidecarenonum, L-Tryptophan, Melatonin, Pyrrole, Arsenicum Album, Avena Sativa, Chamomilla, Coffea Cruda, Mercurius Corrosivus, Passiflora Incarnata, Silicea, Zincum Valerianicum, Dysentery Bacillus, Gaertner Bacillus",
+      "labeler_name": "Deseret Biologicals, Inc.",
+      "brand_name": "Perfect Sleep",
+      "active_ingredients": [
+        {
+          "name": "ADENOSINE TRIPHOSPHATE DISODIUM",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "PANTOTHENIC ACID",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA PINEAL GLAND",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "LACTIC ACID, L-",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "UBIDECARENONE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "TRYPTOPHAN",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "MELATONIN",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "PYRROLE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "ARSENIC TRIOXIDE",
+          "strength": "10 [hp_X]/1"
+        },
+        {
+          "name": "AVENA SATIVA FLOWERING TOP",
+          "strength": "10 [hp_X]/1"
+        },
+        {
+          "name": "MATRICARIA CHAMOMILLA WHOLE",
+          "strength": "10 [hp_X]/1"
+        },
+        {
+          "name": "ARABICA COFFEE BEAN",
+          "strength": "10 [hp_X]/1"
+        },
+        {
+          "name": "MERCURIC CHLORIDE",
+          "strength": "10 [hp_X]/1"
+        },
+        {
+          "name": "PASSIFLORA INCARNATA FLOWERING TOP",
+          "strength": "10 [hp_X]/1"
+        },
+        {
+          "name": "SILICON DIOXIDE",
+          "strength": "10 [hp_X]/1"
+        },
+        {
+          "name": "ZINC VALERATE DIHYDRATE",
+          "strength": "10 [hp_X]/1"
+        },
+        {
+          "name": "SHIGELLA DYSENTERIAE",
+          "strength": "30 [hp_C]/1"
+        },
+        {
+          "name": "SALMONELLA ENTERICA SUBSP. ENTERICA SEROVAR ENTERITIDIS",
+          "strength": "30 [hp_C]/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "43742-2078-1",
+          "description": "90 TABLET in 1 BOTTLE, PLASTIC (43742-2078-1)",
+          "marketing_start_date": "20230220",
+          "marketing_end_date": "20301020",
+          "sample": false
+        }
+      ],
+      "openfda": {},
+      "marketing_category": "UNAPPROVED HOMEOPATHIC",
+      "dosage_form": "TABLET",
+      "spl_id": "03108f1e-ed70-41e5-a0bb-27c6914e8176",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20230220",
+      "product_id": "43742-2078_03108f1e-ed70-41e5-a0bb-27c6914e8176",
+      "brand_name_base": "Perfect Sleep",
+      "pharm_class": [
+        "Allergens [CS]",
+        "Cell-mediated Immunity [PE]",
+        "Dietary Proteins [CS]",
+        "Increased Histamine Release [PE]",
+        "Non-Standardized Food Allergenic Extract [EPC]",
+        "Non-Standardized Plant Allergenic Extract [EPC]",
+        "Plant Proteins [CS]",
+        "Seed Storage Proteins [CS]"
+      ]
+    },
+    {
+      "product_ndc": "43742-2110",
+      "generic_name": "Agnus Castus, Ambra Grisea, Estradiol, L-Dopa, Melatonin, Petroselinum Sativum, Adenosinum Triphosphoricum Dinatrum, Alpha-Lipoicum Acidum, Nadidum, Pantothenic Acid, Sarcolacticum Acidum, Ubidecarenonum, Baryta Carbonica, Conium Maculatum, Selenium Metallicum, Folliculinum, Testosterone, Funiculus Umbilicalis Suis, Glandula Suprarenalis Suis, Hepar Suis, Hypothalamus Suis, Lymph Node (Suis), Medulla Ossis Suis, Oophorinum (Suis), Orchitinum (Suis), Pancreas Suis, Spleen (Suis), Proteus (Morgani)",
+      "labeler_name": "Deseret Biologicals",
+      "dea_schedule": "CIII",
+      "brand_name": "High Vitality Tab",
+      "active_ingredients": [
+        {
+          "name": "CHASTE TREE FRUIT",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "AMBERGRIS",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "ESTRADIOL",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "LEVODOPA",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "MELATONIN",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "PETROSELINUM CRISPUM WHOLE",
+          "strength": "6 [hp_X]/1"
+        },
+        {
+          "name": "ADENOSINE TRIPHOSPHATE DISODIUM",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "ALPHA LIPOIC ACID",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "NADIDE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "PANTOTHENIC ACID",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "LACTIC ACID, L-",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "UBIDECARENONE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "BARIUM CARBONATE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "CONIUM MACULATUM FLOWERING TOP",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "SELENIUM",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "ESTRONE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "TESTOSTERONE",
+          "strength": "8 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA UMBILICAL CORD",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA ADRENAL GLAND",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "PORK LIVER",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA HYPOTHALAMUS",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA LYMPH",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA BONE MARROW",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA OVARY",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA TESTICLE",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA PANCREAS",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "SUS SCROFA SPLEEN",
+          "strength": "30 [hp_X]/1"
+        },
+        {
+          "name": "PROTEUS MORGANII",
+          "strength": "30 [hp_C]/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "43742-2110-1",
+          "description": "90 TABLET in 1 BOTTLE (43742-2110-1)",
+          "marketing_start_date": "20231222",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Deseret Biologicals"
+        ],
+        "spl_set_id": [
+          "d13cfd09-8f8d-4b39-b60e-0e7886af2a56"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "M0447348",
+          "N0000175825",
+          "N0000000100",
+          "N0000193220",
+          "M0370111",
+          "N0000175824",
+          "N0000000146",
+          "M0001109"
+        ],
+        "pharm_class_cs": [
+          "Estradiol Congeners [CS]",
+          "Amino Acids, Aromatic [CS]",
+          "Androstanes [CS]"
+        ],
+        "pharm_class_epc": [
+          "Estrogen [EPC]",
+          "Aromatic Amino Acid [EPC]",
+          "Androgen [EPC]"
+        ],
+        "pharm_class_moa": [
+          "Estrogen Receptor Agonists [MoA]",
+          "Androgen Receptor Agonists [MoA]"
+        ],
+        "unii": [
+          "433OSF3U8A",
+          "XTC0D02P6C",
+          "4TI98Z838E",
+          "46627O600J",
+          "JL5DK93RCL",
+          "1WZA4Y92EX",
+          "5L51B4DR1G",
+          "73Y7P0K73Y",
+          "0U46U6E8UK",
+          "19F5HK2737",
+          "F9S9FFU82N",
+          "EJ27X76M46",
+          "6P669D8HQ8",
+          "Q28R5GF371",
+          "H6241UJ22B",
+          "2DI9HA706A",
+          "3XMK78S47O",
+          "118OYG6W3H",
+          "398IYQ16YV",
+          "6EC706HI7F",
+          "N6R0856Z79",
+          "33A7VYU29L",
+          "VP2CN2G7Y8",
+          "S7YTV04R8O",
+          "KM02613O28",
+          "9Y3J3362RY",
+          "92AMN5J79Y",
+          "56X6LID5ZY"
+        ]
+      },
+      "marketing_category": "UNAPPROVED HOMEOPATHIC",
+      "dosage_form": "TABLET",
+      "spl_id": "fc462827-e5ba-4be0-bfea-6358b5c7f8b5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20231222",
+      "product_id": "43742-2110_fc462827-e5ba-4be0-bfea-6358b5c7f8b5",
+      "brand_name_base": "High Vitality Tab",
+      "pharm_class": [
+        "Amino Acids",
+        "Aromatic [CS]",
+        "Androgen Receptor Agonists [MoA]",
+        "Androgen [EPC]",
+        "Androstanes [CS]",
+        "Aromatic Amino Acid [EPC]",
+        "Estradiol Congeners [CS]",
+        "Estrogen Receptor Agonists [MoA]",
+        "Estrogen [EPC]"
+      ]
+    }
+  ]
+}

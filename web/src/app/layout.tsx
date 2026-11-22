@@ -1,0 +1,36 @@
+import type { Metadata } from "next";
+import { Archivo } from "next/font/google";
+import { SiteHeader } from "@/components/SiteHeader";
+import "./globals.css";
+
+const archivo = Archivo({
+  variable: "--font-archivo",
+  subsets: ["latin"],
+  axes: ["wdth"],
+});
+
+export const metadata: Metadata = {
+  title: "Shelf Check",
+  description: "Check every medicine you own against its official label. Double doses, interactions and unit mix-ups, each quoted from the label.",
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
+  return (
+    <html lang="en" className={`${archivo.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">
+        <SiteHeader />
+        <main className="flex-1 w-full max-w-[1180px] mx-auto px-4 sm:px-8 pb-24">{children}</main>
+        <footer className="w-full max-w-[1180px] mx-auto px-4 sm:px-8 py-6 text-sm text-ink-soft thick">
+          <p>
+            A safety check, not medical advice. Every flag quotes an official label. Show it to your pharmacist or
+            doctor before you change what you take.
+          </p>
+          <p className="mt-2 text-ink font-bold">
+            Possible poisoning or overdose in the United States: Poison Help, 1-800-222-1222. Collapse, seizure or
+            trouble breathing: call 911.
+          </p>
+        </footer>
+      </body>
+    </html>
+  );
+}

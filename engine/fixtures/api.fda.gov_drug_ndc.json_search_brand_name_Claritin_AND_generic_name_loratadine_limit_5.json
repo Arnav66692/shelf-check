@@ -1,0 +1,340 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 5,
+      "total": 29
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "11523-4330",
+      "generic_name": "loratadine",
+      "labeler_name": "Bayer HealthCare LLC.",
+      "brand_name": "Claritin",
+      "active_ingredients": [
+        {
+          "name": "LORATADINE",
+          "strength": "5 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "11523-4330-1",
+          "description": "1 BLISTER PACK in 1 CARTON (11523-4330-1)  / 10 TABLET, CHEWABLE in 1 BLISTER PACK",
+          "marketing_start_date": "20150925",
+          "sample": false
+        },
+        {
+          "package_ndc": "11523-4330-3",
+          "description": "3 BLISTER PACK in 1 CARTON (11523-4330-3)  / 10 TABLET, CHEWABLE in 1 BLISTER PACK",
+          "marketing_start_date": "20150925",
+          "sample": false
+        },
+        {
+          "package_ndc": "11523-4330-4",
+          "description": "4 BLISTER PACK in 1 CARTON (11523-4330-4)  / 10 TABLET, CHEWABLE in 1 BLISTER PACK",
+          "marketing_start_date": "20150925",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Bayer HealthCare LLC."
+        ],
+        "rxcui": [
+          "665078",
+          "668469"
+        ],
+        "spl_set_id": [
+          "20938e05-bc3e-51aa-e054-00144ff88e88"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0041100811127"
+        ],
+        "unii": [
+          "7AJO3BO7QN"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, CHEWABLE",
+      "spl_id": "45370735-3f9c-a7f8-e063-6294a90aa0c6",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20150925",
+      "product_id": "11523-4330_45370735-3f9c-a7f8-e063-6294a90aa0c6",
+      "application_number": "NDA021891",
+      "brand_name_base": "Claritin"
+    },
+    {
+      "product_ndc": "11523-4331",
+      "generic_name": "Loratadine",
+      "labeler_name": "Bayer HealthCare LLC.",
+      "brand_name": "Claritin",
+      "active_ingredients": [
+        {
+          "name": "LORATADINE",
+          "strength": "5 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "11523-4331-1",
+          "description": "4 BLISTER PACK in 1 CARTON (11523-4331-1)  / 10 TABLET, CHEWABLE in 1 BLISTER PACK",
+          "marketing_start_date": "20060823",
+          "sample": false
+        },
+        {
+          "package_ndc": "11523-4331-2",
+          "description": "6 BLISTER PACK in 1 CARTON (11523-4331-2)  / 10 TABLET, CHEWABLE in 1 BLISTER PACK",
+          "marketing_start_date": "20190906",
+          "sample": false
+        },
+        {
+          "package_ndc": "11523-4331-6",
+          "description": "8 BLISTER PACK in 1 CARTON (11523-4331-6)  / 10 TABLET, CHEWABLE in 1 BLISTER PACK",
+          "marketing_start_date": "20060823",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Bayer HealthCare LLC."
+        ],
+        "rxcui": [
+          "665078",
+          "668469"
+        ],
+        "spl_set_id": [
+          "37732ca2-b454-4215-91a2-c62e0f7a56af"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0041100810748"
+        ],
+        "unii": [
+          "7AJO3BO7QN"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, CHEWABLE",
+      "spl_id": "453703bf-d4b7-d090-e063-6394a90a7ebf",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20060823",
+      "product_id": "11523-4331_453703bf-d4b7-d090-e063-6394a90a7ebf",
+      "application_number": "NDA021891",
+      "brand_name_base": "Claritin"
+    },
+    {
+      "product_ndc": "11523-4332",
+      "generic_name": "Loratadine and pseudoephedrine sulfate",
+      "labeler_name": "Bayer HealthCare LLC.",
+      "brand_name": "Claritin-D 24 Hour",
+      "brand_name_suffix": "24 Hour",
+      "active_ingredients": [
+        {
+          "name": "LORATADINE",
+          "strength": "10 mg/1"
+        },
+        {
+          "name": "PSEUDOEPHEDRINE SULFATE",
+          "strength": "240 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "11523-4332-1",
+          "description": "1 BLISTER PACK in 1 CARTON (11523-4332-1)  / 5 TABLET, EXTENDED RELEASE in 1 BLISTER PACK",
+          "marketing_start_date": "20091201",
+          "sample": false
+        },
+        {
+          "package_ndc": "11523-4332-2",
+          "description": "1 BLISTER PACK in 1 CARTON (11523-4332-2)  / 10 TABLET, EXTENDED RELEASE in 1 BLISTER PACK",
+          "marketing_start_date": "20091201",
+          "sample": false
+        },
+        {
+          "package_ndc": "11523-4332-3",
+          "description": "3 BLISTER PACK in 1 CARTON (11523-4332-3)  / 5 TABLET, EXTENDED RELEASE in 1 BLISTER PACK",
+          "marketing_start_date": "20091201",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Bayer HealthCare LLC."
+        ],
+        "rxcui": [
+          "1117562",
+          "1242391"
+        ],
+        "spl_set_id": [
+          "f046a807-ab8c-0620-e053-2a95a90a9d3c"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0041100810861"
+        ],
+        "unii": [
+          "7AJO3BO7QN",
+          "Y9DL7QPE6B"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, EXTENDED RELEASE",
+      "spl_id": "45370575-1a5d-c6f1-e063-6394a90a24c4",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20091201",
+      "product_id": "11523-4332_45370575-1a5d-c6f1-e063-6394a90a24c4",
+      "application_number": "NDA020470",
+      "brand_name_base": "Claritin-D",
+      "pharm_class": [
+        "Adrenergic alpha-Agonists [MoA]",
+        "alpha-Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "11523-0800",
+      "generic_name": "loratadine",
+      "labeler_name": "Bayer HealthCare LLC.",
+      "brand_name": "Claritin",
+      "active_ingredients": [
+        {
+          "name": "LORATADINE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "11523-0800-1",
+          "description": "1 BLISTER PACK in 1 CARTON (11523-0800-1)  / 5 TABLET in 1 BLISTER PACK",
+          "marketing_start_date": "20220316",
+          "sample": false
+        },
+        {
+          "package_ndc": "11523-0800-2",
+          "description": "100 TABLET in 1 BOTTLE (11523-0800-2)",
+          "marketing_start_date": "20220316",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Bayer HealthCare LLC."
+        ],
+        "rxcui": [
+          "206805",
+          "311372"
+        ],
+        "spl_set_id": [
+          "dc65f7ec-bb83-7b29-e053-2995a90a99de"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "7AJO3BO7QN"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "4526e2eb-ee8d-3ac4-e063-6394a90a133f",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20201201",
+      "product_id": "11523-0800_4526e2eb-ee8d-3ac4-e063-6394a90a133f",
+      "application_number": "ANDA075209",
+      "brand_name_base": "Claritin"
+    },
+    {
+      "product_ndc": "85237-1630",
+      "generic_name": "loratadine",
+      "labeler_name": "Select Consumer Group",
+      "brand_name": "Claritin",
+      "active_ingredients": [
+        {
+          "name": "LORATADINE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "85237-1630-1",
+          "description": "1 BLISTER PACK in 1 CARTON (85237-1630-1)  / 1 TABLET in 1 BLISTER PACK",
+          "marketing_start_date": "20250818",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1630-3",
+          "description": "20 POUCH in 1 BOX, UNIT-DOSE (85237-1630-3)  / 1 TABLET in 1 POUCH",
+          "marketing_start_date": "20251227",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1630-4",
+          "description": "25 POUCH in 1 BOX, UNIT-DOSE (85237-1630-4)  / 1 TABLET in 1 POUCH",
+          "marketing_start_date": "20251227",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Select Consumer Group"
+        ],
+        "rxcui": [
+          "206805",
+          "311372"
+        ],
+        "spl_set_id": [
+          "3c9ad1f8-e8ef-bcd0-e063-6394a90ac20e"
+        ],
+        "unii": [
+          "7AJO3BO7QN"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "46fe1007-0c18-a3ba-e063-6394a90a7b11",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20201201",
+      "product_id": "85237-1630_46fe1007-0c18-a3ba-e063-6394a90a7b11",
+      "application_number": "ANDA075209",
+      "brand_name_base": "Claritin"
+    }
+  ]
+}

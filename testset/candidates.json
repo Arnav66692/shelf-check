@@ -1,0 +1,547 @@
+[
+ {
+  "key": "tylenol_es",
+  "kind": "otc",
+  "brand_name": [
+   "TYLENOL Extra Strength"
+  ],
+  "generic_name": [
+   "ACETAMINOPHEN"
+  ],
+  "spl_set_id": "015a6179-bacb-452d-b594-4de628ddc11d",
+  "variants": [
+   {
+    "product_ndc": "50580-590",
+    "dosage_form": "TABLET, FILM COATED",
+    "active_ingredients": [
+     {
+      "name": "ACETAMINOPHEN",
+      "strength": "500 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "tylenol-01.jpg"
+  ]
+ },
+ {
+  "key": "nyquil",
+  "kind": "otc",
+  "brand_name": [
+   "Vicks DayQuil and Vicks NyQuil Cold and Flu"
+  ],
+  "generic_name": [
+   "ACETAMINOPHEN, DEXTROMETHORPHAN HYDROBROMIDE, PHENYLEPHRINE HYDROCHLORIDE, AND DOXYLAMINE SUCCINATE"
+  ],
+  "spl_set_id": "04dc3835-64be-d9e4-e063-6394a90a8599",
+  "variants": [
+   {
+    "product_ndc": "69423-798",
+    "dosage_form": "KIT",
+    "active_ingredients": []
+   }
+  ],
+  "candidate_images": [
+   "798.jpg"
+  ]
+ },
+ {
+  "key": "benadryl",
+  "kind": "otc",
+  "brand_name": [
+   "BENADRYL Allergy"
+  ],
+  "generic_name": [
+   "DIPHENHYDRAMINE HYDROCHLORIDE"
+  ],
+  "spl_set_id": "224ba2a3-1a93-29c8-e063-6394a90a9bef",
+  "variants": [
+   {
+    "product_ndc": "50580-573",
+    "dosage_form": "SOLUTION",
+    "active_ingredients": [
+     {
+      "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+      "strength": "12.5 mg/5mL"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "benadryl -1.jpg"
+  ]
+ },
+ {
+  "key": "tylenol_pm",
+  "kind": "otc",
+  "brand_name": [
+   "Tylenol PM Extra Strength"
+  ],
+  "generic_name": [
+   "ACETAMINOPHEN AND DIPHENHYDRAMINE HYDROCHLORIDE"
+  ],
+  "spl_set_id": "435b1a31-353d-af20-e063-6294a90aa907",
+  "variants": [
+   {
+    "product_ndc": "67751-241",
+    "dosage_form": "TABLET, FILM COATED",
+    "active_ingredients": [
+     {
+      "name": "ACETAMINOPHEN",
+      "strength": "500 mg/1"
+     },
+     {
+      "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+      "strength": "25 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "31347 V1-80.jpg"
+  ]
+ },
+ {
+  "key": "bayer_aspirin",
+  "kind": "otc",
+  "brand_name": [
+   "Bayer Genuine Aspirin"
+  ],
+  "generic_name": [
+   "ASPIRIN"
+  ],
+  "spl_set_id": "23daa359-d40f-4f64-81be-6d154f41df9f",
+  "variants": [
+   {
+    "product_ndc": "70264-013",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "ASPIRIN",
+      "strength": "325 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "bayer-01.jpg"
+  ]
+ },
+ {
+  "key": "advil",
+  "kind": "otc",
+  "brand_name": [
+   "Advil Dual Action with Acetaminophen, Travel BASIX",
+   "Advil Dual Action with Acetaminophen"
+  ],
+  "generic_name": [
+   "IBUPROFEN, ACETAMINOPHEN TABLET, FILM COATED"
+  ],
+  "spl_set_id": "030d9bca-a934-6ef9-e063-6394a90a8277",
+  "variants": [
+   {
+    "product_ndc": "66715-6401",
+    "dosage_form": "TABLET, FILM COATED",
+    "active_ingredients": [
+     {
+      "name": "IBUPROFEN",
+      "strength": "125 mg/1"
+     },
+     {
+      "name": "ACETAMINOPHEN",
+      "strength": "250 mg/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "66715-9601",
+    "dosage_form": "TABLET, FILM COATED",
+    "active_ingredients": [
+     {
+      "name": "IBUPROFEN",
+      "strength": "125 mg/1"
+     },
+     {
+      "name": "ACETAMINOPHEN",
+      "strength": "250 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "64012 BSX Advil Dual Action_paint.jpg",
+   "97013 Advil Dual Action_paint.jpg"
+  ]
+ },
+ {
+  "key": "claritin",
+  "kind": "otc",
+  "brand_name": [
+   "Claritin Chewable Grape and Bubblegum"
+  ],
+  "generic_name": [
+   "LORATADINE"
+  ],
+  "spl_set_id": "0371368b-dca6-af2f-e063-6394a90a0ac0",
+  "variants": [
+   {
+    "product_ndc": "11523-0123",
+    "dosage_form": "KIT",
+    "active_ingredients": []
+   }
+  ],
+  "candidate_images": [
+   "Childrens Chewables 5mg Grape Bubblegum 40ct.jpg"
+  ]
+ },
+ {
+  "key": "mucinex",
+  "kind": "otc",
+  "brand_name": [
+   "Mucinex"
+  ],
+  "generic_name": [
+   "GUAIFENESIN"
+  ],
+  "spl_set_id": "0129f47d-abc2-414c-b4e1-1064c5d6a623",
+  "variants": [
+   {
+    "product_ndc": "68084-572",
+    "dosage_form": "TABLET, EXTENDED RELEASE",
+    "active_ingredients": [
+     {
+      "name": "GUAIFENESIN",
+      "strength": "600 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "600 mg Mucinex ER Bi-layer Tablets Carton.jpg",
+   "600 mg Mucinex Tablet Blister.jpg",
+   "826d39d8-99f6-2582-e053-2991aa0af2d4.jpg"
+  ]
+ },
+ {
+  "key": "warfarin",
+  "kind": "rx",
+  "brand_name": [
+   "Warfarin Sodium"
+  ],
+  "generic_name": [
+   "WARFARIN SODIUM"
+  ],
+  "spl_set_id": "0cbce382-9c88-4f58-ae0f-532a841e8f95",
+  "variants": [
+   {
+    "product_ndc": "0093-1712",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "WARFARIN SODIUM",
+      "strength": "1 mg/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "0093-1713",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "WARFARIN SODIUM",
+      "strength": "2 mg/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "0093-1714",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "WARFARIN SODIUM",
+      "strength": "2.5 mg/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "0093-1715",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "WARFARIN SODIUM",
+      "strength": "3 mg/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "0093-1716",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "WARFARIN SODIUM",
+      "strength": "4 mg/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "0093-1721",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "WARFARIN SODIUM",
+      "strength": "5 mg/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "0093-1718",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "WARFARIN SODIUM",
+      "strength": "6 mg/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "0093-1723",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "WARFARIN SODIUM",
+      "strength": "7.5 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "image-10.jpg",
+   "image-2.jpg",
+   "image-3.jpg",
+   "image-4.jpg"
+  ]
+ },
+ {
+  "key": "lisinopril",
+  "kind": "rx",
+  "brand_name": [
+   "Lisinopril and Hydrochlorothiazide"
+  ],
+  "generic_name": [
+   "LISINOPRIL AND HYDROCHLOROTHIAZIDE TABLETS"
+  ],
+  "spl_set_id": "00b266d9-ac4a-e931-e063-6294a90a6a0b",
+  "variants": [
+   {
+    "product_ndc": "60760-586",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "LISINOPRIL",
+      "strength": "10 mg/1"
+     },
+     {
+      "name": "HYDROCHLOROTHIAZIDE",
+      "strength": "12.5 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "LISINOPRIL-HCTZ 10-12.5MG 90CT 60760-586-90.jpg"
+  ]
+ },
+ {
+  "key": "sertraline",
+  "kind": "rx",
+  "brand_name": [
+   "Sertraline Hydrochloride"
+  ],
+  "generic_name": [
+   "SERTRALINE HYDROCHLORIDE"
+  ],
+  "spl_set_id": "00179766-980b-44b0-99d3-1fee2bb27e37",
+  "variants": [
+   {
+    "product_ndc": "63187-859",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "SERTRALINE HYDROCHLORIDE",
+      "strength": "25 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "eca3f504-92e3-4765-b175-23cdcaf20634-02.jpg"
+  ]
+ },
+ {
+  "key": "metformin",
+  "kind": "rx",
+  "brand_name": [
+   "ZITUVIMET"
+  ],
+  "generic_name": [
+   "SITAGLIPTIN AND METFORMIN HYDROCHLORIDE"
+  ],
+  "spl_set_id": "0098dec4-f0e5-45d5-8aa4-5d0faf9ab142",
+  "variants": [
+   {
+    "product_ndc": "70771-1859",
+    "dosage_form": "TABLET, FILM COATED",
+    "active_ingredients": [
+     {
+      "name": "SITAGLIPTIN",
+      "strength": "50 mg/1"
+     },
+     {
+      "name": "METFORMIN HYDROCHLORIDE",
+      "strength": "500 mg/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "70771-1860",
+    "dosage_form": "TABLET, FILM COATED",
+    "active_ingredients": [
+     {
+      "name": "SITAGLIPTIN",
+      "strength": "50 mg/1"
+     },
+     {
+      "name": "METFORMIN HYDROCHLORIDE",
+      "strength": "1000 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "3bf9383a-afe0-4989-b952-50c995bd3fa5-03.jpg",
+   "3bf9383a-afe0-4989-b952-50c995bd3fa5-05.jpg",
+   "3bf9383a-afe0-4989-b952-50c995bd3fa5-06.jpg"
+  ]
+ },
+ {
+  "key": "atorvastatin",
+  "kind": "rx",
+  "brand_name": [
+   "Atorvastatin calcium"
+  ],
+  "generic_name": [
+   "ATORVASTATIN CALCIUM"
+  ],
+  "spl_set_id": "00afce9b-48c9-487a-a738-e359c005c707",
+  "variants": [
+   {
+    "product_ndc": "71335-1336",
+    "dosage_form": "TABLET, FILM COATED",
+    "active_ingredients": [
+     {
+      "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+      "strength": "80 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "atorvastatin-figure-02.jpg",
+   "lbl713351336.jpg"
+  ]
+ },
+ {
+  "key": "omeprazole",
+  "kind": "rx",
+  "brand_name": [
+   "Omeprazole"
+  ],
+  "generic_name": [
+   "OMEPRAZOLE"
+  ],
+  "spl_set_id": "0344268f-d8e6-48d5-b1e1-f750ed1d8a52",
+  "variants": [
+   {
+    "product_ndc": "72789-257",
+    "dosage_form": "CAPSULE, DELAYED RELEASE",
+    "active_ingredients": [
+     {
+      "name": "OMEPRAZOLE",
+      "strength": "40 mg/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "72789257.jpg"
+  ]
+ },
+ {
+  "key": "amoxicillin",
+  "kind": "rx",
+  "brand_name": [
+   "amoxicillin and clavulanate potassium"
+  ],
+  "generic_name": [
+   "AMOXICILLIN AND CLAVULANATE POTASSIUM"
+  ],
+  "spl_set_id": "00b86913-50c8-443f-8467-f4f499d358af",
+  "variants": [
+   {
+    "product_ndc": "62135-095",
+    "dosage_form": "POWDER, FOR SUSPENSION",
+    "active_ingredients": [
+     {
+      "name": "AMOXICILLIN",
+      "strength": "600 mg/5mL"
+     },
+     {
+      "name": "CLAVULANATE POTASSIUM",
+      "strength": "42.9 mg/5mL"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "amox-and-clavu-pot-os-5ml-bottle-label.jpg"
+  ]
+ },
+ {
+  "key": "levothyroxine",
+  "kind": "rx",
+  "brand_name": [
+   "levothyroxine sodium"
+  ],
+  "generic_name": [
+   "LEVOTHYROXINE SODIUM"
+  ],
+  "spl_set_id": "00a4fc0b-7162-455e-8ed3-56efdbbe182e",
+  "variants": [
+   {
+    "product_ndc": "71205-353",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "LEVOTHYROXINE SODIUM",
+      "strength": "75 ug/1"
+     }
+    ]
+   },
+   {
+    "product_ndc": "71205-354",
+    "dosage_form": "TABLET",
+    "active_ingredients": [
+     {
+      "name": "LEVOTHYROXINE SODIUM",
+      "strength": "137 ug/1"
+     }
+    ]
+   }
+  ],
+  "candidate_images": [
+   "137mcg-label.jpg",
+   "75mcg-label.jpg"
+  ]
+ }
+]

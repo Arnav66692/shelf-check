@@ -1,0 +1,334 @@
+{
+  "https://api.fda.gov/drug/ndc.json?search=product_ndc%3A(%2250580-590%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-4b24bd8b7c63f958.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/015a6179-bacb-452d-b594-4de628ddc11d/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-c442e8d0f9f95fef.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=finished%3Atrue%20AND%20(brand_name%3A(tylenol%20AND%20extra%20AND%20strength)%20generic_name%3A(tylenol%20AND%20extra%20AND%20strength))&limit=100": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-7ea8084ab5b80ed7.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=tylenol%20extra%20strength&size=25": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-5958933da887c3dc.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/296829": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-e982697e59a68656.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/293710": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-7a048131e4c3376c.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/74913": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-8bd523000f08cac6.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/326529": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-da90b99a56b1e6c9.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/261771": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-99f01773a12516b6.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/177225": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-b6b54815588934dc.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/218096": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-eaf9c93be6855f5e.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/268768": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-786adc57cc7c5b9f.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=finished%3Atrue%20AND%20(brand_name%3A(nyquil)%20generic_name%3A(nyquil))&limit=100": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-0251e8b0234ff7c2.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=nyquil&size=25": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-73434294eb2032dc.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=finished%3Atrue%20AND%20(brand_name%3A(acetaminophn)%20generic_name%3A(acetaminophn))&limit=100": {
+    "status": 404,
+    "file": "bodies/api.fda.gov-40c663ca084933df.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=acetaminophn&size=25": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-9e789c6dd65527e6.txt"
+  },
+  "https://rxnav.nlm.nih.gov/REST/spellingsuggestions.json?name=acetaminophn": {
+    "status": 200,
+    "file": "bodies/rxnav.nlm.nih.gov-7eaf24180a439619.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=finished%3Atrue%20AND%20(brand_name%3A(acetaminophen)%20generic_name%3A(acetaminophen))&limit=100": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-d4c26d8f09ce4676.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=acetaminophen&size=25": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-690d9e04c0036929.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=melatonin&size=25": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-a5eb4e66ab86713e.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=finished%3Atrue%20AND%20(brand_name%3A(melatonin)%20generic_name%3A(melatonin))&limit=100": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-56693e72c5677757.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/219624": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-cbce79d2a4c73aeb.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/3551": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-07b56978cf063ada.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/332395": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-9c4fd64021dd7225.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/299064": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-4c1781c605b9b0cb.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/320628": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-fcd15b7a1d17ff24.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/3478": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-6ee8d2c022556354.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/4863": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-57c13bf6d50e9465.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/239571": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-4d1c2e6cf24df294.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/63397": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-9750a4ca9c0370e2.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/63389": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-9750eb112dadb664.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/242416": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-12332ae92b923b3a.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/251811": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-b2a272c74f4dde63.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/210467": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-7f60ea9dfea4d257.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A(%2250580-590-05%22%20%2250580-0590-5%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-5a5434edadbb268d.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A(%225058-0590-05%22%20%2250580-590-05%22%20%2250580-5900-5%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-5b92959e3ba7b7a2.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A(%220093-1713-01%22%20%2200931-713-01%22%20%2200931-7130-1%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-55e8e6ef29b025c4.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/0cbce382-9c88-4f58-ae0f-532a841e8f95/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-aff75139b13522c3.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A(%228509-6301-30%22%20%2285096-301-30%22%20%2285096-3013-0%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-417eeb2a291da7d4.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/30914c0a-fbda-5674-e063-6294a90aba5b/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-4b4aa2672a6f3708.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A(%223591-6016-61%22%20%2235916-016-61%22%20%2235916-0166-1%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-4185f04e349d4730.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/24bc9ae6-8e8f-c0a0-e063-6394a90a407f/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-5e443c54093d34e2.txt"
+  },
+  "https://api.fda.gov/drug/label.json?search=openfda.product_ndc%3A(%2250580-590%22)&limit=1": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-b69442394d74f14b.txt"
+  },
+  "https://api.fda.gov/drug/label.json?search=set_id%3A(%22015a6179-bacb-452d-b594-4de628ddc11d%22)&limit=1": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-1a60ea36fc851535.txt"
+  },
+  "https://api.fda.gov/drug/label.json?search=openfda.upc%3A(%220012345678905%22)&limit=5": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-5cdd55b771f9c506.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=product_ndc%3A(%2281277-011%22%20%2256062-671%22%20%2249035-190%22%20%2255301-873%22%20%2263981-190%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-1dca0309472ad15a.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/0888a974-a8ba-4cb3-996f-c8abfcb90a6f/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-151792b02c86471e.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/00b40bb3-3785-4a53-804e-633795e87f71/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-6050e085f2341f28.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/000a4912-a633-46b4-9aff-725fdeeef7c0/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-93a1b23d265a6df1.txt"
+  },
+  "https://api.fda.gov/drug/label.json?search=openfda.upc%3A(%220033984019560%22)&limit=5": {
+    "status": 404,
+    "file": "bodies/api.fda.gov-17b78c0c2133698e.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=%220%2033984%2001956%200%22&size=10": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-d943722d6f57b82f.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/65690": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-4df70c1c6e9a9339.txt"
+  },
+  "https://api.fda.gov/drug/label.json?search=openfda.upc%3A%5B0600000000000%20TO%200699999999999%5D&limit=3": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-2d15a656c322b8a1.txt"
+  },
+  "https://api.fda.gov/drug/label.json?search=openfda.upc%3A(%220614299799868%22)&limit=5": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-272af7a353888a38.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=product_ndc%3A(%2255301-986%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-b6290b0583e0461f.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/009df4c9-a524-4b8f-be7a-52c521e68ff1/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-822eeb45d7823fd4.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A(%221234-5987-65%22%20%2212345-987-65%22%20%2212345-9876-5%22)&limit=10": {
+    "status": 404,
+    "file": "bodies/api.fda.gov-37cbaf947e7fb2d2.txt"
+  },
+  "https://api.fda.gov/drug/label.json?search=openfda.upc%3A(%220312345987657%22)&limit=5": {
+    "status": 404,
+    "file": "bodies/api.fda.gov-7670dbd1e101fea3.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=%223%2012345%2098765%207%22&size=10": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-52797849113f1adb.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=finished%3Atrue%20AND%20(brand_name%3A(nyquill)%20generic_name%3A(nyquill))&limit=100": {
+    "status": 404,
+    "file": "bodies/api.fda.gov-440ae1aedab93ff3.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=nyquill&size=25": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-f3f34d7dedc2e6a4.txt"
+  },
+  "https://rxnav.nlm.nih.gov/REST/spellingsuggestions.json?name=nyquill": {
+    "status": 200,
+    "file": "bodies/rxnav.nlm.nih.gov-af921fbe1c88aef1.txt"
+  },
+  "https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term=nyquill&maxEntries=5": {
+    "status": 200,
+    "file": "bodies/rxnav.nlm.nih.gov-1ab1f1d640127d4e.txt"
+  },
+  "https://rxnav.nlm.nih.gov/REST/rxcui/1427167/related.json?tty=IN": {
+    "status": 200,
+    "file": "bodies/rxnav.nlm.nih.gov-05bc6a1add7424de.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=finished%3Atrue%20AND%20(brand_name%3A(ibuprofin%20AND%20pm)%20generic_name%3A(ibuprofin%20AND%20pm))&limit=100": {
+    "status": 404,
+    "file": "bodies/api.fda.gov-dd557ddd906d7eb0.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=ibuprofin%20pm&size=25": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-0bbbe36d9b84dcd9.txt"
+  },
+  "https://rxnav.nlm.nih.gov/REST/spellingsuggestions.json?name=ibuprofin%20pm": {
+    "status": 200,
+    "file": "bodies/rxnav.nlm.nih.gov-f0d2ed376a322c07.txt"
+  },
+  "https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term=ibuprofin%20pm&maxEntries=5": {
+    "status": 200,
+    "file": "bodies/rxnav.nlm.nih.gov-413a4fab868e1ddc.txt"
+  },
+  "https://rxnav.nlm.nih.gov/REST/rxcui/895658/related.json?tty=IN": {
+    "status": 200,
+    "file": "bodies/rxnav.nlm.nih.gov-013ac987e45f9432.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=finished%3Atrue%20AND%20(brand_name%3A(diphenhydramine%20AND%20ibuprofen)%20generic_name%3A(diphenhydramine%20AND%20ibuprofen))&limit=100": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-ed49e425bd5ef92c.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=diphenhydramine%20ibuprofen&size=25": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-94692891e077ca77.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=melatonin%2010%20mg%20tablet&size=25": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-489bfad0b0a20b94.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/240097": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-95eea9cf87214647.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/256092": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-459d8c0caa2e8c4e.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/200714": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-6af6c04da15dd1ff.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/310272": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-cea85d2992af0b1e.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/271339": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-7b43ee7003057c40.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/282949": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-201d428c11c6ca45.txt"
+  },
+  "https://api.ods.od.nih.gov/dsld/v9/label/67609": {
+    "status": 200,
+    "file": "bodies/api.ods.od.nih.gov-3a662127a58e6d6e.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/0590d4e5-7107-4015-a6a8-deac14265aa2/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-662ba6d6fd66df99.txt"
+  },
+  "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/57bcc87b-a5fa-cfdd-e063-6294a90a154f/media.json": {
+    "status": 200,
+    "file": "bodies/dailymed.nlm.nih.gov-bdf3c9406c91d6aa.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A(%2250580-590-05%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-b61741c5188ca067.txt"
+  },
+  "https://api.fda.gov/drug/ndc.json?search=product_ndc%3A(%225058-0590%22%20%2250580-590%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/api.fda.gov-df833e7e44c912f8.txt"
+  }
+}

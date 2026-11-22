@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "11523-0800",
+      "generic_name": "loratadine",
+      "labeler_name": "Bayer HealthCare LLC.",
+      "brand_name": "Claritin",
+      "active_ingredients": [
+        {
+          "name": "LORATADINE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "11523-0800-1",
+          "description": "1 BLISTER PACK in 1 CARTON (11523-0800-1)  / 5 TABLET in 1 BLISTER PACK",
+          "marketing_start_date": "20220316",
+          "sample": false
+        },
+        {
+          "package_ndc": "11523-0800-2",
+          "description": "100 TABLET in 1 BOTTLE (11523-0800-2)",
+          "marketing_start_date": "20220316",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Bayer HealthCare LLC."
+        ],
+        "rxcui": [
+          "206805",
+          "311372"
+        ],
+        "spl_set_id": [
+          "dc65f7ec-bb83-7b29-e053-2995a90a99de"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "7AJO3BO7QN"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "4526e2eb-ee8d-3ac4-e063-6394a90a133f",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20201201",
+      "product_id": "11523-0800_4526e2eb-ee8d-3ac4-e063-6394a90a133f",
+      "application_number": "ANDA075209",
+      "brand_name_base": "Claritin"
+    }
+  ]
+}

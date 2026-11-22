@@ -1,0 +1,130 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { ApiError, checkCabinet, type CheckResult } from "@/lib/api";
+import { useCabinet, useProfile } from "@/lib/store";
+import { FlagRow } from "./FlagRow";
+import { ProductPanel } from "./ProductPanel";
+
+type Outcome = { status: "done"; result: CheckResult } | { status: "failed"; message: string };
+type CheckState = { status: "checking" } | Outcome;
+
+export function CabinetView() {
+  const { items, remove } = useCabinet();
+  const { profile } = useProfile();
+  const requestKey = JSON.stringify([items.map((item) => item.id), profile]);
+  const [settled, setSettled] = useState<{ key: string; outcome: Outcome } | null>(null);
+
+  useEffect(() => {
+    if (items.length === 0) return;
+    let cancelled = false;
+    checkCabinet(items, profile)
+      .then((result) => !cancelled && setSettled({ key: requestKey, outcome: { status: "done", result } }))
+      .catch((error: unknown) => {
+        if (cancelled) return;
+        const message = error instanceof ApiError ? error.message : "The check could not run.";
+        setSettled({ key: requestKey, outcome: { status: "failed", message } });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [items, profile, requestKey]);
+
+  const state: CheckState = settled?.key === requestKey ? settled.outcome : { status: "checking" };
+
+  if (items.length === 0) {
+    return (
+      <section className="pt-10 max-w-[720px]">
+        <h1 className="text-[clamp(2.2rem,6vw,3.6rem)] font-extrabold leading-[1.02] tracking-tight narrow">
+          Two bottles can hide the same drug.
+        </h1>
+        <p className="mt-5 text-lg">
+          Add every medicine and supplement you own. Shelf Check reads their official labels together and shows double
+          doses, label warnings about mixing them, and warnings that apply to you.
+        </p>
+        <div className="mt-7 flex flex-wrap gap-3">
+          <Link href="/add" className="btn">
+            Add your first medicine
+          </Link>
+          <Link href="/add?sample=1" className="btn btn-quiet">
+            Load a sample cabinet
+          </Link>
+        </div>
+      </section>
+    );
+  }
+
+  const flags = state.status === "done" ? state.result.flags : [];
+  const stops = flags.filter((flag) => flag.severity === "stop").length;
+
+  return (
+    <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+      <section aria-labelledby="warnings-title">
+        <div className="flex items-baseline justify-between gap-4">
+          <h1 id="warnings-title" className="text-3xl font-extrabold narrow">
+            Warnings
+          </h1>
+          <p className="text-sm text-ink-soft" aria-live="polite">
+            {state.status === "checking" && "Reading the labels together."}
+            {state.status === "done" &&
+              (flags.length === 0
+                ? "No label warnings found between these."
+                : `${flags.length} found${stops > 0 ? `, ${stops} to stop and check` : ""}.`)}
+          </p>
+        </div>
+        {state.status === "failed" && (
+          <p className="mt-4 facts" role="alert">
+            {state.message}
+          </p>
+        )}
+        {state.status === "done" && flags.length === 0 && (
+          <p className="mt-4 facts">
+            None of these labels warn about another product in your cabinet. A label can stay silent about a real
+            risk, so this is not proof they are safe together.
+          </p>
+        )}
+        <ul className="mt-4 grid gap-4">
+          {flags.map((flag) => (
+            <FlagRow key={flag.id} flag={flag} items={items} />
+          ))}
+        </ul>
+        {state.status === "done" && state.result.unchecked.length > 0 && (
+          <p className="mt-4 text-sm text-ink-soft">
+            Not checked, because no official label text was found: {state.result.unchecked.join(", ")}.
+          </p>
+        )}
+      </section>
+
+      <section aria-labelledby="cabinet-title">
+        <div className="flex items-baseline justify-between gap-4">
+          <h2 id="cabinet-title" className="text-3xl font-extrabold narrow">
+            Your cabinet
+          </h2>
+          <span className="flex gap-5">
+            <Link href="/print" className="underline font-bold">
+              Print list
+            </Link>
+            <Link href="/add" className="underline font-bold">
+              Add another
+            </Link>
+          </span>
+        </div>
+        <div className="mt-4 grid gap-4">
+          {items.map((item) => (
+            <ProductPanel
+              key={item.id}
+              product={item}
+              disposal={state.status === "done" ? state.result.disposal[item.id] : undefined}
+              action={
+                <button type="button" className="underline font-bold" onClick={() => remove(item.id)}>
+                  Remove
+                </button>
+              }
+            />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}

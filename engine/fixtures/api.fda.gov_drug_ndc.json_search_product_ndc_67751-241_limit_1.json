@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "67751-241",
+      "generic_name": "acetaminophen and diphenhydramine hydrochloride",
+      "labeler_name": "Navajo Manufacturing Company Inc.",
+      "brand_name": "Tylenol PM Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67751-241-01",
+          "description": "1 POUCH in 1 CARTON (67751-241-01)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20250311",
+          "sample": false
+        },
+        {
+          "package_ndc": "67751-241-02",
+          "description": "2 POUCH in 1 CARTON (67751-241-02)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20250923",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Navajo Manufacturing Company Inc."
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "435b1a31-353d-af20-e063-6294a90aa907"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "435b2b2a-6d47-1611-e063-6394a90a9f99",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250311",
+      "product_id": "67751-241_435b2b2a-6d47-1611-e063-6394a90a9f99",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol PM",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    }
+  ]
+}

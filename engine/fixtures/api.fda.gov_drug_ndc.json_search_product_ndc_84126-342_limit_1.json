@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "84126-342",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, and Doxylamine succinate",
+      "labeler_name": "The Procter & Gamble Manufacturing Company",
+      "brand_name": "Vicks NyQuil Cold and Flu",
+      "brand_name_suffix": "Cold and Flu",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "650 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "84126-342-04",
+          "description": "118 mL in 1 BOTTLE, PLASTIC (84126-342-04)",
+          "marketing_start_date": "20250602",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "The Procter & Gamble Manufacturing Company"
+        ],
+        "rxcui": [
+          "1043400"
+        ],
+        "spl_set_id": [
+          "330d42da-5041-3059-e063-6394a90a2d55"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0323900037458"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5d1adada-eb31-641b-e063-6394a90a4d3e",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250602",
+      "product_id": "84126-342_5d1adada-eb31-641b-e063-6394a90a4d3e",
+      "application_number": "M012",
+      "brand_name_base": "Vicks NyQuil",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    }
+  ]
+}

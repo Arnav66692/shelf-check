@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "63187-859",
+      "generic_name": "Sertraline Hydrochloride",
+      "labeler_name": "Proficient Rx LP",
+      "brand_name": "Sertraline Hydrochloride",
+      "active_ingredients": [
+        {
+          "name": "SERTRALINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "63187-859-30",
+          "description": "30 TABLET in 1 BOTTLE (63187-859-30)",
+          "marketing_start_date": "20170601",
+          "sample": false
+        },
+        {
+          "package_ndc": "63187-859-60",
+          "description": "60 TABLET in 1 BOTTLE (63187-859-60)",
+          "marketing_start_date": "20170601",
+          "sample": false
+        },
+        {
+          "package_ndc": "63187-859-90",
+          "description": "90 TABLET in 1 BOTTLE (63187-859-90)",
+          "marketing_start_date": "20170601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Proficient Rx LP"
+        ],
+        "rxcui": [
+          "312940"
+        ],
+        "spl_set_id": [
+          "00179766-980b-44b0-99d3-1fee2bb27e37"
+        ],
+        "unii": [
+          "UTI8907Y6X"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "7731d02d-7220-4f43-b230-9d38875f4192",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20160721",
+      "product_id": "63187-859_7731d02d-7220-4f43-b230-9d38875f4192",
+      "application_number": "ANDA077397",
+      "brand_name_base": "Sertraline Hydrochloride",
+      "pharm_class": [
+        "Serotonin Reuptake Inhibitor [EPC]",
+        "Serotonin Uptake Inhibitors [MoA]"
+      ]
+    }
+  ]
+}

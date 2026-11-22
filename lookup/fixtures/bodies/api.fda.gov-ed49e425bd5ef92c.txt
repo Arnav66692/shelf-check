@@ -1,0 +1,5627 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 100,
+      "total": 65
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "29485-6533",
+      "generic_name": "Advil PM",
+      "labeler_name": "Lil Drug Store Products, Inc",
+      "brand_name": "ADVIL PM- diphenhydramine citrate and ibuprofen tablet, coated",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "29485-6533-4",
+          "description": "2 POUCH in 1 CARTON (29485-6533-4)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20170825",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil Drug Store Products, Inc"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "d1138e15-8ae4-7b49-e053-2995a90a9607"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "2a83226d-0fe9-8955-e063-6394a90a5bfc",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20170825",
+      "product_id": "29485-6533_2a83226d-0fe9-8955-e063-6394a90a5bfc",
+      "application_number": "NDA021394",
+      "brand_name_base": "ADVIL PM- diphenhydramine citrate and ibuprofen tablet, coated",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "0363-0207",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "WALGREEN COMPANY",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0363-0207-11",
+          "description": "1 BOTTLE in 1 CARTON (0363-0207-11)  / 20 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20190802",
+          "sample": false
+        },
+        {
+          "package_ndc": "0363-0207-15",
+          "description": "1 BOTTLE in 1 CARTON (0363-0207-15)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20190802",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "WALGREEN COMPANY"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "3a193fdb-ab6e-464e-9f13-fda0fa8d50a8"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "0d86c3e7-2af8-812d-e063-6394a90a7257",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190802",
+      "product_id": "0363-0207_0d86c3e7-2af8-812d-e063-6394a90a7257",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "70000-0157",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Cardinal Health 110, LLC. dba Leader",
+      "brand_name": "Leader Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "70000-0157-1",
+          "description": "1 BOTTLE in 1 CARTON (70000-0157-1)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20161123",
+          "sample": false
+        },
+        {
+          "package_ndc": "70000-0157-3",
+          "description": "1 BOTTLE in 1 CARTON (70000-0157-3)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20241121",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Cardinal Health 110, LLC. dba Leader"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "b19ad305-4464-4404-a011-584fa0c08521"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3987ffc4-5b9d-465e-a269-5dadb8ce95b2",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20161123",
+      "product_id": "70000-0157_3987ffc4-5b9d-465e-a269-5dadb8ce95b2",
+      "application_number": "ANDA079113",
+      "brand_name_base": "Leader Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "11673-225",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "TARGET Corporation",
+      "brand_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "11673-225-15",
+          "description": "1 BOTTLE in 1 CARTON (11673-225-15)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20191030",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "TARGET Corporation"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "97e2c008-1711-dcba-e053-2995a90aa2ff"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "46176e6c-0de7-6461-e063-6294a90a9105",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20191030",
+      "product_id": "11673-225_46176e6c-0de7-6461-e063-6294a90a9105",
+      "application_number": "ANDA090397",
+      "brand_name_base": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "29485-7008",
+      "generic_name": "Advil PM",
+      "labeler_name": "Lil Drug Store Products, Inc",
+      "brand_name": "ADVIL PM- diphenhydramine citrate and ibuprofen tablet, coated",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "29485-7008-3",
+          "description": "30 POUCH in 1 BOX (29485-7008-3)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20170424",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil Drug Store Products, Inc"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "d1138e15-8ae4-7b49-e053-2995a90a9607"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "2a83226d-0fe9-8955-e063-6394a90a5bfc",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20170424",
+      "product_id": "29485-7008_2a83226d-0fe9-8955-e063-6394a90a5bfc",
+      "application_number": "NDA021394",
+      "brand_name_base": "ADVIL PM- diphenhydramine citrate and ibuprofen tablet, coated",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "69452-205",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "Bionpharma Inc.",
+      "brand_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69452-205-04",
+          "description": "1 BLISTER PACK in 1 CARTON (69452-205-04)  / 6 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20181101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69452-205-11",
+          "description": "20 CAPSULE, LIQUID FILLED in 1 BOTTLE (69452-205-11)",
+          "marketing_start_date": "20181101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69452-205-15",
+          "description": "40 CAPSULE, LIQUID FILLED in 1 BOTTLE (69452-205-15)",
+          "marketing_start_date": "20181101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69452-205-20",
+          "description": "100 CAPSULE, LIQUID FILLED in 1 BOTTLE (69452-205-20)",
+          "marketing_start_date": "20181101",
+          "sample": false
+        },
+        {
+          "package_ndc": "69452-205-78",
+          "description": "80 CAPSULE, LIQUID FILLED in 1 BOTTLE (69452-205-78)",
+          "marketing_start_date": "20181101",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Bionpharma Inc."
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "59a97c31-db90-48e1-ac1b-0f7026c8ec94"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "0f6b5911-edb2-4e3a-b121-45c609b4c60e",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181101",
+      "product_id": "69452-205_0f6b5911-edb2-4e3a-b121-45c609b4c60e",
+      "application_number": "ANDA090397",
+      "brand_name_base": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "58602-814",
+      "generic_name": "Diphenhydramine HCl and Ibuprofen",
+      "labeler_name": "Aurohealth LLC",
+      "brand_name": "Diphenhydramine HCl and Ibuprofen",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "58602-814-10",
+          "description": "1 BOTTLE in 1 CARTON (58602-814-10)  / 32 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20190214",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-814-12",
+          "description": "1 BOTTLE in 1 CARTON (58602-814-12)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20190214",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-814-18",
+          "description": "1 BOTTLE in 1 CARTON (58602-814-18)  / 80 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20190214",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-814-23",
+          "description": "120 CAPSULE, LIQUID FILLED in 1 BOTTLE (58602-814-23)",
+          "marketing_start_date": "20190214",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-814-30",
+          "description": "160 CAPSULE, LIQUID FILLED in 1 BOTTLE (58602-814-30)",
+          "marketing_start_date": "20190214",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-814-73",
+          "description": "1 BOTTLE in 1 CARTON (58602-814-73)  / 20 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20190214",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aurohealth LLC"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "a656f8b0-8cb4-4802-b8d3-7b95c0265d56"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "TC2D6JAD40",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "8cd3b0a3-8a94-4cca-a6a7-f144a826f122",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190214",
+      "product_id": "58602-814_8cd3b0a3-8a94-4cca-a6a7-f144a826f122",
+      "application_number": "ANDA210676",
+      "brand_name_base": "Diphenhydramine HCl and Ibuprofen",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "50580-563",
+      "generic_name": "Ibuprofen and Diphenhydramine Citrate",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Motrin PM",
+      "brand_name_suffix": "PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-563-20",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-563-20)  / 20 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20100111",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-563-80",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-563-80)  / 80 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20100111",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "895664",
+          "895666"
+        ],
+        "spl_set_id": [
+          "55403f19-58ae-450b-8a7b-0bc544088f20"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450563804"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "39a34ab2-9fae-444e-e063-6294a90a9152",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20100111",
+      "product_id": "50580-563_39a34ab2-9fae-444e-e063-6294a90a9152",
+      "application_number": "ANDA079113",
+      "brand_name_base": "Motrin",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "69452-264",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "Bionpharma Inc.",
+      "brand_name": "pain relief pm",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69452-264-22",
+          "description": "120 CAPSULE, LIQUID FILLED in 1 BOTTLE (69452-264-22)",
+          "marketing_start_date": "20190501",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Bionpharma Inc."
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "58666a5c-fc92-4c8d-9c04-f0c98dc05c56"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "f0471f5f-e8eb-fe08-e053-2995a90a50f6",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190501",
+      "product_id": "69452-264_f0471f5f-e8eb-fe08-e053-2995a90a50f6",
+      "application_number": "ANDA090397",
+      "brand_name_base": "pain relief pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "55910-050",
+      "generic_name": "diphenhydramine citrate and ibuprofen",
+      "labeler_name": "Dolgencorp Inc",
+      "brand_name": "dg health Ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "55910-050-27",
+          "description": "1 BOTTLE in 1 CARTON (55910-050-27)  / 80 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200319",
+          "sample": false
+        },
+        {
+          "package_ndc": "55910-050-60",
+          "description": "1 BOTTLE in 1 CARTON (55910-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20100124",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Dolgencorp Inc"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "4bbe40de-0957-4705-893d-fcb4191885c9"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "6eea1216-fa5d-4c82-a575-e382356d409d",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20100124",
+      "product_id": "55910-050_6eea1216-fa5d-4c82-a575-e382356d409d",
+      "application_number": "ANDA079113",
+      "brand_name_base": "dg health Ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "46122-708",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Amerisource Bergen",
+      "brand_name": "good neighbor pharmacy ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "46122-708-60",
+          "description": "1 BOTTLE in 1 CARTON (46122-708-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20220401",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Amerisource Bergen"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "2829ee62-7685-4dbb-9f61-4ee0fb19e4c6"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "1faaec99-9578-4ff6-bf0d-e2609271bc8d",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220401",
+      "product_id": "46122-708_1faaec99-9578-4ff6-bf0d-e2609271bc8d",
+      "application_number": "ANDA079113",
+      "brand_name_base": "good neighbor pharmacy ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "63941-682",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "VALU MERCHANDISERS COMPANY",
+      "brand_name": "Ibuprofen and Diphenhydramine HCl",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "63941-682-15",
+          "description": "1 BOTTLE in 1 CARTON (63941-682-15)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20231003",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "VALU MERCHANDISERS COMPANY"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "fed2f7ae-2827-f967-e053-6294a90adc0a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "06d3d2fc-a073-863f-e063-6394a90a2374",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20231003",
+      "product_id": "63941-682_06d3d2fc-a073-863f-e063-6394a90a2374",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen and Diphenhydramine HCl",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "41250-050",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Meijer Distribution Inc",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "41250-050-58",
+          "description": "1 BOTTLE in 1 CARTON (41250-050-58)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090408",
+          "sample": false
+        },
+        {
+          "package_ndc": "41250-050-60",
+          "description": "1 BOTTLE in 1 CARTON (41250-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE (41250-050-20)",
+          "marketing_start_date": "20260305",
+          "sample": false
+        },
+        {
+          "package_ndc": "41250-050-76",
+          "description": "1 BOTTLE in 1 CARTON (41250-050-76)  / 120 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20171021",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Meijer Distribution Inc"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "47e71e23-da8a-4759-ac5a-1d48e0d9ab98"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "182350eb-e5cb-4c58-bbec-aaee7e38d5c4",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090408",
+      "product_id": "41250-050_182350eb-e5cb-4c58-bbec-aaee7e38d5c4",
+      "application_number": "ANDA079113",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "30142-050",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Kroger Company",
+      "brand_name": "ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "30142-050-27",
+          "description": "1 BOTTLE in 1 CARTON (30142-050-27)  / 80 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090406",
+          "sample": false
+        },
+        {
+          "package_ndc": "30142-050-60",
+          "description": "1 BOTTLE in 1 CARTON (30142-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090406",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kroger Company"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "347dd263-ba0d-4a5a-8ac8-e586fcfd014e"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "2a2bd653-3e02-4f81-bd07-0c3506215ea3",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090406",
+      "product_id": "30142-050_2a2bd653-3e02-4f81-bd07-0c3506215ea3",
+      "application_number": "ANDA079113",
+      "brand_name_base": "ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "66715-9633",
+      "generic_name": "Ibuprofen and Diphenhydramine citrate",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "Advil PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-9633-3",
+          "description": "30 POUCH in 1 BOX, UNIT-DOSE (66715-9633-3)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20220419",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "b876bb40-a38b-445a-bc8a-466b3bfe166d"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "27e68e85-e284-30b9-e063-6394a90aba9b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220419",
+      "product_id": "66715-9633_27e68e85-e284-30b9-e063-6394a90aba9b",
+      "application_number": "NDA021394",
+      "brand_name_base": "Advil PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "0573-0148",
+      "generic_name": "diphenhydramine HCl, ibuprofen",
+      "labeler_name": "Haleon US Holdings LLC",
+      "brand_name": "ADVIL PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0573-0148-06",
+          "description": "1 BOTTLE in 1 CARTON (0573-0148-06)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20250115",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0148-07",
+          "description": "1 BOTTLE in 1 CARTON (0573-0148-07)  / 80 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20250115",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Haleon US Holdings LLC"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "405afdb4-c157-1d88-f232-848063ba4714"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "TC2D6JAD40",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "57c5339d-4ab8-ce7f-e063-6394a90a75a5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250115",
+      "product_id": "0573-0148_57c5339d-4ab8-ce7f-e063-6394a90a75a5",
+      "application_number": "NDA021393",
+      "brand_name_base": "ADVIL PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "41163-050",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "United Natural Foods, Inc. dba UNFI",
+      "brand_name": "equaline ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "41163-050-27",
+          "description": "1 BOTTLE in 1 CARTON (41163-050-27)  / 80 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090302",
+          "sample": false
+        },
+        {
+          "package_ndc": "41163-050-58",
+          "description": "1 BOTTLE in 1 CARTON (41163-050-58)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090321",
+          "sample": false
+        },
+        {
+          "package_ndc": "41163-050-60",
+          "description": "1 BOTTLE in 1 CARTON (41163-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20120111",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "United Natural Foods, Inc. dba UNFI"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "5c4ff82a-bdc4-4df5-9df7-abc6becf4f4d"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "d06f41f5-6ade-4964-a941-d8fc41a39529",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090302",
+      "product_id": "41163-050_d06f41f5-6ade-4964-a941-d8fc41a39529",
+      "application_number": "ANDA079113",
+      "brand_name_base": "equaline ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "85237-1784",
+      "generic_name": "diphenhydramine citrate and ibuprofen",
+      "labeler_name": "Select Consumer Group",
+      "brand_name": "ADVIL PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "85237-1784-1",
+          "description": "1 POUCH in 1 CONTAINER (85237-1784-1)  / 2 TABLET, COATED in 1 POUCH (85237-1784-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1784-2",
+          "description": "2 POUCH in 1 CONTAINER (85237-1784-2)  / 2 TABLET, COATED in 1 POUCH (85237-1784-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1784-4",
+          "description": "25 POUCH in 1 CARTON (85237-1784-4)  / 2 TABLET, COATED in 1 POUCH (85237-1784-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1784-5",
+          "description": "30 POUCH in 1 CARTON (85237-1784-5)  / 2 TABLET, COATED in 1 POUCH (85237-1784-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1784-7",
+          "description": "3 POUCH in 1 CONTAINER (85237-1784-7)  / 2 TABLET, COATED in 1 POUCH (85237-1784-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Select Consumer Group"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "52c67ae0-707c-851b-e063-6294a90afda4"
+        ],
+        "upc": [
+          "0655708117842",
+          "0655708017807",
+          "0655708217849",
+          "0655708017845"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "52c6675a-0f8f-f7bf-e063-6394a90acddc",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20051221",
+      "product_id": "85237-1784_52c6675a-0f8f-f7bf-e063-6394a90acddc",
+      "application_number": "NDA021394",
+      "brand_name_base": "ADVIL PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "55319-197",
+      "generic_name": "Diphenhydramine Citrate, Ibuprofen",
+      "labeler_name": "Family Dollar (FAMILY WELLNESS)",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "55319-197-20",
+          "description": "1 BOTTLE, PLASTIC in 1 BOX (55319-197-20)  / 20 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20240301",
+          "sample": false
+        },
+        {
+          "package_ndc": "55319-197-40",
+          "description": "1 BOTTLE, PLASTIC in 1 BOX (55319-197-40)  / 40 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20240301",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Family Dollar (FAMILY WELLNESS)"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "e01be0d7-e16d-44f1-9a0c-251ff9a65d28"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0032251920943"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "bf93acc7-e377-45cc-b9f4-269b516e0c6a",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240301",
+      "product_id": "55319-197_bf93acc7-e377-45cc-b9f4-269b516e0c6a",
+      "application_number": "ANDA211404",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "63868-829",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "CHAIN DRUG MARKETING ASSOCIATION INC.",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "63868-829-40",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (63868-829-40)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20210611",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "CHAIN DRUG MARKETING ASSOCIATION INC."
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "c483bbd6-934b-660a-e053-2995a90a51b3"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "f0d1d4c1-7214-b8c2-e053-2995a90a650f",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210611",
+      "product_id": "63868-829_f0d1d4c1-7214-b8c2-e053-2995a90a650f",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "58602-867",
+      "generic_name": "Ibuprofen and Diphenhydramine Citrate",
+      "labeler_name": "Aurohealth LLC",
+      "brand_name": "Ibuprofen and Diphenhydramine Citrate",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "58602-867-09",
+          "description": "1 BOTTLE in 1 CARTON (58602-867-09)  / 30 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-12",
+          "description": "1 BOTTLE in 1 CARTON (58602-867-12)  / 40 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-14",
+          "description": "1 BOTTLE in 1 CARTON (58602-867-14)  / 50 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-18",
+          "description": "1 BOTTLE in 1 CARTON (58602-867-18)  / 80 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-21",
+          "description": "1 BOTTLE in 1 CARTON (58602-867-21)  / 100 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-23",
+          "description": "1 BOTTLE in 1 CARTON (58602-867-23)  / 120 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-27",
+          "description": "140 TABLET, COATED in 1 BOTTLE (58602-867-27)",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-32",
+          "description": "180 TABLET, COATED in 1 BOTTLE (58602-867-32)",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-34",
+          "description": "200 TABLET, COATED in 1 BOTTLE (58602-867-34)",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-46",
+          "description": "140 TABLET, COATED in 1 BOTTLE, PLASTIC (58602-867-46)",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-70",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (58602-867-70)  / 40 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-72",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (58602-867-72)  / 80 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-73",
+          "description": "1 BOTTLE in 1 CARTON (58602-867-73)  / 20 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-78",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (58602-867-78)  / 50 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-80",
+          "description": "200 TABLET, COATED in 1 BOTTLE, PLASTIC (58602-867-80)",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-92",
+          "description": "180 TABLET, COATED in 1 BOTTLE, PLASTIC (58602-867-92)",
+          "marketing_start_date": "20220531",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-867-97",
+          "description": "120 TABLET, COATED in 1 BOTTLE, PLASTIC (58602-867-97)",
+          "marketing_start_date": "20220531",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aurohealth LLC"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "21c1f5c5-19fa-4a59-bad3-ea85fd37471b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "21c1f5c5-19fa-4a59-bad3-ea85fd37471b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220531",
+      "product_id": "58602-867_21c1f5c5-19fa-4a59-bad3-ea85fd37471b",
+      "application_number": "ANDA216204",
+      "brand_name_base": "Ibuprofen and Diphenhydramine Citrate",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "21130-623",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Safeway",
+      "brand_name": "IBUPROFEN PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "21130-623-76",
+          "description": "1 BOTTLE in 1 CARTON (21130-623-76)  / 120 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20251229",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Safeway"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "57e8f0d7-1f21-4fda-8b21-3caa54fae4e6"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "fe3393ad-a18f-40cd-abb4-77fb876bd7aa",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20251229",
+      "product_id": "21130-623_fe3393ad-a18f-40cd-abb4-77fb876bd7aa",
+      "application_number": "ANDA079113",
+      "brand_name_base": "IBUPROFEN PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "66715-9733",
+      "generic_name": "Ibuprofen and Diphenhydramine citrate",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "Advil PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-9733-2",
+          "description": "2 POUCH in 1 CARTON (66715-9733-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20100511",
+          "sample": false
+        },
+        {
+          "package_ndc": "66715-9733-3",
+          "description": "3 POUCH in 1 CARTON (66715-9733-3)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20180214",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "b876bb40-a38b-445a-bc8a-466b3bfe166d"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "27e68e85-e284-30b9-e063-6394a90aba9b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20100511",
+      "product_id": "66715-9733_27e68e85-e284-30b9-e063-6394a90aba9b",
+      "application_number": "NDA021394",
+      "brand_name_base": "Advil PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "55111-565",
+      "generic_name": "Ibuprofen and Diphenhydramine Citrate",
+      "labeler_name": "Dr. Reddy's Laboratories Limited",
+      "brand_name": "Ibuprofen and Diphenhydramine Citrate",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "55111-565-05",
+          "description": "1 BOTTLE in 1 CARTON (55111-565-05)  / 500 TABLET in 1 BOTTLE",
+          "marketing_start_date": "20100131",
+          "sample": false
+        },
+        {
+          "package_ndc": "55111-565-14",
+          "description": "1 BOTTLE in 1 CARTON (55111-565-14)  / 20 TABLET in 1 BOTTLE",
+          "marketing_start_date": "20100131",
+          "sample": false
+        },
+        {
+          "package_ndc": "55111-565-18",
+          "description": "1 BOTTLE in 1 CARTON (55111-565-18)  / 180 TABLET in 1 BOTTLE",
+          "marketing_start_date": "20100131",
+          "sample": false
+        },
+        {
+          "package_ndc": "55111-565-30",
+          "description": "1 BOTTLE in 1 CARTON (55111-565-30)  / 30 TABLET in 1 BOTTLE",
+          "marketing_start_date": "20100131",
+          "sample": false
+        },
+        {
+          "package_ndc": "55111-565-40",
+          "description": "1 BOTTLE in 1 CARTON (55111-565-40)  / 40 TABLET in 1 BOTTLE",
+          "marketing_start_date": "20100131",
+          "sample": false
+        },
+        {
+          "package_ndc": "55111-565-80",
+          "description": "1 BOTTLE in 1 CARTON (55111-565-80)  / 80 TABLET in 1 BOTTLE",
+          "marketing_start_date": "20100131",
+          "sample": false
+        },
+        {
+          "package_ndc": "55111-565-90",
+          "description": "1 BOTTLE in 1 CARTON (55111-565-90)  / 90 TABLET in 1 BOTTLE",
+          "marketing_start_date": "20100131",
+          "sample": false
+        },
+        {
+          "package_ndc": "55111-565-92",
+          "description": "2500 TABLET in 1 POUCH (55111-565-92)",
+          "marketing_start_date": "20100131",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Dr. Reddy's Laboratories Limited"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "42c06daf-541a-7721-b875-ea18364501a4"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "d2953b94-9244-2c86-ac0c-7610dd1e7963",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20100131",
+      "product_id": "55111-565_d2953b94-9244-2c86-ac0c-7610dd1e7963",
+      "application_number": "ANDA090619",
+      "brand_name_base": "Ibuprofen and Diphenhydramine Citrate",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "63548-0197",
+      "generic_name": "Ibuprofen, Diphenhydramine Citrate",
+      "labeler_name": "PLD Acquisitions LLC DBA Avma Pharma Solutions",
+      "brand_name": "Ibuprofen 200 mg and Diphenhydramine Citrate 38 mg",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "63548-0197-2",
+          "description": "1 BOTTLE, PLASTIC in 1 BOX (63548-0197-2)  / 20 TABLET in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20240411",
+          "sample": false
+        },
+        {
+          "package_ndc": "63548-0197-3",
+          "description": "300 TABLET in 1 BOTTLE, PLASTIC (63548-0197-3)",
+          "marketing_start_date": "20240411",
+          "sample": false
+        },
+        {
+          "package_ndc": "63548-0197-8",
+          "description": "8 TABLET in 1 BOTTLE, PLASTIC (63548-0197-8)",
+          "marketing_start_date": "20240411",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "PLD Acquisitions LLC DBA Avma Pharma Solutions"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "a7d729bf-6d7a-415a-a414-cae0ba6d0063"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0000000000000"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "fbc47d79-348d-436e-ae3f-364d76f58e49",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240411",
+      "product_id": "63548-0197_fbc47d79-348d-436e-ae3f-364d76f58e49",
+      "application_number": "ANDA211404",
+      "brand_name_base": "Ibuprofen 200 mg and Diphenhydramine Citrate 38 mg",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "58602-887",
+      "generic_name": "Diphenhydramine HCl and Ibuprofen",
+      "labeler_name": "Aurohealth LLC",
+      "brand_name": "Diphenhydramine HCl and Ibuprofen",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "58602-887-10",
+          "description": "1 BOTTLE in 1 CARTON (58602-887-10)  / 32 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20220810",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-887-12",
+          "description": "1 BOTTLE in 1 CARTON (58602-887-12)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20220810",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-887-18",
+          "description": "1 BOTTLE in 1 CARTON (58602-887-18)  / 80 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20220810",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-887-23",
+          "description": "120 CAPSULE, LIQUID FILLED in 1 BOTTLE (58602-887-23)",
+          "marketing_start_date": "20220810",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-887-30",
+          "description": "160 CAPSULE, LIQUID FILLED in 1 BOTTLE (58602-887-30)",
+          "marketing_start_date": "20220810",
+          "sample": false
+        },
+        {
+          "package_ndc": "58602-887-73",
+          "description": "1 BOTTLE in 1 CARTON (58602-887-73)  / 20 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20220810",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aurohealth LLC"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "2c7c5349-06c9-401a-88e9-8f91ddb7f91a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "TC2D6JAD40",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "2c7c5349-06c9-401a-88e9-8f91ddb7f91a",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220810",
+      "product_id": "58602-887_2c7c5349-06c9-401a-88e9-8f91ddb7f91a",
+      "application_number": "ANDA210676",
+      "brand_name_base": "Diphenhydramine HCl and Ibuprofen",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "70677-1131",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Strategic Sourcing Services LLC",
+      "brand_name": "foster and thrive ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "70677-1131-1",
+          "description": "1 BOTTLE in 1 CARTON (70677-1131-1)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20231101",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Strategic Sourcing Services LLC"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "8691e397-e598-4e23-a389-2dbbb8f4496a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "8691e397-e598-4e23-a389-2dbbb8f4496a",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20231101",
+      "product_id": "70677-1131_8691e397-e598-4e23-a389-2dbbb8f4496a",
+      "application_number": "ANDA079113",
+      "brand_name_base": "foster and thrive ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "58602-914",
+      "generic_name": "Ibuprofen and Diphenhydramine Citrate",
+      "labeler_name": "Aurohealth LLC",
+      "brand_name": "Ibuprofen and Diphenhydramine Citrate",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "58602-914-34",
+          "description": "200 TABLET, COATED in 1 BOTTLE (58602-914-34)",
+          "marketing_start_date": "20261101",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aurohealth LLC"
+        ],
+        "spl_set_id": [
+          "b4f91b85-223d-453c-985c-ad299e9f690c"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "b4f91b85-223d-453c-985c-ad299e9f690c",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20261101",
+      "product_id": "58602-914_b4f91b85-223d-453c-985c-ad299e9f690c",
+      "application_number": "ANDA216204",
+      "brand_name_base": "Ibuprofen and Diphenhydramine Citrate",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "55301-050",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Army & Air Force Exchange Service",
+      "brand_name": "Exchange Select Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "55301-050-60",
+          "description": "1 BOTTLE in 1 CARTON (55301-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20150828",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Army & Air Force Exchange Service"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "56761c01-48f2-4d17-a607-6639fb3a7a98"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "ff4cf209-fd6a-469c-99b0-7c1731772615",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20150828",
+      "product_id": "55301-050_ff4cf209-fd6a-469c-99b0-7c1731772615",
+      "application_number": "ANDA079113",
+      "brand_name_base": "Exchange Select Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "72288-050",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Amazon.com Services LLC",
+      "brand_name": "basic care ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "72288-050-60",
+          "description": "1 BOTTLE in 1 CARTON (72288-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20211210",
+          "sample": false
+        },
+        {
+          "package_ndc": "72288-050-76",
+          "description": "1 BOTTLE in 1 CARTON (72288-050-76)  / 120 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20210430",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Amazon.com Services LLC"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "6bd8bad2-4370-4450-822a-9ef50949a8fc"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "4ba6a10c-51df-435f-8df6-b9e43f696eec",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210430",
+      "product_id": "72288-050_4ba6a10c-51df-435f-8df6-b9e43f696eec",
+      "application_number": "ANDA079113",
+      "brand_name_base": "basic care ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "72288-061",
+      "generic_name": "Ibuprofen and Diphenhydramine Citrate",
+      "labeler_name": "Amazon.com Services LLC",
+      "brand_name": "AMAZON BASIC CARE IBUPROFEN PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "72288-061-77",
+          "description": "1 BOTTLE in 1 CARTON (72288-061-77)  / 120 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20240515",
+          "sample": false
+        },
+        {
+          "package_ndc": "72288-061-80",
+          "description": "1 BOTTLE in 1 CARTON (72288-061-80)  / 80 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20260318",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Amazon.com Services LLC"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "10ec6386-db13-a9dd-e063-6294a90a8261"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "9627a924-d8fd-4c2e-87fb-861f50d470e3",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240515",
+      "product_id": "72288-061_9627a924-d8fd-4c2e-87fb-861f50d470e3",
+      "application_number": "ANDA216204",
+      "brand_name_base": "AMAZON BASIC CARE IBUPROFEN PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "59779-050",
+      "generic_name": "diphenhydramine citrate and ibuprofen",
+      "labeler_name": "CVS Pharmacy",
+      "brand_name": "ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "59779-050-27",
+          "description": "1 BOTTLE in 1 CARTON (59779-050-27)  / 80 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090217",
+          "sample": false
+        },
+        {
+          "package_ndc": "59779-050-60",
+          "description": "1 BOTTLE in 1 CARTON (59779-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090501",
+          "sample": false
+        },
+        {
+          "package_ndc": "59779-050-76",
+          "description": "1 BOTTLE in 1 CARTON (59779-050-76)  / 120 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20150427",
+          "sample": false
+        },
+        {
+          "package_ndc": "59779-050-82",
+          "description": "200 TABLET, FILM COATED in 1 BOTTLE (59779-050-82)",
+          "marketing_start_date": "20170912",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "CVS Pharmacy"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "44e4e54b-cb40-4b7c-a141-181bde62a69f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "606dc577-e485-4e35-afd0-41373c9cb627",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090217",
+      "product_id": "59779-050_606dc577-e485-4e35-afd0-41373c9cb627",
+      "application_number": "ANDA079113",
+      "brand_name_base": "ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "21130-056",
+      "marketing_end_date": "20261231",
+      "generic_name": "Diphenhydramine Citrate, Ibuprofen",
+      "labeler_name": "Safeway, Inc.",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "21130-056-40",
+          "description": "1 BOTTLE, PLASTIC in 1 BOX (21130-056-40)  / 40 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20240301",
+          "marketing_end_date": "20261231",
+          "sample": false
+        },
+        {
+          "package_ndc": "21130-056-80",
+          "description": "1 BOTTLE, PLASTIC in 1 BOX (21130-056-80)  / 80 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20240301",
+          "marketing_end_date": "20261231",
+          "sample": false
+        }
+      ],
+      "openfda": {
+        "manufacturer_name": [
+          "Safeway, Inc."
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "e49d1e9e-99a6-4d81-90d6-ef23a584a3d1"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0321130777564"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "792e598a-eaee-4d0a-9c99-154ecbf29aaf",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240301",
+      "product_id": "21130-056_792e598a-eaee-4d0a-9c99-154ecbf29aaf",
+      "application_number": "ANDA211404",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "41250-285",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "MEIJER DISTRIBUTION INC.",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "41250-285-15",
+          "description": "1 BOTTLE in 1 CARTON (41250-285-15)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20221019",
+          "sample": false
+        },
+        {
+          "package_ndc": "41250-285-22",
+          "description": "120 CAPSULE, LIQUID FILLED in 1 BOTTLE (41250-285-22)",
+          "marketing_start_date": "20210224",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "MEIJER DISTRIBUTION INC."
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "bb7701aa-f482-69e7-e053-2995a90a71b8"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "4faedd95-af8f-05da-e063-6394a90aec79",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210224",
+      "product_id": "41250-285_4faedd95-af8f-05da-e063-6394a90aec79",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "36800-050",
+      "generic_name": "diphenhydramine citrate and ibuprofen",
+      "labeler_name": "Topco Associates LLC",
+      "brand_name": "Topcare Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "36800-050-27",
+          "description": "1 BOTTLE in 1 CARTON (36800-050-27)  / 80 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090224",
+          "sample": false
+        },
+        {
+          "package_ndc": "36800-050-58",
+          "description": "1 BOTTLE in 1 CARTON (36800-050-58)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090218",
+          "sample": false
+        },
+        {
+          "package_ndc": "36800-050-60",
+          "description": "1 BOTTLE in 1 CARTON (36800-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090219",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Topco Associates LLC"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "1435e627-144e-4dc8-9ad6-58d91cbd9094"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "ce7b2954-4165-4ca8-902d-8349eea450be",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090218",
+      "product_id": "36800-050_ce7b2954-4165-4ca8-902d-8349eea450be",
+      "application_number": "ANDA079113",
+      "brand_name_base": "Topcare Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "49035-670",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "Wal-Mart Stores, Inc.",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "49035-670-15",
+          "description": "1 BOTTLE in 1 CARTON (49035-670-15)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20190401",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Wal-Mart Stores, Inc."
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "ba31970a-b952-467c-b3f8-44f7a513de34"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "f0ea4f2d-a5ea-374f-e053-2995a90a5d27",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190401",
+      "product_id": "49035-670_f0ea4f2d-a5ea-374f-e053-2995a90a5d27",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "30142-232",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "KROGER COMPANY",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "30142-232-15",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (30142-232-15)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20210824",
+          "sample": false
+        },
+        {
+          "package_ndc": "30142-232-78",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (30142-232-78)  / 80 CAPSULE, LIQUID FILLED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20210824",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "KROGER COMPANY"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "ca5418f2-4dc0-ad31-e053-2995a90ac1d3"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "46184215-a798-8ac7-e063-6294a90a0dea",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210824",
+      "product_id": "30142-232_46184215-a798-8ac7-e063-6294a90a0dea",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "0573-0164",
+      "generic_name": "diphenhydramine citrate and ibuprofen",
+      "labeler_name": "Haleon US Holdings LLC",
+      "brand_name": "ADVIL PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0573-0164-04",
+          "description": "4 TABLET, COATED in 1 POUCH (0573-0164-04)",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-05",
+          "description": "2 BOTTLE in 1 CARTON (0573-0164-05)  / 2 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-08",
+          "description": "1 VIAL in 1 PACKAGE (0573-0164-08)  / 8 TABLET, COATED in 1 VIAL",
+          "marketing_start_date": "20170317",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-09",
+          "description": "8 TABLET, COATED in 1 VIAL (0573-0164-09)",
+          "marketing_start_date": "20170317",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-12",
+          "description": "6 POUCH in 1 CARTON (0573-0164-12)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-14",
+          "description": "2 POUCH in 1 CARTON (0573-0164-14)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-20",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-20)  / 20 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-21",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-21)  / 30 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-30",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-30)  / 40 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-32",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-32)  / 50 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-33",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-33)  / 50 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-40",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-40)  / 80 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-41",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-41)  / 100 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-43",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-43)  / 120 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-44",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-44)  / 140 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-45",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-45)  / 180 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-46",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-46)  / 180 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-49",
+          "description": "1 BOTTLE in 1 CARTON (0573-0164-49)  / 200 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-55",
+          "description": "50 POUCH in 1 TRAY (0573-0164-55)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20051221",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-65",
+          "description": "120 TABLET, COATED in 1 BOTTLE (0573-0164-65)",
+          "marketing_start_date": "20160930",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0164-91",
+          "description": "3000 POUCH in 1 BOX (0573-0164-91)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20051221",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Haleon US Holdings LLC"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "658fc201-47c9-6a6d-8af9-6208298d43b4"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "15971707-84cd-4742-e063-6394a90af906",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20051221",
+      "product_id": "0573-0164_15971707-84cd-4742-e063-6394a90af906",
+      "application_number": "NDA021394",
+      "brand_name_base": "ADVIL PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "49035-699",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Wal-Mart Stores Inc",
+      "brand_name": "equate ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "49035-699-27",
+          "description": "1 BOTTLE in 1 CARTON (49035-699-27)  / 80 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090415",
+          "sample": false
+        },
+        {
+          "package_ndc": "49035-699-60",
+          "description": "1 BOTTLE in 1 CARTON (49035-699-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090415",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Wal-Mart Stores Inc"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "e36957ed-653c-465f-8150-7d6073e1376f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "d2f10efb-2d93-4050-83b6-ff227b5ef1da",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090415",
+      "product_id": "49035-699_d2f10efb-2d93-4050-83b6-ff227b5ef1da",
+      "application_number": "ANDA079113",
+      "brand_name_base": "equate ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "68016-057",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "Premier Value Alliance LLC",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "68016-057-40",
+          "description": "1 BOTTLE in 1 CARTON (68016-057-40)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20181025",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Premier Value Alliance LLC"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "21afce91-afbe-4b38-a8a5-8775148835e8"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "21afce91-afbe-4b38-a8a5-8775148835e8",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181025",
+      "product_id": "68016-057_21afce91-afbe-4b38-a8a5-8775148835e8",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "42681-0061",
+      "generic_name": "IBUPROFEN AND DIPHENHYDRAMINE HCL",
+      "labeler_name": "Whole Foods Market, INC.",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "42681-0061-1",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (42681-0061-1)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20260501",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Whole Foods Market, INC."
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "4db58605-9cc7-e57e-e063-6294a90ab800"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "4db585fe-bff2-f8a1-e063-6294a90acb3a",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260501",
+      "product_id": "42681-0061_4db585fe-bff2-f8a1-e063-6294a90acb3a",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "0363-1500",
+      "generic_name": "diphenhydramine hydrochloride, ibuprofen, hydrocortisone, bacitracin zinc, neomycin sulfate, polymyxin-B sulfate, lidocaine HCL, benzalkonium chloride, isopropyl alcohol, ethyl alcohol",
+      "labeler_name": "Walgreen Co.",
+      "brand_name": "Walgreens",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0363-1500-01",
+          "description": "1 KIT in 1 CASE (0363-1500-01)  *  .9 g in 1 POUCH (61010-5600-1)  *  .34 g in 1 POUCH (51142-445-21)  *  .9 g in 1 POUCH (61010-5800-1)  *  2 TABLET, COATED in 1 PACKET (47682-718-99)  *  .0019 L in 1 PACKET (61010-2017-0)  *  1 TABLET, FILM COATED in 1 PACKET (47682-167-46)  *  .9 g in 1 PACKET (61010-5701-3)",
+          "marketing_start_date": "20240717",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Walgreen Co."
+        ],
+        "rxcui": [
+          "106258",
+          "204602",
+          "310965",
+          "797544",
+          "1012100",
+          "1039699",
+          "1049630"
+        ],
+        "spl_set_id": [
+          "5630f48b-404c-b847-e063-6394a90a8d8e"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "563138ab-2058-29b3-e063-6294a90ab803",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240717",
+      "product_id": "0363-1500_563138ab-2058-29b3-e063-6294a90ab803",
+      "application_number": "505G(a)(3)",
+      "brand_name_base": "Walgreens"
+    },
+    {
+      "product_ndc": "69452-507",
+      "generic_name": "IBUPROFEN AND DIPHENHYDRAMINE HCL",
+      "labeler_name": "Bionpharma Inc.",
+      "brand_name": "pain relief pm",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69452-507-78",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (69452-507-78)  / 80 CAPSULE, LIQUID FILLED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20260520",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Bionpharma Inc."
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "51037299-37dd-ca57-e063-6394a90a12c7"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "51036c57-1a67-a327-e063-6294a90a7413",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260520",
+      "product_id": "69452-507_51036c57-1a67-a327-e063-6294a90a7413",
+      "application_number": "ANDA090397",
+      "brand_name_base": "pain relief pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "30142-278",
+      "generic_name": "Ibuprofen and Diphenhydramine Citrate",
+      "labeler_name": "KROGER COMPANY",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "30142-278-80",
+          "description": "1 BOTTLE in 1 CARTON (30142-278-80)  / 80 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20240507",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "KROGER COMPANY"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "15e649c4-d75f-e8c1-e063-6294a90a7747"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0041260022029"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "cc3a78e5-52f9-424b-ab27-1c4ab644c735",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240507",
+      "product_id": "30142-278_cc3a78e5-52f9-424b-ab27-1c4ab644c735",
+      "application_number": "ANDA216204",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "51142-005",
+      "generic_name": "diphenhydramine hydrochloride, ibuprofen, hydrocortisone, bacitracin zinc, neomycin sulfate, polymyxin-B sulfate, lidocaine HCL, benzalkonium chloride, isopropyl alcohol, ethyl alcohol",
+      "labeler_name": "ASO LLC",
+      "brand_name": "Care Science",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "51142-005-01",
+          "description": "1 KIT in 1 CASE (51142-005-01)  *  .9 g in 1 POUCH (61010-5600-1)  *  .34 g in 1 POUCH (51142-445-21)  *  .9 g in 1 POUCH (61010-5800-1)  *  2 TABLET, COATED in 1 PACKET (47682-718-99)  *  .0019 L in 1 PACKET (61010-2017-0)  *  1 TABLET, FILM COATED in 1 PACKET (47682-167-46)  *  .9 g in 1 PACKET (61010-5701-3)",
+          "marketing_start_date": "20250507",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "ASO LLC"
+        ],
+        "rxcui": [
+          "106258",
+          "204602",
+          "310965",
+          "797544",
+          "1012100",
+          "1039699",
+          "1049630"
+        ],
+        "spl_set_id": [
+          "562f2b2c-d234-e491-e063-6294a90a705f"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "562eddbb-95bb-e64b-e063-6394a90a2ff0",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250507",
+      "product_id": "51142-005_562eddbb-95bb-e64b-e063-6394a90a2ff0",
+      "application_number": "505G(a)(3)",
+      "brand_name_base": "Care Science"
+    },
+    {
+      "product_ndc": "0573-0167",
+      "generic_name": "diphenhydramine HCl, ibuprofen",
+      "labeler_name": "Haleon US Holdings LLC",
+      "brand_name": "ADVIL PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0573-0167-25",
+          "description": "1 BOTTLE in 1 CARTON (0573-0167-25)  / 20 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20051220",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0167-26",
+          "description": "1 BOTTLE in 1 CARTON (0573-0167-26)  / 30 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20051220",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0167-43",
+          "description": "1 BOTTLE in 1 CARTON (0573-0167-43)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20051220",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0167-44",
+          "description": "1 BOTTLE in 1 CARTON (0573-0167-44)  / 50 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20051220",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0167-55",
+          "description": "1 BOTTLE in 1 CARTON (0573-0167-55)  / 80 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20051220",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0167-56",
+          "description": "1 BOTTLE in 1 CARTON (0573-0167-56)  / 100 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20051220",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Haleon US Holdings LLC"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "405afdb4-c157-1d88-f232-848063ba4714"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "TC2D6JAD40",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "57c5339d-4ab8-ce7f-e063-6394a90a75a5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20051220",
+      "product_id": "0573-0167_57c5339d-4ab8-ce7f-e063-6394a90a75a5",
+      "application_number": "NDA021393",
+      "brand_name_base": "ADVIL PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "69842-870",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "CVS Pharmacy",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69842-870-15",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (69842-870-15)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20211019",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "CVS Pharmacy"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "ce4378c0-848e-7878-e053-2a95a90af0f3"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "f0d4869d-7769-7121-e053-2995a90a562e",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20211019",
+      "product_id": "69842-870_f0d4869d-7769-7121-e053-2995a90a562e",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "36800-756",
+      "marketing_end_date": "20261231",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "TOP CARE (Topco Associates LLC)",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "36800-756-40",
+          "description": "1 BOTTLE, PLASTIC in 1 BOX (36800-756-40)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20180731",
+          "marketing_end_date": "20261231",
+          "sample": false
+        }
+      ],
+      "openfda": {
+        "manufacturer_name": [
+          "TOP CARE (Topco Associates LLC)"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "7af82ca5-ea36-4b72-88b8-0fe68348d269"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0036800207691"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "297ebb27-968b-44e8-9318-511c73adacfc",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180731",
+      "product_id": "36800-756_297ebb27-968b-44e8-9318-511c73adacfc",
+      "application_number": "ANDA200888",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "0113-0050",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "L. Perrigo Company",
+      "brand_name": "good sense ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0113-0050-58",
+          "description": "1 BOTTLE in 1 CARTON (0113-0050-58)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090305",
+          "sample": false
+        },
+        {
+          "package_ndc": "0113-0050-60",
+          "description": "1 BOTTLE in 1 CARTON (0113-0050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20100507",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "L. Perrigo Company"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "0488786f-9b6b-4935-bb57-bcb2565447f8"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "c80d2210-786d-4e91-ada6-f89caf3cf6d0",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090305",
+      "product_id": "0113-0050_c80d2210-786d-4e91-ada6-f89caf3cf6d0",
+      "application_number": "ANDA079113",
+      "brand_name_base": "good sense ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "11822-0789",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "Rite Aid Corporation",
+      "brand_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "11822-0789-4",
+          "description": "1 BOTTLE in 1 CARTON (11822-0789-4)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20200415",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Rite Aid Corporation"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "a35f68f3-c7f8-a55f-e053-2a95a90a9047"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "a35f6b2b-8e67-dd2d-e053-2995a90a27e1",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20200415",
+      "product_id": "11822-0789_a35f6b2b-8e67-dd2d-e053-2995a90a27e1",
+      "application_number": "ANDA090397",
+      "brand_name_base": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "79903-186",
+      "marketing_end_date": "20271228",
+      "generic_name": "Diphenhydramine Citrate, Ibuprofen",
+      "labeler_name": "WALMART INC. (see also Equate)",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "79903-186-20",
+          "description": "1 BOTTLE, PLASTIC in 1 BOX (79903-186-20)  / 20 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20240608",
+          "marketing_end_date": "20271228",
+          "sample": false
+        },
+        {
+          "package_ndc": "79903-186-80",
+          "description": "1 BOTTLE, PLASTIC in 1 BOX (79903-186-80)  / 80 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20240608",
+          "marketing_end_date": "20271228",
+          "sample": false
+        }
+      ],
+      "openfda": {
+        "manufacturer_name": [
+          "WALMART INC. (see also Equate)"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "d86151b6-d5c5-4d93-9cfd-43ab7ad0443a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0194346099269"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "fec3c891-139c-4171-8c7a-dfe802e7e04d",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240608",
+      "product_id": "79903-186_fec3c891-139c-4171-8c7a-dfe802e7e04d",
+      "application_number": "ANDA211404",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "69607-1970",
+      "generic_name": "Diphenhydramine Citrate, Ibuprofen",
+      "labeler_name": "WR Group, Inc.",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "69607-1970-1",
+          "description": "1 BOTTLE, PLASTIC in 1 BOX (69607-1970-1)  / 120 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20250228",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "WR Group, Inc."
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "1e2feaf0-7fff-43d5-bcfe-9f2851bdc805"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0811079036964"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "53818277-b127-4271-9604-8015eacd6c99",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250228",
+      "product_id": "69607-1970_53818277-b127-4271-9604-8015eacd6c99",
+      "application_number": "ANDA211404",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "0363-0050",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Walgreen Company",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0363-0050-27",
+          "description": "1 BOTTLE in 1 CARTON (0363-0050-27)  / 80 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090219",
+          "sample": false
+        },
+        {
+          "package_ndc": "0363-0050-58",
+          "description": "1 BOTTLE in 1 CARTON (0363-0050-58)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20130712",
+          "sample": false
+        },
+        {
+          "package_ndc": "0363-0050-60",
+          "description": "1 BOTTLE in 1 CARTON (0363-0050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090219",
+          "sample": false
+        },
+        {
+          "package_ndc": "0363-0050-76",
+          "description": "1 BOTTLE in 1 CARTON (0363-0050-76)  / 120 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20160107",
+          "sample": false
+        },
+        {
+          "package_ndc": "0363-0050-82",
+          "description": "200 TABLET, FILM COATED in 1 BOTTLE (0363-0050-82)",
+          "marketing_start_date": "20170921",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Walgreen Company"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "9c5c1f48-d285-4faa-96d0-b04f435c9c5c"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "2e8f3546-0aa7-4f2d-a201-037e01bae76a",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090219",
+      "product_id": "0363-0050_2e8f3546-0aa7-4f2d-a201-037e01bae76a",
+      "application_number": "ANDA079113",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "66715-6433",
+      "generic_name": "Ibuprofen and Diphenhydramine citrate",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "Advil PM, TRAVEL BASIX",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6433-2",
+          "description": "2 POUCH in 1 CARTON (66715-6433-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20221115",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "b876bb40-a38b-445a-bc8a-466b3bfe166d"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "27e68e85-e284-30b9-e063-6394a90aba9b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20221115",
+      "product_id": "66715-6433_27e68e85-e284-30b9-e063-6394a90aba9b",
+      "application_number": "NDA021394",
+      "brand_name_base": "Advil PM, TRAVEL BASIX",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "36800-237",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "TOP CARE (Topco Associates LLC)",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "36800-237-15",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (36800-237-15)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20211015",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "TOP CARE (Topco Associates LLC)"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "c62c6319-65eb-37e8-e053-2a95a90a9f90"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0036800207691"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "f0e8a4d9-1a2e-4be2-e053-2995a90a5604",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20211015",
+      "product_id": "36800-237_f0e8a4d9-1a2e-4be2-e053-2995a90a5604",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "42507-050",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "HyVee Inc",
+      "brand_name": "ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "42507-050-27",
+          "description": "1 BOTTLE in 1 CARTON (42507-050-27)  / 80 TABLET, FILM COATED in 1 BOTTLE (42507-050-80)",
+          "marketing_start_date": "20090302",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "HyVee Inc"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "833a2bee-0e55-44f7-b80d-b336ebe52fc9"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "574cd550-b66e-4dad-abd8-3330fc429474",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090302",
+      "product_id": "42507-050_574cd550-b66e-4dad-abd8-3330fc429474",
+      "application_number": "ANDA079113",
+      "brand_name_base": "ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "59640-020",
+      "generic_name": "IBUPROFEN, DIPHENHYDRAMINE HCL",
+      "labeler_name": "HEB",
+      "brand_name": "Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "59640-020-15",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (59640-020-15)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20260312",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "HEB"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "3fb6c1e5-f877-2cd0-e063-6294a90ae654"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "4cc3dd41-b234-d4c2-e063-6394a90a639b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260312",
+      "product_id": "59640-020_4cc3dd41-b234-d4c2-e063-6394a90a639b",
+      "application_number": "ANDA090397",
+      "brand_name_base": "Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "21130-228",
+      "generic_name": "Ibuprofen and Diphenhydramine Citrate",
+      "labeler_name": "Better Living Brands, LLC",
+      "brand_name": "Ibuprofen and Diphenhydramine Citrate",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "21130-228-12",
+          "description": "1 BOTTLE in 1 CARTON (21130-228-12)  / 40 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20231115",
+          "sample": false
+        },
+        {
+          "package_ndc": "21130-228-18",
+          "description": "1 BOTTLE in 1 CARTON (21130-228-18)  / 80 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20231115",
+          "sample": false
+        },
+        {
+          "package_ndc": "21130-228-23",
+          "description": "1 BOTTLE in 1 CARTON (21130-228-23)  / 120 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20231115",
+          "sample": false
+        },
+        {
+          "package_ndc": "21130-228-73",
+          "description": "1 BOTTLE in 1 CARTON (21130-228-73)  / 20 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20231115",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Better Living Brands, LLC"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "fcfb044d-f6b9-5c43-e053-6394a90ac417"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "09fc3572-d282-478d-ba22-70690f615e65",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20231115",
+      "product_id": "21130-228_09fc3572-d282-478d-ba22-70690f615e65",
+      "application_number": "ANDA216204",
+      "brand_name_base": "Ibuprofen and Diphenhydramine Citrate",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "56062-050",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "Publix Super Markets Inc",
+      "brand_name": "ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "56062-050-58",
+          "description": "1 BOTTLE in 1 CARTON (56062-050-58)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20110915",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Publix Super Markets Inc"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "0240bec9-9477-4d58-9a19-63bb5d2795e0"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "70390faa-3498-45d9-8d39-602811547689",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20110915",
+      "product_id": "56062-050_70390faa-3498-45d9-8d39-602811547689",
+      "application_number": "ANDA079113",
+      "brand_name_base": "ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "37808-703",
+      "generic_name": "diphenhydramine citrate, ibuprofen",
+      "labeler_name": "H E B",
+      "brand_name": "ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "37808-703-60",
+          "description": "1 BOTTLE in 1 CARTON (37808-703-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20180405",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "H E B"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "2114b2a9-f9af-43b9-97ec-859a4afe7ec8"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "15fc8283-5bf9-4740-8213-eb2f9e592233",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180405",
+      "product_id": "37808-703_15fc8283-5bf9-4740-8213-eb2f9e592233",
+      "application_number": "ANDA079113",
+      "brand_name_base": "ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "11673-050",
+      "generic_name": "diphenhydramine citrate and ibuprofen",
+      "labeler_name": "Target Corporation",
+      "brand_name": "up and up ibuprofen pm",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "11673-050-58",
+          "description": "1 BOTTLE in 1 CARTON (11673-050-58)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090724",
+          "sample": false
+        },
+        {
+          "package_ndc": "11673-050-60",
+          "description": "1 BOTTLE in 1 CARTON (11673-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20260310",
+          "sample": false
+        },
+        {
+          "package_ndc": "11673-050-82",
+          "description": "200 TABLET, FILM COATED in 1 BOTTLE (11673-050-82)",
+          "marketing_start_date": "20220127",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Target Corporation"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "0c764683-f3c9-4382-96be-d34b7a582aee"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "85dc1973-d04b-4c7e-a5c4-24c94a791a05",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090710",
+      "product_id": "11673-050_85dc1973-d04b-4c7e-a5c4-24c94a791a05",
+      "application_number": "ANDA079113",
+      "brand_name_base": "up and up ibuprofen pm",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "67751-147",
+      "generic_name": "DIPHENHYDRAMINE CITRATE, IBUPROFEN",
+      "labeler_name": "Navajo Manufacturing Company Inc.",
+      "brand_name": "Advil PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67751-147-01",
+          "description": "1 POUCH in 1 CARTON (67751-147-01)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20160916",
+          "sample": false
+        },
+        {
+          "package_ndc": "67751-147-02",
+          "description": "2 POUCH in 1 CARTON (67751-147-02)  / 4 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20160916",
+          "sample": false
+        },
+        {
+          "package_ndc": "67751-147-06",
+          "description": "3 POUCH in 1 CARTON (67751-147-06)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20250425",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Navajo Manufacturing Company Inc."
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "a3c30dd2-75f3-4f8b-88d7-4a63dea5bad7"
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "4efb3fed-e69e-91c7-e063-6294a90aafdd",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20160916",
+      "product_id": "67751-147_4efb3fed-e69e-91c7-e063-6294a90aafdd",
+      "application_number": "NDA021394",
+      "brand_name_base": "Advil PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "58602-717",
+      "generic_name": "Diphenhydramine HCl and Ibuprofen",
+      "labeler_name": "Aurohealth LLC",
+      "brand_name": "Diphenhydramine HCl and Ibuprofen",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "58602-717-30",
+          "description": "160 CAPSULE, LIQUID FILLED in 1 BOTTLE (58602-717-30)",
+          "marketing_start_date": "20221209",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aurohealth LLC"
+        ],
+        "rxcui": [
+          "901814"
+        ],
+        "spl_set_id": [
+          "39af6dfa-e822-43a5-bd1a-338cf5da89ce"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "TC2D6JAD40",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "39af6dfa-e822-43a5-bd1a-338cf5da89ce",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20221209",
+      "product_id": "58602-717_39af6dfa-e822-43a5-bd1a-338cf5da89ce",
+      "application_number": "ANDA210676",
+      "brand_name_base": "Diphenhydramine HCl and Ibuprofen",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "66715-6533",
+      "generic_name": "Ibuprofen and Diphenhydramine citrate",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "Advil PM, CVP HEALTH",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6533-2",
+          "description": "2 POUCH in 1 CARTON (66715-6533-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20220506",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "b876bb40-a38b-445a-bc8a-466b3bfe166d"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM",
+          "4OD433S209"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "27e68e85-e284-30b9-e063-6394a90aba9b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220506",
+      "product_id": "66715-6533_27e68e85-e284-30b9-e063-6394a90aba9b",
+      "application_number": "NDA021394",
+      "brand_name_base": "Advil PM, CVP HEALTH",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "41520-050",
+      "generic_name": "diphenhydramine citrate and ibuprofen",
+      "labeler_name": "American Sales Company",
+      "brand_name": "Care One Ibuprofen PM",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE CITRATE",
+          "strength": "38 mg/1"
+        },
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "41520-050-27",
+          "description": "1 BOTTLE in 1 CARTON (41520-050-27)  / 80 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090220",
+          "sample": false
+        },
+        {
+          "package_ndc": "41520-050-58",
+          "description": "1 BOTTLE in 1 CARTON (41520-050-58)  / 40 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090220",
+          "sample": false
+        },
+        {
+          "package_ndc": "41520-050-60",
+          "description": "1 BOTTLE in 1 CARTON (41520-050-60)  / 20 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20090220",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "American Sales Company"
+        ],
+        "rxcui": [
+          "895664"
+        ],
+        "spl_set_id": [
+          "d5bf76d1-6fed-4f6b-8507-3e8973295d67"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "4OD433S209",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "af71245d-9e26-4aaf-b061-3b2dc519572c",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090220",
+      "product_id": "41520-050_af71245d-9e26-4aaf-b061-3b2dc519572c",
+      "application_number": "ANDA079113",
+      "brand_name_base": "Care One Ibuprofen PM",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    }
+  ]
+}

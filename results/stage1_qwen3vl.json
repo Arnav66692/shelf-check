@@ -1,0 +1,478 @@
+{
+ "summary": {
+  "reader": "B_qwen3-vl:8b",
+  "ingredients_right": 17,
+  "of": 20,
+  "strength_right": 16,
+  "of_drugs": 16,
+  "planted_caught": 3,
+  "false_alarms": 0
+ },
+ "rows": {
+  "tylenol_es": {
+   "kind": "otc",
+   "text": "NDC 50580-590-02\nTYLENOL Extra Strength Acetaminophen\nAcetaminophen 500 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "50580-590",
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 500.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 17.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "nyquil": {
+   "kind": "otc",
+   "text": "NDC 23900037451\nNyQuil Cold & Flu\nAcetaminophen 650 mg\nDextromethorphan HBr 30 mg\nDoxylamine succinate 12.5 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 650.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "dextromethorphan",
+      "value": 30.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "doxylamine",
+      "value": 12.5,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "benadryl": {
+   "kind": "otc",
+   "text": "NDC 50580-573-04\nBenadryl ALLERGY LIQUID\nDiphenhydramine HCl 12.5 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "50580-573",
+    "items": [
+     {
+      "ingredient": "diphenhydramine",
+      "value": 12.5,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "tylenol_pm": {
+   "kind": "otc",
+   "text": "NDC 0198-0000-00\nTYLENOL PM\nAcetaminophen 500 mg\nDiphenhydramine HCl 25 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 500.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "diphenhydramine",
+      "value": 25.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 15.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "bayer_aspirin": {
+   "kind": "otc",
+   "text": "NDC 0001-9160-01\nGENUINE ASPIRIN BAYER\nAspirin 325 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "aspirin",
+      "value": 325.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 13.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "advil": {
+   "kind": "otc",
+   "text": "NDC 82107928176\nAdvil DUAL ACTION with Acetaminophen\nAcetaminophen 250 mg\nIbuprofen 125 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 250.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "ibuprofen",
+      "value": 125.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 16.3,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "claritin": {
+   "kind": "otc",
+   "text": "Children's Claritin Chewables\nLoratadine 5 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "loratadine",
+      "value": 5.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 14.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "mucinex": {
+   "kind": "otc",
+   "text": "NDC 68084-572-01\nMucinex\nguaifenesin 600 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "68084-572",
+    "items": [
+     {
+      "ingredient": "guaifenesin",
+      "value": 600.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "warfarin": {
+   "kind": "rx",
+   "text": "NDC 0093-1720-01\nWarfarin Sodium Tablets, USP\nwarfarin sodium 10 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "0093-1720",
+    "items": [
+     {
+      "ingredient": "warfarin",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "lisinopril": {
+   "kind": "rx",
+   "text": "NDC 60760-586-90\nLisinopril and Hydrochlorothiazide Tablets, USP 10mg/12.5mg\nLisinopril 10 mg\nHydrochlorothiazide 12.5 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "60760-586",
+    "items": [
+     {
+      "ingredient": "lisinopril",
+      "value": 10.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "hydrochlorothiazide",
+      "value": 12.5,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 10.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "sertraline": {
+   "kind": "rx",
+   "text": "NDC 63187-859-30\nSertraline 25mg Tablets\nSertraline hydrochloride 25 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "63187-859",
+    "items": [
+     {
+      "ingredient": "sertraline",
+      "value": 25.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "metformin": {
+   "kind": "rx",
+   "text": "NDC 70771-1859-6\nZituvi met\u00ae (sitagliptin and metformin HCl) tablets\nSitagliptin 50 mg\nMetformin Hydrochloride USP 500 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70771-1859",
+    "items": [
+     {
+      "ingredient": "sitagliptin",
+      "value": 50.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "metformin",
+      "value": 500.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.6,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "atorvastatin": {
+   "kind": "rx",
+   "text": "NDC 71335-1336-3\nAtorvastatin Calcium Tablets, USP\natorvastatin calcium 88 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "71335-1336",
+    "items": [
+     {
+      "ingredient": "atorvastatin",
+      "value": 80.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 15.3,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "omeprazole": {
+   "kind": "rx",
+   "text": "NDC 72789-257-90\nOMEPRazole\nOMEPRazole 40 MG",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72789-257",
+    "items": [
+     {
+      "ingredient": "omeprazole",
+      "value": 40.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 18.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "amoxicillin": {
+   "kind": "rx",
+   "text": "NDC 62135-095-75\nAmoxicillin and Clavulanate Potassium for Oral Suspension, USP\nAmoxicillin 600 mg\nClavulanate 42.9 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "62135-095",
+    "items": [
+     {
+      "ingredient": "amoxicillin",
+      "value": 600.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "clavulanate",
+      "value": 42.9,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 19.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "levothyroxine": {
+   "kind": "rx",
+   "text": "NDC 71205-354-90\nLevothyroxine Sodium 137mcg\nLevotyroxine Sodium 137 mcg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "71205-354",
+    "items": [
+     {
+      "ingredient": "levothyroxine",
+      "value": 137.0,
+      "unit": "mcg"
+     }
+    ]
+   },
+   "read_seconds": 30.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "supp_melatonin": {
+   "kind": "supplement",
+   "text": "Melatonin 10 mg Tablets\nMelatonin 10 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "melatonin",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 11.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "supp_vitamin_d3": {
+   "kind": "supplement",
+   "text": "NDC 4371500321\nVitamin D3 5000 IU\nVitamin D3 5000 IU",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "vitamin d",
+      "value": 5000.0,
+      "unit": "iu"
+     }
+    ]
+   },
+   "read_seconds": 20.8,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "supp_st_johns_wort": {
+   "kind": "supplement",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 99.1,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "supp_fish_oil": {
+   "kind": "supplement",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 94.6,
+   "ingredients_right": false,
+   "strength_right": false
+  }
+ },
+ "planted": [
+  {
+   "pair": [
+    "tylenol_es",
+    "nyquil"
+   ],
+   "want": "duplicate",
+   "caught": true,
+   "flags": [
+    {
+     "type": "duplicate",
+     "ingredient": "acetaminophen"
+    }
+   ]
+  },
+  {
+   "pair": [
+    "benadryl",
+    "tylenol_pm"
+   ],
+   "want": "duplicate",
+   "caught": true,
+   "flags": [
+    {
+     "type": "duplicate",
+     "ingredient": "diphenhydramine"
+    }
+   ]
+  },
+  {
+   "pair": [
+    "warfarin",
+    "bayer_aspirin"
+   ],
+   "want": "interaction",
+   "caught": true,
+   "flags": [
+    {
+     "type": "interaction",
+     "ingredient": "aspirin",
+     "quote": "table 3: drugs that can increase the risk of bleeding drug class specific drugs anticoagulants argatroban, dabigatran, bivalirudin, desirudin, heparin, lepirudin antiplatelet agents aspirin, cilostazol, clopidogrel, dipyridamole, prasugrel, ticlopidine non-steroidal anti-inflammatory agents celecoxi"
+    }
+   ]
+  }
+ ],
+ "safe": [
+  {
+   "pair": [
+    "claritin",
+    "mucinex"
+   ],
+   "flags": []
+  },
+  {
+   "pair": [
+    "levothyroxine",
+    "claritin"
+   ],
+   "flags": []
+  },
+  {
+   "pair": [
+    "tylenol_es",
+    "amoxicillin"
+   ],
+   "flags": []
+  },
+  {
+   "pair": [
+    "omeprazole",
+    "mucinex"
+   ],
+   "flags": []
+  },
+  {
+   "pair": [
+    "sertraline",
+    "mucinex"
+   ],
+   "flags": []
+  }
+ ]
+}

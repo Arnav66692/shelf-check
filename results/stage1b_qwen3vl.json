@@ -1,0 +1,1829 @@
+{
+ "summary": {
+  "reader": "B_qwen3-vl:8b",
+  "ingredients_right": 85,
+  "of": 100,
+  "strength_right": 82,
+  "of_drugs": 100,
+  "confidently_wrong": 5,
+  "no_answer": 13,
+  "planted_caught": 0,
+  "false_alarms": 0
+ },
+ "rows": {
+  "f0160e3d-63ea-75fb-4b88-fe3d6a6ce030": {
+   "kind": "rx",
+   "text": "NDC 70377-057-11\nTofacitinib Extended-Release Tablets\nTofacitinib 11 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70377-057",
+    "items": [
+     {
+      "ingredient": "tofacitinib",
+      "value": 11.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "e3b84397-a5a5-40cf-8145-0584103d465f": {
+   "kind": "rx",
+   "text": "NDC 0480-7750-80\nMesalamine Delayed-Release Tablets, USP\nmesalamine 800 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "0480-7750",
+    "items": [
+     {
+      "ingredient": "mesalamine",
+      "value": 800.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 3.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "5d56cc7a-a824-1faf-e063-6294a90af712": {
+   "kind": "rx",
+   "text": "NDC 67046169630\nDIVALPROEX SODIUM\nDIVALPROEX SOD 250 MG",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 5.8,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "ed55a184-97a0-44bd-9731-03076a000c85": {
+   "kind": "rx",
+   "text": "NDC 87063-324-10\nCevimeline HCl Capsules 30 mg\nCevimeline HCl 30 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "87063-324",
+    "items": [
+     {
+      "ingredient": "cevimeline",
+      "value": 30.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 31.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "13c5ed58-6333-498f-9ace-1049d7ae3552": {
+   "kind": "rx",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 116.9,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "5ed39652-9289-fd12-e063-6294a90aebfa": {
+   "kind": "rx",
+   "text": "NDC 50268-827-13\nSirolimus Tablets\nsirolimus 0.5 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "sirolimus",
+      "value": 0.5,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 3.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "ddbe69f3-bd55-45f3-a64f-f60226c744c4": {
+   "kind": "rx",
+   "text": "NDC 0013-0101-01\nAzulfidine\u00ae sulfasalazine tablets, USP\nsulfasalazine 500 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "0013-0101",
+    "items": [
+     {
+      "ingredient": "sulfasalazine",
+      "value": 500.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 9.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "f5d0e5b9-97d8-42a4-a0a0-c09dde7008e6": {
+   "kind": "rx",
+   "text": "NDC 70518-3826-00\nCelecoxib Capsule\nCelecoxib 100 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70518-3826",
+    "items": [
+     {
+      "ingredient": "celecoxib",
+      "value": 100.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.7,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "2c395111-c9c1-483e-a542-58b935ede689": {
+   "kind": "rx",
+   "text": "NDC 71205-817-30\nAmoxicillin 500mg Capsules\namoxicillin 500 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "71205-817",
+    "items": [
+     {
+      "ingredient": "amoxicillin",
+      "value": 500.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 11.2,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "7d13bf00-8daf-3087-a0b8-abb1fc572467": {
+   "kind": "rx",
+   "text": "NDC 59746-471-90\nSildenafil Tablets, USP\nsildenafil 20 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "59746-471",
+    "items": [
+     {
+      "ingredient": "sildenafil",
+      "value": 20.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.7,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "5d2ff762-041d-74ed-e063-6394a90ac588": {
+   "kind": "rx",
+   "text": "NDC 60760-997-30\nMeclozine Hydrochloride Tablets, USP 25 mg\nmeclizine dihydrochloride 25 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "60760-997",
+    "items": [
+     {
+      "ingredient": "meclizine",
+      "value": 25.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 14.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "132cc592-6b03-4b75-bf39-df476fb9dc81": {
+   "kind": "rx",
+   "text": "Phenazopyridine HCl Tablets, USP\nPhenazopyridine Hydrochloride 100 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "phenazopyridine",
+      "value": 100.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 4.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "8d98ea77-f237-4b93-87fa-41f556436ab5": {
+   "kind": "rx",
+   "text": "NDC 72789-245-40\nPENICILLIN VK USP\nPENICILLIN V 250 MG",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72789-245",
+    "items": [
+     {
+      "ingredient": "penicillin v",
+      "value": 250.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 13.7,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "2106032d-5678-4c25-b8a7-f19ac2afafd4": {
+   "kind": "rx",
+   "text": "NDC 70518-4780-00\nOlmesartan Medoxomil / HCTZ Tablet\nOlmesartan Medoxomil 40 mg\nHCTZ 25 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70518-4780",
+    "items": [
+     {
+      "ingredient": "olmesartan",
+      "value": 40.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "hydrochlorothiazide",
+      "value": 25.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 9.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "1f06a404-07c3-4414-8c5c-357c01d6ccb3": {
+   "kind": "rx",
+   "text": "NDC 75834-337-30\nDiclofenac Potassium Tablets, USP\nDiclofenac Potassium 25 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "75834-337",
+    "items": [
+     {
+      "ingredient": "diclofenac",
+      "value": 25.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "385c046c-d156-4ca0-a3c3-47538783dd2f": {
+   "kind": "rx",
+   "text": "Clonazepam Tablets, USP 2mg (CIV)\nclonazepam 2 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "clonazepam",
+      "value": 2.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "1a7cb212-56e4-4b9d-a73d-bfee7fe4735e": {
+   "kind": "rx",
+   "text": "NDC 50419-395-01\nNUBEQA (darolutamide) tablets\ndarolutamide 300 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "50419-395",
+    "items": [
+     {
+      "ingredient": "darolutamide",
+      "value": 300.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "15cabe73-f39d-4798-a840-115fe94f8f96": {
+   "kind": "rx",
+   "text": "NDC 72789-035-14\nCEFUROXIME AXETIL USP\nCEFUROXIME AXETIL USP 500 MG",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72789-035",
+    "items": [
+     {
+      "ingredient": "cefuroxime",
+      "value": 500.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 10.7,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "898a1aed-336f-4208-9e0b-b89c48407c27": {
+   "kind": "rx",
+   "text": "NDC 50090-8122-0\nIBUPROFEN\nIBUPROFEN 600 MG",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "50090-8122",
+    "items": [
+     {
+      "ingredient": "ibuprofen",
+      "value": 600.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 20.2,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "cf1cbcbf-f466-4caf-9ba1-2faccdc2a3cf": {
+   "kind": "rx",
+   "text": "NDC 53345-037-01\nDutasteride Capsules 0.5 mg\nDutasteride 0.5 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "dutasteride",
+      "value": 0.5,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 4.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "9dff10ec-6a55-47b6-a458-b7c39e32dc55": {
+   "kind": "rx",
+   "text": "NDC 70301-2005-1\nTemozolomide Capsules, USP\ntemozolomide 100 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70301-2005",
+    "items": [
+     {
+      "ingredient": "temozolomide",
+      "value": 100.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "16ebe1f9-501d-468b-a37d-f6a46f8f32d1": {
+   "kind": "rx",
+   "text": "NDC 72789-172-01\nLithium Carbonate Capsules USP\nlithium carbonate 600 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72789-172",
+    "items": [
+     {
+      "ingredient": "lithium carbonate",
+      "value": 600.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "408c977c-2cf7-4175-877d-d221ed49248a": {
+   "kind": "rx",
+   "text": "NDC 50090-6676-0\nIBUPROFEN\nIBUPROFEN USP 400 MG",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "50090-6676",
+    "items": [
+     {
+      "ingredient": "ibuprofen",
+      "value": 400.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.2,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "711f5042-9d88-4546-a347-532dfb94313e": {
+   "kind": "rx",
+   "text": "NDC 72162-2682-1\nSpironolactone Tablets, USP\nSpironolactone USP 25 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72162-2682",
+    "items": [
+     {
+      "ingredient": "spironolactone",
+      "value": 25.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 4.7,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "bf2f7b41-f14d-4fcd-8db3-f507ca6ff78b": {
+   "kind": "rx",
+   "text": "NDC 70518-4031-00\nDoxazosin Tablet\nDoxazosin 4 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70518-4031",
+    "items": [
+     {
+      "ingredient": "doxazosin",
+      "value": 4.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 4.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "8d4c9317-7475-42ec-a0b0-d43929114369": {
+   "kind": "rx",
+   "text": "NDC 50090-0638-0\nACYCLOVIR\nACYCLOVIR 800 MG",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "50090-0638",
+    "items": [
+     {
+      "ingredient": "acyclovir",
+      "value": 800.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "039f188c-413a-6e64-e063-6294a90a2972": {
+   "kind": "rx",
+   "text": "NDC 72789-171-82\nLithium Carbonate Extended-release Tablets, USP\nlithium carbonate 300 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72789-171",
+    "items": [
+     {
+      "ingredient": "lithium carbonate",
+      "value": 300.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "7829a96a-3668-4d88-90e9-0ecbedb2bd7e": {
+   "kind": "rx",
+   "text": "NDC 72789-046-30\nCYCLOBENZAPRINE HCL USP\nCYCLOBENZAPRINE HCL USP 10 MG",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72789-046",
+    "items": [
+     {
+      "ingredient": "cyclobenzaprine",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 9.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "c527d138-e32c-418f-9573-a3d8a796279f": {
+   "kind": "rx",
+   "text": "NDC 70518-4229-00\nCiprofloxacin Tablet\nCiprofloxacin 500 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70518-4229",
+    "items": [
+     {
+      "ingredient": "ciprofloxacin",
+      "value": 500.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "5eff766f-82e2-4cd6-e053-2a91aa0a4782": {
+   "kind": "rx",
+   "text": "NDC 60760-360-30\nLisinopril Tablets, USP\nLisinopril 40 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "60760-360",
+    "items": [
+     {
+      "ingredient": "lisinopril",
+      "value": 40.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "463084e5-908d-4bbc-b542-10b98211e28e": {
+   "kind": "rx",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 111.5,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "5cdec1dc-833e-0806-e063-6294a90abf6c": {
+   "kind": "rx",
+   "text": "NDC 72189-693-30\nGuanfacine ER\nGuanfacine 1 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72189-693",
+    "items": [
+     {
+      "ingredient": "guanfacine",
+      "value": 1.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "88156c4e-bc29-497d-8110-e59d800ff38a": {
+   "kind": "rx",
+   "text": "NDC 50090-3926-0\nTOPIRAMATE\nTOPIRAMATE 50 MG",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "50090-3926",
+    "items": [
+     {
+      "ingredient": "topiramate",
+      "value": 50.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.2,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "ff1e5518-0aa6-4bc9-bc87-8a6a124bc95a": {
+   "kind": "rx",
+   "text": "NDC 71335-1081-1\nMixed Amphetamine Salts Tablets, USP\nDextroamphetamine saccharate 7.5 mg\namphetamine aspartate monohydrate 7.5 mg\ndextroamphetamine sulfate, USP 7.5 mg\namphetamine sulfate, USP 7.5 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "71335-1081",
+    "items": [
+     {
+      "ingredient": "dextroamphetamine",
+      "value": 7.5,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "amphetamine",
+      "value": 7.5,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "dextroamphetamine",
+      "value": 7.5,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "amphetamine",
+      "value": 7.5,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 26.6,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "e9d2a503-6ec1-4817-9c8b-235b6f037a19": {
+   "kind": "rx",
+   "text": "NDC 71335-3184-7\nFLUoxetine Capsules, USP\nFluoxetine hydrochloride 10 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "71335-3184",
+    "items": [
+     {
+      "ingredient": "fluoxetine",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 11.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "5ec50d7c-344d-bb7d-e063-6394a90a0679": {
+   "kind": "rx",
+   "text": "NDC 68071-5344-3\nAtorvastatin Calcium 10mg\nAtorvastatin Calcium 10 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "68071-5344",
+    "items": [
+     {
+      "ingredient": "atorvastatin",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "6f1df975-f825-4301-87da-d7eba56a6890": {
+   "kind": "rx",
+   "text": "NDC 67877-584-50\nCefixime Capsules\ncefixime 400 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "67877-584",
+    "items": [
+     {
+      "ingredient": "cefixime",
+      "value": 400.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "3c993e3c-ee52-45a7-be39-60eaac7a1092": {
+   "kind": "rx",
+   "text": "Tizanidine Hydrochloride Tablet 2mg\nTizanidine Hydrochloride 2.288 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "tizanidine",
+      "value": 2.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 10.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "e6be5b1d-757d-4bab-ad6a-c421960a104d": {
+   "kind": "rx",
+   "text": "NDC 0093-7290-56\nRaloxifene Hydrochloride Tablets, USP\nRaloxifene Hydrochloride 60 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "0093-7290",
+    "items": [
+     {
+      "ingredient": "raloxifene",
+      "value": 60.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "5da82b4e-bf84-c482-e063-6394a90addf9": {
+   "kind": "rx",
+   "text": "NDC 68071-5336-9\nLevothyroxine Sodium 100mcg\nLevothyroxine Sodium 100 mcg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "68071-5336",
+    "items": [
+     {
+      "ingredient": "levothyroxine",
+      "value": 100.0,
+      "unit": "mcg"
+     }
+    ]
+   },
+   "read_seconds": 6.3,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "1e37d59b-b8be-46ef-8706-fffd563a8c15": {
+   "kind": "rx",
+   "text": "NDC 63629-8604-1\nTemazepam Capsules, USP\nTemazepam 22.5 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "63629-8604",
+    "items": [
+     {
+      "ingredient": "temazepam",
+      "value": 22.5,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "6fd0a906-e1b5-4238-a79b-a195510ddc84": {
+   "kind": "rx",
+   "text": "NDC 0093-5907-86\nMesalamine Delayed-Release Capsules\nmesalamine 400 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "0093-5907",
+    "items": [
+     {
+      "ingredient": "mesalamine",
+      "value": 400.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "c4973d87-d014-42f4-ba13-ae628ca1a451": {
+   "kind": "rx",
+   "text": "NDC 72789-173-01\nLithium Carbonate Capsules USP\nlithium carbonate 300 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72789-173",
+    "items": [
+     {
+      "ingredient": "lithium carbonate",
+      "value": 300.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "f8444c23-a74f-4d44-867e-26554dbb882f": {
+   "kind": "rx",
+   "text": "NDC 60687-479-01\nCarbamazepine Tablets, USP (Chewable)\nCarbamazepine 100 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "60687-479",
+    "items": [
+     {
+      "ingredient": "carbamazepine",
+      "value": 100.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "407134df-8c44-4321-8af5-0a5b60ca65ac": {
+   "kind": "rx",
+   "text": "NDC 70518-4779-00\nVenlafaxine Tablet\nVenlafaxine 37.5 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70518-4779",
+    "items": [
+     {
+      "ingredient": "venlafaxine",
+      "value": 37.5,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.3,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "5da5ee03-b0e2-fac7-e063-6294a90a121a": {
+   "kind": "rx",
+   "text": "NDC 72189-694-60\nTrazodone HCL\ntrazodone hydrochloride 50 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72189-694",
+    "items": [
+     {
+      "ingredient": "trazodone",
+      "value": 50.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 10.2,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "dd62a2b8-300b-d92b-7b27-a30eaa68fdd3": {
+   "kind": "rx",
+   "text": "NDC 60505-4858-3\nTofacitinib Extended-Release Tablets\nTofacitinib 11 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "60505-4858",
+    "items": [
+     {
+      "ingredient": "tofacitinib",
+      "value": 11.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 9.2,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "2ce5af33-79b7-4395-bc8b-608fb8a986d8": {
+   "kind": "rx",
+   "text": "NDC VG NDC 0615-8330-39\nDivaprox Sodium Extended-release Tablets, USP 500 mg\nDivaprox Sodium 500 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "0615-8330",
+    "items": [
+     {
+      "ingredient": "valproate",
+      "value": 500.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 10.7,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "e9a74862-6a3b-4247-837a-389761b5c352": {
+   "kind": "rx",
+   "text": "NDC 70518-3539-00\nPredniSONE Tablet\nPrednisone 5 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70518-3539",
+    "items": [
+     {
+      "ingredient": "prednisone",
+      "value": 5.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "eeb18068-75c8-42d0-a006-1b134648333f": {
+   "kind": "rx",
+   "text": "NDC 55154-7287-0\nTIZANIDINE TABLETS, USP 4 mg\ntizanidine hydrochloride 4.576 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "55154-7287",
+    "items": [
+     {
+      "ingredient": "tizanidine",
+      "value": 4.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 10.9,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "967be504-85b1-4e9b-9b08-2b27a43fa0aa": {
+   "kind": "otc",
+   "text": "NDC 79915-347-25\nAllergy Relief Cetirizine HCl Capsules 10 mg Antihistamine\nCetirizine HCl 10 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "cetirizine",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.3,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "df53b173-81aa-44de-be0a-50ed73e7d498": {
+   "kind": "otc",
+   "text": "NDC 00050-1195-4\nIbuprofen\nIbuprofen 200 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "ibuprofen",
+      "value": 200.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 12.3,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "cbfaa63f-b3cd-d001-e053-2995a90a6b6d": {
+   "kind": "otc",
+   "text": "NDC 68071-2534-6\nDocusate Sodium 100mg Softgels\nDocusate Sodium 100 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "docusate",
+      "value": 100.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.6,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "4cd4213c-7569-32da-e063-6294a90a5695": {
+   "kind": "otc",
+   "text": "DayQuil\nAcetaminophen 500 mg\nDextromethorphan HBr 15 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 500.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "dextromethorphan",
+      "value": 15.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 15.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "f4468840-e17c-6888-e053-2995a90a04a0": {
+   "kind": "otc",
+   "text": "NDC 0 50428 43546 5\nAllergy Relief\nDIPHENHYDRAMINE HYDROCHLORIDE 25 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "diphenhydramine",
+      "value": 25.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 16.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "3ca776c2-47ed-5107-e063-6394a90ac5df": {
+   "kind": "otc",
+   "text": "NDC 251182898\nGENUINE ASPIRIN\nAspirin 325 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "aspirin",
+      "value": 325.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "029f9254-8cfd-4ea0-8691-2d87df450433": {
+   "kind": "otc",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 117.2,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "b389f438-08d3-44e0-86a4-e34d12f018f8": {
+   "kind": "otc",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 108.6,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "69b7f7ca-7a3a-4fe6-a9bb-90b0e6ad62c1": {
+   "kind": "otc",
+   "text": "NDC 0904-5551-24\nbanophen\ndiphenhydramine HCl 25 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "0904-5551",
+    "items": [
+     {
+      "ingredient": "diphenhydramine",
+      "value": 25.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 4.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "5d629ecc-c737-05f6-e063-6294a90a4390": {
+   "kind": "otc",
+   "text": "NDC 70677-1229-1\nUrinary Pain Relief\nPhenazopyridine Hydrochloride 95 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70677-1229",
+    "items": [
+     {
+      "ingredient": "phenazopyridine",
+      "value": 95.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 9.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "cbb270c3-34a4-4af8-9da0-2e545787cb55": {
+   "kind": "otc",
+   "text": "NDC 57355-611-14\nAllergy Relief Cetirizine HCl Tablets\nCetirizine HCl 10 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "cetirizine",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "94cb724f-2102-4a6e-82c7-bdbb13303edf": {
+   "kind": "otc",
+   "text": "NDC 71335-3187-1\nguaiFE Nesin and Dextromethorphan Hydrobromide Tablets, USP\nDextromethorphan HBr 20 mg\nGuaifenesin 400 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "71335-3187",
+    "items": [
+     {
+      "ingredient": "dextromethorphan",
+      "value": 20.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "guaifenesin",
+      "value": 400.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 26.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "53a21928-8f5b-52c1-e063-6294a90add6c": {
+   "kind": "otc",
+   "text": "NDC 57896-740-42\nEsomeprazole Magnesium Delayed-Release Capsules USP, 20 mg*/Acid Reducer\nEsomeprazole 20 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "57896-740",
+    "items": [
+     {
+      "ingredient": "esomeprazole",
+      "value": 20.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 13.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "9988c8cb-3fe3-40a6-beca-febd1735b171": {
+   "kind": "otc",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 115.1,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "5e143f97-fd1f-e72f-e063-6394a90a8d4f": {
+   "kind": "otc",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 126.7,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "b89c80aa-27ae-4fce-b574-8ee64bbae275": {
+   "kind": "otc",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 123.6,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "d5352861-6926-f1b0-e053-2a95a90a7d66": {
+   "kind": "otc",
+   "text": "NDC 70010-160-01\nAcetaminophen Extended-Release Tablets USP\nAcetaminophen 650 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70010-160",
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 650.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 4.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "815a70e4-525c-4015-8d3b-83dbb979a66f": {
+   "kind": "otc",
+   "text": "NDC 79491-1570-1\nAspirin\nAcetylsalicylic Acid 325 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "aspirin",
+      "value": 325.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "d1797967-6f0f-4a17-af0f-bf41bfb38f37": {
+   "kind": "otc",
+   "text": "NDC 72288-390-02\nRegular Strength Mucus ER Guaifenesin Extended-Release Tablets, 600 mg Expectorant\nGuaifenesin 600 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "72288-390",
+    "items": [
+     {
+      "ingredient": "guaifenesin",
+      "value": 600.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.6,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "c4a28f8f-030d-4487-b74f-13998482e72d": {
+   "kind": "otc",
+   "text": "NDC 50844-390-80\nMENSTRUAL COMPLETE\nAcetaminophen 500 mg\nPyriLamine maleate 15 mg\nCaffeine 60 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 500.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "pyrilamine",
+      "value": 15.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "caffeine",
+      "value": 60.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 28.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "498c7d7e-d952-c122-e063-6394a90ae72f": {
+   "kind": "otc",
+   "text": "NDC 69729-001-24\nCrocin MAX\nAcetaminophen 650 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 650.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 4.6,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "efb982d4-93d0-815f-e053-2995a90a82dd": {
+   "kind": "otc",
+   "text": "NDC 2350001444\nDayQuil\nAcetaminophen 325 mg\nDextromethorphan HBr 20 mg\nPhenylephrine HCl 10 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 325.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "dextromethorphan",
+      "value": 20.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "phenylephrine",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 14.7,
+   "ingredients_right": true,
+   "strength_right": false
+  },
+  "5e4b3a65-04ae-a9e8-e063-6394a90ac095": {
+   "kind": "otc",
+   "text": "NyQuil\nAcetaminophen 325 mg\nDextromethorphan HBr 20 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 325.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "dextromethorphan",
+      "value": 20.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 19.7,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "dc57893c-068a-37d8-e053-2a95a90aa054": {
+   "kind": "otc",
+   "text": "NDC 10135-0721-01\nMagnesium Oxide\nMagnesium Oxide 253 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "magnesium oxide",
+      "value": 253.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 7.7,
+   "ingredients_right": true,
+   "strength_right": false
+  },
+  "ac6bd863-c807-4863-9919-8f14a7571155": {
+   "kind": "otc",
+   "text": "NDC 85324-309-14\nOmeprazole Delayed-Release Capsules USP 20 mg\nOmeprazole 20 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "omeprazole",
+      "value": 20.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 9.5,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "c1f588d0-4600-4b97-b2d3-2c08ac351e07": {
+   "kind": "otc",
+   "text": "NDC 17856-7281-01\nDOCUSATE SODIUM EXT-STR (STOOL SOFTENER)\nDOCUSATE SODIUM 250 MG",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "17856-7281",
+    "items": [
+     {
+      "ingredient": "docusate",
+      "value": 250.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "1dd30fec-15f4-44b2-a38f-e59ff4da206d": {
+   "kind": "otc",
+   "text": "NDC 41250-727-01\nEsomeprazole Magnesium Delayed-Release Capsules, 20 mg | Acid Reducer\nEsomeprazole magnesium 20 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "41250-727",
+    "items": [
+     {
+      "ingredient": "esomeprazole",
+      "value": 20.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.2,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "88a3315f-479c-400c-9440-4e7152044a49": {
+   "kind": "otc",
+   "text": "NDC 0149000281\nPepto Bismol Fast Melts\nBismuth Subsalicylate 262 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "bismuth subsalicylate",
+      "value": 262.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 39.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "d5d49146-665e-4a93-e053-2995a90aca59": {
+   "kind": "otc",
+   "text": "NDC 70010-161-01\nEXTRA STRENGTH Acetaminophen Tablets USP\nAcetaminophen 500 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "70010-161",
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 500.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 7.2,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "d6a55d37-c53b-4451-859b-4dbe1988eb9d": {
+   "kind": "otc",
+   "text": "NDC 0383-7223-01\nEsomeprazole Magnesium\nEsomeprazole 20 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "esomeprazole",
+      "value": 20.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 12.0,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "cdac56f1-e579-4943-a24a-6564c30086d2": {
+   "kind": "otc",
+   "text": "NDC 83324-314-72\nUltra Strength Antacid Tablets\nCalcium Carbonate 1000 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "83324-314",
+    "items": [
+     {
+      "ingredient": "calcium carbonate",
+      "value": 1000.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 7.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "24d4f46a-c7a5-4e94-804f-1e307d8e8cfc": {
+   "kind": "otc",
+   "text": "NDC 72000-497-01\nAspirin Low Dose\nAspirin 81 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "aspirin",
+      "value": 81.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.2,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "3caa0a47-de83-90d2-e063-6394a90a3436": {
+   "kind": "otc",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 114.7,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "9572b6c9-172b-459e-82d1-7f92f0eaec8e": {
+   "kind": "otc",
+   "text": "NDC 0393-3301-52\nNasal Decongestant D\nPseudoephedrine Hydrochloride 120 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "pseudoephedrine",
+      "value": 120.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 16.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "0e9d506d-8c0c-ab6b-e063-6294a90a5ab6": {
+   "kind": "otc",
+   "text": "COLDTAC ULTRA Tablets\nAcetaminophen 500 mg\nChlorpheniramine Maleate 4 mg\nPhenylephrine HCl 10 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 500.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "chlorpheniramine",
+      "value": 4.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "phenylephrine",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 25.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "7e5f9492-1d58-47a3-aac6-c41c81b348d5": {
+   "kind": "otc",
+   "text": "NDC 050428140062\nOriginal Strength ACID REDUCER Famotidine Tablets, 10 mg\nFamotidine 10 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "famotidine",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 6.3,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "a2a9fbec-639f-4002-aa34-51b4563fc38e": {
+   "kind": "otc",
+   "text": "NDC 38800-533-78\nMigraine Relief\nACETAMINOPHEN 250 mg\nASPIRIN 250 mg\nCAFFEINE 65 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 250.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "aspirin",
+      "value": 250.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "caffeine",
+      "value": 65.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 7.3,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "0ba50950-2e6e-4337-a776-b19ac988feca": {
+   "kind": "otc",
+   "text": "NDC 83586-118-01\nTension Headache Relief\nAcetaminophen 500 mg\nCaffeine 65 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "83586-118",
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 500.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "caffeine",
+      "value": 65.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 9.1,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "c4077301-db6c-473d-beb3-232d7134a13a": {
+   "kind": "otc",
+   "text": "NDC 45226-53-55\nMotion Sickness Relief\ndimenhydrinate 50 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "dimenhydrinate",
+      "value": 50.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 9.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "0b6e8c63-a76c-4184-a9cc-9691378c3ee5": {
+   "kind": "otc",
+   "text": "NDC 55802-863-12\nCetirizine HCl Capsules\nCetirizine HCl 10 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "cetirizine",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.7,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "467df7de-8cf4-411d-9fd2-8b102d927832": {
+   "kind": "otc",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 128.5,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "8012f61a-86cc-4dd6-9231-ab4eb911a307": {
+   "kind": "otc",
+   "text": "NDC 83524-328-14\nEsomeprazole Magnesium Delayed-Release Capsules USP 20 mg\nEsomeprazole 20 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "esomeprazole",
+      "value": 20.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 11.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "9c8535e3-6a60-4640-b37e-a2260936d9af": {
+   "kind": "otc",
+   "text": "NDC 57344-193-17\nAllergy Relief Loratadine Tablets\nLoratadine 10 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "57344-193",
+    "items": [
+     {
+      "ingredient": "loratadine",
+      "value": 10.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 5.8,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "519abfcd-b50b-302e-e063-6394a90ade20": {
+   "kind": "otc",
+   "text": "NDC 0004-7024-24\nBanophen\ndiphenhydramine HCl 25 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "diphenhydramine",
+      "value": 25.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 7.7,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "49a01d36-dd5c-1176-e063-6294a90a2c6a": {
+   "kind": "otc",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 109.0,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "4e98dd9f-4ab9-4d95-95b0-799ce217da70": {
+   "kind": "otc",
+   "text": "NDC 51660-204-59\nPseudoephedrine Hydrochloride 120 mg\nPseudoephedrine Hydrochloride 120 mg",
+   "result": {
+    "route": "ndc",
+    "product_ndc": "51660-204",
+    "items": [
+     {
+      "ingredient": "pseudoephedrine",
+      "value": 120.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 13.4,
+   "ingredients_right": true,
+   "strength_right": true
+  },
+  "089d77c9-7aa0-4eee-8363-c47a2d5928cf": {
+   "kind": "otc",
+   "text": "NDC 041415182738\ngasrelief\nSimethicone 125 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 15.2,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "7a60184f-91a9-4b85-b243-871deca63450": {
+   "kind": "otc",
+   "text": "NDC 50500-507-04\nTYLENOL SINUS SEVERE\nAcetaminophen 325 mg\nPhenylephrine HCl 10 mg\nGuaifenesin 100 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "acetaminophen",
+      "value": 325.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "phenylephrine",
+      "value": 10.0,
+      "unit": "mg"
+     },
+     {
+      "ingredient": "guaifenesin",
+      "value": 100.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 13.3,
+   "ingredients_right": true,
+   "strength_right": false
+  },
+  "9d136004-d55d-40aa-9f4f-d366ac5d0865": {
+   "kind": "otc",
+   "text": "",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": []
+   },
+   "read_seconds": 105.6,
+   "ingredients_right": false,
+   "strength_right": false
+  },
+  "d89e41c1-399a-4157-8d54-bfefe3b1c1cd": {
+   "kind": "otc",
+   "text": "NDC 83524-300-42\nNausea Relief\nDoxylamine succinate 20 mg",
+   "result": {
+    "route": "text",
+    "product_ndc": null,
+    "items": [
+     {
+      "ingredient": "doxylamine",
+      "value": 20.0,
+      "unit": "mg"
+     }
+    ]
+   },
+   "read_seconds": 8.5,
+   "ingredients_right": false,
+   "strength_right": false
+  }
+ },
+ "planted": [],
+ "safe": []
+}

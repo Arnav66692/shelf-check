@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "50580-590",
+      "generic_name": "acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-590-04",
+          "description": "1 BOTTLE in 1 CARTON (50580-590-04)  / 24 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200731",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-590-05",
+          "description": "1 BOTTLE in 1 CARTON (50580-590-05)  / 100 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200731",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-590-06",
+          "description": "1 BOTTLE in 1 CARTON (50580-590-06)  / 225 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200731",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "015a6179-bacb-452d-b594-4de628ddc11d"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "22d94fd9-9488-a812-e063-6394a90a7ffc",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180716",
+      "product_id": "50580-590_22d94fd9-9488-a812-e063-6394a90a7ffc",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL"
+    }
+  ]
+}

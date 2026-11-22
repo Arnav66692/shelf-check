@@ -1,0 +1,325 @@
+{
+ "notes": [
+  "Fixed Nov 21 2026 before any reader ran.",
+  "Amendment to PREREG: the first candidate image was sometimes a chart or a kit, so the image for each product was picked by eye as the first candidate that shows a package label. Strength truth is the strength pictured, checked against the structured record.",
+  "NyQuil record swapped from a DayQuil plus NyQuil kit to NyQuil alone.",
+  "Strength compare uses value and unit. The per-dose denominator is ignored.",
+  "Supplement truth is the main ingredient only. Supplement strength is not scored."
+ ],
+ "products": [
+  {
+   "key": "tylenol_es",
+   "kind": "otc",
+   "image": "tylenol_es/tylenol-01.jpg",
+   "truth": [
+    {
+     "ingredient": "acetaminophen",
+     "value": 500,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "nyquil",
+   "kind": "otc",
+   "image": "nyquil/342.jpg",
+   "truth": [
+    {
+     "ingredient": "acetaminophen",
+     "value": 650,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "dextromethorphan",
+     "value": 30,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "doxylamine",
+     "value": 12.5,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "benadryl",
+   "kind": "otc",
+   "image": "benadryl/benadryl -1.jpg",
+   "truth": [
+    {
+     "ingredient": "diphenhydramine",
+     "value": 12.5,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "tylenol_pm",
+   "kind": "otc",
+   "image": "tylenol_pm/31347 V1-80.jpg",
+   "truth": [
+    {
+     "ingredient": "acetaminophen",
+     "value": 500,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "diphenhydramine",
+     "value": 25,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "bayer_aspirin",
+   "kind": "otc",
+   "image": "bayer_aspirin/bayer-01.jpg",
+   "truth": [
+    {
+     "ingredient": "aspirin",
+     "value": 325,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "advil",
+   "kind": "otc",
+   "image": "advil/64012 BSX Advil Dual Action_paint.jpg",
+   "truth": [
+    {
+     "ingredient": "acetaminophen",
+     "value": 250,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "ibuprofen",
+     "value": 125,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "claritin",
+   "kind": "otc",
+   "image": "claritin/Childrens Chewables 5mg Grape Bubblegum 40ct.jpg",
+   "truth": [
+    {
+     "ingredient": "loratadine",
+     "value": 5,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "mucinex",
+   "kind": "otc",
+   "image": "mucinex/600 mg Mucinex ER Bi-layer Tablets Carton.jpg",
+   "truth": [
+    {
+     "ingredient": "guaifenesin",
+     "value": 600,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "warfarin",
+   "kind": "rx",
+   "image": "warfarin/image-10.jpg",
+   "truth": [
+    {
+     "ingredient": "warfarin",
+     "value": 10,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "lisinopril",
+   "kind": "rx",
+   "image": "lisinopril/LISINOPRIL-HCTZ 10-12.5MG 90CT 60760-586-90.jpg",
+   "truth": [
+    {
+     "ingredient": "lisinopril",
+     "value": 10,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "hydrochlorothiazide",
+     "value": 12.5,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "sertraline",
+   "kind": "rx",
+   "image": "sertraline/eca3f504-92e3-4765-b175-23cdcaf20634-02.jpg",
+   "truth": [
+    {
+     "ingredient": "sertraline",
+     "value": 25,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "metformin",
+   "kind": "rx",
+   "image": "metformin/3bf9383a-afe0-4989-b952-50c995bd3fa5-05.jpg",
+   "truth": [
+    {
+     "ingredient": "sitagliptin",
+     "value": 50,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "metformin",
+     "value": 500,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "atorvastatin",
+   "kind": "rx",
+   "image": "atorvastatin/lbl713351336.jpg",
+   "truth": [
+    {
+     "ingredient": "atorvastatin",
+     "value": 80,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "omeprazole",
+   "kind": "rx",
+   "image": "omeprazole/72789257.jpg",
+   "truth": [
+    {
+     "ingredient": "omeprazole",
+     "value": 40,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "amoxicillin",
+   "kind": "rx",
+   "image": "amoxicillin/amox-and-clavu-pot-os-5ml-bottle-label.jpg",
+   "truth": [
+    {
+     "ingredient": "amoxicillin",
+     "value": 600,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "clavulanate",
+     "value": 42.9,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "levothyroxine",
+   "kind": "rx",
+   "image": "levothyroxine/137mcg-label.jpg",
+   "truth": [
+    {
+     "ingredient": "levothyroxine",
+     "value": 137,
+     "unit": "mcg"
+    }
+   ]
+  },
+  {
+   "key": "supp_melatonin",
+   "kind": "supplement",
+   "image": "supp_13302/label-1.jpg",
+   "truth": [
+    {
+     "ingredient": "melatonin",
+     "value": 10,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "supp_vitamin_d3",
+   "kind": "supplement",
+   "image": "supp_177772/label-1.jpg",
+   "truth": [
+    {
+     "ingredient": "cholecalciferol",
+     "value": 125,
+     "unit": "mcg"
+    }
+   ]
+  },
+  {
+   "key": "supp_st_johns_wort",
+   "kind": "supplement",
+   "image": "supp_10129/label-1.jpg",
+   "truth": [
+    {
+     "ingredient": "st. john's wort",
+     "value": 1350,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "supp_fish_oil",
+   "kind": "supplement",
+   "image": "supp_178317/label-1.jpg",
+   "truth": [
+    {
+     "ingredient": "fish oil",
+     "value": 475,
+     "unit": "mg"
+    }
+   ]
+  }
+ ],
+ "planted_pairs": [
+  [
+   "tylenol_es",
+   "nyquil",
+   "duplicate"
+  ],
+  [
+   "benadryl",
+   "tylenol_pm",
+   "duplicate"
+  ],
+  [
+   "warfarin",
+   "bayer_aspirin",
+   "interaction"
+  ]
+ ],
+ "safe_pairs": [
+  [
+   "claritin",
+   "mucinex"
+  ],
+  [
+   "levothyroxine",
+   "claritin"
+  ],
+  [
+   "tylenol_es",
+   "amoxicillin"
+  ],
+  [
+   "omeprazole",
+   "mucinex"
+  ],
+  [
+   "sertraline",
+   "mucinex"
+  ]
+ ]
+}

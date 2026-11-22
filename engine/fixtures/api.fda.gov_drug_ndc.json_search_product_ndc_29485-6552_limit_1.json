@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "29485-6552",
+      "generic_name": "IBUPROFEN Capsule, Liquid-filled",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "Advil Liqui-Gels",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "29485-6552-4",
+          "description": "2 POUCH in 1 CARTON (29485-6552-4)  / 2 CAPSULE, LIQUID FILLED in 1 POUCH",
+          "marketing_start_date": "20170825",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "310964",
+          "731533"
+        ],
+        "spl_set_id": [
+          "c459ea1e-dabf-bba6-e053-2995a90af40f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "2a83300a-15eb-365a-e063-6394a90a28d1",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20170825",
+      "product_id": "29485-6552_2a83300a-15eb-365a-e063-6394a90a28d1",
+      "application_number": "NDA020402",
+      "brand_name_base": "Advil Liqui-Gels",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    }
+  ]
+}

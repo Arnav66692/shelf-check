@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 10,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "35916-0166",
+      "generic_name": "Acetaminophen, Guaifenesin, Phenylephrine Hcl and Dextromethorphan HBr",
+      "labeler_name": "Softgel Healthcare Pvt Ltd",
+      "brand_name": "Acetaminophen, Guaifenesin, Phenylephrine Hcl and Dextromethorphan HBr",
+      "active_ingredients": [
+        {
+          "name": "PHENYLEPHRINE HYDROCHLORIDE",
+          "strength": "5 mg/1"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "10 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "325 mg/1"
+        },
+        {
+          "name": "GUAIFENESIN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "35916-0166-1",
+          "description": "2 BLISTER PACK in 1 CARTON (35916-0166-1)  / 12 CAPSULE, LIQUID FILLED in 1 BLISTER PACK",
+          "marketing_start_date": "20241029",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Softgel Healthcare Pvt Ltd"
+        ],
+        "rxcui": [
+          "1656815"
+        ],
+        "spl_set_id": [
+          "24bc9ae6-8e8f-c0a0-e063-6394a90a407f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0335916016617"
+        ],
+        "nui": [
+          "N0000193956",
+          "N0000008867",
+          "N0000009560"
+        ],
+        "pharm_class_epc": [
+          "Expectorant [EPC]"
+        ],
+        "pharm_class_pe": [
+          "Decreased Respiratory Secretion Viscosity [PE]",
+          "Increased Respiratory Secretions [PE]"
+        ],
+        "unii": [
+          "04JA59TNSJ",
+          "9D2RTI9KYH",
+          "362O9ITL9D",
+          "495W7451VQ"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "47b5293b-c76d-4cd3-e063-6394a90a29b5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20241029",
+      "product_id": "35916-0166_47b5293b-c76d-4cd3-e063-6394a90a29b5",
+      "application_number": "M012",
+      "brand_name_base": "Acetaminophen, Guaifenesin, Phenylephrine Hcl and Dextromethorphan HBr",
+      "pharm_class": [
+        "Adrenergic alpha1-Agonists [MoA]",
+        "Decreased Respiratory Secretion Viscosity [PE]",
+        "Expectorant [EPC]",
+        "Increased Respiratory Secretions [PE]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-1 Adrenergic Agonist [EPC]"
+      ]
+    }
+  ]
+}

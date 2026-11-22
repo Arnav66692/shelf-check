@@ -1,0 +1,782 @@
+[
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=brand_name:\"Advil\"+AND+generic_name:\"ibuprofen\"&limit=5",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_brand_name_Advil_AND_generic_name_ibuprofen_limit_5.json",
+    "fetchedAt": "2026-11-21T19:37:15.334Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=brand_name:\"Claritin\"+AND+generic_name:\"loratadine\"&limit=5",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_brand_name_Claritin_AND_generic_name_loratadine_limit_5.json",
+    "fetchedAt": "2026-11-21T19:37:15.562Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"50580-590\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_50580-590_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:15.724Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"50580-590\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_50580-590_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:16.004Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=ACETAMINOPHEN&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_ACETAMINOPHEN_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:17.808Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/161/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_161_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:18.087Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=161&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_161_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:18.589Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=161&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_161_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:18.590Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"84126-342\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_84126-342_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:18.949Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=DEXTROMETHORPHAN+HYDROBROMIDE&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_DEXTROMETHORPHAN_HYDROBROMIDE_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:19.194Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=DOXYLAMINE+SUCCINATE&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_DOXYLAMINE_SUCCINATE_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:19.195Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"84126-342\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_84126-342_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:19.274Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/102490/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_102490_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:19.457Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/23665/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_23665_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:19.457Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=3642&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_3642_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:19.625Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=3642&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_3642_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:19.629Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=3289&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_3289_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:19.679Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=3289&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_3289_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:19.682Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"50580-573\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_50580-573_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:19.933Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=DIPHENHYDRAMINE+HYDROCHLORIDE&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_DIPHENHYDRAMINE_HYDROCHLORIDE_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:20.227Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"50580-573\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_50580-573_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:20.267Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1362/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_1362_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:20.435Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=3498&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_3498_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:20.641Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=3498&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_3498_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:20.642Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"67751-241\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_67751-241_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:20.883Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"67751-241\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_67751-241_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:21.063Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"70264-013\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_70264-013_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:21.304Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=ASPIRIN&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_ASPIRIN_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:21.622Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"70264-013\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_70264-013_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:21.668Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1191/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_1191_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:21.927Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=1191&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_1191_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:22.225Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=1191&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_1191_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:22.240Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"0093-1720\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_0093-1720_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:22.549Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=WARFARIN+SODIUM&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_WARFARIN_SODIUM_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:22.795Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"0093-1720\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_0093-1720_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:23.108Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/114194/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_114194_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:23.163Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=11289&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_11289_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:23.546Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=11289&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_11289_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:23.547Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"60760-586\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_60760-586_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:23.973Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=LISINOPRIL&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_LISINOPRIL_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:24.162Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=HYDROCHLOROTHIAZIDE&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_HYDROCHLOROTHIAZIDE_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:24.163Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"60760-586\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_60760-586_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:24.193Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/29046/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_29046_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:24.442Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/5487/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_5487_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:24.443Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=29046&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_29046_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:24.680Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=29046&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_29046_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:24.681Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=5487&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_5487_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:24.693Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=5487&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_5487_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:24.695Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"63187-859\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_63187-859_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:24.933Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=SERTRALINE+HYDROCHLORIDE&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_SERTRALINE_HYDROCHLORIDE_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:25.218Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"63187-859\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_63187-859_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:25.247Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/155137/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_155137_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:25.424Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=36437&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_36437_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:25.634Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=36437&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_36437_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:25.643Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"99999-0000\"&limit=1",
+    "status": 404,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_99999-0000_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:25.935Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/classMembers.json?classId=M01A&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_classMembers.json_classId_M01A_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:26.240Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"29485-6552\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_29485-6552_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:41.169Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"29485-6552\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_29485-6552_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:41.499Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=IBUPROFEN&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_IBUPROFEN_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:42.648Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/5640/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_5640_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:43.056Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=5640&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_5640_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:43.611Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=5640&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_5640_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:43.611Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=product_ndc:\"11523-0800\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_product_ndc_11523-0800_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:43.995Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=LORATADINE&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_LORATADINE_search_2.json",
+    "fetchedAt": "2026-11-21T19:37:44.511Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/label.json?search=openfda.product_ndc:\"11523-0800\"&limit=1",
+    "status": 200,
+    "file": "api.fda.gov_drug_label.json_search_openfda.product_ndc_11523-0800_limit_1.json",
+    "fetchedAt": "2026-11-21T19:37:44.587Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/28889/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_28889_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T19:37:45.294Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=28889&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_28889_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T19:37:45.553Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=28889&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_28889_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T19:37:45.560Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/label/13302?",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_label_13302.json",
+    "fetchedAt": "2026-11-21T22:02:00.677Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/label/177772?",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_label_177772.json",
+    "fetchedAt": "2026-11-21T22:02:00.785Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/label/10129?",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_label_10129.json",
+    "fetchedAt": "2026-11-21T22:02:00.901Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/label/178317?",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_label_178317.json",
+    "fetchedAt": "2026-11-21T22:02:01.000Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=melatonin&size=5",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_search-filter_q_melatonin_size_5.json",
+    "fetchedAt": "2026-11-21T22:02:01.082Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=active_ingredients.name:\"MELATONIN\"&limit=5",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_active_ingredients.name_MELATONIN_limit_5.json",
+    "fetchedAt": "2026-11-21T22:12:22.814Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=ginkgo&size=5",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_search-filter_q_ginkgo_size_5.json",
+    "fetchedAt": "2026-11-21T22:12:33.461Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/search-filter?q=vitamin+K&size=5",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_search-filter_q_vitamin_K_size_5.json",
+    "fetchedAt": "2026-11-21T22:12:33.945Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Melatonin&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Melatonin_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:34.689Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/6711/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_6711_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:12:34.920Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=6711&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_6711_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:12:35.149Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=6711&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_6711_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:12:35.396Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Vitamin+D3&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Vitamin_D3_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:35.785Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/2418/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_2418_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:12:36.021Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=2418&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_2418_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:12:36.279Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=2418&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_2418_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:12:36.537Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Total+Alcohol+Free+St.+John's+Wort+Extracts&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Total_Alcohol_Free_St._John_s_Wort_Extracts_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:36.938Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=St.+John's+Wort+flowering+tops+and+buds&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_St._John_s_Wort_flowering_tops_and_buds_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:37.256Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Hypericins&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Hypericins_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:37.635Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=St.+John's+Wort&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_St._John_s_Wort_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:37.888Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1546455/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_1546455_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:12:38.233Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/258326/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_258326_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:12:38.489Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=1546455&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_1546455_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:12:38.850Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=1546455&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_1546455_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:12:39.138Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=258326&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_258326_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:12:39.551Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=258326&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_258326_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:12:39.883Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Fish+Oil+concentrate&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Fish_Oil_concentrate_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:40.290Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Omega-3+Fatty+Acid+Ethyl+Ester&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Omega-3_Fatty_Acid_Ethyl_Ester_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:40.529Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Other+Omega-3+Fatty+Acids&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Other_Omega-3_Fatty_Acids_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:40.910Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Fish+Oil&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Fish_Oil_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:41.178Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/484348/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_484348_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:12:41.412Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Omega-3&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Omega-3_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:41.644Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/4419/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_4419_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:12:41.889Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=484348&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_484348_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:12:42.123Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=484348&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_484348_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:12:42.369Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/4301/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_4301_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:12:42.602Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=4419&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_4419_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:12:42.839Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=4419&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_4419_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:12:43.073Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=4301&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_4301_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:12:43.310Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=4301&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_4301_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:12:43.548Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/label/999999999?",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_label_999999999.json",
+    "fetchedAt": "2026-11-21T22:12:43.924Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=CHOLECALCIFEROL&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_CHOLECALCIFEROL_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:44.158Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=MELATONIN&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_MELATONIN_search_2.json",
+    "fetchedAt": "2026-11-21T22:12:44.411Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=active_ingredients.name:\"MELATONIN\"+AND+active_ingredients.strength:\"mg/1\"+AND+product_type:\"HUMAN+OTC+DRUG\"&limit=5",
+    "status": 404,
+    "file": "api.fda.gov_drug_ndc.json_search_active_ingredients.name_MELATONIN_AND_active_ingredients.strength_mg_1_AND_product_type_HUMAN_OTC_DRUG_limit_5.json",
+    "fetchedAt": "2026-11-21T22:13:04.281Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=generic_name.exact:\"MELATONIN\"+AND+product_type:\"HUMAN+OTC+DRUG\"&limit=5",
+    "status": 404,
+    "file": "api.fda.gov_drug_ndc.json_search_generic_name.exact_MELATONIN_AND_product_type_HUMAN_OTC_DRUG_limit_5.json",
+    "fetchedAt": "2026-11-21T22:13:37.102Z"
+  },
+  {
+    "url": "https://api.fda.gov/drug/ndc.json?search=generic_name:\"melatonin\"+AND+product_type:\"HUMAN+OTC+DRUG\"+AND+dosage_form:\"TABLET\"&limit=5",
+    "status": 200,
+    "file": "api.fda.gov_drug_ndc.json_search_generic_name_melatonin_AND_product_type_HUMAN_OTC_DRUG_AND_dosage_form_TABLET_limit_5.json",
+    "fetchedAt": "2026-11-21T22:14:20.352Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/label/320628?",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_label_320628.json",
+    "fetchedAt": "2026-11-21T22:15:17.666Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/label/33452?",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_label_33452.json",
+    "fetchedAt": "2026-11-21T22:15:17.913Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Ginkgo+leaf+extract&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Ginkgo_leaf_extract_search_2.json",
+    "fetchedAt": "2026-11-21T22:15:18.494Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Ginkgo&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Ginkgo_search_2.json",
+    "fetchedAt": "2026-11-21T22:15:18.730Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/236809/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_236809_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:15:18.964Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=236809&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_236809_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:15:19.232Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=236809&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_236809_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:15:19.467Z"
+  },
+  {
+    "url": "https://api.ods.od.nih.gov/dsld/v9/label/65786?",
+    "status": 200,
+    "file": "api.ods.od.nih.gov_dsld_v9_label_65786.json",
+    "fetchedAt": "2026-11-21T22:15:19.710Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Vitamin+K&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Vitamin_K_search_2.json",
+    "fetchedAt": "2026-11-21T22:15:19.946Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Calcium&search=2",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui.json_name_Calcium_search_2.json",
+    "fetchedAt": "2026-11-21T22:15:20.195Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/11258/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_11258_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:15:20.431Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1895/related.json?tty=IN",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxcui_1895_related.json_tty_IN.json",
+    "fetchedAt": "2026-11-21T22:15:20.693Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=11258&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_11258_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:15:20.926Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=11258&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_11258_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:15:21.165Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=1895&relaSource=ATC",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_1895_relaSource_ATC.json",
+    "fetchedAt": "2026-11-21T22:15:21.404Z"
+  },
+  {
+    "url": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json?rxcui=1895&relaSource=FDASPL",
+    "status": 200,
+    "file": "rxnav.nlm.nih.gov_REST_rxclass_class_byRxcui.json_rxcui_1895_relaSource_FDASPL.json",
+    "fetchedAt": "2026-11-21T22:15:21.642Z"
+  }
+]

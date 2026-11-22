@@ -1,0 +1,3316 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 100,
+      "total": 49
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "50580-449",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-449-00",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-449-00)  / 125 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-05",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-449-05)  / 24 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-08",
+          "description": "2 TABLET, FILM COATED in 1 POUCH (50580-449-08)",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-09",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-449-09)  / 100 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-10",
+          "description": "50 POUCH in 1 TRAY (50580-449-10)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-11",
+          "description": "50 POUCH in 1 TRAY (50580-449-11)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-12",
+          "description": "12 VIAL, PLASTIC in 1 PACKAGE (50580-449-12)  / 10 TABLET, FILM COATED in 1 VIAL, PLASTIC",
+          "marketing_start_date": "20141021",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-13",
+          "description": "3 POUCH in 1 CARTON (50580-449-13)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-14",
+          "description": "2 TABLET, FILM COATED in 1 POUCH (50580-449-14)",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-15",
+          "description": "10 TABLET, FILM COATED in 1 VIAL, PLASTIC (50580-449-15)",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-23",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-449-23)  / 150 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-31",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-449-31)  / 36 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-34",
+          "description": "325 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (50580-449-34)",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-35",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-449-35)  / 24 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-36",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-449-36)  / 100 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-37",
+          "description": "320 TABLET, FILM COATED in 1 BOTTLE (50580-449-37)",
+          "marketing_start_date": "20260331",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-61",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-449-61)  / 225 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-62",
+          "description": "325 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (50580-449-62)",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-66",
+          "description": "2 BOTTLE in 1 CARTON (50580-449-66)  / 100 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20240501",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-84",
+          "description": "2 TABLET, FILM COATED in 1 POUCH (50580-449-84)",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-85",
+          "description": "50 POUCH in 1 TRAY (50580-449-85)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-86",
+          "description": "50 POUCH in 1 TRAY (50580-449-86)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-87",
+          "description": "3 POUCH in 1 CARTON (50580-449-87)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "19840819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-96",
+          "description": "1 BOTTLE in 1 CARTON (50580-449-96)  / 50 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20180625",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-97",
+          "description": "249 TABLET, FILM COATED in 1 PACKAGE, COMBINATION (50580-449-97)",
+          "marketing_start_date": "20190128",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-449-98",
+          "description": "110 TABLET, FILM COATED in 1 PACKAGE, COMBINATION (50580-449-98)",
+          "marketing_start_date": "20190128",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "59773893-09a8-47a2-943a-e9ea9da4458a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450449108"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "5448d8a1-99d5-a698-e063-6294a90aff9b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "19840819",
+      "product_id": "50580-449_5448d8a1-99d5-a698-e063-6294a90aff9b",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "50580-446",
+      "generic_name": "Acetaminophen and Dextromethorphan Hydrobromide",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "EXTRA STRENGTH TYLENOL SEVERE COUGH PLUS SORE THROAT DAY",
+      "active_ingredients": [
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "15 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-446-01",
+          "description": "2 BLISTER PACK in 1 CARTON (50580-446-01)  / 12 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20240826",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "247324"
+        ],
+        "spl_set_id": [
+          "1a17b24a-8022-4e2f-e063-6294a90af276"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450157348"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3a1abd26-c0a9-8a65-e063-6294a90ab66e",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240826",
+      "product_id": "50580-446_3a1abd26-c0a9-8a65-e063-6294a90ab66e",
+      "application_number": "M012",
+      "brand_name_base": "EXTRA STRENGTH TYLENOL SEVERE COUGH PLUS SORE THROAT DAY",
+      "pharm_class": [
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "50580-457",
+      "generic_name": "acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-457-10",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-457-10)  / 100 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20200710",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-457-11",
+          "description": "10 BLISTER PACK in 1 CARTON (50580-457-11)  / 10 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20200717",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-457-70",
+          "description": "700 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (50580-457-70)",
+          "marketing_start_date": "20200717",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "c830320e-72ba-48ff-a4cd-250ac5650bf0"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "2ddb1260-fde6-1914-e063-6394a90a82d7",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20200710",
+      "product_id": "50580-457_2ddb1260-fde6-1914-e063-6394a90a82d7",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "67751-241",
+      "generic_name": "acetaminophen and diphenhydramine hydrochloride",
+      "labeler_name": "Navajo Manufacturing Company Inc.",
+      "brand_name": "Tylenol PM Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67751-241-01",
+          "description": "1 POUCH in 1 CARTON (67751-241-01)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20250311",
+          "sample": false
+        },
+        {
+          "package_ndc": "67751-241-02",
+          "description": "2 POUCH in 1 CARTON (67751-241-02)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20250923",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Navajo Manufacturing Company Inc."
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "435b1a31-353d-af20-e063-6294a90aa907"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "435b2b2a-6d47-1611-e063-6394a90a9f99",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250311",
+      "product_id": "67751-241_435b2b2a-6d47-1611-e063-6394a90a9f99",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol PM",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "50580-451",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-451-50",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-451-50)  / 50 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "19940819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-451-70",
+          "description": "700 TABLET, COATED in 1 BOTTLE, PLASTIC (50580-451-70)",
+          "marketing_start_date": "19940819",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "bb6533e5-e6a9-488c-b8ab-a6a06e87ede9"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "2d87c8e1-e743-56cc-e063-6394a90aac79",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "19940819",
+      "product_id": "50580-451_2d87c8e1-e743-56cc-e063-6394a90aac79",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL"
+    },
+    {
+      "product_ndc": "50580-472",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Tylenol Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-472-01",
+          "description": "1 BOTTLE in 1 CARTON (50580-472-01)  / 24 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20240318",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-472-02",
+          "description": "1 BOTTLE in 1 CARTON (50580-472-02)  / 50 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20240318",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-472-03",
+          "description": "1 BOTTLE in 1 CARTON (50580-472-03)  / 100 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20240318",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-472-04",
+          "description": "1 BOTTLE in 1 CARTON (50580-472-04)  / 200 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20240318",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "0c5fdda8-5049-46de-e063-6294a90a592b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450406026"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "21c39261-4b98-bc43-e063-6394a90a4eb8",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240318",
+      "product_id": "50580-472_21c39261-4b98-bc43-e063-6394a90a4eb8",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol Extra Strength"
+    },
+    {
+      "product_ndc": "50580-469",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-469-18",
+          "description": "1 BOTTLE in 1 CARTON (50580-469-18)  / 18 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20251027",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-469-40",
+          "description": "1 BOTTLE in 1 CARTON (50580-469-40)  / 40 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20251027",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-469-75",
+          "description": "1 BOTTLE in 1 CARTON (50580-469-75)  / 75 CAPSULE, LIQUID FILLED in 1 BOTTLE",
+          "marketing_start_date": "20251027",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198439",
+          "351580"
+        ],
+        "spl_set_id": [
+          "3bb7dc60-97b2-1291-e063-6294a90a26d9"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450439185"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "3bb7dcea-736b-343c-e063-6394a90a89e0",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20251027",
+      "product_id": "50580-469_3bb7dcea-736b-343c-e063-6394a90a89e0",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "50580-490",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-490-02",
+          "description": "1 BOTTLE in 1 CARTON (50580-490-02)  / 200 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20260601",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-490-10",
+          "description": "1 BOTTLE in 1 CARTON (50580-490-10)  / 100 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20210430",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-490-20",
+          "description": "2 BOTTLE in 1 CARTON (50580-490-20)  / 100 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20250505",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-490-24",
+          "description": "1 BOTTLE in 1 CARTON (50580-490-24)  / 24 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20210430",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-490-25",
+          "description": "1 BOTTLE in 1 CARTON (50580-490-25)  / 225 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20210430",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-490-50",
+          "description": "1 BOTTLE in 1 CARTON (50580-490-50)  / 50 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20210430",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-490-90",
+          "description": "290 TABLET, COATED in 1 BOTTLE (50580-490-90)",
+          "marketing_start_date": "20210430",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "201b860d-dc3c-4380-affa-e757bf2103cf"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450488268"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "4eda2e16-ed91-59d6-e063-6394a90abf72",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210430",
+      "product_id": "50580-490_4eda2e16-ed91-59d6-e063-6394a90abf72",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "50580-488",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-488-02",
+          "description": "5 POUCH in 1 CARTON (50580-488-02)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20260115",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-488-10",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-488-10)  / 100 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20170116",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-488-22",
+          "description": "1 BOTTLE in 1 CARTON (50580-488-22)  / 200 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20260601",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-488-24",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-488-24)  / 24 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20170116",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-488-25",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-488-25)  / 225 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20170116",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-488-28",
+          "description": "290 TABLET, COATED in 1 BOTTLE, PLASTIC (50580-488-28)",
+          "marketing_start_date": "20170116",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-488-50",
+          "description": "2500 POUCH in 1 CARTON (50580-488-50)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20260115",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-488-52",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-488-52)  / 50 TABLET, COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20190617",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "1b164780-ec84-4187-8afa-6f8a0da550fc"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "4eda2608-4d48-1af0-e063-6294a90a2c72",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20170116",
+      "product_id": "50580-488_4eda2608-4d48-1af0-e063-6294a90a2c72",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL"
+    },
+    {
+      "product_ndc": "50580-491",
+      "generic_name": "acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-491-01",
+          "description": "1 BOTTLE in 1 CARTON (50580-491-01)  / 100 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20250830",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-491-10",
+          "description": "10 BLISTER PACK in 1 CARTON (50580-491-10)  / 10 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20250830",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-491-70",
+          "description": "1 BOTTLE in 1 CARTON (50580-491-70)  / 700 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20250830",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "4961695d-72f3-533a-e063-6294a90a5a29"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "4961695d-72f4-533a-e063-6294a90a5a29",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250830",
+      "product_id": "50580-491_4961695d-72f4-533a-e063-6294a90a5a29",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "50580-586",
+      "generic_name": "Acetaminophen and Dextromethorphan Hydrobromide",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Extra Strength TYLENOL Cold plus Flu Multi Symptom Day",
+      "active_ingredients": [
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "15 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-586-01",
+          "description": "2 BLISTER PACK in 1 CARTON (50580-586-01)  / 12 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20260618",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "247324"
+        ],
+        "spl_set_id": [
+          "5487b2e1-b0e5-0236-e063-6394a90a3a8b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450157348"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "5487d621-8c47-39b3-e063-6294a90a6f31",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260618",
+      "product_id": "50580-586_5487d621-8c47-39b3-e063-6294a90a6f31",
+      "application_number": "M012",
+      "brand_name_base": "Extra Strength TYLENOL Cold plus Flu Multi Symptom Day",
+      "pharm_class": [
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "50580-585",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Chlorpheniramine Maleate",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Extra Strength Tylenol Cold Plus Flu Multi-Symptom Day Night",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-585-01",
+          "description": "1 KIT in 1 PACKAGE (50580-585-01)  *  2 BLISTER PACK in 1 KIT / 8 TABLET, FILM COATED in 1 BLISTER PACK *  2 BLISTER PACK in 1 KIT / 4 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20260901",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "247324",
+          "1098496",
+          "2604579"
+        ],
+        "spl_set_id": [
+          "594f515c-b369-816d-e063-6294a90a59a1"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450159342"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "594f5167-2628-8160-e063-6294a90aa943",
+      "product_type": "HUMAN OTC DRUG",
+      "marketing_start_date": "20260901",
+      "product_id": "50580-585_594f5167-2628-8160-e063-6294a90aa943",
+      "application_number": "M012",
+      "brand_name_base": "Extra Strength Tylenol Cold Plus Flu Multi-Symptom Day Night"
+    },
+    {
+      "product_ndc": "50580-590",
+      "generic_name": "acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-590-04",
+          "description": "1 BOTTLE in 1 CARTON (50580-590-04)  / 24 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200731",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-590-05",
+          "description": "1 BOTTLE in 1 CARTON (50580-590-05)  / 100 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200731",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-590-06",
+          "description": "1 BOTTLE in 1 CARTON (50580-590-06)  / 225 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200731",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "015a6179-bacb-452d-b594-4de628ddc11d"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "22d94fd9-9488-a812-e063-6394a90a7ffc",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180716",
+      "product_id": "50580-590_22d94fd9-9488-a812-e063-6394a90a7ffc",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL"
+    },
+    {
+      "product_ndc": "50580-608",
+      "generic_name": "acetaminophen and diphenhydramine hydrochloride",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Tylenol PM Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-608-01",
+          "description": "1 BOTTLE in 1 CARTON (50580-608-01)  / 24 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20160711",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-608-02",
+          "description": "1 BOTTLE in 1 CARTON (50580-608-02)  / 100 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20160711",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-608-03",
+          "description": "1 BOTTLE in 1 CARTON (50580-608-03)  / 150 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20160711",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-608-04",
+          "description": "1 BOTTLE in 1 CARTON (50580-608-04)  / 225 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20160711",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-608-05",
+          "description": "2 TABLET, FILM COATED in 1 POUCH (50580-608-05)",
+          "marketing_start_date": "20160711",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-608-06",
+          "description": "50 POUCH in 1 TRAY (50580-608-06)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20160711",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-608-07",
+          "description": "2 POUCH in 1 CARTON (50580-608-07)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20220214",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-608-08",
+          "description": "1 BOTTLE in 1 CARTON (50580-608-08)  / 50 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20220601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "ce58105b-f010-47af-8f31-6dd4ce4e9cba"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450482389"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "57301337-05f3-6afe-e063-6394a90aa4dd",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20160711",
+      "product_id": "50580-608_57301337-05f3-6afe-e063-6394a90aa4dd",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol PM",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "50580-692",
+      "generic_name": "acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-692-01",
+          "description": "1 BOTTLE in 1 CARTON (50580-692-01)  / 24 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20180806",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-692-02",
+          "description": "1 BOTTLE in 1 CARTON (50580-692-02)  / 100 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20180806",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-692-03",
+          "description": "1 BOTTLE in 1 CARTON (50580-692-03)  / 225 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20180806",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "dd87e342-b0cb-4111-9f15-415dbcda4b77"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "21c193b9-6b79-f35c-e063-6394a90adbfe",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180806",
+      "product_id": "50580-692_21c193b9-6b79-f35c-e063-6394a90adbfe",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL"
+    },
+    {
+      "product_ndc": "50090-1695",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "A-S Medication Solutions",
+      "brand_name": "Tylenol Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50090-1695-0",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50090-1695-0)  / 24 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20150212",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "A-S Medication Solutions"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "85294a70-3233-4ba5-bc36-ee3f2964aebf"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "fcaa8a52-99a7-46b9-9644-c472532fc3ae",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20141101",
+      "product_id": "50090-1695_fcaa8a52-99a7-46b9-9644-c472532fc3ae",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol Extra Strength"
+    },
+    {
+      "product_ndc": "50580-833",
+      "generic_name": "Acetaminophen and Diphenhydramine Hydrochloride",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL PM Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "1000 mg/30mL"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "50 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-833-01",
+          "description": "240 mL in 1 BOTTLE (50580-833-01)",
+          "marketing_start_date": "20180625",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "1092373",
+          "1092375"
+        ],
+        "spl_set_id": [
+          "44e8a92a-748b-4dc3-ae8d-176a350ac83d"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450421807"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "SOLUTION",
+      "spl_id": "5def488c-5857-81d7-e063-6294a90ac270",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180625",
+      "product_id": "50580-833_5def488c-5857-81d7-e063-6294a90ac270",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL PM",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "50580-937",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Tylenol Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-937-01",
+          "description": "12 VIAL in 1 PACKAGE (50580-937-01)  / 10 TABLET, FILM COATED in 1 VIAL",
+          "marketing_start_date": "20190819",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-02",
+          "description": "12 VIAL in 1 PACKAGE (50580-937-02)  / 10 TABLET, FILM COATED in 1 VIAL",
+          "marketing_start_date": "20190916",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-06",
+          "description": "1 BOTTLE in 1 CARTON (50580-937-06)  / 24 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200831",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-07",
+          "description": "1 BOTTLE in 1 CARTON (50580-937-07)  / 100 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200831",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-10",
+          "description": "1 BOTTLE in 1 CARTON (50580-937-10)  / 50 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200831",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-15",
+          "description": "1 BOTTLE in 1 CARTON (50580-937-15)  / 225 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20200831",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-19",
+          "description": "325 TABLET, FILM COATED in 1 BOTTLE (50580-937-19)",
+          "marketing_start_date": "20200831",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-23",
+          "description": "3 POUCH in 1 CARTON (50580-937-23)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20260115",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-25",
+          "description": "2500 POUCH in 1 CASE (50580-937-25)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20251228",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-37",
+          "description": "320 TABLET, FILM COATED in 1 BOTTLE (50580-937-37)",
+          "marketing_start_date": "20260331",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-50",
+          "description": "50 POUCH in 1 CARTON (50580-937-50)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20251228",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-51",
+          "description": "50 POUCH in 1 CARTON (50580-937-51)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20251228",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-937-66",
+          "description": "2 BOTTLE in 1 CARTON (50580-937-66)  / 100 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20240501",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "103d109d-f520-409c-8da2-eb6b0fbec891"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450449108"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "572fcd5f-40f6-eaf1-e063-6294a90a4143",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190819",
+      "product_id": "50580-937_572fcd5f-40f6-eaf1-e063-6294a90a4143",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol Extra Strength"
+    },
+    {
+      "product_ndc": "66715-9747",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "TYLENOL EXTRA STRENGTH",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-9747-2",
+          "description": "2 POUCH in 1 CARTON (66715-9747-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20190413",
+          "sample": false
+        },
+        {
+          "package_ndc": "66715-9747-3",
+          "description": "3 POUCH in 1 CARTON (66715-9747-3)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20180629",
+          "sample": false
+        },
+        {
+          "package_ndc": "66715-9747-7",
+          "description": "30 POUCH in 1 CARTON (66715-9747-7)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20180409",
+          "sample": false
+        },
+        {
+          "package_ndc": "66715-9747-8",
+          "description": "25 POUCH in 1 BOX, UNIT-DOSE (66715-9747-8)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20220419",
+          "marketing_end_date": "20280812",
+          "sample": false
+        },
+        {
+          "package_ndc": "66715-9747-9",
+          "description": "30 POUCH in 1 BOX, UNIT-DOSE (66715-9747-9)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20220419",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "fa951d50-b79c-4161-8c81-fcf386b0964e"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "460387da-80ba-42ee-e063-6394a90a5957",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20110809",
+      "product_id": "66715-9747_460387da-80ba-42ee-e063-6394a90a5957",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL EXTRA STRENGTH"
+    },
+    {
+      "product_ndc": "85237-1946",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Select Consumer Group LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "85237-1946-1",
+          "description": "1 POUCH in 1 BLISTER PACK (85237-1946-1)  / 2 TABLET, FILM COATED in 1 POUCH (85237-1946-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1946-2",
+          "description": "2 POUCH in 1 BLISTER PACK (85237-1946-2)  / 2 TABLET, FILM COATED in 1 POUCH (85237-1946-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1946-3",
+          "description": "20 POUCH in 1 CARTON (85237-1946-3)  / 2 TABLET, FILM COATED in 1 POUCH (85237-1946-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1946-4",
+          "description": "25 POUCH in 1 CARTON (85237-1946-4)  / 2 TABLET, FILM COATED in 1 POUCH (85237-1946-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1946-5",
+          "description": "30 POUCH in 1 CARTON (85237-1946-5)  / 2 TABLET, FILM COATED in 1 POUCH (85237-1946-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1946-6",
+          "description": "50 POUCH in 1 CARTON (85237-1946-6)  / 2 TABLET, FILM COATED in 1 POUCH (85237-1946-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-1946-7",
+          "description": "3 POUCH in 1 BLISTER PACK (85237-1946-7)  / 2 TABLET, FILM COATED in 1 POUCH (85237-1946-0)",
+          "marketing_start_date": "20250604",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Select Consumer Group LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "529d3a51-a248-7c02-e063-6294a90a10ae"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "5543ed1a-4081-afdd-e063-6394a90aa77b",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "19840819",
+      "product_id": "85237-1946_5543ed1a-4081-afdd-e063-6394a90aa77b",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "66715-9817",
+      "generic_name": "Acetaminophen and Diphenhydramine Hydrochloride",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "Lil Drug Store Tylenol PM Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-9817-2",
+          "description": "2 POUCH in 1 CARTON (66715-9817-2)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20171020",
+          "sample": false
+        },
+        {
+          "package_ndc": "66715-9817-3",
+          "description": "3 POUCH in 1 CARTON (66715-9817-3)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20190815",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "643371f2-e330-441e-8932-b3aec4b179d2"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "459f9062-e920-d327-e063-6394a90acc1d",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20171020",
+      "product_id": "66715-9817_459f9062-e920-d327-e063-6394a90acc1d",
+      "application_number": "M013",
+      "brand_name_base": "Lil Drug Store Tylenol PM Extra Strength",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "85237-2945",
+      "generic_name": "acetaminophen and diphenhydramine hydrochloride",
+      "labeler_name": "Select Consumer Group",
+      "brand_name": "Tylenol PM Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "85237-2945-1",
+          "description": "1 POUCH in 1 BLISTER PACK (85237-2945-1)  / 2 TABLET, FILM COATED in 1 POUCH (85237-2945-0)",
+          "marketing_start_date": "20220601",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-2945-2",
+          "description": "2 POUCH in 1 BLISTER PACK (85237-2945-2)  / 2 TABLET, FILM COATED in 1 POUCH (85237-2945-0)",
+          "marketing_start_date": "20220601",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-2945-3",
+          "description": "20 POUCH in 1 CONTAINER (85237-2945-3)  / 2 TABLET, FILM COATED in 1 POUCH (85237-2945-0)",
+          "marketing_start_date": "20220601",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-2945-4",
+          "description": "25 POUCH in 1 CONTAINER (85237-2945-4)  / 2 TABLET, FILM COATED in 1 POUCH (85237-2945-0)",
+          "marketing_start_date": "20220601",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-2945-6",
+          "description": "50 POUCH in 1 CONTAINER (85237-2945-6)  / 2 TABLET, FILM COATED in 1 POUCH (85237-2945-0)",
+          "marketing_start_date": "20220601",
+          "sample": false
+        },
+        {
+          "package_ndc": "85237-2945-7",
+          "description": "3 POUCH in 1 BLISTER PACK (85237-2945-7)  / 2 TABLET, FILM COATED in 1 POUCH (85237-2945-0)",
+          "marketing_start_date": "20220601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Select Consumer Group"
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "55d0dceb-c9a9-778e-e063-6294a90a2ad7"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "55d0dd09-882d-754a-e063-6294a90a15ee",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20160711",
+      "product_id": "85237-2945_55d0dd09-882d-754a-e063-6294a90a15ee",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol PM",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "70264-027",
+      "generic_name": "ACETAMINOPHEN",
+      "labeler_name": "R J General Corporation",
+      "brand_name": "TYLENOL EXTRA STRENGTH",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "70264-027-01",
+          "description": "50 POUCH in 1 BOX (70264-027-01)  / 2 TABLET in 1 POUCH",
+          "marketing_start_date": "20210501",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "R J General Corporation"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "99e45e83-37a3-44df-9a2a-98ba7457a5bb"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET",
+      "spl_id": "43c8c03b-eb61-fccb-e063-6394a90a6211",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210501",
+      "product_id": "70264-027_43c8c03b-eb61-fccb-e063-6394a90a6211",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL EXTRA STRENGTH"
+    },
+    {
+      "product_ndc": "70264-028",
+      "generic_name": "ACETAMINOPHEN",
+      "labeler_name": "R J General Corporation",
+      "brand_name": "TYLENOL PM EXTRA STRENGTH",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "70264-028-01",
+          "description": "50 POUCH in 1 BOX (70264-028-01)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20210501",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "R J General Corporation"
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "a40ea0e3-d666-4605-b5e0-beeaf8f586f2"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "43c8c37c-62db-f6e0-e063-6394a90aab46",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210501",
+      "product_id": "70264-028_43c8c37c-62db-f6e0-e063-6394a90aab46",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL PM EXTRA STRENGTH",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "50580-551",
+      "generic_name": "Acetaminophen, Dextromethorphan hydrobromide, Chlorpheniramine Maleate",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "EXTRA STRENGTH TYLENOL SEVERE COUGH PLUS SORE THROAT DAY/NIGHT",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-551-01",
+          "description": "1 KIT in 1 PACKAGE (50580-551-01)  *  2 BLISTER PACK in 1 KIT / 8 TABLET, FILM COATED in 1 BLISTER PACK *  2 BLISTER PACK in 1 KIT / 4 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20240826",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "247324",
+          "1098496",
+          "2604579"
+        ],
+        "spl_set_id": [
+          "19ad2cca-c1cb-019c-e063-6294a90a5644"
+        ],
+        "is_original_packager": [
+          true
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "3a190315-8b55-0724-e063-6294a90a7bb5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240826",
+      "product_id": "50580-551_3a190315-8b55-0724-e063-6294a90a7bb5",
+      "application_number": "M012",
+      "brand_name_base": "EXTRA STRENGTH TYLENOL SEVERE COUGH PLUS SORE THROAT DAY/NIGHT"
+    },
+    {
+      "product_ndc": "50090-5469",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "A-S Medication Solutions",
+      "brand_name": "TYLENOL EXTRA STRENGTH",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50090-5469-0",
+          "description": "1 BOTTLE in 1 CARTON (50090-5469-0)  / 24 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20210217",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "A-S Medication Solutions"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "bcb7eb24-16cb-439e-879f-48d2f5e8ba83"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "72fb757a-ac68-4800-bdc0-ace18841ef75",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190819",
+      "product_id": "50090-5469_72fb757a-ac68-4800-bdc0-ace18841ef75",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL EXTRA STRENGTH"
+    },
+    {
+      "product_ndc": "53209-1001",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Morning Star OTC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "53209-1001-2",
+          "description": "25 BLISTER PACK in 1 POUCH (53209-1001-2)  / 2 TABLET, FILM COATED in 1 BLISTER PACK (53209-1001-1)",
+          "marketing_start_date": "20250619",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Morning Star OTC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "8502ea21-937d-4b33-a3e0-ffab5dc38cd8"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "37e8d749-91bb-a5bc-e063-6394a90ac8a8",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "19840819",
+      "product_id": "53209-1001_37e8d749-91bb-a5bc-e063-6394a90ac8a8",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "53209-1002",
+      "generic_name": "acetaminophen and diphenhydramine hydrochloride",
+      "labeler_name": "Morning Star OTC",
+      "brand_name": "Tylenol PM Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "53209-1002-2",
+          "description": "25 BLISTER PACK in 1 POUCH (53209-1002-2)  / 2 TABLET, FILM COATED in 1 BLISTER PACK (53209-1002-1)",
+          "marketing_start_date": "20250619",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Morning Star OTC"
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "6cd07a01-7034-4994-bbd3-bedcdf7d5b83"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "37e8f74e-9c3f-b0e7-e063-6394a90a5106",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250619",
+      "product_id": "53209-1002_37e8f74e-9c3f-b0e7-e063-6394a90a5106",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol PM",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "50580-108",
+      "generic_name": "acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-108-25",
+          "description": "1 BOTTLE in 1 CARTON (50580-108-25)  / 225 TABLET, FILM COATED in 1 BOTTLE",
+          "marketing_start_date": "20251013",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "3f653262-b931-7d42-e063-6394a90adddd"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450444271"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "53536dcd-8f52-e352-e063-6294a90aa943",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20251013",
+      "product_id": "50580-108_53536dcd-8f52-e352-e063-6294a90aa943",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "66715-6417",
+      "generic_name": "Acetaminophen and Diphenhydramine Hydrochloride",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "Tylenol PM Extra Strength, CVP HEALTH",
+      "active_ingredients": [
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6417-2",
+          "description": "2 POUCH in 1 CARTON (66715-6417-2)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20221011",
+          "sample": false
+        },
+        {
+          "package_ndc": "66715-6417-7",
+          "description": "25 POUCH in 1 CARTON (66715-6417-7)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20220419",
+          "marketing_end_date": "20280812",
+          "sample": false
+        },
+        {
+          "package_ndc": "66715-6417-8",
+          "description": "30 POUCH in 1 CARTON (66715-6417-8)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20220419",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "643371f2-e330-441e-8932-b3aec4b179d2"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "459f9062-e920-d327-e063-6394a90acc1d",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220419",
+      "product_id": "66715-6417_459f9062-e920-d327-e063-6394a90acc1d",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol PM Extra Strength, CVP HEALTH",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "50580-142",
+      "generic_name": "Acetaminophen, Lidocaine, Menthol",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength / TYLENOL Precise Cooling Pain Relief",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-142-01",
+          "description": "1 KIT in 1 KIT (50580-142-01)  *  1 BOTTLE in 1 CARTON (50580-490-25)  / 225 TABLET, COATED in 1 BOTTLE *  1 TUBE in 1 CARTON (69968-0793-1)  / 14.2 g in 1 TUBE",
+          "marketing_start_date": "20241125",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459",
+          "250912"
+        ],
+        "spl_set_id": [
+          "2611e984-0dd5-bda1-e063-6394a90a559a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0381371197545"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "2611d7e2-4446-b6b6-e063-6394a90a6232",
+      "product_type": "HUMAN OTC DRUG",
+      "marketing_start_date": "20241125",
+      "product_id": "50580-142_2611d7e2-4446-b6b6-e063-6394a90a6232",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength / TYLENOL Precise Cooling Pain Relief"
+    },
+    {
+      "product_ndc": "67414-608",
+      "generic_name": "ACETAMINOPHEN, DIPHENHYDRAMINE HYDROCHLORIDE",
+      "labeler_name": "Jones Healthcare Group - Packaging Services, Inc",
+      "brand_name": "Tylenol PM Extra Strength",
+      "brand_name_suffix": "Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67414-608-00",
+          "description": "2500 POUCH in 1 BOX (67414-608-00)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20180125",
+          "sample": false
+        },
+        {
+          "package_ndc": "67414-608-06",
+          "description": "50 POUCH in 1 TRAY (67414-608-06)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20180125",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Jones Healthcare Group - Packaging Services, Inc"
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "639f4e01-9723-a619-e053-2991aa0a549a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450482389"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "20aec2bd-9934-370f-e063-6294a90a2bae",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180125",
+      "product_id": "67414-608_20aec2bd-9934-370f-e063-6294a90a2bae",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol PM",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "50580-140",
+      "generic_name": "acetaminophen and dextromethorphan hydrobromide",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Extra Strength TYLENOL Severe Cough Plus Sore Throat Day",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "1000 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-140-08",
+          "description": "240 mL in 1 BOTTLE (50580-140-08)",
+          "marketing_start_date": "20250606",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "1359455"
+        ],
+        "spl_set_id": [
+          "2e9540e4-bd1d-9370-e063-6294a90affcb"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450565082"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "2e9540e4-bd1e-9370-e063-6294a90affcb",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250606",
+      "product_id": "50580-140_2e9540e4-bd1e-9370-e063-6294a90affcb",
+      "application_number": "M012",
+      "brand_name_base": "Extra Strength TYLENOL Severe Cough Plus Sore Throat Day",
+      "pharm_class": [
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "67414-449",
+      "generic_name": "ACETAMINOPHEN",
+      "labeler_name": "Jones Healthcare Group - Packaging Services, Inc",
+      "brand_name": "Tylenol Extra Strength Caplet",
+      "brand_name_suffix": "Caplet",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67414-449-00",
+          "description": "2500 POUCH in 1 BOX (67414-449-00)  / 2 TABLET in 1 POUCH",
+          "marketing_start_date": "20180124",
+          "sample": false
+        },
+        {
+          "package_ndc": "67414-449-10",
+          "description": "50 POUCH in 1 BOX (67414-449-10)  / 2 TABLET in 1 POUCH",
+          "marketing_start_date": "20180124",
+          "sample": false
+        },
+        {
+          "package_ndc": "67414-449-11",
+          "description": "50 POUCH in 1 BOX (67414-449-11)  / 2 TABLET in 1 POUCH",
+          "marketing_start_date": "20180124",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Jones Healthcare Group - Packaging Services, Inc"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "fba711c1-4e69-49b0-8994-97c455aebcb2"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450449108"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET",
+      "spl_id": "39845b60-16e5-ee53-e063-6294a90af9d7",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180124",
+      "product_id": "67414-449_39845b60-16e5-ee53-e063-6294a90af9d7",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol Extra Strength"
+    },
+    {
+      "product_ndc": "66715-6447",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "TYLENOL EXTRA STRENGTH, TRAVEL BASIX",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6447-2",
+          "description": "2 POUCH in 1 CARTON (66715-6447-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20221129",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "fa951d50-b79c-4161-8c81-fcf386b0964e"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "460387da-80ba-42ee-e063-6394a90a5957",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20221122",
+      "product_id": "66715-6447_460387da-80ba-42ee-e063-6394a90a5957",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL EXTRA STRENGTH, TRAVEL BASIX"
+    },
+    {
+      "product_ndc": "50580-187",
+      "generic_name": "ACETAMINOPHEN",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "960 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-187-08",
+          "description": "1 BOTTLE in 1 CARTON (50580-187-08)  / 240 mL in 1 BOTTLE",
+          "marketing_start_date": "20251128",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "307668",
+          "828555"
+        ],
+        "spl_set_id": [
+          "42321456-d7dd-3b51-e063-6394a90ac292"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450420084"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "SUSPENSION",
+      "spl_id": "423280b2-1f17-3a41-e063-6394a90a61e6",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20251128",
+      "product_id": "50580-187_423280b2-1f17-3a41-e063-6394a90a61e6",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "50580-213",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Extra Strength Tylenol Cold plus Flu Multi-Symptom Daytime",
+      "active_ingredients": [
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "1000 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-213-01",
+          "description": "240 mL in 1 BOTTLE (50580-213-01)",
+          "marketing_start_date": "20260612",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "1359455"
+        ],
+        "spl_set_id": [
+          "52291746-2bbf-8f3f-e063-6294a90adcfc"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450565082"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "52291772-8111-bea3-e063-6294a90a5ccc",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260612",
+      "product_id": "50580-213_52291772-8111-bea3-e063-6294a90a5ccc",
+      "application_number": "M012",
+      "brand_name_base": "Extra Strength Tylenol Cold plus Flu Multi-Symptom Daytime",
+      "pharm_class": [
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "50580-209",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "TYLENOL Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/.95g"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-209-02",
+          "description": "12 PACKET in 1 CARTON (50580-209-02)  / .95 g in 1 PACKET",
+          "marketing_start_date": "20200615",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-209-04",
+          "description": "32 PACKET in 1 CARTON (50580-209-04)  / .95 g in 1 PACKET",
+          "marketing_start_date": "20200615",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "2374360",
+          "2374361"
+        ],
+        "spl_set_id": [
+          "ab02080a-c903-4e4a-a9f3-2b8197ed2f2b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "POWDER",
+      "spl_id": "3efe12ef-7f94-9548-e063-6294a90aba91",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20200615",
+      "product_id": "50580-209_3efe12ef-7f94-9548-e063-6294a90aba91",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL Extra Strength"
+    },
+    {
+      "product_ndc": "50580-212",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide, Doxylamine Succinate",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Extra Strength Tylenol Cold plus Flu Multi-Symptom Nighttime",
+      "active_ingredients": [
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "1000 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-212-01",
+          "description": "240 mL in 1 BOTTLE (50580-212-01)",
+          "marketing_start_date": "20260601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "2744316"
+        ],
+        "spl_set_id": [
+          "525467fb-510d-0b4b-e063-6294a90acd36"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450522092"
+        ],
+        "unii": [
+          "V9BI9B5YI2",
+          "9D2RTI9KYH",
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "5254872f-1467-509b-e063-6394a90a7d81",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260601",
+      "product_id": "50580-212_5254872f-1467-509b-e063-6394a90a7d81",
+      "application_number": "M012",
+      "brand_name_base": "Extra Strength Tylenol Cold plus Flu Multi-Symptom Nighttime",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "50580-243",
+      "generic_name": "Acetaminophen, Dextromethorphan Hydrobromide and Doxylamine Succinate.",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Extra Strength TYLENOL Severe Cough Plus Sore Throat Night",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "1000 mg/30mL"
+        },
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "30 mg/30mL"
+        },
+        {
+          "name": "DOXYLAMINE SUCCINATE",
+          "strength": "12.5 mg/30mL"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-243-01",
+          "description": "240 mL in 1 BOTTLE (50580-243-01)",
+          "marketing_start_date": "20230619",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "1042684"
+        ],
+        "spl_set_id": [
+          "f81d924e-10e9-0e9d-e053-6294a90a2ddf"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450522092"
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "9D2RTI9KYH",
+          "V9BI9B5YI2"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "LIQUID",
+      "spl_id": "21d5b551-6600-0381-e063-6294a90a2985",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20230619",
+      "product_id": "50580-243_21d5b551-6600-0381-e063-6294a90a2985",
+      "application_number": "M012",
+      "brand_name_base": "Extra Strength TYLENOL Severe Cough Plus Sore Throat Night",
+      "pharm_class": [
+        "Antihistamine [EPC]",
+        "Histamine Receptor Antagonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "66715-6517",
+      "generic_name": "Acetaminophen and Diphenhydramine Hydrochloride",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "Tylenol PM Extra Strength, CVP HEALTH",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+          "strength": "25 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6517-2",
+          "description": "2 POUCH in 1 CARTON (66715-6517-2)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20220506",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "1092189",
+          "1092378"
+        ],
+        "spl_set_id": [
+          "643371f2-e330-441e-8932-b3aec4b179d2"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D",
+          "TC2D6JAD40"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "459f9062-e920-d327-e063-6394a90acc1d",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220506",
+      "product_id": "66715-6517_459f9062-e920-d327-e063-6394a90acc1d",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol PM Extra Strength, CVP HEALTH",
+      "pharm_class": [
+        "Histamine H1 Receptor Antagonists [MoA]",
+        "Histamine-1 Receptor Antagonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "67751-167",
+      "generic_name": "ACETAMINOPHEN",
+      "labeler_name": "Navajo Manufacturing Company Inc.",
+      "brand_name": "Tylenol Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67751-167-01",
+          "description": "1 POUCH in 1 CARTON (67751-167-01)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20160922",
+          "sample": false
+        },
+        {
+          "package_ndc": "67751-167-02",
+          "description": "1 POUCH in 1 CARTON (67751-167-02)  / 4 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20160922",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Navajo Manufacturing Company Inc."
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "86b6ac01-3866-4cd8-a1be-9babb6ff311b"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "2385e645-881c-5dd8-e063-6394a90adfab",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20160922",
+      "product_id": "67751-167_2385e645-881c-5dd8-e063-6394a90adfab",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol Extra Strength"
+    },
+    {
+      "product_ndc": "67751-167",
+      "generic_name": "ACETAMINOPHEN",
+      "labeler_name": "Navajo Manufacturing Company Inc.",
+      "brand_name": "Tylenol Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Navajo Manufacturing Company Inc."
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "65bf1556-f25a-9439-e053-2a91aa0a3194"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "f6f71bb0-5b9b-59f7-e053-6394a90abf8e",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20171204",
+      "product_id": "67751-167_f6f71bb0-5b9b-59f7-e053-6394a90abf8e",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol Extra Strength"
+    },
+    {
+      "product_ndc": "50090-0005",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "A-S Medication Solutions",
+      "brand_name": "TYLENOL EXTRA STRENGTH",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50090-0005-0",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50090-0005-0)  / 24 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20141128",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "A-S Medication Solutions"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "1b4db77f-b254-4db5-8e98-d46850140a9b"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "e60a942a-a0b3-420d-8c99-7a1c592f1dc9",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "19840819",
+      "product_id": "50090-0005_e60a942a-a0b3-420d-8c99-7a1c592f1dc9",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL EXTRA STRENGTH"
+    },
+    {
+      "product_ndc": "50580-344",
+      "generic_name": "acetaminophen, Pseudoephedrine hydrochloride, and Dextromethorphan Hydrobromide",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Extra Strength TYLENOL Cold Plus Flu Multi-Action Day",
+      "brand_name_suffix": "Day",
+      "active_ingredients": [
+        {
+          "name": "DEXTROMETHORPHAN HYDROBROMIDE",
+          "strength": "15 mg/1"
+        },
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        },
+        {
+          "name": "PSEUDOEPHEDRINE HYDROCHLORIDE",
+          "strength": "30 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-344-01",
+          "description": "2 BLISTER PACK in 1 CARTON (50580-344-01)  / 12 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20210621",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "1250743"
+        ],
+        "spl_set_id": [
+          "7d3266dc-879a-4d28-b8ea-74d238c3020a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450147240"
+        ],
+        "unii": [
+          "9D2RTI9KYH",
+          "362O9ITL9D",
+          "6V9V2RYJ8N"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "21702ebc-459b-7f5a-e063-6294a90ad432",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210621",
+      "product_id": "50580-344_21702ebc-459b-7f5a-e063-6294a90ad432",
+      "application_number": "M012",
+      "brand_name_base": "Extra Strength TYLENOL Cold Plus Flu Multi-Action",
+      "pharm_class": [
+        "Adrenergic alpha-Agonists [MoA]",
+        "Sigma-1 Agonist [EPC]",
+        "Sigma-1 Receptor Agonists [MoA]",
+        "Uncompetitive N-methyl-D-aspartate Receptor Antagonist [EPC]",
+        "Uncompetitive NMDA Receptor Antagonists [MoA]",
+        "alpha-Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "73097-012",
+      "generic_name": "ACETAMINOPHEN",
+      "labeler_name": "Savings Distributors LLC",
+      "brand_name": "Tylenol Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "73097-012-02",
+          "description": "1 POUCH in 1 CARTON (73097-012-02)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20190722",
+          "sample": false
+        },
+        {
+          "package_ndc": "73097-012-40",
+          "description": "20 POUCH in 1 CARTON (73097-012-40)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20190722",
+          "sample": false
+        },
+        {
+          "package_ndc": "73097-012-50",
+          "description": "25 POUCH in 1 BOX (73097-012-50)  / 2 TABLET, FILM COATED in 1 POUCH",
+          "marketing_start_date": "20190722",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Savings Distributors LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "8ed90757-833e-f4d9-e053-2995a90a29db"
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "518f6c13-a0c6-5f9c-e063-6294a90a74d5",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190722",
+      "product_id": "73097-012_518f6c13-a0c6-5f9c-e063-6294a90a74d5",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol Extra Strength"
+    },
+    {
+      "product_ndc": "66715-6547",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "TYLENOL EXTRA STRENGTH, CVP HEALTH",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "66715-6547-2",
+          "description": "2 POUCH in 1 CARTON (66715-6547-2)  / 2 TABLET, COATED in 1 POUCH",
+          "marketing_start_date": "20220506",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "fa951d50-b79c-4161-8c81-fcf386b0964e"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "460387da-80ba-42ee-e063-6394a90a5957",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20220506",
+      "product_id": "66715-6547_460387da-80ba-42ee-e063-6394a90a5957",
+      "application_number": "M013",
+      "brand_name_base": "TYLENOL EXTRA STRENGTH, CVP HEALTH"
+    },
+    {
+      "product_ndc": "50580-378",
+      "generic_name": "Acetaminophen",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Tylenol Extra Strength",
+      "active_ingredients": [
+        {
+          "name": "ACETAMINOPHEN",
+          "strength": "500 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-378-01",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-378-01)  / 24 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20141101",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-378-02",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-378-02)  / 100 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20141101",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-378-03",
+          "description": "225 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (50580-378-03)",
+          "marketing_start_date": "20150406",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-378-04",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-378-04)  / 24 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20210301",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-378-05",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-378-05)  / 50 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20210301",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-378-06",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-378-06)  / 100 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20210301",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-378-07",
+          "description": "1 BOTTLE, PLASTIC in 1 CARTON (50580-378-07)  / 225 TABLET, FILM COATED in 1 BOTTLE, PLASTIC",
+          "marketing_start_date": "20210301",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-378-08",
+          "description": "325 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (50580-378-08)",
+          "marketing_start_date": "20210301",
+          "sample": false
+        },
+        {
+          "package_ndc": "50580-378-37",
+          "description": "320 TABLET, FILM COATED in 1 BOTTLE (50580-378-37)",
+          "marketing_start_date": "20260331",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "198440",
+          "209459"
+        ],
+        "spl_set_id": [
+          "17cfa99d-abb2-4d77-9e0e-e77109fbb61a"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "362O9ITL9D"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "48dff3c9-329f-1300-e063-6294a90a47ef",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20141101",
+      "product_id": "50580-378_48dff3c9-329f-1300-e063-6294a90a47ef",
+      "application_number": "M013",
+      "brand_name_base": "Tylenol Extra Strength"
+    },
+    {
+      "product_ndc": "50580-374",
+      "generic_name": "acetaminophen, pseudoephedrine hydrochloride, dextromethorphan hydrobromide, and chlorpheniramine maleate",
+      "labeler_name": "Kenvue Brands LLC",
+      "brand_name": "Extra Strength TYLENOL Cold plus Flu Multi-Action Day/Night",
+      "brand_name_suffix": "Day/Night",
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50580-374-01",
+          "description": "1 KIT in 1 PACKAGE (50580-374-01)  *  2 BLISTER PACK in 1 CARTON / 8 TABLET, FILM COATED in 1 BLISTER PACK *  2 BLISTER PACK in 1 CARTON / 4 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20210621",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "rxcui": [
+          "1089968",
+          "1250743",
+          "2558505"
+        ],
+        "spl_set_id": [
+          "712ba011-79aa-469b-9f0f-04a0b4b705bd"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450149244"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "KIT",
+      "spl_id": "21719087-b7ff-e583-e063-6394a90aa10c",
+      "product_type": "HUMAN OTC DRUG",
+      "marketing_start_date": "20210621",
+      "product_id": "50580-374_21719087-b7ff-e583-e063-6394a90aa10c",
+      "application_number": "M012",
+      "brand_name_base": "Extra Strength TYLENOL Cold plus Flu Multi-Action"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "70264-013",
+      "generic_name": "Aspirin",
+      "labeler_name": "R J General Corporation",
+      "brand_name": "Bayer Genuine Aspirin",
+      "active_ingredients": [
+        {
+          "name": "ASPIRIN",
+          "strength": "325 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "70264-013-01",
+          "description": "50 POUCH in 1 CARTON (70264-013-01)  / 2 TABLET in 1 POUCH",
+          "marketing_start_date": "20140731",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "R J General Corporation"
+        ],
+        "rxcui": [
+          "211874",
+          "212033"
+        ],
+        "spl_set_id": [
+          "23daa359-d40f-4f64-81be-6d154f41df9f"
+        ],
+        "nui": [
+          "N0000000160",
+          "N0000008836",
+          "M0001335",
+          "N0000175722",
+          "N0000175578",
+          "N0000008832"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_pe": [
+          "Decreased Prostaglandin Production [PE]",
+          "Decreased Platelet Aggregation [PE]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]",
+          "Platelet Aggregation Inhibitor [EPC]"
+        ],
+        "unii": [
+          "R16CO5Y76E"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "TABLET",
+      "spl_id": "43cb3193-0671-d065-e063-6394a90afd47",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20140731",
+      "product_id": "70264-013_43cb3193-0671-d065-e063-6394a90afd47",
+      "application_number": "M013",
+      "brand_name_base": "Bayer Genuine Aspirin",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Decreased Platelet Aggregation [PE]",
+        "Decreased Prostaglandin Production [PE]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]",
+        "Platelet Aggregation Inhibitor [EPC]"
+      ]
+    }
+  ]
+}

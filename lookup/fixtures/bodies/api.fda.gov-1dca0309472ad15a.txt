@@ -1,0 +1,339 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 10,
+      "total": 5
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "56062-671",
+      "generic_name": "Nicotine Polacrilex",
+      "labeler_name": "Publix Super Markets Inc",
+      "brand_name": "nicotine",
+      "active_ingredients": [
+        {
+          "name": "NICOTINE",
+          "strength": "4 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "56062-671-24",
+          "description": "1 CONTAINER in 1 CARTON (56062-671-24)  / 24 LOZENGE in 1 CONTAINER (56062-671-03)",
+          "marketing_start_date": "20260611",
+          "sample": false
+        },
+        {
+          "package_ndc": "56062-671-25",
+          "description": "3 CONTAINER in 1 CARTON (56062-671-25)  / 24 LOZENGE in 1 CONTAINER (56062-671-03)",
+          "marketing_start_date": "20260611",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Publix Super Markets Inc"
+        ],
+        "rxcui": [
+          "359818"
+        ],
+        "spl_set_id": [
+          "00b40bb3-3785-4a53-804e-633795e87f71"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0012345678905"
+        ],
+        "nui": [
+          "N0000175706",
+          "M0014836"
+        ],
+        "pharm_class_epc": [
+          "Cholinergic Nicotinic Agonist [EPC]"
+        ],
+        "pharm_class_cs": [
+          "Nicotine [CS]"
+        ],
+        "unii": [
+          "6M3C89ZY6R"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "LOZENGE",
+      "spl_id": "0f1f6029-9f85-4619-9bba-8e5764405c2f",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20260611",
+      "product_id": "56062-671_0f1f6029-9f85-4619-9bba-8e5764405c2f",
+      "application_number": "ANDA077007",
+      "brand_name_base": "nicotine",
+      "pharm_class": [
+        "Cholinergic Nicotinic Agonist [EPC]",
+        "Nicotine [CS]"
+      ]
+    },
+    {
+      "product_ndc": "63981-190",
+      "generic_name": "nicotine",
+      "labeler_name": "Costco Wholesale Company",
+      "brand_name": "Kirkland Signature Nicotine",
+      "active_ingredients": [
+        {
+          "name": "NICOTINE",
+          "strength": "4 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "63981-190-37",
+          "description": "10 CONTAINER in 1 PACKAGE (63981-190-37)  / 27 LOZENGE in 1 CONTAINER (63981-190-09)",
+          "marketing_start_date": "20200508",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Costco Wholesale Company"
+        ],
+        "rxcui": [
+          "359818"
+        ],
+        "spl_set_id": [
+          "0888a974-a8ba-4cb3-996f-c8abfcb90a6f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0012345678905"
+        ],
+        "nui": [
+          "N0000175706",
+          "M0014836"
+        ],
+        "pharm_class_epc": [
+          "Cholinergic Nicotinic Agonist [EPC]"
+        ],
+        "pharm_class_cs": [
+          "Nicotine [CS]"
+        ],
+        "unii": [
+          "6M3C89ZY6R"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "LOZENGE",
+      "spl_id": "46960e51-141a-4f9e-958a-f2887d96c794",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20200508",
+      "product_id": "63981-190_46960e51-141a-4f9e-958a-f2887d96c794",
+      "application_number": "ANDA090711",
+      "brand_name_base": "Kirkland Signature Nicotine",
+      "pharm_class": [
+        "Cholinergic Nicotinic Agonist [EPC]",
+        "Nicotine [CS]"
+      ]
+    },
+    {
+      "product_ndc": "81277-011",
+      "generic_name": "ALUMINUM CHLOROHYDRATE",
+      "labeler_name": "Sodalis USA, LLC",
+      "brand_name": "Sure Complete Confidence Antiperspirant Deodorant Aerosol, Unscented",
+      "active_ingredients": [
+        {
+          "name": "ALUMINUM CHLOROHYDRATE",
+          "strength": "100 mg/g"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "81277-011-01",
+          "description": "170 g in 1 CAN (81277-011-01)",
+          "marketing_start_date": "20210901",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Sodalis USA, LLC"
+        ],
+        "spl_set_id": [
+          "000a4912-a633-46b4-9aff-725fdeeef7c0"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0012345678905"
+        ],
+        "unii": [
+          "HPN8MZW13M"
+        ]
+      },
+      "marketing_category": "OTC MONOGRAPH DRUG",
+      "dosage_form": "AEROSOL, SPRAY",
+      "spl_id": "2e70f4b3-7b97-af33-e063-6294a90a1186",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "TOPICAL"
+      ],
+      "marketing_start_date": "20210901",
+      "product_id": "81277-011_2e70f4b3-7b97-af33-e063-6294a90a1186",
+      "application_number": "M019",
+      "brand_name_base": "Sure Complete Confidence Antiperspirant Deodorant Aerosol, Unscented"
+    },
+    {
+      "product_ndc": "49035-190",
+      "generic_name": "Nicotine Polacrilex",
+      "labeler_name": "Wal-Mart Stores Inc",
+      "brand_name": "Equate Nicotine",
+      "active_ingredients": [
+        {
+          "name": "NICOTINE",
+          "strength": "4 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "49035-190-10",
+          "description": "4 CONTAINER in 1 CARTON (49035-190-10)  / 27 LOZENGE in 1 CONTAINER (49035-190-09)",
+          "marketing_start_date": "20090910",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Wal-Mart Stores Inc"
+        ],
+        "rxcui": [
+          "359818"
+        ],
+        "spl_set_id": [
+          "0100787d-59f0-4f7f-ac13-92d1162cdc1b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0012345678905"
+        ],
+        "nui": [
+          "N0000175706",
+          "M0014836"
+        ],
+        "pharm_class_epc": [
+          "Cholinergic Nicotinic Agonist [EPC]"
+        ],
+        "pharm_class_cs": [
+          "Nicotine [CS]"
+        ],
+        "unii": [
+          "6M3C89ZY6R"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "LOZENGE",
+      "spl_id": "570cd836-9a9f-495e-a8eb-51b22be61497",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20090910",
+      "product_id": "49035-190_570cd836-9a9f-495e-a8eb-51b22be61497",
+      "application_number": "ANDA090711",
+      "brand_name_base": "Equate Nicotine",
+      "pharm_class": [
+        "Cholinergic Nicotinic Agonist [EPC]",
+        "Nicotine [CS]"
+      ]
+    },
+    {
+      "product_ndc": "55301-873",
+      "generic_name": "Nicotine Polacrilex",
+      "labeler_name": "Army & Air Force Exchange Service",
+      "brand_name": "exchange select nicotine",
+      "active_ingredients": [
+        {
+          "name": "NICOTINE",
+          "strength": "4 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "55301-873-16",
+          "description": "6 CONTAINER in 1 CARTON (55301-873-16)  / 24 LOZENGE in 1 CONTAINER",
+          "marketing_start_date": "20180919",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20271231",
+      "openfda": {
+        "manufacturer_name": [
+          "Army & Air Force Exchange Service"
+        ],
+        "rxcui": [
+          "359818"
+        ],
+        "spl_set_id": [
+          "0294974c-8d07-4a2e-b929-648c712b6ebe"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0012345678905"
+        ],
+        "nui": [
+          "N0000175706",
+          "M0014836"
+        ],
+        "pharm_class_epc": [
+          "Cholinergic Nicotinic Agonist [EPC]"
+        ],
+        "pharm_class_cs": [
+          "Nicotine [CS]"
+        ],
+        "unii": [
+          "6M3C89ZY6R"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "LOZENGE",
+      "spl_id": "268ded35-3e84-43f7-b3ff-6fafc6c39aed",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20180919",
+      "product_id": "55301-873_268ded35-3e84-43f7-b3ff-6fafc6c39aed",
+      "application_number": "ANDA077007",
+      "brand_name_base": "exchange select nicotine",
+      "pharm_class": [
+        "Cholinergic Nicotinic Agonist [EPC]",
+        "Nicotine [CS]"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+import { isRecord, recordArrayField, stringArrayField, stringField } from "./sources/http.ts";
+import { spanOf, termRegExp } from "./text.ts";
+import type { CabinetItem } from "./types.ts";
+
+export const RECALL_CLASSIFICATIONS = ["Class I", "Class II", "Class III", "Not Yet Classified"] as const;
+export const RECALL_STATUSES = ["Ongoing", "Completed", "Terminated"] as const;
+
+export type RecallClassification = (typeof RECALL_CLASSIFICATIONS)[number];
+export type RecallStatus = (typeof RECALL_STATUSES)[number];
+
+export interface RecallRecord {
+  readonly recallNumber: string;
+  readonly classification: RecallClassification;
+  readonly status: RecallStatus;
+  readonly reason: string;
+  readonly productDescription: string;
+  readonly codeInfo: string;
+  readonly recallingFirm: string;
+  readonly initiationDate: string;
+  readonly reportDate: string;
+  readonly productNdcs: readonly string[];
+}
+
+export interface RecallSource {
+  readonly url: string;
+  readonly lastUpdated: string;
+  readonly records: number;
+  readonly recordsWithProductNdc: number;
+}
+
+export interface RecallFile {
+  readonly source: RecallSource;
+  readonly recalls: readonly RecallRecord[];
+}
+
+export interface NdcRecallMatch {
+  readonly match: "product_ndc";
+  readonly matchedNdc: string;
+  readonly recall: RecallRecord;
+}
+
+export interface NameRecallMatch {
+  readonly match: "name_match_not_your_vial";
+  readonly matchedText: string;
+  readonly notice: string;
+  readonly recall: RecallRecord;
+}
+
+export const NAME_MATCH_NOTICE =
+  "Name match, not a match to your vial. This recall names the same ingredient, but it can be a different maker, strength or lot. A recall that is missing from this list does not mean a vial is safe.";
+
+export class RecallFileShapeError extends Error {
+  constructor(problem: string) {
+    super(`The recall file cannot be used: ${problem}. Rebuild it with "npm run build:recalls".`);
+    this.name = "RecallFileShapeError";
+  }
+}
+
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+function requiredString(raw: Record<string, unknown>, key: string, where: string): string {
+  const value = stringField(raw, key);
+  if (value === undefined) throw new RecallFileShapeError(`${where} has no ${key}`);
+  return value;
+}
+
+function requiredDate(raw: Record<string, unknown>, key: string, where: string): string {
+  const value = requiredString(raw, key, where);
+  if (!ISO_DATE.test(value)) throw new RecallFileShapeError(`${where} has ${key} "${value}", expected YYYY-MM-DD`);
+  return value;
+}
+
+function requiredNumber(raw: Record<string, unknown>, key: string, where: string): number {
+  const value = raw[key];
+  if (typeof value !== "number" || !Number.isFinite(value)) throw new RecallFileShapeError(`${where} has no numeric ${key}`);
+  return value;
+}
+
+function oneOf<T extends string>(allowed: readonly T[], value: string, key: string, where: string): T {
+  const found = allowed.find((candidate) => candidate === value);
+  if (found === undefined) throw new RecallFileShapeError(`${where} has ${key} "${value}", expected one of ${allowed.join(", ")}`);
+  return found;
+}
+
+function toRecallRecord(raw: Record<string, unknown>, index: number): RecallRecord {
+  const where = `recall ${index}`;
+  return {
+    recallNumber: requiredString(raw, "recall_number", where),
+    classification: oneOf(RECALL_CLASSIFICATIONS, requiredString(raw, "classification", where), "classification", where),
+    status: oneOf(RECALL_STATUSES, requiredString(raw, "status", where), "status", where),
+    reason: requiredString(raw, "reason_for_recall", where),
+    productDescription: requiredString(raw, "product_description", where),
+    codeInfo: requiredString(raw, "code_info", where),
+    recallingFirm: requiredString(raw, "recalling_firm", where),
+    initiationDate: requiredDate(raw, "recall_initiation_date", where),
+    reportDate: requiredDate(raw, "report_date", where),
+    productNdcs: stringArrayField(raw, "product_ndcs"),
+  };
+}
+
+export function parseRecallFile(raw: unknown): RecallFile {
+  if (!isRecord(raw)) throw new RecallFileShapeError("it is not a JSON object");
+  const source = raw["source"];
+  if (!isRecord(source)) throw new RecallFileShapeError("it has no source block");
+  if (!Array.isArray(raw["recalls"])) throw new RecallFileShapeError("it has no recalls array");
+  return {
+    source: {
+      url: requiredString(source, "url", "source"),
+      lastUpdated: requiredDate(source, "last_updated", "source"),
+      records: requiredNumber(source, "records", "source"),
+      recordsWithProductNdc: requiredNumber(source, "records_with_product_ndc", "source"),
+    },
+    recalls: recordArrayField(raw, "recalls").map(toRecallRecord),
+  };
+}
+
+function newestFirst<T extends { readonly recall: RecallRecord }>(matches: readonly T[]): readonly T[] {
+  return [...matches].sort(
+    (left, right) =>
+      right.recall.initiationDate.localeCompare(left.recall.initiationDate) ||
+      right.recall.reportDate.localeCompare(left.recall.reportDate),
+  );
+}
+
+export function findRecalls(item: CabinetItem, recalls: readonly RecallRecord[]): readonly NdcRecallMatch[] {
+  const productNdc = item.productNdc?.trim();
+  if (productNdc === undefined || productNdc === "") return [];
+  return newestFirst(
+    recalls
+      .filter((recall) => recall.productNdcs.includes(productNdc))
+      .map((recall) => ({ match: "product_ndc" as const, matchedNdc: productNdc, recall })),
+  );
+}
+
+export function findRecallsByText(term: string, recalls: readonly RecallRecord[]): readonly NameRecallMatch[] {
+  if (term.trim() === "") return [];
+  const pattern = termRegExp(term);
+  return newestFirst(
+    recalls.flatMap((recall): readonly NameRecallMatch[] => {
+      const span = spanOf(pattern, recall.productDescription);
+      if (span === undefined) return [];
+      const matchedText = recall.productDescription.slice(span.start, span.end);
+      return [{ match: "name_match_not_your_vial", matchedText, notice: NAME_MATCH_NOTICE, recall }];
+    }),
+  );
+}
+
+export function recallCoverageNote(source: RecallSource): string {
+  return `Recalls are matched by product code only. ${source.recordsWithProductNdc} of the ${source.records} FDA drug recall records (file dated ${source.lastUpdated}) carry a product code, so a recall can exist without showing here. No match does not mean the product is safe.`;
+}

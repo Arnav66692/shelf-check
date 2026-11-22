@@ -1,0 +1,14 @@
+node_modules/
+.next/
+__pycache__/
+*.pt
+.DS_Store
+.env*
+/data/
+/cache/
+/testset/*/
+.claude/
+results/matcher/
+web/next-env.d.ts
+web/tsconfig.tsbuildinfo
+/testset/*.jpg

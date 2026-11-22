@@ -1,0 +1,1642 @@
+{
+ "notes": [
+  "Fixed Nov 21 2026 before any reader ran on these labels. See PREREG-2.md."
+ ],
+ "products": [
+  {
+   "key": "cf7c3d65-11d2-49cd-b207-8ccc6a221fe0",
+   "kind": "rx",
+   "image": "cf7c3d65-11d2-49cd-b207-8ccc6a221fe0/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "28595-224",
+   "truth": [
+    {
+     "ingredient": "methenamine",
+     "value": 120.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "sodium phosphate, monobasic, monohydrate",
+     "value": 40.8,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "phenyl salicylate",
+     "value": 36.2,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "methylene blue",
+     "value": 10.8,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "hyoscyamine sulfate",
+     "value": 0.12,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "0fa4cd66-66ad-4ec9-b38c-6b5840df39df",
+   "kind": "rx",
+   "image": "0fa4cd66-66ad-4ec9-b38c-6b5840df39df/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "72789-590",
+   "truth": [
+    {
+     "ingredient": "ibuprofen",
+     "value": 400.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "947ebb7c-492b-4b83-aa1c-81e282df6421",
+   "kind": "rx",
+   "image": "947ebb7c-492b-4b83-aa1c-81e282df6421/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "70518-4166",
+   "truth": [
+    {
+     "ingredient": "progesterone",
+     "value": 100.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "586a5911-e30b-40ed-a056-9e67920ca951",
+   "kind": "rx",
+   "image": "586a5911-e30b-40ed-a056-9e67920ca951/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "63187-729",
+   "truth": [
+    {
+     "ingredient": "amoxicillin",
+     "value": 875.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "c10e7eb1-0155-43ff-aa56-8cd468e8e84d",
+   "kind": "rx",
+   "image": "c10e7eb1-0155-43ff-aa56-8cd468e8e84d/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "70518-4622",
+   "truth": [
+    {
+     "ingredient": "dantrolene sodium",
+     "value": 100.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "8ab766c2-d554-4141-92b2-fbe038e80c9f",
+   "kind": "rx",
+   "image": "8ab766c2-d554-4141-92b2-fbe038e80c9f/0.jpg",
+   "form": "CAPSULE, GELATIN COATED",
+   "ndc": "75854-315",
+   "truth": [
+    {
+     "ingredient": "biotin",
+     "value": 280.0,
+     "unit": "mcg"
+    },
+    {
+     "ingredient": "calcium carbonate",
+     "value": 80.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "ferrous asparto glycinate",
+     "value": 5.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "iron",
+     "value": 13.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "potassium iodide",
+     "value": 150.0,
+     "unit": "mcg"
+    },
+    {
+     "ingredient": "magnesium oxide",
+     "value": 25.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "doconexent",
+     "value": 350.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "lowbush blueberry",
+     "value": 25.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "levomefolate calcium",
+     "value": 600.0,
+     "unit": "mcg"
+    },
+    {
+     "ingredient": "ascorbic acid",
+     "value": 60.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "cholecalciferol",
+     "value": 25.0,
+     "unit": "mcg"
+    },
+    {
+     "ingredient": ".alpha.-tocopherol acetate, dl-",
+     "value": 4.5,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "pyridoxine hydrochloride",
+     "value": 26.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "folic acid",
+     "value": 400.0,
+     "unit": "mcg"
+    },
+    {
+     "ingredient": "cyanocobalamin",
+     "value": 13.0,
+     "unit": "mcg"
+    }
+   ]
+  },
+  {
+   "key": "82c0c5d1-df2d-4352-bd12-99f955af569e",
+   "kind": "rx",
+   "image": "82c0c5d1-df2d-4352-bd12-99f955af569e/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "70518-3914",
+   "truth": [
+    {
+     "ingredient": "amoxicillin",
+     "value": 500.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "4a828eb5-0383-f524-e063-6394a90a8449",
+   "kind": "rx",
+   "image": "4a828eb5-0383-f524-e063-6394a90a8449/0.jpg",
+   "form": "CAPSULE, LIQUID FILLED",
+   "ndc": "59088-131",
+   "truth": [
+    {
+     "ingredient": "diclofenac potassium",
+     "value": 25.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "cbe5bd6a-f36a-4557-82d8-ef4e49d310e9",
+   "kind": "rx",
+   "image": "cbe5bd6a-f36a-4557-82d8-ef4e49d310e9/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "68788-8493",
+   "truth": [
+    {
+     "ingredient": "temazepam",
+     "value": 15.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "45410338-6bff-476b-b8e1-6c6238205a99",
+   "kind": "rx",
+   "image": "45410338-6bff-476b-b8e1-6c6238205a99/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "62332-252",
+   "truth": [
+    {
+     "ingredient": "azithromycin dihydrate",
+     "value": 500.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "b8defac4-9deb-433b-928e-0ef4ee0123a2",
+   "kind": "rx",
+   "image": "b8defac4-9deb-433b-928e-0ef4ee0123a2/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "72789-085",
+   "truth": [
+    {
+     "ingredient": "levofloxacin",
+     "value": 500.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "404df13d-4ada-4324-9eed-e21f5d5043a4",
+   "kind": "rx",
+   "image": "404df13d-4ada-4324-9eed-e21f5d5043a4/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "70518-4259",
+   "truth": [
+    {
+     "ingredient": "ibuprofen",
+     "value": 800.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "b49b1e4c-de20-446d-b80a-75c7f0d41ddf",
+   "kind": "rx",
+   "image": "b49b1e4c-de20-446d-b80a-75c7f0d41ddf/0.jpg",
+   "form": "TABLET",
+   "ndc": "70010-786",
+   "truth": [
+    {
+     "ingredient": "methylergonovine maleate",
+     "value": 0.2,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "362034e9-2830-19a5-e063-6394a90a8dfb",
+   "kind": "rx",
+   "image": "362034e9-2830-19a5-e063-6394a90a8dfb/0.jpg",
+   "form": "TABLET",
+   "ndc": "68071-3853",
+   "truth": [
+    {
+     "ingredient": "anastrozole",
+     "value": 1.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "c328f555-2da8-43ac-bc04-0e89d4d2aa53",
+   "kind": "rx",
+   "image": "c328f555-2da8-43ac-bc04-0e89d4d2aa53/0.jpg",
+   "form": "TABLET, COATED",
+   "ndc": "50090-6458",
+   "truth": [
+    {
+     "ingredient": "spironolactone",
+     "value": 50.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "c0379093-3e19-45ae-a616-0f24a1d255f4",
+   "kind": "rx",
+   "image": "c0379093-3e19-45ae-a616-0f24a1d255f4/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "50090-8158",
+   "truth": [
+    {
+     "ingredient": "dabigatran etexilate mesylate",
+     "value": 150.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "f743f7e0-74cf-47e5-bf21-f2b75d2596dc",
+   "kind": "rx",
+   "image": "f743f7e0-74cf-47e5-bf21-f2b75d2596dc/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "70301-2009",
+   "truth": [
+    {
+     "ingredient": "temozolomide",
+     "value": 180.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "08738ad4-1607-4d55-af71-6790477353bd",
+   "kind": "rx",
+   "image": "08738ad4-1607-4d55-af71-6790477353bd/0.jpg",
+   "form": "TABLET, COATED",
+   "ndc": "50090-6539",
+   "truth": [
+    {
+     "ingredient": "spironolactone",
+     "value": 100.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "dc91a427-8214-484b-af72-52075b2286a1",
+   "kind": "rx",
+   "image": "dc91a427-8214-484b-af72-52075b2286a1/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "72789-598",
+   "truth": [
+    {
+     "ingredient": "ibuprofen",
+     "value": 600.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "4d64a93b-c439-5737-e063-6294a90a79ac",
+   "kind": "rx",
+   "image": "4d64a93b-c439-5737-e063-6294a90a79ac/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "68071-3933",
+   "truth": [
+    {
+     "ingredient": "sildenafil citrate",
+     "value": 20.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "3baeda95-d098-437a-b360-87a9c3f3fd9b",
+   "kind": "rx",
+   "image": "3baeda95-d098-437a-b360-87a9c3f3fd9b/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "72789-073",
+   "truth": [
+    {
+     "ingredient": "cyclobenzaprine hydrochloride",
+     "value": 5.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "08d0a109-3307-47b5-8ff2-c0ad83e66f08",
+   "kind": "rx",
+   "image": "08d0a109-3307-47b5-8ff2-c0ad83e66f08/0.jpg",
+   "form": "TABLET",
+   "ndc": "72789-307",
+   "truth": [
+    {
+     "ingredient": "clonazepam",
+     "value": 0.5,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "4aa896b1-4fd5-513e-e063-6294a90ab950",
+   "kind": "rx",
+   "image": "4aa896b1-4fd5-513e-e063-6294a90ab950/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "68071-3964",
+   "truth": [
+    {
+     "ingredient": "hydroxyzine hydrochloride",
+     "value": 25.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "41d4e09b-b90c-4243-acd8-f2e06ebf4089",
+   "kind": "rx",
+   "image": "41d4e09b-b90c-4243-acd8-f2e06ebf4089/0.jpg",
+   "form": "TABLET",
+   "ndc": "50090-8098",
+   "truth": [
+    {
+     "ingredient": "glipizide",
+     "value": 10.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "baf8ec98-bd0c-4b87-a7ee-813335431b89",
+   "kind": "rx",
+   "image": "baf8ec98-bd0c-4b87-a7ee-813335431b89/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "70954-041",
+   "truth": [
+    {
+     "ingredient": "rifabutin",
+     "value": 150.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "2bf7d838-6274-4d8a-91cb-b27e1e81d273",
+   "kind": "rx",
+   "image": "2bf7d838-6274-4d8a-91cb-b27e1e81d273/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "72789-220",
+   "truth": [
+    {
+     "ingredient": "doxepin hydrochloride",
+     "value": 10.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "5d2df7a8-7d7d-c4b9-e063-6394a90a0a7a",
+   "kind": "rx",
+   "image": "5d2df7a8-7d7d-c4b9-e063-6394a90a0a7a/0.jpg",
+   "form": "TABLET",
+   "ndc": "67046-1294",
+   "truth": [
+    {
+     "ingredient": "prednisone",
+     "value": 10.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "7e96b724-5f5f-43cb-8d8b-adff3e1fc779",
+   "kind": "rx",
+   "image": "7e96b724-5f5f-43cb-8d8b-adff3e1fc779/0.jpg",
+   "form": "TABLET, FILM COATED, EXTENDED RELEASE",
+   "ndc": "70518-1781",
+   "truth": [
+    {
+     "ingredient": "divalproex sodium",
+     "value": 250.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "c0ca008e-0e28-412e-a58f-70f63817713b",
+   "kind": "rx",
+   "image": "c0ca008e-0e28-412e-a58f-70f63817713b/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "70518-4250",
+   "truth": [
+    {
+     "ingredient": "cephalexin",
+     "value": 250.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "9161cb5e-63e5-41d7-9bde-66c7b7b7a2f3",
+   "kind": "rx",
+   "image": "9161cb5e-63e5-41d7-9bde-66c7b7b7a2f3/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "72789-156",
+   "truth": [
+    {
+     "ingredient": "cyclobenzaprine hydrochloride",
+     "value": 10.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "385301f5-e59d-42d5-8544-aadf0ee0c967",
+   "kind": "rx",
+   "image": "385301f5-e59d-42d5-8544-aadf0ee0c967/0.jpg",
+   "form": "TABLET",
+   "ndc": "71335-1364",
+   "truth": [
+    {
+     "ingredient": "aripiprazole",
+     "value": 20.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "1076ba9a-0168-492f-ba9b-99fa02186092",
+   "kind": "rx",
+   "image": "1076ba9a-0168-492f-ba9b-99fa02186092/0.jpg",
+   "form": "CAPSULE, GELATIN COATED",
+   "ndc": "75854-308",
+   "truth": [
+    {
+     "ingredient": "ascorbic acid",
+     "value": 85.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "cholecalciferol",
+     "value": 1000.0,
+     "unit": "iu"
+    },
+    {
+     "ingredient": ".alpha.-tocopherol acetate, dl-",
+     "value": 10.0,
+     "unit": "iu"
+    },
+    {
+     "ingredient": "folic acid",
+     "value": 1.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "pyridoxine hydrochloride",
+     "value": 25.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "cyanocobalamin",
+     "value": 12.0,
+     "unit": "mcg"
+    },
+    {
+     "ingredient": "biotin",
+     "value": 500.0,
+     "unit": "mcg"
+    },
+    {
+     "ingredient": "calcium",
+     "value": 160.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "iron",
+     "value": 27.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "magnesium oxide",
+     "value": 45.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "lactic acid",
+     "value": 10.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "doconexent",
+     "value": 400.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "db007ac0-020e-4962-8903-7497ab96a74e",
+   "kind": "rx",
+   "image": "db007ac0-020e-4962-8903-7497ab96a74e/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "70518-1588",
+   "truth": [
+    {
+     "ingredient": "imipramine hydrochloride",
+     "value": 50.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "5d407f3f-fc59-331d-e063-6394a90ac10c",
+   "kind": "rx",
+   "image": "5d407f3f-fc59-331d-e063-6394a90ac10c/0.jpg",
+   "form": "TABLET, COATED",
+   "ndc": "53401-041",
+   "truth": [
+    {
+     "ingredient": "spironolactone",
+     "value": 25.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "5e569972-eb5d-a0bd-e063-6294a90a2340",
+   "kind": "rx",
+   "image": "5e569972-eb5d-a0bd-e063-6294a90a2340/0.jpg",
+   "form": "TABLET",
+   "ndc": "67296-2349",
+   "truth": [
+    {
+     "ingredient": "metaxalone",
+     "value": 800.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "03afbc5a-a9dc-e823-e063-6394a90a0cb2",
+   "kind": "rx",
+   "image": "03afbc5a-a9dc-e823-e063-6394a90a0cb2/0.jpg",
+   "form": "TABLET",
+   "ndc": "82868-003",
+   "truth": [
+    {
+     "ingredient": "propranolol hydrochloride",
+     "value": 20.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "aea4e2a1-2089-40dc-9eee-deaab4f21397",
+   "kind": "rx",
+   "image": "aea4e2a1-2089-40dc-9eee-deaab4f21397/0.jpg",
+   "form": "TABLET",
+   "ndc": "72789-007",
+   "truth": [
+    {
+     "ingredient": "metronidazole",
+     "value": 500.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "3c2130f9-a0d8-4a4e-bcad-36379202b7bb",
+   "kind": "rx",
+   "image": "3c2130f9-a0d8-4a4e-bcad-36379202b7bb/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "72789-061",
+   "truth": [
+    {
+     "ingredient": "cefdinir",
+     "value": 300.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "f3a77482-f490-f350-e053-2a95a90ad8cb",
+   "kind": "rx",
+   "image": "f3a77482-f490-f350-e053-2a95a90ad8cb/0.jpg",
+   "form": "TABLET",
+   "ndc": "72789-299",
+   "truth": [
+    {
+     "ingredient": "estradiol",
+     "value": 1.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "b397d4be-d2ef-419a-98ac-844069c99d56",
+   "kind": "rx",
+   "image": "b397d4be-d2ef-419a-98ac-844069c99d56/0.jpg",
+   "form": "TABLET, COATED",
+   "ndc": "72789-224",
+   "truth": [
+    {
+     "ingredient": "amoxicillin",
+     "value": 875.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "7069521a-c7f9-4e8d-99b8-0cb5c971e7cf",
+   "kind": "rx",
+   "image": "7069521a-c7f9-4e8d-99b8-0cb5c971e7cf/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "66993-060",
+   "truth": [
+    {
+     "ingredient": "atovaquone",
+     "value": 250.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "proguanil hydrochloride",
+     "value": 100.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "0c45d793-6f2f-4622-b5ed-6875acfbc02b",
+   "kind": "rx",
+   "image": "0c45d793-6f2f-4622-b5ed-6875acfbc02b/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "0904-6927",
+   "truth": [
+    {
+     "ingredient": "spironolactone",
+     "value": 25.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "73cd20d5-2521-4b93-a221-fa3fe490eba6",
+   "kind": "rx",
+   "image": "73cd20d5-2521-4b93-a221-fa3fe490eba6/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "72789-146",
+   "truth": [
+    {
+     "ingredient": "penicillin v potassium",
+     "value": 250.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "5f6c3eed-2a5d-46ed-9a7c-59715f338a15",
+   "kind": "rx",
+   "image": "5f6c3eed-2a5d-46ed-9a7c-59715f338a15/0.jpg",
+   "form": "TABLET",
+   "ndc": "65862-027",
+   "truth": [
+    {
+     "ingredient": "nevirapine",
+     "value": 200.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "87b87b57-021a-4cb2-9edd-6efa732c208f",
+   "kind": "rx",
+   "image": "87b87b57-021a-4cb2-9edd-6efa732c208f/0.jpg",
+   "form": "TABLET, EXTENDED RELEASE",
+   "ndc": "60687-973",
+   "truth": [
+    {
+     "ingredient": "carbamazepine",
+     "value": 100.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "74dc9949-010c-4f2c-9aef-63ab466ba657",
+   "kind": "rx",
+   "image": "74dc9949-010c-4f2c-9aef-63ab466ba657/0.jpg",
+   "form": "TABLET",
+   "ndc": "55154-2646",
+   "truth": [
+    {
+     "ingredient": "propranolol hydrochloride",
+     "value": 20.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "8bd56c80-2f98-4b6e-809e-d0e981c3dcb3",
+   "kind": "rx",
+   "image": "8bd56c80-2f98-4b6e-809e-d0e981c3dcb3/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "82804-291",
+   "truth": [
+    {
+     "ingredient": "rosuvastatin calcium",
+     "value": 10.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "51cdb22b-035f-47d7-8048-38006e2589f2",
+   "kind": "rx",
+   "image": "51cdb22b-035f-47d7-8048-38006e2589f2/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "72789-219",
+   "truth": [
+    {
+     "ingredient": "nifedipine",
+     "value": 10.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "36284496-e56e-466c-9b56-6007bb5bb699",
+   "kind": "rx",
+   "image": "36284496-e56e-466c-9b56-6007bb5bb699/0.jpg",
+   "form": "TABLET",
+   "ndc": "0904-6622",
+   "truth": [
+    {
+     "ingredient": "pyridostigmine bromide",
+     "value": 60.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "9b022ae9-dd52-43ae-804b-ddf8e7cfd530",
+   "kind": "rx",
+   "image": "9b022ae9-dd52-43ae-804b-ddf8e7cfd530/0.jpg",
+   "form": "TABLET",
+   "ndc": "72789-079",
+   "truth": [
+    {
+     "ingredient": "trazodone hydrochloride",
+     "value": 150.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "ec08a6ee-3d71-0fa9-e053-2995a90a9cb1",
+   "kind": "otc",
+   "image": "ec08a6ee-3d71-0fa9-e053-2995a90a9cb1/0.jpg",
+   "form": "TABLET",
+   "ndc": "10135-763",
+   "truth": [
+    {
+     "ingredient": "loratadine",
+     "value": 10.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "aeb26c0e-4efe-4099-9b68-47824f4506c0",
+   "kind": "otc",
+   "image": "aeb26c0e-4efe-4099-9b68-47824f4506c0/0.jpg",
+   "form": "CAPSULE, GELATIN COATED",
+   "ndc": "82725-4110",
+   "truth": [
+    {
+     "ingredient": "dextromethorphan hydrobromide",
+     "value": 15.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "3205339a-3914-4e25-e063-6394a90a07cd",
+   "kind": "otc",
+   "image": "3205339a-3914-4e25-e063-6394a90a07cd/0.jpg",
+   "form": "CAPSULE, LIQUID FILLED",
+   "ndc": "35916-1939",
+   "truth": [
+    {
+     "ingredient": "dimethicone",
+     "value": 180.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "d9d3d087-ca74-4916-9e6d-93d67efc463e",
+   "kind": "otc",
+   "image": "d9d3d087-ca74-4916-9e6d-93d67efc463e/0.jpg",
+   "form": "CAPSULE, LIQUID FILLED",
+   "ndc": "67091-338",
+   "truth": [
+    {
+     "ingredient": "acetaminophen",
+     "value": 325.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "dextromethorphan hydrobromide",
+     "value": 15.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "doxylamine succinate",
+     "value": 6.25,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "e9534a13-ee8f-470f-8dd1-8ef0ce68526a",
+   "kind": "otc",
+   "image": "e9534a13-ee8f-470f-8dd1-8ef0ce68526a/0.jpg",
+   "form": "TABLET",
+   "ndc": "62207-680",
+   "truth": [
+    {
+     "ingredient": "acetaminophen",
+     "value": 250.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "aspirin",
+     "value": 250.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "caffeine",
+     "value": 65.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "e7f470cf-f036-afd9-e053-2995a90a9186",
+   "kind": "otc",
+   "image": "e7f470cf-f036-afd9-e053-2995a90a9186/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "77333-812",
+   "truth": [
+    {
+     "ingredient": "dimethicone",
+     "value": 80.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "7f80346e-fe30-4a22-aa42-193c5fad93a2",
+   "kind": "otc",
+   "image": "7f80346e-fe30-4a22-aa42-193c5fad93a2/0.jpg",
+   "form": "TABLET",
+   "ndc": "46122-457",
+   "truth": [
+    {
+     "ingredient": "caffeine",
+     "value": 200.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "fd199a7f-76ca-fefc-e053-6294a90a821d",
+   "kind": "otc",
+   "image": "fd199a7f-76ca-fefc-e053-6294a90a821d/0.jpg",
+   "form": "TABLET, DELAYED RELEASE",
+   "ndc": "68071-3425",
+   "truth": [
+    {
+     "ingredient": "aspirin",
+     "value": 81.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "37291cab-e350-d8e3-e063-6294a90a9cb1",
+   "kind": "otc",
+   "image": "37291cab-e350-d8e3-e063-6294a90a9cb1/0.jpg",
+   "form": "TABLET, DELAYED RELEASE",
+   "ndc": "84126-300",
+   "truth": [
+    {
+     "ingredient": "omeprazole magnesium",
+     "value": 20.6,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "47f5a78b-66b6-2e09-e063-6294a90a8ad5",
+   "kind": "otc",
+   "image": "47f5a78b-66b6-2e09-e063-6294a90a8ad5/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "84126-373",
+   "truth": [
+    {
+     "ingredient": "calcium carbonate",
+     "value": 1250.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "magnesium hydroxide",
+     "value": 250.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "3803eb97-4d12-4e5d-9a62-f84cc1026676",
+   "kind": "otc",
+   "image": "3803eb97-4d12-4e5d-9a62-f84cc1026676/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "41250-878",
+   "truth": [
+    {
+     "ingredient": "bismuth subsalicylate",
+     "value": 262.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "ea0f2e8e-59e5-41d6-9cd5-545b81c902e4",
+   "kind": "otc",
+   "image": "ea0f2e8e-59e5-41d6-9cd5-545b81c902e4/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "0113-7099",
+   "truth": [
+    {
+     "ingredient": "cimetidine",
+     "value": 200.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "c118b290-f821-4e73-906e-8a93edaf34e4",
+   "kind": "otc",
+   "image": "c118b290-f821-4e73-906e-8a93edaf34e4/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "0363-0291",
+   "truth": [
+    {
+     "ingredient": "ibuprofen",
+     "value": 200.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "0d59780a-ef22-4b67-8b42-9795dbec8db0",
+   "kind": "otc",
+   "image": "0d59780a-ef22-4b67-8b42-9795dbec8db0/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "62207-814",
+   "truth": [
+    {
+     "ingredient": "naproxen sodium",
+     "value": 220.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "diphenhydramine hydrochloride",
+     "value": 25.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "7342bbf4-ebb9-446d-83bb-6ddcb3a44fa7",
+   "kind": "otc",
+   "image": "7342bbf4-ebb9-446d-83bb-6ddcb3a44fa7/0.jpg",
+   "form": "TABLET, DELAYED RELEASE",
+   "ndc": "77333-031",
+   "truth": [
+    {
+     "ingredient": "aspirin",
+     "value": 81.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "bd11081f-c5d1-4c98-8f5a-4c45269df79b",
+   "kind": "otc",
+   "image": "bd11081f-c5d1-4c98-8f5a-4c45269df79b/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "59779-274",
+   "truth": [
+    {
+     "ingredient": "aspirin",
+     "value": 81.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "32819305-9bbd-8843-e063-6294a90a7f2e",
+   "kind": "otc",
+   "image": "32819305-9bbd-8843-e063-6294a90a7f2e/0.jpg",
+   "form": "TABLET, COATED",
+   "ndc": "84126-353",
+   "truth": [
+    {
+     "ingredient": "acetaminophen",
+     "value": 325.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "doxylamine succinate",
+     "value": 6.25,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "dextromethorphan hydrobromide",
+     "value": 10.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "0f8cfcc5-e975-6645-e063-6394a90adf6c",
+   "kind": "otc",
+   "image": "0f8cfcc5-e975-6645-e063-6394a90adf6c/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "69423-828",
+   "truth": [
+    {
+     "ingredient": "calcium carbonate",
+     "value": 1000.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "magnesium hydroxide",
+     "value": 200.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "6307485a-8be6-40ee-899b-00eb3ee8ce61",
+   "kind": "otc",
+   "image": "6307485a-8be6-40ee-899b-00eb3ee8ce61/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "30142-604",
+   "truth": [
+    {
+     "ingredient": "ibuprofen",
+     "value": 200.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "3d89849f-60a1-40fc-bd0a-a5ff9f758a49",
+   "kind": "otc",
+   "image": "3d89849f-60a1-40fc-bd0a-a5ff9f758a49/0.jpg",
+   "form": "TABLET, COATED",
+   "ndc": "70518-4771",
+   "truth": [
+    {
+     "ingredient": "aspirin",
+     "value": 81.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "56474a81-6e10-6c67-e063-6294a90a28c5",
+   "kind": "otc",
+   "image": "56474a81-6e10-6c67-e063-6294a90a28c5/0.jpg",
+   "form": "TABLET, EFFERVESCENT",
+   "ndc": "83324-084",
+   "truth": [
+    {
+     "ingredient": "aspirin",
+     "value": 325.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "sodium bicarbonate",
+     "value": 1916.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "anhydrous citric acid",
+     "value": 1000.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "f7682626-5c29-44af-a32d-3fa52e7f7482",
+   "kind": "otc",
+   "image": "f7682626-5c29-44af-a32d-3fa52e7f7482/0.jpg",
+   "form": "TABLET, EXTENDED RELEASE",
+   "ndc": "57483-144",
+   "truth": [
+    {
+     "ingredient": "guaifenesin",
+     "value": 1200.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "b11a4c4e-374c-403e-a757-5e9700f9f03b",
+   "kind": "otc",
+   "image": "b11a4c4e-374c-403e-a757-5e9700f9f03b/0.jpg",
+   "form": "TABLET, DELAYED RELEASE",
+   "ndc": "0363-6450",
+   "truth": [
+    {
+     "ingredient": "aspirin",
+     "value": 81.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "0f8d39d7-173b-7750-e063-6394a90ade82",
+   "kind": "otc",
+   "image": "0f8d39d7-173b-7750-e063-6394a90ade82/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "69423-829",
+   "truth": [
+    {
+     "ingredient": "calcium carbonate",
+     "value": 1330.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "magnesium hydroxide",
+     "value": 235.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "5d433829-c493-bb07-e063-6294a90a04b6",
+   "kind": "otc",
+   "image": "5d433829-c493-bb07-e063-6294a90a04b6/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "85766-302",
+   "truth": [
+    {
+     "ingredient": "dimethicone",
+     "value": 125.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "20f8fe27-f97f-4278-a5a8-79b5fc47ef3b",
+   "kind": "otc",
+   "image": "20f8fe27-f97f-4278-a5a8-79b5fc47ef3b/0.jpg",
+   "form": "CAPSULE",
+   "ndc": "69256-916",
+   "truth": [
+    {
+     "ingredient": "diphenhydramine hydrochloride",
+     "value": 50.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "cfe9214d-25e9-7729-e053-2a95a90a0dfb",
+   "kind": "otc",
+   "image": "cfe9214d-25e9-7729-e053-2a95a90a0dfb/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "69423-963",
+   "truth": [
+    {
+     "ingredient": "bismuth subsalicylate",
+     "value": 262.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "ba4f927a-4bbe-0d87-e053-2995a90a8c20",
+   "kind": "otc",
+   "image": "ba4f927a-4bbe-0d87-e053-2995a90a8c20/0.jpg",
+   "form": "CAPSULE, LIQUID FILLED",
+   "ndc": "69452-284",
+   "truth": [
+    {
+     "ingredient": "naproxen sodium",
+     "value": 220.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "fe78e02c-79ba-4d07-b2eb-3b347c6655e5",
+   "kind": "otc",
+   "image": "fe78e02c-79ba-4d07-b2eb-3b347c6655e5/0.jpg",
+   "form": "CAPSULE, LIQUID FILLED",
+   "ndc": "83059-0190",
+   "truth": [
+    {
+     "ingredient": "diphenhydramine hydrochloride",
+     "value": 25.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "52f5cda7-382e-199a-e063-6294a90ab75b",
+   "kind": "otc",
+   "image": "52f5cda7-382e-199a-e063-6294a90ab75b/0.jpg",
+   "form": "TABLET",
+   "ndc": "81993-002",
+   "truth": [
+    {
+     "ingredient": "guaifenesin",
+     "value": 400.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "5e163c21-59dc-fcfd-e063-6294a90a282c",
+   "kind": "otc",
+   "image": "5e163c21-59dc-fcfd-e063-6294a90a282c/0.jpg",
+   "form": "TABLET",
+   "ndc": "85237-1922",
+   "truth": [
+    {
+     "ingredient": "meclizine hydrochloride",
+     "value": 25.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "4b1b0e2a-0f58-c3b1-e063-6294a90aa1fb",
+   "kind": "otc",
+   "image": "4b1b0e2a-0f58-c3b1-e063-6294a90aa1fb/0.jpg",
+   "form": "CAPSULE, LIQUID FILLED",
+   "ndc": "84126-376",
+   "truth": [
+    {
+     "ingredient": "acetaminophen",
+     "value": 500.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "667ffb59-9bff-45a7-89f0-ccfa0d841909",
+   "kind": "otc",
+   "image": "667ffb59-9bff-45a7-89f0-ccfa0d841909/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "83324-316",
+   "truth": [
+    {
+     "ingredient": "calcium carbonate",
+     "value": 500.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "28d9897d-46bf-d206-e063-6394a90a2b27",
+   "kind": "otc",
+   "image": "28d9897d-46bf-d206-e063-6394a90a2b27/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "84126-325",
+   "truth": [
+    {
+     "ingredient": "calcium carbonate",
+     "value": 1000.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "magnesium hydroxide",
+     "value": 200.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "02e3f4ce-8961-425c-98a9-3b9d66709ca5",
+   "kind": "otc",
+   "image": "02e3f4ce-8961-425c-98a9-3b9d66709ca5/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "41415-021",
+   "truth": [
+    {
+     "ingredient": "calcium polycarbophil",
+     "value": 625.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "43745d42-f859-4168-a2dd-2c8ae47ae590",
+   "kind": "otc",
+   "image": "43745d42-f859-4168-a2dd-2c8ae47ae590/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "21130-674",
+   "truth": [
+    {
+     "ingredient": "naproxen sodium",
+     "value": 220.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "2b839e8b-f4ac-4379-ae50-ace4008705d8",
+   "kind": "otc",
+   "image": "2b839e8b-f4ac-4379-ae50-ace4008705d8/0.jpg",
+   "form": "TABLET",
+   "ndc": "65162-146",
+   "truth": [
+    {
+     "ingredient": "cetirizine hydrochloride",
+     "value": 10.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "2f9ea017-a48d-a225-e063-6294a90a9ec3",
+   "kind": "otc",
+   "image": "2f9ea017-a48d-a225-e063-6294a90a9ec3/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "84126-347",
+   "truth": [
+    {
+     "ingredient": "calcium carbonate",
+     "value": 1000.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "252b143f-eee8-f407-e063-6394a90a0a08",
+   "kind": "otc",
+   "image": "252b143f-eee8-f407-e063-6394a90a0a08/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "84126-321",
+   "truth": [
+    {
+     "ingredient": "bismuth subsalicylate",
+     "value": 262.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "03774690-662b-1c30-e063-6294a90a3488",
+   "kind": "otc",
+   "image": "03774690-662b-1c30-e063-6294a90a3488/0.jpg",
+   "form": "TABLET, COATED",
+   "ndc": "69729-104",
+   "truth": [
+    {
+     "ingredient": "aspirin",
+     "value": 81.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "113df1bc-a217-33ea-e063-6294a90a4643",
+   "kind": "otc",
+   "image": "113df1bc-a217-33ea-e063-6294a90a4643/0.jpg",
+   "form": "TABLET, EXTENDED RELEASE",
+   "ndc": "72288-698",
+   "truth": [
+    {
+     "ingredient": "acetaminophen",
+     "value": 650.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "f5ab0098-14ab-440d-b739-aea8a77b01dc",
+   "kind": "otc",
+   "image": "f5ab0098-14ab-440d-b739-aea8a77b01dc/0.jpg",
+   "form": "TABLET",
+   "ndc": "72288-728",
+   "truth": [
+    {
+     "ingredient": "loperamide hydrochloride",
+     "value": 2.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "dimethicone",
+     "value": 125.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "b00ec380-4e6e-4a3b-958c-50c75cff81a0",
+   "kind": "otc",
+   "image": "b00ec380-4e6e-4a3b-958c-50c75cff81a0/0.jpg",
+   "form": "TABLET, FILM COATED",
+   "ndc": "83324-072",
+   "truth": [
+    {
+     "ingredient": "chlorpheniramine maleate",
+     "value": 4.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "dextromethorphan hydrobromide",
+     "value": 30.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "45a0c910-7dd7-6a42-e063-6394a90a491c",
+   "kind": "otc",
+   "image": "45a0c910-7dd7-6a42-e063-6394a90a491c/0.jpg",
+   "form": "TABLET, COATED",
+   "ndc": "42507-245",
+   "truth": [
+    {
+     "ingredient": "naproxen sodium",
+     "value": 220.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "0340ef94-d2b4-47af-a045-d0d031293984",
+   "kind": "otc",
+   "image": "0340ef94-d2b4-47af-a045-d0d031293984/0.jpg",
+   "form": "CAPSULE, DELAYED RELEASE",
+   "ndc": "79481-0281",
+   "truth": [
+    {
+     "ingredient": "omeprazole magnesium",
+     "value": 20.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "84ffa6d6-03e1-59e8-e053-2a91aa0afd6e",
+   "kind": "otc",
+   "image": "84ffa6d6-03e1-59e8-e053-2a91aa0afd6e/0.jpg",
+   "form": "CAPSULE, LIQUID FILLED",
+   "ndc": "37000-535",
+   "truth": [
+    {
+     "ingredient": "bismuth subsalicylate",
+     "value": 262.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "653be152-7629-41f5-a864-62803f6eadfb",
+   "kind": "otc",
+   "image": "653be152-7629-41f5-a864-62803f6eadfb/0.jpg",
+   "form": "CAPSULE, DELAYED RELEASE",
+   "ndc": "41163-539",
+   "truth": [
+    {
+     "ingredient": "esomeprazole",
+     "value": 20.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "7e8196ec-6695-40b0-a212-e14e9bb606fa",
+   "kind": "otc",
+   "image": "7e8196ec-6695-40b0-a212-e14e9bb606fa/0.jpg",
+   "form": "TABLET, COATED",
+   "ndc": "69517-004",
+   "truth": [
+    {
+     "ingredient": "diphenhydramine hydrochloride",
+     "value": 25.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "0429d816-f3a9-2076-e063-6394a90aef21",
+   "kind": "otc",
+   "image": "0429d816-f3a9-2076-e063-6394a90aef21/0.jpg",
+   "form": "TABLET",
+   "ndc": "58933-017",
+   "truth": [
+    {
+     "ingredient": "bismuth subsalicylate",
+     "value": 262.0,
+     "unit": "mg"
+    }
+   ]
+  },
+  {
+   "key": "0ccf0eca-3914-b27a-e063-6294a90a493e",
+   "kind": "otc",
+   "image": "0ccf0eca-3914-b27a-e063-6294a90a493e/0.jpg",
+   "form": "TABLET, CHEWABLE",
+   "ndc": "69423-826",
+   "truth": [
+    {
+     "ingredient": "calcium carbonate",
+     "value": 1000.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "magnesium hydroxide",
+     "value": 200.0,
+     "unit": "mg"
+    },
+    {
+     "ingredient": "dimethicone",
+     "value": 40.0,
+     "unit": "mg"
+    }
+   ]
+  }
+ ]
+}

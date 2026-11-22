@@ -1,0 +1,440 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 5,
+      "total": 63
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "0573-0175",
+      "generic_name": "ibuprofen",
+      "labeler_name": "Haleon US Holdings LLC",
+      "brand_name": "JUNIOR STRENGTH ADVIL",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "100 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0573-0175-11",
+          "description": "1 BOTTLE in 1 CARTON (0573-0175-11)  / 24 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20110621",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Haleon US Holdings LLC"
+        ],
+        "rxcui": [
+          "198405",
+          "731535"
+        ],
+        "spl_set_id": [
+          "5ed0d404-c54d-b05f-578a-d2730e8a78ee"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "ef08fcca-c3f3-4179-a042-bbd9f6733e58",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20110621",
+      "product_id": "0573-0175_ef08fcca-c3f3-4179-a042-bbd9f6733e58",
+      "application_number": "NDA020267",
+      "brand_name_base": "JUNIOR STRENGTH ADVIL",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "0573-0179",
+      "generic_name": "ibuprofen",
+      "labeler_name": "Haleon US Holdings LLC",
+      "brand_name": "JUNIOR STRENGTH ADVIL",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "100 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0573-0179-20",
+          "description": "1 BOTTLE in 1 CARTON (0573-0179-20)  / 24 TABLET, CHEWABLE in 1 BOTTLE",
+          "marketing_start_date": "20110601",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Haleon US Holdings LLC"
+        ],
+        "rxcui": [
+          "310963",
+          "731536"
+        ],
+        "spl_set_id": [
+          "07d4c400-b182-92f7-7574-9e0e94c39cce"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, CHEWABLE",
+      "spl_id": "60e9724f-3733-45d1-989d-8ee434e91dc0",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20110601",
+      "product_id": "0573-0179_60e9724f-3733-45d1-989d-8ee434e91dc0",
+      "application_number": "NDA020944",
+      "brand_name_base": "JUNIOR STRENGTH ADVIL",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "29485-6552",
+      "generic_name": "IBUPROFEN Capsule, Liquid-filled",
+      "labeler_name": "Lil' Drug Store Products, Inc.",
+      "brand_name": "Advil Liqui-Gels",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "29485-6552-4",
+          "description": "2 POUCH in 1 CARTON (29485-6552-4)  / 2 CAPSULE, LIQUID FILLED in 1 POUCH",
+          "marketing_start_date": "20170825",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Lil' Drug Store Products, Inc."
+        ],
+        "rxcui": [
+          "310964",
+          "731533"
+        ],
+        "spl_set_id": [
+          "c459ea1e-dabf-bba6-e053-2995a90af40f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "CAPSULE, LIQUID FILLED",
+      "spl_id": "2a83300a-15eb-365a-e063-6394a90a28d1",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20170825",
+      "product_id": "29485-6552_2a83300a-15eb-365a-e063-6394a90a28d1",
+      "application_number": "NDA020402",
+      "brand_name_base": "Advil Liqui-Gels",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "0573-0180",
+      "generic_name": "ibuprofen and pseudoephedrine hydrochloride",
+      "labeler_name": "Haleon US Holdings LLC",
+      "brand_name": "ADVIL COLD AND SINUS",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN",
+          "strength": "200 mg/1"
+        },
+        {
+          "name": "PSEUDOEPHEDRINE HYDROCHLORIDE",
+          "strength": "30 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0573-0180-10",
+          "description": "2 BLISTER PACK in 1 CARTON (0573-0180-10)  / 10 TABLET, COATED in 1 BLISTER PACK",
+          "marketing_start_date": "19890919",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0180-21",
+          "description": "4 BLISTER PACK in 1 CARTON (0573-0180-21)  / 10 TABLET, COATED in 1 BLISTER PACK",
+          "marketing_start_date": "19890919",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0180-80",
+          "description": "2 CARTON in 1 PACKAGE (0573-0180-80)  / 4 BLISTER PACK in 1 CARTON / 10 TABLET, COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20250507",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Haleon US Holdings LLC"
+        ],
+        "rxcui": [
+          "1299021"
+        ],
+        "spl_set_id": [
+          "fac22a47-f0de-4505-fd8a-768430cda0c1"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000000160",
+          "M0001335",
+          "N0000175722"
+        ],
+        "pharm_class_moa": [
+          "Cyclooxygenase Inhibitors [MoA]"
+        ],
+        "pharm_class_cs": [
+          "Anti-Inflammatory Agents, Non-Steroidal [CS]"
+        ],
+        "pharm_class_epc": [
+          "Nonsteroidal Anti-inflammatory Drug [EPC]"
+        ],
+        "unii": [
+          "6V9V2RYJ8N",
+          "WK2XYI10QM"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "cec76100-19bc-49c3-8805-7badb2a8bf28",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "19890919",
+      "product_id": "0573-0180_cec76100-19bc-49c3-8805-7badb2a8bf28",
+      "application_number": "NDA019771",
+      "brand_name_base": "ADVIL COLD AND SINUS",
+      "pharm_class": [
+        "Adrenergic alpha-Agonists [MoA]",
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]",
+        "alpha-Adrenergic Agonist [EPC]"
+      ]
+    },
+    {
+      "product_ndc": "0573-0133",
+      "generic_name": "ibuprofen sodium",
+      "labeler_name": "Haleon US Holdings LLC",
+      "brand_name": "Advil",
+      "active_ingredients": [
+        {
+          "name": "IBUPROFEN SODIUM",
+          "strength": "256 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0573-0133-01",
+          "description": "3000 PACKET in 1 CASE (0573-0133-01)  / 2 TABLET, COATED in 1 PACKET",
+          "marketing_start_date": "20140811",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-02",
+          "description": "50 PACKET in 1 TRAY (0573-0133-02)  / 2 TABLET, COATED in 1 PACKET",
+          "marketing_start_date": "20130708",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-04",
+          "description": "2 PACKET in 1 BLISTER PACK (0573-0133-04)  / 2 TABLET, COATED in 1 PACKET",
+          "marketing_start_date": "20130708",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-05",
+          "description": "2 PACKET in 1 CARTON (0573-0133-05)  / 2 TABLET, COATED in 1 PACKET",
+          "marketing_start_date": "20130708",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-20",
+          "description": "1 BOTTLE in 1 CARTON (0573-0133-20)  / 20 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20130708",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-40",
+          "description": "1 BOTTLE in 1 CARTON (0573-0133-40)  / 40 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20130708",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-41",
+          "description": "1 BOTTLE in 1 CARTON (0573-0133-41)  / 40 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20150812",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-80",
+          "description": "1 BOTTLE in 1 CARTON (0573-0133-80)  / 80 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20130708",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-81",
+          "description": "1 BOTTLE in 1 CARTON (0573-0133-81)  / 100 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20130708",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-88",
+          "description": "2 BOTTLE in 1 PACKAGE (0573-0133-88)  / 120 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20130708",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-89",
+          "description": "1 BOTTLE in 1 CARTON (0573-0133-89)  / 160 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20130708",
+          "sample": false
+        },
+        {
+          "package_ndc": "0573-0133-91",
+          "description": "1 BOTTLE in 1 CARTON (0573-0133-91)  / 180 TABLET, COATED in 1 BOTTLE",
+          "marketing_start_date": "20141201",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Haleon US Holdings LLC"
+        ],
+        "rxcui": [
+          "153008",
+          "310965"
+        ],
+        "spl_set_id": [
+          "5be198b8-396e-4b44-8819-e2e3b5d2ad0e"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "RM1CE97Z4N"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, COATED",
+      "spl_id": "40429ef4-846a-eb4c-e063-6394a90ab7a9",
+      "product_type": "HUMAN OTC DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20130708",
+      "product_id": "0573-0133_40429ef4-846a-eb4c-e063-6394a90ab7a9",
+      "application_number": "NDA201803",
+      "brand_name_base": "Advil",
+      "pharm_class": [
+        "Anti-Inflammatory Agents",
+        "Non-Steroidal [CS]",
+        "Cyclooxygenase Inhibitors [MoA]",
+        "Nonsteroidal Anti-inflammatory Drug [EPC]"
+      ]
+    }
+  ]
+}
