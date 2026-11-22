@@ -28,7 +28,15 @@ const SECTION_NAMES: Record<string, string> = {
   information_for_patients: "Information for patients",
   fda_recall: "FDA recall record",
   fda_statement: "FDA statement on this ingredient",
+  reference_label: "TYLENOL Extra Strength label, used as the reference limit",
+  spl_medguide: "Medication Guide",
+  precautions: "Precautions",
+  pregnancy: "Pregnancy",
+  use_in_specific_populations: "Use in specific populations",
+  stop_use: "Stop use and ask a doctor",
 };
+
+const STANDALONE_SECTIONS: ReadonlySet<string> = new Set(["fda_recall", "fda_statement", "reference_label"]);
 
 const QUOTES_SHOWN_FIRST = 2;
 
@@ -63,8 +71,16 @@ function QuoteBlock({ quote, items, terms }: { quote: FlagQuote; items: readonly
         <Highlighted text={quote.excerpt} terms={terms} />
       </blockquote>
       <figcaption className="mt-1 text-sm text-ink-soft">
-        {quote.section === "fda_recall" || quote.section === "fda_statement" ? "From the " : `From the label of ${source?.displayName ?? "this product"}, section `}
+        {STANDALONE_SECTIONS.has(quote.section) ? "From the " : `From the label of ${source?.displayName ?? "this product"}, section `}
         {SECTION_NAMES[quote.section] ?? quote.section.replaceAll("_", " ")}.
+        {quote.sourceUrl && (
+          <>
+            {" "}
+            <a className="underline" href={quote.sourceUrl} target="_blank" rel="noreferrer">
+              Source
+            </a>
+          </>
+        )}
       </figcaption>
     </figure>
   );
@@ -86,6 +102,11 @@ export function FlagRow({ flag, items, isNew = false }: { flag: Flag; items: rea
         <h3 className="text-lg font-semibold leading-tight">{flag.title}</h3>
       </div>
       <p className="mt-2">{flag.explain}</p>
+      {flag.matchedBecause?.map((reason) => (
+        <p key={reason} className="mt-1 text-sm text-ink-soft">
+          Why these match: {reason}
+        </p>
+      ))}
       <p className="mt-2 font-bold">What to do: {nextStep(flag)}</p>
       {flag.type !== "interaction" && names.length > 0 && (
         <p className="mt-1 text-sm text-ink-soft">Involves {names.join(", ")}.</p>

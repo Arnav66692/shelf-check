@@ -116,7 +116,8 @@ function quotesOf(flag: EngineFlag): readonly FlagQuote[] {
   const all = [flag.quote, ...(flag.supportingQuotes ?? [])].filter((quote) => quote !== undefined);
   const fromLabels = all.map((quote) => ({ excerpt: quote.excerpt, section: quote.section, itemId: quote.itemId }));
   if (!flag.source) return fromLabels;
-  const official = { excerpt: flag.source.text, section: "fda_statement", itemId: flag.itemIds[0] ?? "" };
+  const section = flag.type === "daily_total" ? "reference_label" : "fda_statement";
+  const official = { excerpt: flag.source.text, section, itemId: flag.itemIds[0] ?? "", sourceUrl: flag.source.sourceUrl };
   return [...fromLabels, official];
 }
 
@@ -160,7 +161,18 @@ function mergeGroup(
   const severity = members.map((member) => member.severity).sort((a, b) => SEVERITY_RANK[a] - SEVERITY_RANK[b])[0];
   const prescribed = itemIds.some((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
   const allPrescribed = itemIds.length > 0 && itemIds.every((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
-  const shared = { id: key, type: first.type, severity, itemIds, quotes, highlight: highlightTerms(members), prescribed, allPrescribed };
+  const reasons = [...new Set(members.map((member) => member.matchedBecause).filter((reason): reason is string => !!reason))];
+  const shared = {
+    id: key,
+    type: first.type,
+    severity,
+    itemIds,
+    quotes,
+    highlight: highlightTerms(members),
+    prescribed,
+    allPrescribed,
+    ...(reasons.length > 0 ? { matchedBecause: reasons } : {}),
+  };
   if (first.type === "interaction") {
     const pair = itemIds.map((id) => names.get(id) ?? "a product").join(" and ");
     const count = quotes.length === 1 ? "A label warns" : `${quotes.length} label lines warn`;

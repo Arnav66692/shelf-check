@@ -1,4 +1,4 @@
-import { isEmergency, matchSymptoms, type CabinetItem, type SymptomMatch } from "@engine/index.ts";
+import { screenEmergency, matchSymptoms, type CabinetItem, type SymptomMatch } from "@engine/index.ts";
 import { buildCabinet, flagsFor } from "@/server/cabinet";
 import { MAX_SYMPTOM_TEXT_LENGTH, TEXT_TOO_LONG } from "@/server/causes";
 import { recallFlags, tagFlags } from "@/server/extras";
@@ -83,10 +83,19 @@ export async function POST(request: Request): Promise<Response> {
   if (text.length < 3 || products === null) {
     return Response.json({ error: "Say how you feel in a few words." }, { status: 400 });
   }
-  if (isEmergency(text)) {
-    return Response.json({ emergency: true, matches: [], flags: [], hidden: [], unchecked: [] });
-  }
   const profile = readProfile(body?.profile);
+  const screen = screenEmergency(text, profile.ageYears !== undefined ? { ageMonths: profile.ageYears * 12 } : undefined);
+  if (screen.emergency) {
+    return Response.json({
+      emergency: true,
+      poison: screen.poison,
+      selfHarm: screen.selfHarm,
+      matches: [],
+      flags: [],
+      hidden: [],
+      unchecked: [],
+    });
+  }
   const childDoctor = needsChildDoctor(text, profile);
   const forChild = CHILD.test(text) && (profile.ageYears === undefined || profile.ageYears >= CHILD_AGE_YEARS);
   if (childDoctor) {

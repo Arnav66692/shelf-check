@@ -12,6 +12,8 @@ const TOO_LONG = `Please describe how you feel in ${MAX_TEXT_LENGTH} characters 
 
 type HiddenMatch = { readonly itemId: string; readonly reason: string };
 type FullResult = SymptomResult & {
+  readonly poison?: boolean;
+  readonly selfHarm?: boolean;
   readonly childDoctor?: boolean;
   readonly forChild?: boolean;
   readonly hidden?: readonly HiddenMatch[];
@@ -48,16 +50,33 @@ function ChildDoctor() {
   );
 }
 
-function Emergency() {
+function Emergency({ poison, selfHarm }: { poison: boolean; selfHarm: boolean }) {
   return (
-    <section className="facts" role="alert" style={{ borderColor: "var(--stop)" }}>
+    <section className="facts" role="alert" style={{ borderColor: "var(--stop)", boxShadow: "inset 2px 0 0 var(--stop)" }}>
       <h2 className="facts-title" style={{ borderColor: "var(--stop)", color: "var(--stop)" }}>
         This can be an emergency
       </h2>
-      <p className="mt-3 text-lg font-bold">Call 911 or your local emergency number now.</p>
+      {poison && (
+        <p className="mt-3 text-lg font-bold">
+          Possible poisoning or overdose: call Poison Help now at{" "}
+          <a className="underline" href="tel:18002221222">
+            1-800-222-1222
+          </a>
+          . If the person is not awake, not breathing, or having a seizure, call 911.
+        </p>
+      )}
+      {selfHarm && (
+        <p className="mt-3 text-lg font-bold">
+          If you are thinking about hurting yourself, call or text{" "}
+          <a className="underline" href="tel:988">
+            988
+          </a>{" "}
+          to reach the Suicide and Crisis Lifeline, any time. If you are in danger right now, call 911.
+        </p>
+      )}
+      {!poison && !selfHarm && <p className="mt-3 text-lg font-bold">Call 911 or your local emergency number now.</p>}
       <p className="mt-2">
-        For a possible poisoning or overdose in the United States, Poison Control is 1-800-222-1222. Do not wait to see
-        whether a medicine at home helps.
+        Do not wait to see whether a medicine at home helps. Poison Help in the United States is 1-800-222-1222.
       </p>
     </section>
   );
@@ -226,7 +245,7 @@ export function SymptomsView() {
           </p>
         )}
 
-        {result?.emergency && <Emergency />}
+        {result?.emergency && <Emergency poison={result.poison === true} selfHarm={result.selfHarm === true} />}
         {result && !result.emergency && result.childDoctor && <ChildDoctor />}
 
         {result && !result.emergency && !result.childDoctor && (

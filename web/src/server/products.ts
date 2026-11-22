@@ -1,5 +1,6 @@
 import { findByCode, PER_EACH_UNIT, searchByName } from "@lookup/index.ts";
 import type { CodeLookupResult, IdentifiedProduct } from "@lookup/types.ts";
+import { isNutritionFact } from "@engine/supplementNames.ts";
 import type { Product, Strength } from "@/lib/model";
 
 const RESULT_LIMIT = 12;
@@ -12,7 +13,7 @@ function productId(record: IdentifiedProduct): string {
 
 function toStrengths(record: IdentifiedProduct): readonly Strength[] {
   return record.ingredients.flatMap((ingredient) => {
-    if (ingredient.value === null) return [];
+    if (ingredient.value === null || isNutritionFact(ingredient.rawName)) return [];
     const per = ingredient.per && ingredient.per.unit !== PER_EACH_UNIT ? ingredient.per : undefined;
     return [{ name: ingredient.rawName.toLowerCase(), value: ingredient.value, unit: ingredient.unit, per }];
   });

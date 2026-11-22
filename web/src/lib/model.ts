@@ -42,9 +42,15 @@ export type Flag = {
   readonly highlight?: readonly string[];
   readonly prescribed?: boolean;
   readonly allPrescribed?: boolean;
+  readonly matchedBecause?: readonly string[];
 };
 
-export type FlagQuote = { readonly excerpt: string; readonly section: string; readonly itemId: string };
+export type FlagQuote = {
+  readonly excerpt: string;
+  readonly section: string;
+  readonly itemId: string;
+  readonly sourceUrl?: string;
+};
 
 export type { ConditionId } from "@engine/flags/profile.ts";
 
