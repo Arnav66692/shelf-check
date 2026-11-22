@@ -52,6 +52,8 @@ const KIND_RANK: Readonly<Record<InteractionMatchKind, number>> = {
 
 interface CompiledTerm extends SearchTerm {
   readonly pattern: RegExp;
+  // The label's own drug is in this group, so the word may mean the label's drug itself.
+  readonly sharedWithOwner?: boolean;
 }
 
 interface FoundMatch {
@@ -77,6 +79,9 @@ export function isAboutCoUse(sentence: LabelSentence): boolean {
 
 function termsAbout(other: CabinetItem, labelOwner: CabinetItem): readonly CompiledTerm[] {
   const ownNames = new Set(labelOwner.ingredients.map((ingredient) => ingredient.name.toLowerCase()));
+  const ownGroups = new Set(labelOwner.ingredients.flatMap(searchTermsFor)
+    .filter((term) => term.kind === "class_name" || term.kind === "class_phrase")
+    .map((term) => term.term.toLowerCase()));
   // Clinical mechanism rows describe systemic exposure. Local-only NDC products
   // (e.g. ketoconazole shampoo) should not inherit the systemic drug's warning.
   const localOnly = other.routes?.length && other.routes.every((route) =>
@@ -92,7 +97,12 @@ function termsAbout(other: CabinetItem, labelOwner: CabinetItem): readonly Compi
     // An electrolyte in a combination drug (for example, a bowel preparation)
     // does not establish that the product is used for potassium supplementation.
     .filter((term) => term.mechanism?.term !== "potassium supplement" || other.kind === "supplement" || other.ingredients.length === 1)
-    .map((term) => ({ ...term, pattern: new RegExp((term.mechanism?.pattern ?? termRegExp(term.term)).source, "gi") }));
+    .map((term) => ({
+      ...term,
+      pattern: new RegExp((term.mechanism?.pattern ?? termRegExp(term.term)).source, "gi"),
+      ...(!term.mechanism && (term.kind === "class_name" || term.kind === "class_phrase") && ownGroups.has(term.term.toLowerCase())
+        ? { sharedWithOwner: true } : {}),
+    }));
 }
 
 function describesOwner(before: string, after: string, owner: CabinetItem): boolean {
@@ -107,6 +117,18 @@ function describesOwner(before: string, after: string, owner: CabinetItem): bool
       .some((name) => new RegExp(termRegExp(name).source + "$", "i").test(subject));
 }
 
+// Drugs that labels often warn about in sentences of their own. When one of them is the subject and neither
+// product contains it, a drug group word in that sentence is about the third drug.
+const THIRD_DRUGS = /\b(lithium|digoxin|rilpivirine|gemfibrozil|methotrexate|aliskiren|cyclosporine|tacrolimus|theophylline|dofetilide|pimozide|thioridazine|cisapride|colchicine|warfarin)\b/i;
+
+function namesThirdDrug(text: string, owner: CabinetItem, otherIngredient: string): boolean {
+  const named = THIRD_DRUGS.exec(text)?.[1]?.toLowerCase();
+  if (!named) return false;
+  const inPair = [...owner.ingredients.map((ingredient) => ingredient.name), otherIngredient]
+    .some((name) => name.toLowerCase().includes(named));
+  return !inPair;
+}
+
 function firstAllowedSpan(text: string, term: CompiledTerm, owner: CabinetItem): TextSpan | undefined {
   return [...text.matchAll(term.pattern)]
     .map((hit) => ({ start: hit.index, end: hit.index + hit[0].length }))
@@ -115,6 +137,9 @@ function firstAllowedSpan(text: string, term: CompiledTerm, owner: CabinetItem):
       const after = text.slice(span.end);
       if (term.notFollowedBy?.test(after)) return false;
       if (term.mechanism && !mechanismSpanAllowed(text, span.start, span.end, term.mechanism)) return false;
+      // "Lithium should not be given with diuretics" on a diuretic's label is about lithium and this drug,
+      // not about this drug and another diuretic.
+      if (term.sharedWithOwner && namesThirdDrug(before, owner, term.ingredient)) return false;
       if (term.kind === "class_name" || term.kind === "class_phrase") {
         // Appositives classify the named drug in a study or explain the label owner's activity.
         if (describesOwner(before, after, owner) || /(?:^as |[,(]\s*)(?:an? )$/i.test(before)) return false;
