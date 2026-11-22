@@ -268,7 +268,9 @@ const PLAIN_GROUP_NAMES: readonly (readonly [RegExp, string])[] = [
 function classExplanation(other: CabinetItem, best: SentenceMatch): string | undefined {
   const { ingredient, text } = best.found;
   if (best.mechanism) {
-    return `${other.displayName} contains ${ingredient}, which counts as one of the “${best.mechanism.term}” this label warns about. Source: ${best.mechanism.source}.`;
+    const term = best.mechanism.term;
+    const counted = /s$/i.test(term) ? `one of the “${term}”` : `a “${term}”`;
+    return `${other.displayName} contains ${ingredient}, which counts as ${counted} this label warns about. Source: ${best.mechanism.source}.`;
   }
   if (!best.drugClass) return undefined;
   // This OTC warning identifies a particular member by name. Make the distinction

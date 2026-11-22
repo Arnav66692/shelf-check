@@ -214,7 +214,14 @@ function mergeGroup(
   const severity = members.map((member) => member.severity).sort((a, b) => SEVERITY_RANK[a] - SEVERITY_RANK[b])[0];
   const prescribed = itemIds.some((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
   const allPrescribed = itemIds.length > 0 && itemIds.every((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
-  const reasons = [...new Set(members.map((member) => member.matchedBecause).filter((reason): reason is string => !!reason))];
+  const reasons = [
+    ...new Map(
+      members
+        .map((member) => member.matchedBecause)
+        .filter((reason): reason is string => !!reason)
+        .map((reason) => [reason.toLowerCase(), reason] as const),
+    ).values(),
+  ];
   const shared = {
     id: key,
     type: first.type,
