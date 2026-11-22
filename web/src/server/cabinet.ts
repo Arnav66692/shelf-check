@@ -182,6 +182,13 @@ function sectionRank(flag: EngineFlag): number {
   return index < 0 ? STRONG_SECTIONS.length : index;
 }
 
+const LIFE_THREAT = /\b(?:fatal|death|life[- ]threatening|respiratory depression|serotonin syndrome|coma)\b/i;
+
+// Within the same badge, a card whose label line names a life-threatening harm comes first.
+function threatRank(flag: Flag): number {
+  return flag.quotes.some((quote) => LIFE_THREAT.test(quote.excerpt)) ? 0 : 1;
+}
+
 function mergeGroup(
   key: string,
   members: readonly EngineFlag[],
@@ -199,7 +206,11 @@ function mergeGroup(
     if (seen.has(id)) return false;
     seen.add(id);
     return true;
-  });
+  })
+    // The line that shows the gravest harm is read first.
+    .map((quote, index) => ({ quote, index }))
+    .sort((a, b) => Number(LIFE_THREAT.test(b.quote.excerpt)) - Number(LIFE_THREAT.test(a.quote.excerpt)) || a.index - b.index)
+    .map(({ quote }) => quote);
   const severity = members.map((member) => member.severity).sort((a, b) => SEVERITY_RANK[a] - SEVERITY_RANK[b])[0];
   const prescribed = itemIds.some((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
   const allPrescribed = itemIds.length > 0 && itemIds.every((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
@@ -240,7 +251,7 @@ export function groupFlags(flags: readonly EngineFlag[], items: readonly Cabinet
   }
   return [...groups.entries()]
     .map(([key, members]) => mergeGroup(key, members, names, kinds))
-    .sort((a, b) => SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity]);
+    .sort((a, b) => SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity] || threatRank(a) - threatRank(b));
 }
 
 // High potassium is most dangerous with weak kidneys or older age, so the same

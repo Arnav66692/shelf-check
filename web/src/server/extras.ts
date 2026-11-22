@@ -68,14 +68,17 @@ export async function recallFlags(items: readonly RecallSubject[]): Promise<read
   );
 }
 
+const GRAVE = /\b(?:fatal|death|coma|respiratory depression|disulfiram-like|contraindicated)\b/i;
+
 export function tagFlags(items: readonly CabinetItem[]): readonly Flag[] {
   const flags = labelTagFlags(items);
   const tags = [...new Set(flags.map((flag) => flag.tag).filter((tag): tag is LabelTag => tag !== undefined))];
   return tags.map((tag) => {
     const members = flags.filter((flag) => flag.tag === tag);
+    // The gravest line leads, so the card's advice and its first quote agree.
     const quotes: FlagQuote[] = members.flatMap((flag) =>
       flag.quote ? [{ excerpt: flag.quote.excerpt, section: flag.quote.section, itemId: flag.quote.itemId }] : [],
-    );
+    ).sort((a, b) => Number(GRAVE.test(b.excerpt)) - Number(GRAVE.test(a.excerpt)));
     const itemIds = [...new Set(members.flatMap((flag) => flag.itemIds))];
     const stop = members.some((flag) => flag.severity === "stop");
     return {
