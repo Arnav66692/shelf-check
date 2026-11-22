@@ -10,6 +10,7 @@ import {
   type RecallRecord,
 } from "@engine/index.ts";
 import type { Flag, FlagQuote } from "@/lib/model";
+import type { RecallSubject } from "./cabinet";
 
 const RECALL_FILE = path.join(process.cwd(), "..", "engine", "data", "recalls.json");
 const RECENT_YEARS = 3;
@@ -38,7 +39,7 @@ function isCurrent(recall: RecallRecord, thisYear: number): boolean {
   return recall.status === "Ongoing" || thisYear - yearOf(recall.initiationDate) < RECENT_YEARS;
 }
 
-function recallFlag(item: CabinetItem, recall: RecallRecord): Flag {
+function recallFlag(item: RecallSubject, recall: RecallRecord): Flag {
   const ongoing = recall.status === "Ongoing";
   return {
     id: `recall:${item.id}:${recall.recallNumber}`,
@@ -56,11 +57,11 @@ function recallFlag(item: CabinetItem, recall: RecallRecord): Flag {
   };
 }
 
-export async function recallFlags(items: readonly CabinetItem[]): Promise<readonly Flag[]> {
+export async function recallFlags(items: readonly RecallSubject[]): Promise<readonly Flag[]> {
   const file = await loadRecalls();
   const thisYear = new Date().getFullYear();
   return items.flatMap((item) =>
-    findRecalls(item, file.recalls)
+    findRecalls({ productNdc: item.productNdc } as CabinetItem, file.recalls)
       .map((match) => match.recall)
       .filter((recall) => isCurrent(recall, thisYear))
       .map((recall) => recallFlag(item, recall)),

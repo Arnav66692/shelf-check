@@ -13,7 +13,7 @@ export async function POST(request: Request): Promise<Response> {
   }
   try {
     const cabinet = await buildCabinet(products);
-    const recalls = await recallFlags(cabinet.items);
+    const recalls = await recallFlags(cabinet.recallSubjects);
     const flags = [...recalls.filter((flag) => flag.severity === "stop"), ...flagsFor(cabinet.items, readProfile(body?.profile))];
     const notes = [...tagFlags(cabinet.items), ...recalls.filter((flag) => flag.severity !== "stop")];
     const disposal = Object.fromEntries(cabinet.items.map((item) => [item.id, disposalAdvice(item).summary]));

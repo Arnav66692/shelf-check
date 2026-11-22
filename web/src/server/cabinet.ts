@@ -70,22 +70,33 @@ async function builtOnce(product: Product): Promise<CabinetItem> {
   return { ...base, id: product.id, displayName: product.displayName };
 }
 
-export type BuiltCabinet = { readonly items: readonly CabinetItem[]; readonly unchecked: readonly string[] };
+export type RecallSubject = Pick<CabinetItem, "id" | "displayName" | "productNdc" | "kind">;
+
+export type BuiltCabinet = {
+  readonly items: readonly CabinetItem[];
+  readonly unchecked: readonly string[];
+  readonly recallSubjects: readonly RecallSubject[];
+};
 
 export async function buildCabinet(products: readonly Product[]): Promise<BuiltCabinet> {
   const settled = await Promise.allSettled(products.map(builtOnce));
   const items: CabinetItem[] = [];
   const unchecked: string[] = [];
+  const failed: RecallSubject[] = [];
   settled.forEach((outcome, index) => {
     if (outcome.status === "rejected") {
       console.error("could not build cabinet item", products[index].id, outcome.reason);
       unchecked.push(products[index].displayName);
+      const product = products[index];
+      if (product.productNdc && product.kind !== "supplement") {
+        failed.push({ id: product.id, displayName: product.displayName, productNdc: product.productNdc, kind: product.kind });
+      }
       return;
     }
     if (outcome.value.label === undefined && !products[index].peptideId) unchecked.push(products[index].displayName);
     items.push(outcome.value);
   });
-  return { items, unchecked };
+  return { items, unchecked, recallSubjects: [...items, ...failed] };
 }
 
 export function toHealthProfile(profile: Profile): HealthProfile {

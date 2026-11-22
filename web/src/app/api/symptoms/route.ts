@@ -96,7 +96,7 @@ export async function POST(request: Request): Promise<Response> {
     const cabinet = await buildCabinet(products);
     const { shown, hidden } = splitByAge(matchSymptoms(text, cabinet.items), profile);
     const shownIds = new Set(shown.map((match) => match.item.id));
-    const recalls = await recallFlags(cabinet.items);
+    const recalls = await recallFlags(cabinet.recallSubjects);
     const flags = [
       ...recalls.filter((flag) => flag.severity === "stop"),
       ...flagsFor(cabinet.items, profile),
