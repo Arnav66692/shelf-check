@@ -322,3 +322,16 @@ test("round 6 red flags in other word orders are caught", () => {
     expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
   }
 });
+
+test("round 8 slang emergencies are caught", () => {
+  for (const text of [
+    "honestly dont see the point anymore, thinking bout taking all my pills",
+    "found the baby chewing on the tylenol bottle, cap was off",
+    "seizing and it wont stop been 6 min",
+    "took my tramadol and a bunch of beers, breathing real slow now",
+    "pooping black tarry stuff since yesterday and dizzy af",
+  ]) expect(screenEmergency(text).emergency, text).toBe(true);
+  for (const ordinary of ["my baby is chewing on everything, teething", "i have a cold and a cough", "my 2yo has a cough and runny nose"]) {
+    expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+  }
+});
