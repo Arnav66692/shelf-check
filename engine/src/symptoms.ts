@@ -2,12 +2,12 @@ import { sentencesIn, toQuote } from "./labelText.ts";
 import type { CabinetItem, LabelSectionName, Quote } from "./types.ts";
 
 export const SYMPTOM_SYNONYMS: Readonly<Record<string, readonly string[]>> = {
-  "nasal congestion": ["nasal congestion", "stuffy nose", "stuffed up", "blocked nose", "sinus congestion", "congestion"],
+  "nasal congestion": ["nasal congestion", "stuffy nose", "stuffed up", "blocked nose", "sinus congestion", "congestion", "nose is stuffy", "nose is blocked", "nose is stuffed", "sinus pressure", "sinuses"],
   fever: ["fever", "feverish", "high temperature"],
   headache: ["headache", "headaches", "head hurts", "head is pounding", "migraine", "migraines"],
-  cough: ["cough", "coughing"],
-  "runny nose": ["runny nose", "nose is running", "sneezing", "sneeze"],
-  "sore throat": ["sore throat", "throat hurts", "scratchy throat"],
+  cough: ["cough", "coughing", "hacking"],
+  "runny nose": ["runny nose", "nose is running", "nose wont stop running", "sneezing", "sneeze", "sniffles"],
+  "sore throat": ["sore throat", "throat hurts", "scratchy throat", "throat is sore", "throat is scratchy", "throat is a little scratchy", "throat is raw"],
   heartburn: ["heartburn", "acid reflux", "acid indigestion", "sour stomach"],
   allergy: ["allergy", "allergies", "hay fever", "itchy eyes", "watery eyes"],
   "trouble sleeping": ["trouble sleeping", "can't sleep", "cannot sleep", "insomnia", "sleeplessness", "sleepless", "fall asleep", "can't fall asleep", "falling asleep", "difficulty falling asleep"],
