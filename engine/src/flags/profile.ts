@@ -419,7 +419,11 @@ function ageFlags(item: CabinetItem, ageYears: number): readonly Flag[] {
       title: `${item.displayName} and age ${formatNumber(ageYears)}`,
       about: isRiskFactor ? `people ${range}` : `an age limit for people ${range}`,
       ...(isRiskFactor ? { detail: riskWording } : {}),
-      explain: isRiskFactor ? riskWording : `The ${item.displayName} label has a limit for people ${range}, and the age in your profile is ${formatNumber(ageYears)}.`,
+      explain: isRiskFactor
+        ? riskWording
+        : clause.severity === "stop"
+          ? `The ${item.displayName} label says do not use it for people ${range}, and the age in your profile is ${formatNumber(ageYears)}.`
+          : `The ${item.displayName} label says to ask a doctor first for people ${range}, and the age in your profile is ${formatNumber(ageYears)}.`,
       severity: clause.severity,
       numbers: { ageYears, fromYears: clause.fromYears, belowYears: clause.belowYears },
     },
