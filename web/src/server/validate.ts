@@ -7,7 +7,7 @@ const MAX_ALLERGIES = 30;
 const KINDS: ReadonlySet<string> = new Set(["otc", "rx", "supplement", "vial"]);
 const PRODUCT_NDC = /^\d{4,5}-\d{3,4}$/;
 const DSLD_ID = /^\d{1,8}$/;
-const PEPTIDE_ID = /^[a-z0-9-]{2,40}$/;
+const PEPTIDE_ID = /^[a-z0-9_-]{2,40}$/;
 
 function optionalMatches(value: unknown, pattern: RegExp): boolean {
   return value === undefined || (typeof value === "string" && pattern.test(value));

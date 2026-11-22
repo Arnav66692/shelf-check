@@ -65,7 +65,8 @@ function cleanProfile(value: unknown): Profile {
 function cleanPerson(value: unknown): Person | null {
   if (!isObject(value) || typeof value.id !== "string" || typeof value.name !== "string") return null;
   const cabinet = Array.isArray(value.cabinet)
-    ? (value.cabinet.filter((item) => isObject(item) && typeof item.id === "string" && typeof item.displayName === "string") as unknown as Product[])
+    ? (value.cabinet.filter((item) => isObject(item) && typeof item.id === "string" && typeof item.displayName === "string" &&
+        Array.isArray(item.ingredients)) as unknown as Product[])
     : [];
   return {
     id: value.id,

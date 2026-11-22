@@ -64,7 +64,7 @@ function ChapterLetter({ letter }: { letter: string }) {
 
 function Rail({ active, onGo }: { active: number; onGo: (index: number) => void }) {
   return (
-    <nav aria-label="Chapters" className="fixed z-20 left-1/2 -translate-x-1/2 top-[calc(var(--margin)+56px)] hidden lg:block">
+    <nav aria-label="Chapters" data-skip-read className="fixed z-20 left-1/2 -translate-x-1/2 top-[calc(var(--margin)+56px)] hidden lg:block">
       <ol className="relative flex items-start gap-2">
         {CHAPTERS.map((chapter, index) => {
           const current = index === active;

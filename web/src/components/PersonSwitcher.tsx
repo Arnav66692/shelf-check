@@ -12,7 +12,8 @@ export function PersonSwitcher() {
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
-    addPerson(name);
+    if (name.trim() === "") return;
+    addPerson(name.trim());
     setName("");
     setAdding(false);
     router.push("/start");
@@ -43,6 +44,7 @@ export function PersonSwitcher() {
             id="person-name"
             className="border border-[var(--rule)] bg-[var(--panel)] px-2 py-1"
             placeholder="Name"
+            required
             value={name}
             onChange={(event) => setName(event.target.value)}
             autoFocus

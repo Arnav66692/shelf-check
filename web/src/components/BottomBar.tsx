@@ -44,7 +44,9 @@ function readPage() {
     return;
   }
   const main = document.getElementById("main");
-  const text = (main?.innerText ?? "").replace(/\s+/g, " ").slice(0, 4000);
+  // Read the page's content, not the person switcher or the chapter buttons.
+  const skipped = [...(main?.querySelectorAll<HTMLElement>("[data-skip-read]") ?? [])].map((element) => element.innerText);
+  const text = skipped.reduce((all, part) => (part ? all.replace(part, " ") : all), main?.innerText ?? "").replace(/\s+/g, " ").slice(0, 4000);
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = 0.95;
   synth.speak(utterance);

@@ -105,8 +105,9 @@ export async function POST(request: Request): Promise<Response> {
   const text = typeof body?.text === "string" ? body.text.trim() : "";
   if (text.length > MAX_SYMPTOM_TEXT_LENGTH) return Response.json({ error: TEXT_TOO_LONG }, { status: 400 });
   const products = readItems(body?.items);
-  if (text.length < 3 || products === null) {
-    return Response.json({ error: "Say how you feel in a few words." }, { status: 400 });
+  if (text.length < 3) return Response.json({ error: "Say how you feel in a few words." }, { status: 400 });
+  if (products === null) {
+    return Response.json({ error: "Your cabinet could not be read. Try removing the last product you added." }, { status: 400 });
   }
   const saved = readProfile(body?.profile);
   const statedAge = childAgeInText(text);

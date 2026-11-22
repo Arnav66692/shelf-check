@@ -44,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <SiteHeader />
         <main id="main" tabIndex={-1} className="flex-1 w-full px-[var(--margin)] pb-28 focus:outline-none">
-          <div className="pt-[calc(var(--margin)+92px)] sm:pt-[calc(var(--margin)+52px)] print:pt-0">
+          <div data-skip-read className="pt-[calc(var(--margin)+92px)] sm:pt-[calc(var(--margin)+52px)] print:hidden">
             <PersonSwitcher />
           </div>
           {children}
