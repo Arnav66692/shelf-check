@@ -160,3 +160,33 @@ test("uses only affirmed symptoms and retains uncertain emergency mentions", asy
   if (!tylenol) throw new Error("missing fixture");
   expect(matchSymptoms("headache", [{ ...tylenol, label: { indications_and_usage: ["For fever but not for headache."] } }])).toEqual([]);
 });
+
+test("round 2 plain-language emergencies are caught", () => {
+  const cases: [string, boolean][] = [
+    ["my husband is very sleepy and his breathing is slow after his pain pills", true],
+    ["he won't wake up", true],
+    ["my son got into the medicine cabinet", true],
+    ["toddler ate a gummy vitamin bottle", true],
+    ["I took a double dose of my blood thinner", true],
+    ["I took my pills twice by mistake", true],
+    ["my face is drooping and I can't talk right", false],
+    ["one side of my body is weak", false],
+    ["I can't feel my left arm", false],
+    ["my throat is closing", false],
+    ["I have hives all over and feel dizzy after amoxicillin", false],
+    ["my lips are blue", false],
+    ["I don't want to be here anymore", false],
+    ["I've been thinking about ending it", false],
+    ["my poop is black", false],
+    ["I'm bleeding and it won't stop", false],
+    ["my nosebleed won't stop on warfarin", false],
+    ["I fell and hit my head on warfarin", false],
+  ];
+  for (const [text, poison] of cases) {
+    const screen = screenEmergency(text);
+    expect(screen.emergency, text).toBe(true);
+    if (screen.emergency && poison) expect(screen.poison, text).toBe(true);
+  }
+  expect(screenEmergency("I don't want to be here anymore")).toMatchObject({ emergency: true, selfHarm: true });
+  expect(screenEmergency("headache and a stuffy nose").emergency).toBe(false);
+});

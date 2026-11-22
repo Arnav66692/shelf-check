@@ -18,11 +18,11 @@ export const SYMPTOM_SYNONYMS: Readonly<Record<string, readonly string[]>> = {
 const EMERGENCY_RULES = {
   poison: {
     phrases: ["overdose", "overdosed", "poisoning", "poisoned"],
-    pattern: /overdos(?:es|ing)|(?:took|taken|taking|swallowed|given|gave|ingested) (?:way )?too (?:much|many)|too many (?:pills|tablets|capsules|doses)|too much (?:medicine|medication|tylenol|acetaminophen|ibuprofen)|accidentally (?:swallowed|ingested)|(?:swallowed|ate|drank|ingested) (?:\w+ ){0,6}(?:pills?|tablets?|capsules?|meds|medicines?|medications?|cough syrup|tylenol|acetaminophen|ibuprofen|advil|aspirin|poison|bleach|cleaner|detergent|batter(?:y|ies)|something unknown)/,
+    pattern: /overdos(?:es|ing)|(?:took|taken|taking|swallowed|given|gave|ingested) (?:way )?too (?:much|many)|too many (?:pills|tablets|capsules|doses)|too much (?:medicine|medication|tylenol|acetaminophen|ibuprofen)|accidentally (?:swallowed|ingested)|(?:swallowed|ate|drank|ingested) (?:\w+ ){0,6}(?:pills?|tablets?|capsules?|meds|medicines?|medications?|cough syrup|tylenol|acetaminophen|ibuprofen|advil|aspirin|poison|bleach|cleaner|detergent|batter(?:y|ies)|something unknown)|got into (?:the |my |grandma'?s )?(?:medicine|meds|pills|cabinet)|ate (?:a |the |some )?(?:\w+ ){0,3}(?:vitamins?|gumm(?:y|ies)|iron)|(?:double|extra|second) dose|took (?:my |his |her )?(?:\w+ ){0,3}twice|(?:sleepy|drowsy|hard to wake|won'?t wake|can'?t wake)[^.]{0,60}(?:breath\w*|pain pills?|opioid|oxy\w*|fentanyl)|breathing (?:is )?(?:slow|shallow|weird)|won'?t wake up|not waking/,
   },
   self_harm: {
     phrases: ["suicidal thoughts", "suicidal", "kill myself", "want to die", "end my life"],
-    pattern: /suicide|killing myself|hurt myself on purpose/,
+    pattern: /suicide|killing myself|hurt myself on purpose|don'?t want to (?:be here|live|wake up)|ending it|end it all|better off dead/,
   },
   chest_symptoms: {
     phrases: ["chest pain", "chest pressure", "chest tightness", "heart attack"],
@@ -32,11 +32,14 @@ const EMERGENCY_RULES = {
     phrases: ["shortness of breath", "short of breath", "trouble breathing", "can't breathe", "cannot breathe", "not breathing", "difficulty breathing", "blue lips"],
     pattern: /hard to breathe|(?:cant|cannot) (?:catch my breath|get enough air)/,
   },
-  stroke_signs: { phrases: ["stroke", "face drooping", "slurred speech"] },
+  stroke_signs: {
+    phrases: ["stroke", "face drooping", "slurred speech"],
+    pattern: /face (?:is )?droop\w*|droop\w* face|one side (?:of (?:my|his|her) (?:body|face) )?(?:is )?(?:weak|numb)|can'?t (?:talk|speak) (?:right|properly)|slurr\w*|can'?t feel (?:my|his|her) (?:left |right )?(?:arm|leg|face)/,
+  },
   seizure: { phrases: ["seizure", "seizures"], pattern: /convuls(?:ion|ions|ing)/ },
   airway_swelling: {
     phrases: ["severe allergic reaction", "anaphylaxis", "throat swelling"],
-    pattern: /(?:lips?|tongue|throat|face) (?:(?:is|are|feels?|started) )?(?:swelling|swollen)|(?:swelling|swollen) (?:of |in )?(?:my |the )?(?:lips?|tongue|throat|face)/,
+    pattern: /(?:lips?|tongue|throat|face) (?:(?:is|are|feels?|started) )?(?:swelling|swollen)|(?:swelling|swollen) (?:of |in )?(?:my |the )?(?:lips?|tongue|throat|face)|throat (?:is )?(?:closing|tight)|hives[^.]{0,40}(?:dizzy|faint|breath)|lips? (?:are |is |turn\w* )?blue/,
   },
   severe_headache: {
     phrases: ["worst headache of my life", "worst headache", "severe headache", "sudden headache"],
@@ -44,7 +47,7 @@ const EMERGENCY_RULES = {
   },
   bleeding: {
     phrases: ["vomiting blood", "coughing blood", "coughing up blood", "severe bleeding"],
-    pattern: /(?:vomit(?:ed|ing)?|cough(?:ed|ing)?) (?:up )?(?:some )?blood|blood in (?:my |the )?(?:vomit|stools?)|(?:bloody|black(?: tarry)?) stools?/,
+    pattern: /(?:vomit(?:ed|ing)?|cough(?:ed|ing)?) (?:up )?(?:some )?blood|blood in (?:my |the )?(?:vomit|stools?)|(?:bloody|black(?: tarry)?) stools?|(?:black|bloody|tarry) (?:poop|stool|bowel)|poop is black|bleeding (?:and it )?(?:won'?t|doesn'?t|will not) stop|nosebleed won'?t stop|(?:hit|bumped|banged) (?:my|his|her) head/,
   },
   loss_of_consciousness: { phrases: ["unresponsive", "unconscious", "fainting", "fainted", "passed out"] },
 } as const;
