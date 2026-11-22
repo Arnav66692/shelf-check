@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { formatStrength, type Product } from "@/lib/model";
 
 const KIND_LINE: Record<Product["kind"], string> = {
@@ -53,6 +54,11 @@ export function ProductPanel({
           <a className="underline font-bold" href={product.recordUrl} target="_blank" rel="noreferrer">
             Official record
           </a>
+          {product.record?.splSetId && (
+            <Link className="underline font-bold" href={`/learn/${product.record.splSetId}`}>
+              Learn about it
+            </Link>
+          )}
           {action}
         </div>
         {extra}
