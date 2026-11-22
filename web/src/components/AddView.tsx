@@ -195,7 +195,7 @@ export function AddView() {
             Scan the barcode
           </button>
           <button type="button" className="underline font-bold" onClick={() => matchInput.current?.click()}>
-            Match a photo of the box
+            Match a photo with Zephyr
           </button>
           <input
             ref={matchInput}

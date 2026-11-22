@@ -21,8 +21,8 @@ type WorkerMessage =
   | { type: "error"; id: number; message: string };
 
 const STEPS: readonly { stage: Exclude<Stage, "done" | "error">; label: string }[] = [
-  { stage: "model", label: "Loading the matcher" },
-  { stage: "read", label: "Reading the photo" },
+  { stage: "model", label: "Waking Zephyr" },
+  { stage: "read", label: "Zephyr is reading the photo" },
   { stage: "compare", label: "Comparing official labels" },
 ];
 
@@ -120,7 +120,7 @@ export function PhotoMatcher({ file, onPick, onClose }: { file: File; onPick: (m
 
       <div className="min-w-0">
         <div className="flex items-center justify-between gap-3">
-          <p className="label hud-bar">Photo match</p>
+          <p className="label hud-bar">Zephyr photo match</p>
           <button type="button" className="label underline" onClick={onClose}>
             Close
           </button>
@@ -150,14 +150,14 @@ export function PhotoMatcher({ file, onPick, onClose }: { file: File; onPick: (m
 
         {stage === "error" && (
           <p className="mt-3" role="alert">
-            The matcher could not run in this browser. Search by name or scan the barcode instead.
+            Zephyr could not run in this browser. Search by name or scan the barcode instead.
           </p>
         )}
 
         {stage === "done" && (
           <div className="rise">
             <p className="mt-3 text-sm text-ink-soft">
-              Closest 5 official labels. Pick yours, then check it against the bottle. This only suggests, it never adds anything by itself.
+              Zephyr found the 5 closest official labels. Pick yours, then check it against the bottle. This only suggests, it never adds anything by itself.
             </p>
             <ol className="mt-3 grid gap-2">
               {matches.map((match, index) => (
