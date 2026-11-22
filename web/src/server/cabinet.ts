@@ -42,15 +42,32 @@ function build(product: Product): Promise<CabinetItem> {
 
 const SAVED_SAMPLE_ITEMS = sampleItems as unknown as Readonly<Record<string, CabinetItem>>;
 
-function builtOnce(product: Product): Promise<CabinetItem> {
+function identityOf(product: Product): string {
+  if (product.peptideId) return `peptide:${product.peptideId}`;
+  if (product.dsldId) return `dsld:${product.dsldId}`;
+  return `${product.kind}:ndc:${product.productNdc ?? ""}`;
+}
+
+function savedSample(product: Product): CabinetItem | undefined {
+  if (!Object.hasOwn(SAVED_SAMPLE_ITEMS, product.id)) return undefined;
   const saved = SAVED_SAMPLE_ITEMS[product.id];
-  if (saved) return Promise.resolve(saved);
-  const existing = builtItems.get(product.id);
-  if (existing) return existing;
-  const pending = build(product);
-  builtItems.set(product.id, pending);
-  pending.catch(() => builtItems.delete(product.id));
-  return pending;
+  return saved.productNdc !== undefined && saved.productNdc === product.productNdc ? saved : undefined;
+}
+
+async function builtOnce(product: Product): Promise<CabinetItem> {
+  const sample = savedSample(product);
+  const base = sample
+    ? sample
+    : await (() => {
+        const key = identityOf(product);
+        const existing = builtItems.get(key);
+        if (existing) return existing;
+        const pending = build(product);
+        builtItems.set(key, pending);
+        pending.catch(() => builtItems.delete(key));
+        return pending;
+      })();
+  return { ...base, id: product.id, displayName: product.displayName };
 }
 
 export type BuiltCabinet = { readonly items: readonly CabinetItem[]; readonly unchecked: readonly string[] };
@@ -131,7 +148,8 @@ function mergeGroup(
   });
   const severity = members.map((member) => member.severity).sort((a, b) => SEVERITY_RANK[a] - SEVERITY_RANK[b])[0];
   const prescribed = itemIds.some((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
-  const shared = { id: key, type: first.type, severity, itemIds, quotes, highlight: highlightTerms(members), prescribed };
+  const allPrescribed = itemIds.length > 0 && itemIds.every((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
+  const shared = { id: key, type: first.type, severity, itemIds, quotes, highlight: highlightTerms(members), prescribed, allPrescribed };
   if (first.type === "interaction") {
     const pair = itemIds.map((id) => names.get(id) ?? "a product").join(" and ");
     const count = quotes.length === 1 ? "A label warns" : `${quotes.length} label lines warn`;
@@ -144,11 +162,6 @@ function mergeGroup(
   return { ...shared, title: sentenceCase(first.title), explain: first.explain };
 }
 
-function softenForPrescribed(flag: Flag, kinds: ReadonlyMap<string, string>): Flag {
-  const prescribedOnly = flag.itemIds.length > 0 && flag.itemIds.every((id) => PRESCRIBED_KINDS.has(kinds.get(id) ?? ""));
-  return flag.type === "profile" && flag.severity === "stop" && prescribedOnly ? { ...flag, severity: "ask" } : flag;
-}
-
 export function groupFlags(flags: readonly EngineFlag[], items: readonly CabinetItem[]): readonly Flag[] {
   const names = new Map(items.map((item) => [item.id, item.displayName]));
   const kinds = new Map(items.map((item) => [item.id, item.kind]));
@@ -158,7 +171,7 @@ export function groupFlags(flags: readonly EngineFlag[], items: readonly Cabinet
     groups.set(key, [...(groups.get(key) ?? []), flag]);
   }
   return [...groups.entries()]
-    .map(([key, members]) => softenForPrescribed(mergeGroup(key, members, names, kinds), kinds))
+    .map(([key, members]) => mergeGroup(key, members, names, kinds))
     .sort((a, b) => SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity]);
 }
 

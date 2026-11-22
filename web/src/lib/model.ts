@@ -41,6 +41,7 @@ export type Flag = {
   readonly quotes: readonly FlagQuote[];
   readonly highlight?: readonly string[];
   readonly prescribed?: boolean;
+  readonly allPrescribed?: boolean;
 };
 
 export type FlagQuote = { readonly excerpt: string; readonly section: string; readonly itemId: string };

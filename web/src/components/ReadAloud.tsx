@@ -5,7 +5,14 @@ import { useEffect, useState } from "react";
 export function ReadAloud({ lines }: { lines: readonly string[] }) {
   const [speaking, setSpeaking] = useState(false);
 
-  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+  const text = lines.join(" ");
+
+  useEffect(() => {
+    return () => {
+      window.speechSynthesis?.cancel();
+      setSpeaking(false);
+    };
+  }, [text]);
 
   if (lines.length === 0) return null;
 
@@ -17,7 +24,7 @@ export function ReadAloud({ lines }: { lines: readonly string[] }) {
       setSpeaking(false);
       return;
     }
-    const utterance = new SpeechSynthesisUtterance(lines.join(" "));
+    const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 0.95;
     utterance.onend = () => setSpeaking(false);
     utterance.onerror = () => setSpeaking(false);
@@ -27,7 +34,7 @@ export function ReadAloud({ lines }: { lines: readonly string[] }) {
   }
 
   return (
-    <button type="button" className="underline font-bold" onClick={toggle} aria-pressed={speaking}>
+    <button type="button" className="underline font-medium uppercase tracking-[0.12em] text-sm" onClick={toggle} aria-pressed={speaking}>
       {speaking ? "Stop reading" : "Read aloud"}
     </button>
   );

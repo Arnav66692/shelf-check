@@ -3,13 +3,18 @@
 import { useEffect, useState } from "react";
 import { ApiError, checkCabinet, type CheckResult } from "@/lib/api";
 import { CONDITION_LABELS, formatStrength } from "@/lib/model";
-import { useCabinet, useProfile } from "@/lib/store";
+import { supplyFlags } from "@/lib/supply";
+import { useToday } from "@/lib/today";
+import { useCabinet, useHousehold, useProfile, useSupply } from "@/lib/store";
 
 const KIND_NAME = { otc: "Over the counter", rx: "Prescription", supplement: "Supplement", vial: "Injectable" } as const;
 
 export function PrintView() {
   const { items } = useCabinet();
   const { profile } = useProfile();
+  const { supply } = useSupply();
+  const { active } = useHousehold();
+  const today = useToday();
   const requestKey = JSON.stringify([items.map((item) => item.id), profile]);
   const [settled, setSettled] = useState<{ key: string; result?: CheckResult; error?: string } | null>(null);
 
@@ -28,7 +33,9 @@ export function PrintView() {
   }, [items, profile, requestKey]);
 
   const current = settled?.key === requestKey ? settled : null;
-  const warnings = (current?.result?.flags ?? []).filter((flag) => flag.severity !== "info");
+  const supplyWarnings = today ? supplyFlags(items, supply, today).filter((flag) => flag.severity !== "info") : [];
+  const warnings = [...supplyWarnings, ...(current?.result?.flags ?? []).filter((flag) => flag.severity !== "info")];
+  const unchecked = current?.result?.unchecked ?? [];
   const about = [
     profile.ageYears !== undefined ? `Age ${profile.ageYears}` : null,
     ...profile.conditions.map((id) => CONDITION_LABELS[id]),
@@ -46,6 +53,11 @@ export function PrintView() {
           Print
         </button>
       </div>
+
+      <p className="mt-4">
+        For <strong>{active.name}</strong>
+        {today ? `, made ${today.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}` : ""}. From Shelf Check, a safety check, not medical advice.
+      </p>
 
       <section className="facts mt-5">
         <h2 className="facts-title">What I take</h2>
@@ -76,7 +88,16 @@ export function PrintView() {
         <h2 className="facts-title">Questions from the labels</h2>
         {!current && items.length > 0 && <p className="mt-2">Reading the labels together.</p>}
         {current?.error && <p className="mt-2">{current.error}</p>}
-        {current?.result && warnings.length === 0 && <p className="mt-2">No label warnings found between these.</p>}
+        {unchecked.length > 0 && (
+          <p className="mt-2">Not checked, because no official label text was found: {unchecked.join(", ")}.</p>
+        )}
+        {current?.result && warnings.length === 0 && (
+          <p className="mt-2">
+            {unchecked.length > 0
+              ? "No warnings found among the products that could be checked."
+              : "No label warnings found between these. A label can be silent about a real risk."}
+          </p>
+        )}
         {warnings.map((flag) => (
           <div key={flag.id} className="py-2 border-b border-hair last:border-b-0">
             <div className="font-semibold">{flag.title}</div>

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ApiError, checkCabinet, type CheckResult } from "@/lib/api";
 import { useCabinet, useProfile, useSupply } from "@/lib/store";
 import { supplyFlags } from "@/lib/supply";
+import { nextStep } from "@/lib/nextStep";
 import { useToday } from "@/lib/today";
 import { FlagRow } from "./FlagRow";
 import { Intro } from "./Intro";
@@ -112,10 +113,16 @@ export function CabinetView() {
   const flags = [...(today ? supplyFlags(items, supply, today) : []), ...labelFlags].sort(
     (a, b) => SEVERITY_ORDER.indexOf(a.severity) - SEVERITY_ORDER.indexOf(b.severity),
   );
-  const spoken = flags.filter((flag) => flag.severity !== "info").map((flag) => `${flag.title}. ${flag.explain}`);
+  const spoken = [
+    ...(state.status === "done" && state.result.unchecked.length > 0
+      ? [`Not checked: ${state.result.unchecked.join(", ")}. Warnings about these are missing.`]
+      : []),
+    ...flags.filter((flag) => flag.severity !== "info").map((flag) => `${flag.title}. ${flag.explain} What to do: ${nextStep(flag)}`),
+  ];
   const stops = flags.filter((flag) => flag.severity === "stop").length;
   const asks = flags.filter((flag) => flag.severity === "ask").length;
   const notes = flags.filter((flag) => flag.severity === "info").length;
+  const unchecked = state.status === "done" ? state.result.unchecked : [];
 
   return (
     <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
@@ -131,17 +138,32 @@ export function CabinetView() {
           {state.status === "checking" && <p>Reading the labels of your {items.length} products together.</p>}
           {state.status === "done" && (
             <>
-              <p className="text-lg font-semibold">
+              <div className="flex items-center justify-between gap-3 label">
+                <span>Label check</span>
+                <span className="flex items-center gap-2 text-leaf">
+                  <span className="live-dot" aria-hidden="true" />
+                  {items.length} {items.length === 1 ? "product" : "products"} read
+                </span>
+              </div>
+              <p className="mt-2 text-lg font-semibold">
                 {stops > 0
                   ? `${stops} ${stops === 1 ? "thing" : "things"} to check with a pharmacist before the next dose.`
                   : asks > 0
-                    ? "Nothing urgent. Some things to ask a pharmacist about."
-                    : "No label here warns about another product in this cabinet."}
+                    ? `${asks} ${asks === 1 ? "thing" : "things"} to ask a pharmacist about.`
+                    : unchecked.length > 0
+                      ? "Some products could not be checked, so this list is not complete."
+                      : "No label here warns about another product in this cabinet."}
               </p>
+              {unchecked.length > 0 && (
+                <p className="mt-1 text-[var(--ask)]">
+                  Not checked, because no official label text was found: {unchecked.join(", ")}. Warnings about these are
+                  missing. Ask a pharmacist to look at them.
+                </p>
+              )}
               <p className="mt-1">
                 {stops + asks === 0
                   ? "Labels can miss real risks. Print this list and ask a pharmacist to look it over."
-                  : `${asks} to ask a pharmacist about, ${notes} ${notes === 1 ? "note" : "notes"} to read. Every one quotes the label it came from.`}
+                  : `${stops > 0 && asks > 0 ? `${asks} more to ask about, ` : ""}${notes} ${notes === 1 ? "note" : "notes"} to read. Every one quotes the label it came from.`}
               </p>
               <div className="mt-3 flex flex-wrap gap-3">
                 <Link href="/print" className="btn btn-quiet">
@@ -156,7 +178,7 @@ export function CabinetView() {
             {state.message}
           </p>
         )}
-        {state.status === "done" && flags.length === 0 && (
+        {state.status === "done" && flags.length === 0 && unchecked.length === 0 && (
           <p className="mt-4 facts">
             None of these labels warn about another product in your cabinet. A label can stay silent about a real
             risk, so this is not proof they are safe together.
@@ -167,11 +189,6 @@ export function CabinetView() {
             <FlagRow key={flag.id} flag={flag} items={items} />
           ))}
         </ul>
-        {state.status === "done" && state.result.unchecked.length > 0 && (
-          <p className="mt-4 text-sm text-ink-soft">
-            Not checked, because no official label text was found: {state.result.unchecked.join(", ")}.
-          </p>
-        )}
       </section>
 
       <section aria-labelledby="cabinet-title">

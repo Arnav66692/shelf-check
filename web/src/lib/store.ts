@@ -47,18 +47,80 @@ function fromOldKeys(): Household {
   return { activeId: FIRST_PERSON_ID, people: [{ ...EMPTY_PERSON, cabinet, profile }] };
 }
 
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function cleanProfile(value: unknown): Profile {
+  if (!isObject(value)) return EMPTY_PROFILE;
+  return {
+    ...EMPTY_PROFILE,
+    ...value,
+    conditions: Array.isArray(value.conditions) ? (value.conditions as Profile["conditions"]) : [],
+    allergies: Array.isArray(value.allergies) ? value.allergies.filter((item): item is string => typeof item === "string") : [],
+  } as Profile;
+}
+
+function cleanPerson(value: unknown): Person | null {
+  if (!isObject(value) || typeof value.id !== "string" || typeof value.name !== "string") return null;
+  const cabinet = Array.isArray(value.cabinet)
+    ? (value.cabinet.filter((item) => isObject(item) && typeof item.id === "string" && typeof item.displayName === "string") as unknown as Product[])
+    : [];
+  return {
+    id: value.id,
+    name: value.name,
+    profile: cleanProfile(value.profile),
+    cabinet,
+    supply: isObject(value.supply) ? (value.supply as Person["supply"]) : {},
+    answeredQuestions: value.answeredQuestions === true,
+  };
+}
+
+function cleanHousehold(value: unknown): Household | null {
+  if (!isObject(value) || !Array.isArray(value.people)) return null;
+  const people = value.people.map(cleanPerson).filter((person): person is Person => person !== null);
+  if (people.length === 0) return null;
+  const activeId = typeof value.activeId === "string" && people.some((person) => person.id === value.activeId) ? value.activeId : people[0].id;
+  return { activeId, people };
+}
+
+function fromOldKeysSafely(): Household {
+  try {
+    const old = fromOldKeys();
+    return cleanHousehold(old) ?? EMPTY_HOUSEHOLD;
+  } catch {
+    return EMPTY_HOUSEHOLD;
+  }
+}
+
+let memoryOnly: Household | undefined;
+
 function readHousehold(): Household {
-  const raw = window.localStorage.getItem(HOUSEHOLD_KEY);
+  if (memoryOnly) return memoryOnly;
+  let raw: string | null;
+  try {
+    raw = window.localStorage.getItem(HOUSEHOLD_KEY);
+  } catch {
+    return EMPTY_HOUSEHOLD;
+  }
   if (cached && cached.raw === raw) return cached.value;
-  const stored = parse<Household>(raw);
-  const value = stored && stored.people.length > 0 ? stored : fromOldKeys();
+  const value = cleanHousehold(parse<unknown>(raw)) ?? fromOldKeysSafely();
   cached = { raw, value };
   return value;
 }
 
 function writeHousehold(next: Household): void {
-  window.localStorage.setItem(HOUSEHOLD_KEY, JSON.stringify(next));
+  try {
+    window.localStorage.setItem(HOUSEHOLD_KEY, JSON.stringify(next));
+    memoryOnly = undefined;
+  } catch {
+    memoryOnly = next;
+  }
   window.dispatchEvent(new Event(CHANGE_EVENT));
+}
+
+export function activeCabinetSize(): number {
+  return activePerson(readHousehold()).cabinet.length;
 }
 
 function subscribe(onChange: () => void): () => void {

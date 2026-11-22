@@ -24,10 +24,34 @@ async function readPhoto(photo: File): Promise<Reading | Response> {
     const detail = ((await response.json().catch(() => null)) as { detail?: string } | null)?.detail;
     return Response.json({ error: detail ?? "The photo reader could not read that picture." }, { status: 502 });
   }
-  return (await response.json()) as Reading;
+  const body = (await response.json().catch(() => null)) as unknown;
+  const reading = toReading(body);
+  if (!reading) return Response.json({ error: "The photo reader sent back something it could not use." }, { status: 502 });
+  return reading;
+}
+
+function text(value: unknown, max: number): string | null {
+  return typeof value === "string" && value.length <= max ? value : null;
+}
+
+function toReading(body: unknown): Reading | null {
+  if (typeof body !== "object" || body === null) return null;
+  const raw = body as Record<string, unknown>;
+  const lines = Array.isArray(raw.lines) ? raw.lines.filter((line): line is string => typeof line === "string").slice(0, 60).map((line) => line.slice(0, 200)) : [];
+  const agreementRaw = typeof raw.agreement === "object" && raw.agreement !== null ? (raw.agreement as Record<string, unknown>) : null;
+  const status = agreementRaw?.status;
+  const agreement: Agreement | undefined =
+    agreementRaw && (status === "verified" || status === "check" || status === "unreadable")
+      ? { status, by: text(agreementRaw.by, 40) ?? "", product_ndc: text(agreementRaw.product_ndc, 20) }
+      : undefined;
+  return { code: text(raw.code, 40), name: text(raw.name, 200), lines, agreement };
 }
 
 export async function POST(request: Request): Promise<Response> {
+  const declared = Number(request.headers.get("content-length") ?? "0");
+  if (declared > MAX_PHOTO_BYTES + 64 * 1024) {
+    return Response.json({ error: "That photo is larger than 12 MB. Take a closer, smaller picture." }, { status: 413 });
+  }
   const form = await request.formData().catch(() => null);
   const photo = form?.get("photo");
   if (!(photo instanceof File) || photo.size === 0) {
@@ -39,7 +63,8 @@ export async function POST(request: Request): Promise<Response> {
   const reading = await readPhoto(photo);
   if (reading instanceof Response) return reading;
   try {
-    const agreed = reading.agreement?.status === "verified" ? reading.agreement.product_ndc : null;
+    const agreed =
+      reading.agreement?.status === "verified" && reading.agreement.by === "code_and_text" ? reading.agreement.product_ndc : null;
     const hinted = agreed ?? reading.agreement?.product_ndc ?? reading.code;
     const byCode = hinted ? await findProducts(hinted) : { products: [] };
     const found = byCode.products.length > 0 || !reading.name ? byCode : await findProducts(reading.name);

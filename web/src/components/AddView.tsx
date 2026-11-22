@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ApiError, fetchLabelImages, searchProducts, suggestFromPhoto } from "@/lib/api";
 import { formatStrength, type Product } from "@/lib/model";
 import sampleProducts from "@/lib/sampleProducts.json";
-import { useCabinet } from "@/lib/store";
+import { activeCabinetSize, useCabinet, useHousehold } from "@/lib/store";
 import { BarcodeScanner } from "./BarcodeScanner";
 import { ProductPanel } from "./ProductPanel";
 
@@ -67,6 +67,8 @@ export function AddView() {
   const router = useRouter();
   const params = useSearchParams();
   const { items, add, replaceAll } = useCabinet();
+  const { addPerson } = useHousehold();
+  const generation = useRef(0);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Results>({ status: "idle" });
   const [chosen, setChosen] = useState<Product | null>(null);
@@ -80,9 +82,10 @@ export function AddView() {
   useEffect(() => {
     if (params.get("sample") !== "1" || sampleStarted.current) return;
     sampleStarted.current = true;
+    if (activeCabinetSize() > 0) addPerson("Example");
     replaceAll(SAMPLE_PRODUCTS);
     router.replace("/");
-  }, [params, replaceAll, router]);
+  }, [params, replaceAll, addPerson, router]);
 
   async function search(rawText: string) {
     const text = rawText.trim();
@@ -91,11 +94,14 @@ export function AddView() {
       return;
     }
     setChosen(null);
+    const mine = ++generation.current;
     setResults({ status: "loading", what: "Searching the official records." });
     try {
       const found = await searchProducts(text);
+      if (mine !== generation.current) return;
       setResults({ status: "ready", products: found.products, note: found.note });
     } catch (error) {
+      if (mine !== generation.current) return;
       setResults({ status: "failed", message: error instanceof ApiError ? error.message : "The search could not run." });
     }
   }
@@ -114,9 +120,11 @@ export function AddView() {
   async function runPhoto(file: File | undefined) {
     if (!file) return;
     setChosen(null);
+    const mine = ++generation.current;
     setResults({ status: "loading", what: "Reading the photo. This is a suggestion only, you confirm it next." });
     try {
       const suggestion = await suggestFromPhoto(file);
+      if (mine !== generation.current) return;
       setResults({
         status: "ready",
         products: suggestion.products,
@@ -129,6 +137,7 @@ export function AddView() {
               : "The reader could not confirm this two ways. Compare it carefully with your bottle.",
       });
     } catch (error) {
+      if (mine !== generation.current) return;
       setResults({ status: "failed", message: error instanceof ApiError ? error.message : "The photo could not be read." });
     }
   }

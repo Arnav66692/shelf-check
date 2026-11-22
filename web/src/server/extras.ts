@@ -47,6 +47,8 @@ function recallFlag(item: CabinetItem, recall: RecallRecord): Flag {
     title: `${ongoing ? "Recall under way" : "Past recall"} for ${item.displayName}`,
     explain: `The FDA lists recall ${recall.recallNumber} (${recall.classification}, ${recall.status.toLowerCase()}, started ${recall.initiationDate}) for this drug code. Only the listed lots are affected, so compare the lot number on your bottle.`,
     itemIds: [item.id],
+    prescribed: item.kind === "rx",
+    allPrescribed: item.kind === "rx",
     quotes: [
       { excerpt: `Reason: ${recall.reason}`, section: "fda_recall", itemId: item.id },
       { excerpt: `Lots: ${recall.codeInfo}`, section: "fda_recall", itemId: item.id },

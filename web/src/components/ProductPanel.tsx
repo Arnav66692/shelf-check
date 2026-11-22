@@ -1,8 +1,8 @@
 import { formatStrength, type Product } from "@/lib/model";
 
 const KIND_LINE: Record<Product["kind"], string> = {
-  otc: "Over the counter. Confirmed against the FDA record.",
-  rx: "Prescription. Confirmed against the FDA record.",
+  otc: "Over the counter. Details from the FDA record.",
+  rx: "Prescription. Details from the FDA record.",
   supplement: "Supplement. Not reviewed by the FDA. From the NIH label database.",
   vial: "Injectable. Check the dose with Dose check.",
 };
@@ -37,6 +37,13 @@ export function ProductPanel({
           {product.productNdc ? `, NDC ${product.productNdc}` : ""}
         </div>
         <div>{KIND_LINE[product.kind]}</div>
+        {product.note && <div className="mt-1 text-[var(--ask)]">{product.note}</div>}
+        {product.sameAsCount && product.sameAsCount > 1 ? (
+          <div className="mt-1">
+            {product.sameAsCount - 1} other {product.sameAsCount === 2 ? "maker sells" : "makers sell"} the same ingredients
+            and strength. Recalls are matched to the maker and code shown here, so check that they match your bottle.
+          </div>
+        ) : null}
         <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-ink">
           <a className="underline font-bold" href={product.recordUrl} target="_blank" rel="noreferrer">
             Official record
