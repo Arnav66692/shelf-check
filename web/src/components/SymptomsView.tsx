@@ -146,7 +146,10 @@ function Matches({ result, items }: { result: FullResult; items: readonly Produc
         </p>
       )}
       {items.length > 0 && result.matches.length === 0 && hidden.length === 0 && (
-        <p className="mt-2">None of your labels list this under Uses.</p>
+        <p className="mt-2">
+          None of your labels list this under Uses. Ask a pharmacist what is safe for this, and call a doctor if it gets
+          worse or does not get better.
+        </p>
       )}
       <ul className="mt-3 grid gap-3">
         {result.matches.map((match) => (

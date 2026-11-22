@@ -132,6 +132,7 @@ export async function POST(request: Request): Promise<Response> {
     const cabinet = await buildCabinet(products);
     const { shown, hidden } = splitByAge(matchSymptoms(text, cabinet.items), profile);
     const shownIds = new Set(shown.map((match) => match.item.id));
+    const hiddenIds = new Set(hidden.map((entry) => entry.itemId));
     const recalls = await recallFlags(cabinet.recallSubjects);
     const flags = [
       ...recalls.filter((flag) => flag.severity === "stop"),
@@ -145,7 +146,8 @@ export async function POST(request: Request): Promise<Response> {
       forChild,
       matches: shown.map((match) => ({ itemId: match.item.id, uses: match.quote.excerpt })),
       hidden,
-      flags: onlyFor(flags, shownIds),
+      // A warning that needs a product already left out for this age does not apply.
+      flags: onlyFor(flags, shownIds).filter((flag) => !flag.itemIds.some((id) => hiddenIds.has(id))),
       unchecked: cabinet.unchecked,
     });
   } catch (error) {
