@@ -87,7 +87,7 @@ export function CabinetView() {
             {state.status !== "done"
               ? "Checking it against the rest of your cabinet."
               : addedFlags.length === 0
-                ? "No label here warns about it with your other products."
+                ? "No warning was matched for it. This checker can miss real interactions."
                 : `${addedFlags.length === 1 ? "1 warning involves it. It is" : `${addedFlags.length} warnings involve it. They are`} marked New. `}
             {state.status === "done" && addedFlags.length > 0 && (
               <a
@@ -122,7 +122,7 @@ export function CabinetView() {
                     ? `${asks} ${asks === 1 ? "thing" : "things"} to ask a pharmacist about.`
                     : unchecked.length > 0
                       ? "Some products could not be checked, so this list is not complete."
-                      : "No label here warns about another product in this cabinet."}
+                      : "No label warning was matched in this cabinet."}
               </p>
               {unchecked.length > 0 && (
                 <p className="mt-1 text-[var(--stop-text)]">
@@ -132,7 +132,7 @@ export function CabinetView() {
               )}
               <p className="mt-1">
                 {stops + asks === 0
-                  ? "Labels can miss real risks. Print this list and ask a pharmacist to look it over."
+                  ? "This checker can miss real interactions. Print this list and ask a pharmacist to look it over."
                   : `${stops > 0 && asks > 0 ? `${asks} more to ask about, ` : ""}${notes} ${notes === 1 ? "note" : "notes"} to read. Every one quotes the label it came from.`}
               </p>
               {topFlag && (
