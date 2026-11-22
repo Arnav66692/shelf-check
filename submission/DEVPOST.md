@@ -62,18 +62,20 @@ For reading a photo of a label I tested before building, with the pass bar writt
 
 The cross-check only marks a reading as matched when the drug code it read points to an FDA record and the ingredients and strengths it read from the printed text are exactly that record's. Everything else goes back to you to check by eye.
 
-I also trained my own image model. I fine-tuned DINOv2 on 3,588 products from the FDA label archive, using made up phone photos of each official label, and scored it on 2,175 photos of products it had never seen. It went from 4.1 percent to 78.0 percent right on the first guess, and 91.3 percent in the top five. That missed the 90 percent bar I set before training, so it is not in the app.
+I also trained my own image model. I fine-tuned DINOv2 on 3,588 products from the FDA label archive, using made up phone photos of each official label, and scored it on about 2,170 photos of products it had never seen. The first run went from 4.1 percent to 78.0 percent right on the first guess, and 91.3 percent in the top five. That missed the 90 percent bar I set before training. A second run with a bigger model only fit one round of training in its time limit and reached 69.8 percent. Neither is in the app.
 
 ## Does it catch real problems?
 
-I ran the live app on random real products and pairs, with the bars written down and hashed before the run:
+I ran the app on random real products and pairs, with the bars written down and hashed before the first run, then ran the same test again after a night of safety fixes:
 
-| Test | Result | Bar | Verdict |
-|---|---|---|---|
-| Acetaminophen doubled: 40 random products, each paired with Tylenol | 40 of 40 caught | 38 of 40 | Passed |
-| Same 40 pairs: a daily total worked out in mg | 27 of 40 | none | Measured, most misses are children's liquids |
-| 40 major interactions from the DDInter database | 8 of 40 caught (95 percent interval 10 to 35 percent) | none | Weak |
-| 40 pairs DDInter does not list: false alarms | 1 of 40 | at most 4 | Passed |
+| Test | First run | After fixes | Bar | Verdict |
+|---|---|---|---|---|
+| Acetaminophen doubled: 40 random products, each paired with Tylenol | 40 of 40 | 40 of 40 | 38 of 40 | Passed both times |
+| Same 40 pairs: a daily total worked out in mg | 27 of 40 | 15 of 40 | none | Measured |
+| 40 major interactions from the DDInter database | 8 of 40 | 4 of 40 | none | Weak |
+| 40 pairs DDInter does not list: false alarms | 1 of 40 | 1 of 40 | at most 4 | Passed both times |
+
+The fixes made the engine refuse to add up a number or claim an interaction unless the label clearly supports it. That first dropped the daily totals to 5 of 40. I then taught it common label wording around the limit, like "see overdose warning", which brought it to 15. I did that after looking at the misses, so the 15 is not a clean test. Fewer answers, but none of them guessed.
 
 So Shelf Check is reliable at the problem it was built for, the same drug hiding in two products, and its warnings come from real label sentences. It is weak at drug interactions in general. For most of those major pairs, neither FDA label names the other drug, and the labels describe the risk by drug type or effect instead, which the app does not turn into drug names yet. The app says plainly that a label can be silent about a real risk, and every result page tells you to have a pharmacist review the list.
 

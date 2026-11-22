@@ -5,16 +5,18 @@ const READERS = [
 ] as const;
 
 const IMPACT = [
-  { test: "Acetaminophen doubled: 40 random products, each with Tylenol", result: "40 of 40 caught", bar: "38 of 40", verdict: "Passed" },
-  { test: "Same 40 pairs: a daily total worked out in mg", result: "27 of 40", bar: "none set", verdict: "Measured. Most misses are children's liquids" },
-  { test: "40 major interactions from an independent database", result: "8 of 40 caught", bar: "none set", verdict: "Weak. See below" },
-  { test: "40 pairs with no listed interaction: false alarms", result: "1 of 40", bar: "at most 4", verdict: "Passed" },
+  { test: "Acetaminophen doubled: 40 random products, each with Tylenol", first: "40 of 40", now: "40 of 40", bar: "38 of 40", verdict: "Passed both times" },
+  { test: "Same 40 pairs: a daily total worked out in mg", first: "27 of 40", now: "15 of 40", bar: "none set", verdict: "Measured. Now refuses numbers it cannot read for sure" },
+  { test: "40 major interactions from an independent database", first: "8 of 40", now: "4 of 40", bar: "none set", verdict: "Weak. See below" },
+  { test: "40 pairs with no listed interaction: false alarms", first: "1 of 40", now: "1 of 40", bar: "at most 4", verdict: "Passed both times" },
 ] as const;
 
 const MATCHER = [
-  { name: "Untrained image model", top1: "4.1%", top5: "8.3%" },
-  { name: "Our trained matcher, 12 rounds", top1: "78.0%", top5: "91.3%" },
-  { name: "Bar we set before training", top1: "90%", top5: "97%" },
+  { name: "Run 1: untrained small model", top1: "4.1%", top5: "8.3%" },
+  { name: "Run 1: trained small model, 12 rounds", top1: "78.0%", top5: "91.3%" },
+  { name: "Run 2: untrained base model", top1: "15.2%", top5: "26.4%" },
+  { name: "Run 2: trained base model, 1 round", top1: "69.8%", top5: "84.1%" },
+  { name: "Bar we set before each run", top1: "90%", top5: "97%" },
 ] as const;
 
 export default function TestedPage() {
@@ -30,14 +32,16 @@ export default function TestedPage() {
 
       <h2 className="mt-8 text-2xl font-medium narrow">Does it catch real problems?</h2>
       <p className="mt-2">
-        We ran the live app on random real products and pairs, with the bars written down before the run.
+        We ran the app on random real products and pairs, with the bars written down before the first run. We ran
+        the same test again after a night of safety fixes.
       </p>
       <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Impact test results">
-        <table className="w-full text-left min-w-[640px]">
+        <table className="w-full text-left min-w-[720px]">
           <thead>
             <tr className="border-b border-[var(--rule)]">
               <th className="py-2 pr-4">Test</th>
-              <th className="py-2 pr-4">Result</th>
+              <th className="py-2 pr-4">First run</th>
+              <th className="py-2 pr-4">After fixes</th>
               <th className="py-2 pr-4">Bar</th>
               <th className="py-2">Verdict</th>
             </tr>
@@ -46,7 +50,8 @@ export default function TestedPage() {
             {IMPACT.map((row) => (
               <tr key={row.test} className="border-b border-hair align-top">
                 <td className="py-2 pr-4">{row.test}</td>
-                <td className="py-2 pr-4 font-bold">{row.result}</td>
+                <td className="py-2 pr-4">{row.first}</td>
+                <td className="py-2 pr-4 font-bold">{row.now}</td>
                 <td className="py-2 pr-4">{row.bar}</td>
                 <td className="py-2">{row.verdict}</td>
               </tr>
@@ -54,6 +59,13 @@ export default function TestedPage() {
           </tbody>
         </table>
       </div>
+      <p className="mt-2">
+        Why the numbers moved: the fixes made the engine refuse to add up a daily amount or claim an interaction
+        unless the label text clearly supports it, which dropped the daily totals to 5 of 40. We then taught it
+        common label wording around the limit, like &quot;see overdose warning&quot;, which brought it to 15. We
+        did that after looking at the misses, so the 15 is not a clean test. The interaction rule now needs the
+        label sentence to actually warn about the pair, so it flags fewer pairs.
+      </p>
       <p className="mt-2">
         What this means: Shelf Check is reliable at the problem it was built for, the same drug hiding in two
         products. It is weak at drug interactions in general. For most major interactions in the reference database,
@@ -68,7 +80,7 @@ export default function TestedPage() {
 
       <h2 className="mt-8 text-2xl font-medium narrow">Reading labels from a picture</h2>
       <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Reader test results">
-        <table className="w-full text-left min-w-[640px]">
+        <table className="w-full text-left min-w-[720px]">
           <thead>
             <tr className="border-b border-[var(--rule)]">
               <th className="py-2 pr-4">Reader</th>
@@ -132,7 +144,8 @@ export default function TestedPage() {
       <h2 className="mt-8 text-2xl font-medium narrow">Matching a photo to the official label</h2>
       <p className="mt-2">
         We trained our own image model on 3,588 products from the FDA label archive, using made-up phone photos of
-        each official label, and scored it on 2,175 photos of products it had never seen.
+        each official label, and scored it on about 2,170 photos of products it had never seen. Each run picked its
+        own unseen products.
       </p>
       <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Trained matcher results">
         <table className="w-full text-left min-w-[480px]">
@@ -155,7 +168,8 @@ export default function TestedPage() {
         </table>
       </div>
       <p className="mt-2 text-sm text-ink-soft">
-        Training took it from 4 percent to 78 percent. That missed the bar, so it is not in the app.
+        Training helped a lot, but no run reached the bar, so the matcher is not in the app. Run 2 used a bigger
+        model and only finished one round in its time limit, so it scored lower than run 1.
       </p>
 
       <h2 className="mt-8 text-2xl font-medium narrow">What the warnings are built on</h2>

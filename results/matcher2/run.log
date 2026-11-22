@@ -1,0 +1,10 @@
+products 3588 train images 4250 val 1185 test 2169
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+W1121 21:36:28.367000 53483 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 19144.62it/s]
+BASELINE VAL {'queries': 1185, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.16540084388185655, 'product_recall5': 0.2852320675105485, 'exact_image_top1': 0.15443037974683543}
+EPOCH 0 val {'queries': 1185, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.729957805907173, 'product_recall5': 0.8556962025316456, 'exact_image_top1': 0.7046413502109705} best 0
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 9462.69it/s]
+BASELINE TEST {'queries': 2169, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.15168280313508528, 'product_recall5': 0.2637159981558322, 'exact_image_top1': 0.14246196403872752}
+TEST {'queries': 2169, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.6975564776394652, 'product_recall5': 0.8414015675426464, 'exact_image_top1': 0.673582295988935, 'epoch': 0}
+DONE

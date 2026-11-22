@@ -59,14 +59,14 @@ The web app finds the reader at `http://127.0.0.1:8787`, or at `READER_URL` if s
 
 ## Does it catch real problems?
 
-Run on the live app with the bars written and hashed first (`benchmark/PREREG.md`, results in `benchmark/RESULTS.md`).
+Bars written and hashed before the first run (`benchmark/PREREG.md`). First run in `benchmark/RESULTS.md`, re-runs after the safety fixes in `benchmark/RESULTS-RERUN.md` (5 of 40 daily totals) and `benchmark/RESULTS-RERUN2.md` (after teaching it common label wording, which we did after looking at the misses).
 
-| Test | Result | Bar | Verdict |
-|---|---|---|---|
-| Acetaminophen doubled: 40 random products, each with Tylenol | 40 of 40 | 38 of 40 | Passed |
-| Same pairs: daily total in mg | 27 of 40 | none | Measured |
-| 40 major interactions from DDInter | 8 of 40 (95% interval 10 to 35%) | none | Weak |
-| 40 pairs DDInter does not list: false alarms | 1 of 40 | at most 4 | Passed |
+| Test | First run | After fixes | Bar | Verdict |
+|---|---|---|---|---|
+| Acetaminophen doubled: 40 random products, each with Tylenol | 40 of 40 | 40 of 40 | 38 of 40 | Passed |
+| Same pairs: daily total in mg | 27 of 40 | 15 of 40 | none | Measured |
+| 40 major interactions from DDInter | 8 of 40 | 4 of 40 | none | Weak |
+| 40 pairs DDInter does not list: false alarms | 1 of 40 | 1 of 40 | at most 4 | Passed |
 
 Shelf Check only flags what a label states. Most missed interactions are described on the labels by drug type or effect rather than by name.
 
@@ -80,7 +80,8 @@ Each bar was written down before the test ran (see the `PREREG` files).
 | Qwen3-VL 8B on the same 20 | 17 of 20 right | 18 | Failed |
 | Qwen3-VL 8B on 100 new tablet and capsule labels | 82 fully right, 5 confidently wrong | 90, at most 3 wrong | Failed |
 | Cross-check on 100 more new labels | 61 marked matched, 0 of those wrong | 50, at most 1 wrong | Passed |
-| Our trained DINOv2 matcher, 2,175 held out photos | 78.0% first guess, 91.3% top five (untrained 4.1%) | 90%, 97% | Failed, not used in the app |
+| Our trained DINOv2 matcher, run 1 (small model), 2,175 held out photos | 78.0% first guess, 91.3% top five (untrained 4.1%) | 90%, 97% | Failed, not used in the app |
+| Run 2 (base model, one round), 2,169 new held out photos | 69.8% first guess, 84.1% top five (untrained 15.2%) | 90%, 97% | Failed |
 
 The test images are official label artwork, not phone photos of real bottles, so real photos would likely score lower. With 61 matched and none wrong, the true error rate could still be about 5 percent, which is why the app always asks you to confirm.
 
