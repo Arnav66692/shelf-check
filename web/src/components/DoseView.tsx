@@ -141,7 +141,7 @@ function UnitSelect({ label, value, onChange }: { label: string; value: DoseUnit
 }
 
 export function DoseView() {
-  const [isInsulin, setIsInsulin] = useState(false);
+  const [isInsulin, setIsInsulin] = useState<boolean | null>(null);
   const [insulinStrength, setInsulinStrength] = useState<InsulinStrength>("U-100");
   const [concentration, setConcentration] = useState("");
   const [doseValue, setDoseValue] = useState("");
@@ -149,7 +149,9 @@ export function DoseView() {
   const [alsoValue, setAlsoValue] = useState("");
   const [alsoUnit, setAlsoUnit] = useState<DoseUnit>("units");
 
-  const outcome = isInsulin
+  const outcome: Outcome = isInsulin === null
+    ? { kind: "empty", message: "First choose whether this is insulin. Insulin syringes and pens need a different check." }
+    : isInsulin
     ? insulinOutcome(insulinStrength, doseValue)
     : vialOutcome(concentration, doseValue, doseUnit, alsoValue, alsoUnit);
 
@@ -166,16 +168,16 @@ export function DoseView() {
           <fieldset className="grid gap-2">
             <legend className="font-bold">Is this insulin?</legend>
             <label className="flex items-center gap-3">
-              <input type="radio" name="insulin" className="h-5 w-5 accent-[var(--ink)]" checked={!isInsulin} onChange={() => setIsInsulin(false)} />
+              <input type="radio" name="insulin" className="h-5 w-5 accent-[var(--ink)]" checked={isInsulin === false} onChange={() => setIsInsulin(false)} />
               No, another medicine in a vial
             </label>
             <label className="flex items-center gap-3">
-              <input type="radio" name="insulin" className="h-5 w-5 accent-[var(--ink)]" checked={isInsulin} onChange={() => setIsInsulin(true)} />
+              <input type="radio" name="insulin" className="h-5 w-5 accent-[var(--ink)]" checked={isInsulin === true} onChange={() => setIsInsulin(true)} />
               Yes, insulin
             </label>
           </fieldset>
 
-          {isInsulin ? (
+          {isInsulin === null ? null : isInsulin ? (
             <>
               <label className="grid gap-1 font-bold">
                 The U number on the insulin box or vial
