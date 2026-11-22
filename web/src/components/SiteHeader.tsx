@@ -52,7 +52,7 @@ export function SiteHeader() {
   const { items } = useCabinet();
   const inTools = TOOL_LINKS.some((link) => link.href === pathname);
   return (
-    <header className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 pt-4 pb-3 relative z-20">
+    <header className="w-full max-w-[1180px] mx-auto px-4 sm:px-8 pt-4 pb-3 relative z-20">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <Link href="/" className={`${GLASS} flex items-center gap-2.5 pl-1.5 pr-3.5 py-1.5`}>
           <span className="grid place-items-center w-8 h-8 rounded-[4px] bg-leaf text-[var(--on-bright)]">

@@ -10,7 +10,7 @@ const SEVERITY_LABEL: Record<Severity, string> = {
 const SEVERITY_STYLE: Record<Severity, string> = {
   stop: "bg-[var(--stop)] text-[var(--on-bright)] rounded-[3px]",
   ask: "bg-[var(--ask)] text-[var(--on-bright)] rounded-[3px]",
-  info: "bg-[var(--ok)] text-[var(--on-bright)] rounded-[3px]",
+  info: "bg-[#c9d4ea] text-[var(--on-bright)] rounded-[3px]",
 };
 
 const SECTION_NAMES: Record<string, string> = {

@@ -63,6 +63,8 @@ function LabelPicture({ product }: { product: Product }) {
   );
 }
 
+const PHOTO_READER = process.env.NEXT_PUBLIC_PHOTO_READER === "1";
+
 export function AddView() {
   const router = useRouter();
   const params = useSearchParams();
@@ -185,18 +187,22 @@ export function AddView() {
           <button type="button" className="underline font-bold" onClick={() => setScanning(true)}>
             Scan the barcode
           </button>
-          <button type="button" className="underline font-bold" onClick={() => photoInput.current?.click()}>
-            Use a photo of the label
-          </button>
-          <input
-            ref={photoInput}
-            type="file"
-            accept="image/*"
-            capture="environment"
-            className="sr-only"
-            aria-label="Photo of the label"
-            onChange={(event) => runPhoto(event.target.files?.[0])}
-          />
+          {PHOTO_READER && (
+            <>
+              <button type="button" className="underline font-bold" onClick={() => photoInput.current?.click()}>
+                Use a photo of the label
+              </button>
+              <input
+                ref={photoInput}
+                type="file"
+                accept="image/*"
+                capture="environment"
+                className="sr-only"
+                aria-label="Photo of the label"
+                onChange={(event) => runPhoto(event.target.files?.[0])}
+              />
+            </>
+          )}
           <span className="text-sm text-ink-soft">Covers prescription, over the counter and supplements.</span>
         </div>
 

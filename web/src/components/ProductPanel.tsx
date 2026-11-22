@@ -37,7 +37,7 @@ export function ProductPanel({
           {product.productNdc ? `, NDC ${product.productNdc}` : ""}
         </div>
         <div>{KIND_LINE[product.kind]}</div>
-        {product.note && <div className="mt-1 text-[var(--ask)]">{product.note}</div>}
+        {product.note && <div className={`mt-1 ${/^exact match/i.test(product.note) ? "text-ink-soft" : "text-[var(--ask)]"}`}>{product.note}</div>}
         {product.sameAsCount && product.sameAsCount > 1 ? (
           <div className="mt-1">
             {product.sameAsCount - 1} other {product.sameAsCount === 2 ? "maker sells" : "makers sell"} the same ingredients

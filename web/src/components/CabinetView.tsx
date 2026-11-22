@@ -21,7 +21,7 @@ type Outcome = { status: "done"; result: CheckResult } | { status: "failed"; mes
 type CheckState = { status: "checking" } | Outcome;
 
 export function CabinetView() {
-  const { items, remove } = useCabinet();
+  const { items, remove, replaceAll } = useCabinet();
   const { profile } = useProfile();
   const { supply } = useSupply();
   const today = useToday();
@@ -203,6 +203,15 @@ export function CabinetView() {
             <Link href="/add" className="underline font-bold">
               Add another
             </Link>
+            <button
+              type="button"
+              className="underline font-bold"
+              onClick={() => {
+                if (window.confirm("Remove every product from this cabinet?")) replaceAll([]);
+              }}
+            >
+              Clear
+            </button>
           </span>
         </div>
         <div className="mt-4 grid gap-4">
