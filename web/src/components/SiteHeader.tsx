@@ -97,11 +97,11 @@ export function SiteHeader() {
       <Link
         href="/"
         aria-label="Shelf Check home"
-        className="fixed z-50 top-[44px] left-[var(--space-1)] mix-blend-difference text-[#e9e5e0]"
+        className="fixed z-50 top-[44px] left-[var(--space-1)] text-ink"
       >
         <Mark />
       </Link>
-      <div className="fixed z-50 top-[40px] right-[var(--space-1)] flex items-center gap-3 mix-blend-difference text-[#e9e5e0]">
+      <div className="fixed z-50 top-[40px] right-[var(--space-1)] flex items-center gap-3 text-ink">
         <Link href="/" className="hidden sm:inline text-[13px] font-[300] uppercase" aria-label={`Cabinet, ${items.length} items`}>
           Cabinet [{items.length}]
         </Link>

@@ -47,10 +47,10 @@ export function SiteFooter() {
         {COLUMNS.map((column) => (
           <div key={column.title}>
             <h2 className="text-[24px] italic font-[300] uppercase text-muted mb-6 md:mb-12">{column.title}</h2>
-            <ul className="grid gap-4 text-[14px]">
+            <ul className="grid gap-1 text-[14px]">
               {column.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-ink-soft hover:underline">
+                  <Link href={link.href} className="inline-block py-2 text-ink-soft hover:underline">
                     {link.label}
                   </Link>
                 </li>
@@ -61,7 +61,7 @@ export function SiteFooter() {
         <div>
           <h2 className="text-[24px] italic font-[300] uppercase text-muted mb-6 md:mb-12">Help</h2>
           <p className="text-[14px] text-ink-soft">
-            Poison Help <a href="tel:18002221222" className="underline">1-800-222-1222</a>. Collapse, seizure or trouble
+            Poison Help <a href="tel:18002221222" className="underline inline-block py-2">1-800-222-1222</a>. Collapse, seizure or trouble
             breathing: call 911.
           </p>
         </div>

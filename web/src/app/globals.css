@@ -179,7 +179,7 @@ h3.narrow {
   font-size: 13px;
   font-weight: 300;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink-soft);
   padding-top: 12px;
   padding-bottom: 6px;
   border-bottom: 1px solid var(--rule);
