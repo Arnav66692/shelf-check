@@ -6,7 +6,7 @@ This version matches the live site after the Nov 22 morning update: the dark cha
 
 ## Before you hit record
 
-- Silent screen recordings of sections 1 to 5 are in `submission/clips/` (1440x900 mp4). Check the date on them. Clips from Nov 21 show the old white look, so use only the ones recorded Nov 22, or click live.
+- Silent screen recordings of sections 1 to 5 are in `submission/clips/` (1440x900 mp4). All six were re-recorded on Nov 22 at about 3 AM on the current look. The old white-look clips are in `submission/clips/old-white-look-nov21/`, do not use them.
 
 - Open https://shelf-check-nu.vercel.app in a private window, so the short opening animation plays and nothing is saved from before.
 - A real Tylenol and a real NyQuil (or any acetaminophen cold medicine) on the desk, labels facing the camera. If you do not have them, skip the bottles and start on the site.
@@ -39,10 +39,10 @@ The "almost half" is 45.6 percent of 500 adults (Wolf et al., J Gen Intern Med 2
 
 ## 4. The rest (0:50 to 1:20)
 
-**Screen:** on a card, point at "What to do". Then open Symptoms, type "I took too much tylenol", show the Poison Help screen. Then Dose check: show a 5 units versus 50 units mix-up being caught, or a U-500 insulin stop.
+**Screen:** on a card, point at "What to do". Then open Symptoms, type "my husband is very sleepy and his breathing is slow after his pain pills", and show the Poison Help screen with its naloxone line (clip 4). Then Dose check (in More): strength 2.5, dose 0.25 mg, then 50 marks on a U-100 syringe in the second box. It stops with "0.25 mg and 50 units are not the same dose" and shows no syringe mark (clip 5).
 
 **Say:**
-> Every card says what to do next. When the label says two medicines should not be taken together, it tells you to call before the next dose. If you type something that sounds like an emergency, it sends you to Poison Help or 911 instead of suggesting a medicine. And the dose check catches the 5 versus 50 unit mix-up the FDA has warned about.
+> Every card says what to do next. When the label says two medicines should not be taken together, it tells you to call before the next dose. If you type something that sounds like an emergency, like someone breathing slowly after pain pills, it sends you to Poison Help, naloxone and 911 instead of suggesting a medicine. And the dose check catches the 10 versus 50 unit mix-up the FDA has warned about.
 
 ## 5. How we know it works (1:20 to 1:45)
 
