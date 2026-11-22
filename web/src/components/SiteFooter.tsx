@@ -8,7 +8,7 @@ const LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative z-[1] w-full px-[var(--margin)] pt-16 pb-28 print:hidden">
+    <footer className="w-full px-[var(--margin)] pt-16 pb-28 print:hidden">
       <div className="border-t border-dashed border-[var(--rule)] pt-8 grid gap-8 md:grid-cols-3">
         <p className="text-ink-soft max-w-[420px]">
           A safety check, not medical advice. Every warning quotes an official label. Show it to your pharmacist or

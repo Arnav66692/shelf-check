@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { BottomBar } from "@/components/BottomBar";
 import { ParticleField } from "@/components/ParticleField";
 import { SiteFooter } from "@/components/SiteFooter";
+import { PersonSwitcher } from "@/components/PersonSwitcher";
 import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
 
@@ -42,7 +43,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <SiteHeader />
-        <main id="main" tabIndex={-1} className="relative z-[1] flex-1 w-full px-[var(--margin)] pb-28 focus:outline-none">
+        <main id="main" tabIndex={-1} className="flex-1 w-full px-[var(--margin)] pb-28 focus:outline-none">
+          <div className="pt-[calc(var(--margin)+92px)] sm:pt-[calc(var(--margin)+52px)] print:pt-0">
+            <PersonSwitcher />
+          </div>
           {children}
         </main>
         <SiteFooter />
