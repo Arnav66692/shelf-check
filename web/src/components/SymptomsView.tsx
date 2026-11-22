@@ -42,6 +42,10 @@ function ChildDoctor() {
       <p className="mt-3 text-lg font-bold">
         A baby under 3 months old with a fever, or any baby this young who seems unwell, needs a doctor today.
       </p>
+      <p className="mt-2 font-bold">
+        If the baby is under 4 weeks old and has a temperature of 100.4 F (38 C) or higher, go to the emergency room
+        now. Do not wait for a call back.
+      </p>
       <p className="mt-2">
         Do not give a medicine from the cabinet first. If the baby is hard to wake, breathing fast or has blue lips, call
         911. For a possible poisoning, call Poison Help at 1-800-222-1222.

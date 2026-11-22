@@ -216,3 +216,41 @@ test("round 3 plain-language emergencies are caught", () => {
     expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
   }
 });
+
+test("round 4 plain-language emergencies are caught", () => {
+  const cases: [string, "poison" | "selfHarm" | "911"][] = [
+    ["found my toddler chewing on a fentanyl patch", "poison"],
+    ["my husband is turning blue and making gurgling sounds", "911"],
+    ["my child drank lamp oil", "poison"],
+    ["my kid swallowed a magnet", "poison"],
+    ["my grandma took her blood pressure pill 3 times today by mistake", "poison"],
+    ["my left side went numb and my words are coming out wrong", "911"],
+    ["sudden blurry vision in one eye and my arm feels weak", "911"],
+    ["my eyes and lips swelled up after the antibiotic", "911"],
+    ["throat feels tight and itchy after taking bactrim", "911"],
+    ["my skin is peeling and blistering after starting lamotrigine", "911"],
+    ["heart pounding, sweating and my jaw hurts", "911"],
+    ["bad headache, stiff neck and a high fever", "911"],
+    ["im pregnant and have a bad headache and seeing spots", "911"],
+    ["high fever and my muscles are stiff after starting haloperidol", "911"],
+    ["im on lithium and im shaking, throwing up and confused", "911"],
+    ["bad stomach pain and yellow eyes after taking a lot of tylenol this week", "911"],
+    ["my blood sugar is 40 and im shaky and sweaty", "911"],
+    ["took 2 ambien with some drinks and i can barely keep my eyes open", "poison"],
+    ["my erection has lasted 5 hours after the viagra", "911"],
+    ["my dad took a whole bottle of his pills", "poison"],
+    ["took double my insulin", "poison"],
+    ["I gave my baby two doses of tylenol by mistake", "poison"],
+    ["i took 30 advil so i can sleep forever", "selfHarm"],
+    ["i want to overdose", "selfHarm"],
+  ];
+  for (const [text, kind] of cases) {
+    const screen = screenEmergency(text);
+    expect(screen.emergency, text).toBe(true);
+    if (screen.emergency && kind === "poison") expect(screen.poison, text).toBe(true);
+    if (screen.emergency && kind === "selfHarm") expect(screen.selfHarm, text).toBe(true);
+  }
+  for (const ordinary of ["I cant breathe through my nose", "this headache is killing me", "my jaw hurts from chewing gum", "my blood sugar is 140 after lunch", "sore muscles after the gym", "i took my 2 vitamins this morning"]) {
+    expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+  }
+});
