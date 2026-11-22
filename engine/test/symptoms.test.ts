@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import emergencyPhrases from "../fixtures/emergency-phrases.json";
 import { isEmergency, matchSymptoms, RED_FLAG_SYMPTOMS, screenEmergency, symptomsMentioned } from "../src/symptoms.ts";
 import { expectVerbatim, loadCabinet } from "./support/cabinet.ts";
+import type { CabinetItem } from "../src/types.ts";
 
 const WHOLE_CABINET = ["tylenol", "nyquil", "benadryl", "tylenolPm", "aspirin", "ibuprofen", "loratadine", "warfarin"] as const;
 
@@ -298,4 +299,15 @@ test("round 5 red flags for children and breathing are caught", () => {
 
 test("a stiff neck or a limp alone is not an emergency", () => {
   for (const ordinary of ["i have a stiff neck from sleeping on the couch", "i have a limp since my ankle sprain"]) expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+});
+
+test("everyday complaints match the label's Uses line, and an if in a label is not doubt", () => {
+  const item = (id: string, uses: string): CabinetItem => ({ id, displayName: id, kind: "otc", verified: true, ingredients: [{ name: id, value: 1, unit: "mg" }], label: { indications_and_usage: [uses] } });
+  const zzz = item("zzzquil", "Uses helps you fall asleep if you have occasional sleeplessness");
+  const pepto = item("pepto", "Uses relieves travelers' diarrhea, diarrhea, upset stomach due to overindulgence in food and drink, including heartburn, indigestion, nausea");
+  const advil = item("advil", "Uses temporarily relieves minor aches and pains due to headache, toothache, backache, menstrual cramps, the common cold");
+  expect(matchSymptoms("I cant sleep", [zzz]).map((match) => match.item.id)).toEqual(["zzzquil"]);
+  expect(matchSymptoms("stomach ache", [pepto, advil]).map((match) => match.item.id)).toEqual(["pepto"]);
+  expect(matchSymptoms("i have a cold", [advil]).map((match) => match.item.id)).toEqual(["advil"]);
+  expect(matchSymptoms("menstrual cramps", [advil, pepto]).map((match) => match.item.id)).toEqual(["advil"]);
 });

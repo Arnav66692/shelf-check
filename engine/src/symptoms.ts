@@ -10,8 +10,15 @@ export const SYMPTOM_SYNONYMS: Readonly<Record<string, readonly string[]>> = {
   "sore throat": ["sore throat", "throat hurts", "scratchy throat"],
   heartburn: ["heartburn", "acid reflux", "acid indigestion", "sour stomach"],
   allergy: ["allergy", "allergies", "hay fever", "itchy eyes", "watery eyes"],
-  "trouble sleeping": ["trouble sleeping", "can't sleep", "cannot sleep", "insomnia", "sleeplessness", "sleepless"],
-  "aches and pains": ["aches", "ache", "muscle pain", "muscular aches", "body aches", "backache", "back pain"],
+  "trouble sleeping": ["trouble sleeping", "can't sleep", "cannot sleep", "insomnia", "sleeplessness", "sleepless", "fall asleep", "can't fall asleep"],
+  "aches and pains": ["aches", "ache", "muscle pain", "muscular aches", "body aches", "backache", "back pain", "back hurts", "back ache", "sore muscles", "arthritis", "joint pain"],
+  "cold or flu": ["common cold", "a cold", "cold symptoms", "the flu", "flu symptoms", "flu", "chest congestion"],
+  "upset stomach": ["upset stomach", "stomach upset", "indigestion", "nausea", "nauseous", "queasy", "stomach ache", "stomachache", "tummy ache", "stomach hurts", "overindulgence"],
+  diarrhea: ["diarrhea", "loose stools", "the runs"],
+  "menstrual cramps": ["menstrual cramps", "period cramps", "period pain", "cramps"],
+  toothache: ["toothache", "tooth ache", "tooth hurts", "tooth pain"],
+  constipation: ["constipation", "constipated", "can't poop"],
+  "itch or rash": ["itching", "itchy skin", "hives", "rash", "bug bites"],
 };
 
 // The reason describes what the person reported. It is not a diagnosis.
@@ -180,10 +187,23 @@ export function symptomsMentioned(text: string, age?: SymptomAge): readonly stri
   return result.emergency ? [] : Object.keys(SYMPTOM_SYNONYMS).filter((symptom) => symptoms.has(symptom));
 }
 
+// Label Uses lines are read plainly. The denial and uncertainty rules are for what a person types,
+// and an "if" in "helps you fall asleep if you have occasional sleeplessness" is not doubt.
+function labelIndications(text: string): ReadonlySet<string> {
+  const found = new Set<string>();
+  const normalised = normaliseText(text);
+  for (const hit of normalised.matchAll(PHRASES)) {
+    const symptom = CONDITIONS.get(hit[0]);
+    const lead = normalised.slice(Math.max(0, hit.index - 24), hit.index);
+    if (symptom && !/\b(?:not|no|without|never)\b[a-z ]{0,14}$/.test(lead)) found.add(symptom);
+  }
+  return found;
+}
+
 function matchItem(item: CabinetItem, symptoms: readonly string[]): readonly SymptomMatch[] {
   const sentences = sentencesIn(item.label, USES_SECTIONS).map((sentence) => ({
     ...sentence,
-    indications: screen(sentence.text).symptoms,
+    indications: labelIndications(sentence.text),
   }));
   const hits = symptoms.flatMap((symptom) => {
     const sentence = sentences.find((candidate) => candidate.indications.has(symptom));
