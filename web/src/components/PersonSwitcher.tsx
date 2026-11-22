@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useHousehold } from "@/lib/store";
-import { TextSizeToggle } from "./TextSizeToggle";
 
 export function PersonSwitcher() {
   const { people, active, select, addPerson, removeActive, canAdd } = useHousehold();
@@ -63,7 +62,7 @@ export function PersonSwitcher() {
               Add someone you care for
             </button>
           )}
-          <TextSizeToggle />
+
           {people.length > 1 && (
             <button
               type="button"

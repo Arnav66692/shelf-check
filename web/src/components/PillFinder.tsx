@@ -206,7 +206,7 @@ function isCommonlyFaked(record: PillRecord): boolean {
 function CounterfeitWarning() {
   return (
     <div className="facts" role="alert" style={{ borderColor: "var(--stop)" }}>
-      <span className="px-2.5 py-1 text-[13px] italic font-[900] uppercase tracking-[-0.02em] bg-[var(--stop)] text-white rounded-full">
+      <span className="px-2.5 py-1 text-[13px] italic font-[900] uppercase tracking-[-0.02em] bg-[var(--stop)] text-[#191a1e] rounded-full">
         Stop
       </span>
       <p className="mt-2 text-lg font-bold">{COUNTERFEIT_LINE}</p>

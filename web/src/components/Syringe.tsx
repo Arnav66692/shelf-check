@@ -41,7 +41,7 @@ export function formatAmount(value: number): string {
 
 const SEVERITY_LABEL: Record<Severity, string> = { stop: "Stop", ask: "Ask first", info: "Note" };
 const SEVERITY_STYLE: Record<Severity, string> = {
-  stop: "bg-[var(--stop)] text-white",
+  stop: "bg-[var(--stop)] text-[#191a1e]",
   ask: "bg-[var(--ask)] text-black",
   info: "bg-[var(--ok)]",
 };
