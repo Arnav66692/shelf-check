@@ -311,3 +311,14 @@ test("everyday complaints match the label's Uses line, and an if in a label is n
   expect(matchSymptoms("i have a cold", [advil]).map((match) => match.item.id)).toEqual(["advil"]);
   expect(matchSymptoms("menstrual cramps", [advil, pepto]).map((match) => match.item.id)).toEqual(["advil"]);
 });
+
+test("round 6 red flags in other word orders are caught", () => {
+  for (const text of [
+    "his lips look a bit blue", "her lips look a little blue", "my throat feels like it is closing",
+    "rash that doesnt go away when i press a glass on it", "sudden weakness on one side",
+    "her arm went numb and her face looks uneven", "he cant lift his left arm", "he is confused and very dizzy after starting his new pill",
+  ]) expect(screenEmergency(text).emergency, text).toBe(true);
+  for (const ordinary of ["my face is a bit red from the sun", "my leg is sore from running", "i got a rash from a new soap", "my lips are chapped"]) {
+    expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+  }
+});
