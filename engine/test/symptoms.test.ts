@@ -254,3 +254,31 @@ test("round 4 plain-language emergencies are caught", () => {
     expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
   }
 });
+
+test("round 5 plain-language emergencies are caught", () => {
+  const cases: [string, "poison" | "selfHarm" | "911"][] = [
+    ["my 3 year old got into grandmas pill box, not sure what she ate", "poison"],
+    ["my friend took xanax and is breathing really slow", "poison"],
+    ["i dont want to be alive anymore", "selfHarm"],
+    ["thinking about taking all my pills tonight", "selfHarm"],
+    ["my toddler drank some windshield washer fluid", "poison"],
+    ["my 4 year old swallowed some of my clonidine", "poison"],
+    ["hives everywhere and my throat feels weird after the shot", "911"],
+    ["i injected my insulin twice and now im sweaty and confused", "poison"],
+    ["my heart rate is over 180 and i feel faint", "911"],
+    ["my teenager took something at a party and is burning hot and acting crazy", "poison"],
+    ["i suddenly cant move my legs", "911"],
+    ["i am throwing up blood", "911"],
+    ["my husband is gray and sweaty and says his chest feels heavy", "911"],
+    ["cant stop shaking and my heart is going crazy after my adderall and a preworkout", "911"],
+  ];
+  for (const [text, kind] of cases) {
+    const screen = screenEmergency(text);
+    expect(screen.emergency, text).toBe(true);
+    if (screen.emergency && kind === "poison") expect(screen.poison, text).toBe(true);
+    if (screen.emergency && kind === "selfHarm") expect(screen.selfHarm, text).toBe(true);
+  }
+  for (const ordinary of ["my nose is so stuffy i cant breathe through it at night", "took my vitamin d twice", "my son ate a lot of candy", "my heart rate is 72"]) {
+    expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+  }
+});
