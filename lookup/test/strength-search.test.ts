@@ -117,3 +117,12 @@ test("a hospital-only route ranks after pills unless the search asks for an inje
   expect(scoreCandidate(pen, parseQuery("metoprolol"))).toBe(scoreCandidate(tablet, parseQuery("metoprolol")));
   expect(scoreCandidate(iv, parseQuery("metoprolol injection"))).toBeGreaterThanOrEqual(scoreCandidate(tablet, parseQuery("metoprolol injection")) - 1);
 });
+
+test("everyday words become label words before searching", async () => {
+  const { everydayWords } = await import("../src/search.ts");
+  expect(everydayWords("children's tylenol")).toBe("childrens tylenol");
+  expect(everydayWords("kids motrin")).toBe("childrens motrin");
+  expect(everydayWords("baby aspirin")).toBe("aspirin 81 mg");
+  expect(everydayWords("vitamin d")).toBe("vitamin d3");
+  expect(everydayWords("tylenol")).toBe("tylenol");
+});

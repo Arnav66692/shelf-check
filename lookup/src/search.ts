@@ -123,9 +123,22 @@ function emptyResult(query: string): NameSearchResult {
   return { query, groups: [], drugMatchTotal: 0, sourceErrors: [] };
 }
 
+// What people type for the products on their shelf, in the words the labels use.
+const EVERYDAY_WORDS: readonly (readonly [RegExp, string])[] = [
+  [/\b(?:baby|low[- ]dose|low[- ]strength) aspirin\b/gi, "aspirin 81 mg"],
+  [/\bchildren['’]s\b/gi, "childrens"],
+  [/\b(?:kids?['’]?s?|child['’]?s?)\b(?=\s+\w)/gi, "childrens"],
+  [/\binfant['’]?s\b/gi, "infants"],
+  [/\bvitamin d\b(?!\s*\d)/gi, "vitamin d3"],
+];
+
+export function everydayWords(text: string): string {
+  return EVERYDAY_WORDS.reduce((current, [pattern, replacement]) => current.replace(pattern, replacement), text);
+}
+
 export async function searchByName(sources: Sources, text: string, options: NameSearchOptions = {}): Promise<NameSearchResult> {
   const limit = options.limit ?? DEFAULT_LIMIT;
-  const typed = parseQuery(text);
+  const typed = parseQuery(everydayWords(text));
   if (typed.nameTokens.length === 0 || limit <= 0) return emptyResult(typed.text);
 
   const [drugs, firstSupplements] = await Promise.all([

@@ -78,10 +78,13 @@ export function scoreCandidate(candidate: Candidate, query: ParsedQuery): number
   // Adult products come first unless the search asks for a child's version.
   const childOnly = [...brandTokens].some((token) => CHILD_WORD.test(token)) && !wanted.some((token) => CHILD_WORD.test(token));
   // Most people search for what they take at home, so a hospital-only route comes later unless asked for.
+  // A cream or ointment comes after something you swallow unless the search asks for it.
+  const topical = dosageForms.length === 0 && form !== undefined && /\b(?:cream|ointment|lotion|gel|shampoo|paste)\b/i.test(form) &&
+    !/\b(?:cream|ointment|lotion|gel|rub|topical|skin|shampoo|diaper)\b/i.test(query.text);
   const clinicOnly = dosageForms.length === 0 && /\b(?:intravenous|intramuscular|epidural|intrathecal|intra-?arterial)\b/i.test(candidate.route ?? "") &&
     !/\bsubcutaneous\b/i.test(candidate.route ?? "") && !/\b(?:iv|injection|injectable|vial|shot)\b/i.test(query.text);
   return nameScore + strengthScore + formScore - EXTRA_WORD_PENALTY * Math.min(extraWords, MAX_EXTRA_WORDS) -
-    (childOnly ? CHILD_ONLY_PENALTY : 0) - (clinicOnly ? INJECTION_PENALTY : 0) - candidate.penalty;
+    (childOnly ? CHILD_ONLY_PENALTY : 0) - (clinicOnly || topical ? INJECTION_PENALTY : 0) - candidate.penalty;
 }
 
 function declaredAmount(ingredient: ProductIngredient): readonly NamedAmount[] {
@@ -192,6 +195,16 @@ function formulaKey(product: IdentifiedProduct): string {
   return product.ingredients.map((ingredient) => ingredient.rawName.toLowerCase().trim().split(/\s+/)[0]).sort().join("+");
 }
 
+// "oxycodone" means plain oxycodone before oxycodone with acetaminophen.
+const ONLY_INGREDIENT_BONUS = 0.4;
+
+function namesTheOnlyIngredient(product: IdentifiedProduct, query: ParsedQuery): boolean {
+  const [only, ...rest] = product.ingredients;
+  if (!only || rest.length > 0 || only.unit.startsWith(HOMEOPATHIC_UNIT_PREFIX)) return false;
+  const first = tokenize(only.rawName)[0];
+  return first !== undefined && query.nameTokens.map(comparableToken).includes(comparableToken(first));
+}
+
 export function groupProducts(products: readonly IdentifiedProduct[], query: ParsedQuery): readonly ScoredGroup[] {
   const kept = products.filter((product) => matchesReleaseForm(query, matchingForm(product)));
   const byKey = kept.reduce<ReadonlyMap<string, readonly IdentifiedProduct[]>>((groups, product) => {
@@ -207,7 +220,9 @@ export function groupProducts(products: readonly IdentifiedProduct[], query: Par
     .map((members) => {
       const scored = toScoredGroup(members, query);
       const [first] = members;
-      return first && mainFormulas.has(formulaKey(first)) ? { ...scored, score: scored.score + MAIN_FORMULA_BONUS } : scored;
+      const bonus = (first && mainFormulas.has(formulaKey(first)) ? MAIN_FORMULA_BONUS : 0) +
+        (first && namesTheOnlyIngredient(first, query) ? ONLY_INGREDIENT_BONUS : 0);
+      return bonus > 0 ? { ...scored, score: scored.score + bonus } : scored;
     })
     .map((scored, index) => ({ scored, index }))
     .sort((left, right) => right.scored.score - left.scored.score || left.index - right.index)
