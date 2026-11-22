@@ -49,7 +49,7 @@ The part that decides the warnings is a rules engine in TypeScript, and no AI mo
 - the FDA's published statements and the WADA 2026 Prohibited List for peptides, quoted word for word and checked against saved copies by tests
 - the NLM Pillbox archive and DailyMed product data for the pill finder, 83,912 records
 
-The engine has 567 tests that run on saved real label records, and the product lookup has 75 more. The app is Next.js and TypeScript, deployed on Vercel.
+The engine has 706 tests that run on saved real label records, and the product lookup has 109 more. The app is Next.js and TypeScript, deployed on Vercel.
 
 For reading a photo of a label I tested before building, with the pass bar written down before every test:
 
@@ -77,9 +77,15 @@ I ran the live app on random real products and pairs, with the bars written down
 
 So Shelf Check is reliable at the problem it was built for, the same drug hiding in two products, and its warnings come from real label sentences. It is weak at drug interactions in general. For most of those major pairs, neither FDA label names the other drug, and the labels describe the risk by drug type or effect instead, which the app does not turn into drug names yet. The app says plainly that a label can be silent about a real risk, and every result page tells you to have a pharmacist review the list.
 
-## Usability
+## Usability and a safety review
 
-Two cold reads of the live site by a reviewer playing a caregiver on a phone found things like a confirm button that was off screen after picking a product, empty searches that did nothing, brand names like Coumadin that found nothing, and a red stop sign on a prescribed blood thinner, which could push someone to stop a medicine they need. I fixed those and checked them on a phone sized screen. Warnings about prescribed medicines now say not to stop them without the prescriber. Every warning now has a plain "What to do" line, the warnings start with a one line summary, there is a larger text switch and a read aloud button, and an automated accessibility check (axe, WCAG 2.1 AA) finds no problems on any page at laptop or phone size.
+Before the deadline I had the app attacked from three sides, and fixed what they found:
+
+- A code review by a second AI model (Codex) that listed 51 bugs, from a peptide syringe amount that disagreed with its own label to a child getting an adult daily limit.
+- A reviewer playing a pharmacist, who built 21 real cabinets and found that the emergency screen missed most emergencies, that a penicillin allergy did not flag amoxicillin, and that a U-500 insulin dose could be read off U-100 marks.
+- A simulated usability test, where an AI agent played three made up people (a 68 year old on a phone, a parent in a hurry, a student using the keyboard) and drove the live site. This is not a real user test, and I report it only as a simulation. All four pass bars from my real-person test script passed in simulation, but two of the three rated adding a medicine only 4 out of 7, mostly because nothing told them what changed after adding.
+
+What changed because of that: emergency phrases like "I took too much tylenol" or "my lips are swelling" now go straight to Poison Help, 988 or 911, allergies match whole drug families, the dose check refuses to draw a mark it cannot measure, the app never tells you to stop a prescribed medicine on your own, misspelled brand names still find the product, and after you add something the cabinet tells you which warnings are new. Every warning has a plain "What to do" line, there is a larger text switch and a read aloud button, and an automated accessibility check (axe, WCAG 2.1 AA) finds no problems on any page at laptop or phone size.
 
 ## Challenges I ran into
 

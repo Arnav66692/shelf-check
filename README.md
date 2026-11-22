@@ -12,8 +12,8 @@ A safety check, not medical advice. No warning does not mean safe, because a lab
 
 | Folder or file | What it is |
 |---|---|
-| `engine/` | The rules engine in TypeScript. Duplicates, daily totals, interactions, health profile warnings, supplements, label tags, recalls, disposal, peptides, injection math, pill matching. No AI model decides any warning. 567 tests. |
-| `lookup/` | Finds the official record for a product by name, drug code (NDC) or barcode, across openFDA, DailyMed, RxNorm and the NIH supplement database. 75 tests. |
+| `engine/` | The rules engine in TypeScript. Duplicates, daily totals, interactions, health profile warnings, supplements, label tags, recalls, disposal, peptides, injection math, pill matching. No AI model decides any warning. 706 tests. |
+| `lookup/` | Finds the official record for a product by name, drug code (NDC) or barcode, across openFDA, DailyMed, RxNorm and the NIH supplement database. 109 tests. |
 | `web/` | The Next.js app. |
 | `reader_service.py`, `readers.py`, `verify.py` | The local photo reader and the cross-check that decides when a reading counts as matched. |
 | `train_matcher.py`, `render.py`, `extract_labels.py` | Training our own label matcher (DINOv2) on made up phone photos of official label images. |
@@ -93,4 +93,4 @@ The test images are official label artwork, not phone photos of real bottles, so
 
 ## Credits
 
-Open weight models Qwen3-VL 8B, Florence-2 and DINOv2. Libraries: Next.js, React, Tailwind CSS, ZXing, PyTorch, Transformers, FastAPI, Vitest. Built with an AI coding agent (Claude Code).
+Open weight models Qwen3-VL 8B, Florence-2 and DINOv2. Libraries: Next.js, React, Tailwind CSS, ZXing, PyTorch, Transformers, FastAPI, Vitest. Built with an AI coding agent (Claude Code), with code review help from Codex. The night-sky visual style follows the Flora template on getlayers.ai, rebuilt in original code with no copied code, images or fonts.
