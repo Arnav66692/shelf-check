@@ -24,8 +24,8 @@ const SLIDES: readonly Slide[] = [
     href: "/add",
     cta: "Enter",
     callouts: [
-      { label: "Active ingredient", spot: "left-[30%] top-[38%] w-[22%] h-[14%]" },
-      { label: "Label warning", spot: "left-[34%] top-[56%] w-[16%] h-[10%]" },
+      { label: "Active ingredient", spot: "left-[39%] top-[40%] w-[22%] h-[13%]" },
+      { label: "Label warning", spot: "left-[43%] top-[57%] w-[14%] h-[8%]" },
     ],
   },
   {
@@ -35,7 +35,25 @@ const SLIDES: readonly Slide[] = [
     body: "Acetaminophen hidden in two products was caught 40 of 40 times on random real products. On 40 harmless pairs it raised 0 false alarms. Every warning points to a real sentence on a real label.",
     href: "/tested",
     cta: "See the tests",
-    callouts: [{ label: "C8H9NO2", spot: "left-[26%] top-[30%] w-[26%] h-[34%]" }],
+    callouts: [{ label: "C8H9NO2", spot: "left-[36%] top-[30%] w-[28%] h-[40%]" }],
+  },
+  {
+    id: "learn",
+    title: "Learn",
+    model: "flask",
+    body: "What each medicine is for, when it starts working, what to eat or avoid with it, and its side effects. Every line is quoted from its FDA label.",
+    href: "/learn",
+    cta: "Enter",
+    callouts: [{ label: "FDA label", spot: "left-[40%] top-[48%] w-[20%] h-[14%]" }],
+  },
+  {
+    id: "care",
+    title: "Find care",
+    model: "pin",
+    body: "Pharmacies, urgent care and emergency rooms near you, sorted by how you feel. Call ahead, because pharmacies stock different medicines.",
+    href: "/care",
+    cta: "Enter",
+    callouts: [{ label: "Near you", spot: "left-[42%] top-[26%] w-[16%] h-[24%]" }],
   },
   {
     id: "symptoms",
@@ -44,7 +62,7 @@ const SLIDES: readonly Slide[] = [
     body: "Type how you feel. It finds what you already own that is labelled for it, and sends emergency words straight to 911, 988 or Poison Help.",
     href: "/symptoms",
     cta: "Enter",
-    callouts: [{ label: "Emergency first", spot: "left-[33%] top-[36%] w-[18%] h-[22%]" }],
+    callouts: [{ label: "Emergency first", spot: "left-[42%] top-[38%] w-[16%] h-[22%]" }],
   },
   {
     id: "pills",
@@ -53,7 +71,7 @@ const SLIDES: readonly Slide[] = [
     body: "Found a pill you cannot name. Search 83,912 FDA and NLM pill records by imprint, colour and shape, with Poison Help at the top.",
     href: "/pills",
     cta: "Enter",
-    callouts: [{ label: "Imprint", spot: "left-[34%] top-[44%] w-[14%] h-[10%]" }],
+    callouts: [{ label: "Imprint", spot: "left-[44%] top-[46%] w-[12%] h-[9%]" }],
   },
   {
     id: "dose",
@@ -62,7 +80,7 @@ const SLIDES: readonly Slide[] = [
     body: "Shows where the plunger should stop on a U-100 syringe, and catches the 5 units versus 50 units mix-up the FDA has warned about.",
     href: "/dose",
     cta: "Enter",
-    callouts: [{ label: "Draw to mark", spot: "left-[36%] top-[34%] w-[12%] h-[26%]" }],
+    callouts: [{ label: "Draw to mark", spot: "left-[46%] top-[34%] w-[9%] h-[28%]" }],
   },
   {
     id: "peptides",
@@ -71,7 +89,7 @@ const SLIDES: readonly Slide[] = [
     body: "Quotes the FDA label for approved peptides like Ozempic and Mounjaro, and says plainly when a peptide has no approved use or dose.",
     href: "/peptides",
     cta: "Enter",
-    callouts: [{ label: "FDA label", spot: "left-[33%] top-[26%] w-[18%] h-[46%]" }],
+    callouts: [{ label: "FDA label", spot: "left-[42%] top-[24%] w-[16%] h-[50%]" }],
   },
 ] as const;
 

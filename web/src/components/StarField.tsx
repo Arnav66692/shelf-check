@@ -40,7 +40,7 @@ export function StarField() {
       for (const star of stars) {
         const y = (star.y - (still ? 0 : now * star.speed)) % 1;
         context.globalAlpha = star.alpha;
-        context.fillStyle = star.warm ? "#ffe600" : "#ffffff";
+        context.fillStyle = star.warm ? "#4aa8ff" : "#ffffff";
         context.fillRect(star.x * width, (y < 0 ? y + 1 : y) * height, star.size, star.size);
       }
       context.globalAlpha = 1;

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export type ModelName = "bottle" | "kit" | "capsule" | "syringe" | "helix" | "molecule";
+export type ModelName = "bottle" | "kit" | "capsule" | "syringe" | "helix" | "molecule" | "flask" | "pin";
 
 type Point = readonly [number, number, number];
 type Segment = readonly [Point, Point, boolean];
@@ -146,6 +146,45 @@ function build(name: ModelName): Segment[] {
       sphere(s, ...me, 0.16, false);
       break;
     }
+    case "flask": {
+      const sides = 28;
+      for (let r = 0; r <= 7; r++) {
+        const t = r / 7;
+        ring(s, 1.3 - t * 0.95, -1.6 + t * 2.0, sides, r === 2);
+      }
+      for (let i = 0; i < sides; i += 2) {
+        const a = (i / sides) * TAU;
+        s.push([[Math.cos(a) * 1.3, -1.6, Math.sin(a) * 1.3], [Math.cos(a) * 0.35, 0.4, Math.sin(a) * 0.35], false]);
+      }
+      cylinder(s, 0.35, 0.4, 1.6, sides, 4);
+      ring(s, 0.45, 1.6, sides);
+      ring(s, 1.05, -0.9, sides, true);
+      ring(s, 0.9, -0.6, sides, true);
+      break;
+    }
+    case "pin": {
+      const sides = 24;
+      for (let lat = 1; lat < 8; lat++) {
+        const phi = (lat / 8) * Math.PI;
+        ring(s, Math.sin(phi) * 0.9, 0.9 + Math.cos(phi) * 0.9, sides);
+      }
+      for (let m = 0; m < 8; m++) {
+        const a = (m / 8) * TAU;
+        for (let k = 0; k < 12; k++) {
+          const p0 = (k / 12) * Math.PI;
+          const p1 = ((k + 1) / 12) * Math.PI;
+          s.push([[Math.cos(a) * Math.sin(p0) * 0.9, 0.9 + Math.cos(p0) * 0.9, Math.sin(a) * Math.sin(p0) * 0.9], [Math.cos(a) * Math.sin(p1) * 0.9, 0.9 + Math.cos(p1) * 0.9, Math.sin(a) * Math.sin(p1) * 0.9], false]);
+        }
+      }
+      ring(s, 0.35, 0.9, sides, true);
+      for (let i = 0; i < sides; i += 2) {
+        const a = (i / sides) * TAU;
+        s.push([[Math.cos(a) * 0.78, 0.45, Math.sin(a) * 0.78], [0, -1.5, 0], false]);
+      }
+      ring(s, 0.9, -1.55, 36, true);
+      ring(s, 1.4, -1.55, 36, false);
+      break;
+    }
   }
   return s;
 }
@@ -227,7 +266,7 @@ export function WireModel({ name, className = "" }: { name: ModelName; className
       for (let pass = 0; pass < 2; pass++) {
         const hotPass = pass === 1;
         context.lineWidth = hotPass ? 1.1 : 0.8;
-        context.strokeStyle = hotPass ? "rgba(255,230,0,0.9)" : "rgba(235,240,255,0.55)";
+        context.strokeStyle = hotPass ? "rgba(74,168,255,0.95)" : "rgba(235,242,255,0.55)";
         context.beginPath();
         for (let i = 0; i < shown; i++) {
           const [a, b, hot] = model[i];

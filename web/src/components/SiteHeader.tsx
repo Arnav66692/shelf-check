@@ -9,11 +9,12 @@ const MAIN_LINKS = [
   { href: "/", label: "Cabinet" },
   { href: "/add", label: "Add" },
   { href: "/symptoms", label: "Symptoms" },
-  { href: "/profile", label: "About you" },
+  { href: "/learn", label: "Learn" },
+  { href: "/care", label: "Find care" },
 ] as const;
 
 const TOOL_LINKS = [
-  { href: "/profile", label: "About you", phoneOnly: true },
+  { href: "/profile", label: "About you" },
   { href: "/pills", label: "Pill finder" },
   { href: "/dose", label: "Dose check" },
   { href: "/peptides", label: "Peptides" },
@@ -69,7 +70,7 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Main" className="flex flex-nowrap items-center gap-x-1 max-w-full overflow-x-auto [scrollbar-width:none] max-sm:-mx-[var(--margin)] max-sm:px-[var(--margin)] font-[family-name:var(--font-display)] text-[12px] font-medium tracking-[0.12em] uppercase whitespace-nowrap">
           {MAIN_LINKS.map((link, index) => (
-            <span key={link.href} className={`flex items-center ${link.href === "/profile" ? "max-sm:hidden" : ""}`}>
+            <span key={link.href} className="flex items-center">
               {index > 0 && <span className="px-2 text-muted" aria-hidden="true">·</span>}
               <Link
                 href={link.href}
@@ -105,10 +106,9 @@ export function SiteHeader() {
             {TOOL_LINKS.map((link) => (
               <Link
                 key={link.href}
-                data-phone-only={"phoneOnly" in link ? "true" : undefined}
                 href={link.href}
                 aria-current={pathname === link.href ? "page" : undefined}
-                className={`block rounded-full px-3 py-2 font-[family-name:var(--font-display)] text-[12px] font-medium tracking-[0.12em] uppercase hover:bg-[var(--faint)] ${"phoneOnly" in link ? "sm:hidden" : ""} ${pathname === link.href ? "text-accent" : "text-ink"}`}
+                className={`block rounded-full px-3 py-2 font-[family-name:var(--font-display)] text-[12px] font-medium tracking-[0.12em] uppercase hover:bg-[var(--faint)] ${pathname === link.href ? "text-accent" : "text-ink"}`}
               >
                 {link.label}
               </Link>

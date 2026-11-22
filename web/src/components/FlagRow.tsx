@@ -8,7 +8,7 @@ const SEVERITY_LABEL: Record<Severity, string> = {
 };
 
 const SEVERITY_STYLE: Record<Severity, string> = {
-  stop: "bg-[var(--stop)] text-[#05070f]",
+  stop: "bg-[var(--stop)] text-[var(--on-accent)]",
   ask: "bg-[var(--ask)] text-black",
   info: "border border-[var(--rule)]",
 };
