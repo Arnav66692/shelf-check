@@ -183,7 +183,9 @@ function mergeGroup(
     ...(reasons.length > 0 ? { matchedBecause: reasons } : {}),
   };
   if (first.type === "interaction") {
-    const pair = itemIds.map((id) => names.get(id) ?? "a product").join(" and ");
+    const pairNames = itemIds.map((id) => names.get(id) ?? "a product");
+    // "Lisinopril and Hydrochlorothiazide and Aspirin" hides where one product ends.
+    const pair = pairNames.join(pairNames.some((name) => / and /i.test(name)) ? " with " : " and ");
     const count = quotes.length === 1 ? "A label warns" : `${quotes.length} label lines warn`;
     return { ...shared, title: pair, explain: `${count} about taking these together. Check with a pharmacist before taking both.` };
   }

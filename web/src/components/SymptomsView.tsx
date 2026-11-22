@@ -111,6 +111,25 @@ function CausesList({ causes }: { causes: Causes | null }) {
   );
 }
 
+function WarningsFor({ itemId, flags }: { itemId: string; flags: FullResult["flags"] }) {
+  const involved = flags.filter((flag) => flag.itemIds.includes(itemId) && flag.severity !== "info");
+  if (involved.length === 0) return null;
+  const urgent = involved.some((flag) => flag.severity === "stop");
+  return (
+    <p className="mt-2 flex flex-wrap items-center gap-2 font-semibold">
+      <span
+        className={`rounded-full px-2 py-0.5 font-[family-name:var(--font-space)] text-[11px] font-bold uppercase ${urgent ? "bg-[var(--stop)] text-[#191a1e]" : "bg-[var(--ask)] text-[#191a1e]"}`}
+      >
+        {urgent ? "Check now" : "Ask first"}
+      </span>
+      {involved.length === 1 ? "1 warning involves this product." : `${involved.length} warnings involve this product.`}{" "}
+      <a className="underline" href="#before-you-take">
+        Read before you take it
+      </a>
+    </p>
+  );
+}
+
 function Matches({ result, items }: { result: FullResult; items: readonly Product[] }) {
   const hidden = result.hidden ?? [];
   const nameOf = (id: string) => items.find((candidate) => candidate.id === id)?.displayName ?? "A product you own";
@@ -131,6 +150,7 @@ function Matches({ result, items }: { result: FullResult; items: readonly Produc
             <h3 className="text-lg font-semibold">{nameOf(match.itemId)}</h3>
             <blockquote className="quote mt-2">{match.uses}</blockquote>
             <p className="mt-1 text-sm text-ink-soft">From the Uses section of its label.</p>
+            <WarningsFor itemId={match.itemId} flags={result.flags} />
           </li>
         ))}
       </ul>
@@ -270,7 +290,7 @@ export function SymptomsView() {
             )}
             <Matches result={result} items={items} />
             {result.flags.length > 0 && (
-              <section>
+              <section id="before-you-take">
                 <h2 className="text-2xl font-medium narrow">Before you take one</h2>
                 <ul className="mt-3 grid gap-3">
                   {result.flags.map((flag) => (
