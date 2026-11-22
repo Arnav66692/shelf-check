@@ -223,6 +223,8 @@ function conditionPattern(condition: ConditionId): RegExp {
 const SECTIONS_ADDRESSED_TO_THE_READER: readonly LabelSectionName[] = ["contraindications", "do_not_use", "ask_doctor"];
 const CO_USE = /\b(?:co[- ]?administ\w*|concomitant\w*|in combination with|also taking|together with|patients? (?:taking|receiving|treated with)|(?:administer(?:ed)?|use[sd]?|tak(?:e|en)|given|contraindicated)(?:\s+(?!(?:to|in|for|patients?|people|women|children|adults|anyone|those|individuals?|persons?)\b)[\w-]+){0,8}\s+with)\b/i;
 const TREATMENT_LEAD = /(?:\b(?:treat(?:s|ing|ment)?(?: of)?|management of|relief of|indicated for|used for|control of)\s+(?:the\s+)?|^uses?\s*:?\s*)(?:(?:type [12]|primary|essential|chronic|acute)\s+)*$/i;
+// "1 INDICATIONS AND USAGE Hypothyroidism Levothyroxine ... is indicated": the condition is the first subheading.
+const INDICATION_HEADING = /^\s*(?:\d+(?:\.\d+)*\s+)?indications?(?:\s+(?:and|&)\s+usage)?\s*:?\s*$/i;
 const GLYCEMIC_CONTROL = /\bimprove glycemic control in [^.;:]{1,80}\bwith (?:type [12] )?$/i;
 
 function treatsCondition(item: CabinetItem, condition: ConditionId): boolean {
@@ -231,7 +233,8 @@ function treatsCondition(item: CabinetItem, condition: ConditionId): boolean {
     hitsIn(sentence, pattern).some(({ span }) => {
       const before = sentence.text.slice(0, span.start);
       return !/\bnot (?:indicated|used|intended)\b|\bdoes not treat\b/i.test(before)
-        && (TREATMENT_LEAD.test(before) || (condition === "diabetes" && GLYCEMIC_CONTROL.test(before)));
+        && (TREATMENT_LEAD.test(before) || INDICATION_HEADING.test(before) ||
+          (condition === "diabetes" && GLYCEMIC_CONTROL.test(before)));
     }),
   );
 }

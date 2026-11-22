@@ -567,3 +567,15 @@ test("an allergy to one NSAID flags another NSAID whose label says not to use it
   expectVerbatim(flag?.quote, items);
   expect(profileFlags(items, { ...NOTHING, allergies: ["acetaminophen"] }).filter((f) => f.match?.kind === "allergen")).toEqual([]);
 });
+
+test("a medicine whose indications section opens with the condition as a subheading is treated as treating it", () => {
+  const levothyroxine: CabinetItem = {
+    id: "levo", displayName: "Levothyroxine", kind: "rx", verified: true,
+    ingredients: [{ name: "levothyroxine", value: 50, unit: "mcg" }],
+    label: {
+      indications_and_usage: ["1 INDICATIONS AND USAGE Hypothyroidism Levothyroxine sodium tablets are indicated as a replacement therapy in hypothyroidism."],
+      warnings_and_cautions: ["In pediatric patients with congenital hypothyroidism, undertreatment may adversely affect cognitive development."],
+    },
+  };
+  expect(profileFlags([levothyroxine], withConditions("thyroid_disease"))).toEqual([]);
+});
