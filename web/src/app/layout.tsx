@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { Nunito_Sans, Saira } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { BottomBar } from "@/components/BottomBar";
 import { StarField } from "@/components/StarField";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -9,7 +10,15 @@ import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
 
 const body = Nunito_Sans({ variable: "--font-body", subsets: ["latin"], weight: ["300", "400", "600"] });
-const display = Saira({ variable: "--font-display", subsets: ["latin"], weight: ["200", "500"] });
+const display = localFont({
+  variable: "--font-display",
+  src: [
+    { path: "../fonts/Telma-300.woff2", weight: "300", style: "normal" },
+    { path: "../fonts/Telma-400.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/Telma-500.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/Telma-700.woff2", weight: "700", style: "normal" },
+  ],
+});
 
 const TEXT_SIZE_SCRIPT =
   'try{if(localStorage.getItem("shelf-check.text-size")==="large")document.documentElement.dataset.text="large"}catch(e){}';

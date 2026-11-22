@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react";
 
 export type ModelName = "bottle" | "kit" | "capsule" | "syringe" | "helix" | "molecule" | "flask" | "pin";
 
-type Point = readonly [number, number, number];
-type Segment = readonly [Point, Point, boolean];
+export type Point = readonly [number, number, number];
+export type Segment = readonly [Point, Point, boolean];
 
 const TAU = Math.PI * 2;
 
@@ -46,7 +46,7 @@ function sphere(segments: Segment[], cx: number, cy: number, cz: number, radius:
   }
 }
 
-function build(name: ModelName): Segment[] {
+export function build(name: ModelName): Segment[] {
   const s: Segment[] = [];
   switch (name) {
     case "bottle": {

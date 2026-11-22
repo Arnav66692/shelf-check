@@ -22,14 +22,23 @@ const TOOL_LINKS = [
   { href: "/tested", label: "How we tested" },
 ] as const;
 
-export function Mark({ size = 34 }: { size?: number }) {
+export function Mark({ size = 40 }: { size?: number }) {
   return (
-    <svg viewBox="0 0 48 32" width={size} height={(size * 32) / 48} aria-hidden="true">
-      <g fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-        <path d="M4 22c4-11 12-15 20-10s14 1 20-8" />
-        <path d="M4 28c5-8 12-11 19-7s14 1 21-6" opacity="0.75" />
-        <path d="M10 10a9 9 0 0 1 12-4" />
-        <path d="M12 15a6 6 0 0 1 7-3" />
+    <svg viewBox="0 0 48 40" width={size} height={(size * 40) / 48} aria-hidden="true">
+      <g transform="rotate(38 17 25)">
+        <rect x="7" y="15" width="20" height="22" rx="3.5" fill="#ffffff" />
+        <rect x="7" y="22" width="20" height="8" fill="var(--paper)" opacity="0.85" />
+        <rect x="7" y="23.6" width="20" height="1.2" fill="#ffffff" opacity="0.5" />
+        <rect x="10.5" y="10" width="13" height="6" rx="1.2" fill="#ffffff" />
+        <rect x="9.5" y="8.6" width="15" height="2.4" rx="1.2" fill="none" stroke="#ffffff" strokeWidth="1.4" />
+      </g>
+      <g transform="rotate(-28 35 8)">
+        <rect x="30" y="5.6" width="11" height="5" rx="2.5" fill="var(--stop)" />
+        <rect x="35.5" y="5.6" width="5.5" height="5" rx="2.5" fill="#ffffff" opacity="0.28" />
+      </g>
+      <g transform="rotate(22 41 19)">
+        <rect x="36" y="16.6" width="11" height="5" rx="2.5" fill="var(--accent)" />
+        <rect x="41.5" y="16.6" width="5.5" height="5" rx="2.5" fill="#ffffff" opacity="0.28" />
       </g>
     </svg>
   );

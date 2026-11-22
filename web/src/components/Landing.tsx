@@ -1,142 +1,187 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { EnterGate } from "./EnterGate";
-import { WireModel, type ModelName } from "./WireModel";
+import { HOLD_MS, SQUASH_MS, World, type WorldModel } from "./World";
 
 type Slide = {
-  id: string;
-  title: string;
-  model: ModelName;
-  body: string;
-  href: string;
-  cta: string;
-  callouts: readonly { label: string; spot: string }[];
+  readonly id: string;
+  readonly title: string;
+  readonly body: string;
+  readonly href: string;
+  readonly cta: string;
+  readonly model: WorldModel;
 };
 
 const SLIDES: readonly Slide[] = [
   {
     id: "check",
     title: "Check",
-    model: "bottle",
     body: "Tylenol and NyQuil both contain acetaminophen, and neither box tells you the other one has it. Add what is in your cabinet and Shelf Check reads every official FDA label together, then quotes the line that matters.",
     href: "/add",
     cta: "Enter",
-    callouts: [
-      { label: "Active ingredient", spot: "left-[39%] top-[40%] w-[22%] h-[13%]" },
-      { label: "Label warning", spot: "left-[43%] top-[57%] w-[14%] h-[8%]" },
-    ],
+    model: { name: "bottle", callouts: [{ label: "Active ingredient", at: [0, -0.1, 1.05], half: [0.75, 0.5] }] },
   },
   {
-    id: "proof",
-    title: "Prove",
-    model: "molecule",
-    body: "Acetaminophen hidden in two products was caught 40 of 40 times on random real products. On 40 harmless pairs it raised 0 false alarms. Every warning points to a real sentence on a real label.",
-    href: "/tested",
-    cta: "See the tests",
-    callouts: [{ label: "C8H9NO2", spot: "left-[36%] top-[30%] w-[28%] h-[40%]" }],
+    id: "zephyr",
+    title: "Zephyr",
+    body: "Zephyr is our own image model. Show it the box and it finds the 5 closest official labels, right on your device. Your photo is never uploaded, and you confirm the match yourself.",
+    href: "/add",
+    cta: "Try Zephyr",
+    model: { name: "capsule", callouts: [{ label: "3,588 labels", at: [0, 0, 0.75], half: [0.55, 0.35] }] },
   },
   {
     id: "learn",
     title: "Learn",
-    model: "flask",
     body: "What each medicine is for, when it starts working, what to eat or avoid with it, and its side effects. Every line is quoted from its FDA label.",
     href: "/learn",
     cta: "Enter",
-    callouts: [{ label: "FDA label", spot: "left-[40%] top-[48%] w-[20%] h-[14%]" }],
+    model: { name: "flask", callouts: [{ label: "FDA label", at: [0, -0.75, 1.1], half: [0.8, 0.3] }] },
   },
   {
     id: "care",
     title: "Find care",
-    model: "pin",
     body: "Pharmacies, urgent care and emergency rooms near you, sorted by how you feel. Call ahead, because pharmacies stock different medicines.",
     href: "/care",
     cta: "Enter",
-    callouts: [{ label: "Near you", spot: "left-[42%] top-[26%] w-[16%] h-[24%]" }],
+    model: { name: "pin", callouts: [{ label: "Near you", at: [0, 0.9, 0.9], half: [0.6, 0.6] }] },
   },
   {
     id: "symptoms",
     title: "Symptoms",
-    model: "kit",
     body: "Type how you feel. It finds what you already own that is labelled for it, and sends emergency words straight to 911, 988 or Poison Help.",
     href: "/symptoms",
     cta: "Enter",
-    callouts: [{ label: "Emergency first", spot: "left-[42%] top-[38%] w-[16%] h-[22%]" }],
-  },
-  {
-    id: "pills",
-    title: "Identify",
-    model: "capsule",
-    body: "Found a pill you cannot name. Search 83,912 FDA and NLM pill records by imprint, colour and shape, with Poison Help at the top.",
-    href: "/pills",
-    cta: "Enter",
-    callouts: [{ label: "Imprint", spot: "left-[44%] top-[46%] w-[12%] h-[9%]" }],
+    model: { name: "kit", callouts: [{ label: "Emergency first", at: [0, 0, 0.7], half: [0.6, 0.6] }] },
   },
   {
     id: "dose",
     title: "Measure",
-    model: "syringe",
     body: "Shows where the plunger should stop on a U-100 syringe, and catches the 5 units versus 50 units mix-up the FDA has warned about.",
     href: "/dose",
     cta: "Enter",
-    callouts: [{ label: "Draw to mark", spot: "left-[46%] top-[34%] w-[9%] h-[28%]" }],
+    model: { name: "syringe", callouts: [{ label: "Draw to mark", at: [0, -0.4, 0.5], half: [0.45, 1.1] }] },
   },
   {
     id: "peptides",
     title: "Peptides",
-    model: "helix",
     body: "Quotes the FDA label for approved peptides like Ozempic and Mounjaro, and says plainly when a peptide has no approved use or dose.",
     href: "/peptides",
     cta: "Enter",
-    callouts: [{ label: "FDA label", spot: "left-[42%] top-[24%] w-[16%] h-[50%]" }],
+    model: { name: "helix", callouts: [{ label: "FDA label", at: [0, 0.4, 1], half: [0.6, 1.3] }] },
   },
-] as const;
+  {
+    id: "proof",
+    title: "Prove",
+    body: "Acetaminophen hidden in two products was caught 40 of 40 times on random real products. On 40 harmless pairs it raised 0 false alarms. Every warning points to a real sentence on a real label.",
+    href: "/tested",
+    cta: "See the tests",
+    model: { name: "molecule", callouts: [{ label: "C8H9NO2", at: [0, 0, 0.3], half: [1.4, 1.6] }] },
+  },
+];
+
+const SWITCH_MS = SQUASH_MS + HOLD_MS;
 
 function pad(value: number): string {
   return String(value).padStart(2, "0");
 }
 
-function Arrow({ flip }: { flip?: boolean }) {
+function letterDelays(length: number, seed: number): number[] {
+  return Array.from({ length }, (_, i) => ((i * 7919 + seed * 104729) % 97) / 97);
+}
+
+function ScrambleTitle({ text, visible, seed }: { text: string; visible: boolean; seed: number }) {
+  const delays = useMemo(() => letterDelays(text.length, seed), [text, seed]);
   return (
-    <svg viewBox="0 0 24 8" width="22" height="8" aria-hidden="true" className={flip ? "rotate-180" : ""}>
-      <path d="M0 4h22M18 1l4 3-4 3" fill="none" stroke="currentColor" strokeWidth="1" />
-    </svg>
+    <h1 aria-label={text} className="title text-[clamp(40px,4.2vw,72px)] tracking-[0.2em] whitespace-nowrap">
+      {[...text].map((letter, i) => (
+        <span
+          key={`${seed}-${i}`}
+          aria-hidden="true"
+          className={`letter ${visible ? "letter-in" : "letter-out"}`}
+          style={{ animationDelay: `${Math.round(delays[i] * (visible ? 520 : 260))}ms` }}
+          data-letter={letter}
+        >
+          {letter === " " ? " " : letter}
+        </span>
+      ))}
+    </h1>
   );
 }
 
-function Callouts({ slide }: { slide: Slide }) {
+function Counter({ index, total }: { index: number; total: number }) {
+  const next = (index + 1) % total;
   return (
-    <div aria-hidden="true" className="absolute inset-0 pointer-events-none max-md:hidden">
-      {slide.callouts.map((callout, index) => (
-        <div
-          key={callout.label}
-          className={`absolute border border-[var(--accent)] rise ${callout.spot}`}
-          style={{ animationDelay: `${900 + index * 250}ms` }}
-        >
-          <span className="absolute -top-px left-full ml-2 whitespace-nowrap bg-[var(--accent)] px-2 py-0.5 font-[family-name:var(--font-display)] text-[11px] font-medium uppercase tracking-[0.15em] text-[var(--on-accent)]">
-            {callout.label}
-          </span>
-        </div>
-      ))}
+    <div className="hatch flex items-center gap-3 px-3 h-7 font-[family-name:var(--font-display)] text-[13px] font-medium tracking-[0.15em]" aria-hidden="true">
+      <span key={`a-${index}`} className="text-accent blink count-in">{pad(index + 1)}</span>
+      <span className="h-px w-8 bg-[var(--rule)]" />
+      <span key={`b-${index}`} className="text-muted count-in">{pad(next + 1)}</span>
     </div>
   );
 }
 
-export function Landing() {
-  const [index, setIndex] = useState(0);
-  const touchX = useRef<number | null>(null);
-  const slide = SLIDES[index];
-  const next = (index + 1) % SLIDES.length;
+function RingButton({ label, flip, onClick }: { label: string; flip?: boolean; onClick: () => void }) {
+  return (
+    <button type="button" onClick={onClick} aria-label={label} className="ring-button group relative grid place-items-center h-[70px] w-[70px] text-ink">
+      <svg viewBox="0 0 70 70" className="absolute inset-0" aria-hidden="true">
+        <circle cx="35" cy="35" r="27" fill="none" stroke="var(--rule)" strokeWidth="1" />
+        <circle cx="35" cy="35" r="27" fill="none" stroke="var(--accent)" strokeWidth="1.2" className="ring-draw" transform="rotate(-90 35 35)" />
+      </svg>
+      <svg viewBox="0 0 24 8" width="22" height="8" aria-hidden="true" className={`relative transition-transform duration-500 ${flip ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"}`}>
+        <path d="M0 4h22M18 1l4 3-4 3" fill="none" stroke="currentColor" strokeWidth="1" />
+      </svg>
+    </button>
+  );
+}
 
-  const go = useCallback((step: number) => {
-    setIndex((current) => (current + step + SLIDES.length) % SLIDES.length);
+export function Landing() {
+  const [target, setTarget] = useState(0);
+  const [shown, setShown] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const [pinched, setPinched] = useState(false);
+  const busy = useRef(false);
+  const touchX = useRef<number | null>(null);
+  const timers = useRef<number[]>([]);
+  const slide = SLIDES[shown];
+  const models = useMemo(() => SLIDES.map((item) => item.model), []);
+
+  const goTo = useCallback(
+    (next: number) => {
+      if (busy.current || next === target) return;
+      busy.current = true;
+      setVisible(false);
+      setPinched(true);
+      setTarget(next);
+      timers.current.push(
+        window.setTimeout(() => {
+          setShown(next);
+          setVisible(true);
+        }, SWITCH_MS),
+        window.setTimeout(() => setPinched(false), SWITCH_MS + 250),
+        window.setTimeout(() => {
+          busy.current = false;
+        }, SWITCH_MS + 700),
+      );
+    },
+    [target],
+  );
+
+  const go = useCallback((step: number) => goTo((target + step + SLIDES.length) % SLIDES.length), [goTo, target]);
+
+  useEffect(() => {
+    document.body.classList.add("no-hgrid");
+    const pending = timers.current;
+    return () => {
+      document.body.classList.remove("no-hgrid");
+      pending.forEach((id) => window.clearTimeout(id));
+    };
   }, []);
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
-      const target = event.target as HTMLElement | null;
-      if (target && /INPUT|TEXTAREA|SELECT/.test(target.tagName)) return;
+      const element = event.target as HTMLElement | null;
+      if (element && /INPUT|TEXTAREA|SELECT/.test(element.tagName)) return;
       if (event.key === "ArrowRight") go(1);
       if (event.key === "ArrowLeft") go(-1);
     }
@@ -160,35 +205,34 @@ export function Landing() {
       }}
     >
       <EnterGate />
-      <div key={slide.id} className="absolute inset-y-0 left-0 w-[60%] max-sm:relative max-sm:w-full max-sm:h-[300px] rise">
-        <WireModel name={slide.model} />
-        <Callouts slide={slide} />
+      <div className="fixed inset-0 -z-[1] max-sm:absolute max-sm:inset-x-0 max-sm:top-0 max-sm:h-[340px] max-sm:z-0" aria-hidden="true">
+        <World models={models} index={target} />
       </div>
+      <div aria-hidden="true" className="pinch-line max-sm:hidden" style={{ top: pinched ? "53%" : "31%" }} />
+      <div aria-hidden="true" className="pinch-line max-sm:hidden" style={{ top: pinched ? "53%" : "69%" }} />
 
-      <div className="absolute left-1/2 top-2 -translate-x-1/2 flex items-center gap-3 font-[family-name:var(--font-display)] text-[13px] font-medium tracking-[0.15em] max-sm:hidden" aria-hidden="true">
-        <span className="text-accent blink">{pad(index + 1)}</span>
-        <span className="h-px w-8 bg-[var(--rule)]" />
-        <span className="text-muted">{pad(next + 1)}</span>
+      <div className="absolute left-1/2 top-2 -translate-x-1/2 max-sm:hidden">
+        <Counter index={target} total={SLIDES.length} />
       </div>
 
       <div
         role="group"
         aria-roledescription="slide"
-        aria-label={`${index + 1} of ${SLIDES.length}, ${slide.title}`}
-        className="absolute left-[55%] right-[9%] top-[24%] max-w-[520px] max-sm:static max-sm:px-[var(--margin)] max-sm:pt-4 max-sm:max-w-none"
+        aria-label={`${shown + 1} of ${SLIDES.length}, ${slide.title}`}
+        className="absolute left-[55%] right-[9%] top-[22%] max-w-[520px] max-sm:static max-sm:px-[var(--margin)] max-sm:pt-[360px] max-sm:max-w-none"
       >
-        <h1 key={`t-${slide.id}`} aria-live="polite" className="title rgb-title text-[clamp(40px,4.2vw,72px)] tracking-[0.2em]" data-text={slide.title}>
-          {slide.title}
-        </h1>
-        <p key={`b-${slide.id}`} className="mt-6 text-[var(--ink-soft)] rise">
+        <ScrambleTitle text={slide.title} visible={visible} seed={shown + 1} />
+        <p
+          className={`mt-6 text-[var(--ink-soft)] transition-[opacity,transform,filter] duration-500 ${visible ? "opacity-100 translate-y-0 blur-0 delay-200" : "opacity-0 translate-y-2 blur-[3px]"}`}
+        >
           {slide.body}
         </p>
-        <div key={`c-${slide.id}`} className="mt-10 flex flex-wrap items-center gap-3 rise" style={{ animationDelay: "300ms" }}>
-          <Link href={slide.href} className="btn min-w-[194px] justify-start">
-            {slide.cta}
+        <div className="mt-10 flex flex-wrap items-center gap-3">
+          <Link href={slide.href} className={`btn btn-grow min-w-[194px] justify-start ${visible ? "is-in" : "is-out"}`}>
+            <span className="btn-label">{slide.cta}</span>
           </Link>
           {slide.id === "check" && (
-            <Link href="/add?sample=1" className="btn btn-quiet">
+            <Link href="/add?sample=1" className={`btn btn-quiet transition-opacity duration-500 ${visible ? "opacity-100 delay-500" : "opacity-0"}`}>
               Try a sample cabinet
             </Link>
           )}
@@ -196,34 +240,24 @@ export function Landing() {
         <p className="mt-8 hud-bar label">Poison Help 1-800-222-1222. Emergency, call 911.</p>
       </div>
 
-      <button
-        type="button"
-        onClick={() => go(-1)}
-        aria-label="Previous tool"
-        className="absolute left-[var(--margin)] top-1/2 -translate-y-1/2 grid place-items-center h-14 w-14 rounded-full border border-[var(--rule)] text-ink hover:border-[var(--accent)] hover:text-accent transition-colors max-sm:top-[150px]"
-      >
-        <Arrow flip />
-      </button>
-      <button
-        type="button"
-        onClick={() => go(1)}
-        aria-label="Next tool"
-        className="absolute right-[var(--margin)] top-1/2 -translate-y-1/2 grid place-items-center h-14 w-14 rounded-full border border-[var(--rule)] text-ink hover:border-[var(--accent)] hover:text-accent transition-colors max-sm:top-[150px]"
-      >
-        <Arrow />
-      </button>
+      <div className="absolute left-[var(--margin)] top-1/2 -translate-y-1/2 max-sm:top-[170px]">
+        <RingButton label="Previous tool" flip onClick={() => go(-1)} />
+      </div>
+      <div className="absolute right-[var(--margin)] top-1/2 -translate-y-1/2 max-sm:top-[170px]">
+        <RingButton label="Next tool" onClick={() => go(1)} />
+      </div>
 
       <ol className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2 max-sm:static max-sm:translate-x-0 max-sm:justify-center max-sm:py-6" aria-label="Choose a tool">
         {SLIDES.map((item, itemIndex) => (
           <li key={item.id}>
             <button
               type="button"
-              onClick={() => setIndex(itemIndex)}
+              onClick={() => goTo(itemIndex)}
               aria-label={item.title}
-              aria-current={itemIndex === index ? "true" : undefined}
+              aria-current={itemIndex === target ? "true" : undefined}
               className="grid h-11 w-8 place-items-center"
             >
-              <span className={`block h-[2px] transition-all duration-500 ${itemIndex === index ? "w-8 bg-[var(--accent)]" : "w-4 bg-[var(--rule)]"}`} />
+              <span className={`block h-[2px] transition-all duration-500 ${itemIndex === target ? "w-8 bg-[var(--accent)]" : "w-4 bg-[var(--rule)]"}`} />
             </button>
           </li>
         ))}
