@@ -80,6 +80,69 @@ async function toPixels(blob) {
   return pixels;
 }
 
+const SHELF_BOXES = (() => {
+  const boxes = [[0, 0, 1, 1]];
+  for (const columns of [2, 3, 4]) for (let c = 0; c < columns; c++) boxes.push([c / columns, 0, 1 / columns, 1]);
+  for (const [columns, rows] of [[2, 2], [3, 2]]) {
+    for (let r = 0; r < rows; r++) for (let c = 0; c < columns; c++) boxes.push([c / columns, r / rows, 1 / columns, 1 / rows]);
+  }
+  return boxes;
+})();
+
+function fitPixels(bitmap, sx, sy, sw, sh) {
+  const canvas = new OffscreenCanvas(SIZE, SIZE);
+  const context = canvas.getContext("2d");
+  context.fillStyle = "rgb(128,128,128)";
+  context.fillRect(0, 0, SIZE, SIZE);
+  const scale = SIZE / Math.max(sw, sh);
+  const w = Math.max(1, Math.round(sw * scale));
+  const h = Math.max(1, Math.round(sh * scale));
+  context.drawImage(bitmap, sx, sy, sw, sh, Math.round((SIZE - w) / 2), Math.round((SIZE - h) / 2), w, h);
+  const { data } = context.getImageData(0, 0, SIZE, SIZE);
+  const plane = SIZE * SIZE;
+  const pixels = new Float32Array(3 * plane);
+  for (let i = 0; i < plane; i++) {
+    for (let c = 0; c < 3; c++) pixels[c * plane + i] = (data[i * 4 + c] / 255 - MEAN[c]) / STD[c];
+  }
+  return pixels;
+}
+
+function bestProduct(state, vector) {
+  const { gallery, owners, meta } = state;
+  const dim = meta.dim;
+  const best = new Float32Array(meta.products.length).fill(-9);
+  for (let image = 0; image < owners.length; image++) {
+    let score = 0;
+    const base = image * dim;
+    for (let d = 0; d < dim; d++) score += gallery[base + d] * vector[d];
+    score /= 127;
+    if (score > best[owners[image]]) best[owners[image]] = score;
+  }
+  let top = 0;
+  for (let i = 1; i < best.length; i++) if (best[i] > best[top]) top = i;
+  return [top, best[top]];
+}
+
+async function shelf(state, id, blob, threshold) {
+  const bitmap = await createImageBitmap(blob);
+  const found = new Map();
+  for (let i = 0; i < SHELF_BOXES.length; i++) {
+    if (id !== latest) return null;
+    const [x, y, w, h] = SHELF_BOXES[i];
+    const sx = Math.round(x * bitmap.width);
+    const sy = Math.round(y * bitmap.height);
+    const pixels = fitPixels(bitmap, sx, sy, Math.round(w * bitmap.width), Math.round(h * bitmap.height));
+    const output = await state.session.run({ pixels: new ort.Tensor("float32", pixels, [1, 3, SIZE, SIZE]) });
+    const [top, score] = bestProduct(state, output.embedding.data);
+    if (score > (found.get(top) ?? -9)) found.set(top, score);
+    post("progress", { id, stage: "crop", done: i + 1, total: SHELF_BOXES.length });
+  }
+  return [...found.entries()]
+    .filter(([, score]) => score >= threshold)
+    .sort((a, b) => b[1] - a[1])
+    .map(([index, score]) => ({ ...state.meta.products[index], score }));
+}
+
 function rank(state, vector, count) {
   const { gallery, owners, meta } = state;
   const dim = meta.dim;
@@ -99,8 +162,22 @@ function rank(state, vector, count) {
 let latest = 0;
 let queue = Promise.resolve();
 
-async function handle(id, blob) {
+async function handle(id, blob, mode, threshold) {
   if (id !== latest) return;
+  if (mode === "shelf") {
+    try {
+      const started = performance.now();
+      if (!ready) ready = load();
+      const state = await ready;
+      post("progress", { id, stage: "read" });
+      const matches = await shelf(state, id, blob, threshold);
+      if (matches) post("done", { id, matches, backend: state.backend, modelMs: performance.now() - started, totalMs: performance.now() - started });
+    } catch (error) {
+      ready = null;
+      post("error", { id, message: error instanceof Error ? error.message : String(error) });
+    }
+    return;
+  }
   try {
     const started = performance.now();
     if (!ready) ready = load();
@@ -122,7 +199,7 @@ async function handle(id, blob) {
 }
 
 self.onmessage = (event) => {
-  const { id, blob } = event.data;
+  const { id, blob, mode, threshold } = event.data;
   latest = id;
-  queue = queue.then(() => handle(id, blob));
+  queue = queue.then(() => handle(id, blob, mode, threshold));
 };
