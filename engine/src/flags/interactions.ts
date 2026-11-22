@@ -250,6 +250,7 @@ function membershipQuote(other: CabinetItem, best: SentenceMatch) {
 }
 
 const EXAMPLES_LEAD = /^(?:examples?(?: of [^:.]{1,80}?)?(?: include)?\s*:?|e\.g\.,?|such as)\s/i;
+const REFERS_BACK = /^(?:therefore|thus|hence|in such cases),?\s/i;
 const LIST_ITEM_MAX = 160;
 const FOLLOW_ON = /^(?:administer|take|separate|space|give)\b[^.]*\bthese (?:agents|drugs|products|medications|medicines)\b/i;
 
@@ -275,7 +276,7 @@ function inParagraph(paragraphs: readonly string[], parts: readonly string[]): b
 function leadInFor(sentences: readonly LabelSentence[], index: number): LabelSentence | undefined {
   const sentence = sentences[index];
   if (sentence === undefined) return undefined;
-  if (EXAMPLES_LEAD.test(sentence.text)) return sentences[index - 1];
+  if (EXAMPLES_LEAD.test(sentence.text) || REFERS_BACK.test(sentence.text)) return sentences[index - 1];
   for (let back = index - 1; back >= Math.max(0, index - 12); back -= 1) {
     const candidate = sentences[back];
     if (candidate === undefined) return undefined;

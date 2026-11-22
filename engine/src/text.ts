@@ -1,7 +1,7 @@
 const SENTENCE_BOUNDARY = /(?<=[.!?][)\]"'”’]?)\s+(?=[A-Z0-9(\["“])|\s*[•■▪●◦♦]\s*/g;
 // Recognizable transitions between flattened Drug Facts bullets. A bare "if"
 // often qualifies the preceding instruction and is not, by itself, a boundary.
-const DRUG_FACTS_BULLET = /(?<=\b(?:in |for )?children under \d+ years?(?: of age)?)\s+(?=if you (?:are (?:now )?taking|have ever had)\b)|(?<=\bto make a child sleepy)\s+(?=with any other\b)|(?<=\beven one used on (?:the )?skin)\s+(?=(?:in|for) children under\b)/gi;
+const DRUG_FACTS_BULLET = /(?<=\b(?:in |for )?children under \d+ years?(?: of age)?)\s+(?=if you (?:are (?:now )?taking|have ever had)\b|with any other\b)|(?<=\bto make a child sleepy)\s+(?=with any other\b)|(?<=\beven one used on (?:the )?skin)\s+(?=(?:in|for) children under\b)/gi;
 const ABBREVIATION_BEFORE_BOUNDARY = /(?:^|[\s("“'‘])(?:St|Dr|Mr|Mrs|Ms|vs|No|Fig|Alt|approx|etc|e\.g|i\.e|U\.S)\.[)\]]?$/;
 const WORD_CHARACTER = "A-Za-z0-9";
 
