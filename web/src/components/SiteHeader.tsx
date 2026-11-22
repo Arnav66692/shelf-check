@@ -9,11 +9,12 @@ const MAIN_LINKS = [
   { href: "/", label: "Cabinet" },
   { href: "/add", label: "Add" },
   { href: "/symptoms", label: "Symptoms" },
-  { href: "/profile", label: "About you" },
+  { href: "/learn", label: "Learn" },
+  { href: "/care", label: "Find care" },
 ] as const;
 
 const TOOL_LINKS = [
-  { href: "/profile", label: "About you", phoneOnly: true },
+  { href: "/profile", label: "About you" },
   { href: "/pills", label: "Pill finder" },
   { href: "/dose", label: "Dose check" },
   { href: "/peptides", label: "Peptides" },
@@ -21,14 +22,23 @@ const TOOL_LINKS = [
   { href: "/tested", label: "How we tested" },
 ] as const;
 
-export function Mark({ size = 34 }: { size?: number }) {
+export function Mark({ size = 40 }: { size?: number }) {
   return (
-    <svg viewBox="0 0 48 32" width={size} height={(size * 32) / 48} aria-hidden="true">
-      <g fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-        <path d="M4 22c4-11 12-15 20-10s14 1 20-8" />
-        <path d="M4 28c5-8 12-11 19-7s14 1 21-6" opacity="0.75" />
-        <path d="M10 10a9 9 0 0 1 12-4" />
-        <path d="M12 15a6 6 0 0 1 7-3" />
+    <svg viewBox="0 0 48 40" width={size} height={(size * 40) / 48} aria-hidden="true">
+      <g transform="rotate(38 17 25)">
+        <rect x="7" y="15" width="20" height="22" rx="3.5" fill="#ffffff" />
+        <rect x="7" y="22" width="20" height="8" fill="var(--paper)" opacity="0.85" />
+        <rect x="7" y="23.6" width="20" height="1.2" fill="#ffffff" opacity="0.5" />
+        <rect x="10.5" y="10" width="13" height="6" rx="1.2" fill="#ffffff" />
+        <rect x="9.5" y="8.6" width="15" height="2.4" rx="1.2" fill="none" stroke="#ffffff" strokeWidth="1.4" />
+      </g>
+      <g transform="rotate(-28 35 8)">
+        <rect x="30" y="5.6" width="11" height="5" rx="2.5" fill="var(--stop)" />
+        <rect x="35.5" y="5.6" width="5.5" height="5" rx="2.5" fill="#ffffff" opacity="0.28" />
+      </g>
+      <g transform="rotate(22 41 19)">
+        <rect x="36" y="16.6" width="11" height="5" rx="2.5" fill="var(--accent)" />
+        <rect x="41.5" y="16.6" width="5.5" height="5" rx="2.5" fill="#ffffff" opacity="0.28" />
       </g>
     </svg>
   );
@@ -61,15 +71,15 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="fixed z-40 inset-x-0 top-0 print:hidden bg-[var(--paper)] border-b border-dashed border-[var(--hair)] pb-3">
+    <header className="fixed z-40 inset-x-0 top-0 print:hidden bg-[var(--paper)] border-b border-solid border-[var(--hair)] pb-3">
       <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3 px-[var(--margin)] pt-[var(--margin)]">
         <Link href="/" className="flex items-center gap-2 py-2 -my-2 text-ink">
           <Mark />
           <span className="wordmark text-[15px]">Shelf Check</span>
         </Link>
-        <nav aria-label="Main" className="flex flex-nowrap items-center gap-x-1 max-w-full overflow-x-auto [scrollbar-width:none] max-sm:-mx-[var(--margin)] max-sm:px-[var(--margin)] font-[family-name:var(--font-space)] text-[12px] font-bold uppercase whitespace-nowrap">
+        <nav aria-label="Main" className="flex flex-nowrap items-center gap-x-1 max-w-full overflow-x-auto [scrollbar-width:none] max-sm:-mx-[var(--margin)] max-sm:px-[var(--margin)] font-[family-name:var(--font-display)] text-[12px] font-medium tracking-[0.12em] uppercase whitespace-nowrap">
           {MAIN_LINKS.map((link, index) => (
-            <span key={link.href} className={`flex items-center ${link.href === "/profile" ? "max-sm:hidden" : ""}`}>
+            <span key={link.href} className="flex items-center">
               {index > 0 && <span className="px-2 text-muted" aria-hidden="true">·</span>}
               <Link
                 href={link.href}
@@ -100,15 +110,14 @@ export function SiteHeader() {
             id="more-tools"
             ref={panel}
             style={{ position: "fixed" }}
-            className="facts !bg-[var(--panel)] fixed right-[var(--margin)] top-[calc(var(--margin)+84px)] sm:top-[calc(var(--margin)+40px)] w-[260px] grid gap-1 p-3 z-50"
+            className="facts !bg-[var(--panel)] !px-5 !border !border-[var(--hair)] fixed right-[var(--margin)] top-[calc(var(--margin)+84px)] sm:top-[calc(var(--margin)+40px)] w-[260px] grid gap-1 p-3 z-50"
           >
             {TOOL_LINKS.map((link) => (
               <Link
                 key={link.href}
-                data-phone-only={"phoneOnly" in link ? "true" : undefined}
                 href={link.href}
                 aria-current={pathname === link.href ? "page" : undefined}
-                className={`block rounded-full px-3 py-2 font-[family-name:var(--font-space)] text-[12px] font-bold uppercase hover:bg-[var(--faint)] ${"phoneOnly" in link ? "sm:hidden" : ""} ${pathname === link.href ? "text-accent" : "text-ink"}`}
+                className={`block rounded-full px-3 py-2 font-[family-name:var(--font-display)] text-[12px] font-medium tracking-[0.12em] uppercase hover:bg-[var(--faint)] ${pathname === link.href ? "text-accent" : "text-ink"}`}
               >
                 {link.label}
               </Link>

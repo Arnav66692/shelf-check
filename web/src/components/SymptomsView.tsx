@@ -122,7 +122,7 @@ function WarningsFor({ itemId, flags }: { itemId: string; flags: FullResult["fla
   return (
     <p className="mt-2 flex flex-wrap items-center gap-2 font-semibold">
       <span
-        className={`rounded-full px-2 py-0.5 font-[family-name:var(--font-space)] text-[11px] font-bold uppercase ${urgent ? "bg-[var(--stop)] text-[#191a1e]" : "bg-[var(--ask)] text-[#191a1e]"}`}
+        className={`sev py-0.5 font-[family-name:var(--font-display)] text-[11px] font-medium tracking-[0.12em] uppercase ${urgent ? "text-[var(--stop-text)]" : "text-[var(--ask)]"}`}
       >
         {urgent ? "Check now" : "Ask first"}
       </span>

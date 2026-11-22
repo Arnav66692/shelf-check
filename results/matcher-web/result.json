@@ -1,0 +1,21 @@
+{
+  "what": "Run 3 DINOv2 small image model only, exported to ONNX for the browser. Full photo, no crop, no text or keypoint channels. Gallery is the clean view of each official image, int8. Scored once per model on run 4 test queries after the run 4 preregistered test was done. Not preregistered.",
+  "test_queries": 2283,
+  "gallery_products": 3588,
+  "shipped_q8": {
+    "model": "dinov2s-run3.q8.onnx",
+    "queries": 2283,
+    "top1": 0.7621550591327201,
+    "recall5": 0.9106438896189225,
+    "seconds_per_query_cpu": 0.026007436630342596
+  },
+  "fp32": {
+    "model": "dinov2s-run3.fp32.onnx",
+    "queries": 2283,
+    "top1": 0.7643451598773544,
+    "recall5": 0.9097678493210688,
+    "seconds_per_query_cpu": 0.05359920179222531
+  },
+  "prereg_bar_top1": 0.9,
+  "passes_prereg_bar": false
+}

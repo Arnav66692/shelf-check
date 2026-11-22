@@ -1,5 +1,6 @@
 "use client";
 
+import { ModelPanel } from "./ModelPanel";
 import { useState } from "react";
 import { formatAmount, Notice, parseAmount, planDraw, SeverityBadge, Syringe, type Draw } from "./Syringe";
 import { checkInjectionDose, InvalidDoseInputError, type DoseUnit, type InjectionCheck } from "@engine/flags/units.ts";
@@ -223,7 +224,12 @@ export function DoseView() {
 
       <section aria-live="polite">
         <h2 className="text-3xl font-medium narrow">Where the plunger stops</h2>
-        {outcome.kind === "empty" && <p className="mt-4 text-ink-soft">{outcome.message}</p>}
+        {outcome.kind === "empty" && (
+          <>
+            <p className="mt-4 text-ink-soft">{outcome.message}</p>
+            <ModelPanel name="syringe" caption="U-100 insulin syringe" className="mt-6" />
+          </>
+        )}
         {outcome.kind === "invalid" && (
           <p className="mt-4 facts" role="alert">
             {outcome.message}

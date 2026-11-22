@@ -193,8 +193,8 @@ export function CabinetView() {
           ))}
         </ul>
         {infoFlags.length > 0 && (
-          <details className="mt-4 border border-[var(--rule)]" open={infoFlags.some(involvesAdded) || urgent.length === 0}>
-            <summary className="cursor-pointer px-6 py-4 italic font-[900] uppercase tracking-[-0.04em]">
+          <details className="mt-4 border-t border-[var(--hair)]" open={infoFlags.some(involvesAdded) || urgent.length === 0}>
+            <summary className="cursor-pointer px-6 py-4 font-[family-name:var(--font-display)] font-medium uppercase tracking-[0.15em]">
               {infoFlags.length} {infoFlags.length === 1 ? "note" : "notes"} to read, like alcohol and drowsiness
             </summary>
             <ul className="grid gap-4 px-4 pb-4">

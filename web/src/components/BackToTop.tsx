@@ -30,7 +30,7 @@ export function BackToTop() {
           className="origin-bottom transition-transform duration-500 ease-[cubic-bezier(.09,.68,.33,.91)] group-hover:scale-y-[1.18]"
         />
       </svg>
-      <span className="absolute left-1/2 -translate-x-1/2 -top-7 text-[11px] italic font-[900] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+      <span className="absolute left-1/2 -translate-x-1/2 -top-7 font-[family-name:var(--font-display)] text-[11px] font-medium uppercase tracking-[0.15em] opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
         Go up
       </span>
     </button>

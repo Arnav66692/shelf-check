@@ -8,6 +8,7 @@ import { formatStrength, type Product } from "@/lib/model";
 import sampleProducts from "@/lib/sampleProducts.json";
 import { openExample, useCabinet } from "@/lib/store";
 import { BarcodeScanner } from "./BarcodeScanner";
+import { PhotoMatcher, type PhotoMatch } from "./PhotoMatcher";
 import { ProductPanel } from "./ProductPanel";
 
 type Results =
@@ -73,7 +74,9 @@ export function AddView() {
   const [results, setResults] = useState<Results>({ status: "idle" });
   const [chosen, setChosen] = useState<Product | null>(null);
   const [scanning, setScanning] = useState(false);
+  const [matchFile, setMatchFile] = useState<File | null>(null);
   const photoInput = useRef<HTMLInputElement>(null);
+  const matchInput = useRef<HTMLInputElement>(null);
   const sampleStarted = useRef(false);
   const confirmPanel = useRef<HTMLElement>(null);
   const confirmButton = useRef<HTMLButtonElement>(null);
@@ -141,6 +144,13 @@ export function AddView() {
     }
   }
 
+  function pickMatch(match: PhotoMatch) {
+    setMatchFile(null);
+    const code = match.ndc || match.name;
+    setQuery(code);
+    void search(code);
+  }
+
   function choose(product: Product) {
     setChosen(product);
     if (product.labelImages.length > 0) return;
@@ -184,6 +194,23 @@ export function AddView() {
           <button type="button" className="underline font-bold" onClick={() => setScanning(true)}>
             Scan the barcode
           </button>
+          <button type="button" className="underline font-bold" onClick={() => matchInput.current?.click()}>
+            Match a photo with Zephyr
+          </button>
+          <input
+            ref={matchInput}
+            type="file"
+            accept="image/*"
+            capture="environment"
+            className="sr-only"
+            aria-label="Photo of the box or label"
+            tabIndex={-1}
+            onChange={(event) => {
+              const file = event.target.files?.[0];
+              event.target.value = "";
+              if (file) setMatchFile(file);
+            }}
+          />
           {PHOTO_READER && (
             <>
               <button type="button" className="underline font-bold" onClick={() => photoInput.current?.click()}>
@@ -203,6 +230,8 @@ export function AddView() {
           )}
           <span className="text-sm text-ink-soft">Covers prescription, over the counter and supplements.</span>
         </div>
+
+        {matchFile && <PhotoMatcher file={matchFile} onPick={pickMatch} onClose={() => setMatchFile(null)} />}
 
         {scanning && (
           <div className="mt-4">
@@ -234,7 +263,7 @@ export function AddView() {
                         type="button"
                         onClick={() => choose(product)}
                         aria-pressed={selected}
-                        className={`w-full text-left px-3 py-2.5 border border-[var(--rule)] ${selected ? "bg-[var(--ink)] text-[var(--paper)]" : "bg-[var(--panel)] hover:border-leaf"}`}
+                        className={`row-item w-full text-left py-3.5 ${selected ? "is-selected" : ""}`}
                       >
                         <span className="font-semibold">{product.displayName}</span>
                         {owned && <span className="ml-2 text-sm">In your cabinet</span>}

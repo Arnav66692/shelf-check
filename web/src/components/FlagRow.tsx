@@ -8,9 +8,9 @@ const SEVERITY_LABEL: Record<Severity, string> = {
 };
 
 const SEVERITY_STYLE: Record<Severity, string> = {
-  stop: "bg-[var(--stop)] text-[#191a1e] rounded-full",
-  ask: "bg-[var(--ask)] text-black rounded-full",
-  info: "border border-[var(--rule)] rounded-full",
+  stop: "sev text-[var(--stop-text)]",
+  ask: "sev text-[var(--ask)]",
+  info: "sev text-[var(--ok)]",
 };
 
 const SECTION_NAMES: Record<string, string> = {
@@ -95,7 +95,7 @@ export function FlagRow({ flag, items, isNew = false }: { flag: Flag; items: rea
   return (
     <li className="facts scroll-mt-6" id={`flag-${flag.id.replace(/[^a-z0-9]+/gi, "-")}`}>
       <div className="flex flex-wrap items-center gap-3">
-        <span className={`px-2.5 py-1 text-[13px] italic font-[900] uppercase tracking-[-0.02em] ${SEVERITY_STYLE[flag.severity]}`}>
+        <span className={`py-1 font-[family-name:var(--font-display)] text-[12px] font-medium uppercase tracking-[0.15em] ${SEVERITY_STYLE[flag.severity]}`}>
           {SEVERITY_LABEL[flag.severity]}
         </span>
         {isNew && <span className="label text-ink">New</span>}

@@ -18,9 +18,10 @@ const MATCHER = [
   { name: "Run 1: trained small model, 12 rounds", top1: "78.0%", top5: "91.3%" },
   { name: "Run 2: untrained base model", top1: "15.2%", top5: "26.4%" },
   { name: "Run 2: trained base model, 1 round", top1: "69.8%", top5: "84.1%" },
-  { name: "Run 3: untrained base model", top1: "14.2%", top5: "25.7%" },
-  { name: "Run 3: trained base model, best of 20 rounds", top1: "78.3%", top5: "91.7%" },
+  { name: "Run 3: untrained small model", top1: "14.2%", top5: "25.7%" },
+  { name: "Run 3: trained small model, best of 20 rounds", top1: "78.3%", top5: "91.7%" },
   { name: "Run 4: run 3 plus read text and keypoint matching", top1: "85.7%", top5: "95.6%" },
+  { name: "Zephyr: run 3 in your browser, 8 bit", top1: "76.2%", top5: "91.1%" },
   { name: "Bar we set before each run", top1: "90%", top5: "97%" },
 ] as const;
 
@@ -155,7 +156,7 @@ export default function TestedPage() {
 
       <h2 className="mt-8 text-2xl font-medium narrow">Matching a photo to the official label</h2>
       <p className="mt-2">
-        We trained our own image model on 3,588 products from the FDA label archive, using made-up phone photos of
+        We trained our own image model, Zephyr, on 3,588 products from the FDA label archive, using made-up phone photos of
         each official label, and scored each run on 2,169 to 2,283 photos of products it had never seen. Each run picked its
         own unseen products.
       </p>
@@ -180,9 +181,20 @@ export default function TestedPage() {
         </table>
       </div>
       <p className="mt-2 text-sm text-ink-soft">
-        Training helped a lot, but no run reached the bar, so the matcher is not in the app. Run 2 used a bigger
-        model and only finished one round in its time limit, so it scored lower than run 1. Run 4 added text read off
+        Training helped a lot, but no run reached the bar. Run 2 used a bigger model and only finished one round in
+        its time limit, so it scored lower than run 1. Run 3 went back to the small model. Run 4 added text read off
         the photo and keypoint matching on top of run 3, and came closest, 4.3 points short of the first guess bar.
+      </p>
+      <p className="mt-2">
+        Zephyr, on the Add page, is the run 3 model running inside your browser. Your photo is not uploaded. It scored
+        76.2% first guess on the same 2,283 photos, short of the 90% bar, so it only shows the 5 closest official
+        labels and you pick yours. It uses the whole photo with no crop, which likely explains why it scores a little under run 3. We
+        scored it after the run 4 test, so that score was not set up in advance. Run 4 scored higher, but it needs
+        tools that only run on a Mac, so it cannot run in a browser and is not in the app.
+      </p>
+      <p className="mt-2 text-sm text-ink-soft">
+        Every test photo was made by our own renderer from official label images, not taken with a phone, so real
+        photos would likely score lower.
       </p>
 
       <h2 className="mt-8 text-2xl font-medium narrow">What the warnings are built on</h2>
