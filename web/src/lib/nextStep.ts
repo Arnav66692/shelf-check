@@ -13,6 +13,7 @@ const LABEL_SAYS_STOP = /\b(?:contraindicated|do not (?:use|take|start)|should n
 const HOLD_DOSE = "The label says not to use these together, or not to use it with this health detail. Call the prescriber or pharmacist today, before the next dose, and ask what to do. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const HYPERKALEMIA = /\bhyperkalemia\b/i;
+const BLOOD_THINNER_EFFECT = /\b(?:effects?|response|activity) of (?:warfarin|oral anticoagulants?)|\banticoagulant effects?\b/i;
 const SEDATION = /\brespiratory depression|profound sedation|\bcoma\b/i;
 const CROSS_ALLERGY_STEP = "The label warns that people with this allergy may also react to this medicine. Tell the prescriber or pharmacist about the allergy today, before the next dose. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const SPACE_APART = /\b\d+\s*(?:to\s*\d+\s*)?hours?\s+(?:before|after|apart)\b|\bseparate\b.*\bdoses?\b/i;
@@ -35,6 +36,9 @@ function interactionStep(flag: Flag): string {
   }
   if (flag.severity === "stop" && mentions(flag, HYPERKALEMIA)) {
     return "Ask your prescriber for a potassium blood test soon. Do not take extra potassium or a salt substitute until then. Call 911 for chest pain, a very slow or uneven heartbeat, or sudden weakness.";
+  }
+  if (flag.severity === "stop" && mentions(flag, BLOOD_THINNER_EFFECT)) {
+    return "This can change how well the blood thinner works, which can lead to a clot or to bleeding. Do not start or stop the other product without asking the pharmacist, and ask whether you need an INR blood test. Call 911 for signs of a stroke, chest pain, or bleeding that will not stop.";
   }
   if (labelSaysStop(flag) && flag.prescribed) return HOLD_DOSE;
   if ((flag.highlight ?? []).some((term) => MAOI.test(term) || /phenelzine|tranylcypromine|isocarboxazid|selegiline|rasagiline|linezolid/i.test(term))) {

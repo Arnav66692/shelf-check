@@ -335,3 +335,13 @@ test("an eye or skin product does not carry its drug group's systemic interactio
   const furosemide: CabinetItem = { ...drug("furosemide"), ingredients: [{ name: "furosemide", value: 20, unit: "mg", classes: [{ id: "C03CA", type: "ATC1-4", name: "Sulfonamides, plain", source: "ATC" }] }] };
   expect(fromLabelOf(interactionFlags([bactrim, furosemide]), "sulfamethoxazole")).toEqual([]);
 });
+
+test("a changed blood thinner effect, raised lithium levels and bone marrow suppression are serious", () => {
+  const run = (owner: string, text: string, other: string) =>
+    fromLabelOf(interactionFlags([{ ...drug(owner), label: { drug_interactions: [text] } }, drug(other)]), owner)[0]?.severity;
+  expect(run("metronidazole", "Metronidazole has been reported to potentiate the anticoagulant effect of warfarin.", "warfarin")).toBe("stop");
+  expect(run("lithium", "Diuretics or ibuprofen may increase lithium serum concentrations.", "ibuprofen")).toBe("stop");
+  expect(run("allopurinol", "Concomitant use with azathioprine may increase the risk of adverse reactions, including myelosuppression.", "azathioprine")).toBe("stop");
+  expect(run("lithium", "Lithium levels should be closely monitored when patients start or stop ibuprofen use with lithium.", "ibuprofen")).toBe("ask");
+  expect(run("lisinopril", "Lithium: Symptoms of lithium toxicity (7.5). NSAIDs: increased risk of renal impairment with ibuprofen.", "ibuprofen")).not.toBe("stop");
+});
