@@ -90,7 +90,7 @@ function termsAbout(other: CabinetItem, labelOwner: CabinetItem): readonly Compi
     .filter((ingredient) => other.kind !== "supplement" || !isNutritionIngredient(ingredient))
     .filter((ingredient) => !ownNames.has(ingredient.name.toLowerCase()))
     // A trace mineral in a multivitamin is not a potassium supplement.
-    .filter((ingredient) => !(other.kind === "supplement" && other.ingredients.length > 2 && /^potassium\b/i.test(ingredient.name)))
+    .filter((ingredient) => !(other.kind === "supplement" && other.ingredients.length > 2 && /^(?:potassium|niacin|nicotinic acid|niacinamide)\b/i.test(ingredient.name)))
     .flatMap(searchTermsFor)
     // A product used only on the skin, eye or ear does not carry its drug group's systemic interactions.
     .filter((term) => !localOnly || term.kind === "ingredient_name" || term.kind === "common_name")
@@ -150,6 +150,11 @@ function firstAllowedSpan(text: string, term: CompiledTerm, owner: CabinetItem):
       if (/^diuretics?$/i.test(term.term) && /\bpotassium[- ](?:sparing|retaining)\s+$/i.test(before)) return false;
       if (/^potassium$/i.test(term.term) && /^[- ](?:sparing|retaining|channels?)\b/i.test(after)) return false;
       if (/^potassium$/i.test(term.term) && /\b(?:serum|plasma|blood)\s+$/i.test(before)) return false;
+      // "Calcium Channel Blockers" is a drug group, not calcium.
+      if (/^calcium\b/i.test(term.term) && /^\s*[- ]?channel\b/i.test(after)) return false;
+      // "aluminum or magnesium antacids" does not cover a calcium antacid.
+      if (/^antacids?$/i.test(term.term) && /\b(?:aluminum|aluminium|magnesium)(?:[- ]containing)?\s+(?:(?:or|and)\s+(?:aluminum|aluminium|magnesium)(?:[- ]containing)?\s+)?$/i.test(before) &&
+          !/aluminum|aluminium|magnesium/i.test(term.ingredient)) return false;
       // "losartan potassium" is the owner's own salt name, not a potassium product.
       if (/^(?:potassium|sodium|calcium|magnesium)$/i.test(term.term) &&
           owner.ingredients.some((ingredient) => new RegExp(`\\b${escapeRegExp(ingredient.name.split(/\s+/)[0] ?? "")}\\s+$`, "i").test(before))) return false;

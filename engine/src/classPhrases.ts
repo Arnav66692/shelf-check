@@ -12,7 +12,8 @@ interface ClassPhraseRule {
 // These label aliases use RxClass membership. Clinical mechanism phrases are in mechanismClasses.ts.
 export const CLASS_PHRASE_RULES: readonly ClassPhraseRule[] = [
   {
-    atcPrefixes: ["M01A"],
+    // M01AX is a mixed group that includes glucosamine, which is not an NSAID.
+    atcPrefixes: ["M01AA", "M01AB", "M01AC", "M01AE", "M01AG", "M01AH"],
     epcNames: ["Nonsteroidal Anti-inflammatory Drug"],
     phrases: ["NSAID", "non-steroidal anti-inflammatory"],
   },
