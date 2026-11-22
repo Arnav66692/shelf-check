@@ -2,7 +2,7 @@ import { createRequire } from "module";
 import fs from "fs";
 import path from "path";
 
-const require = createRequire(process.env.PLAYWRIGHT_PACKAGE_JSON ?? `${process.env.HOME}/.claude/skills/gstack/package.json`);
+const require = createRequire(process.env.PLAYWRIGHT_PACKAGE_JSON ?? import.meta.url);
 const { chromium } = require("playwright-core");
 
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
