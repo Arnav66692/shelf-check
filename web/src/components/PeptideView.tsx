@@ -42,12 +42,11 @@ function Source({ url, date }: { url: string; date: string }) {
   );
 }
 
-export function PeptideView() {
-  const [peptideId, setPeptideId] = useState<PeptideId>("bpc_157");
-  const [vialAmount, setVialAmount] = useState("5");
+function PeptideDetails({ peptideId, picker }: { peptideId: PeptideId; picker: React.ReactNode }) {
+  const [vialAmount, setVialAmount] = useState("");
   const [vialUnit, setVialUnit] = useState<MassUnit>("mg");
-  const [water, setWater] = useState("2");
-  const [dose, setDose] = useState("250");
+  const [water, setWater] = useState("");
+  const [dose, setDose] = useState("");
   const [doseUnit, setDoseUnit] = useState<MassUnit>("mcg");
   const [firstUse, setFirstUse] = useState("");
 
@@ -78,7 +77,7 @@ export function PeptideView() {
     const diluentMl = Number(water);
     const doseValue = Number(dose);
     if (!(amount > 0) || !(diluentMl > 0) || !(doseValue > 0)) {
-      return { error: "Enter the amount on the vial, the water you add and your dose." };
+      return { error: "Enter the amount on the vial, the water you add and the dose your prescriber gave you, as numbers." };
     }
     try {
       return {
@@ -110,16 +109,7 @@ export function PeptideView() {
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <section className="grid gap-4 content-start">
-          <label className="grid gap-1 font-bold">
-            Peptide
-            <select className="field font-normal" value={peptideId} onChange={(event) => setPeptideId(event.target.value as PeptideId)}>
-              {PEPTIDE_LIST.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </label>
+          {picker}
           <div className="grid grid-cols-[1fr_auto] gap-3 items-end">
             <label className="grid gap-1 font-bold">
               Amount printed on the vial
@@ -172,7 +162,7 @@ export function PeptideView() {
             )}
           </div>
 
-          {outcome.error && <p className="text-ink-soft">{outcome.error}</p>}
+          {outcome.error && <p className="facts text-ink-soft">{outcome.error}</p>}
           {outcome.check && (
             <div className="facts">
               <h2 className="facts-head">Where the plunger stops</h2>
@@ -239,4 +229,39 @@ export function PeptideView() {
       </div>
     </div>
   );
+}
+
+export function PeptideView() {
+  const [peptideId, setPeptideId] = useState<PeptideId | "">("");
+  const picker = (
+    <label className="grid gap-1 font-bold">
+      Peptide
+      <select
+        className="field font-normal"
+        value={peptideId}
+        onChange={(event) => setPeptideId(event.target.value as PeptideId | "")}
+      >
+        <option value="">Pick a peptide</option>
+        {PEPTIDE_LIST.map((item) => (
+          <option key={item.id} value={item.id}>
+            {item.name}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+  if (peptideId === "") {
+    return (
+      <div className="pt-6">
+        <h1 className="text-3xl font-extrabold narrow">Peptide check</h1>
+        <p className="mt-3 facts max-w-[900px]">{PEPTIDE_STANDING_NOTICE}</p>
+        <div className="mt-8 max-w-[480px]">{picker}</div>
+        <p className="mt-3 text-ink-soft">
+          Pick one to see whether the FDA has approved it, what the FDA has published about it, recalls that name it, and
+          the syringe math for your vial.
+        </p>
+      </div>
+    );
+  }
+  return <PeptideDetails key={peptideId} peptideId={peptideId} picker={picker} />;
 }

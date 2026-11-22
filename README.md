@@ -57,6 +57,19 @@ uvicorn reader_service:app --host 127.0.0.1 --port 8787
 
 The web app finds the reader at `http://127.0.0.1:8787`, or at `READER_URL` if set.
 
+## Does it catch real problems?
+
+Run on the live app with the bars written and hashed first (`benchmark/PREREG.md`, results in `benchmark/RESULTS.md`).
+
+| Test | Result | Bar | Verdict |
+|---|---|---|---|
+| Acetaminophen doubled: 40 random products, each with Tylenol | 40 of 40 | 38 of 40 | Passed |
+| Same pairs: daily total in mg | 27 of 40 | none | Measured |
+| 40 major interactions from DDInter | 8 of 40 (95% interval 10 to 35%) | none | Weak |
+| 40 pairs DDInter does not list: false alarms | 1 of 40 | at most 4 | Passed |
+
+Shelf Check only flags what a label states. Most missed interactions are described on the labels by drug type or effect rather than by name.
+
 ## How we tested the photo reader
 
 Each bar was written down before the test ran (see the `PREREG` files).

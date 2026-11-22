@@ -16,3 +16,5 @@ web/tsconfig.tsbuildinfo
 .vercel/
 qa/node_modules/
 qa/out/
+benchmark/ddinter/
+benchmark/cache/

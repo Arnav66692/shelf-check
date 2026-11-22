@@ -40,6 +40,35 @@ export function toProduct(record: IdentifiedProduct, sameAsCount?: number): Prod
   };
 }
 
+const RXNAV = "https://rxnav.nlm.nih.gov/REST";
+const RXNAV_TIMEOUT_MS = 8000;
+const BARCODE_NOT_FOUND =
+  "No product with that barcode is in the FDA or NIH data. Type the name printed on the box, like warfarin or Tylenol.";
+
+async function rxnavJson(path: string): Promise<unknown> {
+  const response = await fetch(`${RXNAV}${path}`, { signal: AbortSignal.timeout(RXNAV_TIMEOUT_MS) });
+  if (!response.ok) return null;
+  return response.json();
+}
+
+async function genericForBrand(name: string): Promise<string | null> {
+  try {
+    const ids = (await rxnavJson(`/rxcui.json?name=${encodeURIComponent(name)}&search=2`)) as {
+      idGroup?: { rxnormId?: string[] };
+    } | null;
+    const rxcui = ids?.idGroup?.rxnormId?.[0];
+    if (!rxcui) return null;
+    const related = (await rxnavJson(`/rxcui/${rxcui}/related.json?tty=IN`)) as {
+      relatedGroup?: { conceptGroup?: { conceptProperties?: { name: string }[] }[] };
+    } | null;
+    const names = (related?.relatedGroup?.conceptGroup ?? []).flatMap((group) => group.conceptProperties ?? []);
+    return names.length === 1 ? names[0].name : null;
+  } catch (error) {
+    console.error("brand to generic lookup failed", error);
+    return null;
+  }
+}
+
 export type FindResult = { readonly products: readonly Product[]; readonly note?: string };
 
 function fromCode(result: CodeLookupResult): FindResult {
@@ -54,11 +83,23 @@ export async function findProducts(rawQuery: string): Promise<FindResult> {
   if (DIGITS_ONLY.test(compact) && compact.length >= 8) {
     if (BARCODE_LENGTHS.includes(compact.length)) {
       const byBarcode = fromCode(await findByBarcode(compact));
-      if (byBarcode.products.length > 0) return byBarcode;
+      return byBarcode.products.length > 0 ? byBarcode : { products: [], note: BARCODE_NOT_FOUND };
     }
     return fromCode(await findByNdc(compact));
   }
   const found = await searchByName(query, { limit: RESULT_LIMIT });
+  if (found.groups.length === 0) {
+    const generic = await genericForBrand(query);
+    if (generic && generic.toLowerCase() !== query.toLowerCase()) {
+      const byGeneric = await searchByName(generic, { limit: RESULT_LIMIT });
+      if (byGeneric.groups.length > 0) {
+        return {
+          products: byGeneric.groups.map((group) => toProduct(group.product, group.makerCount)),
+          note: `${query} is a brand name for ${generic}. These are ${generic} products, so pick the one that matches your label.`,
+        };
+      }
+    }
+  }
   const products = found.groups.map((group) => toProduct(group.product, group.makerCount));
   const corrected = found.correctedQuery ? `Showing results for "${found.correctedQuery}".` : undefined;
   const partial =

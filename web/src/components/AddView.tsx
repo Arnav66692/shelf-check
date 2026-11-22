@@ -25,6 +25,8 @@ function describe(product: Product): string {
   return parts.filter((part) => part !== "").map(sentenceCase).join(". ");
 }
 
+const MAX_PICTURES = 4;
+
 function LabelPicture({ product }: { product: Product }) {
   const source = product.labelImages[0];
   if (!source) return null;
@@ -37,13 +39,25 @@ function LabelPicture({ product }: { product: Product }) {
       </object>
     );
   }
+  const pictures = product.labelImages.slice(0, MAX_PICTURES);
   return (
-    // eslint-disable-next-line @next/next/no-img-element -- official label pictures come from DailyMed at unknown sizes
-    <img
-      src={source}
-      alt={`Official label picture for ${product.displayName}`}
-      className="w-full max-h-[340px] object-contain bg-[var(--panel)] border-2 border-ink"
-    />
+    <figure>
+      <div className={`grid gap-2 ${pictures.length > 1 ? "grid-cols-2" : ""}`}>
+        {pictures.map((picture, index) => (
+          // eslint-disable-next-line @next/next/no-img-element -- official label pictures come from DailyMed at unknown sizes
+          <img
+            key={picture}
+            src={picture}
+            alt={`Picture ${index + 1} from the official record for ${product.displayName}`}
+            className="w-full h-[160px] object-contain bg-[var(--panel)] border-2 border-ink"
+            loading="lazy"
+          />
+        ))}
+      </div>
+      <figcaption className="mt-1 text-sm text-ink-soft">
+        Pictures from the official record. The package label is usually one of them.
+      </figcaption>
+    </figure>
   );
 }
 
@@ -58,6 +72,8 @@ export function AddView() {
   const photoInput = useRef<HTMLInputElement>(null);
   const sampleStarted = useRef(false);
   const confirmPanel = useRef<HTMLElement>(null);
+  const confirmButton = useRef<HTMLButtonElement>(null);
+  const chosenId = chosen?.id;
 
   useEffect(() => {
     if (params.get("sample") !== "1" || sampleStarted.current) return;
@@ -75,7 +91,10 @@ export function AddView() {
 
   async function search(rawText: string) {
     const text = rawText.trim();
-    if (text.length < 2) return;
+    if (text.length < 2) {
+      setResults({ status: "failed", message: "Type a medicine name first, like warfarin or Tylenol." });
+      return;
+    }
     setChosen(null);
     setResults({ status: "loading", what: "Searching the official records." });
     try {
@@ -121,12 +140,17 @@ export function AddView() {
 
   function choose(product: Product) {
     setChosen(product);
-    confirmPanel.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     if (product.labelImages.length > 0) return;
     fetchLabelImages(product)
       .then(({ images }) => setChosen((current) => (current?.id === product.id ? { ...product, labelImages: images } : current)))
       .catch(() => undefined);
   }
+
+  useEffect(() => {
+    if (!chosenId) return;
+    confirmButton.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    confirmButton.current?.focus({ preventScroll: true });
+  }, [chosenId]);
 
   function confirm(product: Product) {
     add(product);
@@ -144,7 +168,7 @@ export function AddView() {
           <input
             id="query"
             className="field"
-            placeholder="Name, NDC code or barcode number"
+            placeholder="Medicine name or the code on the label"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             autoComplete="off"
@@ -229,7 +253,7 @@ export function AddView() {
           <div className="mt-4 grid gap-4">
             <LabelPicture product={chosen} />
             <ProductPanel product={chosen} />
-            <button type="button" className="btn" onClick={() => confirm(chosen)}>
+            <button ref={confirmButton} type="button" className="btn" onClick={() => confirm(chosen)}>
               Yes, add it to my cabinet
             </button>
           </div>

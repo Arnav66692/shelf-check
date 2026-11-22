@@ -4,6 +4,13 @@ const READERS = [
   { name: "Same model, tablets and capsules only", set: "100 new labels", right: "82 of 100", wrong: "5 of 100", verdict: "Failed" },
 ] as const;
 
+const IMPACT = [
+  { test: "Acetaminophen doubled: 40 random products, each with Tylenol", result: "40 of 40 caught", bar: "38 of 40", verdict: "Passed" },
+  { test: "Same 40 pairs: a daily total worked out in mg", result: "27 of 40", bar: "none set", verdict: "Measured. Most misses are children's liquids" },
+  { test: "40 major interactions from an independent database", result: "8 of 40 caught", bar: "none set", verdict: "Weak. See below" },
+  { test: "40 pairs with no listed interaction: false alarms", result: "1 of 40", bar: "at most 4", verdict: "Passed" },
+] as const;
+
 const MATCHER = [
   { name: "Untrained image model", top1: "4.1%", top5: "8.3%" },
   { name: "Our trained matcher, 12 rounds", top1: "78.0%", top5: "91.3%" },
@@ -17,7 +24,46 @@ export default function TestedPage() {
       <p className="mt-3 text-lg">
         We wanted a camera that reads a label and can be trusted. We wrote the pass bar down before each test. Every
         reader missed it alone. So the camera only suggests, you confirm against the official record, and the warnings
-        come from plain code reading the label text. Then we added a cross-check, and that passed.
+        come from plain code reading the label text. Then we added a cross-check, and that passed. We also measured
+        how well the warnings catch real problems, including where they fall short.
+      </p>
+
+      <h2 className="mt-8 text-2xl font-extrabold narrow">Does it catch real problems?</h2>
+      <p className="mt-2">
+        We ran the live app on random real products and pairs, with the bars written down before the run.
+      </p>
+      <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Impact test results">
+        <table className="w-full text-left min-w-[640px]">
+          <thead>
+            <tr className="border-b-[3px] border-ink">
+              <th className="py-2 pr-4">Test</th>
+              <th className="py-2 pr-4">Result</th>
+              <th className="py-2 pr-4">Bar</th>
+              <th className="py-2">Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            {IMPACT.map((row) => (
+              <tr key={row.test} className="border-b border-hair align-top">
+                <td className="py-2 pr-4">{row.test}</td>
+                <td className="py-2 pr-4 font-bold">{row.result}</td>
+                <td className="py-2 pr-4">{row.bar}</td>
+                <td className="py-2">{row.verdict}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-2">
+        What this means: Shelf Check is reliable at the problem it was built for, the same drug hiding in two
+        products. It is weak at drug interactions in general. For most major interactions in the reference database,
+        neither FDA label names the other drug, and the labels describe the risk by drug type or effect instead.
+        Shelf Check only flags what a label states, so it misses those. Ask a pharmacist to review your full list.
+      </p>
+      <p className="mt-2 text-sm text-ink-soft">
+        Reference: the DDInter database. The interaction pairs lean toward specialty drugs, and the no-interaction
+        pairs come from an incomplete reference, so the false alarm figure is an upper bound. Full method and every
+        pair are in the benchmark folder of the code.
       </p>
 
       <h2 className="mt-8 text-2xl font-extrabold narrow">Reading labels from a picture</h2>

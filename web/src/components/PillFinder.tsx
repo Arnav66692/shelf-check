@@ -289,6 +289,10 @@ export function PillFinder() {
 
   async function find(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (imprint.replace(/[^a-z0-9]/gi, "").length < 2 && !(color && shape)) {
+      setSearch({ status: "failed", message: "Type the letters or numbers stamped on the pill, or pick both a colour and a shape." });
+      return;
+    }
     const request = latest.current + 1;
     latest.current = request;
     setSearch({ status: "loading" });

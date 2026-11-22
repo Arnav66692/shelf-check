@@ -1,0 +1,746 @@
+{
+  "openFdaRequestsLogged": 53,
+  "rows": [
+    {
+      "drugA": "imipramine",
+      "drugB": "osimertinib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Imipramine Hydrochloride",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CNS depressant"
+        ]
+      },
+      "bLabel": {
+        "owner": "TAGRISSO",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "P-gp"
+        ]
+      }
+    },
+    {
+      "drugA": "crizotinib",
+      "drugB": "phenytoin",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Xalkori",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Phenytoin",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "bradycardia"
+        ]
+      }
+    },
+    {
+      "drugA": "disopyramide",
+      "drugB": "potassium chloride",
+      "category": "other drug named in a label, app did not flag",
+      "aLabel": {
+        "owner": "Disopyramide Phosphate",
+        "found": true,
+        "namesOtherIn": [
+          "precautions",
+          "general_precautions"
+        ],
+        "mechanismWords": [
+          "bradycardia",
+          "hyperkalemia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Potassium Chloride",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "hyperkalemia"
+        ]
+      }
+    },
+    {
+      "drugA": "fingolimod",
+      "drugB": "pitolisant",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Fingolimod",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "QT",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "PITOLISANT",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "CYP2D6",
+          "QT",
+          "bradycardia"
+        ]
+      }
+    },
+    {
+      "drugA": "phenytoin",
+      "drugB": "tofacitinib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Phenytoin",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "TOFACITINIB",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A"
+        ]
+      }
+    },
+    {
+      "drugA": "diethylpropion",
+      "drugB": "duloxetine",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Diethylpropion Hydrochloride",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": []
+      },
+      "bLabel": {
+        "owner": "Duloxetine",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "CYP2D6",
+          "serotonergic"
+        ]
+      }
+    },
+    {
+      "drugA": "ibrutinib",
+      "drugB": "ibuprofen",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Imbruvica",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A"
+        ]
+      },
+      "bLabel": {
+        "owner": "IBUPROFEN",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": []
+      }
+    },
+    {
+      "drugA": "cobicistat",
+      "drugB": "pralsetinib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Tybost",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "CYP2D6",
+          "QT",
+          "P-gp",
+          "hyperkalemia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Gavreto",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "P-gp"
+        ]
+      }
+    },
+    {
+      "drugA": "avapritinib",
+      "drugB": "ribociclib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Ayvakit",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A"
+        ]
+      },
+      "bLabel": {
+        "owner": "KISQALI",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT"
+        ]
+      }
+    },
+    {
+      "drugA": "idelalisib",
+      "drugB": "suvorexant",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Zydelig",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A"
+        ]
+      },
+      "bLabel": {
+        "owner": "BELSOMRA",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "P-gp",
+          "CNS depressant"
+        ]
+      }
+    },
+    {
+      "drugA": "istradefylline",
+      "drugB": "mitotane",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "NOURIANZ",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "P-gp"
+        ]
+      },
+      "bLabel": {
+        "owner": "Lysodren",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A"
+        ]
+      }
+    },
+    {
+      "drugA": "ivosidenib",
+      "drugB": "nilotinib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "TIBSOVO",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT"
+        ]
+      },
+      "bLabel": {
+        "owner": "Nilotinib",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "hyperkalemia"
+        ]
+      }
+    },
+    {
+      "drugA": "flutamide",
+      "drugB": "siponimod",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Eulexin",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": []
+      },
+      "bLabel": {
+        "owner": "MAYZENT",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "bradycardia"
+        ]
+      }
+    },
+    {
+      "drugA": "ceritinib",
+      "drugB": "tacrolimus",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "ZYKADIA",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "P-gp",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Tacrolimus",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "hyperkalemia"
+        ]
+      }
+    },
+    {
+      "drugA": "nortriptyline",
+      "drugB": "potassium citrate",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Nortriptyline Hydrochloride",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "serotonergic"
+        ]
+      },
+      "bLabel": {
+        "owner": "Potassium Citrate",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "hyperkalemia"
+        ]
+      }
+    },
+    {
+      "drugA": "bisoprolol",
+      "drugB": "siponimod",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Bisoprolol",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "MAYZENT",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "bradycardia"
+        ]
+      }
+    },
+    {
+      "drugA": "fingolimod",
+      "drugB": "hydroxyzine",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Fingolimod",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "QT",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Hydroxyzine",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "QT",
+          "CNS depressant"
+        ]
+      }
+    },
+    {
+      "drugA": "iloperidone",
+      "drugB": "vandetanib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "ILOPERIDONE",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "CYP2D6",
+          "QT",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "CAPRELSA",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT"
+        ]
+      }
+    },
+    {
+      "drugA": "ribociclib",
+      "drugB": "tramadol",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "KISQALI",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT"
+        ]
+      },
+      "bLabel": {
+        "owner": "Tramadol Hydrochloride",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "CYP2D6",
+          "serotonergic",
+          "CNS depressant"
+        ]
+      }
+    },
+    {
+      "drugA": "clozapine",
+      "drugB": "rucaparib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "CLOZAPINE",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "CYP2D6",
+          "QT",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Rubraca",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A"
+        ]
+      }
+    },
+    {
+      "drugA": "gilteritinib",
+      "drugB": "lefamulin",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Xospata",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "P-gp"
+        ]
+      },
+      "bLabel": {
+        "owner": "Xenleta",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "P-gp"
+        ]
+      }
+    },
+    {
+      "drugA": "bexarotene",
+      "drugB": "teriflunomide",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Bexarotene",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "CYP2D6"
+        ]
+      },
+      "bLabel": {
+        "owner": "Teriflunomide",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": []
+      }
+    },
+    {
+      "drugA": "lefamulin",
+      "drugB": "lenvatinib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Xenleta",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "P-gp"
+        ]
+      },
+      "bLabel": {
+        "owner": "Lenvima",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "QT"
+        ]
+      }
+    },
+    {
+      "drugA": "darunavir",
+      "drugB": "venetoclax",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Darunavir",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "CYP2D6",
+          "QT",
+          "P-gp",
+          "hyperkalemia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Venclexta",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "P-gp"
+        ]
+      }
+    },
+    {
+      "drugA": "entrectinib",
+      "drugB": "vandetanib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Rozlytrek",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT"
+        ]
+      },
+      "bLabel": {
+        "owner": "CAPRELSA",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT"
+        ]
+      }
+    },
+    {
+      "drugA": "fingolimod",
+      "drugB": "lenvatinib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Fingolimod",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "QT",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Lenvima",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "QT"
+        ]
+      }
+    },
+    {
+      "drugA": "chloroquine",
+      "drugB": "posaconazole",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Chloroquine Phosphate",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "QT",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Posaconazole",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "P-gp"
+        ]
+      }
+    },
+    {
+      "drugA": "efavirenz",
+      "drugB": "sorafenib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Efavirenz",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT"
+        ]
+      },
+      "bLabel": {
+        "owner": "sorafenib",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT"
+        ]
+      }
+    },
+    {
+      "drugA": "siponimod",
+      "drugB": "tramadol",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "MAYZENT",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "Tramadol Hydrochloride",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "CYP2D6",
+          "serotonergic",
+          "CNS depressant"
+        ]
+      }
+    },
+    {
+      "drugA": "carbinoxamine",
+      "drugB": "zonisamide",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Carbinoxamine Maleate",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CNS depressant"
+        ]
+      },
+      "bLabel": {
+        "owner": "zonisamide",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CNS depressant"
+        ]
+      }
+    },
+    {
+      "drugA": "ceritinib",
+      "drugB": "larotrectinib",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "ZYKADIA",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A",
+          "QT",
+          "P-gp",
+          "bradycardia"
+        ]
+      },
+      "bLabel": {
+        "owner": "VITRAKVI",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP3A"
+        ]
+      }
+    },
+    {
+      "drugA": "bupropion",
+      "drugB": "dextroamphetamine",
+      "category": "neither label names the other drug",
+      "aLabel": {
+        "owner": "Bupropion hydrochloride",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP2D6"
+        ]
+      },
+      "bLabel": {
+        "owner": "DEXTROAMPHETAMINE SULFATE",
+        "found": true,
+        "namesOtherIn": [],
+        "mechanismWords": [
+          "CYP2D6",
+          "serotonergic"
+        ]
+      }
+    }
+  ]
+}

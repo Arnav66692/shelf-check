@@ -21,7 +21,10 @@ export function SymptomsView() {
 
   async function run(event: React.FormEvent) {
     event.preventDefault();
-    if (text.trim().length < 3) return;
+    if (text.trim().length < 3) {
+      setState({ status: "failed", message: "Say how you feel in a few words, like headache and a stuffy nose." });
+      return;
+    }
     const asked = text.trim();
     setState({ status: "loading" });
     setCauses(null);
@@ -121,6 +124,7 @@ export function SymptomsView() {
               </section>
             )}
 
+            {(causes === "loading" || (causes !== null && causes.causes.length > 0)) && (
             <section>
               <h2 className="text-2xl font-extrabold narrow">Possible causes to ask a doctor about</h2>
               <p className="mt-2 text-sm">
@@ -128,7 +132,7 @@ export function SymptomsView() {
                 alone. It cannot examine you and it can be wrong.
               </p>
               {causes === "loading" && <p className="mt-2 text-ink-soft">Thinking about possible causes.</p>}
-              {causes !== "loading" && causes?.note && <p className="mt-2 text-ink-soft">{causes.note}</p>}
+
               <ul className="mt-3 grid gap-2">
                 {(causes !== "loading" && causes ? causes.causes : []).map((cause) => (
                   <li key={cause.name} className="py-2 border-b border-hair">
@@ -137,6 +141,7 @@ export function SymptomsView() {
                 ))}
               </ul>
             </section>
+            )}
           </>
         )}
       </div>

@@ -220,6 +220,16 @@ describe("profile flags: age", () => {
     expect(ageFlag(items, 18)).toBeUndefined();
   });
 
+  test("aspirin: the stomach bleeding warning for age 60 or older applies at 74, not at 40", async () => {
+    const items = await loadCabinet("aspirin");
+
+    const flag = ageFlag(items, 74);
+
+    expect(flag).toMatchObject({ severity: "ask", numbers: { ageYears: 74, fromYears: 60 } });
+    expect(flag?.quote?.excerpt).toContain("age 60 or older");
+    expect(ageFlag(items, 40)).toBeUndefined();
+  });
+
   test("a label with no clear lower age gives nothing for a child", async () => {
     const items = await loadCabinet("warfarin");
 

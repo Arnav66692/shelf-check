@@ -54,11 +54,11 @@ export function CabinetView() {
           quoted from the label so you can show a pharmacist.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <Link href="/start" className="btn">
-            Start with four questions
-          </Link>
-          <Link href="/add?sample=1" className="btn btn-quiet">
+          <Link href="/add?sample=1" className="btn">
             See an example cabinet
+          </Link>
+          <Link href="/start" className="btn btn-quiet">
+            Start my own, four questions
           </Link>
         </div>
         <p className="mt-4 text-sm text-ink-soft">
@@ -96,11 +96,12 @@ export function CabinetView() {
                   ? `${stops} ${stops === 1 ? "thing" : "things"} to stop and check before your next dose.`
                   : asks > 0
                     ? "Nothing to stop. Some things to ask a pharmacist about."
-                    : "No label warnings between these."}
+                    : "No label here warns about another product in this cabinet."}
               </p>
               <p className="mt-1">
-                {asks} to ask a pharmacist about, {notes} {notes === 1 ? "note" : "notes"} to read. Every one quotes the
-                label it came from.
+                {stops + asks === 0
+                  ? "Labels can miss real risks. Print this list and ask a pharmacist to look it over."
+                  : `${asks} to ask a pharmacist about, ${notes} ${notes === 1 ? "note" : "notes"} to read. Every one quotes the label it came from.`}
               </p>
               <div className="mt-3 flex flex-wrap gap-3">
                 <Link href="/print" className="btn btn-quiet">

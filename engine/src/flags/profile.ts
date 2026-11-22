@@ -107,6 +107,7 @@ const AGE_CLAUSE_PATTERNS: readonly { readonly pattern: RegExp; readonly kind: A
   { kind: "from_to_under", pattern: new RegExp(`${AGE_NUMBER}\\s+to\\s+under\\s+${AGE_NUMBER}\\s*${YEARS}\\s*:?\\s*${RESTRICTION}`, "gi") },
   { kind: "under", pattern: new RegExp(`(?<!to\\s)under\\s+${AGE_NUMBER}\\s*${YEARS}\\s*:?\\s*${RESTRICTION}`, "gi") },
   { kind: "from_to", pattern: new RegExp(`${AGE_NUMBER}\\s+to\\s+${AGE_NUMBER}\\s*${YEARS}\\s*:?\\s*${RESTRICTION}`, "gi") },
+  { kind: "or_older", pattern: new RegExp(`\\bage\\s+${AGE_NUMBER}\\s+(?:or|and)\\s+(?:older|over)\\b`, "gi") },
   {
     kind: "not_intended_under",
     pattern: new RegExp(`(not intended for use by|not for use by)\\s+\\w+\\s+under\\s+(?:the\\s+age\\s+of\\s+)?${AGE_NUMBER}\\b`, "gi"),
@@ -116,7 +117,8 @@ const AGE_CLAUSE_PATTERNS: readonly { readonly pattern: RegExp; readonly kind: A
 const UNDER_AGE_IN_DO_NOT_USE = new RegExp(`under\\s+${AGE_NUMBER}\\s*${YEARS}`, "gi");
 const DO_NOT_USE_WORDING = /do not (?:use|give)/i;
 
-type AgeClauseKind = "from_to_under" | "under" | "from_to" | "not_intended_under";
+type AgeClauseKind = "from_to_under" | "under" | "from_to" | "not_intended_under" | "or_older";
+const NO_UPPER_AGE = 200;
 
 interface PhraseHit {
   readonly sentence: LabelSentence;
@@ -249,6 +251,7 @@ function toAgeClause(hit: PhraseHit, kind: AgeClauseKind, groups: readonly (stri
   const severity: Severity = DO_NOT_USE_WORDING.test(instruction) ? "stop" : "ask";
   const [first, second] = numbers;
   if (first === undefined) return undefined;
+  if (kind === "or_older") return { hit, fromYears: first, belowYears: NO_UPPER_AGE, severity: "ask" };
   if (kind === "under" || kind === "not_intended_under") return { hit, fromYears: 0, belowYears: first, severity };
   if (second === undefined) return undefined;
   return { hit, fromYears: first, belowYears: kind === "from_to" ? second + 1 : second, severity };
@@ -279,7 +282,9 @@ function ageFlags(item: CabinetItem, ageYears: number): readonly Flag[] {
   const range =
     clause.fromYears === 0
       ? `under ${formatNumber(clause.belowYears)} years`
-      : `from ${formatNumber(clause.fromYears)} to under ${formatNumber(clause.belowYears)} years`;
+      : clause.belowYears === NO_UPPER_AGE
+        ? `age ${formatNumber(clause.fromYears)} or older`
+        : `from ${formatNumber(clause.fromYears)} to under ${formatNumber(clause.belowYears)} years`;
   return toFlag(
     item,
     strictest.map((entry) => entry.hit),
