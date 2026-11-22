@@ -49,7 +49,7 @@ The part that decides the warnings is a rules engine in TypeScript, and no AI mo
 - the FDA's published statements and the WADA 2026 Prohibited List for peptides, quoted word for word and checked against saved copies by tests
 - the NLM Pillbox archive and DailyMed product data for the pill finder, 83,912 records
 
-The engine has 741 tests that run on saved real label records, and the product lookup has 110 more. The app is Next.js and TypeScript, deployed on Vercel.
+The engine has 746 tests that run on saved real label records, and the product lookup has 111 more. The app is Next.js and TypeScript, deployed on Vercel.
 
 For reading a photo of a label I tested before building, with the pass bar written down before every test:
 
@@ -89,7 +89,7 @@ Before the deadline I had the app attacked from three sides, and fixed what they
 
 - A code review by a second AI model (Codex) that listed 51 bugs, from a peptide syringe amount that disagreed with its own label to a child getting an adult daily limit.
 - An AI reviewer playing a strict pharmacist (not a licensed pharmacist), who built 21 real cabinets and found that the emergency screen missed most emergencies, that a penicillin allergy did not flag amoxicillin, and that a U-500 insulin dose could be read off U-100 marks.
-- A simulated usability test, where an AI agent played three made up people (a 68 year old on a phone, a parent in a hurry, a student using the keyboard) and drove the live site. This is not a real user test, and I report it only as a simulation. All four pass bars from my real-person test script passed in simulation, but two of the three rated adding a medicine only 4 out of 7, mostly because nothing told them what changed after adding.
+- A simulated usability test, where an AI agent played three made up people (a 68 year old on a phone, a parent in a hurry, a student using the keyboard) and drove the live site. This is not a real user test, and I report it only as a simulation. Two of the three rated adding a medicine only 4 out of 7, mostly because nothing told them what changed after adding.
 
 What changed because of that: emergency phrases like "I took too much tylenol" or "my lips are swelling" now go straight to Poison Help, 988 or 911, allergies match whole drug families, the dose check refuses to draw a mark it cannot measure, the app says to hold the next dose and call the prescriber today when the label says not to combine two medicines or you are allergic, and otherwise never tells you to stop a prescribed medicine on your own, misspelled brand names still find the product, and after you add something the cabinet tells you which warnings are new. Every warning has a plain "What to do" line, there is a larger text switch and a read aloud button, and an automated accessibility check (axe, WCAG 2.1 AA) finds no problems on any page at laptop or phone size.
 
@@ -120,11 +120,11 @@ typescript, next.js, react, tailwind css, node.js, python, pytorch, fastapi, oll
 - Live site: https://shelf-check-nu.vercel.app
 - Code: https://github.com/Arnav66692/shelf-check
 
-The live site runs everything except the photo reader and the possible causes list, which need the local vision model on my laptop. The video shows those from my laptop.
+The live site runs everything except the photo reader and the possible causes list, which need the local vision model on my laptop. They are not in the video, and the rest of the site works without them.
 
 ## Built during the event, and what was not
 
-All of the code, the tests, the data processing and the trained model were made during EvoHacks 2, on November 21 and 22, 2026. Nothing from my earlier projects was reused.
+All of the code, the tests, the data processing and the trained model were made during EvoHacks 2, on November 21 and 22, 2026. Nothing from my earlier projects was reused. The first commit in the repo is from 4:10 PM on November 21, seven hours after the start, because I worked without git until the first deploy. It adds 80,159 lines, and about 63,000 of those are saved FDA label records, test fixtures and notes, not code.
 
 Not made by me: the open weight models Qwen3-VL 8B, Florence-2 and DINOv2, the open source libraries listed above, and the public data from the FDA, NIH, NLM and WADA.
 

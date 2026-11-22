@@ -23,7 +23,7 @@ This version matches the live site after the Nov 22 morning update: the dark cha
 
 ## 2. The problem (0:20 to 0:30)
 
-**Screen:** click "See an example cabinet". The summary says "2 things to check with a pharmacist". Scroll to the "Check now" card "Acetaminophen daily total across 2 products" and its quoted label lines.
+**Screen:** click "See an example cabinet". The summary says "5 things to check with a pharmacist before the next dose." Scroll to the "Check now" card "Acetaminophen daily total across 2 products" and its quoted label lines.
 
 **Say:**
 > In one study almost half of adults said they'd double up like this. The warning is already on the box, it's just on a different box. Shelf Check reads all your labels together and quotes the line that matters.
@@ -32,10 +32,10 @@ The "almost half" is 45.6 percent of 500 adults (Wolf et al., J Gen Intern Med 2
 
 ## 3. Adding something (0:30 to 0:50)
 
-**Screen:** click Add. Type "st johns wort", pick the first result, show the official record and label picture, click "Yes, add it to my cabinet". The cabinet opens with "Added St. John's Wort Extract. 1 warning involves it." Click "Show it" to jump to the warning marked New, with its quote from the warfarin label.
+**Screen:** click Add. Type "st johns wort", pick the first result, show its official NIH record, click "Yes, add it to my cabinet". The cabinet opens with "Added St. John's Wort. 2 warnings involve it. They are marked New. Show the first one". Click "Show the first one". It jumps to "Check now, Warfarin Sodium and St. John's Wort", whose What to do line says it can change how well the blood thinner works and lead to a clot or bleeding (clip 3).
 
 **Say:**
-> You add what you own by name, label code or barcode, and you confirm it against its official FDA or NIH record. Here I'm adding a supplement, and it tells me right away that the warfarin label warns about it.
+> You add what you own by name, label code or barcode, and you confirm it against its official FDA or NIH record. Here I'm adding a supplement, and it tells me right away that the warfarin label warns about it, and why it matters: it can change how well the blood thinner works.
 
 ## 4. The rest (0:50 to 1:20)
 
@@ -49,13 +49,13 @@ The "almost half" is 45.6 percent of 500 adults (Wolf et al., J Gen Intern Med 2
 **Screen:** the "How we tested" page (in More). Point at the benchmark table, the reader tests and the trained matcher table.
 
 **Say:**
-> I set a pass bar before every test. On 40 random products paired with Tylenol, it caught the double dose every time. It's weak at drug interactions in general, and the page says so. For reading photos, the best vision model was confidently wrong 5 times in 100, so a reading only counts when the drug code and the printed ingredients match one FDA record, and on 100 new labels that made zero mistakes.
+> I set a pass bar before every test. On 40 random products paired with Tylenol, it caught the double dose every time. Drug interactions are harder, because labels warn about a whole drug group instead of naming the drug, so I taught it the FDA's drug groups. On 40 new major pairs it now catches about 10. That's still weak, and the page says so. For reading photos, the best vision model was confidently wrong 5 times in 100, so a reading only counts when the drug code and the printed ingredients match one FDA record, and on 100 new labels that made zero mistakes.
 
 Numbers as of Nov 22 morning: 40 of 40 doubled acetaminophen pairs caught, 10 of 40 new major interactions, 0 false alarms in 40, and the trained matcher at 85.7 percent first guess against a 90 percent bar. If the page shows different numbers, say those.
 
 ## 6. The code (1:45 to 2:30)
 
-**Screen:** your editor on `engine/src/flags/dailyTotal.ts`. Follow `CODE-WALKTHROUGH.md`: `LIMIT_PATTERN`, `labelledMaximum`, `mgIn`, `totalsFor`, `severityFor`. Then the terminal running `npx vitest run test/dailyTotal.test.ts` with "25 passed".
+**Screen:** your editor on `engine/src/flags/dailyTotal.ts`. Follow `CODE-WALKTHROUGH.md`: `LIMIT_PATTERN`, `labelledMaximum`, `mgIn`, `totalsFor`, `severityFor`. Then the terminal running `npx vitest run test/dailyTotal.test.ts` with "26 passed".
 
 **Say:** the 35 second version at the end of `CODE-WALKTHROUGH.md`, in your own words.
 
@@ -64,7 +64,7 @@ Numbers as of Nov 22 morning: 40 of 40 doubled acetaminophen pairs caught, 10 of
 **Screen:** the cabinet page.
 
 **Say:**
-> No AI model decides a warning here. The official labels do, and every number is on a label you can check. It's a safety check, not medical advice. This is Shelf Check.
+> No AI model decides a warning here. The official labels do, and every number is on a label you can check. It's a safety check, not medical advice. It's for the person who keeps the medicines straight for their family, the parent with the kids' cold medicine or someone caring for a mom on six prescriptions. This is Shelf Check.
 
 ## Things not to say
 

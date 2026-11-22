@@ -74,7 +74,7 @@ export function SiteHeader() {
               <Link
                 href={link.href}
                 aria-current={pathname === link.href ? "page" : undefined}
-                className={`py-1 hover:text-accent ${pathname === link.href ? "text-accent" : "text-ink"}`}
+                className={`py-1 px-1 hover:text-accent ${pathname === link.href ? "text-accent" : "text-ink"}`}
               >
                 {link.label}
               </Link>

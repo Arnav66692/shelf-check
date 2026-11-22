@@ -12,8 +12,8 @@ A safety check, not medical advice. No warning does not mean safe, because a lab
 
 | Folder or file | What it is |
 |---|---|
-| `engine/` | The rules engine in TypeScript. Duplicates, daily totals, interactions, health profile warnings, supplements, label tags, recalls, disposal, peptides, injection math, pill matching. No AI model decides any warning. 741 tests. |
-| `lookup/` | Finds the official record for a product by name, drug code (NDC) or barcode, across openFDA, DailyMed, RxNorm and the NIH supplement database. 110 tests. |
+| `engine/` | The rules engine in TypeScript. Duplicates, daily totals, interactions, health profile warnings, supplements, label tags, recalls, disposal, peptides, injection math, pill matching. No AI model decides any warning. 746 tests. |
+| `lookup/` | Finds the official record for a product by name, drug code (NDC) or barcode, across openFDA, DailyMed, RxNorm and the NIH supplement database. 111 tests. |
 | `web/` | The Next.js app. |
 | `reader_service.py`, `readers.py`, `verify.py` | The local photo reader and the cross-check that decides when a reading counts as matched. |
 | `train_matcher.py`, `render.py`, `extract_labels.py` | Training our own label matcher (DINOv2) on made up phone photos of official label images. |
