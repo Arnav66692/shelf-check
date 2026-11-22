@@ -356,3 +356,10 @@ test("a drug group word used to describe an effect is not a match", () => {
   const aspirin: CabinetItem = { ...drug("aspirin"), ingredients: [{ name: "aspirin", value: 81, unit: "mg", classes: [{ id: "B01AC", type: "ATC1-4", name: "Platelet aggregation inhibitors excl. heparin", source: "ATC" }] }] };
   expect(fromLabelOf(interactionFlags([clopidogrel, aspirin]), "clopidogrel")).toEqual([]);
 });
+
+test("lithium salts match labels that say lithium, and a raised prothrombin time is serious", () => {
+  const lisinopril = { ...drug("lisinopril"), label: { drug_interactions: ["Lithium toxicity has been reported in patients receiving lithium concomitantly with ACE inhibitors. Monitor serum lithium levels during concurrent use."] } };
+  expect(fromLabelOf(interactionFlags([lisinopril, drug("lithium carbonate")]), "lisinopril")[0]?.severity).toBe("stop");
+  const fluconazole = { ...drug("fluconazole"), label: { drug_interactions: ["Coumarin-type anticoagulants: Prothrombin time may be increased in patients receiving concomitant fluconazole and warfarin."] } };
+  expect(fromLabelOf(interactionFlags([fluconazole, drug("warfarin")]), "fluconazole")[0]?.severity).toBe("stop");
+});

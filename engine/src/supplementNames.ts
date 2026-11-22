@@ -28,6 +28,8 @@ interface CommonNameRule {
 export const COMMON_NAME_RULES: readonly CommonNameRule[] = [
   { appliesTo: /st\.? john['’]?s wort|hypericum/i, names: [{ term: "St. John's wort" }, { term: "Hypericum perforatum" }] },
   { appliesTo: /ginkgo/i, names: [{ term: "ginkgo" }] },
+  // Labels say "lithium", while the product's ingredient is a salt such as lithium carbonate.
+  { appliesTo: /^lithium (?:carbonate|citrate)$/i, names: [{ term: "lithium" }] },
   // Nitrate labels and the sildenafil label name these by class, and RxClass can miss the record.
   {
     appliesTo: /^(?:nitroglycerin|isosorbide(?: (?:mono|di)nitrate)?|amyl nitrite)\b/i,

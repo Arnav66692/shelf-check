@@ -90,6 +90,7 @@ const BREASTFEEDING_SECTIONS: readonly LabelSectionName[] = [
   "pregnancy_or_breast_feeding",
   "ask_doctor",
   "warnings",
+  "warnings_and_cautions",
   "nursing_mothers",
 ];
 const AGE_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "pediatric_use", "dosage_and_administration", "warnings"];
