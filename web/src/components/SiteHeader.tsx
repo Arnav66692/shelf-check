@@ -12,7 +12,6 @@ const LINKS = [
   { href: "/pills", label: "Pill finder" },
   { href: "/dose", label: "Dose check" },
   { href: "/profile", label: "About you" },
-  { href: "/tested", label: "How we tested" },
 ] as const;
 
 export function SiteHeader() {

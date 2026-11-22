@@ -10,7 +10,7 @@ function Check({ label, checked, onChange }: { label: string; checked: boolean; 
     <label className="flex items-start gap-3 py-2 border-b border-hair cursor-pointer">
       <input
         type="checkbox"
-        className="mt-1 h-5 w-5 accent-[var(--ink)]"
+        className="mt-0.5 h-6 w-6 accent-[var(--ink)]"
         checked={checked}
         onChange={(event) => onChange(event.target.checked)}
       />

@@ -75,11 +75,12 @@ export function CabinetView() {
 
   return (
     <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+      <h1 className="sr-only">Your medicine cabinet and its warnings</h1>
       <section aria-labelledby="warnings-title">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <h1 id="warnings-title" className="text-3xl font-extrabold narrow">
+          <h2 id="warnings-title" className="text-3xl font-extrabold narrow">
             Warnings
-          </h1>
+          </h2>
           <ReadAloud lines={spoken} />
           <p className="text-sm text-ink-soft" aria-live="polite">
             {state.status === "checking" && "Reading the labels together."}

@@ -137,12 +137,20 @@ body {
   color: inherit;
 }
 
-.field:focus-visible,
-.btn:focus-visible,
-a:focus-visible,
-input:focus-visible {
+:focus-visible {
   outline: 3px solid var(--ok);
   outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  button.underline,
+  summary,
+  a.underline:not(p a),
+  header nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
 
 .quote {

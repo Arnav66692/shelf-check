@@ -29,7 +29,7 @@ function Choice({ label, checked, onChange, type = "checkbox", name }: {
       <input
         type={type}
         name={name}
-        className="mt-1 h-5 w-5 accent-[var(--ink)]"
+        className="mt-0.5 h-6 w-6 accent-[var(--ink)]"
         checked={checked}
         onChange={(event) => onChange(event.target.checked)}
       />

@@ -31,11 +31,36 @@ const SECTION_NAMES: Record<string, string> = {
 
 const QUOTES_SHOWN_FIRST = 2;
 
-function QuoteBlock({ quote, items }: { quote: FlagQuote; items: readonly Product[] }) {
+function escapeForPattern(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function Highlighted({ text, terms }: { text: string; terms: readonly string[] }) {
+  if (terms.length === 0) return <>{text}</>;
+  const pattern = new RegExp(`(${terms.map(escapeForPattern).join("|")})`, "gi");
+  const lowered = new Set(terms.map((term) => term.toLowerCase()));
+  return (
+    <>
+      {text.split(pattern).map((part, index) =>
+        lowered.has(part.toLowerCase()) ? (
+          <strong key={index} className="bg-[var(--ask-wash)] px-0.5">
+            {part}
+          </strong>
+        ) : (
+          <span key={index}>{part}</span>
+        ),
+      )}
+    </>
+  );
+}
+
+function QuoteBlock({ quote, items, terms }: { quote: FlagQuote; items: readonly Product[]; terms: readonly string[] }) {
   const source = items.find((item) => item.id === quote.itemId);
   return (
     <figure className="mt-3">
-      <blockquote className="quote">{quote.excerpt}</blockquote>
+      <blockquote className="quote">
+        <Highlighted text={quote.excerpt} terms={terms} />
+      </blockquote>
       <figcaption className="mt-1 text-sm text-ink-soft">
         {quote.section === "fda_recall" || quote.section === "fda_statement" ? "From the " : `From the label of ${source?.displayName ?? "this product"}, section `}
         {SECTION_NAMES[quote.section] ?? quote.section.replaceAll("_", " ")}.
@@ -63,7 +88,7 @@ export function FlagRow({ flag, items }: { flag: Flag; items: readonly Product[]
         <p className="mt-1 text-sm text-ink-soft">Involves {names.join(", ")}.</p>
       )}
       {first.map((quote) => (
-        <QuoteBlock key={`${quote.itemId}:${quote.excerpt}`} quote={quote} items={items} />
+        <QuoteBlock key={`${quote.itemId}:${quote.excerpt}`} quote={quote} items={items} terms={flag.highlight ?? []} />
       ))}
       {rest.length > 0 && (
         <details className="mt-3">
@@ -71,7 +96,7 @@ export function FlagRow({ flag, items }: { flag: Flag; items: readonly Product[]
             {rest.length} more label {rest.length === 1 ? "line" : "lines"}
           </summary>
           {rest.map((quote) => (
-            <QuoteBlock key={`${quote.itemId}:${quote.excerpt}`} quote={quote} items={items} />
+            <QuoteBlock key={`${quote.itemId}:${quote.excerpt}`} quote={quote} items={items} terms={flag.highlight ?? []} />
           ))}
         </details>
       )}

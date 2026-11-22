@@ -21,7 +21,7 @@ export default function TestedPage() {
       </p>
 
       <h2 className="mt-8 text-2xl font-extrabold narrow">Reading labels from a picture</h2>
-      <div className="facts mt-3 overflow-x-auto">
+      <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Reader test results">
         <table className="w-full text-left min-w-[640px]">
           <thead>
             <tr className="border-b-[3px] border-ink">
@@ -88,7 +88,7 @@ export default function TestedPage() {
         We trained our own image model on 3,588 products from the FDA label archive, using made-up phone photos of
         each official label, and scored it on 2,175 photos of products it had never seen.
       </p>
-      <div className="facts mt-3 overflow-x-auto">
+      <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Trained matcher results">
         <table className="w-full text-left min-w-[480px]">
           <thead>
             <tr className="border-b-[3px] border-ink">

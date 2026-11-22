@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
+import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
 
@@ -18,10 +19,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${archivo.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-10 focus:bg-[var(--panel)] focus:px-3 focus:py-2 focus:font-bold"
+        >
+          Skip to content
+        </a>
         <SiteHeader />
-        <main className="flex-1 w-full max-w-[1180px] mx-auto px-4 sm:px-8 pb-24">{children}</main>
+        <main id="main" tabIndex={-1} className="flex-1 w-full max-w-[1180px] mx-auto px-4 sm:px-8 pb-24 focus:outline-none">
+          {children}
+        </main>
         <footer className="w-full max-w-[1180px] mx-auto px-4 sm:px-8 py-6 text-sm text-ink-soft thick">
-          <p>
+          <div>
+            <Link href="/tested" className="underline font-bold text-ink">
+              How we tested it
+            </Link>
+          </div>
+          <p className="mt-2">
             A safety check, not medical advice. Every flag quotes an official label. Show it to your pharmacist or
             doctor before you change what you take.
           </p>

@@ -97,6 +97,17 @@ function sentenceCase(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+const TITLE_SUBJECT = / is in \d| daily total/;
+
+function highlightTerms(members: readonly EngineFlag[]): readonly string[] {
+  const terms = members.flatMap((member) => {
+    const fromMatch = [member.match?.term, member.match?.ingredient];
+    const subject = TITLE_SUBJECT.test(member.title) ? member.title.split(TITLE_SUBJECT)[0] : undefined;
+    return [...fromMatch, subject];
+  });
+  return [...new Set(terms.filter((term): term is string => typeof term === "string" && term.trim().length > 2))];
+}
+
 function mergeGroup(key: string, members: readonly EngineFlag[], names: ReadonlyMap<string, string>): Flag {
   const [first] = members;
   const itemIds = [...new Set(members.flatMap((member) => member.itemIds))];
@@ -108,7 +119,7 @@ function mergeGroup(key: string, members: readonly EngineFlag[], names: Readonly
     return true;
   });
   const severity = members.map((member) => member.severity).sort((a, b) => SEVERITY_RANK[a] - SEVERITY_RANK[b])[0];
-  const shared = { id: key, type: first.type, severity, itemIds, quotes };
+  const shared = { id: key, type: first.type, severity, itemIds, quotes, highlight: highlightTerms(members) };
   if (first.type === "interaction") {
     const pair = itemIds.map((id) => names.get(id) ?? "a product").join(" and ");
     const count = quotes.length === 1 ? "A label warns" : `${quotes.length} label lines warn`;
