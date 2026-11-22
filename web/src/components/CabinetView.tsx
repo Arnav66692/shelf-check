@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ApiError, checkCabinet, type CheckResult } from "@/lib/api";
 import { useCabinet, useProfile, useSupply } from "@/lib/store";
 import { supplyFlags } from "@/lib/supply";
@@ -44,6 +44,11 @@ export function CabinetView() {
   }, [items, profile, requestKey]);
 
   const state: CheckState = settled?.key === requestKey ? settled.outcome : { status: "checking" };
+  const bannerRef = useRef<HTMLParagraphElement>(null);
+  const addedChecked = addedId !== null && state.status === "done";
+  useEffect(() => {
+    if (addedChecked) bannerRef.current?.focus({ preventScroll: true });
+  }, [addedChecked, addedId]);
 
   if (items.length === 0) return <Landing />;
 
@@ -63,7 +68,10 @@ export function CabinetView() {
   const unchecked = state.status === "done" ? state.result.unchecked : [];
   const added = items.find((item) => item.id === addedId);
   const involvesAdded = (flag: { itemIds: readonly string[] }) => added !== undefined && flag.itemIds.includes(added.id);
-  const addedFlags = flags.filter(involvesAdded);
+  const addedAll = flags.filter(involvesAdded);
+  const addedFlags = addedAll.filter((flag) => flag.severity !== "info");
+  const addedNotes = addedAll.length - addedFlags.length;
+  const noteText = addedNotes === 0 ? "" : addedNotes === 1 ? " 1 note mentions it." : ` ${addedNotes} notes mention it.`;
   const orderedItems = added ? [added, ...items.filter((item) => item.id !== added.id)] : items;
   const checkedCount = items.length - unchecked.length;
   const topFlag = flags.find((flag) => flag.severity === "stop") ?? flags.find((flag) => flag.severity === "ask");
@@ -82,13 +90,13 @@ export function CabinetView() {
           <ReadAloud lines={spoken} />
         </div>
         {added && (
-          <p className="facts mt-4 text-[1.02rem]" role="status">
+          <p ref={bannerRef} tabIndex={-1} className="facts mt-4 text-[1.02rem] focus:outline-none" role="status">
             Added <strong>{added.displayName}</strong>.{" "}
             {state.status !== "done"
               ? "Checking it against the rest of your cabinet."
               : addedFlags.length === 0
-                ? "No warning was matched for it. This checker can miss real interactions."
-                : `${addedFlags.length === 1 ? "1 warning involves it. It is" : `${addedFlags.length} warnings involve it. They are`} marked New. `}
+                ? `No warning was matched for it. This checker can miss real interactions.${noteText}`
+                : `${addedFlags.length === 1 ? "1 warning involves it. It is" : `${addedFlags.length} warnings involve it. They are`} marked New.${noteText} `}
             {state.status === "done" && addedFlags.length > 0 && (
               <a
                 className="underline font-bold"

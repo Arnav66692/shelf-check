@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { Mark } from "./SiteHeader";
 
 const KEY = "shelf-check.entered";
@@ -29,7 +30,18 @@ function speak(text: string) {
 export function EnterGate() {
   const initial = useSyncExternalStore(subscribe, needsGate, () => false);
   const [closed, setClosed] = useState(false);
-  if (!initial || closed) return null;
+  const root = useRef<HTMLDivElement>(null);
+  const open = initial && !closed;
+
+  // Keyboard and screen reader focus stay on this screen until it closes.
+  useEffect(() => {
+    if (!open) return;
+    const others = [...document.body.children].filter((element) => element !== root.current && !element.contains(root.current));
+    others.forEach((element) => element.setAttribute("inert", ""));
+    return () => others.forEach((element) => element.removeAttribute("inert"));
+  }, [open]);
+
+  if (!open) return null;
 
   function enter(withVoice: boolean) {
     try {
@@ -46,8 +58,8 @@ export function EnterGate() {
     }
   }
 
-  return (
-    <div role="dialog" aria-modal="true" aria-labelledby="gate-title" className="fixed inset-0 z-50 grid place-items-center bg-[var(--paper)] px-6">
+  return createPortal(
+    <div ref={root} role="dialog" aria-modal="true" aria-labelledby="gate-title" className="fixed inset-0 z-50 grid place-items-center bg-[var(--paper)] px-6">
       <div className="grid justify-items-center text-center gap-4 max-w-[340px]">
         <span className="text-ink">
           <Mark size={48} />
@@ -64,6 +76,7 @@ export function EnterGate() {
           Enter with read aloud
         </button>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
