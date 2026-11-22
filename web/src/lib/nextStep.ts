@@ -13,8 +13,12 @@ const LABEL_SAYS_STOP = /\b(?:contraindicated|(?:is |are )?not recommended|do no
 const HOLD_DOSE = "The label says not to use these together, or not to use it with this health detail. Call the prescriber or pharmacist today, before the next dose, and ask what to do. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const HYPERKALEMIA = /\bhyperkalemia\b/i;
-const BLOOD_THINNER_EFFECT = /\b(?:effects?|response|activity) of (?:warfarin|oral anticoagulants?)|\banticoagulant effects?\b|\bprolong\w* (?:the )?prothrombin time|\bprothrombin time[^.;]{0,30}increas\w*/i;
+const BLOOD_THINNER_EFFECT = /\bINR\b|\b(?:effects?|response|activity) of (?:warfarin|oral anticoagulants?)|\banticoagulant (?:effects?|response|activity)\b|\bprolong\w* (?:the )?prothrombin time|\bprothrombin time[^.;]{0,30}increas\w*/i;
 const DOSE_CHANGE = /\b(?:reduce|decrease|lower|adjust)\w* (?:the )?(?:\w+ )?(?:dose|dosage)|\bdos(?:e|age) (?:reduction|adjustment)s?\b|\bone[- ]third\b|\bdo not exceed \w+ \d/i;
+// For a pair, "discontinue" usually means stop one drug if a side effect happens, not do not combine.
+const PAIR_SAYS_STOP = /\b(?:contraindicated|(?:is |are )?not recommended|do not (?:use|take|start|give)|should not be (?:used|taken|given|coadministered|co-administered)|avoid (?:co-?administration|concomitant|use|taking)|must not)\b/i;
+const CONTRAST_DYE = /\b(?:iodinated contrast|contrast (?:agents?|imaging|dye|media))\b/i;
+const LEVEL_CHECK = /\b(?:monitor|check|measure)\w* (?:the )?(?:serum |plasma |blood )?(?:[\w-]+ )?(?:levels?|concentrations?)\b/i;
 const SEDATION = /\brespiratory depression|profound sedation|\bcoma\b/i;
 const CROSS_ALLERGY_STEP = "The label warns that people with this allergy may also react to this medicine. Tell the prescriber or pharmacist about the allergy today, before the next dose. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const SPACE_APART = /\b\d+\s*(?:to\s*\d+\s*)?hours?\s+(?:before|after|apart)\b|\bseparate\b.*\bdoses?\b/i;
@@ -36,8 +40,16 @@ function isAllergy(flag: Flag): boolean {
 // On an interaction card only the lead quote decides, because a merged card can carry another label's
 // line about a different drug. On a health card every quote is about that product and that health detail.
 function quoteSaysStop(flag: Flag): boolean {
-  const quotes = flag.type === "interaction" ? flag.quotes.slice(0, 1) : flag.quotes;
-  return quotes.some((quote) => LABEL_SAYS_STOP.test(quote.excerpt) || quote.section === "contraindications");
+  if (flag.type === "interaction") {
+    const [lead] = flag.quotes;
+    return lead !== undefined && (PAIR_SAYS_STOP.test(lead.excerpt) || lead.section === "contraindications");
+  }
+  return flag.quotes.some((quote) => LABEL_SAYS_STOP.test(quote.excerpt) || quote.section === "contraindications");
+}
+
+function leadMentions(flag: Flag, pattern: RegExp): boolean {
+  const [lead] = flag.quotes;
+  return lead !== undefined && pattern.test(lead.excerpt);
 }
 
 function labelSaysStop(flag: Flag): boolean {
@@ -45,7 +57,11 @@ function labelSaysStop(flag: Flag): boolean {
 }
 
 function interactionStep(flag: Flag): string {
-  if (flag.severity === "stop" && mentions(flag, SEDATION)) {
+  if (mentions(flag, CONTRAST_DYE)) {
+    return "The label says to stop this medicine at or before a scan that uses contrast dye. Tell the imaging team and the prescriber you take it, and ask when to stop it and when to restart.";
+  }
+  const seizureRisk = leadMentions(flag, /\bseizures?\b/i) && !leadMentions(flag, SEDATION);
+  if (flag.severity === "stop" && mentions(flag, SEDATION) && !seizureRisk) {
     return "Call the prescriber or pharmacist today to confirm these are meant to be taken together. Do not drink alcohol with them. If someone is very hard to wake or breathing slowly, give naloxone (Narcan) if you have it and call 911.";
   }
   if (flag.severity === "stop" && mentions(flag, HYPERKALEMIA)) {
@@ -61,8 +77,11 @@ function interactionStep(flag: Flag): string {
   if (mentions(flag, SPACE_APART)) {
     return "The label says to space these apart. Ask a pharmacist how many hours apart to take them.";
   }
-  if (flag.prescribed && mentions(flag, DOSE_CHANGE)) {
-    return "The label says a dose may need to change when these are taken together. Ask the prescriber or pharmacist today whether your dose was adjusted for this. Do not change it yourself.";
+  if (flag.prescribed && flag.severity === "stop" && (mentions(flag, DOSE_CHANGE) || mentions(flag, LEVEL_CHECK))) {
+    return "The label warns of serious harm with these together and says a dose may need to change or a blood level may need checking. Call the prescriber or pharmacist today, before the next dose, and ask whether that was done.";
+  }
+  if (flag.prescribed && (mentions(flag, DOSE_CHANGE) || mentions(flag, LEVEL_CHECK))) {
+    return "The label says a dose may need to change, or a blood level may need checking, when these are taken together. Ask the prescriber or pharmacist today whether that was done. Do not change your dose yourself.";
   }
   if (flag.allPrescribed && flag.severity === "stop") {
     return "The label warns of serious harm when these are taken together. Call the prescriber or pharmacist today, before the next dose, to confirm the plan.";
@@ -124,7 +143,7 @@ export function nextStep(flag: Flag): string {
         ? "Talk to a licensed prescriber or pharmacist before using it."
         : "Ask a doctor or pharmacist before using this, and tell them about the health detail it mentions.";
     case "label_tag":
-      if (flag.title === "Alcohol" && mentions(flag, /\b(?:contraindicated|disulfiram-like|do not (?:drink|consume))\b/i)) {
+      if (flag.title === "Alcohol" && mentions(flag, /\bdisulfiram-like\b|\bdo not (?:drink|consume)\b|\bavoid (?:drinking |consuming )?alcohol|\balcohol (?:use )?is contraindicated/i)) {
         return "The label says not to drink alcohol with this. Do not drink any while you take it, and ask the pharmacist how long to wait after the last dose.";
       }
       if (flag.title === "Alcohol" && mentions(flag, /\b(?:respiratory depression|coma|death|fatal)\b/i)) {
