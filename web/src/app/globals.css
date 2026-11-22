@@ -148,7 +148,7 @@ body {
   height: 8px;
   border-radius: 999px;
   background: var(--leaf);
-  box-shadow: 0 0 0 3px rgba(184, 243, 130, 0.18), 0 0 12px rgba(184, 243, 130, 0.6);
+  box-shadow: 0 0 0 3px rgba(184, 243, 130, 0.18), 0 0 12px rgba(184, 243, 130, 0.6); /* design-lint-allow: glow */
 }
 
 .btn {
@@ -172,7 +172,6 @@ body {
 
 .btn:hover {
   background: #cdfaa3;
-  box-shadow: 0 0 24px -6px rgba(184, 243, 130, 0.55);
 }
 
 .btn:disabled {

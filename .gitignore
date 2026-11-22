@@ -18,3 +18,5 @@ qa/node_modules/
 qa/out/
 benchmark/ddinter/
 benchmark/cache/
+results/matcher2/*.pt
+benchmark/cache-rerun/
