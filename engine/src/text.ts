@@ -82,6 +82,15 @@ function previousWordEnd(text: string, from: number, limit: number): number {
   return gap === -1 ? limit : limit + gap;
 }
 
+// "…warning ) adults and children" starts inside a cut-off "(see overdose warning)". Start after it.
+function pastBrokenParenthesis(text: string, start: number, focusStart: number): number {
+  if (start === 0) return start;
+  const close = text.indexOf(")", start);
+  const open = text.indexOf("(", start);
+  if (close < 0 || close - start > 40 || (open >= 0 && open < close) || close >= focusStart) return start;
+  return nextWordStart(text, close + 1, focusStart);
+}
+
 export function excerptAround(text: string, focus: TextSpan, maxLength: number = MAX_EXCERPT_LENGTH): string {
   if (text.length <= maxLength) return text;
   const focusStart = Math.max(0, Math.min(focus.start, text.length));
@@ -90,7 +99,7 @@ export function excerptAround(text: string, focus: TextSpan, maxLength: number =
   const spare = budget - (focusEnd - focusStart);
   const roughStart = Math.max(0, Math.min(focusStart - Math.floor(spare / 2), text.length - budget));
   const roughEnd = Math.min(text.length, roughStart + budget);
-  const start = nextWordStart(text, roughStart, focusStart);
+  const start = pastBrokenParenthesis(text, nextWordStart(text, roughStart, focusStart), focusStart);
   const end = previousWordEnd(text, roughEnd, focusEnd);
   const body = text.slice(start, end).trim();
   return `${start > 0 ? ELLIPSIS : ""}${body}${end < text.length ? ELLIPSIS : ""}`;
