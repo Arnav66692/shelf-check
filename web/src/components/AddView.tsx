@@ -34,11 +34,9 @@ function LabelPicture({ product }: { product: Product }) {
   if (!source) return null;
   if (source.toLowerCase().endsWith(".pdf")) {
     return (
-      <object data={source} type="application/pdf" className="w-full h-[340px] border border-[var(--rule)] bg-[var(--panel)]">
-        <a className="underline font-bold" href={source} target="_blank" rel="noreferrer">
-          Open the official label picture
-        </a>
-      </object>
+      <a className="btn btn-quiet" href={source} target="_blank" rel="noreferrer">
+        Open the official label (PDF)
+      </a>
     );
   }
   const pictures = product.labelImages.slice(0, MAX_PICTURES);
