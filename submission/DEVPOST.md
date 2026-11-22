@@ -49,7 +49,7 @@ The part that decides the warnings is a rules engine in TypeScript, and no AI mo
 - the FDA's published statements and the WADA 2026 Prohibited List for peptides, quoted word for word and checked against saved copies by tests
 - the NLM Pillbox archive and DailyMed product data for the pill finder, 83,912 records
 
-The engine has 706 tests that run on saved real label records, and the product lookup has 109 more. The app is Next.js and TypeScript, deployed on Vercel.
+The engine has 734 tests that run on saved real label records, and the product lookup has 109 more. The app is Next.js and TypeScript, deployed on Vercel.
 
 For reading a photo of a label I tested before building, with the pass bar written down before every test:
 

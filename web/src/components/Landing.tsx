@@ -30,7 +30,7 @@ const PROBLEMS = [
 const PROOF = [
   { title: "40 of 40", sub: "Doubled acetaminophen caught", text: "40 random products, each paired with Tylenol. The bar, set before the run, was 38.", tags: ["preregistered", "live app", "re-run after fixes"] },
   { title: "0 of 61", sub: "Wrong photo matches", text: "A photo reading only counts when the drug code and the printed ingredients match one FDA record.", tags: ["100 new labels", "local vision model"] },
-  { title: "1 of 40", sub: "False alarms", text: "Pairs an independent interaction database does not list. Bar: at most 4. It is weak at interactions in general, and says so.", tags: ["DDInter", "honest misses"] },
+  { title: "10 of 40", sub: "Major interactions caught, 0 false alarms", text: "New pairs from an independent database, after adding drug classes from the FDA tables. Bar set first: at least 10. It still misses most, and says so.", tags: ["DDInter", "FDA tables", "honest misses"] },
 ] as const;
 
 export function Landing() {
