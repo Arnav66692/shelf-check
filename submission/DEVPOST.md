@@ -62,7 +62,7 @@ For reading a photo of a label I tested before building, with the pass bar writt
 
 The cross-check only marks a reading as matched when the drug code it read points to an FDA record and the ingredients and strengths it read from the printed text are exactly that record's. Everything else goes back to you to check by eye.
 
-I also trained my own image model. I fine-tuned DINOv2 on 3,588 products from the FDA label archive, using made up phone photos of each official label, and scored it on about 2,170 photos of products it had never seen. The first run went from 4.1 percent to 78.0 percent right on the first guess, and 91.3 percent in the top five. That missed the 90 percent bar I set before training. A second run with a bigger model only fit one round of training in its time limit and reached 69.8 percent. Neither is in the app.
+I also trained my own image model. I fine-tuned DINOv2 on 3,588 products from the FDA label archive, using made up phone photos of each official label, and scored it on about 2,170 photos of products it had never seen. The first run went from 4.1 percent to 78.0 percent right on the first guess, and 91.3 percent in the top five. That missed the 90 percent bar I set before training. A second run with a bigger model only fit one round of training in its time limit and reached 69.8 percent. A third run trained the bigger model properly and reached 78.3 percent. A fourth added text read off the photo and keypoint matching on top of it and reached 85.7 percent on the first guess and 95.6 percent in the top five, still short of the bar. None of them is in the app, so the camera only suggests and you confirm.
 
 ## Does it catch real problems?
 

@@ -18,6 +18,9 @@ const MATCHER = [
   { name: "Run 1: trained small model, 12 rounds", top1: "78.0%", top5: "91.3%" },
   { name: "Run 2: untrained base model", top1: "15.2%", top5: "26.4%" },
   { name: "Run 2: trained base model, 1 round", top1: "69.8%", top5: "84.1%" },
+  { name: "Run 3: untrained base model", top1: "14.2%", top5: "25.7%" },
+  { name: "Run 3: trained base model, best of 20 rounds", top1: "78.3%", top5: "91.7%" },
+  { name: "Run 4: run 3 plus read text and keypoint matching", top1: "85.7%", top5: "95.6%" },
   { name: "Bar we set before each run", top1: "90%", top5: "97%" },
 ] as const;
 
@@ -173,7 +176,8 @@ export default function TestedPage() {
       </div>
       <p className="mt-2 text-sm text-ink-soft">
         Training helped a lot, but no run reached the bar, so the matcher is not in the app. Run 2 used a bigger
-        model and only finished one round in its time limit, so it scored lower than run 1.
+        model and only finished one round in its time limit, so it scored lower than run 1. Run 4 added text read off
+        the photo and keypoint matching on top of run 3, and came closest, 4.3 points short of the first guess bar.
       </p>
 
       <h2 className="mt-8 text-2xl font-medium narrow">What the warnings are built on</h2>

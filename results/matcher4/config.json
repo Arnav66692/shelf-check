@@ -1,0 +1,9 @@
+{
+  "image_mode": "clean",
+  "query_variant": "max",
+  "ocr_source": "x2s+florence",
+  "k_img": 50,
+  "k_txt": 50,
+  "k_sift": 50,
+  "weights": {"img": 1.0, "txt": 0.2, "sift": 0.05, "cells": 0.01}
+}

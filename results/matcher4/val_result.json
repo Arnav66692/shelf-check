@@ -1,0 +1,48 @@
+{
+  "split": "val",
+  "queries": 1068,
+  "gallery_products": 3588,
+  "gallery_images": 6096,
+  "config": {
+    "image_mode": "clean",
+    "query_variant": "max",
+    "ocr_source": "x2s+florence",
+    "k_img": 50,
+    "k_txt": 50,
+    "k_sift": 50,
+    "weights": {
+      "img": 1.0,
+      "txt": 0.2,
+      "sift": 0.05,
+      "cells": 0.01
+    }
+  },
+  "candidate_coverage": 0.9971910112359551,
+  "hybrid": {
+    "top1": 0.8745318352059925,
+    "recall5": 0.9531835205992509,
+    "n": 1068
+  },
+  "hybrid_pessimistic_ties": {
+    "top1": 0.8707865168539326,
+    "recall5": 0.951310861423221,
+    "n": 1068
+  },
+  "image_only": {
+    "top1": 0.795880149812734,
+    "recall5": 0.9194756554307116,
+    "n": 1068
+  },
+  "text_only": {
+    "top1": 0.21910112359550563,
+    "recall5": 0.34737827715355807,
+    "n": 1068
+  },
+  "sift_only": {
+    "top1": 0.4157303370786517,
+    "recall5": 0.5383895131086143,
+    "n": 1068
+  },
+  "queries_with_text": 675,
+  "seconds": 10.670490264892578
+}

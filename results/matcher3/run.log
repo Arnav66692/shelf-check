@@ -1,0 +1,228 @@
+products 3588 train images 4214 val 1068 test 2283
+W1122 00:35:42.490000 92464 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 9842.78it/s]
+BASELINE VAL {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.047752808988764044, 'product_recall5': 0.09269662921348315, 'exact_image_top1': 0.04400749063670412}
+EPOCH 0 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7125468164794008, 'product_recall5': 0.8586142322097379, 'exact_image_top1': 0.6956928838951311} best 0
+EPOCH 1 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7471910112359551, 'product_recall5': 0.8801498127340824, 'exact_image_top1': 0.7228464419475655} best 1
+EPOCH 2 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7490636704119851, 'product_recall5': 0.8717228464419475, 'exact_image_top1': 0.7312734082397003} best 2
+EPOCH 3 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.74812734082397, 'product_recall5': 0.8792134831460674, 'exact_image_top1': 0.7359550561797753} best 2
+EPOCH 4 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7602996254681648, 'product_recall5': 0.8810861423220974, 'exact_image_top1': 0.7443820224719101} best 4
+EPOCH 5 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7574906367041199, 'product_recall5': 0.8867041198501873, 'exact_image_top1': 0.7406367041198502} best 4
+EPOCH 6 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7649812734082397, 'product_recall5': 0.8895131086142322, 'exact_image_top1': 0.7406367041198502} best 6
+python(90682) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(90690) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(90769) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(90780) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(94513) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(94514) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(94516) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(94518) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 7 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.75, 'product_recall5': 0.8876404494382022, 'exact_image_top1': 0.7275280898876404} best 6
+python(3762) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(3918) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(4570) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(4879) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(55759) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(56340) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(56713) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(57112) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(62201) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(62202) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(62203) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(62204) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 8 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7453183520599251, 'product_recall5': 0.8764044943820225, 'exact_image_top1': 0.7284644194756554} best 6
+python(67454) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(68102) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(68521) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(68802) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(85872) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(86162) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(86595) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(86846) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(89873) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(89875) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(89874) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(89876) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 9 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7453183520599251, 'product_recall5': 0.8801498127340824, 'exact_image_top1': 0.7303370786516854} best 6
+python(92313) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(92370) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(92450) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(92455) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(7371) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(7445) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(7627) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(7673) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(10710) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(10711) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(10712) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(10714) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 10 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7855805243445693, 'product_recall5': 0.897003745318352, 'exact_image_top1': 0.7612359550561798} best 10
+python(13370) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(13553) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(13743) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(14275) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(35929) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(36435) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(36449) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(36845) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(50384) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(50387) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(50389) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(50390) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 11 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7537453183520599, 'product_recall5': 0.8951310861423221, 'exact_image_top1': 0.7387640449438202} best 10
+python(63901) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(65940) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(66589) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(66940) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(6523) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(7017) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(7413) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(7914) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(20279) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(20280) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(20281) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(20282) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 12 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7715355805243446, 'product_recall5': 0.9063670411985019, 'exact_image_top1': 0.75} best 10
+python(24415) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(24910) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(25361) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(25627) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(54305) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(54459) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(54656) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(54686) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(57533) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(57534) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(57535) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(57536) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 13 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7574906367041199, 'product_recall5': 0.8941947565543071, 'exact_image_top1': 0.7406367041198502} best 10
+python(58641) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(58936) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(59106) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(59340) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(77404) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(78167) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(78789) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(79093) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(88155) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(88156) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(88157) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(88159) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 14 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7668539325842697, 'product_recall5': 0.8895131086142322, 'exact_image_top1': 0.7462546816479401} best 10
+python(90313) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(90777) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(90898) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(90909) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(18553) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(19128) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(19818) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(20151) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(31068) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(31072) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(31076) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(31080) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 15 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7799625468164794, 'product_recall5': 0.9110486891385767, 'exact_image_top1': 0.7537453183520599} best 10
+python(37251) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(37886) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(38274) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(38690) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(55065) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(55203) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(55226) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(55486) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(60300) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(60301) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(60303) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(60304) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 16 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7930711610486891, 'product_recall5': 0.9119850187265918, 'exact_image_top1': 0.7724719101123596} best 16
+python(61982) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(62038) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(62294) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(62323) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(74847) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(75349) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(75584) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(75710) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(79595) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(79596) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(79597) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(79599) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 17 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7696629213483146, 'product_recall5': 0.8876404494382022, 'exact_image_top1': 0.74812734082397} best 16
+python(80939) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(81128) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(81140) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(81327) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(99108) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(99645) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(319) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(860) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(5078) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(5079) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(5080) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(5082) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 18 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7790262172284644, 'product_recall5': 0.897003745318352, 'exact_image_top1': 0.7537453183520599} best 16
+python(7794) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(8021) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(8157) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(8481) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(20373) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(20754) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(20980) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(21469) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28684) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28687) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28690) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28693) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+EPOCH 19 val {'queries': 1068, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.7855805243445693, 'product_recall5': 0.9044943820224719, 'exact_image_top1': 0.7677902621722846} best 16
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 7240.52it/s]
+python(34252) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(34564) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(34836) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(35132) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(41844) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(42234) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(42452) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(42792) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(48251) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(48626) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(48933) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(49278) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(55424) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(55878) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(56088) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(56610) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(63474) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(63739) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(63826) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(63976) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(67269) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(67272) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(67274) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(67277) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+BASELINE TEST {'queries': 2283, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.14235654840122647, 'product_recall5': 0.2566798072711345, 'exact_image_top1': 0.13009198423127463}
+python(68666) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(68751) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(68762) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(69004) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(72696) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(72718) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(72740) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(72864) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(74658) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(74715) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(74729) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(74732) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(76540) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(76758) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(76813) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(76834) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(77990) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(78029) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(78043) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(78098) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(79694) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(79697) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(79698) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(79699) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+TEST {'queries': 2283, 'gallery_images': 6096, 'gallery_products': 3588, 'product_top1': 0.783180026281209, 'product_recall5': 0.9172141918528253, 'exact_image_top1': 0.7490144546649146, 'epoch': 16}
+DONE

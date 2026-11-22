@@ -84,6 +84,8 @@ Each bar was written down before the test ran (see the `PREREG` files).
 | Cross-check on 100 more new labels | 61 marked matched, 0 of those wrong | 50, at most 1 wrong | Passed |
 | Our trained DINOv2 matcher, run 1 (small model), 2,175 held out photos | 78.0% first guess, 91.3% top five (untrained 4.1%) | 90%, 97% | Failed, not used in the app |
 | Run 2 (base model, one round), 2,169 new held out photos | 69.8% first guess, 84.1% top five (untrained 15.2%) | 90%, 97% | Failed |
+| Run 3 (base model, best of 20 rounds), 2,283 new held out photos | 78.3% first guess, 91.7% top five (untrained 14.2%) | 90%, 97% | Failed |
+| Run 4 (run 3 plus text read off the photo and keypoint matching, `PREREG-TRAINED-4.md`), same 2,283 photos | 85.7% first guess, 95.6% top five | 90%, 97% | Failed, not used in the app |
 
 The test images are official label artwork, not phone photos of real bottles, so real photos would likely score lower. With 61 matched and none wrong, the true error rate could still be about 5 percent, which is why the app always asks you to confirm.
 

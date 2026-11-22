@@ -25,3 +25,9 @@ results/matcher3/*.pt
 .gstack/
 benchmark/cache-b2/
 submission/clips/
+results/matcher4/cache/
+results/matcher4/queries/
+results/matcher4/queries_x2s/
+results/matcher4/ocr_tool/vision_ocr
+results/matcher4/*.pt
+results/matcher4/ocr/
