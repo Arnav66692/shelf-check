@@ -36,6 +36,7 @@ export * from "./supplement.ts";
 export * from "./supplementNames.ts";
 export * from "./peptides.ts";
 export * from "./recalls.ts";
+export * from "./recallClasses.ts";
 export * from "./disposal.ts";
 export * from "./flags/dailyTotal.ts";
 export * from "./flags/duplicates.ts";

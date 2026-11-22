@@ -9,6 +9,7 @@ import {
 } from "@engine/flags/reconstitution.ts";
 import { InvalidDoseInputError } from "@engine/flags/units.ts";
 import { PEPTIDES, PEPTIDE_STANDING_NOTICE, type Peptide, type PeptideId } from "@engine/peptides.ts";
+import { PeptideRecalls } from "./PeptideRecalls";
 import { Syringe } from "./Syringe";
 
 const PEPTIDE_LIST = Object.values(PEPTIDES) as Peptide[];
@@ -174,6 +175,7 @@ export function PeptideView() {
               <p className="mt-1">{flag.detail}</p>
             </div>
           ))}
+          <PeptideRecalls peptideId={peptideId} />
           {discard && (
             <div className="facts">
               <div className="facts-row">

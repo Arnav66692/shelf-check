@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { PersonSwitcher } from "./PersonSwitcher";
 
 const LINKS = [
   { href: "/", label: "Cabinet" },
@@ -35,6 +36,9 @@ export function SiteHeader() {
           );
         })}
       </nav>
+      <div className="w-full print:hidden">
+        <PersonSwitcher />
+      </div>
     </header>
   );
 }

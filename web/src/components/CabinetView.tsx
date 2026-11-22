@@ -3,9 +3,15 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ApiError, checkCabinet, type CheckResult } from "@/lib/api";
-import { useCabinet, useProfile } from "@/lib/store";
+import { useCabinet, useProfile, useSupply } from "@/lib/store";
+import { supplyFlags } from "@/lib/supply";
+import { useToday } from "@/lib/today";
 import { FlagRow } from "./FlagRow";
 import { ProductPanel } from "./ProductPanel";
+import { ReadAloud } from "./ReadAloud";
+import { SupplyFields } from "./SupplyFields";
+
+const SEVERITY_ORDER = ["stop", "ask", "info"];
 
 type Outcome = { status: "done"; result: CheckResult } | { status: "failed"; message: string };
 type CheckState = { status: "checking" } | Outcome;
@@ -13,6 +19,8 @@ type CheckState = { status: "checking" } | Outcome;
 export function CabinetView() {
   const { items, remove } = useCabinet();
   const { profile } = useProfile();
+  const { supply } = useSupply();
+  const today = useToday();
   const requestKey = JSON.stringify([items.map((item) => item.id), profile]);
   const [settled, setSettled] = useState<{ key: string; outcome: Outcome } | null>(null);
 
@@ -55,16 +63,21 @@ export function CabinetView() {
     );
   }
 
-  const flags = state.status === "done" ? state.result.flags : [];
+  const labelFlags = state.status === "done" ? state.result.flags : [];
+  const flags = [...(today ? supplyFlags(items, supply, today) : []), ...labelFlags].sort(
+    (a, b) => SEVERITY_ORDER.indexOf(a.severity) - SEVERITY_ORDER.indexOf(b.severity),
+  );
+  const spoken = flags.filter((flag) => flag.severity !== "info").map((flag) => `${flag.title}. ${flag.explain}`);
   const stops = flags.filter((flag) => flag.severity === "stop").length;
 
   return (
     <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
       <section aria-labelledby="warnings-title">
-        <div className="flex items-baseline justify-between gap-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
           <h1 id="warnings-title" className="text-3xl font-extrabold narrow">
             Warnings
           </h1>
+          <ReadAloud lines={spoken} />
           <p className="text-sm text-ink-soft" aria-live="polite">
             {state.status === "checking" && "Reading the labels together."}
             {state.status === "done" &&
@@ -116,6 +129,7 @@ export function CabinetView() {
               key={item.id}
               product={item}
               disposal={state.status === "done" ? state.result.disposal[item.id] : undefined}
+              extra={<SupplyFields productId={item.id} />}
               action={
                 <button type="button" className="underline font-bold" onClick={() => remove(item.id)}>
                   Remove

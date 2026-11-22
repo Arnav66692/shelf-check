@@ -7,7 +7,17 @@ const KIND_LINE: Record<Product["kind"], string> = {
   vial: "Injectable. Check the dose with Dose check.",
 };
 
-export function ProductPanel({ product, action, disposal }: { product: Product; action?: React.ReactNode; disposal?: string }) {
+export function ProductPanel({
+  product,
+  action,
+  disposal,
+  extra,
+}: {
+  product: Product;
+  action?: React.ReactNode;
+  disposal?: string;
+  extra?: React.ReactNode;
+}) {
   return (
     <article className="facts">
       <h3 className="facts-title">{product.displayName}</h3>
@@ -33,6 +43,7 @@ export function ProductPanel({ product, action, disposal }: { product: Product; 
           </a>
           {action}
         </div>
+        {extra}
         {disposal && (
           <details className="mt-2 text-ink">
             <summary className="cursor-pointer underline font-bold">How to throw it away</summary>

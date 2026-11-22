@@ -22,7 +22,7 @@ const TAG_TITLES: Record<LabelTag, string> = {
 
 let recallFile: Promise<RecallFile> | undefined;
 
-function loadRecalls(): Promise<RecallFile> {
+export function loadRecalls(): Promise<RecallFile> {
   recallFile ??= readFile(RECALL_FILE, "utf8").then((text) => parseRecallFile(JSON.parse(text)));
   recallFile.catch(() => {
     recallFile = undefined;

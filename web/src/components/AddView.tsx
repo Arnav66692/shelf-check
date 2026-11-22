@@ -6,6 +6,7 @@ import { ApiError, fetchLabelImages, searchProducts, suggestFromPhoto } from "@/
 import { formatStrength, type Product } from "@/lib/model";
 import { SAMPLE_QUERIES } from "@/lib/sample";
 import { useCabinet } from "@/lib/store";
+import { BarcodeScanner } from "./BarcodeScanner";
 import { ProductPanel } from "./ProductPanel";
 
 type Results =
@@ -53,6 +54,7 @@ export function AddView() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Results>({ status: "idle" });
   const [chosen, setChosen] = useState<Product | null>(null);
+  const [scanning, setScanning] = useState(false);
   const photoInput = useRef<HTMLInputElement>(null);
   const sampleStarted = useRef(false);
   const confirmPanel = useRef<HTMLElement>(null);
@@ -71,9 +73,8 @@ export function AddView() {
       );
   }, [params, replaceAll, router]);
 
-  async function runSearch(event: React.FormEvent) {
-    event.preventDefault();
-    const text = query.trim();
+  async function search(rawText: string) {
+    const text = rawText.trim();
     if (text.length < 2) return;
     setChosen(null);
     setResults({ status: "loading", what: "Searching the official records." });
@@ -83,6 +84,17 @@ export function AddView() {
     } catch (error) {
       setResults({ status: "failed", message: error instanceof ApiError ? error.message : "The search could not run." });
     }
+  }
+
+  function runSearch(event: React.FormEvent) {
+    event.preventDefault();
+    void search(query);
+  }
+
+  function handleScan(digits: string) {
+    setScanning(false);
+    setQuery(digits);
+    void search(digits);
   }
 
   async function runPhoto(file: File | undefined) {
@@ -142,6 +154,9 @@ export function AddView() {
           </button>
         </form>
         <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <button type="button" className="underline font-bold" onClick={() => setScanning(true)}>
+            Scan the barcode
+          </button>
           <button type="button" className="underline font-bold" onClick={() => photoInput.current?.click()}>
             Use a photo of the label
           </button>
@@ -156,6 +171,12 @@ export function AddView() {
           />
           <span className="text-sm text-ink-soft">Covers prescription, over the counter and supplements.</span>
         </div>
+
+        {scanning && (
+          <div className="mt-4">
+            <BarcodeScanner onScan={handleScan} onClose={() => setScanning(false)} />
+          </div>
+        )}
 
         <div className="mt-6" aria-live="polite">
           {results.status === "loading" && <p>{results.what}</p>}
