@@ -1,0 +1,4 @@
+NDC records 138569, DDInter pairs 160235, DDInter drugs 1939, pool 724
+Test B {"hits":9,"n":40,"tried":42,"skipped":2,"wilson95":{"low":0.12316091264273149,"high":0.37503096870942354},"bar":"at least 10 of 40","verdict":"FAIL"}
+Test C {"hits":0,"n":40,"tried":40,"skipped":0,"wilson95":{"low":0,"high":0.08762160245846368},"bar":"at most 4 of 40","verdict":"PASS"}
+requests {"networkThisRun":222,"cacheHits":0,"totalLogged":222,"cap":700,"capHit":false}
