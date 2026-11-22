@@ -21,7 +21,8 @@ export function HeroWords() {
 
   let index = 0;
   return (
-    <span className="relative block" aria-label="Two bottles can hide one drug. Shelf Check reads them together.">
+    <span className="relative block">
+      <span className="sr-only">Two bottles can hide one drug. Shelf Check reads them together.</span>
       {SETS[set].map((line, lineIndex) => (
         <span key={`${set}-${lineIndex}`} className="flex flex-wrap justify-center gap-x-[0.6em]" aria-hidden="true">
           {line.map((word) => (

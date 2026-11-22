@@ -92,7 +92,7 @@ function Rail({ active, onGo }: { active: number; onGo: (index: number) => void 
 
 function Tags({ tags, active }: { tags: readonly string[]; active: boolean }) {
   return (
-    <div aria-hidden="true" className="pointer-events-none">
+    <div aria-hidden="true" className="pointer-events-none max-sm:hidden">
       {tags.map((tag, index) => (
         <TypeLabel
           key={tag}
@@ -147,7 +147,7 @@ function ChapterBody({ chapter }: { chapter: Chapter }) {
   switch (chapter.id) {
     case "intro":
       return (
-        <div className="grid h-full content-center justify-items-center text-center gap-10">
+        <div className="grid h-full content-center max-sm:content-start max-sm:pt-4 justify-items-center text-center gap-6 sm:gap-10">
           <h1 className="title text-[length:var(--fs-hero)] w-full max-w-[1200px]">
             <HeroWords />
           </h1>
@@ -333,7 +333,7 @@ export function Landing() {
             className={`relative ${chapter.id === "faq" ? "min-h-[160vh]" : "h-[150vh] max-sm:h-[130vh]"}`}
           >
             <div
-              className={`sticky top-0 h-[100svh] px-[var(--margin)] pt-28 pb-28 transition-[opacity,filter] ${isActive ? "opacity-100 blur-0 duration-[700ms] delay-150 ease-[cubic-bezier(.33,1,.68,1)]" : "opacity-0 blur-[6px] duration-[400ms] delay-0 ease-[cubic-bezier(.33,1,.68,1)] pointer-events-none"}`}
+              className={`sticky top-0 h-[100svh] px-[var(--margin)] pt-28 pb-28 max-sm:pt-6 transition-[opacity,filter] ${isActive ? "opacity-100 blur-0 duration-[700ms] delay-150 ease-[cubic-bezier(.33,1,.68,1)]" : "opacity-0 blur-[6px] duration-[400ms] delay-0 ease-[cubic-bezier(.33,1,.68,1)] pointer-events-none"}`}
             >
               <Tags tags={chapter.tags} active={isActive} />
               <ChapterBody chapter={chapter} />
