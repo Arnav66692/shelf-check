@@ -1,10 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useHousehold } from "@/lib/store";
 
 export function PersonSwitcher() {
   const { people, active, select, addPerson, removeActive, canAdd } = useHousehold();
+  const router = useRouter();
   const [adding, setAdding] = useState(false);
   const [name, setName] = useState("");
 
@@ -13,6 +15,7 @@ export function PersonSwitcher() {
     addPerson(name);
     setName("");
     setAdding(false);
+    router.push("/start");
   }
 
   return (

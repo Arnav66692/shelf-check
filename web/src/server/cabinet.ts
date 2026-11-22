@@ -9,6 +9,8 @@ import {
   type Flag as EngineFlag,
   type HealthProfile,
 } from "@engine/index.ts";
+import { peptideCabinetFlags, peptideCabinetItem } from "@engine/peptideCabinet.ts";
+import { PEPTIDES, type PeptideId } from "@engine/peptides.ts";
 import type { Flag, FlagQuote, Product, Profile } from "@/lib/model";
 
 const openFda = createOpenFdaClient();
@@ -16,7 +18,15 @@ const rxNav = createRxNavClient();
 const dsld = createDsldClient();
 const builtItems = new Map<string, Promise<CabinetItem>>();
 
+function isPeptideId(value: string): value is PeptideId {
+  return Object.hasOwn(PEPTIDES, value);
+}
+
 function build(product: Product): Promise<CabinetItem> {
+  if (product.peptideId) {
+    if (!isPeptideId(product.peptideId)) return Promise.reject(new Error(`Unknown peptide "${product.peptideId}".`));
+    return Promise.resolve(peptideCabinetItem({ id: product.id, peptideId: product.peptideId }));
+  }
   if (product.dsldId) {
     return buildSupplementItem({ id: product.id, dsldId: product.dsldId, displayName: product.displayName }, { dsld, rxNav });
   }
@@ -50,7 +60,7 @@ export async function buildCabinet(products: readonly Product[]): Promise<BuiltC
       unchecked.push(products[index].displayName);
       return;
     }
-    if (outcome.value.label === undefined) unchecked.push(products[index].displayName);
+    if (outcome.value.label === undefined && !products[index].peptideId) unchecked.push(products[index].displayName);
     items.push(outcome.value);
   });
   return { items, unchecked };
@@ -71,7 +81,10 @@ const SEVERITY_RANK: Record<Flag["severity"], number> = { stop: 0, ask: 1, info:
 
 function quotesOf(flag: EngineFlag): readonly FlagQuote[] {
   const all = [flag.quote, ...(flag.supportingQuotes ?? [])].filter((quote) => quote !== undefined);
-  return all.map((quote) => ({ excerpt: quote.excerpt, section: quote.section, itemId: quote.itemId }));
+  const fromLabels = all.map((quote) => ({ excerpt: quote.excerpt, section: quote.section, itemId: quote.itemId }));
+  if (!flag.source) return fromLabels;
+  const official = { excerpt: flag.source.text, section: "fda_statement", itemId: flag.itemIds[0] ?? "" };
+  return [...fromLabels, official];
 }
 
 function groupKey(flag: EngineFlag): string {
@@ -121,5 +134,5 @@ export function groupFlags(flags: readonly EngineFlag[], items: readonly Cabinet
 }
 
 export function flagsFor(items: readonly CabinetItem[], profile: Profile): readonly Flag[] {
-  return groupFlags(checkCabinet(items, toHealthProfile(profile)), items);
+  return groupFlags([...peptideCabinetFlags(items), ...checkCabinet(items, toHealthProfile(profile))], items);
 }

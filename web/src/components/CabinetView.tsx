@@ -52,8 +52,11 @@ export function CabinetView() {
           doses, label warnings about mixing them, and warnings that apply to you.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <Link href="/add" className="btn">
-            Add your first medicine
+          <Link href="/start" className="btn">
+            Start with four questions
+          </Link>
+          <Link href="/add" className="btn btn-quiet">
+            Add a medicine
           </Link>
           <Link href="/add?sample=1" className="btn btn-quiet">
             Load a sample cabinet

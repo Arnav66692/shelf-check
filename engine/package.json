@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "record": "node scripts/recordFixtures.ts",
-    "build:recalls": "node scripts/buildRecalls.ts"
+    "build:recalls": "node scripts/buildRecalls.ts",
+    "build:pills": "node scripts/buildPills.ts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

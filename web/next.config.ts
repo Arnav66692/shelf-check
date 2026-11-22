@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/check": ["../engine/data/recalls.json"],
     "/api/peptide-recalls": ["../engine/data/recalls.json"],
+    "/api/pills": ["../engine/data/pills.json"],
   },
   turbopack: {
     root: workspaceRoot,

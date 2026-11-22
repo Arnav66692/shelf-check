@@ -64,5 +64,6 @@ export function checkSymptoms(text: string, items: readonly Product[], profile: 
 }
 
 export function fetchLabelImages(product: Product): Promise<{ readonly images: readonly string[] }> {
+  if (!product.record) return Promise.resolve({ images: [] });
   return postJson<{ readonly images: readonly string[] }>("/api/images", { record: product.record });
 }

@@ -22,6 +22,7 @@ export type Person = {
   readonly profile: Profile;
   readonly cabinet: readonly Product[];
   readonly supply: Readonly<Record<string, Supply>>;
+  readonly answeredQuestions?: boolean;
 };
 
 export type Household = { readonly activeId: string; readonly people: readonly Person[] };
@@ -129,6 +130,15 @@ export function useProfile() {
   const active = activePerson(useHouseholdSnapshot());
   const save = useCallback((next: Profile) => updateActive((person) => ({ ...person, profile: next })), []);
   return { profile: active.profile, save };
+}
+
+export function useQuestionnaire() {
+  const household = useHouseholdSnapshot();
+  const active = activePerson(household);
+  const finish = useCallback((name: string, profile: Profile) => {
+    updateActive((person) => ({ ...person, name: name.trim() || person.name, profile, answeredQuestions: true }));
+  }, []);
+  return { active, answered: active.answeredQuestions === true, finish };
 }
 
 export function useSupply() {

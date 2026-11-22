@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   checkReconstitutedDose,
@@ -10,7 +11,11 @@ import {
 import { InvalidDoseInputError } from "@engine/flags/units.ts";
 import { PEPTIDES, PEPTIDE_STANDING_NOTICE, type Peptide, type PeptideId } from "@engine/peptides.ts";
 import { PeptideRecalls } from "./PeptideRecalls";
+import { PeptideUses } from "./PeptideUses";
 import { Syringe } from "./Syringe";
+import { hasMarketedProduct } from "@engine/peptideLabels.ts";
+import type { Product } from "@/lib/model";
+import { useCabinet } from "@/lib/store";
 
 const PEPTIDE_LIST = Object.values(PEPTIDES) as Peptide[];
 const STATUS_LINE: Record<Peptide["fdaStatus"], string> = {
@@ -46,7 +51,26 @@ export function PeptideView() {
   const [doseUnit, setDoseUnit] = useState<MassUnit>("mcg");
   const [firstUse, setFirstUse] = useState("");
 
+  const { items, add } = useCabinet();
   const peptide = PEPTIDES[peptideId];
+  const cabinetId = `peptide:${peptideId}`;
+  const inCabinet = items.some((item) => item.id === cabinetId);
+  const marketed = hasMarketedProduct(peptideId);
+
+  function addToCabinet() {
+    const product: Product = {
+      id: cabinetId,
+      kind: "vial",
+      displayName: peptide.name,
+      maker: "Not matched to an FDA product record",
+      ingredients: [],
+      labelImages: [],
+      recordUrl: peptide.fdaStatement?.sourceUrl ?? "https://www.fda.gov/drugs/human-drug-compounding",
+      matchedBy: "name",
+      peptideId,
+    };
+    add(product);
+  }
   const approved = peptide.approvedProducts.map((product) => product.brand);
 
   const outcome = useMemo((): { check?: ReconstitutedDoseCheck; error?: string } => {
@@ -175,6 +199,28 @@ export function PeptideView() {
               <p className="mt-1">{flag.detail}</p>
             </div>
           ))}
+          <PeptideUses peptideId={peptideId} />
+          <div className="facts">
+            {marketed ? (
+              <p>
+                To check {peptide.name} against your other medicines, add the FDA-approved product by name on the Add
+                screen, so its full label is read.
+              </p>
+            ) : (
+              <p>Add it to your cabinet so it is listed with your other medicines and on the printed list.</p>
+            )}
+            <div className="mt-3 flex flex-wrap gap-3">
+              {marketed ? (
+                <Link className="btn btn-quiet" href="/add">
+                  Go to Add
+                </Link>
+              ) : (
+                <button type="button" className="btn btn-quiet" onClick={addToCabinet} disabled={inCabinet}>
+                  {inCabinet ? "In your cabinet" : "Add to my cabinet"}
+                </button>
+              )}
+            </div>
+          </div>
           <PeptideRecalls peptideId={peptideId} />
           {discard && (
             <div className="facts">

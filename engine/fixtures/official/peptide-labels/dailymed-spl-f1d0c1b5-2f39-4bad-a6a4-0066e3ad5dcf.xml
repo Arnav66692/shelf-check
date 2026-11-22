@@ -1,0 +1,2581 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="https://www.accessdata.fda.gov/spl/stylesheet/spl.xsl" type="text/xsl"?>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 https://www.accessdata.fda.gov/spl/schema/spl.xsd">
+   <id root="5f8ebf12-17de-4e66-e063-6294a90a1d71"/>
+   <code code="34391-3" codeSystem="2.16.840.1.113883.6.1" displayName="HUMAN PRESCRIPTION DRUG LABEL"/>
+   <title>These highlights do not include all the information needed to use VYLEESI 
+ <sup>®</sup>safely and effectively. See full prescribing information for VYLEESI
+ <br/>
+      <br/>
+VYLEESI (bremelanotide injection), for subcutaneous use
+ <br/>
+Initial U.S. Approval: 2019
+</title>
+   <effectiveTime value="20261105"/>
+   <setId root="f1d0c1b5-2f39-4bad-a6a4-0066e3ad5dcf"/>
+   <versionNumber value="2"/>
+   <author>
+      <time/>
+      <assignedEntity>
+         <representedOrganization>
+            <id root="1.3.6.1.4.1.519.1" extension="118533990"/>
+            <name>Cosette Pharmaceuticals, Inc.</name>
+            <assignedEntity>
+               <assignedOrganization>
+                  <assignedEntity>
+                     <assignedOrganization>
+                        <id root="1.3.6.1.4.1.519.1" extension="370696762"/>
+                        <name>Catalent</name>
+                     </assignedOrganization>
+                     <performance>
+                        <actDefinition>
+                           <code code="C43360" displayName="manufacture" codeSystem="2.16.840.1.113883.3.26.1.1"/>
+                           <product>
+                              <manufacturedProduct classCode="MANU">
+                                 <manufacturedMaterialKind>
+                                    <code code="0713-0897" codeSystem="2.16.840.1.113883.6.69"/>
+                                 </manufacturedMaterialKind>
+                              </manufacturedProduct>
+                           </product>
+                        </actDefinition>
+                     </performance>
+                     <performance>
+                        <actDefinition>
+                           <code code="C84732" displayName="label" codeSystem="2.16.840.1.113883.3.26.1.1"/>
+                           <product>
+                              <manufacturedProduct classCode="MANU">
+                                 <manufacturedMaterialKind>
+                                    <code code="0713-0897" codeSystem="2.16.840.1.113883.6.69"/>
+                                 </manufacturedMaterialKind>
+                              </manufacturedProduct>
+                           </product>
+                        </actDefinition>
+                     </performance>
+                  </assignedEntity>
+                  <assignedEntity>
+                     <assignedOrganization>
+                        <id root="1.3.6.1.4.1.519.1" extension="480007517"/>
+                        <name>Lonza </name>
+                     </assignedOrganization>
+                     <performance>
+                        <actDefinition>
+                           <code code="C82401" displayName="api manufacture" codeSystem="2.16.840.1.113883.3.26.1.1"/>
+                           <product>
+                              <manufacturedProduct classCode="MANU">
+                                 <manufacturedMaterialKind>
+                                    <code code="0713-0897" codeSystem="2.16.840.1.113883.6.69"/>
+                                 </manufacturedMaterialKind>
+                              </manufacturedProduct>
+                           </product>
+                        </actDefinition>
+                     </performance>
+                  </assignedEntity>
+                  <assignedEntity>
+                     <assignedOrganization>
+                        <id root="1.3.6.1.4.1.519.1" extension="078525133"/>
+                        <name>PCI</name>
+                     </assignedOrganization>
+                     <performance>
+                        <actDefinition>
+                           <code code="C84731" displayName="pack" codeSystem="2.16.840.1.113883.3.26.1.1"/>
+                           <product>
+                              <manufacturedProduct classCode="MANU">
+                                 <manufacturedMaterialKind>
+                                    <code code="0713-0897" codeSystem="2.16.840.1.113883.6.69"/>
+                                 </manufacturedMaterialKind>
+                              </manufacturedProduct>
+                           </product>
+                        </actDefinition>
+                     </performance>
+                  </assignedEntity>
+               </assignedOrganization>
+            </assignedEntity>
+         </representedOrganization>
+      </assignedEntity>
+   </author>
+   <component>
+      <structuredBody>
+         <component>
+            <section>
+               <id root="5f8fb502-8811-4906-e063-6294a90a9c40"/>
+               <code code="48780-1" codeSystem="2.16.840.1.113883.6.1" displayName="SPL product data elements section"/>
+               <effectiveTime value="20261105"/>
+               <subject>
+                  <manufacturedProduct>
+                     <manufacturedProduct>
+                        <code code="0713-0897" codeSystem="2.16.840.1.113883.6.69"/>
+                        <name>Vyleesi</name>
+                        <formCode code="C42946" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="INJECTION"/>
+                        <asEntityWithGeneric>
+                           <genericMedicine>
+                              <name>bremelanotide</name>
+                           </genericMedicine>
+                        </asEntityWithGeneric>
+                        <ingredient classCode="ACTIM">
+                           <quantity>
+                              <numerator unit="mg" value="1.75"/>
+                              <denominator unit="mL" value="0.3"/>
+                           </quantity>
+                           <ingredientSubstance>
+                              <code code="PV2WI7495P" codeSystem="2.16.840.1.113883.4.9"/>
+                              <name>BREMELANOTIDE ACETATE</name>
+                              <activeMoiety>
+                                 <activeMoiety>
+                                    <code code="6Y24O4F92S" codeSystem="2.16.840.1.113883.4.9"/>
+                                    <name>BREMELANOTIDE</name>
+                                 </activeMoiety>
+                              </activeMoiety>
+                           </ingredientSubstance>
+                        </ingredient>
+                        <ingredient classCode="IACT">
+                           <ingredientSubstance>
+                              <code code="PDC6A3C0OX" codeSystem="2.16.840.1.113883.4.9"/>
+                              <name>GLYCERIN</name>
+                           </ingredientSubstance>
+                        </ingredient>
+                        <ingredient classCode="IACT">
+                           <ingredientSubstance>
+                              <code code="059QF0KO0R" codeSystem="2.16.840.1.113883.4.9"/>
+                              <name>WATER</name>
+                           </ingredientSubstance>
+                        </ingredient>
+                        <ingredient classCode="IACT">
+                           <ingredientSubstance>
+                              <code code="55X04QC32I" codeSystem="2.16.840.1.113883.4.9"/>
+                              <name>SODIUM HYDROXIDE</name>
+                           </ingredientSubstance>
+                        </ingredient>
+                        <ingredient classCode="IACT">
+                           <ingredientSubstance>
+                              <code code="QTT17582CB" codeSystem="2.16.840.1.113883.4.9"/>
+                              <name>HYDROCHLORIC ACID</name>
+                           </ingredientSubstance>
+                        </ingredient>
+                        <asContent>
+                           <quantity>
+                              <numerator value="0.3" unit="mL"/>
+                              <denominator value="1"/>
+                           </quantity>
+                           <containerPackagedProduct>
+                              <code code="0713-0897-06" codeSystem="2.16.840.1.113883.6.69"/>
+                              <formCode code="C43202" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="SYRINGE"/>
+                              <asContent>
+                                 <quantity>
+                                    <numerator value="4" unit="1"/>
+                                    <denominator value="1"/>
+                                 </quantity>
+                                 <containerPackagedProduct>
+                                    <code code="0713-0897-04" codeSystem="2.16.840.1.113883.6.69"/>
+                                    <formCode code="C43182" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="CARTON"/>
+                                 </containerPackagedProduct>
+                                 <subjectOf>
+                                    <marketingAct>
+                                       <code code="C53292" codeSystem="2.16.840.1.113883.3.26.1.1"/>
+                                       <statusCode code="active"/>
+                                       <effectiveTime>
+                                          <low value="20251112"/>
+                                       </effectiveTime>
+                                    </marketingAct>
+                                 </subjectOf>
+                              </asContent>
+                           </containerPackagedProduct>
+                           <subjectOf>
+                              <characteristic>
+                                 <code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255"/>
+                                 <value code="C102835" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Type 2: Prefilled Drug Delivery Device/System (syringe, patch, etc.)" xsi:type="CV"/>
+                              </characteristic>
+                           </subjectOf>
+                        </asContent>
+                     </manufacturedProduct>
+                     <subjectOf>
+                        <approval>
+                           <id extension="NDA210557" root="2.16.840.1.113883.3.150"/>
+                           <code code="C73594" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="NDA"/>
+                           <author>
+                              <territorialAuthority>
+                                 <territory>
+                                    <code code="USA" codeSystem="2.16.840.1.113883.5.28"/>
+                                 </territory>
+                              </territorialAuthority>
+                           </author>
+                        </approval>
+                     </subjectOf>
+                     <subjectOf>
+                        <marketingAct>
+                           <code code="C53292" codeSystem="2.16.840.1.113883.3.26.1.1"/>
+                           <statusCode code="active"/>
+                           <effectiveTime>
+                              <low value="20251112"/>
+                           </effectiveTime>
+                        </marketingAct>
+                     </subjectOf>
+                     <consumedIn>
+                        <substanceAdministration>
+                           <routeCode code="C38299" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="SUBCUTANEOUS"/>
+                        </substanceAdministration>
+                     </consumedIn>
+                  </manufacturedProduct>
+               </subject>
+            </section>
+         </component>
+         <component>
+            <section ID="s1">
+               <id root="5f8ebf12-17df-4e66-e063-6294a90a1d71"/>
+               <code code="34067-9" codeSystem="2.16.840.1.113883.6.1" displayName="INDICATIONS &amp; USAGE SECTION"/>
+               <title>1 INDICATIONS AND USAGE</title>
+               <text>
+                  <paragraph>VYLEESI is indicated for the treatment of premenopausal women with acquired, generalized hypoactive sexual desire disorder (HSDD), as characterized by low sexual desire that causes marked distress or interpersonal difficulty and is NOT due to:</paragraph>
+                  <list listType="unordered" styleCode="Disc">
+                     <item>A co-existing medical or psychiatric condition,</item>
+                     <item>Problems with the relationship, or</item>
+                     <item>The effects of a medication or drug substance.</item>
+                  </list>
+                  <paragraph>Acquired HSDD refers to HSDD that develops in a patient who previously had no problems with sexual desire. Generalized HSDD refers to HSDD that occurs regardless of the type of stimulation, situation or partner.</paragraph>
+                  <paragraph>
+                     <content styleCode="underline">Limitations of Use</content>
+                  </paragraph>
+                  <list listType="unordered" styleCode="Disc">
+                     <item>VYLEESI is not indicated for the treatment of HSDD in postmenopausal women or in men.</item>
+                     <item>VYLEESI is not indicated to enhance sexual performance.</item>
+                  </list>
+               </text>
+               <effectiveTime value="20240313"/>
+               <excerpt>
+                  <highlight>
+                     <text>
+                        <paragraph>VYLEESI is a melanocortin receptor agonist indicated for the treatment of premenopausal women with acquired, generalized hypoactive sexual desire disorder (HSDD) as characterized by low sexual desire that causes marked distress or interpersonal difficulty and is NOT due to:</paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>A co-existing medical or psychiatric condition,</item>
+                           <item>Problems with the relationship, or</item>
+                           <item>The effects of a medication or drug substance (
+  
+     <linkHtml href="#s1">1</linkHtml>).
+ 
+    </item>
+                        </list>
+                        <paragraph>
+                           <content styleCode="underline">Limitations of Use (
+  
+     <linkHtml href="#s1">1</linkHtml>):
+ 
+    </content>
+                        </paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>Not indicated for treatment of HSDD in postmenopausal women or in men.</item>
+                           <item>Not indicated to enhance sexual performance.</item>
+                        </list>
+                     </text>
+                  </highlight>
+               </excerpt>
+            </section>
+         </component>
+         <component>
+            <section ID="s2">
+               <id root="5f8ebf12-17e0-4e66-e063-6294a90a1d71"/>
+               <code code="34068-7" codeSystem="2.16.840.1.113883.6.1" displayName="DOSAGE &amp; ADMINISTRATION SECTION"/>
+               <title>2 DOSAGE AND ADMINISTRATION</title>
+               <effectiveTime value="20240313"/>
+               <excerpt>
+                  <highlight>
+                     <text>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>Inject 1.75 mg subcutaneously via the autoinjector to the abdomen or thigh, as needed, at least 45 minutes before anticipated sexual activity. (
+  
+     <linkHtml href="#s3">2.1</linkHtml>)
+ 
+    </item>
+                           <item>Do not administer more than one dose within 24 hours. (
+  
+     <linkHtml href="#s3">2.1</linkHtml>)
+ 
+    </item>
+                           <item>More than 8 doses per month is not recommended. (
+  
+     <linkHtml href="#s3">2.1</linkHtml>)
+ 
+    </item>
+                        </list>
+                     </text>
+                  </highlight>
+               </excerpt>
+               <component>
+                  <section ID="s3">
+                     <id root="5f8ebf12-17e1-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>2.1 Recommended Dosage</title>
+                     <text>
+                        <paragraph>The recommended dosage of VYLEESI is 1.75 mg administered subcutaneously in the abdomen or thigh, as needed, at least 45 minutes before anticipated sexual activity. The duration of efficacy after each dose is unknown and the optimal window for VYLEESI administration has not been fully characterized. Patients may decide the optimal time for VYLEESI administration based on how they experience the duration of effect on desire and any adverse reactions such as nausea
+ 
+  <content styleCode="italics">[see Warnings and Precautions (
+  
+   <linkHtml href="#s10">5.3</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                        <paragraph>Patients should not administer more than one dose within 24 hours. The efficacy of consecutive doses within 24 hours has not been established and administering doses close together may increase the risk of additive effects on blood pressure
+ 
+  <content styleCode="italics">[see Warnings and Precautions (
+  
+   <linkHtml href="#s8">5.1</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                        <paragraph>Administering more than 8 doses per month is not recommended. Few patients in the phase 3 program received more than 8 doses per month. Also, more frequent dosing increases the risk for focal hyperpigmentation and the length of time per month when blood pressure is increased
+ 
+  <content styleCode="italics">[see Warnings and Precautions (
+  
+   <linkHtml href="#s8">5.1</linkHtml>,
+  
+   <linkHtml href="#s9">5.2</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                        <paragraph>VYLEESI is self-administered via a prefilled autoinjector pen. Visually inspect the drug product for particulate matter and discoloration prior to administration, whenever solution and container permit. Discard if the solution is cloudy, discolored, or visible particles are observed.</paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s4">
+                     <id root="5f8ebf12-17e2-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>2.2 Discontinuation of VYLEESI</title>
+                     <text>
+                        <paragraph>Discontinue VYLEESI after 8 weeks if the patient does not report an improvement in her symptoms.</paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s5">
+               <id root="5f8ebf12-17e3-4e66-e063-6294a90a1d71"/>
+               <code code="43678-2" codeSystem="2.16.840.1.113883.6.1" displayName="DOSAGE FORMS &amp; STRENGTHS SECTION"/>
+               <title>3 DOSAGE FORMS AND STRENGTHS</title>
+               <text>
+                  <paragraph>Subcutaneous injection: 1.75 mg/0.3 mL clear solution in a single-dose autoinjector.</paragraph>
+               </text>
+               <effectiveTime value="20240313"/>
+               <excerpt>
+                  <highlight>
+                     <text>
+                        <paragraph>Subcutaneous injection: 1.75 mg/0.3 mL solution. (
+ 
+    <linkHtml href="#s5">3</linkHtml>)
+
+   </paragraph>
+                     </text>
+                  </highlight>
+               </excerpt>
+            </section>
+         </component>
+         <component>
+            <section ID="s6">
+               <id root="5f8ebf12-17e4-4e66-e063-6294a90a1d71"/>
+               <code code="34070-3" codeSystem="2.16.840.1.113883.6.1" displayName="CONTRAINDICATIONS SECTION"/>
+               <title>4 CONTRAINDICATIONS</title>
+               <text>
+                  <paragraph>VYLEESI is contraindicated in patients who have uncontrolled hypertension or known cardiovascular disease
+ 
+  <content styleCode="italics">[see Warnings and Precautions (
+  
+   <linkHtml href="#s8">5.1</linkHtml>)].
+ 
+  </content>
+                  </paragraph>
+               </text>
+               <effectiveTime value="20240313"/>
+               <excerpt>
+                  <highlight>
+                     <text>
+                        <paragraph>Uncontrolled hypertension or known cardiovascular disease. (
+ 
+    <linkHtml href="#s6">4</linkHtml>)
+
+   </paragraph>
+                     </text>
+                  </highlight>
+               </excerpt>
+            </section>
+         </component>
+         <component>
+            <section ID="s7">
+               <id root="5f8ebf12-17e5-4e66-e063-6294a90a1d71"/>
+               <code code="43685-7" codeSystem="2.16.840.1.113883.6.1" displayName="WARNINGS AND PRECAUTIONS SECTION"/>
+               <title>5 WARNINGS AND PRECAUTIONS</title>
+               <effectiveTime value="20240313"/>
+               <excerpt>
+                  <highlight>
+                     <text>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>Transient increase in blood pressure and decrease in heart rate: Occurs after each dose and usually resolves within 12 hours. Consider the patient's cardiovascular risk before initiating VYLEESI and periodically during treatment and ensure blood pressure is well-controlled. VYLEESI is not recommended in patients at high risk for cardiovascular disease. (
+  
+     <linkHtml href="#s8">5.1</linkHtml>)
+ 
+    </item>
+                           <item>Focal hyperpigmentation: Reported by 1% of patients who received up to 8 doses per month, including involvement of the face, gingiva and breasts. Higher risk in patients with darker skin and with daily dosing. Resolution was not confirmed in some patients. Consider discontinuing VYLEESI if hyperpigmentation develops. (
+  
+     <linkHtml href="#s9">5.2</linkHtml>)
+ 
+    </item>
+                           <item>Nausea: Reported by 40% of patients who received up to 8 monthly doses, requiring anti-emetic therapy in 13% of patients and leading to premature discontinuation for 8% of patients. Improved for most patients with the second dose. Consider discontinuing VYLEESI or initiating anti-emetic therapy for persistent or severe nausea. (
+  
+     <linkHtml href="#s10">5.3</linkHtml>)
+ 
+    </item>
+                        </list>
+                     </text>
+                  </highlight>
+               </excerpt>
+               <component>
+                  <section ID="s8">
+                     <id root="5f8ebf12-17e6-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>5.1 Transient Increase in Blood Pressure and Reduction in Heart Rate</title>
+                     <text>
+                        <paragraph>VYLEESI transiently increases blood pressure and reduces heart rate after each dose. In clinical studies, VYLEESI induced maximal increases of 6 mmHg in systolic blood pressure (SBP) and 3 mmHg in diastolic blood pressure (DBP) that peaked between 2 to 4 hours post dose. There was a corresponding reduction in heart rate up to 5 beats per minute. Blood pressure and heart rate returned to baseline usually within 12 hours post-dose. No additive effects were seen for blood pressure or heart rate following repeat daily dosing 24-hours apart for up to 16 days
+ 
+  <content styleCode="italics">[see Clinical Pharmacology (
+  
+   <linkHtml href="#s42">12.2</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                        <paragraph>Before initiating VYLEESI, and periodically during treatment, consider the patient's cardiovascular risk and ensure blood pressure is well-controlled. VYLEESI is not recommended for patients at high risk for cardiovascular disease and is contraindicated in patients with uncontrolled hypertension or known cardiovascular disease
+ 
+  <content styleCode="italics">[ see Contraindications (
+  
+   <linkHtml href="#s6">4</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                        <paragraph>To minimize the risk of more pronounced blood pressure effects, advise patients to not take more than one VYLEESI dose within 24 hours
+ 
+  <content styleCode="italics">[see Dosage and Administration (
+  
+   <linkHtml href="#s3">2.1</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s9">
+                     <id root="5f8ebf12-17e7-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>5.2 Focal Hyperpigmentation</title>
+                     <text>
+                        <paragraph>In the phase 3 placebo-controlled trials, focal hyperpigmentation, including involvement of the face, gingiva, and breasts, was reported in 1% of patients who received up to 8 doses per month of VYLEESI compared to no placebo-treated patients. In another clinical study, 38% of patients developed focal hyperpigmentation after receiving VYLEESI daily for 8 days; among patients who continued VYLEESI for 8 more consecutive days, an additional 14% developed new focal pigmentary changes. Patients with dark skin were more likely to develop focal hyperpigmentation. Resolution of the focal hyperpigmentation was not confirmed in all patients after discontinuation of VYLEESI. More than 8 monthly doses of VYLEESI is not recommended. Consider discontinuing VYLEESI if hyperpigmentation develops.</paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s10">
+                     <id root="5f8ebf12-17e8-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>5.3 Nausea</title>
+                     <text>
+                        <paragraph>In the phase 3 placebo-controlled trials, nausea was the most commonly reported adverse reaction, reported in 40% of VYLEESI-treated patients, requiring anti-emetic therapy in 13% of VYLEESI-treated patients and leading to premature discontinuation from the trials for 8% of VYLEESI-treated patients. Nausea improves for most patients with the second dose
+ 
+  <content styleCode="italics">[see Adverse Reactions (
+  
+   <linkHtml href="#s12">6.1</linkHtml>)]
+ 
+  </content>. Consider discontinuing VYLEESI for persistent or severe nausea or initiating anti-emetic therapy for those patients who are bothered by nausea but wish to continue with VYLEESI treatment.
+
+ </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s11">
+               <id root="5f8ebf12-17e9-4e66-e063-6294a90a1d71"/>
+               <code code="34084-4" codeSystem="2.16.840.1.113883.6.1" displayName="ADVERSE REACTIONS SECTION"/>
+               <title>6 ADVERSE REACTIONS</title>
+               <text>
+                  <paragraph>The following adverse reactions are discussed in greater detail elsewhere in labeling:</paragraph>
+                  <list listType="unordered" styleCode="Disc">
+                     <item>Transient increases in blood pressure and reductions in heart rate
+  
+   <content styleCode="italics">[see Warnings and Precautions (
+   
+    <linkHtml href="#s8">5.1</linkHtml>) and Clinical Pharmacology (
+   
+    <linkHtml href="#s42">12.2</linkHtml>) ]
+  
+   </content>
+                     </item>
+                     <item>Focal hyperpigmentation
+  
+   <content styleCode="italics">[see Warnings and Precautions (
+   
+    <linkHtml href="#s9">5.2</linkHtml>)]
+  
+   </content>
+                     </item>
+                     <item>Nausea
+  
+   <content styleCode="italics">[see Warnings and Precautions (
+   
+    <linkHtml href="#s10">5.3</linkHtml>) ]
+  
+   </content>
+                     </item>
+                  </list>
+               </text>
+               <effectiveTime value="20240313"/>
+               <excerpt>
+                  <highlight>
+                     <text>
+                        <paragraph>Most common adverse reactions (incidence &gt; 4%) are nausea, flushing, injection site reactions, headache, and vomiting. (
+ 
+    <linkHtml href="#s12">6.1</linkHtml>)
+
+   </paragraph>
+                        <paragraph>
+                           <content styleCode="bold">To report SUSPECTED ADVERSE REACTIONS, contact Cosette Pharmaceuticals, Inc. at 1-800-922-1038 or FDA at 1-800-FDA-1088 or www.fda.gov/medwatch</content>
+                        </paragraph>
+                     </text>
+                  </highlight>
+               </excerpt>
+               <component>
+                  <section ID="s12">
+                     <id root="5f8ebf12-17ea-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>6.1 Clinical Trials Experience</title>
+                     <text>
+                        <paragraph>Because clinical trials are conducted under widely varying conditions, adverse reaction rates observed in the clinical trials of a drug cannot be directly compared to the rates in the clinical trials of another drug and may not reflect the rates observed in practice.</paragraph>
+                        <paragraph>The efficacy and safety of VYLEESI was studied in two identical, 24-week, randomized, double-blind, placebo-controlled trials in 1247 premenopausal women with acquired, generalized HSDD. The age range was 19-56 years old with a mean age of 39 years old; 86% were White and 12% were Black. Both trials also included a 52-week open-label, uncontrolled extension phase during which 684 patients received VYLEESI
+ 
+  <content styleCode="italics">[see Clinical Studies (
+  
+   <linkHtml href="#s62">14</linkHtml>)].
+ 
+  </content>Most patients used VYLEESI two to three times per month and no more than once a week.
+
+ </paragraph>
+                        <paragraph>Serious adverse reactions were reported in 1.1% of VYLEESI-treated patients and 0.5% of placebo-treated patients.</paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                     <component>
+                        <section ID="s13">
+                           <id root="5f8ebf12-17eb-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Adverse Reactions Leading to Study Discontinuation</content>
+                              </paragraph>
+                              <paragraph>The discontinuation rate due to adverse reactions was 18% among patients treated with VYLEESI and 2% among patients treated with placebo. The most common adverse reactions leading to study drug discontinuation in the VYLEESI group were nausea (8%), headache (2%), vomiting (1%), flushing (1%), injection site reactions (1%), flu-like symptoms (&lt;1%) and increased blood pressure (&lt;1%).</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s14">
+                           <id root="5f8ebf12-17ec-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Common Adverse Reactions</content>
+                              </paragraph>
+                              <paragraph>
+                                 <linkHtml href="#t1">Table 1</linkHtml> provides the incidence of common adverse reactions (those reported in at least 2% of patients in the VYLEESI treatment group and at an incidence that was greater than in the placebo group). The most common adverse reactions included nausea, flushing, injection site reactions and headache. The majority of events were reported to be mild (31%) to moderate (40%) in intensity and transient.
+
+ </paragraph>
+                              <table ID="t1" width="100%">
+                                 <caption>Table 1: Adverse Reactions Occurring in ≥ 2% of Patients in Randomized, Double-Blind Controlled Trials with VYLEESI in Premenopausal Women with HSDD</caption>
+                                 <col width="33.367%" align="left"/>
+                                 <col width="33.333%" align="left"/>
+                                 <col width="33.300%" align="left"/>
+                                 <tfoot>
+                                    <tr styleCode="First Last">
+                                       <td colspan="3" align="left" valign="top">
+                                          <paragraph styleCode="First Footnote">
+                                             <sup>a</sup>Includes injection site pain, unspecified injection site reactions, erythema, hematoma, pruritus, hemorrhage, bruising, paresthesia and hypoesthesia
+    
+     </paragraph>
+                                       </td>
+                                    </tr>
+                                 </tfoot>
+                                 <tbody>
+                                    <tr>
+                                       <td align="center" styleCode="Botrule Toprule" valign="top"/>
+                                       <td align="center" styleCode="Botrule Toprule" valign="top">
+                                          <content styleCode="bold">VYLEESI 
+      <br/>  (n = 627) 
+      <br/>  %
+     </content>
+                                       </td>
+                                       <td align="center" styleCode="Botrule Toprule" valign="top">
+                                          <content styleCode="bold">Placebo 
+      <br/>  (n= 620) 
+      <br/>  %
+     </content>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Nausea</td>
+                                       <td align="center" valign="top">40.0</td>
+                                       <td align="center" valign="top">1.3</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Flushing</td>
+                                       <td align="center" valign="top">20.3</td>
+                                       <td align="center" valign="top">0.3</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Injection site reactions
+    
+     <sup>a</sup>
+                                       </td>
+                                       <td align="center" valign="top">13.2</td>
+                                       <td align="center" valign="top">8.4</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Headache</td>
+                                       <td align="center" valign="top">11.3</td>
+                                       <td align="center" valign="top">1.9</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Vomiting</td>
+                                       <td align="center" valign="top">4.8</td>
+                                       <td align="center" valign="top">0.2</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Cough</td>
+                                       <td align="center" valign="top">3.3</td>
+                                       <td align="center" valign="top">1.3</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Fatigue</td>
+                                       <td align="center" valign="top">3.2</td>
+                                       <td align="center" valign="top">0.5</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Hot flush</td>
+                                       <td align="center" valign="top">2.7</td>
+                                       <td align="center" valign="top">0.2</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Paraesthesia</td>
+                                       <td align="center" valign="top">2.6</td>
+                                       <td align="center" valign="top">0.0</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle">Dizziness</td>
+                                       <td align="center" valign="top">2.2</td>
+                                       <td align="center" valign="top">0.5</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" styleCode="Botrule" valign="middle">Nasal congestion</td>
+                                       <td align="center" styleCode="Botrule" valign="top">2.1</td>
+                                       <td align="center" styleCode="Botrule" valign="top">0.5</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                              <paragraph/>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s15">
+                           <id root="5f8ebf12-17ed-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Nausea</content>
+                              </paragraph>
+                              <paragraph>In the pooled phase 3 placebo-controlled trials, nausea was the most common adverse reaction, reported in 40% of VYLEESI-treated patients compared to 1% of placebo-treated patients. The median onset of nausea was within one-hour post-dose and lasted about two hours in duration. The incidence of nausea was highest after the first VYLEESI dose (reported in 21% of patients) then declined to about 3% after subsequent doses. Thirteen percent of VYLEESI-treated patients received an anti-emetic medication. Overall, 8% of VYLEESI-treated patients and no placebo-treated patients prematurely discontinued the trials due to nausea.
+ 
+  <content styleCode="italics">[see Warnings and Precautions (
+  
+   <linkHtml href="#s10">5.3</linkHtml>)]
+ 
+  </content>
+                              </paragraph>
+                              <paragraph>In a phase 4, single-dose, placebo-controlled clinical study, pre-treatment with oral ondansetron (a 5-HT
+ 
+  <sub>3 </sub>receptor antagonist) did not reduce the incidence of nausea associated with VYLEESI treatment. In this study, 228 healthy women were randomized (1:1) to receive 8 mg ondansetron or placebo orally 30 minutes prior to a single administration of 1.75 mg of VYLEESI given subcutaneously. No significant difference in the incidence of VYLEESI-associated nausea was seen between the treatment groups. Therefore, pre-treatment with oral ondansetron given 30 minutes prior to VYLEESI administration does not reduce the incidence of VYLEESI-associated nausea and is not recommended. Treatment with ondansetron after VYLEESI administration or after the onset of nausea has not been formally studied.
+
+ </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s16">
+                           <id root="5f8ebf12-17ee-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Headache</content>
+                              </paragraph>
+                              <paragraph>In the pooled phase 3 placebo-controlled trials, headache occurred at a higher incidence in VYLEESI-treated patients (11%) than placebo-treated patients (2%). One patient experienced a headache event that was serious (intractable pain leading to hospitalization) and 1% of patients who received VYLEESI discontinued the study due to headache.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s17">
+                           <id root="5f8ebf12-17ef-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Flushing</content>
+                              </paragraph>
+                              <paragraph>In the pooled phase 3 placebo-controlled trials, flushing occurred more frequently in VYLEESI-treated patients (20%) than placebo-treated patients (&lt;1%). None of the flushing events were serious and few were severe (&lt;1%), and 1% of patients who received VYLEESI discontinued the study due to flushing.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s18">
+                           <id root="5f8ebf12-17f0-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Less Common Adverse Reactions</content>
+                              </paragraph>
+                              <paragraph>Less common adverse reactions occurring in &lt;2% of VYLEESI-treated patients and at an incidence greater than in the placebo group were upper abdominal pain, diarrhea, myalgia, arthralgia, pain, restless leg syndrome, rhinorrhea, increased creatine phosphokinase, blood pressure increased, pain in extremity and focal skin hyperpigmentation.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s19">
+                           <id root="5f8ebf12-17f1-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Acute hepatitis</content>
+                              </paragraph>
+                              <paragraph>In the open-label, uncontrolled extension phase of one study, a single case of acute hepatitis was reported in a patient who had received 10 doses of VYLEESI over one year. She presented with serum transaminases exceeding 40 times the upper limit of normal (ULN), total bilirubin 6 times the ULN, and alkaline phosphatase less than 2 times ULN. Liver tests returned to normal 4 months after study drug discontinuation. Because another etiology was not identified, the role of VYLEESI could not definitively be excluded. There was no imbalance between treatment groups in serum transaminase outliers or other signals for hepatotoxicity in the clinical development program.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                  </section>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s20">
+               <id root="5f8ebf12-17f2-4e66-e063-6294a90a1d71"/>
+               <code code="34073-7" codeSystem="2.16.840.1.113883.6.1" displayName="DRUG INTERACTIONS SECTION"/>
+               <title>7 DRUG INTERACTIONS</title>
+               <effectiveTime value="20240313"/>
+               <excerpt>
+                  <highlight>
+                     <text>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>VYLEESI may slow gastric emptying and impact absorption of concomitantly administered oral medications. (
+  
+     <linkHtml href="#s21">7.1</linkHtml>)
+ 
+    </item>
+                           <item>VYLEESI may significantly decrease the systemic exposure of orally-administered naltrexone; avoid use with orally administered naltrexone-containing products intended to treat alcohol or opioid addiction. (
+  
+     <linkHtml href="#s22">7.2</linkHtml>)
+ 
+    </item>
+                        </list>
+                     </text>
+                  </highlight>
+               </excerpt>
+               <component>
+                  <section ID="s21">
+                     <id root="5f8ebf12-17f3-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>7.1 Effect of VYLEESI on Other Drugs</title>
+                     <text>
+                        <paragraph>VYLEESI may slow gastric emptying and thus has the potential to reduce the rate and extent of absorption of concomitantly administered oral medications. Instruct patients to avoid the use of VYLEESI when taking concomitant oral drugs that are dependent on threshold concentrations for efficacy (e.g., antibiotics). In addition, patients should consider discontinuing VYLEESI if there is a delayed drug effect of concomitant oral medications when a quick onset of drug effect is desired (e.g. drugs for pain relief such as indomethacin).</paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s22">
+                     <id root="5f8ebf12-17f4-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>7.2 Naltrexone</title>
+                     <text>
+                        <paragraph>As VYLEESI may significantly decrease the systemic exposure of orally-administered naltrexone, patients should avoid using VYLEESI with an orally administered naltrexone-containing product that is intended to treat alcohol and opioid addiction due to the severe consequence of naltrexone treatment failure
+ 
+  <content styleCode="italics">[see Clinical Pharmacology (
+  
+   <linkHtml href="#s46">12.3</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s23">
+               <id root="5f8ebf12-17f5-4e66-e063-6294a90a1d71"/>
+               <code code="43684-0" codeSystem="2.16.840.1.113883.6.1" displayName="USE IN SPECIFIC POPULATIONS SECTION"/>
+               <title>8 USE IN SPECIFIC POPULATIONS</title>
+               <effectiveTime value="20240313"/>
+               <excerpt>
+                  <highlight>
+                     <text>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>Pregnancy: Advise patients to discontinue VYLEESI if pregnancy is suspected. (
+  
+     <linkHtml href="#s24">8.1</linkHtml>)
+ 
+    </item>
+                           <item>Females of Reproductive Potential: Advise patients to use effective contraception while taking VYLEESI. (
+  
+     <linkHtml href="#s32">8.3</linkHtml>)
+ 
+    </item>
+                        </list>
+                     </text>
+                  </highlight>
+               </excerpt>
+               <component>
+                  <section ID="s24">
+                     <id root="5f8ebf12-17f6-4e66-e063-6294a90a1d71"/>
+                     <code code="42228-7" codeSystem="2.16.840.1.113883.6.1" displayName="PREGNANCY SECTION"/>
+                     <title>8.1 Pregnancy</title>
+                     <effectiveTime value="20240313"/>
+                     <component>
+                        <section ID="s26">
+                           <id root="5f8ebf12-17f8-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Risk Summary</content>
+                              </paragraph>
+                              <paragraph>The few pregnancies in women exposed to VYLEESI in clinical trials are insufficient for determining whether there is a drug-associated risk for major birth defects, miscarriage or adverse maternal or fetal outcomes.</paragraph>
+                              <paragraph>Based on findings in animal studies, the use of VYLEESI in pregnant women may be associated with the potential for fetal harm. In animal reproduction and development studies, daily subcutaneous administration of bremelanotide to pregnant dogs during the period of organogenesis at exposures greater than or equal to 16 times the maximum recommended dose (based on area under the concentration-time curve or AUC) produced fetal harm. In mice subcutaneously dosed with bremelanotide during pregnancy and lactation, developmental effects were observed in the offspring at greater than or equal to 125-times the maximum recommended dose (based on AUC)
+ 
+  <content styleCode="italics">[see
+  
+   <linkHtml href="#s27">Data</linkHtml>].
+ 
+  </content>However, the lowest bremelanotide dose associated with fetal harm has not been identified for either species. For this reason, women should use effective contraception while taking VYLEESI and discontinue VYLEESI if pregnancy is suspected.
+
+ </paragraph>
+                              <paragraph>In the U.S. general population, the estimated background risk of major birth defects and miscarriage in clinically recognized pregnancies is 2% to 4% and 15% to 20%, respectively.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s27">
+                           <id root="5f8ebf12-17f9-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Data</content>
+                              </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s28">
+                           <id root="5f8ebf12-17fa-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Human Data</content>
+                              </paragraph>
+                              <paragraph>There were 7 pregnancies reported in the clinical trials of more than 1057 patients treated with VYLEESI for up to 12 months. Among these 7 pregnancies, no major congenital anomalies were reported. There was one spontaneous abortion (miscarriage), five full-term live births, and one outcome was unknown due to loss to follow-up.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s29">
+                           <id root="5f8ebf12-17fb-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Animal Data</content>
+                              </paragraph>
+                              <paragraph>An embryofetal development study was conducted in the dog and a pre- and postnatal development study was conducted in the mouse to inform developmental risk. These two species are not routinely used for reproductive toxicity assessment but were the only two species that could be successfully dosed by the subcutaneous route during gestation.</paragraph>
+                              <paragraph>Bremelanotide was administered subcutaneously to pregnant dogs (8/dose) at 2, 8, or 20 mg/kg from gestation day (GD) 18-35, corresponding to the period from implantation to late embryogenesis in the dog. Embryofetal toxicity, as measured by post-implantation loss, was elevated approximately 3 to 8-fold compared to controls across all treated groups but was not dose-dependent. A developmental no-observed-effect level (NOEL) was not set. At the low dose of 2 mg/kg/day in the dog, exposure was approximately 16 times the human exposure based on AUC.</paragraph>
+                              <paragraph>In a pre- and postnatal development study, female mice (30/dose) were dosed subcutaneously at 0, 30, 75, and 150 mg/kg/day from GD 6 through lactation day (LD) 28, and two generations of offspring were assessed (F1 and F2). There were no effects on reproductive parameters in parental (F0) or F1 generation animals at doses up to 150 mg/kg/day (approximately 760 times the human AUC). However, developmental delays were observed in the F1 generation mice at ≥ 30 mg/kg/day (approximately 125 times the human AUC). For that reason, a developmental NOEL was not set. There were no significant effects on the growth and development of F2 generation pups.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s30">
+                     <id root="5f8ebf12-17fc-4e66-e063-6294a90a1d71"/>
+                     <code code="77290-5" codeSystem="2.16.840.1.113883.6.1" displayName="LACTATION SECTION"/>
+                     <title>8.2 Lactation</title>
+                     <effectiveTime value="20240313"/>
+                     <component>
+                        <section ID="s31">
+                           <id root="5f8f8760-fb2e-049f-e063-6394a90a66b8"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Risk Summary</content>
+                              </paragraph>
+                              <paragraph>Bremelanotide is transferred into breast milk in clinically insignificant amounts. In a clinical lactation study, following subcutaneous administration of a single 1.75 mg dose to 10 healthy lactating adult women between 10 days and 6 months postpartum, the mean total amount of bremelanotide present in breast milk over 24 hours was estimated to be 0.000152 mg. The relative infant dose was 0.132% of the weight-adjusted maternal dose. The concentration of bremelanotide in breast milk was not measurable (&lt; 1 ng/mL) at 24-hours post-dose in all
+  <br/>
+milk samples. The effects of bremelanotide on breastfed infants were not evaluated in the lactation study; however, effects on the breastfed infant are not expected based on the clinically insignificant amount transferred into breast milk. There are no available data on the effects of bremelanotide on milk production.
+ </paragraph>
+                              <paragraph>The developmental and health benefits of breastfeeding should be considered along with the mother's clinical need for VYLEESI and any potential adverse effects on the breastfed infant from VYLEESI or from the underlying maternal condition.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s32">
+                     <id root="5f8ebf12-17fe-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>8.3 Females and Males of Reproductive Potential</title>
+                     <effectiveTime value="20240313"/>
+                     <component>
+                        <section ID="s33">
+                           <id root="5f8ebf12-17ff-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Contraception</content>
+                              </paragraph>
+                              <paragraph>Use of VYLEESI during pregnancy is not recommended
+ 
+  <content styleCode="italics">[see Use in Specific Populations (
+  
+   <linkHtml href="#s24">8.1</linkHtml>)].
+ 
+  </content>Advise females of reproductive potential to use effective contraception while taking VYLEESI, and to discontinue VYLEESI if pregnancy is suspected.
+
+ </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s34">
+                     <id root="5f8ebf12-1800-4e66-e063-6294a90a1d71"/>
+                     <code code="34081-0" codeSystem="2.16.840.1.113883.6.1" displayName="PEDIATRIC USE SECTION"/>
+                     <title>8.4 Pediatric Use</title>
+                     <text>
+                        <paragraph>The safety and effectiveness of VYLEESI have not been established in pediatric patients.</paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s35">
+                     <id root="5f8ebf12-1801-4e66-e063-6294a90a1d71"/>
+                     <code code="34082-8" codeSystem="2.16.840.1.113883.6.1" displayName="GERIATRIC USE SECTION"/>
+                     <title>8.5 Geriatric Use</title>
+                     <text>
+                        <paragraph>The safety and effectiveness of VYLEESI have not been established in geriatric patients.</paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s36">
+                     <id root="5f8ebf12-1802-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>8.6 Renal Impairment</title>
+                     <text>
+                        <paragraph>No dosing adjustments are recommended for patients with mild to moderate (eGFR 30-89 mL/min/1.73 m
+ 
+  <sup>2</sup>) renal impairment. Use with caution in patients with severe (eGFR &lt;30 mL/min/1.73 m
+ 
+  <sup>2</sup>) renal impairment, because these patients may have an increase in the incidence and severity of adverse reactions (e.g., nausea and vomiting)
+ 
+  <content styleCode="italics">[see Clinical Pharmacology (
+  
+   <linkHtml href="#s46">12.3</linkHtml>)]
+ 
+  </content>.
+
+ </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s37">
+                     <id root="5f8ebf12-1803-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>8.7 Hepatic Impairment</title>
+                     <text>
+                        <paragraph>No dosing adjustments are recommended for patients with mild to moderate (Child-Pugh A and B; score 5-9) hepatic impairment. VYLEESI has not been evaluated in patients with severe hepatic impairment. Use with caution in patients with severe (Child-Pugh C; score 10-15) hepatic impairment, because these patients may have an increase in the incidence and severity of adverse reactions (e.g., nausea and vomiting)
+ 
+  <content styleCode="italics">[see Clinical Pharmacology (
+  
+   <linkHtml href="#s46">12.3</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s38">
+               <id root="5f8ebf12-1804-4e66-e063-6294a90a1d71"/>
+               <code code="34088-5" codeSystem="2.16.840.1.113883.6.1" displayName="OVERDOSAGE SECTION"/>
+               <title>10 OVERDOSAGE</title>
+               <text>
+                  <paragraph>No reports of overdosage with VYLEESI have been reported. Nausea, focal hyperpigmentation and more pronounced blood pressure increases are more likely with higher doses. In the event of overdosage, treatment should address the symptoms with supportive measures, as needed.</paragraph>
+               </text>
+               <effectiveTime value="20240313"/>
+            </section>
+         </component>
+         <component>
+            <section ID="s39">
+               <id root="5f8ebf12-1805-4e66-e063-6294a90a1d71"/>
+               <code code="34089-3" codeSystem="2.16.840.1.113883.6.1" displayName="DESCRIPTION SECTION"/>
+               <title>11 DESCRIPTION</title>
+               <text>
+                  <paragraph>VYLEESI (bremelanotide injection) contains bremelanotide, a melanocortin receptor agonist for subcutaneous administration via an autoinjector. Bremelanotide acetate is a synthetic, cyclic heptapeptide with a free acid at the carboxyl terminus and an acetylated amino group at the amino terminus of the peptide with the following structure:</paragraph>
+                  <paragraph>Ac-Nle-cyclo-(Asp-His-D-Phe-Arg-Trp-Lys-OH) ● xCH
+ 
+  <sub>3</sub>COOH
+
+ </paragraph>
+                  <paragraph>The molecular formula of bremelanotide acetate is C
+ 
+  <sub>50</sub>H
+ 
+  <sub>68</sub>N
+ 
+  <sub>14</sub>O
+ 
+  <sub>10</sub>● xCH
+ 
+  <sub>3</sub>COOH (1≤ x ≤ 2) and the molecular weight is 1025.2 (free base).
+
+ </paragraph>
+                  <paragraph>VYLEESI (bremelanotide injection) is supplied as a sterile, clear solution in a pre-filled syringe contained in a single-dose autoinjector for subcutaneous administration. Each pre-filled syringe contains 1.75 mg of bremelanotide (equivalent to 1.89 mg bremelanotide acetate) in 0.3 mL solution. Inactive ingredients consist of 2.5% glycerin, sterile water for injection, and hydrochloric acid or sodium hydroxide added to adjust the pH.</paragraph>
+               </text>
+               <effectiveTime value="20240313"/>
+            </section>
+         </component>
+         <component>
+            <section ID="s40">
+               <id root="5f8ebf12-1806-4e66-e063-6294a90a1d71"/>
+               <code code="34090-1" codeSystem="2.16.840.1.113883.6.1" displayName="CLINICAL PHARMACOLOGY SECTION"/>
+               <title>12 CLINICAL PHARMACOLOGY</title>
+               <effectiveTime value="20240313"/>
+               <component>
+                  <section ID="s41">
+                     <id root="5f8ebf12-1807-4e66-e063-6294a90a1d71"/>
+                     <code code="43679-0" codeSystem="2.16.840.1.113883.6.1" displayName="MECHANISM OF ACTION SECTION"/>
+                     <title>12.1 Mechanism of Action</title>
+                     <text>
+                        <paragraph>Bremelanotide is a melanocortin receptor (MCR) agonist that nonselectively activates several receptor subtypes with the following order of potency: MC1R, MC4R, MC3R, MC5R, MC2R. At therapeutic dose levels, binding to MC1R and MC4R is most relevant. Neurons expressing MC4R are present in many areas of the central nervous system (CNS). The mechanism by which VYLEESI improves HSDD in women is unknown. The MC1R is expressed on melanocytes; binding at this receptor leads to melanin expression and increased pigmentation.</paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s42">
+                     <id root="5f8ebf12-1808-4e66-e063-6294a90a1d71"/>
+                     <code code="43681-6" codeSystem="2.16.840.1.113883.6.1" displayName="PHARMACODYNAMICS SECTION"/>
+                     <title>12.2 Pharmacodynamics</title>
+                     <effectiveTime value="20240313"/>
+                     <component>
+                        <section ID="s43">
+                           <id root="5f8ebf12-1809-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Transient Increases in Blood Pressure</content>
+                              </paragraph>
+                              <paragraph>In an open-label ambulatory blood pressure monitoring study of 127 premenopausal women receiving VYLEESI once daily, there was a mean increase of 1.9 mmHg (95% CI: 1.0 to 2.7) in daytime systolic blood pressure (SBP) and a mean increase of 1.7 mmHg (95% CI: 0.9 to 2.4) in daytime diastolic blood pressure (DBP) after 8 days of dosing. The increase in SBP and DBP was transient with a mean peak effect in SBP of 2.8 mmHg between 4 to 8 hours post-dose and 2.7 mmHg for DBP at 0 to 4 hours post-dose. The increase in BP after 8 days of dosing was accompanied by a simultaneous and transient mean decrease in heart rate of 0.5 beats per minute (95% CI: -1.6 to -0.7). The SBP and DBP values 12 to 24-hours post-dose were similar to the pre-dose values
+ 
+  <content styleCode="italics">[see Warnings and Precautions (
+  
+   <linkHtml href="#s8">5.1</linkHtml>)].
+ 
+  </content>
+                              </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s44">
+                           <id root="5f8ebf12-180a-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Alcohol Interaction</content>
+                              </paragraph>
+                              <paragraph>A placebo-controlled, randomized, double-blind, three-period, three-way crossover study was conducted to assess the safety of a single intranasal 20 mg dose of bremelanotide co-administered with alcohol in 12 healthy male and 12 healthy female subjects. Intranasal bremelanotide or placebo spray was administered 10 minutes after consumption of placebo drink or 0.6 g/kg ethanol (equivalent of three 12 ounce cans of beer containing 5% alcohol content, three 5 ounce glasses of wine containing 12% alcohol content, or three 1.5 ounce shots of 80-proof spirit in a 70 kg person).</paragraph>
+                              <paragraph>The 20 mg intranasal dose achieves a 2.5-fold higher mean C
+ 
+  <sub>max </sub>than that of VYLEESI. Alcohol consumption had no effect on the pharmacokinetic profile of bremelanotide. The incidence of flushing was higher with bremelanotide plus ethanol compared to ethanol alone, but similar to the incidence with bremelanotide alone. The incidence of headache was higher with bremelanotide plus ethanol compared to bremelanotide alone, but similar to the incidence with ethanol alone. The incidence of other adverse reactions was similar across the treatment groups. The incidence of abnormal orthostatic blood pressure reductions was comparable between the bremelanotide plus ethanol group and the ethanol alone group. No participants discontinued due to adverse reactions.
+
+ </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s45">
+                           <id root="5f8ebf12-180b-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Cardiac Electrophysiology</content>
+                              </paragraph>
+                              <paragraph>A 20 mg intranasal dose of bremelanotide does not prolong the QTc interval to any clinically relevant extent.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s46">
+                     <id root="5f8ebf12-180c-4e66-e063-6294a90a1d71"/>
+                     <code code="43682-4" codeSystem="2.16.840.1.113883.6.1" displayName="PHARMACOKINETICS SECTION"/>
+                     <title>12.3 Pharmacokinetics</title>
+                     <text>
+                        <paragraph>Following subcutaneous administration of VYLEESI, the mean plasma C
+ 
+  <sub>max </sub>and AUC of bremelanotide are 72.8 ng/mL and 276 hr*ng/mL, respectively. Mean plasma concentrations of bremelanotide increase in a less than dose proportional manner in the dose range of 0.3 to 10 mg, with mean C
+ 
+  <sub>max </sub>levels reaching a plateau at the 7.5 mg subcutaneous dose level (approximately 4.3 times the maximum recommended dose).
+
+ </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                     <component>
+                        <section ID="s47">
+                           <id root="5f8ebf12-180d-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Absorption</content>
+                              </paragraph>
+                              <paragraph>Bremelanotide median T
+ 
+  <sub>max </sub>is approximately 1.0 hour (range: 0.5 - 1.0 hours) in plasma. The absolute bioavailability of bremelanotide following subcutaneous administration of VYLEESI was about 100%. The site of subcutaneous administration (abdomen and thigh) had no significant effect on the systemic exposure to bremelanotide.
+
+ </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s48">
+                           <id root="5f8ebf12-180e-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Distribution</content>
+                              </paragraph>
+                              <paragraph>Twenty-one percent of bremelanotide binds to human serum protein. The mean (SD) volume of distribution after a single subcutaneous administration of VYLEESI is 25.0 ± 5.8 L.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s49">
+                           <id root="5f8ebf12-180f-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Elimination</content>
+                              </paragraph>
+                              <paragraph>Following a single subcutaneous administration of VYLEESI, mean terminal half-life of bremelanotide is approximately 2.7 hours (range: 1.9– 4.0 hours) and the mean (± SD) clearance (CL/F) is 6.5 ±1.0 L/hr.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s50">
+                           <id root="5f8ebf12-1810-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Metabolism</content>
+                              </paragraph>
+                              <paragraph>As a peptide with 7 amino acids, the primary metabolic pathway of bremelanotide involves multiple hydrolyses of the amide bond of the cyclic peptide.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s51">
+                           <id root="5f8ebf12-1811-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Excretion</content>
+                              </paragraph>
+                              <paragraph>Following administration of a radiolabeled dose, 64.8% of the total radioactivity was recovered in urine and 22.8% in feces.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s52">
+                           <id root="5f8ebf12-1812-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Specific Populations</content>
+                              </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s53">
+                           <id root="5f8ebf12-1813-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Patients with Renal Impairment</content>
+                              </paragraph>
+                              <paragraph>Following a single subcutaneous dose of VYLEESI, bremelanotide exposure (AUC) increased 1.2-fold in patients with mild (eGFR, 60 to 89 mL/min/1.73 m
+ 
+  <sup>2</sup>) renal impairment, 1.5-fold in patients with moderate (eGFR, 30 to 59 mL/min/1.73 m
+ 
+  <sup>2</sup>) renal impairment, and 2-fold in patients with severe (eGFR, &lt;30 mL/min/1.73 m
+ 
+  <sup>2</sup>) renal impairment
+ 
+  <content styleCode="italics">[see Use in Specific Populations (
+  
+   <linkHtml href="#s36">8.6</linkHtml>)]
+ 
+  </content>.
+
+ </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s54">
+                           <id root="5f8ebf12-1814-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Patients with Hepatic Impairment</content>
+                              </paragraph>
+                              <paragraph>Following a single subcutaneous dose of VYLEESI, bremelanotide exposure (AUC
+ 
+  <sub>0-inf</sub>) increased 1.2-fold in patients with mild (Child-Pugh A; score of 5-6) hepatic impairment and 1.7-fold in patients with moderate (Child-Pugh B; score of 7-9) hepatic impairment
+ 
+  <content styleCode="italics">[see Use in Specific Populations(
+  
+   <linkHtml href="#s37">8.7</linkHtml>)].
+ 
+  </content>The effect of severe hepatic impairment on the pharmacokinetics of bremelanotide was not studied.
+
+ </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s55">
+                           <id root="5f8ebf12-1815-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Drug Interaction Studies</content>
+                              </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s56">
+                           <id root="5f8ebf12-1816-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="italics">Potential for VYLEESI to Influence the Pharmacokinetics of Other Drugs</content>
+                              </paragraph>
+                              <paragraph>VYLEESI may reduce the rate and extent of absorption of concomitantly administered oral medications, likely due to slowing gastric motility. In clinical pharmacology studies, VYLEESI did not affect the absorption of the tested orally administered concomitant medications to any clinically relevant degree, except for naltrexone and indomethacin
+ 
+  <content styleCode="italics">[see Drug Interactions (
+  
+   <linkHtml href="#s20">7</linkHtml>)].
+ 
+  </content>
+                              </paragraph>
+                              <paragraph>The effects of bremelanotide on the pharmacokinetics of other drugs are summarized below as change relative to the other drug administered alone (test/reference) (
+ 
+  <linkHtml href="#f01">Figure 1</linkHtml>).
+
+ </paragraph>
+                              <paragraph>
+                                 <content styleCode="bold">Figure 1: Effects of Bremelanotide 1.75 mg SC on the Pharmacokinetic Exposures of Orally Administered Medications</content>
+                              </paragraph>
+                              <renderMultiMedia referencedObject="mm01"/>
+                              <paragraph>Note: AUC = area under the plasma concentration-time curve; BMT = bremelanotide; CI = confidence interval; C
+ 
+  <sub>max</sub>= maximum plasma concentration; SC = subcutaneous.
+
+ </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                           <component>
+                              <observationMedia ID="mm01">
+                                 <text>Figure 1
+</text>
+                                 <value mediaType="image/jpeg" xsi:type="ED">
+                                    <reference value="vyl00-0004-01.jpg"/>
+                                 </value>
+                              </observationMedia>
+                           </component>
+                        </section>
+                     </component>
+                  </section>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s57">
+               <id root="5f8ebf12-1817-4e66-e063-6294a90a1d71"/>
+               <code code="43680-8" codeSystem="2.16.840.1.113883.6.1" displayName="NONCLINICAL TOXICOLOGY SECTION"/>
+               <title>13 NONCLINICAL TOXICOLOGY</title>
+               <effectiveTime value="20240313"/>
+               <component>
+                  <section ID="s58">
+                     <id root="5f8ebf12-1818-4e66-e063-6294a90a1d71"/>
+                     <code code="34083-6" codeSystem="2.16.840.1.113883.6.1" displayName="CARCINOGENESIS &amp; MUTAGENESIS &amp; IMPAIRMENT OF FERTILITY SECTION"/>
+                     <title>13.1 Carcinogenesis, Mutagenesis, Impairment of Fertility</title>
+                     <effectiveTime value="20240313"/>
+                     <component>
+                        <section ID="s59">
+                           <id root="5f8ebf12-1819-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Carcinogenesis</content>
+                              </paragraph>
+                              <paragraph>There were no significant increases in tumor incidence in two-year carcinogenicity studies with intranasal administration (0.5, 2.5, and 5 mg/animal/day) of bremelanotide to male and female rats, and subcutaneous administration (3, 9, and 15 mg/kg/day) to male and female mice. Multiples of exposure were calculated based on average C
+ 
+  <sub>max </sub>at the high dose over the course of the study and were 1.1-fold and 111-fold the human C
+ 
+  <sub>max </sub>for rats and mice, respectively.
+
+ </paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s60">
+                           <id root="5f8ebf12-181a-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Mutagenesis</content>
+                              </paragraph>
+                              <paragraph>Bremelanotide was not genotoxic or mutagenic in a battery of tests, including the in vitro bacterial reverse mutation assay, the in vitro chromosomal aberration test in Chinese Hamster Ovary cells, and the in vivo mouse micronucleus assay.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s61">
+                           <id root="5f8ebf12-181b-4e66-e063-6294a90a1d71"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Impairment of Fertility</content>
+                              </paragraph>
+                              <paragraph>There were no effects on fertility in male (75 mg/kg/day, approximately 375 times the human AUC) or female (150 mg/kg/day, approximately 760 times the human AUC) mice following subcutaneous administration.</paragraph>
+                           </text>
+                           <effectiveTime value="20240313"/>
+                        </section>
+                     </component>
+                  </section>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s62">
+               <id root="5f8ebf12-181c-4e66-e063-6294a90a1d71"/>
+               <code code="34092-7" codeSystem="2.16.840.1.113883.6.1" displayName="CLINICAL STUDIES SECTION"/>
+               <title>14 CLINICAL STUDIES</title>
+               <text>
+                  <paragraph>The efficacy of VYLEESI for the treatment of HSDD in premenopausal women was evaluated in two identical, Phase 3, randomized, double-blind, placebo-controlled trials:
+ 
+  <linkHtml href="https://clinicaltrials.gov/ct2/show/record/NCT02333071">NCT02333071</linkHtml>and
+ 
+  <linkHtml href="https://clinicaltrials.gov/ct2/show/record/NCT02338960">NCT02338960</linkHtml>(Study 1 and Study 2). Both trials included premenopausal women with acquired, generalized HSDD of at least 6 months' duration. All patients in heterosexual relationships were required to use an effective form of contraception. A majority of patients (74% in Study 1 and 67% in Study 2) reported HSDD with concomitant decreased arousal. The trials consisted of two phases: a Core Study Phase (24-week placebo-controlled, double-blind treatment period) and an uncontrolled, 52-week Open-label Extension Study Phase.
+
+ </paragraph>
+                  <paragraph>Study participants were randomized to subcutaneous injections of VYLEESI 1.75 mg (n= 635) or placebo (n= 632), self-administered by an autoinjector on an as-needed basis. Patients were instructed to administer the drug approximately 45 minutes prior to anticipated sexual activity. Patients were not to administer more than one dose within a 24-hour period and no more than twelve doses per month. Trial participants were mostly Caucasian (86%) or Black (12%). The mean age of study participants was 39 years old (range 19 to 56 years old); the mean duration in a monogamous relationship was 12 years, and the mean duration of HSDD was approximately 4 years. Across the two trials, the median number of VYLEESI injections was 10 in the 24-week double-blind treatment period and 12 during the uncontrolled open-label extension. Most patients used VYLEESI two to three times per month and no more than once a week.</paragraph>
+                  <paragraph>Study 1 and Study 2 had the following co-primary efficacy endpoints:</paragraph>
+                  <list listType="unordered" styleCode="Disc">
+                     <item>Change from baseline to end of study (EOS) in the Desire domain from the Female Sexual Function Index (FSFI) (Questions 1 and 2). Question 1 asks patients
+  
+   <content styleCode="italics">“Over the past 4 weeks, how often did you feel sexual desire or interest?”</content>, with responses ranging from 1 (almost never or never) to 5 (almost always or always). Question 2 asks patients
+  
+   <content styleCode="italics">“Over the past 4 weeks, how would you rate your level (degree) of sexual desire or interest?”</content>, with responses ranging from 1 (very low or none at all) to 5 (very high). The FSFI Desire domain score was calculated by adding the patient's responses to these two questions then multiplying that sum by 0.6. The FSFI Desire Domain score ranged from 1.2 to 6. An increase in the FSFI Desire domain score over time denotes improvement in sexual desire.
+ 
+  </item>
+                     <item>Change from baseline to EOS in the score for feeling bothered by low sexual desire as measured by the Female Sexual Distress Scale – Desire/Arousal/Orgasm Question 13 (FSDS-DAO Q13). This question asks patients,
+  
+   <content styleCode="italics">“How often did you feel: Bothered by low sexual desire?” </content>Patients assessed their sexual distress over a 30-day recall period and responded on a scale of 0 (never) to 4 (always). A decrease in the FSDS-DAO Q13 score over time denotes improvement in the level of distress associated with low sexual desire.
+ 
+  </item>
+                  </list>
+                  <paragraph>EOS is defined as the patient's last study visit during the double-blind treatment period. For patients who completed the double-blind treatment period, the EOS visit occurred at Week 24.</paragraph>
+                  <paragraph>Efficacy results for these co-primary endpoints from Study 1 and Study 2 are summarized in
+ 
+  <linkHtml href="#t2">Table 2</linkHtml>and
+ 
+  <linkHtml href="#t3">Table 3</linkHtml>. In both studies, VYLEESI showed a statistically significant increase in the FSFI Desire Domain score and a statistically significant decrease in the FSDS-DAO Q13 score from baseline to the EOS visit compared to placebo. The magnitude of the treatment differences was similar in both studies.
+
+ </paragraph>
+                  <table ID="t2" width="100%">
+                     <caption>Table 2: Efficacy Results for the FSFI-Desire Domain Score in Premenopausal HSDD Patients in Study 1 and Study 2 (MITT* Population)</caption>
+                     <col width="28.334%" align="left"/>
+                     <col width="18.336%" align="left"/>
+                     <col width="15.837%" align="left"/>
+                     <col width="19.156%" align="left"/>
+                     <col width="18.336%" align="left"/>
+                     <tfoot>
+                        <tr>
+                           <td colspan="5" align="left" valign="top">
+                              <paragraph styleCode="First Footnote">
+                                 <sup>1 </sup>FSFI Desire score range: 1.2 to 6.0, with higher scores indicating greater desire.
+    
+     </paragraph>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="5" align="left" valign="top">
+                              <paragraph styleCode="First Footnote">
+                                 <sup>2 </sup>p-value from unadjusted Wilcoxon rank-sum test.
+    
+     </paragraph>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="5" align="left" valign="top">
+                              <paragraph styleCode="First Footnote">*MITT: modified intent to treat defined as all patients who were randomized, used at least one dose of double-blind study drug, and had at least one double-blind follow-up visit. However, one VYLEESI patient and one placebo patient in Study 1 and two placebo patients in Study 2 did not have either a baseline or EOS efficacy measurement and change from baseline could not be calculated.  Therefore, N = the number of patients in the MITT population with an evaluable change measurement.</paragraph>
+                           </td>
+                        </tr>
+                     </tfoot>
+                     <tbody>
+                        <tr>
+                           <td rowspan="2" align="left" styleCode="Botrule Toprule" valign="top"/>
+                           <td colspan="2" align="center" styleCode="Botrule Toprule" valign="middle">Study 1</td>
+                           <td colspan="2" align="center" styleCode="Botrule Toprule" valign="middle">Study 2</td>
+                        </tr>
+                        <tr>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">VYLEESI</content>
+                              <br/>
+                              <content styleCode="bold">1.75 mg 
+      <br/>  (N= 313)
+     </content>
+                           </td>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">Placebo 
+      <br/>  (N= 315)
+     </content>
+                           </td>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">VYLEESI</content>
+                              <br/>
+                              <content styleCode="bold">1.75 mg 
+      <br/>  (N= 282)
+     </content>
+                           </td>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">Placebo 
+      <br/>  (N=288)
+     </content>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">Mean Baseline (SD)
+    
+     <sup>1</sup>
+                           </td>
+                           <td align="center" valign="top">2.1 (0.9)</td>
+                           <td align="center" valign="top">2.0 (0.8)</td>
+                           <td align="center" valign="top">2.0 (0.8)</td>
+                           <td align="center" valign="top">2.1 (0.8)</td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top"/>
+                           <td align="center" valign="top"/>
+                           <td align="center" valign="top"/>
+                           <td align="center" valign="top"/>
+                           <td align="center" valign="top"/>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">Mean Change from Baseline (SD)</td>
+                           <td align="center" valign="top">0.5 (1.1)</td>
+                           <td align="center" valign="top">0.2 (1.0)</td>
+                           <td align="center" valign="top">0.6 (1.0)</td>
+                           <td align="center" valign="top">0.2 (0.9)</td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">Median Change from Baseline</td>
+                           <td align="center" valign="top">0.6</td>
+                           <td align="center" valign="top">0</td>
+                           <td align="center" valign="top">0.6</td>
+                           <td align="center" valign="top">0</td>
+                        </tr>
+                        <tr>
+                           <td align="left" styleCode="Botrule" valign="top">p-value
+    
+     <sup>2</sup>
+                           </td>
+                           <td colspan="2" align="center" styleCode="Botrule" valign="top">0.0002</td>
+                           <td colspan="2" align="center" styleCode="Botrule" valign="top">&lt; 0.0001</td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table ID="t3" width="100%">
+                     <caption>Table 3: Efficacy Results for the FSDS-DAO Q13 Score in Premenopausal HSDD Patients in Study 1 and Study 2 (MITT* Population)</caption>
+                     <col width="25.840%" align="left"/>
+                     <col width="19.160%" align="left"/>
+                     <col width="18.340%" align="left"/>
+                     <col width="20.000%" align="left"/>
+                     <col width="16.660%" align="left"/>
+                     <tfoot>
+                        <tr>
+                           <td colspan="5" align="left" valign="top">
+                              <paragraph styleCode="First Footnote">
+                                 <sup>1 </sup>FSDS-DAO Q13 score range: 0 to 4, with higher scores indicating greater bother.
+    
+     </paragraph>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="5" align="left" valign="top">
+                              <paragraph styleCode="First Footnote">
+                                 <sup>2 </sup>p-value from unadjusted Wilcoxon rank-sum test
+    
+     </paragraph>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="5" align="left" valign="top">
+                              <paragraph styleCode="First Footnote">*MITT: modified intent to treat defined as all patients who were randomized, used at least one dose of the double-blind drug and had at least one double-blind follow-up visit. However, one VYLEESI patient and two placebo patients in Study 1 and five placebo patients in Study 2 did not have either a baseline or EOS efficacy measurement and change from baseline could not be calculated. Therefore, N = the number of patients in the MITT population with an evaluable change measurement.</paragraph>
+                           </td>
+                        </tr>
+                     </tfoot>
+                     <tbody>
+                        <tr>
+                           <td rowspan="2" align="left" styleCode="Botrule Toprule" valign="top"/>
+                           <td colspan="2" align="center" styleCode="Botrule Toprule" valign="middle">Study 1</td>
+                           <td colspan="2" align="center" styleCode="Botrule Toprule" valign="middle">Study 2</td>
+                        </tr>
+                        <tr>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">VYLEESI</content>
+                              <br/>
+                              <content styleCode="bold">1.75 mg 
+      <br/>  (N= 313)
+     </content>
+                           </td>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">Placebo 
+      <br/>  (N= 314)
+     </content>
+                           </td>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">VYLEESI</content>
+                              <br/>
+                              <content styleCode="bold">1.75 mg 
+      <br/>  (N= 282)
+     </content>
+                           </td>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">Placebo 
+      <br/>  (N=285)
+     </content>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">Mean Baseline (SD)
+    
+     <sup>1</sup>
+                           </td>
+                           <td align="center" valign="top">2.9 (1.0)</td>
+                           <td align="center" valign="top">2.8 (0.9)</td>
+                           <td align="center" valign="top">2.9 (0.9)</td>
+                           <td align="center" valign="top">2.9 (0.9)</td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top"/>
+                           <td align="center" valign="top"/>
+                           <td align="center" valign="top"/>
+                           <td align="center" valign="top"/>
+                           <td align="center" valign="top"/>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">Mean Change from Baseline (SD)</td>
+                           <td align="center" valign="top">-0.7 (1.2)</td>
+                           <td align="center" valign="top">-0.4 (1.1)</td>
+                           <td align="center" valign="top">-0.7 (1.1)</td>
+                           <td align="center" valign="top">-0.4 (1.1)</td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">Median Change from Baseline</td>
+                           <td align="center" valign="top">-1</td>
+                           <td align="center" valign="top">0</td>
+                           <td align="center" valign="top">-1</td>
+                           <td align="center" valign="top">0</td>
+                        </tr>
+                        <tr>
+                           <td align="left" styleCode="Botrule" valign="top">p- value
+    
+     <sup>2</sup>
+                           </td>
+                           <td colspan="2" align="center" styleCode="Botrule" valign="top">&lt; 0.0001</td>
+                           <td colspan="2" align="center" styleCode="Botrule" valign="top">0.0053</td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <paragraph>Supplementary analyses were conducted to help interpret clinical meaningfulness of the observed score change from baseline to EOS in the FSFI-Desire Domain and FSDS-DAO Q13. These analyses defined responders for each coprimary efficacy endpoint by anchoring change from baseline to EOS with multiple anchor measures. Each anchor analysis considered responders to be those who reported experiencing meaningful change at their EOS visit according to the respective anchor measure.</paragraph>
+                  <paragraph>Because a greater percentage of MITT patients in the VYLEESI group prematurely discontinued the 24-week double-blind treatment period compared to placebo patients (40% vs. 13% for Study 1 and 39% vs. 25% for Study 2), an exploratory analysis was performed examining the percentages of patients who were able to complete the treatment period and improved from baseline.
+ 
+  <linkHtml href="#f02">Figure 2</linkHtml> displays the percentages of the MITT patients in the two Phase 3 trials who completed the 24-week double-blind treatment period and achieved various levels of increase in the FSFI-Desire Domain Score from baseline (higher scores indicate increased sexual desire).
+ 
+  <linkHtml href="#f03">Figure 3</linkHtml> displays the percentages of the MITT patients in the two clinical trials who completed the 24-week double-blind treatment period and achieved various levels of reduction in the FSDS-DAO Q13 score from baseline (higher scores indicate greater reduction in distress).
+
+ </paragraph>
+                  <paragraph>
+                     <content styleCode="bold">Figure 2: Percent of Patients (MITT Population) who Completed the 24-Week Double-Blind Treatment Period and Achieved Various Levels of Increases in the FSFI-Desire Domain Score</content>
+                  </paragraph>
+                  <renderMultiMedia referencedObject="mm02"/>
+                  <paragraph>Patients who did not complete the double-blind treatment period or were missing baseline scores are not considered to have experienced an increase in FSFI-Desire Domain score at the end of the double-blind treatment period.</paragraph>
+                  <paragraph>Responder threshold: at least 1.2-point increase from baseline in FSFI-Desire Domain score. The threshold was defined for these studies by anchoring change from baseline to end of treatment with multiple anchor measures.</paragraph>
+                  <paragraph>
+                     <content styleCode="bold">Figure 3: Percent of Patients (MITT Population) who Completed the 24-Week Double-Blind Treatment Period and Achieved Various Levels of Reductions in the FSDS-DAO Q13 Score</content>
+                  </paragraph>
+                  <renderMultiMedia referencedObject="mm03"/>
+                  <paragraph>Patients who did not complete the double-blind treatment period or were missing change from baseline scores are not considered to have experienced a decrease in FSDS-DAO Q13 score at the end of the double-blind treatment period.</paragraph>
+                  <paragraph>Responder threshold: at least 1-point decrease from baseline in the FSDS-DAO Q13 score. The threshold was defined for these studies by anchoring change from baseline to end of treatment with multiple anchor measures.</paragraph>
+                  <paragraph>There was no significant difference between treatment groups in the change from baseline to end of study visit in the number of satisfying sexual events (SSEs), a secondary endpoint.</paragraph>
+                  <paragraph>Efficacy results for the number of SSEs are summarized in
+ 
+  <linkHtml href="#t4">Table 4</linkHtml>.
+
+ </paragraph>
+                  <table ID="t4" width="100%">
+                     <caption>Table 4: Efficacy Results for the Number of Satisfying Sexual Events in Premenopausal HSDD Patients in Study 1 and Study 2 (MITT* Population)</caption>
+                     <col width="23.340%" align="left"/>
+                     <col width="20.840%" align="left"/>
+                     <col width="19.160%" align="left"/>
+                     <col width="19.160%" align="left"/>
+                     <col width="17.500%" align="left"/>
+                     <tfoot>
+                        <tr>
+                           <td colspan="5" align="left" valign="top">
+                              <paragraph styleCode="First Footnote">
+                                 <sup>1 </sup>p-value from unadjusted Wilcoxon rank-sum test.
+    
+     </paragraph>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="5" align="left" valign="top">
+                              <paragraph styleCode="First Footnote">*MITT: modified intent to treat defined as all patients who were randomized, used at least one dose of double-blind drug and had at least 1 double-blind follow-up visit. N = the number of patients in the MITT population.</paragraph>
+                           </td>
+                        </tr>
+                     </tfoot>
+                     <tbody>
+                        <tr>
+                           <td rowspan="2" align="left" styleCode="Botrule Toprule" valign="top"/>
+                           <td colspan="2" align="center" styleCode="Botrule Toprule" valign="middle">Study 1</td>
+                           <td colspan="2" align="center" styleCode="Botrule Toprule" valign="middle">Study 2</td>
+                        </tr>
+                        <tr>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">VYLEESI</content>
+                              <br/>
+                              <content styleCode="bold">1.75 mg 
+      <br/>  (N= 314)
+     </content>
+                           </td>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">Placebo 
+      <br/>  (N= 316)
+     </content>
+                           </td>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">VYLEESI</content>
+                              <br/>
+                              <content styleCode="bold">1.75 mg 
+      <br/>  (N= 282)
+     </content>
+                           </td>
+                           <td align="center" styleCode="Botrule" valign="middle">
+                              <content styleCode="bold">Placebo 
+      <br/>  (N=290)
+     </content>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">Mean Baseline (SD)</td>
+                           <td align="center" valign="top">0.7 (1.0)</td>
+                           <td align="center" valign="top">0.8 (1.1)</td>
+                           <td align="center" valign="top">0.8 (1.1)</td>
+                           <td align="center" valign="top">0.7 (1.0)</td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">Mean Change from Baseline (SD)</td>
+                           <td align="center" valign="top">0.0 (1.4)</td>
+                           <td align="center" valign="top">-0.1 (1.4)</td>
+                           <td align="center" valign="top">0.0 (1.3)</td>
+                           <td align="center" valign="top">0.0 (1.2)</td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">Median Change from Baseline</td>
+                           <td align="center" valign="top">0</td>
+                           <td align="center" valign="top">0</td>
+                           <td align="center" valign="top">0</td>
+                           <td align="center" valign="top">0</td>
+                        </tr>
+                        <tr>
+                           <td align="left" styleCode="Botrule" valign="top">p- value
+    
+     <sup>1</sup>
+                           </td>
+                           <td colspan="2" align="center" styleCode="Botrule" valign="top">0.76</td>
+                           <td colspan="2" align="center" styleCode="Botrule" valign="top">0.70</td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <paragraph/>
+               </text>
+               <effectiveTime value="20240313"/>
+               <component>
+                  <observationMedia ID="mm02">
+                     <text>Figure 2
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-02.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm03">
+                     <text>Figure 3
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-03.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s63">
+               <id root="5f8ebf12-181d-4e66-e063-6294a90a1d71"/>
+               <code code="34069-5" codeSystem="2.16.840.1.113883.6.1" displayName="HOW SUPPLIED SECTION"/>
+               <title>16 HOW SUPPLIED / STORAGE AND HANDLING</title>
+               <text>
+                  <paragraph>VYLEESI (bremelanotide) is supplied as:</paragraph>
+                  <paragraph>1.75 mg bremelanotide in 0.3 mL solution in a single-dose, disposable prefilled autoinjector (NDC 0713-0897-06) provided in a carton of 4 autoinjectors (NDC 0713-0897-04), carton of 2 autoinjectors (NDC 0713-0897-02).</paragraph>
+               </text>
+               <effectiveTime value="20240313"/>
+               <component>
+                  <section ID="s64">
+                     <id root="5f8ebf12-181e-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <text>
+                        <paragraph>
+                           <content styleCode="underline">Storage</content>
+                        </paragraph>
+                        <paragraph>Store at or below 25°C (77°F). Do not freeze. Protect from light.</paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s65">
+               <id root="5f8ebf12-181f-4e66-e063-6294a90a1d71"/>
+               <code code="34076-0" codeSystem="2.16.840.1.113883.6.1" displayName="INFORMATION FOR PATIENTS SECTION"/>
+               <title>17 PATIENT COUNSELING INFORMATION</title>
+               <text>
+                  <paragraph>Advise the patient to read the FDA-approved patient labeling (Patient Information and Instructions for Use).</paragraph>
+               </text>
+               <effectiveTime value="20240313"/>
+               <component>
+                  <section ID="s66">
+                     <id root="5f8ebf12-1820-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <text>
+                        <paragraph>
+                           <content styleCode="underline">Transient Increase in Blood Pressure and Decrease in Heart Rate</content>
+                        </paragraph>
+                        <paragraph>Advise patients that increases in blood pressure and decreases in heart rate may occur after taking each VYLEESI dose, and that these changes usually resolve within 12 hours post-dose
+ 
+  <content styleCode="italics">[see Warnings and Precautions (
+  
+   <linkHtml href="#s8">5.1</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                        <paragraph>Advise patients not to take VYLEESI within 24 hours of a prior dose and that more than 8 doses per month is not recommended. Advise patients that taking VYLEESI more frequently or too close together may lead to more pronounced increases in blood pressure
+ 
+  <content styleCode="italics">[see Dosage and Administration (
+  
+   <linkHtml href="#s3">2.1</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s67">
+                     <id root="5f8ebf12-1821-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <text>
+                        <paragraph>
+                           <content styleCode="underline">Focal Hyperpigmentation</content>
+                        </paragraph>
+                        <paragraph>Advise patients that focal hyperpigmentation, including on the face, gingiva and breasts, may occur when VYLEESI is used intermittently, particularly in patients with darker skin. The incidence may increase with daily VYLEESI use. Advise patients that the pigmentary changes may not resolve completely after stopping VYLEESI, and to contact their healthcare provider if they have any concerns about changes to their skin
+ 
+  <content styleCode="italics">[see Warnings and Precautions (
+  
+   <linkHtml href="#s9">5.2</linkHtml>)]
+ 
+  </content>
+                           <content styleCode="italics">.</content>
+                        </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s68">
+                     <id root="5f8ebf12-1822-4e66-e063-6294a90a1d71"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <text>
+                        <paragraph>
+                           <content styleCode="underline">Nausea</content>
+                        </paragraph>
+                        <paragraph>Advise patients that nausea may occur, most commonly with the first injection of VYLEESI, but could occur intermittently with continued use. Advise patients that nausea most commonly lasts for two hours after taking a dose but could last longer in some patients, and that anti-emetic medications may be necessary. Advise patients to contact their healthcare provider for persistent or severe nausea
+ 
+  <content styleCode="italics">[see Warnings and Precautions(
+  
+   <linkHtml href="#s10">5.3</linkHtml>)].
+ 
+  </content>
+                        </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s69">
+                     <id root="5f8f6345-3a2b-eed5-e063-6394a90afd1c"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <text>
+                        <paragraph>
+                           <content styleCode="underline">Females of Reproductive Potential</content>
+                        </paragraph>
+                        <paragraph>Advise patients to use effective contraception while taking VYLEESI and to discontinue VYLEESI if pregnancy is suspected. 
+  <content styleCode="italics">[see Use in Specific Populations ( 
+   <linkHtml href="#s24">8.1</linkHtml>, 
+   <linkHtml href="#s32">8.3</linkHtml>)]. 
+  </content>
+                        </paragraph>
+                        <paragraph>Marketed By:
+  <br/>
+Cosette Pharmaceuticals, Inc.
+  <br/>
+Bridgewater, NJ 08807
+ </paragraph>
+                        <paragraph>VYLEESI is a registered trademark of Cosette Pharmaceuticals, Inc.</paragraph>
+                        <paragraph>© 2026 Cosette Pharmaceuticals, Inc. All rights reserved.</paragraph>
+                        <paragraph>8-0897CP2
+  <br/>
+Rev. 10/2024
+ </paragraph>
+                     </text>
+                     <effectiveTime value="20240313"/>
+                  </section>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s70">
+               <id root="5f8f4921-c7d7-d9d5-e063-6294a90abc7e"/>
+               <code code="42230-3" codeSystem="2.16.840.1.113883.6.1" displayName="SPL PATIENT PACKAGE INSERT SECTION"/>
+               <text>
+                  <paragraph>
+                     <content styleCode="bold">PATIENT INFORMATION</content>
+                  </paragraph>
+                  <paragraph>
+                     <content styleCode="bold">VYLEESI® (vahy-lee-see)</content>
+                  </paragraph>
+                  <paragraph>
+                     <content styleCode="bold">(bremelanotide injection)</content>
+                  </paragraph>
+                  <paragraph>
+                     <content styleCode="bold">for subcutaneous use</content>
+                  </paragraph>
+                  <paragraph/>
+                  <paragraph>
+                     <content styleCode="bold">What is VYLEESI?</content>
+                  </paragraph>
+                  <paragraph>VYLEESI is a prescription medicine used to treat hypoactive (low) sexual desire disorder (HSDD) in women who have not gone through menopause, who have not had problems with low sexual desire in the past, and who have low sexual desire no matter the type of sexual activity, the situation, or the sexual partner. Women with HSDD have low sexual desire that is troubling to them. Their low sexual desire is not due to:</paragraph>
+                  <list listType="unordered">
+                     <item>a medical or mental health problem</item>
+                     <item>problems in the relationship</item>
+                     <item>medicine or other drug use</item>
+                  </list>
+                  <paragraph>VYLEESI is not for the treatment of HSDD in women who have gone through menopause or in men.</paragraph>
+                  <paragraph>VYLEESI is not for use to improve sexual performance.</paragraph>
+                  <paragraph>VYLEESI is not for use in children.</paragraph>
+                  <paragraph/>
+                  <paragraph>
+                     <content styleCode="bold">Do not use VYLEESI if you have:</content>
+                  </paragraph>
+                  <list listType="unordered">
+                     <item>high blood pressure that is not controlled (uncontrolled hypertension)</item>
+                     <item>known heart (cardiovascular) disease</item>
+                  </list>
+                  <paragraph/>
+                  <paragraph>
+                     <content styleCode="bold">Before using VYLEESI, tell your healthcare provider about all of your medical conditions, including if you:</content>
+                  </paragraph>
+                  <list listType="unordered">
+                     <item>have high blood pressure.</item>
+                     <item>have heart problems.</item>
+                     <item>have kidney problems.</item>
+                     <item>have liver problems.
+	
+   <list listType="unordered">
+                           <item>are pregnant or plan to become pregnant.  It is not known if VYLEESI will harm your unborn baby.
+		
+     <list listType="unordered">
+                                 <item>Women who can become pregnant should use effective birth control during treatment with VYLEESI. Talk to your healthcare provider about birth control choices that may be right for you during this time. Stop using VYLEESI and tell your healthcare provider right away if you become pregnant or think you might be pregnant during treatment with VYLEESI.</item>
+                              </list>
+                           </item>
+                        </list>
+                     </item>
+                     <item>are breastfeeding or plan to breastfeed. Talk with your healthcare provider about the best way to feed your baby if you use VYLEESI.</item>
+                  </list>
+                  <paragraph>
+                     <content styleCode="bold">Tell your healthcare provider about all the medicines you take</content>, including prescription and over-the-counter medicines, vitamins, and herbal supplements. VYLEESI may affect the way other medicines work, and other medicines may affect the way VYLEESI works.
+ </paragraph>
+                  <paragraph>Know the medicines you take. Keep a list of them to show your healthcare provider and pharmacist each time you get a new medicine.</paragraph>
+                  <paragraph/>
+                  <paragraph>
+                     <content styleCode="bold">How should I use VYLEESI?</content>
+                  </paragraph>
+                  <paragraph>
+                     <content styleCode="bold">See the detailed “Instructions for Use” that comes with VYLEESI for information on how to prepare and inject a dose of VYLEESI.</content> Talk to your healthcare provider or pharmacist if you have any questions.
+ </paragraph>
+                  <list listType="unordered">
+                     <item>Use VYLEESI exactly as prescribed by your healthcare provider.</item>
+                     <item>VYLEESI comes in an autoinjector that you or your caregiver may use at home to give injections.</item>
+                     <item>VYLEESI is given as an injection under the skin (subcutaneous injection), in your thighs or stomach area (abdomen).</item>
+                     <item>Inject VYLEESI at least 45 minutes before you think that you will begin sexual activity.</item>
+                     <item>
+                        <content styleCode="bold">Do not</content> inject more than 1 dose of VYLEESI within 24 hours of your last dose.
+  </item>
+                     <item>
+                        <content styleCode="bold">Do not</content> inject more than 8 doses of VYLEESI within a month.
+  </item>
+                  </list>
+                  <paragraph>Tell your healthcare provider if your symptoms of HSDD have not improved after you have used VYLEESI for 8 weeks.</paragraph>
+                  <paragraph/>
+                  <paragraph>
+                     <content styleCode="bold">What are the possible side effects of VYLEESI?</content>
+                  </paragraph>
+                  <paragraph>
+                     <content styleCode="bold">VYLEESI can cause serious side effects, including:</content>
+                  </paragraph>
+                  <list listType="unordered">
+                     <item>
+                        <content styleCode="bold">Temporary increase in blood pressure and decrease in heart rate: </content>An increase in blood pressure and decrease in heart rate can happen shortly after you inject VYLEESI. These changes usually go away within 12 hours after your injection. Increases in blood pressure and an increased risk of heart (cardiovascular) problems can happen if you use VYLEESI more often than prescribed by your healthcare provider. See “How should I use VYLEESI?”
+  </item>
+                     <item>
+                        <content styleCode="bold">Darkening of the skin on certain parts of the body (focal hyperpigmentation) including the face, gums (gingiva) and breast. </content>The chance of darkening of the skin is increased in people with darker skin color. The chance of darkening of the skin is higher if VYLEESI is used every day. Darkening of the skin may not go away, even after you stop using VYLEESI. Tell your healthcare provider if you have any concerns about changes to your skin.
+  </item>
+                     <item>
+                        <content styleCode="bold">Nausea.</content> Nausea is common and can also be severe. Nausea most commonly happens after the first VYLEESI injection but can also happen after any dose of VYLEESI. The nausea usually lasts for about 2 hours but can last longer in some people. The nausea usually goes away by itself. Tell your healthcare provider if you have nausea that is severe or does not go away. Pre-treatment with the anti-nausea medicine ondansetron was not found to be effective to inhibit or reduce the nausea and is not recommended. Your healthcare provider may prescribe anti-nausea medicine for you to take after nausea occurs.
+  </item>
+                  </list>
+                  <paragraph/>
+                  <paragraph>
+                     <content styleCode="bold">The most common side effects of VYLEESI include:</content>
+                  </paragraph>
+                  <list listType="unordered">
+                     <item>flushing</item>
+                     <item>injection site reactions</item>
+                     <item>headache</item>
+                     <item>vomiting</item>
+                     <item>cough</item>
+                     <item>fatigue</item>
+                     <item>hot flush</item>
+                     <item>tingling</item>
+                     <item>dizziness</item>
+                     <item>nasal congestion</item>
+                  </list>
+                  <paragraph/>
+                  <paragraph/>
+                  <paragraph>These are not all the possible side effects of VYLEESI.</paragraph>
+                  <paragraph>Call your doctor for medical advice about side effects. You may report side effects to FDA at 1-800-FDA-1088.</paragraph>
+                  <paragraph/>
+                  <paragraph>
+                     <content styleCode="bold">How should I store VYLEESI?</content>
+                  </paragraph>
+                  <list listType="unordered">
+                     <item>Store at or below 77°F (25°C).</item>
+                     <item>Do not freeze.</item>
+                     <item>Protect from light.</item>
+                  </list>
+                  <paragraph>
+                     <content styleCode="bold">Keep VYLEESI and all medicines out of the reach of children.</content>
+                  </paragraph>
+                  <paragraph/>
+                  <paragraph>
+                     <content styleCode="bold">General information about the safe and effective use of VYLEESI.</content>
+                  </paragraph>
+                  <paragraph>Medicines are sometimes prescribed for purposes other than those listed in a Patient Information leaflet. Do not use VYLEESI for a condition for which it was not prescribed. Do not give VYLEESI to other people, even if they have the same symptoms you have. It may harm them.</paragraph>
+                  <paragraph>You can ask your healthcare provider or pharmacist for information about VYLEESI that is written for health professionals.</paragraph>
+                  <paragraph/>
+                  <paragraph>
+                     <content styleCode="bold">What are the ingredients in VYLEESI?</content>
+                  </paragraph>
+                  <paragraph>
+                     <content styleCode="bold">Active ingredient: </content>bremelanotide
+ </paragraph>
+                  <paragraph>
+                     <content styleCode="bold">Inactive ingredients: </content>2.5% glycerin, sterile water for injection, and hydrochloric acid or sodium hydroxide is added to adjust the pH
+ </paragraph>
+                  <paragraph>Marketed By: Cosette Pharmaceuticals, Inc.</paragraph>
+                  <paragraph>VYLEESI is a registered trademark of Cosette Pharmaceuticals, Inc.</paragraph>
+                  <paragraph>©2024 Cosette Pharmaceuticals, Inc.  All rights reserved.</paragraph>
+                  <paragraph>For more information, go to www.VYLEESI.com or call Cosette Pharmaceuticals, Inc. at the toll-free number 1-800-922-1038.</paragraph>
+                  <paragraph/>
+                  <paragraph>This Patient Information has been approved by the U.S. Food and Drug Administration                                                                                             Revised: 10/2026</paragraph>
+               </text>
+               <effectiveTime value="20240313"/>
+            </section>
+         </component>
+         <component>
+            <section ID="d66">
+               <id root="5f8ebf12-1825-4e66-e063-6294a90a1d71"/>
+               <code code="59845-8" codeSystem="2.16.840.1.113883.6.1" displayName="INSTRUCTIONS FOR USE SECTION"/>
+               <text>
+                  <table width="100%">
+                     <col width="34.350%" align="left"/>
+                     <col width="65.650%" align="left"/>
+                     <tbody>
+                        <tr styleCode="First Last">
+                           <td align="left" styleCode="Botrule Lrule Rrule Toprule" valign="top">
+                              <content styleCode="bold">Instructions 
+      <br/>  for Use
+     </content>
+                           </td>
+                           <td align="left" styleCode="Botrule Rrule Toprule" valign="top">Read this Instructions for Use before you use VYLEESI and each time you get a refill. There may be new information. This information does not take the place of talking to your healthcare provider about your medical condition or treatment. Do not inject VYLEESI unless you have been trained by your healthcare provider. Talk to your healthcare provider or pharmacist if you have any questions.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table width="100%">
+                     <col width="16.600%" align="left"/>
+                     <col width="31.725%" align="left"/>
+                     <col width="17.625%" align="left"/>
+                     <col width="34.050%" align="left"/>
+                     <tbody>
+                        <tr>
+                           <td colspan="4" align="center" valign="top">
+                              <renderMultiMedia referencedObject="mm04"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="4" align="left" valign="top">
+                              <renderMultiMedia referencedObject="mm05"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left" valign="top">
+                              <renderMultiMedia referencedObject="mm06"/>
+                           </td>
+                           <td align="left" valign="top">
+                              <content styleCode="bold">Important 
+      <br/>  Information
+     </content>
+                           </td>
+                           <td align="left" valign="top">
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>
+                                    <content styleCode="bold">Do not </content>use more than 1 dose of VYLEESI in 24 hours.
+     
+      </item>
+                                 <item>
+                                    <content styleCode="bold">Do not </content>use more than 8 doses of VYLEESI within a month.
+     
+      </item>
+                                 <item>
+                                    <content styleCode="bold">Use 1 autoinjector for your dose of VYLEESI.</content>Throw away (dispose of) the autoinjector after giving your injection. See Step 6: Throw away (dispose of) the VYLEESI autoinjector.
+     
+      </item>
+                                 <item>
+                                    <content styleCode="bold">Inject VYLEESI into the skin of the stomach area (abdomen) or thigh only.</content>
+                                 </item>
+                                 <item>
+                                    <content styleCode="bold">Do not </content>pull off the clear cap from the VYLEESI autoinjector until you are ready to inject VYLEESI.
+     
+      </item>
+                              </list>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left" valign="top"/>
+                           <td align="left" valign="top">
+                              <content styleCode="bold">Storage</content>
+                           </td>
+                           <td align="left" valign="top">Store at or below 77°F (25°C). Do not freeze. Protect from light. 
+     <br/>
+                              <content styleCode="bold">Keep VYLEESI and all medicines out of the reach of children.</content>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">
+                              <content styleCode="bold">Instructions 
+      <br/>  for Use
+     </content>
+                           </td>
+                           <td align="left" valign="top">Read this Instructions for Use before you use VYLEESI and each time you get a refill. There may be new information. This information does not take the place of talking to your healthcare provider about your medical condition or treatment. Do not inject VYLEESI unless you have been trained by your healthcare provider. Talk to your healthcare provider or pharmacist if you have any questions.</td>
+                           <td align="left" valign="top">
+                              <content styleCode="bold">Supplies Needed for Your Injection:</content>
+                           </td>
+                           <td align="left" valign="top">
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>1 alcohol wipe (not included in carton)</item>
+                                 <item>1 VYLEESI autoinjector</item>
+                                 <item>1 cotton ball or gauze (not included in carton)</item>
+                                 <item>1 adhesive bandage (not included in carton)</item>
+                                 <item>1 sharps disposal container for VYLEESI autoinjector disposal. See Step 6: Throw away (dispose of) the VYLEESI autoinjector.</item>
+                              </list>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top"/>
+                           <td align="left" valign="top"/>
+                           <td align="left" valign="top"/>
+                           <td align="left" valign="top">
+                              <paragraph>Read and follow Step 1 to Step 6 to use the VYLEESI autoinjector.</paragraph>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">
+                              <renderMultiMedia referencedObject="mm07"/>
+                           </td>
+                           <td align="left" valign="top">Check the label on the autoinjector for the expiration date (EXP).
+    
+     <content styleCode="bold">Do not </content>use the autoinjector if the expiration date has passed. 
+     <br/>  Check the view window. You should see the gray tip in half of the view window and the medicine in half of the view window. If the view window is purple, the autoinjector will not work. Use a new autoinjector if the view window is purple. 
+     <br/>  Look at the medicine in the view window. It should be clear and free of particles.
+    
+     <content styleCode="bold">Do not </content>use if the medicine is cloudy, discolored, or contains particles.
+   
+    </td>
+                           <td align="left" valign="top">
+                              <renderMultiMedia referencedObject="mm09"/>
+                           </td>
+                           <td align="left" valign="top">
+                              <paragraph>The autoinjector
+     
+      <content styleCode="bold">must be used right away after it is activated.</content>
+                              </paragraph>
+                              <paragraph>
+                                 <content styleCode="bold">Pull the clear cap </content>from the autoinjector (See Figure A) to activate.
+    
+     </paragraph>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>
+                                    <content styleCode="bold">Do not try to recap </content>the autoinjector.
+     
+      </item>
+                                 <item>
+                                    <content styleCode="bold">The autoinjector should be used or thrown away right after the cap is removed</content>. See Step 6: Throw away (dispose of) the VYLEESI autoinjector.
+     
+      </item>
+                              </list>
+                              <paragraph>
+                                 <br/>
+                                 <br/>
+                                 <content styleCode="bold">
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>  Important
+      </content>:During the injection you will hear
+     
+      <content styleCode="bold">two clicks</content>.
+    
+     </paragraph>
+                              <paragraph>
+                                 <content styleCode="bold">Place the purple tip</content>flat against the center of the clean skin at your injection site.
+    
+     </paragraph>
+                              <paragraph>
+                                 <br/>  Make sure you can see the view window (See Figure B).
+     </paragraph>
+                              <paragraph/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top"/>
+                           <td align="left" valign="top">
+                              <paragraph>Check that the clear cap fits tightly on the purple tip of the autoinjector. If the cap does not fit tightly or is damaged,
+     
+      <content styleCode="bold">do not </content>use the autoinjector. Call Cosette Pharmaceuticals,Inc.    at 1-800-922-1038.
+    
+     </paragraph>
+                              <paragraph/>
+                           </td>
+                           <td align="left" valign="top"/>
+                           <td align="left" valign="top"/>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">
+                              <renderMultiMedia referencedObject="mm08"/>
+                           </td>
+                           <td align="left" valign="top">Wash your hands with soap and water. 
+     <br/>
+                              <br/>  Choose an injection site on your stomach area (abdomen) or the front of your thigh. Avoid the area on your abdomen that is 2 inches around your belly button (navel). 
+     <br/>
+                              <br/>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>Do not inject into skin that is irritated, sore, bruised, red, hard, or scarred.</item>
+                                 <item>Do not inject through your clothes.</item>
+                                 <item>Choose a different site each time you give yourself an injection.</item>
+                              </list>
+                           </td>
+                           <td align="left" valign="top">
+                              <renderMultiMedia referencedObject="mm10"/>
+                           </td>
+                           <td align="left" valign="top">
+                              <br/>
+                              <content styleCode="bold">Press down and hold </content>the autoinjector firmly against your skin (See Figure C).
+    
+     <content styleCode="bold">You will hear the 1</content>
+                              <content styleCode="bold">
+                                 <sup>st</sup>
+                              </content>
+                              <content styleCode="bold">click right away</content>, which tells you that your injection has started. 
+     <br/>
+                              <br/>
+                              <content styleCode="bold">In about 2 seconds</content>, you will hear a
+    
+     <content styleCode="bold">2</content>
+                              <content styleCode="bold">
+                                 <sup>nd</sup>
+                              </content>
+                              <content styleCode="bold">click</content>. 
+     <br/>
+                              <br/>
+                              <br/>
+                              <br/>
+                              <br/>
+                              <content styleCode="bold">Continue to press and hold</content>the autoinjector firmly against your skin for
+    
+     <content styleCode="bold">about 5 seconds</content>after the 2
+    
+     <sup>nd </sup>click to be sure your injection is complete (See Figure D).
+   
+    </td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top"/>
+                           <td align="left" valign="top">
+                              <paragraph>Clean the injection site with an alcohol wipe. 
+      <br/>
+                                 <br/>  Let the injection site air dry. Do not fan or blow on the clean area. Do not touch the injection site again before giving the injection.
+     </paragraph>
+                              <paragraph/>
+                           </td>
+                           <td align="left" valign="top"/>
+                           <td align="left" valign="top"/>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">
+                              <renderMultiMedia referencedObject="mm11"/>
+                           </td>
+                           <td align="left" valign="top">Check that the view window is now purple with a small part of the gray tip still showing. This means that all of the medicine was given (See Figure E). 
+     <br/>
+                              <br/>  Remove the autoinjector by
+    
+     <content styleCode="bold">lifting it straight off of your skin</content>. After you remove the autoinjector from your skin, the purple tip will lock over the needle. 
+     <br/>
+                              <renderMultiMedia referencedObject="mm12"/>
+                           </td>
+                           <td align="left" valign="top">
+                              <renderMultiMedia referencedObject="mm15"/>
+                           </td>
+                           <td align="left" valign="top">Put your used VYLEESI autoinjector in a FDA-cleared sharps disposal container right after use (See Figure F). 
+     <br/>
+                              <content styleCode="bold">Do not throw away (dispose of) the autoinjector in your household trash.</content>
+                              <br/>
+                              <br/>  If you do not have a FDA-cleared sharps disposal container, you may use a household container that is: 
+     <br/>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>made of heavy-duty plastic,</item>
+                                 <item>can be closed with a tight-fitting, puncture-resistant lid, without sharps being able to come out,</item>
+                                 <item>upright and stable during use,</item>
+                                 <item>leak-resistant, and</item>
+                                 <item>properly labeled to warn of hazardous waste inside the container.</item>
+                              </list>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left" valign="top">
+                              <renderMultiMedia referencedObject="mm13"/>
+                           </td>
+                           <td align="left" valign="top">
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>A cotton ball or gauze can be used initially to apply pressure after the injection if there is bleeding. An adhesive bandage should be applied after this, if needed.</item>
+                                 <item>Apply an adhesive bandage if needed.</item>
+                                 <item>
+                                    <content styleCode="bold">Do not </content>rub the injection site.
+      
+       <renderMultiMedia referencedObject="mm14"/>
+                                 </item>
+                              </list>
+                           </td>
+                           <td align="left" valign="top"/>
+                           <td align="left" valign="top">When your sharps disposal container is almost full, you will need to follow your community guidelines for the right way to dispose of your sharps disposal container. There may be state or local laws about how you should throw away used needles and syringes. 
+     <br/>
+                              <br/>  For more information about safe sharps disposal and for specific information about sharps disposal in the state that you live in, go to the FDA's website at: http://www.fda.gov/safesharpsdisposal. 
+     <br/>
+                              <br/>  Do not dispose of your used sharps disposal container in your household trash unless your community guidelines permit this. Do not recycle your used sharps disposal container. 
+     <br/>
+                              <br/>
+                              <content styleCode="bold">This Instructions for Use has been approved by the U.S. Food and Drug Administration.</content>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="4" align="center" valign="top">
+                              <renderMultiMedia referencedObject="mm16"/>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <paragraph/>
+               </text>
+               <effectiveTime value="20240313"/>
+               <component>
+                  <observationMedia ID="mm04">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-04.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm05">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-05.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm06">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-06.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm07">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-07.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm09">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-09.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm08">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-08.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm10">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-10.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm11">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-11.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm12">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-12.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm15">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-15.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm13">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-13.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm14">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-14.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+               <component>
+                  <observationMedia ID="mm16">
+                     <text>Figure
+</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-16.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s72">
+               <id root="5f8ebf12-1826-4e66-e063-6294a90a1d71"/>
+               <code code="51945-4" codeSystem="2.16.840.1.113883.6.1" displayName="PACKAGE LABEL.PRINCIPAL DISPLAY PANEL"/>
+               <title>Principal Display Panel – 4 Syringe Carton Label</title>
+               <text>
+                  <paragraph>NDC 0713-
+ 
+  <content styleCode="bold">0897</content>-04
+
+ </paragraph>
+                  <paragraph>Rx ONLY</paragraph>
+                  <paragraph>
+                     <content styleCode="bold">vyleesi</content>
+                     <content styleCode="bold">®</content>
+                  </paragraph>
+                  <paragraph>(bremelanotide injection)</paragraph>
+                  <paragraph>
+                     <content styleCode="bold">1.75 mg/0.3 mL | for subcutaneous use only</content>
+                  </paragraph>
+                  <paragraph>
+                     <content styleCode="bold">
+                        <renderMultiMedia referencedObject="L0bcee2dd-848f-4753-b156-40136ca037ba"/>
+                     </content>
+                  </paragraph>
+               </text>
+               <effectiveTime value="20240313"/>
+               <component>
+                  <observationMedia ID="L0bcee2dd-848f-4753-b156-40136ca037ba">
+                     <text>Principal Display Panel – 4 Syringe Carton Label</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-18.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+            </section>
+         </component>
+         <component>
+            <section ID="s73">
+               <id root="5f8ebf12-1827-4e66-e063-6294a90a1d71"/>
+               <code code="51945-4" codeSystem="2.16.840.1.113883.6.1" displayName="PACKAGE LABEL.PRINCIPAL DISPLAY PANEL"/>
+               <title>Principal Display Panel – Syringe Label</title>
+               <text>
+                  <paragraph>
+                     <content styleCode="bold">vyleesi</content>
+                     <content styleCode="bold">®</content>
+                  </paragraph>
+                  <paragraph>(bremelanotide injection)</paragraph>
+                  <paragraph>
+                     <content styleCode="bold">
+                        <renderMultiMedia referencedObject="Lfe80b4d9-365a-4aad-bcdf-171b457859cc"/>
+                     </content>
+                  </paragraph>
+               </text>
+               <effectiveTime value="20240313"/>
+               <component>
+                  <observationMedia ID="Lfe80b4d9-365a-4aad-bcdf-171b457859cc">
+                     <text>Principal Display Panel – Syringe Label</text>
+                     <value mediaType="image/jpeg" xsi:type="ED">
+                        <reference value="vyl00-0004-19.jpg"/>
+                     </value>
+                  </observationMedia>
+               </component>
+            </section>
+         </component>
+      </structuredBody>
+   </component>
+</document>

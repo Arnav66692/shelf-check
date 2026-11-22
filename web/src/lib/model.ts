@@ -25,7 +25,8 @@ export type Product = {
   readonly sameAsCount?: number;
   readonly note?: string;
   readonly readerAgreement?: "verified" | "check";
-  readonly record: IdentifiedProduct;
+  readonly record?: IdentifiedProduct;
+  readonly peptideId?: string;
 };
 
 export type Severity = "stop" | "ask" | "info";

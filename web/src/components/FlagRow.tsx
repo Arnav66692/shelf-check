@@ -26,6 +26,7 @@ const SECTION_NAMES: Record<string, string> = {
   indications_and_usage: "Uses",
   information_for_patients: "Information for patients",
   fda_recall: "FDA recall record",
+  fda_statement: "FDA statement on this ingredient",
 };
 
 const QUOTES_SHOWN_FIRST = 2;
@@ -36,7 +37,7 @@ function QuoteBlock({ quote, items }: { quote: FlagQuote; items: readonly Produc
     <figure className="mt-3">
       <blockquote className="quote">{quote.excerpt}</blockquote>
       <figcaption className="mt-1 text-sm text-ink-soft">
-        {quote.section === "fda_recall" ? "From the " : `From the label of ${source?.displayName ?? "this product"}, section `}
+        {quote.section === "fda_recall" || quote.section === "fda_statement" ? "From the " : `From the label of ${source?.displayName ?? "this product"}, section `}
         {SECTION_NAMES[quote.section] ?? quote.section.replaceAll("_", " ")}.
       </figcaption>
     </figure>
