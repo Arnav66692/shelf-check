@@ -11,6 +11,7 @@ const NSAIDS = {
   atc: /^(?:M01A[ABCEGH]|N02BA)/,
   epc: /^nonsteroidal anti-inflammatory drug$/i,
   ingredients: /^(?:aspirin|ibuprofen|naproxen|diclofenac|ketorolac|indomethacin|meloxicam|celecoxib|piroxicam|ketoprofen|nabumetone|etodolac|diflunisal)$/i,
+  labelWords: /\b(?:NSAIDs?|nonsteroidal anti-?inflammatory drugs?)\b/i,
 };
 
 const FAMILIES = [
@@ -21,6 +22,7 @@ const FAMILIES = [
     atc: /^J01C[AEF]/,
     epc: /^penicillin[- ]class antibacterial$/i,
     ingredients: /^(?:amoxicillin|ampicillin|dicloxacillin|nafcillin|oxacillin|piperacillin|ticarcillin|flucloxacillin|penicillin(?: [gv])?|benzylpenicillin|phenoxymethylpenicillin)$/i,
+    labelWords: /\bpenicillins?\b/i,
   },
   {
     name: "a cephalosporin",
@@ -28,6 +30,7 @@ const FAMILIES = [
     atc: /^J01D[BCDE]/, // J01DH also falls under J01D and denotes carbapenems.
     epc: /^cephalosporin(?:[- ]class)? antibacterial$/i,
     ingredients: /^(?:cefadroxil|cefazolin|cephalexin|cefalexin|cefaclor|cefuroxime|cefdinir|cefixime|ceftriaxone|cefepime|cefpodoxime|ceftazidime|ceftaroline)$/i,
+    labelWords: /\bcephalosporins?\b/i,
   },
   {
     name: "a sulfonamide antibiotic",
@@ -35,6 +38,7 @@ const FAMILIES = [
     atc: /^J01E[BCD]/, // J01EA (trimethoprim) is not a sulfonamide.
     epc: /^sulfonamide (?:antibacterial|antimicrobial)$/i,
     ingredients: /^(?:sulfamethoxazole|sulfadiazine|sulfisoxazole|sulfacetamide|sulfadoxine)$/i,
+    labelWords: /\b(?:sulfonamides?|sulfa drugs?)\b/i,
   },
   {
     name: "a salicylate",
@@ -42,6 +46,7 @@ const FAMILIES = [
     atc: /^N02BA/,
     epc: /^salicylate$/i,
     ingredients: /^(?:aspirin|acetylsalicylic acid|bismuth subsalicylate|salsalate|diflunisal|choline salicylate|magnesium salicylate|sodium salicylate)$/i,
+    labelWords: /\b(?:aspirin|salicylates?)\b/i,
   },
   NSAIDS,
   {
@@ -50,6 +55,15 @@ const FAMILIES = [
     atc: /^(?:N02A[ABCEFGX]|N01AH)/,
     epc: /^(?:(?:full|partial) )?opioid agonist$/i,
     ingredients: /^(?:morphine|codeine|hydrocodone|oxycodone|oxymorphone|hydromorphone|fentanyl|tramadol|tapentadol|buprenorphine|methadone|meperidine)$/i,
+    labelWords: /\b(?:opioids?|opiates?)\b/i,
+  },
+  {
+    name: "a quinolone antibiotic",
+    allergies: /^(?:(?:fluoro)?quinolones?)(?: antibiotics?)?$/i,
+    atc: /^J01M/,
+    epc: /^(?:fluoro)?quinolone antibacterial$/i,
+    ingredients: /^(?:ciprofloxacin|levofloxacin|moxifloxacin|ofloxacin|gemifloxacin|delafloxacin)$/i,
+    labelWords: /\b(?:fluoro)?quinolones?\b/i,
   },
 ];
 
@@ -74,4 +88,10 @@ export function isNsaid(ingredient: Ingredient): boolean {
 // An allergy to one NSAID, by its drug name, typed in the profile.
 export function isNsaidName(allergen: string): boolean {
   return NSAIDS.ingredients.test(allergen.trim()) && !/^aspirin$/i.test(allergen.trim());
+}
+
+// How labels name the family that a typed allergy belongs to ("PCN" -> "penicillin", "levofloxacin" -> "quinolone").
+export function familyLabelWords(allergen: string): RegExp | undefined {
+  const typed = allergen.trim();
+  return FAMILIES.find((family) => family.allergies.test(typed) || family.ingredients.test(typed))?.labelWords;
 }

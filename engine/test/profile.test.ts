@@ -600,3 +600,15 @@ test("a codeine boxed warning that rules out children under 12 flags a 5 year ol
   expect(ageFlag([codeine], 5)).toMatchObject({ severity: "stop" });
   expect(ageFlag([codeine], 30)).toBeUndefined();
 });
+
+test("an allergy is matched to a label that names its family, like sulfonamides or the quinolone class", () => {
+  const item = (name: string, text: string): CabinetItem => ({
+    id: name, displayName: name, kind: "rx", verified: true, ingredients: [{ name, value: 1, unit: "mg" }],
+    label: { contraindications: [text] },
+  });
+  const celecoxib = item("celecoxib", "In patients who have demonstrated allergic-type reactions to sulfonamides.");
+  const cipro = item("ciprofloxacin", "Known hypersensitivity to ciprofloxacin or other quinolones.");
+  expect(profileFlags([celecoxib], { ...NOTHING, allergies: ["sulfa"] })[0]).toMatchObject({ severity: "stop" });
+  expect(profileFlags([cipro], { ...NOTHING, allergies: ["levofloxacin"] })[0]).toMatchObject({ severity: "stop" });
+  expect(profileFlags([celecoxib], { ...NOTHING, allergies: ["levofloxacin"] })).toEqual([]);
+});

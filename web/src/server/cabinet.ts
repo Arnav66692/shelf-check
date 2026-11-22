@@ -115,7 +115,8 @@ const BRAND_ALLERGENS: Readonly<Record<string, string>> = {
   "z-pak": "azithromycin", zpak: "azithromycin", cipro: "ciprofloxacin", levaquin: "levofloxacin", tylenol: "acetaminophen",
   coumadin: "warfarin", bayer: "aspirin", ecotrin: "aspirin", vicodin: "hydrocodone", norco: "hydrocodone",
   percocet: "oxycodone", celebrex: "celecoxib", toradol: "ketorolac", lasix: "furosemide", macrobid: "nitrofurantoin",
-  flagyl: "metronidazole", benadryl: "diphenhydramine", "tylenol 3": "codeine", "tylenol with codeine": "codeine",
+  flagyl: "metronidazole", benadryl: "diphenhydramine", "tylenol 3": "codeine", "tylenol #3": "codeine", "tylenol#3": "codeine",
+  "tylenol with codeine": "codeine", amox: "amoxicillin", "pen vk": "penicillin", "penicillin vk": "penicillin",
 };
 
 function withGenericName(allergy: string): readonly string[] {

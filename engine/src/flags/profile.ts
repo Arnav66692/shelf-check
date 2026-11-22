@@ -4,7 +4,7 @@ import { formatNumber, termRegExp } from "../text.ts";
 import type { TextSpan } from "../text.ts";
 import type { CabinetItem, Flag, FlagNumbers, LabelSectionName, ProfileMatchKind, Quote, Severity } from "../types.ts";
 import { severityForSection } from "./severity.ts";
-import { allergyFamily, isNsaid, isNsaidName } from "./allergyFamilies.ts";
+import { allergyFamily, familyLabelWords, isNsaid, isNsaidName } from "./allergyFamilies.ts";
 
 export const CONDITION_IDS = [
   "liver_disease",
@@ -501,7 +501,8 @@ function namesAllergen(hit: PhraseHit): boolean {
   const after = text.slice(hit.span.end);
   // Flattened contraindication lists can contain both a drug name and an
   // unrelated allergy. Require the allergen to be an object of the reaction.
-  return /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:\s+reactions?)?\s+(?:to|from|after|following|with)\s+(?:any\s+)?$/i.test(before)
+  return /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:-type)?(?:\s+reactions?)?\s+(?:to|from|after|following|with)\s+(?:any\s+)?(?:other\s+)?$/i.test(before)
+    || /\b(?:allerg\w*|hypersensitiv\w*)[^.;]{0,80}\bmembers? of (?:the )?$/i.test(before)
     || /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:\s+reactions?)?\s+to\s+[^.;:]{1,140}(?:\b(?:and|or)\s+(?:to\s+)?|including\s+)$/i.test(before)
     || /^\s+(?:may|can) cause (?:an? )?(?:severe |serious )?(?:allergic|anaphylactic) reaction\b/i.test(after);
 }
@@ -555,7 +556,14 @@ function allergyFlags(item: CabinetItem, allergen: string): readonly Flag[] {
   const family = familyAllergen(item, allergen);
   if (family.length) return family;
   const otherPainReliever = otherPainRelieverAllergy(item, allergen);
-  return otherPainReliever.length ? otherPainReliever : crossSensitivity(item, allergen, pattern);
+  if (otherPainReliever.length) return otherPainReliever;
+  const cross = crossSensitivity(item, allergen, pattern);
+  if (cross.length) return cross;
+  // The label may name the allergy's family rather than the word typed.
+  const familyWords = familyLabelWords(allergen);
+  if (!familyWords) return [];
+  const byFamily = allergenInAllergyWarning(item, allergen, new RegExp(familyWords.source, "gi"));
+  return byFamily.length ? byFamily : crossSensitivity(item, allergen, new RegExp(familyWords.source, "gi"));
 }
 
 // "patients with a history of penicillin allergy" or "penicillin-sensitive patients":
