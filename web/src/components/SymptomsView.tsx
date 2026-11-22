@@ -65,6 +65,12 @@ function Emergency({ poison, selfHarm }: { poison: boolean; selfHarm: boolean })
           . If the person is not awake, not breathing, or having a seizure, call 911.
         </p>
       )}
+      {poison && (
+        <p className="mt-2">
+          If they are very sleepy or breathing slowly after pain pills or other opioids, give naloxone (Narcan) now if
+          you have it, then call 911.
+        </p>
+      )}
       {selfHarm && (
         <p className="mt-3 text-lg font-bold">
           If you are thinking about hurting yourself, call or text{" "}
