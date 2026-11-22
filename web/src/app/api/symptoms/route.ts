@@ -71,12 +71,16 @@ function warnsAboutReye(item: CabinetItem): boolean {
   return [label.warnings, label.do_not_use, label.ask_doctor].some((texts) => (texts ?? []).some((text) => /\breye['’]?s syndrome\b/i.test(text)));
 }
 
-function splitByAge(matches: readonly SymptomMatch[], profile: Profile): { shown: SymptomMatch[]; hidden: Hidden[] } {
+function hasStop(flags: readonly Flag[], itemId: string): boolean {
+  return flags.some((flag) => flag.severity === "stop" && flag.type === "interaction" && flag.itemIds.includes(itemId));
+}
+
+function splitByAge(matches: readonly SymptomMatch[], profile: Profile, aboutChild = false): { shown: SymptomMatch[]; hidden: Hidden[] } {
   const age = profile.ageYears;
   const shown: SymptomMatch[] = [];
   const hidden: Hidden[] = [];
   for (const match of matches) {
-    if (age !== undefined && age < REYE_MAX_AGE && warnsAboutReye(match.item)) {
+    if (((age !== undefined && age < REYE_MAX_AGE) || (age === undefined && aboutChild)) && warnsAboutReye(match.item)) {
       hidden.push({
         itemId: match.item.id,
         reason: "Its label warns children and teenagers about Reye's syndrome, especially with the flu or chickenpox. Ask a pharmacist for something else.",
@@ -110,7 +114,9 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "Your cabinet could not be read. Try removing the last product you added." }, { status: 400 });
   }
   const saved = readProfile(body?.profile);
-  const statedAge = childAgeInText(text);
+  const typedAge = childAgeInText(text);
+  // "toddler" is a guess. A real age in the profile wins over it.
+  const statedAge = typedAge !== undefined && /\btoddler\b/i.test(text) && !/\d/.test(text) && saved.ageYears !== undefined ? undefined : typedAge;
   const profile = statedAge === undefined ? saved : { ...saved, ageYears: statedAge };
   const screen = screenEmergency(text, profile.ageYears !== undefined ? { ageMonths: profile.ageYears * 12 } : undefined);
   if (screen.emergency) {
@@ -131,7 +137,7 @@ export async function POST(request: Request): Promise<Response> {
   }
   try {
     const cabinet = await buildCabinet(products);
-    const { shown, hidden } = splitByAge(matchSymptoms(text, cabinet.items), profile);
+    const { shown, hidden } = splitByAge(matchSymptoms(text, cabinet.items), profile, CHILD.test(text));
     const shownIds = new Set(shown.map((match) => match.item.id));
     const hiddenIds = new Set(hidden.map((entry) => entry.itemId));
     const recalls = await recallFlags(cabinet.recallSubjects);
@@ -145,7 +151,10 @@ export async function POST(request: Request): Promise<Response> {
       emergency: false,
       childDoctor,
       forChild,
-      matches: shown.map((match) => ({ itemId: match.item.id, uses: match.quote.excerpt })),
+      // A product with a Check now warning in this cabinet comes last, after the ones without one.
+      matches: [...shown]
+        .sort((a, b) => Number(hasStop(flags, a.item.id)) - Number(hasStop(flags, b.item.id)))
+        .map((match) => ({ itemId: match.item.id, uses: match.quote.excerpt })),
       hidden,
       // A warning that needs a product already left out for this age does not apply.
       flags: onlyFor(flags, shownIds).filter((flag) => !flag.itemIds.some((id) => hiddenIds.has(id))),

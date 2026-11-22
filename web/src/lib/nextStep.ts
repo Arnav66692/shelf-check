@@ -65,6 +65,9 @@ function labelSaysStop(flag: Flag): boolean {
 }
 
 function interactionStep(flag: Flag): string {
+  if (mentions(flag, /\bcontracept\w*|\bbirth control\b/i) && mentions(flag, /\b(?:effectiveness|unintended pregnanc|contraceptive failure|less effective)\w*/i)) {
+    return "This can make birth control pills work less well, which can lead to pregnancy. Use a backup method such as condoms, and ask the pharmacist today how long to keep using it.";
+  }
   if (mentions(flag, CONTRAST_DYE)) {
     return "The label says to stop this medicine at or before a scan that uses contrast dye. Tell the imaging team and the prescriber you take it, and ask when to stop it and when to restart.";
   }
@@ -148,7 +151,7 @@ export function nextStep(flag: Flag): string {
           : "The label warns that people with this allergy may also react to it. Ask a pharmacist before using it.";
       }
       if (flag.severity === "stop" && flag.matchKind === "pregnancy") {
-        return "The label says not to use this during pregnancy unless a doctor tells you to. Ask a pharmacist for something that is safe in pregnancy.";
+        return "The label says not to use this during pregnancy unless a doctor tells you to. If a doctor told you to take it, keep following their plan and tell the pharmacist you are pregnant. If not, ask a pharmacist for something that is safe in pregnancy.";
       }
       if (flag.severity === "stop" && AGE_KINDS.has(flag.matchKind ?? "")) {
         return "The label says not to use this at this age. Do not use it. Ask a pharmacist for a product made for this age.";

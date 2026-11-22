@@ -73,6 +73,11 @@ export const CLASS_PHRASE_RULES: readonly ClassPhraseRule[] = [
     phrases: ["ACE inhibitor", "angiotensin converting enzyme inhibitor"],
   },
   {
+    atcPrefixes: ["C02CA", "G04CA"],
+    epcNames: ["alpha-Adrenergic Blocker"],
+    phrases: ["alpha-adrenergic blocking agent", "alpha-adrenergic blocker", "alpha blocker", "alpha-blocker", "alpha adrenergic antagonist"],
+  },
+  {
     atcPrefixes: ["C07"],
     epcNames: ["beta-Adrenergic Blocker"],
     phrases: ["beta-blocker", "beta blocker", "beta-adrenergic blocking agent", "beta-adrenergic blocker"],
