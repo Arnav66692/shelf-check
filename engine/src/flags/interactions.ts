@@ -170,8 +170,13 @@ function namesLabelOwner(text: string, owner: CabinetItem): boolean {
     [owner.displayName, ...owner.ingredients.map((ingredient) => ingredient.name)].some((name) => termRegExp(name).test(text));
 }
 
+// On a blood thinner's own label, a higher bleeding risk with another product is a serious harm.
+const BLOOD_THINNER = /^(?:warfarin|apixaban|rivaroxaban|dabigatran|edoxaban|heparin|enoxaparin)\b/i;
+const BLEEDING_RISK = /\b(?:increase[sd]?|raise[sd]?|higher)\b[^.;]{0,40}\brisk of (?:serious |major )?bleeding\b|\bbleeding risk\b/i;
+
 function matchesIn(sentence: LabelSentence, sentenceIndex: number, terms: readonly CompiledTerm[], owner: CabinetItem): readonly SentenceMatch[] {
   const matches: SentenceMatch[] = [];
+  const ownerThinsBlood = owner.ingredients.some((ingredient) => BLOOD_THINNER.test(ingredient.name));
   // Commas often separate members of a drug list under a single warning.
   let nextOffset = 0;
   for (const text of sentence.text.split(CLAUSE_BREAK)) {
@@ -185,7 +190,7 @@ function matchesIn(sentence: LabelSentence, sentenceIndex: number, terms: readon
     if (harm && !prohibition && RISK_REDUCTION.test(text.slice(0, harm.index))) continue;
     const hasCoUseCue = CO_USE_CUE.test(text) || prohibition;
     const coUse = hasCoUseCue || sentence.section === "drug_interactions";
-    const serious = Boolean(harm) || prohibition ||
+    const serious = Boolean(harm) || prohibition || (ownerThinsBlood && BLEEDING_RISK.test(text) && !/\bTable \d|\bCYP\d/i.test(sentence.text)) ||
       sentence.drugFactsInstruction === "do_not_use" || sentence.section === "do_not_use";
     const instruction = (coUse && WARNING.test(text)) || (hasCoUseCue && serious) ||
       (sentence.section === "ask_doctor_or_pharmacist" && hasCoUseCue) ||
