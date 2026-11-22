@@ -38,7 +38,7 @@ function childAgeInText(text: string): number | undefined {
   const years = AGE_IN_YEARS.exec(text);
   if (years && (CHILD.test(text) || /\b(?:years?|yrs?)[- ]old\b|\by\/?o\b/i.test(text))) {
     const age = Number(years[1]);
-    return age < CHILD_AGE_YEARS ? age : undefined;
+    return age < REYE_MAX_AGE ? age : undefined;
   }
   return /\btoddler\b/i.test(text) ? 1 : undefined;
 }
@@ -64,11 +64,25 @@ function minimumAge(item: CabinetItem): number {
   return Math.max(0, ...ruled, hasYoungerRow ? 0 : lowestAdultRow);
 }
 
+const REYE_MAX_AGE = 19;
+
+function warnsAboutReye(item: CabinetItem): boolean {
+  const label = item.label ?? {};
+  return [label.warnings, label.do_not_use, label.ask_doctor].some((texts) => (texts ?? []).some((text) => /\breye['’]?s syndrome\b/i.test(text)));
+}
+
 function splitByAge(matches: readonly SymptomMatch[], profile: Profile): { shown: SymptomMatch[]; hidden: Hidden[] } {
   const age = profile.ageYears;
   const shown: SymptomMatch[] = [];
   const hidden: Hidden[] = [];
   for (const match of matches) {
+    if (age !== undefined && age < REYE_MAX_AGE && warnsAboutReye(match.item)) {
+      hidden.push({
+        itemId: match.item.id,
+        reason: "Its label warns children and teenagers about Reye's syndrome, especially with the flu or chickenpox. Ask a pharmacist for something else.",
+      });
+      continue;
+    }
     const minimum = minimumAge(match.item);
     if (age !== undefined && age < CHILD_AGE_YEARS && age < minimum) {
       hidden.push({
