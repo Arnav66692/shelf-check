@@ -549,7 +549,27 @@ function allergyFlags(item: CabinetItem, allergen: string): readonly Flag[] {
   const warning = allergenInAllergyWarning(item, allergen, pattern);
   if (warning.length) return warning;
   const family = familyAllergen(item, allergen);
-  return family.length ? family : otherPainRelieverAllergy(item, allergen);
+  if (family.length) return family;
+  const otherPainReliever = otherPainRelieverAllergy(item, allergen);
+  return otherPainReliever.length ? otherPainReliever : crossSensitivity(item, allergen, pattern);
+}
+
+// "patients with a history of penicillin allergy" or "penicillin-sensitive patients":
+// the label warns that people allergic to the named drug may react to this one.
+function crossSensitivity(item: CabinetItem, allergen: string, pattern: RegExp): readonly Flag[] {
+  if (item.kind !== "rx" && item.kind !== "otc") return [];
+  const [hit] = ALLERGY_WARNING_SECTIONS.flatMap((section) => sectionSentences(item.label, section)
+    .flatMap((sentence) => hitsIn(sentence, pattern)
+      .filter((candidate) => /^[\s-]*(?:allerg(?:y|ies)|hypersensitivity|sensitive)\b/i.test(sentence.text.slice(candidate.span.end)))
+      .slice(0, 1)));
+  if (!hit) return [];
+  const explain = `Your profile lists an allergy to ${allergen}. The ${item.displayName} label warns that people with that allergy may also react to it.`;
+  return [{
+    type: "profile", severity: "ask", itemIds: [item.id],
+    title: `${item.displayName} and an allergy to ${allergen}`,
+    detail: explain, explain, quote: quoteOf(item, hit),
+    match: { text: hit.text, term: allergen, kind: "allergen" },
+  }];
 }
 
 // OTC NSAID labels say not to use them after an allergic reaction to any other pain reliever.

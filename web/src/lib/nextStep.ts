@@ -14,6 +14,7 @@ const HOLD_DOSE = "The label says not to use these together, or not to use it wi
 const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const HYPERKALEMIA = /\bhyperkalemia\b/i;
 const SEDATION = /\brespiratory depression|profound sedation|\bcoma\b/i;
+const CROSS_ALLERGY_STEP = "The label warns that people with this allergy may also react to this medicine. Tell the prescriber or pharmacist about the allergy today, before the next dose. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const SPACE_APART = /\b\d+\s*(?:to\s*\d+\s*)?hours?\s+(?:before|after|apart)\b|\bseparate\b.*\bdoses?\b/i;
 
 function subjectOf(flag: Flag): string {
@@ -62,7 +63,9 @@ function prescribedStep(flag: Flag): string | undefined {
         ? `Call your pharmacist or prescriber today and ask whether you should be taking both products with ${subjectOf(flag)}. ${KEEP_TAKING}`
         : `Do not add a non-prescription product with ${subjectOf(flag)} to your prescribed one until a pharmacist says it is fine. ${KEEP_TAKING}`;
     case "profile":
-      if (/allerg/i.test(flag.title) || (flag.highlight ?? []).some((term) => /allerg/i.test(term))) return ALLERGY_STEP;
+      if (/allerg/i.test(flag.title) || (flag.highlight ?? []).some((term) => /allerg/i.test(term))) {
+        return flag.severity === "stop" ? ALLERGY_STEP : CROSS_ALLERGY_STEP;
+      }
       if (labelSaysStop(flag)) return HOLD_DOSE;
       return flag.severity === "stop"
         ? `Call your prescriber today about this warning. ${KEEP_TAKING}`
@@ -84,7 +87,11 @@ export function nextStep(flag: Flag): string {
     case "daily_total":
       return `Use only one ${subjectOf(flag)} product at a time, or ask a pharmacist which one to keep.`;
     case "profile":
-      if (/allerg/i.test(flag.title)) return "The label says do not use it if you are allergic to it. Do not use it. Ask a pharmacist for something else.";
+      if (/allerg/i.test(flag.title)) {
+        return flag.severity === "stop"
+          ? "The label says do not use it if you are allergic to it. Do not use it. Ask a pharmacist for something else."
+          : "The label warns that people with this allergy may also react to it. Ask a pharmacist before using it.";
+      }
       if (flag.quotes.some((quote) => quote.section === "do_not_use")) {
         return "The label says do not use this product if this applies to you. Do not use it. Ask a pharmacist for something else.";
       }

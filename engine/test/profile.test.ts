@@ -579,3 +579,14 @@ test("a medicine whose indications section opens with the condition as a subhead
   };
   expect(profileFlags([levothyroxine], withConditions("thyroid_disease"))).toEqual([]);
 });
+
+test("a label that warns about people with a history of another drug's allergy gives an ask card", () => {
+  const cephalexin: CabinetItem = {
+    id: "ceph", displayName: "Cephalexin", kind: "rx", verified: true,
+    ingredients: [{ name: "cephalexin", value: 500, unit: "mg" }],
+    label: { warnings_and_cautions: ["Cross-hypersensitivity among beta-lactam antibacterial drugs may occur in up to 10% of patients with a history of penicillin allergy."] },
+  };
+  const [flag] = profileFlags([cephalexin], { ...NOTHING, allergies: ["penicillin"] });
+  expect(flag).toMatchObject({ severity: "ask", match: { kind: "allergen" } });
+  expect(profileFlags([cephalexin], { ...NOTHING, allergies: ["sulfa"] })).toEqual([]);
+});
