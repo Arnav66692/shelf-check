@@ -132,11 +132,49 @@ const EVERYDAY_WORDS: readonly (readonly [RegExp, string])[] = [
   [/\bvitamin d\b(?!\s*\d)/gi, "vitamin d3"],
 ];
 
+// Names people search most. A word one typing slip away (a swapped, missing, extra or wrong letter) is read as the name.
+const COMMON_NAMES = [
+  "tylenol", "nyquil", "dayquil", "zzzquil", "advil", "motrin", "aleve", "benadryl", "zyrtec", "claritin", "allegra",
+  "mucinex", "robitussin", "delsym", "sudafed", "pepto", "imodium", "excedrin", "aspirin", "ibuprofen", "acetaminophen",
+  "naproxen", "ozempic", "metformin", "lisinopril", "atorvastatin", "warfarin", "eliquis", "xarelto", "sertraline",
+  "zoloft", "lexapro", "prozac", "melatonin", "omeprazole", "prilosec", "nexium", "unisom", "theraflu", "dramamine",
+];
+
+function oneSlipApart(a: string, b: string): boolean {
+  if (a === b || Math.abs(a.length - b.length) > 1) return false;
+  if (a.length === b.length) {
+    const diffs = [...a].map((letter, index) => (letter === b[index] ? -1 : index)).filter((index) => index >= 0);
+    if (diffs.length === 1) return true;
+    const [first, second] = diffs;
+    return diffs.length === 2 && second === (first ?? 0) + 1 && a[first ?? 0] === b[second] && a[second] === b[first ?? 0];
+  }
+  const [shorter, longer] = a.length < b.length ? [a, b] : [b, a];
+  return [...longer].some((_, index) => longer.slice(0, index) + longer.slice(index + 1) === shorter);
+}
+
+function correctSlips(text: string): string {
+  return text.replace(/[a-z]{5,}/gi, (word) => {
+    const lower = word.toLowerCase();
+    if (COMMON_NAMES.includes(lower)) return word;
+    return COMMON_NAMES.find((name) => oneSlipApart(lower, name)) ?? word;
+  });
+}
+
 export function everydayWords(text: string): string {
   return EVERYDAY_WORDS.reduce((current, [pattern, replacement]) => current.replace(pattern, replacement), text);
 }
 
+export { correctSlips };
+
+// When nothing is found, try again with a one-letter typing slip in a well-known name fixed.
 export async function searchByName(sources: Sources, text: string, options: NameSearchOptions = {}): Promise<NameSearchResult> {
+  const first = await searchOnce(sources, text, options);
+  const corrected = correctSlips(everydayWords(text));
+  if (first.groups.length > 0 || corrected === everydayWords(text)) return first;
+  return searchOnce(sources, corrected, options);
+}
+
+async function searchOnce(sources: Sources, text: string, options: NameSearchOptions = {}): Promise<NameSearchResult> {
   const limit = options.limit ?? DEFAULT_LIMIT;
   const typed = parseQuery(everydayWords(text));
   if (typed.nameTokens.length === 0 || limit <= 0) return emptyResult(typed.text);

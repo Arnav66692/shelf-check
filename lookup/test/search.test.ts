@@ -111,9 +111,11 @@ describe("searchByName", () => {
     expect(top.product.ingredients.map((ingredient) => ingredient.rawName)).toEqual(["IBUPROFEN", "DIPHENHYDRAMINE CITRATE"]);
   });
 
-  test("returns an empty list, not an error, when nothing can be found", async () => {
+  test("a one-letter slip in a well-known name is fixed when the first search finds nothing", async () => {
     const result = await offlineLookup().lookup.searchByName("nyquill");
-    expect(result).toEqual({ query: "nyquill", groups: [], drugMatchTotal: 0, sourceErrors: [] });
+    expect(result.query).toBe("nyquil");
+    expect(result.groups.length).toBeGreaterThan(0);
+    expect(result.sourceErrors).toEqual([]);
   });
 
   test("returns an empty list without any request for a query with no name", async () => {

@@ -119,10 +119,14 @@ test("a hospital-only route ranks after pills unless the search asks for an inje
 });
 
 test("everyday words become label words before searching", async () => {
-  const { everydayWords } = await import("../src/search.ts");
+  const { everydayWords, correctSlips } = await import("../src/search.ts");
   expect(everydayWords("children's tylenol")).toBe("childrens tylenol");
   expect(everydayWords("kids motrin")).toBe("childrens motrin");
   expect(everydayWords("baby aspirin")).toBe("aspirin 81 mg");
   expect(everydayWords("vitamin d")).toBe("vitamin d3");
   expect(everydayWords("tylenol")).toBe("tylenol");
+  expect(correctSlips("tyelnol")).toBe("tylenol");
+  expect(correctSlips("advill")).toBe("advil");
+  expect(correctSlips("melatonin 3 mg")).toBe("melatonin 3 mg");
+  expect(everydayWords("children's motrin")).toBe("childrens motrin");
 });
