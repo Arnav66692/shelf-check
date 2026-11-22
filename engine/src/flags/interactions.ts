@@ -203,6 +203,26 @@ function explain(labelOwner: CabinetItem, other: CabinetItem, match: FoundMatch)
   return `The ${labelOwner.displayName} label mentions ${named} in this warning, so ask a pharmacist whether it applies to taking ${other.displayName} with it.`;
 }
 
+// RxClass names a group by chemistry or mechanism. Say what a person would call it first.
+const PLAIN_GROUP_NAMES: readonly (readonly [RegExp, string])[] = [
+  [/vitamin k antagonist|direct factor xa|direct thrombin|anticoagulant|heparin group/i, "the blood thinners"],
+  [/platelet aggregation inhibitor|p2y12/i, "the blood thinners that act on platelets"],
+  [/propionic acid|acetic acid derivatives|oxicams|nonsteroidal anti-inflammatory|coxibs/i, "the NSAID pain relievers"],
+  [/salicylic acid/i, "the aspirin family of pain relievers"],
+  [/selective serotonin reuptake|serotonin reuptake inhibitor/i, "the SSRI antidepressants"],
+  [/hmg.?coa reductase/i, "the statins"],
+  [/macrolide/i, "the macrolide antibiotics"],
+  [/fluoroquinolone/i, "the fluoroquinolone antibiotics"],
+  [/ace inhibitors|angiotensin.converting enzyme/i, "the ACE inhibitor blood pressure medicines"],
+  [/benzodiazepine/i, "the benzodiazepine sedatives"],
+  [/opioid|opium alkaloid|natural opium/i, "the opioid pain medicines"],
+  [/monoamine oxidase/i, "the MAOI antidepressants"],
+  [/proton pump/i, "the stomach acid reducers called PPIs"],
+  [/corticosteroid|glucocorticoid/i, "the steroid medicines"],
+  [/thiazide|sulfonamides, plain|high-ceiling diuretic|loop diuretic|potassium-sparing/i, "the diuretics, or water pills"],
+  [/antihistamine/i, "the antihistamines"],
+];
+
 function classExplanation(other: CabinetItem, best: SentenceMatch): string | undefined {
   const { ingredient, text } = best.found;
   if (best.mechanism) {
@@ -214,7 +234,9 @@ function classExplanation(other: CabinetItem, best: SentenceMatch): string | und
   if (/^blood[- ]thinning$/i.test(text) && /^\s+drug\s+warfarin\b/i.test(best.sentence.text.slice(best.span.end))) {
     return `${other.displayName} contains ${ingredient}, a blood thinner. The label names warfarin, another blood thinner.`;
   }
-  return `${other.displayName} contains ${ingredient}, which is in the drug group “${best.drugClass.name}”. The label warns about “${text}”. Source: RxClass (${best.drugClass.source}).`;
+  const plain = PLAIN_GROUP_NAMES.find(([pattern]) => pattern.test(best.drugClass?.name ?? ""))?.[1];
+  const group = plain ? `${plain} (the drug group “${best.drugClass.name}”)` : `the drug group “${best.drugClass.name}”`;
+  return `${other.displayName} contains ${ingredient}, which is one of ${group}. The label warns about “${text}”. Source: RxClass (${best.drugClass.source}).`;
 }
 
 // OTC Drug Facts often puts the consequence just before "The chance is higher if".

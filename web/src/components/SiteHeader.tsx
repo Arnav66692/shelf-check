@@ -61,7 +61,7 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="fixed z-40 inset-x-0 top-0 print:hidden bg-[rgba(25,26,30,0.96)] border-b border-dashed border-[var(--hair)] pb-3">
+    <header className="fixed z-40 inset-x-0 top-0 print:hidden bg-[var(--paper)] border-b border-dashed border-[var(--hair)] pb-3">
       <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3 px-[var(--margin)] pt-[var(--margin)]">
         <Link href="/" className="flex items-center gap-2 py-2 -my-2 text-ink">
           <Mark />
