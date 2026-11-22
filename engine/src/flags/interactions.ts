@@ -4,7 +4,7 @@ import { mechanismSpanAllowed, type MechanismTerm } from "../mechanismClasses.ts
 import { isNutritionIngredient } from "../supplementNames.ts";
 import { sectionSentences, sectionTitle, toQuote } from "../labelText.ts";
 import type { LabelSentence } from "../labelText.ts";
-import { termRegExp } from "../text.ts";
+import { escapeRegExp, termRegExp } from "../text.ts";
 import type { TextSpan } from "../text.ts";
 import type { CabinetItem, DrugClass, Flag, InteractionMatchKind, LabelSectionName, TermMatch } from "../types.ts";
 import { severityForSection } from "./severity.ts";
@@ -125,6 +125,9 @@ function firstAllowedSpan(text: string, term: CompiledTerm, owner: CabinetItem):
       if (/^diuretics?$/i.test(term.term) && /\bpotassium[- ](?:sparing|retaining)\s+$/i.test(before)) return false;
       if (/^potassium$/i.test(term.term) && /^[- ](?:sparing|retaining|channels?)\b/i.test(after)) return false;
       if (/^potassium$/i.test(term.term) && /\b(?:serum|plasma|blood)\s+$/i.test(before)) return false;
+      // "losartan potassium" is the owner's own salt name, not a potassium product.
+      if (/^(?:potassium|sodium|calcium|magnesium)$/i.test(term.term) &&
+          owner.ingredients.some((ingredient) => new RegExp(`\\b${escapeRegExp(ingredient.name.split(/\s+/)[0] ?? "")}\\s+$`, "i").test(before))) return false;
       if (/^insulins?$/i.test(term.term)) {
         return INSULIN_CONTEXT.test(text.slice(0, span.start)) && INSULIN_END.test(after);
       }

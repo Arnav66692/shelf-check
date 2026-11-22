@@ -14,6 +14,7 @@ const HOLD_DOSE = "The label says not to use these together, or not to use it wi
 const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const HYPERKALEMIA = /\bhyperkalemia\b/i;
 const BLOOD_THINNER_EFFECT = /\b(?:effects?|response|activity) of (?:warfarin|oral anticoagulants?)|\banticoagulant effects?\b|\bprolong\w* (?:the )?prothrombin time|\bprothrombin time[^.;]{0,30}increas\w*/i;
+const DOSE_CHANGE = /\b(?:reduce|decrease|lower|adjust)\w* (?:the )?(?:\w+ )?(?:dose|dosage)|\bdos(?:e|age) (?:reduction|adjustment)s?\b|\bone[- ]third\b|\bdo not exceed \w+ \d/i;
 const SEDATION = /\brespiratory depression|profound sedation|\bcoma\b/i;
 const CROSS_ALLERGY_STEP = "The label warns that people with this allergy may also react to this medicine. Tell the prescriber or pharmacist about the allergy today, before the next dose. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const SPACE_APART = /\b\d+\s*(?:to\s*\d+\s*)?hours?\s+(?:before|after|apart)\b|\bseparate\b.*\bdoses?\b/i;
@@ -32,12 +33,15 @@ function isAllergy(flag: Flag): boolean {
   return flag.matchKind === "allergen";
 }
 
+// On an interaction card only the lead quote decides, because a merged card can carry another label's
+// line about a different drug. On a health card every quote is about that product and that health detail.
 function quoteSaysStop(flag: Flag): boolean {
-  return mentions(flag, LABEL_SAYS_STOP) || flag.quotes.some((quote) => quote.section === "contraindications");
+  const quotes = flag.type === "interaction" ? flag.quotes.slice(0, 1) : flag.quotes;
+  return quotes.some((quote) => LABEL_SAYS_STOP.test(quote.excerpt) || quote.section === "contraindications");
 }
 
 function labelSaysStop(flag: Flag): boolean {
-  return flag.severity === "stop" && mentions(flag, LABEL_SAYS_STOP);
+  return flag.severity === "stop" && quoteSaysStop(flag);
 }
 
 function interactionStep(flag: Flag): string {
@@ -56,6 +60,9 @@ function interactionStep(flag: Flag): string {
   }
   if (mentions(flag, SPACE_APART)) {
     return "The label says to space these apart. Ask a pharmacist how many hours apart to take them.";
+  }
+  if (flag.prescribed && mentions(flag, DOSE_CHANGE)) {
+    return "The label says a dose may need to change when these are taken together. Ask the prescriber or pharmacist today whether your dose was adjusted for this. Do not change it yourself.";
   }
   if (flag.allPrescribed && flag.severity === "stop") {
     return "The label warns of serious harm when these are taken together. Call the prescriber or pharmacist today, before the next dose, to confirm the plan.";
@@ -99,6 +106,9 @@ export function nextStep(flag: Flag): string {
     case "daily_total":
       return `Use only one ${subjectOf(flag)} product at a time, or ask a pharmacist which one to keep.`;
     case "profile":
+      if (/Reye's syndrome/.test(flag.title)) {
+        return "Do not give this to a child or teenager who has or is getting over chickenpox or the flu. Ask a pharmacist for a product that is safe for them.";
+      }
       if (isAllergy(flag)) {
         return flag.severity === "stop"
           ? "The label says do not use it if you are allergic to it. Do not use it. Ask a pharmacist for something else."

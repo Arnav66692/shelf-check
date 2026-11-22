@@ -613,6 +613,22 @@ function unique<T>(values: readonly T[]): readonly T[] {
   return [...new Set(values)];
 }
 
+const REYE_MAX_AGE = 19;
+
+// Aspirin and other salicylate labels warn children and teenagers about Reye's syndrome without an age number.
+function reyeFlags(item: CabinetItem, ageYears: number): readonly Flag[] {
+  if (ageYears >= REYE_MAX_AGE) return [];
+  const [hit] = firstHitPerSentence(item, ["do_not_use", "warnings", "ask_doctor", "boxed_warning"], /\breye'?s syndrome\b/i);
+  if (!hit) return [];
+  const explain = `The ${item.displayName} label warns children and teenagers about Reye's syndrome, a rare but serious illness, and the age in your profile is ${formatNumber(ageYears)}.`;
+  return [{
+    type: "profile", severity: "ask", itemIds: [item.id],
+    title: `${item.displayName} and Reye's syndrome`,
+    detail: explain, explain, quote: quoteOf(item, hit),
+    match: { text: hit.text, term: "Reye's syndrome", kind: "age" },
+  }];
+}
+
 function flagsForItem(item: CabinetItem, profile: HealthProfile, cabinet: readonly CabinetItem[]): readonly Flag[] {
   const allergens = unique(profile.allergies.map((allergen) => allergen.trim()).filter((allergen) => allergen !== ""));
   return [
@@ -622,6 +638,7 @@ function flagsForItem(item: CabinetItem, profile: HealthProfile, cabinet: readon
     ...(profile.pregnant === true ? pregnancyFlags(item) : []),
     ...(profile.breastfeeding === true ? breastfeedingFlags(item) : []),
     ...(profile.ageYears === undefined ? [] : ageFlags(item, profile.ageYears)),
+    ...(profile.ageYears === undefined ? [] : reyeFlags(item, profile.ageYears)),
   ];
 }
 

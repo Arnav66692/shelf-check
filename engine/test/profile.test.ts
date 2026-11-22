@@ -612,3 +612,12 @@ test("an allergy is matched to a label that names its family, like sulfonamides 
   expect(profileFlags([cipro], { ...NOTHING, allergies: ["levofloxacin"] })[0]).toMatchObject({ severity: "stop" });
   expect(profileFlags([celecoxib], { ...NOTHING, allergies: ["levofloxacin"] })).toEqual([]);
 });
+
+test("an aspirin label's Reye's syndrome warning gives an ask card for a child, not an adult", () => {
+  const aspirin: CabinetItem = {
+    id: "asa", displayName: "Aspirin", kind: "otc", verified: true, ingredients: [{ name: "aspirin", value: 325, unit: "mg" }],
+    label: { warnings: ["Reye's syndrome: Children and teenagers who have or are recovering from chicken pox or flu-like symptoms should not use this product."] },
+  };
+  expect(profileFlags([aspirin], { ...NOTHING, ageYears: 10 }).find((flag) => /Reye/.test(flag.title))).toMatchObject({ severity: "ask" });
+  expect(profileFlags([aspirin], { ...NOTHING, ageYears: 40 }).find((flag) => /Reye/.test(flag.title))).toBeUndefined();
+});
