@@ -191,6 +191,7 @@ function mergeGroup(
     prescribed,
     allPrescribed,
     ...(reasons.length > 0 ? { matchedBecause: reasons } : {}),
+    ...(first.match?.kind ? { matchKind: first.match.kind } : {}),
   };
   if (first.type === "interaction") {
     const pairNames = itemIds.map((id) => names.get(id) ?? "a product");

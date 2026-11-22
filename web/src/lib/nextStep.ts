@@ -9,7 +9,7 @@ const LABEL_TAG_STEPS: Readonly<Record<string, string>> = {
 
 const KEEP_TAKING = "Do not stop or change a prescribed medicine on your own.";
 const MAOI = /\bMAOI\b|monoamine oxidase/i;
-const LABEL_SAYS_STOP = /\b(?:contraindicated|do not (?:use|take|start)|should not be (?:used|taken|given|coadministered|co-administered)|avoid (?:co-?administration|concomitant|use|taking)|discontinue|must not)\b/i;
+const LABEL_SAYS_STOP = /\b(?:contraindicated|(?:is |are )?not recommended|do not (?:use|take|start|give)|should not be (?:used|taken|given|coadministered|co-administered)|avoid (?:co-?administration|concomitant|use|taking)|discontinue|must not)\b/i;
 const HOLD_DOSE = "The label says not to use these together, or not to use it with this health detail. Call the prescriber or pharmacist today, before the next dose, and ask what to do. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const HYPERKALEMIA = /\bhyperkalemia\b/i;
@@ -24,6 +24,16 @@ function subjectOf(flag: Flag): string {
 
 function mentions(flag: Flag, pattern: RegExp): boolean {
   return flag.quotes.some((quote) => pattern.test(quote.excerpt));
+}
+
+const AGE_KINDS: ReadonlySet<string> = new Set(["age", "under", "from_to", "from_to_under", "not_intended_under", "or_older"]);
+
+function isAllergy(flag: Flag): boolean {
+  return flag.matchKind === "allergen";
+}
+
+function quoteSaysStop(flag: Flag): boolean {
+  return mentions(flag, LABEL_SAYS_STOP);
 }
 
 function labelSaysStop(flag: Flag): boolean {
@@ -67,10 +77,8 @@ function prescribedStep(flag: Flag): string | undefined {
         ? `Call your pharmacist or prescriber today and ask whether you should be taking both products with ${subjectOf(flag)}. ${KEEP_TAKING}`
         : `Do not add a non-prescription product with ${subjectOf(flag)} to your prescribed one until a pharmacist says it is fine. ${KEEP_TAKING}`;
     case "profile":
-      if (/allerg/i.test(flag.title) || (flag.highlight ?? []).some((term) => /allerg/i.test(term))) {
-        return flag.severity === "stop" ? ALLERGY_STEP : CROSS_ALLERGY_STEP;
-      }
-      if (labelSaysStop(flag)) return HOLD_DOSE;
+      if (isAllergy(flag)) return flag.severity === "stop" ? ALLERGY_STEP : CROSS_ALLERGY_STEP;
+      if (quoteSaysStop(flag)) return HOLD_DOSE;
       return flag.severity === "stop"
         ? `Call your prescriber today about this warning. ${KEEP_TAKING}`
         : `Tell your prescriber or pharmacist about the health detail it mentions. ${KEEP_TAKING}`;
@@ -91,12 +99,15 @@ export function nextStep(flag: Flag): string {
     case "daily_total":
       return `Use only one ${subjectOf(flag)} product at a time, or ask a pharmacist which one to keep.`;
     case "profile":
-      if (/allerg/i.test(flag.title)) {
+      if (isAllergy(flag)) {
         return flag.severity === "stop"
           ? "The label says do not use it if you are allergic to it. Do not use it. Ask a pharmacist for something else."
           : "The label warns that people with this allergy may also react to it. Ask a pharmacist before using it.";
       }
-      if (flag.quotes.some((quote) => quote.section === "do_not_use")) {
+      if (flag.severity === "stop" && AGE_KINDS.has(flag.matchKind ?? "")) {
+        return "The label says not to use this at this age. Do not use it. Ask a pharmacist for a product made for this age.";
+      }
+      if (flag.quotes.some((quote) => quote.section === "do_not_use") || (flag.severity === "stop" && quoteSaysStop(flag))) {
         return "The label says do not use this product if this applies to you. Do not use it. Ask a pharmacist for something else.";
       }
       return flag.quotes.some((quote) => quote.section === "fda_statement")

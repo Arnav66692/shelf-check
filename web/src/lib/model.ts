@@ -43,6 +43,7 @@ export type Flag = {
   readonly prescribed?: boolean;
   readonly allPrescribed?: boolean;
   readonly matchedBecause?: readonly string[];
+  readonly matchKind?: string;
 };
 
 export type FlagQuote = {

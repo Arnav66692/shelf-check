@@ -190,3 +190,29 @@ test("round 2 plain-language emergencies are caught", () => {
   expect(screenEmergency("I don't want to be here anymore")).toMatchObject({ emergency: true, selfHarm: true });
   expect(screenEmergency("headache and a stuffy nose").emergency).toBe(false);
 });
+
+test("round 3 plain-language emergencies are caught", () => {
+  const cases: [string, "poison" | "selfHarm" | "911"][] = [
+    ["my dad is snoring weird and i cant wake him he took his pain meds and xanax", "poison"],
+    ["took like 20 tylenol an hour ago but i feel fine", "poison"],
+    ["my teen took a bunch of her adhd pills", "poison"],
+    ["accidentally took my wife's pills instead of mine", "poison"],
+    ["i have pills saved up to end it", "selfHarm"],
+    ["everyone would be better off without me", "selfHarm"],
+    ["my mouth is drooping on one side", "911"],
+    ["threw up something that looks like coffee grounds", "911"],
+    ["peeing blood and i take eliquis", "911"],
+    ["severe muscle pain and my pee is dark brown on my statin", "911"],
+    ["hot, confused, twitching, and shivering after starting tramadol with my zoloft", "911"],
+    ["my heart is beating super slow and i feel faint on my digoxin", "911"],
+  ];
+  for (const [text, kind] of cases) {
+    const screen = screenEmergency(text);
+    expect(screen.emergency, text).toBe(true);
+    if (screen.emergency && kind === "poison") expect(screen.poison, text).toBe(true);
+    if (screen.emergency && kind === "selfHarm") expect(screen.selfHarm, text).toBe(true);
+  }
+  for (const ordinary of ["i took 2 advil for my headache", "my back hurts after the gym", "my nose is runny and i have a sore throat", "took my 10 mg pill this morning"]) {
+    expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+  }
+});

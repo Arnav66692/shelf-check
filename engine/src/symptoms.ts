@@ -18,11 +18,11 @@ export const SYMPTOM_SYNONYMS: Readonly<Record<string, readonly string[]>> = {
 const EMERGENCY_RULES = {
   poison: {
     phrases: ["overdose", "overdosed", "poisoning", "poisoned"],
-    pattern: /overdos(?:es|ing)|(?:took|taken|taking|swallowed|given|gave|ingested) (?:way )?too (?:much|many)|too many (?:pills|tablets|capsules|doses)|too much (?:medicine|medication|tylenol|acetaminophen|ibuprofen)|accidentally (?:swallowed|ingested)|(?:swallowed|ate|drank|ingested) (?:\w+ ){0,6}(?:pills?|tablets?|capsules?|meds|medicines?|medications?|cough syrup|tylenol|acetaminophen|ibuprofen|advil|aspirin|poison|bleach|cleaner|detergent|batter(?:y|ies)|something unknown)|got into (?:the |my |grandma'?s )?(?:medicine|meds|pills|cabinet)|ate (?:a |the |some )?(?:\w+ ){0,3}(?:vitamins?|gumm(?:y|ies)|iron)|(?:double|extra|second) dose|took (?:my |his |her )?(?:\w+ ){0,3}twice|(?:sleepy|drowsy|hard to wake|won'?t wake|can'?t wake)[^.]{0,60}(?:breath\w*|pain pills?|opioid|oxy\w*|fentanyl)|breathing (?:is )?(?:slow|shallow|weird)|won'?t wake up|not waking/,
+    pattern: /overdos(?:es|ing)|(?:took|taken|taking|swallowed|given|gave|ingested) (?:way )?too (?:much|many)|too many (?:pills|tablets|capsules|doses)|too much (?:medicine|medication|tylenol|acetaminophen|ibuprofen)|accidentally (?:swallowed|ingested)|(?:swallowed|ate|drank|ingested) (?:\w+ ){0,6}(?:pills?|tablets?|capsules?|meds|medicines?|medications?|cough syrup|tylenol|acetaminophen|ibuprofen|advil|aspirin|poison|bleach|cleaner|detergent|batter(?:y|ies)|something unknown)|got into (?:the |my |grandma'?s )?(?:medicine|meds|pills|cabinet)|ate (?:a |the |some )?(?:\w+ ){0,3}(?:vitamins?|gumm(?:y|ies)|iron)|(?:double|extra|second) dose|took (?:my |his |her )?(?:\w+ ){0,3}twice|(?:sleepy|drowsy|hard to wake|won'?t wake|can'?t wake)[^.]{0,60}(?:breath\w*|pain pills?|opioid|oxy\w*|fentanyl)|breathing (?:is )?(?:slow|shallow|weird)|won'?t wake up|not waking|(?:took|ate|swallowed|had|taken) (?:like |about |around |maybe |almost )?\d{2,} |took a bunch of|accidentally (?:took|taken|ate|gave|swallowed)|(?:pills|meds|medicine|medication|dose) by mistake|(?:took|taken|gave|given) (?:the )?wrong (?:pills|meds|medicine|medication|dose)|(?:cant|cannot|wont) wake (?:him|her|them|up)|snoring (?:weird|strange|loud|funny)/,
   },
   self_harm: {
     phrases: ["suicidal thoughts", "suicidal", "kill myself", "want to die", "end my life"],
-    pattern: /suicide|killing myself|hurt myself on purpose|don'?t want to (?:be here|live|wake up)|ending it|end it all|better off dead/,
+    pattern: /suicide|killing myself|hurt myself on purpose|don'?t want to (?:be here|live|wake up)|ending it|end it all|better off dead|pills? (?:saved|stockpiled|saving|stored) up|better off without me|no reason to live|(?:plan|planning) to (?:end|kill)/,
   },
   chest_symptoms: {
     phrases: ["chest pain", "chest pressure", "chest tightness", "heart attack"],
@@ -34,7 +34,7 @@ const EMERGENCY_RULES = {
   },
   stroke_signs: {
     phrases: ["stroke", "face drooping", "slurred speech"],
-    pattern: /face (?:is )?droop\w*|droop\w* face|one side (?:of (?:my|his|her) (?:body|face) )?(?:is )?(?:weak|numb)|can'?t (?:talk|speak) (?:right|properly)|slurr\w*|can'?t feel (?:my|his|her) (?:left |right )?(?:arm|leg|face)/,
+    pattern: /face (?:is )?droop\w*|droop\w* face|one side (?:of (?:my|his|her) (?:body|face) )?(?:is )?(?:weak|numb)|can'?t (?:talk|speak) (?:right|properly)|slurr\w*|can'?t feel (?:my|his|her) (?:left |right )?(?:arm|leg|face)|(?:mouth|smile|lip|face) (?:is )?droop\w*|droop\w* (?:on )?one side/,
   },
   seizure: { phrases: ["seizure", "seizures"], pattern: /convuls(?:ion|ions|ing)/ },
   airway_swelling: {
@@ -47,7 +47,11 @@ const EMERGENCY_RULES = {
   },
   bleeding: {
     phrases: ["vomiting blood", "coughing blood", "coughing up blood", "severe bleeding"],
-    pattern: /(?:vomit(?:ed|ing)?|cough(?:ed|ing)?) (?:up )?(?:some )?blood|blood in (?:my |the )?(?:vomit|stools?)|(?:bloody|black(?: tarry)?) stools?|(?:black|bloody|tarry) (?:poop|stool|bowel)|poop is black|bleeding (?:and it )?(?:won'?t|doesn'?t|will not) stop|nosebleed won'?t stop|(?:hit|bumped|banged) (?:my|his|her) head/,
+    pattern: /(?:vomit(?:ed|ing)?|cough(?:ed|ing)?) (?:up )?(?:some )?blood|blood in (?:my |the )?(?:vomit|stools?)|(?:bloody|black(?: tarry)?) stools?|(?:black|bloody|tarry) (?:poop|stool|bowel)|poop is black|bleeding (?:and it )?(?:won'?t|doesn'?t|will not) stop|nosebleed won'?t stop|(?:hit|bumped|banged) (?:my|his|her) head|coffee grounds?|(?:peeing|pee|urine|urinating) (?:blood|is red|is bloody)|blood in (?:my |the |his |her )?(?:pee|urine)/,
+  },
+  drug_reaction: {
+    phrases: ["serotonin syndrome", "rhabdomyolysis", "digoxin toxicity"],
+    pattern: /(?:dark|brown|cola|tea)[- ]?colou?red (?:pee|urine)|(?:pee|urine) is (?:dark )?brown|dark brown (?:pee|urine)|(?:confused|twitching|shivering|rigid|agitated)[^.]{0,80}(?:tramadol|zoloft|sertraline|ssri|maoi|prozac|lexapro)|heart (?:is )?(?:beating )?(?:super|very|really|so) slow|(?:faint|dizzy|fainting|passing out)[^.]{0,30}digoxin/,
   },
   loss_of_consciousness: { phrases: ["unresponsive", "unconscious", "fainting", "fainted", "passed out"] },
 } as const;
