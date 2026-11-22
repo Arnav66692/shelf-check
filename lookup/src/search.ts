@@ -128,7 +128,7 @@ const EVERYDAY_WORDS: readonly (readonly [RegExp, string])[] = [
   [/\b(?:baby|low[- ]dose|low[- ]strength) aspirin\b/gi, "aspirin 81 mg"],
   [/\bchildren['’]s\b/gi, "childrens"],
   [/\b(?:kids?['’]?s?|child['’]?s?)\b(?=\s+\w)/gi, "childrens"],
-  [/\binfant['’]?s\b/gi, "infants"],
+  [/\binfant(?:['’]?s)?\b/gi, "infants"],
   [/\bvitamin d\b(?!\s*\d)/gi, "vitamin d3"],
 ];
 
