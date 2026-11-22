@@ -2,7 +2,7 @@
 
 The rules say the video has to show you explaining your code. This is the one piece to learn. It is the strongest moment in the demo (Tylenol plus NyQuil adds up to 5,600 mg of acetaminophen a day), it is plain code with no AI in it, and it fits in about 35 seconds.
 
-The file is `engine/src/flags/dailyTotal.ts`. You do not need all 614 lines. You need the path below. Line numbers are as of the last commit on Nov 21 at about 10:40 PM. If they move, search for the function name.
+The file is `engine/src/flags/dailyTotal.ts`. You do not need all 615 lines. You need the path below. Line numbers are as of the last commit on Nov 22 at about 3:15 AM. If they move, search for the function name.
 
 ## The idea in one breath
 
@@ -14,13 +14,13 @@ Cabinet: Tylenol Extra Strength (acetaminophen 500 mg per tablet) and Vicks NyQu
 
 ### Step 1. Find the shared ingredient
 
-`dailyTotalFlags` (line 612) calls `findDuplicatedIngredients` in `duplicates.ts` (line 32). It lists every ingredient of every product, groups them by name, and keeps groups with two or more products. Here it finds acetaminophen, in Tylenol and NyQuil.
+`dailyTotalFlags` (line 613) calls `findDuplicatedIngredients` in `duplicates.ts` (line 32). It lists every ingredient of every product, groups them by name, and keeps groups with two or more products. Here it finds acetaminophen, in Tylenol and NyQuil.
 
 The names match because each ingredient goes through the NIH RxNorm service when the product is added, which turns different spellings and salt forms into one base name.
 
 ### Step 2. Pick the right directions for the person
 
-`toFlag` (line 594) calls `totalsFor` (line 465), which calls `labelledMaximum` (line 347) once per product.
+`toFlag` (line 595) calls `totalsFor` (line 466), which calls `labelledMaximum` (line 348) once per product.
 
 Labels often have rows like "adults and children 12 years and over" and "children 6 to 11 years". `applicableDirections` (line 152) picks the row that matches the person's age. If no age is set, `toFlag` uses the adult row and the card says so, because a child's row has a lower limit.
 
@@ -36,13 +36,13 @@ Labels often have rows like "adults and children 12 years and over" and "childre
 Still in `labelledMaximum`:
 
 - Tylenol counts caplets, so `mgIn` (line 109) does 6 times 500 mg, which is 3,000 mg a day.
-- NyQuil counts doses, so `doseIn` (line 245) finds how big one dose is, "30 mL". Then `mgIn` turns 30 mL at 650 mg per 30 mL into 650 mg, and 4 doses makes 2,600 mg a day.
+- NyQuil counts doses, so `doseIn` (line 246) finds how big one dose is, "30 mL". Then `mgIn` turns 30 mL at 650 mg per 30 mL into 650 mg, and 4 doses makes 2,600 mg a day.
 
 If the limits disagree, a dose size is missing, or a unit cannot be converted, it returns `not_parsed` with a reason. It never guesses. A wrong total on a medicine is worse than no total.
 
 ### Step 5. Add up and compare with the warning
 
-Back in `totalsFor`: 3,000 plus 2,600 is 5,600 mg. It only adds amounts that use the same strength basis, so two different salt forms are never added as if they were the same thing. `labelledCeiling` (line 392) finds "more than 4,000 mg of acetaminophen in 24 hours" on the Tylenol label. 5,600 is more than 4,000, so `severityFor` (line 505) returns stop, and the card shows "Check now" with all three label sentences quoted.
+Back in `totalsFor`: 3,000 plus 2,600 is 5,600 mg. It only adds amounts that use the same strength basis, so two different salt forms are never added as if they were the same thing. `labelledCeiling` (line 393) finds "more than 4,000 mg of acetaminophen in 24 hours" on the Tylenol label. 5,600 is more than 4,000, so `severityFor` (line 506) returns stop, and the card shows "Check now" with all three label sentences quoted.
 
 ## Proof it works
 
@@ -58,7 +58,7 @@ Run it yourself before recording, so you have seen it pass:
 cd ~/Desktop/Competitions/evohacks-2/shelf-check/engine && npx vitest run test/dailyTotal.test.ts
 ```
 
-It printed `Tests 25 passed (25)` at 10:40 PM on Nov 21. The whole engine suite has 706 tests.
+It printed `Tests 26 passed (26)` at 3:15 AM on Nov 22. The whole engine suite has 741 tests.
 
 ## The 35 second version to say on camera
 
