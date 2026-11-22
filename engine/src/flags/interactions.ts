@@ -34,7 +34,7 @@ const ALLERGY = /\ballerg(?:y|ic|ies)\b/i;
 const PROHIBITION = /\b(?:do|should|must) not (?:be (?:combined|co-?administered|taken|used|given)|take|use|administer|co-?administer|combine|exceed)\b/gi;
 const UNRESOLVED_POLARITY = /\b(?:no|not|neither|nor|never|without|lack(?:s|ed|ing)?|unknown|unclear|unaffected|unnecessary|except(?:ion|ing)?|excluding|other than|rather than|instead of|compared (?:to|with)|alone(?! but particularly with)|monotherapy)\b/i;
 const WARNING = /\b(?:avoid|(?:do|should|must) not (?:be (?:combined|co-?administered|taken|used)|take|use|administer|co-?administer|combine)|contraindicated|monitor(?:ed|ing)?|caution|ask (?:a |your )?(?:doctor|pharmacist)|potentiat\w*|interacts? with|interactions? between|(?:may|can|could) (?:increase|enhance|decrease|reduce|affect|interact)|(?:increas\w*|reduc\w*) (?:the )?(?:risks?|effects?|clearance|exposure|concentrations?)|(?:increas|decreas|reduc|elevat)\w* (?:[\w-]+ ){1,2}(?:concentrations?|levels?|exposure)|may result in deterioration|life-threatening|synergism|antagonism|(?:the )?risk (?:of [\w\s/,-]{1,80}? )?(?:is |are )?increas\w*|increases? the risk|risk factors? (?:for|of|include)|may be (?:reduced|decreased|increased)|less effective|do not exceed|may bind|(?:at least )?\d+ hours? (?:apart|before|after|prior)|(?:reduc|decreas)\w* (?:the )?(?:absorption|effectiveness|efficacy)|unintended pregnanc\w*|(?:back-?up|non-?hormonal) (?:method|contracepti)\w*)\b/i;
-const SERIOUS_HARM = /\b(?:fatal|death|life[- ]threatening|respiratory depression|serotonin syndrome|(?:serious|severe|major) (?:[\w-]+ ){0,2}bleeding|rhabdomyolysis|(?:severe|life-threatening|fatal) hyperkalemia|unintended pregnanc\w*|(?:reduc|decreas)\w* (?:the )?effectiveness of (?:hormonal )?contracept\w*|contraceptive failure|(?:potentiat|increas|decreas|reduc|enhanc)\w* (?:the )?(?:anticoagulant |hypoprothrombinemic )?(?:effects?|response|activity) of (?:warfarin|oral anticoagulants?|coumarin\w*)|(?:potentiat|increas|decreas|reduc|enhanc)\w* the anticoagulant effects?|prolong\w* (?:the )?prothrombin time|(?:increas\w*|rais\w*|elevat\w*) (?:the )?(?:serum |plasma )?(?:lithium|digoxin) (?:serum |plasma )?(?:concentrations?|levels?)|increases? in (?:serum |plasma )?(?:lithium|digoxin) (?:concentrations?|levels?)|risk of lithium toxicity|(?:prothrombin time|INR)[^.;]{0,30}(?:increas|prolong|elevat)\w*|(?:increas|prolong|elevat)\w* (?:the )?(?:prothrombin time|INR)|(?:lithium|digoxin) toxicity has (?:been reported|resulted|occurred)|myelosuppression|bone marrow (?:suppression|toxicity)|agranulocytosis)\b/i;
+const SERIOUS_HARM = /\b(?:fatal|death|life[- ]threatening|respiratory depression|serotonin syndrome|(?:serious|severe|major) (?:[\w-]+ ){0,2}bleeding|rhabdomyolysis|(?:severe|life-threatening|fatal) hyperkalemia|unintended pregnanc\w*|(?:reduc|decreas)\w* (?:the )?effectiveness of (?:hormonal )?contracept\w*|contraceptive failure|(?:potentiat|increas|decreas|reduc|enhanc)\w* (?:the )?(?:anticoagulant |hypoprothrombinemic )?(?:effects?|response|activity) of (?:warfarin|oral anticoagulants?|coumarin\w*)|(?:potentiat|increas|decreas|reduc|enhanc)\w* the anticoagulant effects?|(?:increas|decreas|enhanc)\w* the response to (?:oral )?anticoagulant\w*|prolong\w* (?:the )?prothrombin time|(?:increas\w*|rais\w*|elevat\w*) (?:the )?(?:serum |plasma )?(?:lithium|digoxin) (?:serum |plasma )?(?:concentrations?|levels?)|increases? in (?:serum |plasma )?(?:lithium|digoxin) (?:concentrations?|levels?)|risk of lithium toxicity|(?:prothrombin time|INR)[^.;]{0,30}(?:increas|prolong|elevat)\w*|(?:increas|prolong|elevat)\w* (?:the )?(?:prothrombin time|INR)|(?:lithium|digoxin) toxicity has (?:been reported|resulted|occurred)|myelosuppression|bone marrow (?:suppression|toxicity)|agranulocytosis)\b/i;
 const AVOID_COMBINATION = /\b(?:avoid(?:ed)?|contraindicated|do not (?:use|take)|should not be (?:used|taken|given))\b/i;
 const RISK_REDUCTION = /\b(?:prevent(?:s|ed|ion of)?|(?:reduc(?:e[ds]?|tion)|lower(?:s|ed)?) (?:of |in )?(?:the )?(?:risk|incidence) of|to avoid)\s*$/i;
 const AVOID_OTHER_TARGET = /\bavoid\s+([^,;]+?)\s+(?:(?:while|when|if)\s+(?:(?:you|patients?)\s+(?:are\s+)?)?(?:taking|using|receiving)|during treatment with)\b/i;
@@ -85,7 +85,7 @@ function termsAbout(other: CabinetItem, labelOwner: CabinetItem): readonly Compi
   // Clinical mechanism rows describe systemic exposure. Local-only NDC products
   // (e.g. ketoconazole shampoo) should not inherit the systemic drug's warning.
   const localOnly = other.routes?.length && other.routes.every((route) =>
-    /^(?:topical|cutaneous|ophthalmic|otic(?: \(auricular\))?|dental|periodontal|irrigation)$/i.test(route));
+    /^(?:topical|cutaneous|ophthalmic|otic(?: \(auricular\))?|auricular(?: \(otic\))?|nasal|dental|periodontal|irrigation)$/i.test(route));
   return other.ingredients
     .filter((ingredient) => other.kind !== "supplement" || !isNutritionIngredient(ingredient))
     .filter((ingredient) => !ownNames.has(ingredient.name.toLowerCase()))
@@ -194,7 +194,7 @@ function matchesIn(sentence: LabelSentence, sentenceIndex: number, terms: readon
       sentence.drugFactsInstruction === "do_not_use" || sentence.section === "do_not_use";
     const instruction = (coUse && WARNING.test(text)) || (hasCoUseCue && serious) ||
       (sentence.section === "ask_doctor_or_pharmacist" && hasCoUseCue) ||
-      (/\b(?:the chance is higher if|risk is (?:higher|increased) (?:if|with|when))\b/i.test(text) && hasCoUseCue);
+      (/\b(?:the chances? (?:is|are) higher if|risk is (?:higher|increased) (?:if|with|when))\b/i.test(text) && hasCoUseCue);
     if (!instruction) continue;
     const otherTarget = AVOID_OTHER_TARGET.exec(text);
     const afterCondition = AVOID_AFTER_CONDITION.exec(text);
@@ -284,7 +284,7 @@ function classExplanation(other: CabinetItem, best: SentenceMatch): string | und
 // OTC Drug Facts often puts the consequence just before "The chance is higher if".
 // Keep that antecedent only when the two lines are contiguous on this label.
 function withBleedingContext(match: SentenceMatch, previous: LabelSentence | undefined, paragraphs: readonly string[]): SentenceMatch {
-  if (!previous || !/^The (?:chance|risk) is (?:higher|increased)\b/i.test(match.sentence.text) ||
+  if (!previous || !/^The (?:chances? (?:is|are)|risk is) (?:higher|increased)\b/i.test(match.sentence.text) ||
       !(/\bmay cause (?:severe|serious) stomach bleeding\.$/i.test(previous.text) || SERIOUS_HARM.test(previous.text))) return match;
   const end = match.sentence.text.search(/\s+(?:heart attack and stroke|allergy) (?:warning|alert)\b/i);
   const risks = end < 0 ? match.sentence.text : match.sentence.text.slice(0, end);

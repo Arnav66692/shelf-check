@@ -303,7 +303,8 @@ export function SymptomsView() {
             )}
             <p className="facts font-semibold">
               Call 911 now for a seizure, bleeding that will not stop, blue or gray lips or skin, a closing throat, or
-              someone who is hard to wake. For a possible overdose or poisoning, call Poison Help at 1-800-222-1222.
+              someone who is hard to wake. For a possible overdose or poisoning, call Poison Help at 1-800-222-1222. If
+              you are thinking about hurting yourself, call or text 988.
             </p>
             <Matches result={result} items={items} />
             {result.flags.length > 0 && (

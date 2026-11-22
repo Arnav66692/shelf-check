@@ -88,6 +88,14 @@ function splitByAge(matches: readonly SymptomMatch[], profile: Profile, aboutChi
       continue;
     }
     const minimum = minimumAge(match.item);
+    // A message about a child with no age set: leave out products whose directions start at 12 or older.
+    if (age === undefined && aboutChild && minimum >= CHILD_AGE_YEARS) {
+      hidden.push({
+        itemId: match.item.id,
+        reason: `Its directions are for people ${minimum} years and older. Set the child's age in About you to see what fits them.`,
+      });
+      continue;
+    }
     if (age !== undefined && age < CHILD_AGE_YEARS && age < minimum) {
       hidden.push({
         itemId: match.item.id,

@@ -344,8 +344,18 @@ test("round 7 judge's missed emergencies are caught", () => {
     "nosebleed that wont stop", "i cant stop bleeding",
     "chest is crushing and it goes down my left arm", "my kid is shaking all over and wont stop, like a fit",
   ]) expect(screenEmergency(text).emergency, text).toBe(true);
-  expect(screenEmergency("kms").selfHarm).toBe(true);
+  expect(screenEmergency("kms")).toMatchObject({ selfHarm: true });
   for (const ordinary of ["my kid had a fit about bedtime", "i drank a bottle of water", "she is pale and tired", "my nose bled a little this morning"]) {
+    expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+  }
+});
+
+test("round 9 slang emergencies are caught and ordinary lookalikes are not", () => {
+  for (const text of [
+    "kid got into the nyquil and drank half the bottle", "gonna end it tonight, got all my pills lined up", "puking blood rn",
+    "i OD'd on my pills", "heart racing, sweating, twitchy and confused after cough syrup",
+  ]) expect(screenEmergency(text).emergency, text).toBe(true);
+  for (const ordinary of ["i have a cough, what cough syrup can i take", "i want to end it with my boyfriend lol", "i drank half the bottle of water", "my meds are ready", "my heart is racing and i have a cough"]) {
     expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
   }
 });
