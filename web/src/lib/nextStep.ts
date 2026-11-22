@@ -9,6 +9,9 @@ const LABEL_TAG_STEPS: Readonly<Record<string, string>> = {
 
 const KEEP_TAKING = "Do not stop or change a prescribed medicine on your own.";
 const MAOI = /\bMAOI\b|monoamine oxidase/i;
+const LABEL_SAYS_STOP = /\b(?:contraindicated|do not (?:use|take|start)|should not be (?:used|taken|given|coadministered|co-administered)|avoid (?:co-?administration|concomitant|use|taking)|discontinue|must not)\b/i;
+const HOLD_DOSE = "The label says not to use these together, or not to use it with this health detail. Call the prescriber or pharmacist today, before the next dose, and ask what to do. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
+const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const SPACE_APART = /\b\d+\s*(?:to\s*\d+\s*)?hours?\s+(?:before|after|apart)\b|\bseparate\b.*\bdoses?\b/i;
 
 function subjectOf(flag: Flag): string {
@@ -19,8 +22,13 @@ function mentions(flag: Flag, pattern: RegExp): boolean {
   return flag.quotes.some((quote) => pattern.test(quote.excerpt));
 }
 
+function labelSaysStop(flag: Flag): boolean {
+  return flag.severity === "stop" && mentions(flag, LABEL_SAYS_STOP);
+}
+
 function interactionStep(flag: Flag): string {
-  if (mentions(flag, MAOI)) {
+  if (labelSaysStop(flag) && flag.prescribed) return HOLD_DOSE;
+  if ((flag.highlight ?? []).some((term) => MAOI.test(term) || /phenelzine|tranylcypromine|isocarboxazid|selegiline|rasagiline|linezolid/i.test(term))) {
     return "Do not take these within 2 weeks of an MAOI unless the doctor who prescribed it says so. Ask a pharmacist now.";
   }
   if (mentions(flag, SPACE_APART)) {
@@ -43,6 +51,8 @@ function prescribedStep(flag: Flag): string | undefined {
         ? `Call your pharmacist or prescriber today and ask whether you should be taking both products with ${subjectOf(flag)}. ${KEEP_TAKING}`
         : `Do not add a non-prescription product with ${subjectOf(flag)} to your prescribed one until a pharmacist says it is fine. ${KEEP_TAKING}`;
     case "profile":
+      if (/allerg/i.test(flag.title) || (flag.highlight ?? []).some((term) => /allerg/i.test(term))) return ALLERGY_STEP;
+      if (labelSaysStop(flag)) return HOLD_DOSE;
       return flag.severity === "stop"
         ? `Call your prescriber today about this warning. ${KEEP_TAKING}`
         : `Tell your prescriber or pharmacist about the health detail it mentions. ${KEEP_TAKING}`;
@@ -63,6 +73,10 @@ export function nextStep(flag: Flag): string {
     case "daily_total":
       return `Use only one ${subjectOf(flag)} product at a time, or ask a pharmacist which one to keep.`;
     case "profile":
+      if (/allerg/i.test(flag.title)) return "The label says do not use it if you are allergic to it. Do not use it. Ask a pharmacist for something else.";
+      if (flag.quotes.some((quote) => quote.section === "do_not_use")) {
+        return "The label says do not use this product if this applies to you. Do not use it. Ask a pharmacist for something else.";
+      }
       return flag.quotes.some((quote) => quote.section === "fda_statement")
         ? "Talk to a licensed prescriber or pharmacist before using it."
         : "Ask a doctor or pharmacist before using this, and tell them about the health detail it mentions.";

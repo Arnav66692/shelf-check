@@ -106,7 +106,9 @@ export function toHealthProfile(profile: Profile): HealthProfile {
     breastfeeding: profile.breastfeeding,
     drinksThreeOrMoreDaily: profile.drinksThreeOrMoreDaily,
     conditions: profile.conditions,
-    allergies: profile.allergies.map((allergy) => allergy.trim()).filter((allergy) => allergy !== ""),
+    allergies: profile.allergies
+      .map((allergy) => allergy.replace(/\([^)]*\)/g, " ").replace(/\b(?:allergy|allergic|to)\b/gi, " ").replace(/\s+/g, " ").trim())
+      .filter((allergy) => allergy !== ""),
   };
 }
 
