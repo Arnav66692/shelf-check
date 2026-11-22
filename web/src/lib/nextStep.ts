@@ -12,6 +12,8 @@ const MAOI = /\bMAOI\b|monoamine oxidase/i;
 const LABEL_SAYS_STOP = /\b(?:contraindicated|do not (?:use|take|start)|should not be (?:used|taken|given|coadministered|co-administered)|avoid (?:co-?administration|concomitant|use|taking)|discontinue|must not)\b/i;
 const HOLD_DOSE = "The label says not to use these together, or not to use it with this health detail. Call the prescriber or pharmacist today, before the next dose, and ask what to do. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
+const HYPERKALEMIA = /\bhyperkalemia\b/i;
+const SEDATION = /\brespiratory depression|profound sedation|\bcoma\b/i;
 const SPACE_APART = /\b\d+\s*(?:to\s*\d+\s*)?hours?\s+(?:before|after|apart)\b|\bseparate\b.*\bdoses?\b/i;
 
 function subjectOf(flag: Flag): string {
@@ -27,12 +29,21 @@ function labelSaysStop(flag: Flag): boolean {
 }
 
 function interactionStep(flag: Flag): string {
+  if (flag.severity === "stop" && mentions(flag, SEDATION)) {
+    return "Call the prescriber or pharmacist today to confirm these are meant to be taken together. Do not drink alcohol with them. If someone is very hard to wake or breathing slowly, give naloxone (Narcan) if you have it and call 911.";
+  }
+  if (flag.severity === "stop" && mentions(flag, HYPERKALEMIA)) {
+    return "Ask your prescriber for a potassium blood test soon. Do not take extra potassium or a salt substitute until then. Call 911 for chest pain, a very slow or uneven heartbeat, or sudden weakness.";
+  }
   if (labelSaysStop(flag) && flag.prescribed) return HOLD_DOSE;
   if ((flag.highlight ?? []).some((term) => MAOI.test(term) || /phenelzine|tranylcypromine|isocarboxazid|selegiline|rasagiline|linezolid/i.test(term))) {
     return "Do not take these within 2 weeks of an MAOI unless the doctor who prescribed it says so. Ask a pharmacist now.";
   }
   if (mentions(flag, SPACE_APART)) {
     return "The label says to space these apart. Ask a pharmacist how many hours apart to take them.";
+  }
+  if (flag.allPrescribed && flag.severity === "stop") {
+    return "The label warns of serious harm when these are taken together. Call the prescriber or pharmacist today, before the next dose, to confirm the plan.";
   }
   if (flag.allPrescribed) {
     return `These may be prescribed together on purpose. Make sure the prescriber and pharmacist know you take both, and ask if anything should change. ${KEEP_TAKING}`;

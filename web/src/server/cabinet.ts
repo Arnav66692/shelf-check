@@ -200,6 +200,16 @@ export function groupFlags(flags: readonly EngineFlag[], items: readonly Cabinet
     .sort((a, b) => SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity]);
 }
 
+// High potassium is most dangerous with weak kidneys or older age, so the same
+// label line is more urgent for those people.
+function raisedForProfile(flag: EngineFlag, profile: Profile): EngineFlag {
+  const atRisk = profile.conditions.includes("kidney_disease") || (profile.ageYears ?? 0) >= 65;
+  if (!atRisk || flag.type !== "interaction" || flag.severity === "stop") return flag;
+  const texts = [flag.quote, ...(flag.supportingQuotes ?? [])].map((quote) => quote?.text ?? "");
+  return texts.some((text) => /\bhyperkalemia\b/i.test(text) && /\bpotassium\b/i.test(text)) ? { ...flag, severity: "stop" } : flag;
+}
+
 export function flagsFor(items: readonly CabinetItem[], profile: Profile): readonly Flag[] {
-  return groupFlags([...peptideCabinetFlags(items), ...checkCabinet(items, toHealthProfile(profile))], items);
+  const engineFlags = checkCabinet(items, toHealthProfile(profile)).map((flag) => raisedForProfile(flag, profile));
+  return groupFlags([...peptideCabinetFlags(items), ...engineFlags], items);
 }
