@@ -123,9 +123,16 @@ function quotesOf(flag: EngineFlag): readonly FlagQuote[] {
   return [...fromLabels, official];
 }
 
+const PER_PRODUCT_PROFILE_KINDS: ReadonlySet<string> = new Set(["pregnancy", "allergen", "age"]);
+
 function groupKey(flag: EngineFlag): string {
   if (flag.type === "interaction") return `interaction:${[...flag.itemIds].sort().join("+")}`;
-  if (flag.type === "profile") return `profile:${flag.match?.kind ?? "other"}:${flag.match?.term ?? flag.title}`;
+  if (flag.type === "profile") {
+    const kind = flag.match?.kind ?? "other";
+    // Each product gets its own pregnancy, allergy and age card, so no product's warning hides behind another's.
+    const perProduct = PER_PRODUCT_PROFILE_KINDS.has(kind) ? `:${[...flag.itemIds].sort().join("+")}` : "";
+    return `profile:${kind}:${flag.match?.term ?? flag.title}${perProduct}`;
+  }
   return `${flag.type}:${[...flag.itemIds].sort().join("+")}:${flag.title}`;
 }
 
