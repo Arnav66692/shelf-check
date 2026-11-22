@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Nunito_Sans, Saira } from "next/font/google";
 import { BottomBar } from "@/components/BottomBar";
@@ -32,7 +33,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <SiteHeader />
+        <Suspense>
+          <SiteHeader />
+        </Suspense>
         <main id="main" tabIndex={-1} className="flex-1 w-full px-[var(--margin)] pb-28 focus:outline-none">
           <div data-skip-read className="pt-[calc(var(--margin)+92px)] sm:pt-[calc(var(--margin)+52px)] print:hidden">
             <PersonSwitcher />

@@ -193,9 +193,9 @@ const FLOOR_Y = -2.4;
 
 function floor(): Segment[] {
   const s: Segment[] = [];
-  for (let i = -6; i <= 6; i++) {
-    s.push([[i, FLOOR_Y, -6], [i, FLOOR_Y, 6], false]);
-    s.push([[-6, FLOOR_Y, i], [6, FLOOR_Y, i], false]);
+  for (let i = -4; i <= 4; i++) {
+    s.push([[i, FLOOR_Y, -4], [i, FLOOR_Y, 4], false]);
+    s.push([[-4, FLOOR_Y, i], [4, FLOOR_Y, i], false]);
   }
   return s;
 }
