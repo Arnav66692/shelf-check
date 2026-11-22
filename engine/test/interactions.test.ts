@@ -350,3 +350,9 @@ test("a nitrate is matched to a label that warns about nitrates or nitric oxide 
   const viagra = { ...drug("sildenafil"), label: { contraindications: ["Administration of VIAGRA to patients using nitric oxide donors, such as organic nitrates or organic nitrites in any form is contraindicated."] } };
   expect(fromLabelOf(interactionFlags([viagra, drug("isosorbide")]), "sildenafil")[0]?.severity).toBe("stop");
 });
+
+test("a drug group word used to describe an effect is not a match", () => {
+  const clopidogrel = { ...drug("clopidogrel"), label: { drug_interactions: ["Avoid concomitant use of clopidogrel with omeprazole because it reduces the antiplatelet activity of clopidogrel."] } };
+  const aspirin: CabinetItem = { ...drug("aspirin"), ingredients: [{ name: "aspirin", value: 81, unit: "mg", classes: [{ id: "B01AC", type: "ATC1-4", name: "Platelet aggregation inhibitors excl. heparin", source: "ATC" }] }] };
+  expect(fromLabelOf(interactionFlags([clopidogrel, aspirin]), "clopidogrel")).toEqual([]);
+});

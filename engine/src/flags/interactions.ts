@@ -118,6 +118,8 @@ function firstAllowedSpan(text: string, term: CompiledTerm, owner: CabinetItem):
       if (term.kind === "class_name" || term.kind === "class_phrase") {
         // Appositives classify the named drug in a study or explain the label owner's activity.
         if (describesOwner(before, after, owner) || /(?:^as |[,(]\s*)(?:an? )$/i.test(before)) return false;
+        // "the antiplatelet activity of clopidogrel" describes an effect, not a second drug.
+        if (/^\s+(?:activity|activities|effects?|action|properties)\b/i.test(after)) return false;
       }
       // A qualifier restricts the population even when an older, broader class alias matches.
       if (/^diuretics?$/i.test(term.term) && /\bpotassium[- ](?:sparing|retaining)\s+$/i.test(before)) return false;
