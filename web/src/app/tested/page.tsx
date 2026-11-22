@@ -8,9 +8,9 @@ const IMPACT = [
   { test: "Acetaminophen doubled: 40 random products, each with Tylenol", first: "40 of 40", now: "40 of 40", bar: "38 of 40", verdict: "Passed both times" },
   { test: "Same 40 pairs: a daily total worked out in mg", first: "27 of 40", now: "15 of 40", bar: "none set", verdict: "Measured. Now refuses numbers it cannot read for sure" },
   { test: "40 major interactions from an independent database", first: "8 of 40", now: "4 of 40", bar: "none set", verdict: "Weak. See below" },
-  { test: "40 new major interactions, after adding drug class matching", first: "not run", now: "10 of 40", bar: "at least 10", verdict: "Passed, at the bar" },
-  { test: "40 new pairs with no listed interaction: false alarms", first: "not run", now: "0 of 40", bar: "at most 4", verdict: "Passed" },
   { test: "40 pairs with no listed interaction: false alarms", first: "1 of 40", now: "1 of 40", bar: "at most 4", verdict: "Passed both times" },
+  { test: "40 new major interactions, after adding drug class matching", first: "10 of 40", now: "10 of 40", bar: "at least 10", verdict: "Passed, at the bar, and again after the Nov 22 fixes" },
+  { test: "40 new pairs with no listed interaction: false alarms", first: "0 of 40", now: "0 of 40", bar: "at most 4", verdict: "Passed, and again after the Nov 22 fixes" },
 ] as const;
 
 const MATCHER = [
@@ -72,6 +72,10 @@ export default function TestedPage() {
         label sentence to actually warn about the pair, so it flags fewer pairs. Then we taught it drug classes from the
         FDA&apos;s own drug interaction tables, so a label that warns about &quot;strong CYP3A inducers&quot; now matches the
         drug in your cabinet that is one. We wrote a new bar first and tested it on 40 new pairs it had never seen.
+        On Nov 22 we also taught it to read a warning together with the &quot;Examples include&quot; line or bulleted
+        list under it, which is how labels name rifampin with the birth control pill or aspirin with methotrexate.
+        We reran the same 80 new pairs after that change: still 10 of 40 caught and 0 false alarms. Both of these runs
+        called a local build of the same code, not this website.
       </p>
       <p className="mt-2">
         What this means: Shelf Check is reliable at the problem it was built for, the same drug hiding in two
