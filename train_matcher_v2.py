@@ -14,15 +14,19 @@ from transformers import AutoModel
 import render
 from train_matcher import BATCH, DEVICE, LEARNING_RATE, QUERIES_PER_PRODUCT, TEMPERATURE, PairDataset, load_index, to_tensor
 
-BACKBONE = "facebook/dinov2-base"
-SPLIT_SALT = "run2"
+import os
+
+BACKBONE = os.environ.get("MATCHER_BACKBONE", "facebook/dinov2-base")
+SPLIT_SALT = os.environ.get("MATCHER_SPLIT_SALT", "run2")
 TEST_SHARE = 0.2
 VAL_SHARE = 0.1
 QUERY_SEED = 20261122
 VAL_SEED = 20261123
 PROTOTYPE_SEED = 20261124
 PROTOTYPE_VIEWS = 4
-MAX_TRAIN_SECONDS = 100 * 60
+MAX_TRAIN_SECONDS = int(os.environ.get("MATCHER_MAX_TRAIN_MINUTES", "100")) * 60
+VAL_VIEWS = int(os.environ.get("MATCHER_VAL_VIEWS", str(4)))
+TRAIN_TIME_ONLY = os.environ.get("MATCHER_TRAIN_TIME_ONLY") == "1"
 MAX_EPOCHS = 20
 WORKERS = 4
 
@@ -86,15 +90,15 @@ def build_queries(index: list[dict], split: str, seed: int) -> list[dict]:
     return queries
 
 
-def gallery_vectors(model: torch.nn.Module, data_dir: Path, images: list[str]) -> torch.Tensor:
-    views = [embed_all(model, ViewDataset(data_dir, images, view)) for view in range(PROTOTYPE_VIEWS + 1)]
+def gallery_vectors(model: torch.nn.Module, data_dir: Path, images: list[str], extra_views: int = PROTOTYPE_VIEWS) -> torch.Tensor:
+    views = [embed_all(model, ViewDataset(data_dir, images, view)) for view in range(extra_views + 1)]
     return F.normalize(torch.stack(views).mean(dim=0), dim=-1)
 
 
-def evaluate(model: torch.nn.Module, data_dir: Path, index: list[dict], queries: list[dict], seed: int) -> dict:
+def evaluate(model: torch.nn.Module, data_dir: Path, index: list[dict], queries: list[dict], seed: int, extra_views: int = PROTOTYPE_VIEWS) -> dict:
     gallery_images = [image for row in index for image in row["images"]]
     gallery_products = np.array([image.split("/")[0] for image in gallery_images])
-    gallery = gallery_vectors(model, data_dir, gallery_images)
+    gallery = gallery_vectors(model, data_dir, gallery_images, extra_views)
     query_vectors = embed_all(model, QueryDataset(data_dir, queries, seed))
     top = (query_vectors @ gallery.T).topk(5, dim=1).indices.numpy()
     truth_products = np.array([q["image"].split("/")[0] for q in queries])
@@ -133,7 +137,7 @@ def main() -> None:
         print("RESUME", resume, flush=True)
     else:
         resume = {"next_epoch": 0, "train_seconds": 0.0, "best_val": -1.0, "best_epoch": None}
-        report = {"baseline_val": summary(evaluate(model, data_dir, index, val_queries, VAL_SEED))}
+        report = {"baseline_val": summary(evaluate(model, data_dir, index, val_queries, VAL_SEED, VAL_VIEWS))}
         print("BASELINE VAL", report["baseline_val"], flush=True)
         report_path.write_text(json.dumps(report))
 
@@ -156,7 +160,10 @@ def main() -> None:
             losses.append(loss.item())
             if time.time() - started > MAX_TRAIN_SECONDS:
                 break
-        val = summary(evaluate(model, data_dir, index, val_queries, VAL_SEED))
+        trained_until = time.time()
+        val = summary(evaluate(model, data_dir, index, val_queries, VAL_SEED, VAL_VIEWS))
+        if TRAIN_TIME_ONLY:
+            started += time.time() - trained_until
         report[f"epoch_{epoch}_val"] = {**val, "loss": float(np.mean(losses)), "train_seconds": time.time() - started}
         torch.save(model.state_dict(), out_dir / "last.pt")
         if val["product_top1"] > resume["best_val"]:

@@ -194,6 +194,20 @@ describe("daily maximum evidence", () => {
     expect([maxAt(5), maxAt(6), maxAt(8), maxAt(11.9), maxAt(12), maxAt()]).toEqual([null, 150, 150, 150, 300, 300]);
   });
 
+  test("reads the limit through standard label boilerplate around it", async () => {
+    const [item] = await loadCabinet("tylenol");
+    if (!item) throw new Error("fixture missing");
+    const ingredient = ingredientOf(item, "acetaminophen");
+    const at = (directions: string) => labelledMaximum({ ...item, label: { dosage_and_administration: [directions] } }, ingredient, adultProfile);
+    const wordings = [
+      "do not take more than directed (see overdose warning) adults and children 12 years and over take 2 caplets every 6 hours while symptoms last do not take more than 6 caplets in 24 hours, unless directed by a doctor do not take for more than 10 days unless directed by a doctor",
+      "- see Overdose warning adults and children 12 years and over take 2 caplets with water every 6 hours swallow whole; do not crush, chew, or dissolve do not take more than 6 caplets in 24 hours",
+      "do not use more than directed adults and children 12 years and over take 2 caplets every 6 hours do not take more than 6 caplets in 24 hours period",
+    ];
+    for (const wording of wordings) expect(at(wording)).toMatchObject({ status: "parsed", mgPerDay: 3000 });
+    expect(at("adults and children 12 years and over take 2 caplets every 6 hours do not take more than 6 caplets in 24 hours. If taking Night Time at night and Day Time during the day, limit total to 4 doses per 24 hours").status).toBe("not_parsed");
+  });
+
   test("with no age set, uses the adult row and says so", async () => {
     const cabinet = await loadCabinet("tylenol", "nyquil");
     const flag = checkCabinet(cabinet, { ...adultProfile, ageYears: undefined }).find((entry) => entry.type === "daily_total");

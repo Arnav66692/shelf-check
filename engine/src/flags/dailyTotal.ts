@@ -205,8 +205,8 @@ function limitsIn(item: CabinetItem, part: DirectionPart): readonly LabelAmount[
 
 // openFDA flattens tables and bullets. Unread text around a cap may restrict
 // its audience, change the quantity, or start another row.
-const DIRECTION_PREFACE = /^(?:directions\b|do not take more than directed\b(?:\s*\(see overdose warning\s*\))?|the smallest effective dose should be used\b|drink a full glass of water with each dose\b|take only as directed\b|only use the dose cup provided\b|find right dose on chart below\b|ml\s*=\s*milliliter\b|take every \d+ to \d+ hours, or as directed by a doctor\b)/i;
-const SEPARATORS = /^[\s:.,;•■▪●◦]+/;
+const DIRECTION_PREFACE = /^(?:directions\b|do not take more than directed\b(?:\s*\(see overdose warning\s*\))?|do not (?:use|take) more than (?:directed|the recommended dose)\b(?:\s*\(see (?:overdose )?warning\s*\))?|\(?see (?:overdose )?warning\)?|the smallest effective dose should be used\b|drink a full glass of water with each dose\b|take only as directed\b|only use (?:the )?dose cup provided\b|age dose\b|find right dose on chart below\b|ml\s*=\s*milliliter\b|take every \d+ to \d+ hours, or as directed by a doctor\b)/i;
+const SEPARATORS = /^[\s:.,;•■▪●◦–-]+/;
 const EVERY = "every\\s+\\d+(?:\\s+to\\s+\\d+)?\\s+(?:hours?|hrs?)";
 const DOSE_SCHEDULE = new RegExp(
   `^(?:take\\s+)?${DOSE_QUANTITY}(?:\\s+(?:each|per|in each)\\s+dose)?` +
@@ -215,7 +215,8 @@ const DOSE_SCHEDULE = new RegExp(
 );
 const CUP_NOTE = /^\(\d+x\d+ mL; Note: dosing cup needs to be filled to \d+ mL line twice for the \d+ mL dose\)/i;
 const PAIN_FEVER_DIRECTION = /^if pain or fever does not respond to 1 capsule, 2 capsules may be used\b/i;
-const CAP_SUFFIX = /^(?:unless directed by a doctor\b|do not use for more than \d+ days\b|only use the dose cup provided\b|age \(yr\) dose \(ml\))/i;
+const CAP_SUFFIX = /^(?:unless directed by a doctor\b|do not (?:take|use) for more than \d+ days(?: unless directed by a doctor)?\b|do not use for more than \d+ days\b|period\b|ml\s*=\s*milliliters?\b|measure only with (?:the )?dosing cup provided\b|do not use any other dosing device\b|keep (?:the )?dosing cup with (?:the )?product\b|only use (?:the )?dose cup provided\b|age \(yr\) dose \(ml\))/i;
+const AFTER_DOSE = /^(?:with (?:a (?:full )?glass of )?water)?\s*(?:every \d+(?:\s*to\s*\d+)?\s*hours?)?\s*(?:swallow whole[;,]?\s*do not crush,? chew,? or dissolve)?$/i;
 
 function stripPhrases(text: string, pattern: RegExp): string {
   let remaining = text.replace(SEPARATORS, "");
@@ -239,7 +240,7 @@ function understoodCapContext(part: DirectionPart): boolean {
   const dose = DOSE_SCHEDULE.exec(before);
   if (!dose) return false;
   before = before.slice(dose[0].length).replace(SEPARATORS, "").trimEnd();
-  return !before || (CUP_NOTE.exec(before)?.[0] === before) || (PAIN_FEVER_DIRECTION.exec(before)?.[0] === before);
+  return !before || AFTER_DOSE.test(before) || (CUP_NOTE.exec(before)?.[0] === before) || (PAIN_FEVER_DIRECTION.exec(before)?.[0] === before);
 }
 
 function doseIn(item: CabinetItem, part: DirectionPart): LabelAmount | undefined {
