@@ -8,6 +8,8 @@ const IMPACT = [
   { test: "Acetaminophen doubled: 40 random products, each with Tylenol", first: "40 of 40", now: "40 of 40", bar: "38 of 40", verdict: "Passed both times" },
   { test: "Same 40 pairs: a daily total worked out in mg", first: "27 of 40", now: "15 of 40", bar: "none set", verdict: "Measured. Now refuses numbers it cannot read for sure" },
   { test: "40 major interactions from an independent database", first: "8 of 40", now: "4 of 40", bar: "none set", verdict: "Weak. See below" },
+  { test: "40 new major interactions, after adding drug class matching", first: "not run", now: "10 of 40", bar: "at least 10", verdict: "Passed, at the bar" },
+  { test: "40 new pairs with no listed interaction: false alarms", first: "not run", now: "0 of 40", bar: "at most 4", verdict: "Passed" },
   { test: "40 pairs with no listed interaction: false alarms", first: "1 of 40", now: "1 of 40", bar: "at most 4", verdict: "Passed both times" },
 ] as const;
 
@@ -64,7 +66,9 @@ export default function TestedPage() {
         unless the label text clearly supports it, which dropped the daily totals to 5 of 40. We then taught it
         common label wording around the limit, like &quot;see overdose warning&quot;, which brought it to 15. We
         did that after looking at the misses, so the 15 is not a clean test. The interaction rule now needs the
-        label sentence to actually warn about the pair, so it flags fewer pairs.
+        label sentence to actually warn about the pair, so it flags fewer pairs. Then we taught it drug classes from the
+        FDA&apos;s own drug interaction tables, so a label that warns about &quot;strong CYP3A inducers&quot; now matches the
+        drug in your cabinet that is one. We wrote a new bar first and tested it on 40 new pairs it had never seen.
       </p>
       <p className="mt-2">
         What this means: Shelf Check is reliable at the problem it was built for, the same drug hiding in two

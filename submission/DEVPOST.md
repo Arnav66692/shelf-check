@@ -74,8 +74,12 @@ I ran the app on random real products and pairs, with the bars written down and 
 | Same 40 pairs: a daily total worked out in mg | 27 of 40 | 15 of 40 | none | Measured |
 | 40 major interactions from the DDInter database | 8 of 40 | 4 of 40 | none | Weak |
 | 40 pairs DDInter does not list: false alarms | 1 of 40 | 1 of 40 | at most 4 | Passed both times |
+| 40 new major pairs, after adding drug class matching | not run | 10 of 40 | at least 10 | Passed |
+| 40 new unlisted pairs: false alarms | not run | 0 of 40 | at most 4 | Passed |
 
 The fixes made the engine refuse to add up a number or claim an interaction unless the label clearly supports it. That first dropped the daily totals to 5 of 40. I then taught it common label wording around the limit, like "see overdose warning", which brought it to 15. I did that after looking at the misses, so the 15 is not a clean test. Fewer answers, but none of them guessed.
+
+Interactions were the weak spot, because labels warn about drug types like "strong CYP3A inducers" instead of naming drugs. I added drug class matching from the FDA's own drug interaction tables, wrote a new bar first, and tested it on 80 new pairs: 10 of 40 major interactions caught, and 0 false alarms on 40 pairs with no listed interaction.
 
 So Shelf Check is reliable at the problem it was built for, the same drug hiding in two products, and its warnings come from real label sentences. It is weak at drug interactions in general. For most of those major pairs, neither FDA label names the other drug, and the labels describe the risk by drug type or effect instead, which the app does not turn into drug names yet. The app says plainly that a label can be silent about a real risk, and every result page tells you to have a pharmacist review the list.
 
