@@ -152,6 +152,13 @@ function highlightTerms(members: readonly EngineFlag[]): readonly string[] {
   return [...new Set(terms.filter((term): term is string => typeof term === "string" && term.trim().length > 2))];
 }
 
+const STRONG_SECTIONS: readonly string[] = ["do_not_use"];
+
+function sectionRank(flag: EngineFlag): number {
+  const index = STRONG_SECTIONS.indexOf(flag.quote?.section ?? "");
+  return index < 0 ? STRONG_SECTIONS.length : index;
+}
+
 function mergeGroup(
   key: string,
   members: readonly EngineFlag[],
@@ -161,7 +168,10 @@ function mergeGroup(
   const [first] = members;
   const itemIds = [...new Set(members.flatMap((member) => member.itemIds))];
   const seen = new Set<string>();
-  const quotes = members.flatMap(quotesOf).filter((quote) => {
+  // The strongest line leads: the more severe flag first, then an OTC "Do not use" line.
+  const ordered = [...members].sort((a, b) =>
+    SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity] || sectionRank(a) - sectionRank(b));
+  const quotes = ordered.flatMap(quotesOf).filter((quote) => {
     const id = `${quote.itemId}:${quote.excerpt}`;
     if (seen.has(id)) return false;
     seen.add(id);
