@@ -105,7 +105,7 @@ const NEGATED_RESTRICTION = /\b(?:not (?:contraindicated|required to avoid)|(?:n
 const TWENTY_WEEKS = /\b20 weeks?(?: (?:of )?(?:gestation|pregnancy))?\s+(?:or later|and (?:beyond|later)|onward)\b/i;
 const FETAL_RISK = /\b(?:may|can) (?:harm (?:your|the) (?:unborn baby|fetus)|cause (?:fetal renal dysfunction|oligohydramnios|problems in the unborn child))\b/i;
 const BREASTFEEDING_PATTERN = /\bbreast[- ]?feed(?:ing)?\b|\bnursing\b|\blactat(?:ion|ing)\b/i;
-const ALLERGY_WORDING = /\b(?:allerg(?:y|ic|ies)|hypersensitiv\w*|anaphyla\w*)\b/i;
+const ALLERGY_WORDING = /(?:\b(?:allerg(?:y|ic|ies)|hypersensitiv\w*|anaphyla\w*)\b)|\bangioedema\b/i;
 const NEGATED_ALLERGY = /\b(?:no(?: evidence of)?|not|without(?: a history of)?)\s+(?:an?\s+)?(?:known\s+)?(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)/i;
 const UNCERTAIN_OR_NEGATIVE_DECLARATION = /\b(?:may|might|no|not|free|without|except|facility|equipment)\b/i;
 const MAX_SUPPORTING_QUOTES = 5;
@@ -504,6 +504,7 @@ function namesAllergen(hit: PhraseHit): boolean {
   // unrelated allergy. Require the allergen to be an object of the reaction.
   return /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:-type)?(?:\s+reactions?)?\s+(?:to|from|after|following|with)\s+(?:any\s+)?(?:other\s+)?$/i.test(before)
     || /\b(?:allerg\w*|hypersensitiv\w*)[^.;]{0,80}\bmembers? of (?:the )?$/i.test(before)
+    || /\bangioedema\b[^.;]{0,80}\b(?:with|to)\s+(?:an?\s+)?$/i.test(before)
     || /\b(?:allerg\w*|hypersensitiv\w*|anaphyla\w*)(?:\s+reactions?)?\s+to\s+[^.;:]{1,140}(?:\b(?:and|or)\s+(?:to\s+)?(?:other\s+)?|including\s+)$/i.test(before)
     || /^\s+(?:may|can) cause (?:an? )?(?:severe |serious )?(?:allergic|anaphylactic) reaction\b/i.test(after);
 }
@@ -618,7 +619,7 @@ const REYE_MAX_AGE = 19;
 // Aspirin and other salicylate labels warn children and teenagers about Reye's syndrome without an age number.
 function reyeFlags(item: CabinetItem, ageYears: number): readonly Flag[] {
   if (ageYears >= REYE_MAX_AGE) return [];
-  const [hit] = firstHitPerSentence(item, ["do_not_use", "warnings", "ask_doctor", "boxed_warning"], /\breye'?s syndrome\b/i);
+  const [hit] = firstHitPerSentence(item, ["do_not_use", "warnings", "ask_doctor", "boxed_warning"], /\breye['’]?s syndrome\b/i);
   if (!hit) return [];
   const explain = `The ${item.displayName} label warns children and teenagers about Reye's syndrome, a rare but serious illness, and the age in your profile is ${formatNumber(ageYears)}.`;
   return [{

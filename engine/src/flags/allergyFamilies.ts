@@ -58,6 +58,14 @@ const FAMILIES = [
     labelWords: /\b(?:opioids?|opiates?)\b/i,
   },
   {
+    name: "an ACE inhibitor",
+    allergies: /^(?:ACE inhibitors?|angiotensin.converting enzyme inhibitors?)$/i,
+    atc: /^C09[AB]/,
+    epc: /^angiotensin converting enzyme inhibitor$/i,
+    ingredients: /^(?:lisinopril|enalapril|ramipril|benazepril|captopril|quinapril|fosinopril|perindopril|trandolapril|moexipril)$/i,
+    labelWords: /\b(?:ACE inhibitors?|angiotensin[- ]converting enzyme inhibitors?)\b/i,
+  },
+  {
     name: "a quinolone antibiotic",
     allergies: /^(?:(?:fluoro)?quinolones?)(?: antibiotics?)?$/i,
     atc: /^J01M/,

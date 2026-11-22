@@ -72,6 +72,11 @@ export const CLASS_PHRASE_RULES: readonly ClassPhraseRule[] = [
     phrases: ["ACE inhibitor", "angiotensin converting enzyme inhibitor"],
   },
   {
+    atcPrefixes: ["C09C", "C09D"],
+    epcNames: ["Angiotensin 2 Receptor Blocker"],
+    phrases: ["angiotensin receptor blocker", "angiotensin II receptor blocker", "ARB"],
+  },
+  {
     atcPrefixes: ["C03"],
     epcNames: ["Thiazide Diuretic", "Loop Diuretic", "Potassium-sparing Diuretic", "Thiazide-like Diuretic"],
     phrases: ["diuretic", "water pill"],

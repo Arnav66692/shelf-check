@@ -621,3 +621,11 @@ test("an aspirin label's Reye's syndrome warning gives an ask card for a child, 
   expect(profileFlags([aspirin], { ...NOTHING, ageYears: 10 }).find((flag) => /Reye/.test(flag.title))).toMatchObject({ severity: "ask" });
   expect(profileFlags([aspirin], { ...NOTHING, ageYears: 40 }).find((flag) => /Reye/.test(flag.title))).toBeUndefined();
 });
+
+test("angioedema with one ACE inhibitor flags another ACE inhibitor whose label forbids it", () => {
+  const enalapril: CabinetItem = {
+    id: "enalapril", displayName: "Enalapril", kind: "rx", verified: true, ingredients: [{ name: "enalapril", value: 10, unit: "mg" }],
+    label: { contraindications: ["Enalapril is contraindicated in patients with a history of angioedema related to previous treatment with an angiotensin converting enzyme inhibitor."] },
+  };
+  expect(profileFlags([enalapril], { ...NOTHING, allergies: ["lisinopril"] })[0]).toMatchObject({ severity: "stop" });
+});
