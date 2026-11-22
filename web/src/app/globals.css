@@ -2,6 +2,7 @@
 
 :root {
   color-scheme: dark;
+  --font-display: var(--font-body);
   --paper: #040912;
   --panel: #08101d;
   --ink: #ffffff;
@@ -88,7 +89,7 @@ body::before {
 .title,
 .narrow,
 .display {
-  font-family: var(--font-display), "Helvetica Neue", sans-serif;
+  font-family: var(--font-title), "Helvetica Neue", sans-serif;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -139,7 +140,7 @@ h3.narrow {
 }
 
 .wordmark {
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-title), sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -154,7 +155,17 @@ h3.narrow {
   border: 0;
   border-top: 1px solid var(--hair);
   border-radius: 0;
-  padding: 22px 0 26px;
+  padding: 30px 0 38px;
+  line-height: 1.75;
+}
+
+.facts + .facts,
+.facts ~ .facts {
+  margin-top: 18px;
+}
+
+.quote {
+  margin-top: 10px;
 }
 
 .facts::before {
@@ -193,7 +204,7 @@ h3.narrow {
 }
 
 .facts-title {
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-title), sans-serif;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.14em;

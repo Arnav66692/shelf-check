@@ -2,7 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useHousehold } from "@/lib/store";
+import sampleProducts from "@/lib/sampleProducts.json";
+import type { Product } from "@/lib/model";
+import { EXAMPLE_NAME, leaveExample, openExample, useHousehold } from "@/lib/store";
+
+const SAMPLE_PRODUCTS = sampleProducts as unknown as readonly Product[];
 
 export function PersonSwitcher() {
   const { people, active, select, addPerson, removeActive, canAdd } = useHousehold();
@@ -35,6 +39,18 @@ export function PersonSwitcher() {
           ))}
         </select>
       </label>
+      <button
+        type="button"
+        role="switch"
+        aria-checked={active.name === EXAMPLE_NAME}
+        onClick={() => (active.name === EXAMPLE_NAME ? leaveExample() : openExample(SAMPLE_PRODUCTS))}
+        className="flex items-center gap-2 font-medium hover:text-ink"
+      >
+        <span className={`relative inline-block h-[18px] w-[34px] rounded-full border transition-colors duration-300 ${active.name === EXAMPLE_NAME ? "border-[var(--accent)] bg-[var(--accent)]" : "border-[var(--rule)]"}`} aria-hidden="true">
+          <span className={`absolute top-[2px] h-3 w-3 rounded-full bg-[var(--ink)] transition-[left] duration-300 ${active.name === EXAMPLE_NAME ? "left-[18px]" : "left-[2px]"}`} />
+        </span>
+        Pre-built cabinet
+      </button>
       {adding ? (
         <form onSubmit={submit} className="flex items-center gap-2">
           <label className="sr-only" htmlFor="person-name">
@@ -65,7 +81,7 @@ export function PersonSwitcher() {
             </button>
           )}
 
-          {people.length > 1 && (
+          {people.length > 1 && active.name !== EXAMPLE_NAME && (
             <button
               type="button"
               className="underline"
