@@ -147,7 +147,7 @@ function matchesIn(sentence: LabelSentence, sentenceIndex: number, terms: readon
       sentence.drugFactsInstruction === "do_not_use" || sentence.section === "do_not_use";
     const instruction = (coUse && WARNING.test(text)) || (hasCoUseCue && serious) ||
       (sentence.section === "ask_doctor_or_pharmacist" && hasCoUseCue) ||
-      (/\b(?:the chance is higher if|risk is (?:higher|increased) if)\b/i.test(text) && hasCoUseCue);
+      (/\b(?:the chance is higher if|risk is (?:higher|increased) (?:if|with|when))\b/i.test(text) && hasCoUseCue);
     if (!instruction) continue;
     const otherTarget = AVOID_OTHER_TARGET.exec(text);
     const afterCondition = AVOID_AFTER_CONDITION.exec(text);
@@ -201,7 +201,7 @@ function explain(labelOwner: CabinetItem, other: CabinetItem, match: FoundMatch)
 function classExplanation(other: CabinetItem, best: SentenceMatch): string | undefined {
   const { ingredient, text } = best.found;
   if (best.mechanism) {
-    return `${other.displayName} contains ${ingredient}. Its class for this warning is “${best.mechanism.term}”, based on ${best.mechanism.source}.`;
+    return `${other.displayName} contains ${ingredient}, which counts as one of the “${best.mechanism.term}” this label warns about. Source: ${best.mechanism.source}.`;
   }
   if (!best.drugClass) return undefined;
   // This OTC warning identifies a particular member by name. Make the distinction
@@ -209,14 +209,14 @@ function classExplanation(other: CabinetItem, best: SentenceMatch): string | und
   if (/^blood[- ]thinning$/i.test(text) && /^\s+drug\s+warfarin\b/i.test(best.sentence.text.slice(best.span.end))) {
     return `${other.displayName} contains ${ingredient}, a blood thinner. The label names warfarin, another blood thinner.`;
   }
-  return `RxClass (${best.drugClass.source}, ${best.drugClass.type}) lists ${ingredient} in ${other.displayName} under “${best.drugClass.name}”. The label mentions “${text}”.`;
+  return `${other.displayName} contains ${ingredient}, which is in the drug group “${best.drugClass.name}”. The label warns about “${text}”. Source: RxClass (${best.drugClass.source}).`;
 }
 
 // OTC Drug Facts often puts the consequence just before "The chance is higher if".
 // Keep that antecedent only when the two lines are contiguous on this label.
 function withBleedingContext(match: SentenceMatch, previous: LabelSentence | undefined, paragraphs: readonly string[]): SentenceMatch {
-  if (!previous || !/^The (?:chance|risk) is higher if\b/i.test(match.sentence.text) ||
-      !/\bmay cause (?:severe|serious) stomach bleeding\.$/i.test(previous.text)) return match;
+  if (!previous || !/^The (?:chance|risk) is (?:higher|increased)\b/i.test(match.sentence.text) ||
+      !(/\bmay cause (?:severe|serious) stomach bleeding\.$/i.test(previous.text) || SERIOUS_HARM.test(previous.text))) return match;
   const end = match.sentence.text.search(/\s+(?:heart attack and stroke|allergy) (?:warning|alert)\b/i);
   const risks = end < 0 ? match.sentence.text : match.sentence.text.slice(0, end);
   const text = `${previous.text} ${risks}`;

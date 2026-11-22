@@ -282,3 +282,14 @@ test("requires affirmative co-use evidence in the clause naming the other drug",
   expect(run("If anticoagulation is needed, avoid aspirin rather than cimetidine.", cimetidine)).toEqual([]);
   expect(run("Do not use with cimetidine.", cimetidine)).toHaveLength(1);
 });
+
+test("a serotonin syndrome warning that says the risk is increased with St. John's Wort is caught", () => {
+  const warning = "Serotonin syndrome has been reported with SSRIs, a potentially life-threatening condition. The risk is increased with concomitant use of other serotonergic drugs (including triptans, tricyclic antidepressants, fentanyl, lithium, tramadol, meperidine, methadone, tryptophan, buspirone, amphetamines, and St. John’s Wort) and with drugs that impair metabolism of serotonin.";
+  const sertraline = { ...drug("sertraline"), label: { warnings_and_cautions: [warning] } };
+  const [flag] = fromLabelOf(interactionFlags([sertraline, drug("St. John's Wort")]), "sertraline");
+  expect(flag?.severity).toBe("stop");
+  expect(flag?.quote?.text).toContain("St. John’s Wort");
+  expect(flag?.quote?.text).toContain("Serotonin syndrome");
+  const reassured = { ...sertraline, label: { warnings_and_cautions: ["The risk is increased with concomitant use of other serotonergic drugs, but no interaction was seen with St. John’s Wort."] } };
+  expect(fromLabelOf(interactionFlags([reassured, drug("St. John's Wort")]), "sertraline")).toHaveLength(0);
+});
