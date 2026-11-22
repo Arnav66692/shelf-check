@@ -51,7 +51,6 @@ The part that decides the warnings is a rules engine in TypeScript, and no AI mo
 - NIH RxNorm and RxClass to turn label names into one ingredient name and find drug classes, so "NSAIDs" on a lisinopril label matches the ibuprofen you own
 - the FDA's published statements and the WADA 2026 Prohibited List for peptides, quoted word for word and checked against saved copies by tests
 - the NLM Pillbox archive and DailyMed product data for the pill finder, 83,912 records
-
 - OpenStreetMap for Find care: Nominatim to turn a place name into a location, Overpass to find pharmacies, urgent care and hospitals, and a Leaflet map with OpenStreetMap tiles
 
 The engine has 764 tests that run on saved real label records, the product lookup has 113 more, and the learning center has 17. The app is Next.js and TypeScript, deployed on Vercel.
