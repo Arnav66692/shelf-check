@@ -21,6 +21,7 @@ export const SERMORELIN_NOTICE =
 
 export interface ProductLabel {
   readonly brand: string;
+  readonly presentation: string;
   readonly title: string;
   readonly setId: string;
   readonly version: number;
@@ -36,8 +37,11 @@ export type PeptideLabelEntry =
   | { readonly approved: true; readonly products: readonly ProductLabel[]; readonly notice?: string }
   | { readonly approved: false; readonly proposedUse?: OfficialStatement; readonly notice: string };
 
-function dailyMedLabel(fields: Omit<ProductLabel, "url">): ProductLabel {
-  return { ...fields, url: `${DAILYMED_LABEL_URL}${fields.setId}` };
+function dailyMedLabel(
+  fields: Omit<ProductLabel, "url" | "presentation">,
+  form: "oral tablet" | "subcutaneous injection" = "subcutaneous injection",
+): ProductLabel {
+  return { ...fields, presentation: `${fields.brand} ${form}`, url: `${DAILYMED_LABEL_URL}${fields.setId}` };
 }
 
 const OZEMPIC_LABEL: ProductLabel = dailyMedLabel({
@@ -53,7 +57,8 @@ const OZEMPIC_LABEL: ProductLabel = dailyMedLabel({
     "to reduce the risk of sustained eGFR decline, end-stage kidney disease, and cardiovascular death in adults with type 2 diabetes mellitus and chronic kidney disease.",
   ],
   dosing: [
-    "Start at 0.25 mg once weekly. After 4 weeks, increase the dosage to 0.5 mg once weekly. (2.2)",
+    "Initiate OZEMPIC with a dosage of 0.25 mg injected subcutaneously once weekly for 4 weeks.",
+    "After 4 weeks on the 0.25 mg dosage, increase the dosage to 0.5 mg once weekly.",
   ],
   boxedWarning: [
     "WARNING: RISK OF THYROID C-CELL TUMORS",
@@ -80,15 +85,11 @@ const WEGOVY_LABEL: ProductLabel = dailyMedLabel({
     "adults and pediatric patients aged 12 years and older with obesity.",
     "adults with overweight in the presence of at least one weight-related comorbid condition.",
     "for the treatment of noncirrhotic metabolic dysfunction-associated steatohepatitis (MASH), formerly known as nonalcoholic steatohepatitis (NASH), with moderate to advanced liver fibrosis (consistent with stages F2 to F3 fibrosis) in adults. This indication is approved under accelerated approval based on improvement of MASH and fibrosis [see Clinical Studies (14.4)]. Continued approval for this indication may be contingent upon the verification and description of clinical benefit in a confirmatory trial.",
-    "WEGOVY tablets are indicated in combination with a reduced calorie diet and increased physical activity:",
-    "to reduce the risk of major adverse CV events (CV death, non-fatal myocardial infarction, or non-fatal stroke) in adults with established CV disease and either obesity or overweight.",
-    "to reduce excess body weight and maintain weight reduction long term in adults with obesity, or in adults with overweight in the presence of at least one weight-related comorbid condition.",
     "Limitations of Use",
     "Concomitant use of WEGOVY (semaglutide) tablets or WEGOVY (semaglutide) injection with other semaglutide-containing products or with any other GLP-1 receptor agonist is not recommended.",
   ],
   dosing: [
-    "Initiate at 0.25 mg once weekly for 4 weeks. Then follow the dosage escalation schedule in Table 1, titrating every 4 weeks to achieve the maintenance dosage. (2.2)",
-    "Initiate WEGOVY tablet with a dosage of 1.5 mg once daily for 30 days. Then follow the dosage escalation schedule, titrating every 30 days to achieve the maintenance dosage. (2.2)",
+    "The recommended starting dosage of WEGOVY injection is 0.25 mg administered subcutaneously once weekly.",
   ],
   boxedWarning: [
     "WARNING: RISK OF THYROID C-CELL TUMORS",
@@ -102,6 +103,22 @@ const WEGOVY_LABEL: ProductLabel = dailyMedLabel({
   ],
 });
 
+const WEGOVY_TABLET_LABEL: ProductLabel = dailyMedLabel({
+  ...WEGOVY_LABEL,
+  indications: [
+    "WEGOVY tablets are indicated in combination with a reduced calorie diet and increased physical activity:",
+    "to reduce the risk of major adverse CV events (CV death, non-fatal myocardial infarction, or non-fatal stroke) in adults with established CV disease and either obesity or overweight.",
+    "to reduce excess body weight and maintain weight reduction long term in adults with obesity, or in adults with overweight in the presence of at least one weight-related comorbid condition.",
+    "Limitations of Use",
+    "Concomitant use of WEGOVY (semaglutide) tablets or WEGOVY (semaglutide) injection with other semaglutide-containing products or with any other GLP-1 receptor agonist is not recommended.",
+  ],
+  dosing: [
+    "Initiate WEGOVY tablet with a dosage of 1.5 mg once daily for 30 days. Then follow the dosage escalation schedule, titrating every 30 days to achieve the maintenance dosage. (2.2)",
+  ],
+}, "oral tablet");
+
+const TABLET_SUBSTITUTION_WARNING = "RYBELSUS and OZEMPIC tablets are not substitutable on a mg-to-mg basis.";
+
 const RYBELSUS_LABEL: ProductLabel = dailyMedLabel({
   brand: "Rybelsus",
   title: "OZEMPIC (ORAL SEMAGLUTIDE) TABLET RYBELSUS (ORAL SEMAGLUTIDE) TABLET [NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP]",
@@ -114,6 +131,8 @@ const RYBELSUS_LABEL: ProductLabel = dailyMedLabel({
     "to reduce the risk of major adverse cardiovascular (CV) events (CV death, non-fatal myocardial infarction or non-fatal stroke) in adults with type 2 diabetes mellitus who are at high risk for these events.",
   ],
   dosing: [
+    TABLET_SUBSTITUTION_WARNING,
+    "RYBELSUS (2.2)",
     "Day 1 to 30: Recommended starting dosage is 3 mg orally once daily for 30 days (this dosage is not effective for glycemic control)",
     "Days 31 to 60: Increase the dosage to 7 mg orally once daily.",
   ],
@@ -127,7 +146,18 @@ const RYBELSUS_LABEL: ProductLabel = dailyMedLabel({
     "A personal or family history of medullary thyroid carcinoma (MTC) or in patients with Multiple Endocrine Neoplasia syndrome type 2 (MEN 2) [see Warnings and Precautions (5.1)].",
     "A prior serious hypersensitivity reaction to semaglutide or to any of the excipients in RYBELSUS or OZEMPIC tablets. Serious hypersensitivity reactions including anaphylaxis and angioedema have been reported with semaglutide tablets [see Warnings and Precautions (5.7)].",
   ],
-});
+}, "oral tablet");
+
+const OZEMPIC_TABLET_LABEL: ProductLabel = dailyMedLabel({
+  ...RYBELSUS_LABEL,
+  brand: "Ozempic",
+  dosing: [
+    TABLET_SUBSTITUTION_WARNING,
+    "OZEMPIC Tablets (2.2)",
+    "Day 1 to 30: Recommended starting dosage is 1.5 mg orally once daily for 30 days (this dosage is not effective for glycemic control).",
+    "Days 31 to 60: Increase the dosage to 4 mg orally once daily.",
+  ],
+}, "oral tablet");
 
 const MOUNJARO_LABEL: ProductLabel = dailyMedLabel({
   brand: "Mounjaro",
@@ -143,6 +173,9 @@ const MOUNJARO_LABEL: ProductLabel = dailyMedLabel({
   dosing: [
     "The recommended starting dosage is 2.5 mg injected subcutaneously once weekly. (2.1)",
     "If additional glycemic control is needed, increase the dosage in 2.5 mg increments after at least 4 weeks on the current dose. (2.1)",
+    "Maximum dosage (2.1):",
+    "Adults: 15 mg subcutaneously once weekly.",
+    "Pediatric patients 10 years of age and older: 10 mg subcutaneously once weekly.",
   ],
   boxedWarning: [
     "WARNING: RISK OF THYROID C-CELL TUMORS",
@@ -171,6 +204,10 @@ const ZEPBOUND_LABEL: ProductLabel = dailyMedLabel({
   ],
   dosing: [
     "The recommended starting dosage is 2.5 mg injected subcutaneously once weekly for 4 weeks. Increase the dosage in 2.5 mg increments after at least 4 weeks until recommended maintenance dosage is achieved. (2.1)",
+    "Consider treatment response and tolerability when selecting the maintenance dosage. (2.1)",
+    "Weight Reduction and Long-Term Maintenance: 5 mg, 10 mg, or 15 mg injected subcutaneously once weekly. (2.2)",
+    "Obstructive Sleep Apnea: 10 mg or 15 mg injected subcutaneously once weekly. (2.2)",
+    "Maximum Recommended Dosage: 15 mg injected subcutaneously once weekly. (2.2)",
   ],
   boxedWarning: [
     "WARNING: RISK OF THYROID C-CELL TUMORS",
@@ -184,7 +221,7 @@ const ZEPBOUND_LABEL: ProductLabel = dailyMedLabel({
   ],
 });
 
-const EGRIFTA_SV_LABEL: ProductLabel = dailyMedLabel({
+export const EGRIFTA_SV_LABEL: ProductLabel = dailyMedLabel({
   brand: "Egrifta SV",
   title: "EGRIFTA SV (TESAMORELIN) KIT [THERATECHNOLOGIES INC.]",
   setId: "3d783378-b02d-4f19-99dd-0fc91a042224",
@@ -209,7 +246,7 @@ const EGRIFTA_SV_LABEL: ProductLabel = dailyMedLabel({
   ],
 });
 
-const EGRIFTA_WR_LABEL: ProductLabel = dailyMedLabel({
+export const EGRIFTA_WR_LABEL: ProductLabel = dailyMedLabel({
   brand: "Egrifta WR",
   title: "EGRIFTA WR (TESAMORELIN) KIT [THERATECHNOLOGIES INC.]",
   setId: "839334d3-8c1d-4c26-9036-2ab524a6ea75",
@@ -263,7 +300,7 @@ const VYLEESI_LABEL: ProductLabel = dailyMedLabel({
 const NOT_APPROVED: PeptideLabelEntry = { approved: false, notice: NO_APPROVED_USE_NOTICE };
 
 export const PEPTIDE_LABELS: Readonly<Record<PeptideId, PeptideLabelEntry>> = {
-  semaglutide: { approved: true, products: [OZEMPIC_LABEL, WEGOVY_LABEL, RYBELSUS_LABEL] },
+  semaglutide: { approved: true, products: [OZEMPIC_LABEL, OZEMPIC_TABLET_LABEL, WEGOVY_LABEL, WEGOVY_TABLET_LABEL, RYBELSUS_LABEL] },
   tirzepatide: { approved: true, products: [MOUNJARO_LABEL, ZEPBOUND_LABEL] },
   tesamorelin: { approved: true, products: [EGRIFTA_SV_LABEL, EGRIFTA_WR_LABEL] },
   bremelanotide: { approved: true, products: [VYLEESI_LABEL] },
@@ -291,12 +328,12 @@ function quoted(lines: readonly string[]): string {
 
 function productLines(product: ProductLabel): readonly string[] {
   return [
-    `${product.brand}. What the label says it is for: ${quoted(product.indications)}`,
-    `How the ${product.brand} label says to start: ${quoted(product.dosing)}`,
-    ...(product.boxedWarning === undefined ? [] : [`Boxed warning on the ${product.brand} label: ${quoted(product.boxedWarning)}`]),
+    `${product.presentation}. What the label says it is for: ${quoted(product.indications)}`,
+    `How the ${product.presentation} label says to start: ${quoted(product.dosing)}`,
+    ...(product.boxedWarning === undefined ? [] : [`Boxed warning on the ${product.presentation} label: ${quoted(product.boxedWarning)}`]),
     ...(product.contraindications === undefined
       ? []
-      : [`Contraindications on the ${product.brand} label: ${quoted(product.contraindications)}`]),
+      : [`Contraindications on the ${product.presentation} label: ${quoted(product.contraindications)}`]),
     `Source: ${product.title}, ${DAILYMED_RECORD.name} label version ${product.version}, dated ${product.labelDate}. ${product.url}`,
   ];
 }

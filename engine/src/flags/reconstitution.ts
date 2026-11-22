@@ -1,15 +1,11 @@
 import { FDA_UNAPPROVED_GLP1_PAGE_DATE, FDA_UNAPPROVED_GLP1_URL } from "../peptides.ts";
+import { EGRIFTA_SV_LABEL, EGRIFTA_WR_LABEL } from "../peptideLabels.ts";
 import { formatNumber } from "../text.ts";
 import type { Flag, OfficialStatement } from "../types.ts";
-import { convertDose, requirePositive, U100_UNITS_PER_ML } from "./units.ts";
-import type { DoseEquivalents } from "./units.ts";
+import { InvalidDoseInputError, requirePositive } from "./units.ts";
 
 export const MCG_PER_MG = 1000;
-export const U100_SYRINGE_CAPACITY_ML = 1;
-export const SMALLEST_MEASURABLE_U100_UNITS = 1;
-export const VIAL_DISCARD_DAYS = 28;
 const RELATIVE_TOLERANCE = 0.01;
-const SMALLEST_NUMBER_SHOWN = 0.0001;
 const MILLISECONDS_PER_DAY = 86_400_000;
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
 
@@ -39,21 +35,50 @@ export const VIAL_DISCARD_STATEMENT: OfficialStatement = {
   pageDate: FDA_UNAPPROVED_GLP1_PAGE_DATE,
 };
 
-export const NO_ADDED_VOLUME_ASSUMPTION =
-  "This figure assumes the powder adds no volume, so the vial holds exactly the liquid that was added. No official source was found for that plain division. Dissolved powder can take up space, and then the real concentration is lower than this figure.";
+export type VialPresentation = "egrifta-wr" | "egrifta-sv";
 
-export const VIAL_DISCARD_NOTE =
-  "This date comes from the FDA's general line about vials that hold more than one dose. If the label, the pharmacy or the prescriber gives a shorter time, follow the shorter time.";
+const VIAL_RULES = {
+  "egrifta-wr": {
+    label: EGRIFTA_WR_LABEL,
+    vialMg: 11.6,
+    diluentMl: 1.3,
+    diluent: "supplied-bacteriostatic-water-for-injection",
+    concentrationMgPerMl: 8,
+    doseMg: 1.28,
+    doseStatement: "One dose of EGRIFTA WR is 1.28 mg in 0.16 mL of the reconstituted solution.",
+    preparation: "Reconstitute 1 vial of EGRIFTA WR lyophilized powder with 1.3 mL of diluent (8 mg per mL).",
+    discard: "Store reconstituted EGRIFTA WR at room temperature at 20°C to 25°C (68°F to 77°F). Discard unused solution of EGRIFTA WR 7 days after mixing. Do not freeze.",
+  },
+  "egrifta-sv": {
+    label: EGRIFTA_SV_LABEL,
+    vialMg: 2,
+    diluentMl: 0.5,
+    diluent: "supplied-sterile-water-for-injection",
+    concentrationMgPerMl: 4,
+    doseMg: 1.4,
+    doseStatement: "The dose of EGRIFTA SV is 1.4 mg (0.35 mL of the reconstituted solution) injected subcutaneously once daily.",
+    preparation: "Reconstitute 1 vial of EGRIFTA SV lyophilized powder with 0.5 mL of diluent (2 mg per 0.5 mL).",
+    discard: "If not used immediately, discard the reconstituted solution. Do not freeze or refrigerate the reconstituted solution.",
+  },
+} as const;
+
+function isVialPresentation(value: string | undefined): value is VialPresentation {
+  return value !== undefined && Object.hasOwn(VIAL_RULES, value);
+}
 
 export type MassUnit = "mg" | "mcg";
 
 export interface ReconstitutionInput {
+  readonly presentation?: string;
+  readonly diluent?: string;
   readonly vialAmount: number;
   readonly vialUnit: MassUnit;
   readonly diluentMl: number;
 }
 
 export interface Reconstitution {
+  readonly presentation: VialPresentation;
+  readonly source: OfficialStatement;
   readonly vialMg: number;
   readonly diluentMl: number;
   readonly concentrationMgPerMl: number;
@@ -74,13 +99,14 @@ export interface ReconstitutedDoseInput {
 
 export interface ReconstitutedDoseCheck {
   readonly reconstitution: Reconstitution;
-  readonly dose: DoseEquivalents;
+  readonly dose: { readonly mg: number; readonly mL: number };
   readonly flags: readonly Flag[];
 }
 
 export interface VialDiscardDate {
-  readonly firstUseDate: string;
-  readonly discardBy: string;
+  readonly mixedOn: string;
+  readonly timing: "date" | "immediate";
+  readonly discardBy: string | null;
   readonly days: number;
   readonly source: OfficialStatement;
   readonly note: string;
@@ -94,23 +120,26 @@ export class InvalidDateError extends Error {
 }
 
 function toMg(value: number, unit: MassUnit): number {
-  return unit === "mg" ? value : value / MCG_PER_MG;
+  if (unit === "mg") return value;
+  if (unit === "mcg") return value / MCG_PER_MG;
+  throw new InvalidDoseInputError("Specify the printed mass in mg or mcg.");
 }
 
-export function reconstitute(input: ReconstitutionInput): Reconstitution {
+export function reconstitute(input: ReconstitutionInput): Reconstitution | undefined {
   requirePositive(`vialAmount in ${input.vialUnit}`, input.vialAmount);
   requirePositive("diluentMl", input.diluentMl);
+  if (!isVialPresentation(input.presentation)) return undefined;
+  const rule = VIAL_RULES[input.presentation];
   const vialMg = toMg(input.vialAmount, input.vialUnit);
+  if (vialMg !== rule.vialMg || input.diluentMl !== rule.diluentMl || input.diluent !== rule.diluent) return undefined;
   return {
+    presentation: input.presentation,
     vialMg,
     diluentMl: input.diluentMl,
-    concentrationMgPerMl: vialMg / input.diluentMl,
-    assumption: NO_ADDED_VOLUME_ASSUMPTION,
+    concentrationMgPerMl: rule.concentrationMgPerMl,
+    assumption: rule.preparation,
+    source: { text: rule.preparation, sourceUrl: rule.label.url, pageDate: rule.label.labelDate },
   };
-}
-
-function describeNumber(value: number): string {
-  return value < SMALLEST_NUMBER_SHOWN ? `less than ${formatNumber(SMALLEST_NUMBER_SHOWN)}` : formatNumber(value);
 }
 
 function describeMass(dose: MassDose): string {
@@ -119,54 +148,6 @@ function describeMass(dose: MassDose): string {
 
 function inMcg(dose: MassDose): string {
   return dose.unit === "mcg" ? describeMass(dose) : `${describeMass(dose)} (${formatNumber(dose.value * MCG_PER_MG)} mcg)`;
-}
-
-function describeVolume(dose: DoseEquivalents): string {
-  return `${describeNumber(dose.mL)} mL, which is ${describeNumber(dose.u100Units)} units on a U-100 insulin syringe`;
-}
-
-function volumeNumbers(reconstitution: Reconstitution, dose: DoseEquivalents): Readonly<Record<string, number>> {
-  return {
-    vialMg: reconstitution.vialMg,
-    diluentMl: reconstitution.diluentMl,
-    concentrationMgPerMl: reconstitution.concentrationMgPerMl,
-    doseMg: dose.mg,
-    doseMl: dose.mL,
-    doseU100Units: dose.u100Units,
-  };
-}
-
-function tooLargeFlag(input: ReconstitutedDoseInput, reconstitution: Reconstitution, dose: DoseEquivalents): readonly Flag[] {
-  if (dose.mL <= U100_SYRINGE_CAPACITY_ML) return [];
-  const beyondVial = dose.mg > reconstitution.vialMg ? " The dose is also more than the whole vial holds." : "";
-  return [
-    {
-      type: "dose_volume",
-      severity: "stop",
-      itemIds: [input.itemId],
-      title: `${describeMass(input.dose)} does not fit in one 1 mL syringe`,
-      detail: `At ${formatNumber(reconstitution.concentrationMgPerMl)} mg per mL, ${describeMass(input.dose)} is ${describeVolume(dose)}. A U-100 insulin syringe holds ${formatNumber(U100_SYRINGE_CAPACITY_ML)} mL, which is ${formatNumber(U100_UNITS_PER_ML)} units.${beyondVial} A number this large often means the vial amount, the liquid amount or the dose was entered in the wrong unit. Do not inject until a pharmacist or the prescriber confirms the amount.`,
-      explain: "This dose needs more than one full syringe, which often means a number was entered in the wrong unit.",
-      numbers: volumeNumbers(reconstitution, dose),
-      source: U100_SYRINGE_STATEMENT,
-    },
-  ];
-}
-
-function tooSmallFlag(input: ReconstitutedDoseInput, reconstitution: Reconstitution, dose: DoseEquivalents): readonly Flag[] {
-  if (dose.u100Units >= SMALLEST_MEASURABLE_U100_UNITS) return [];
-  return [
-    {
-      type: "dose_volume",
-      severity: "ask",
-      itemIds: [input.itemId],
-      title: `${describeMass(input.dose)} is too small to measure on a U-100 syringe`,
-      detail: `At ${formatNumber(reconstitution.concentrationMgPerMl)} mg per mL, ${describeMass(input.dose)} is ${describeVolume(dose)}. That is less than ${formatNumber(SMALLEST_MEASURABLE_U100_UNITS)} unit, which is too small to measure. Ask a pharmacist or the prescriber how to measure this dose.`,
-      explain: "This dose works out to less than 1 unit on the syringe, which is too small to measure.",
-      numbers: volumeNumbers(reconstitution, dose),
-      source: U100_SYRINGE_STATEMENT,
-    },
-  ];
 }
 
 function isThousandfold(factor: number): boolean {
@@ -179,7 +160,7 @@ function massMismatchFlag(input: ReconstitutedDoseInput, alsoStated: MassDose): 
   const doseMg = toMg(input.dose.value, input.dose.unit);
   const statedMg = toMg(alsoStated.value, alsoStated.unit);
   const factor = statedMg / doseMg;
-  if (Math.abs(factor - 1) <= RELATIVE_TOLERANCE) return [];
+  if (doseMg === statedMg) return [];
   const timesOff = factor > 1 ? factor : 1 / factor;
   const swapped = isThousandfold(factor)
     ? ` A gap of ${formatNumber(MCG_PER_MG)} times is what happens when mg and mcg are swapped.`
@@ -198,22 +179,42 @@ function massMismatchFlag(input: ReconstitutedDoseInput, alsoStated: MassDose): 
   ];
 }
 
-export function checkReconstitutedDose(input: ReconstitutedDoseInput): ReconstitutedDoseCheck {
-  const reconstitution = reconstitute(input.vial);
+export class UnverifiedDrawError extends InvalidDoseInputError {
+  readonly flags: readonly Flag[];
+
+  constructor(message: string, flags: readonly Flag[] = []) {
+    super(message);
+    this.name = "UnverifiedDrawError";
+    this.flags = flags;
+  }
+}
+
+export function checkReconstitutedDose(input: ReconstitutedDoseInput): ReconstitutedDoseCheck | undefined {
   requirePositive(`dose in ${input.dose.unit}`, input.dose.value);
-  const dose = convertDose(reconstitution.concentrationMgPerMl, {
-    value: toMg(input.dose.value, input.dose.unit),
-    unit: "mg",
-  });
-  return {
-    reconstitution,
-    dose,
-    flags: [
-      ...(input.alsoStated === undefined ? [] : massMismatchFlag(input, input.alsoStated)),
-      ...tooLargeFlag(input, reconstitution, dose),
-      ...tooSmallFlag(input, reconstitution, dose),
-    ],
-  };
+  const reconstitution = reconstitute(input.vial);
+  const doseMg = toMg(input.dose.value, input.dose.unit);
+  if (doseMg > toMg(input.vial.vialAmount, input.vial.vialUnit)) {
+    throw new UnverifiedDrawError("The entered dose is more than the whole vial holds. Check the vial and prescribed dose with a pharmacist.");
+  }
+  if (!reconstitution) return undefined;
+
+  const flags = input.alsoStated === undefined ? [] : massMismatchFlag(input, input.alsoStated);
+  if (flags.length) throw new UnverifiedDrawError(flags.map((flag) => flag.detail).join(" "), flags);
+  const rule = VIAL_RULES[reconstitution.presentation];
+  if (doseMg !== rule.doseMg) {
+    const detail = "The entered dose does not match the dose on this presentation’s label. Check the prescribed dose with a pharmacist.";
+    throw new UnverifiedDrawError(detail, [{
+      type: "dose_volume",
+      severity: "ask",
+      itemIds: [input.itemId],
+      title: "The entered dose differs from the labeled dose",
+      detail,
+      explain: "Ask a pharmacist to verify the dose and how to measure it.",
+      source: { text: rule.doseStatement, sourceUrl: rule.label.url, pageDate: rule.label.labelDate },
+    }]);
+  }
+  return { reconstitution, dose: { mg: doseMg, mL: doseMg / rule.concentrationMgPerMl }, flags };
+
 }
 
 function parseIsoDate(value: string): number {
@@ -224,8 +225,36 @@ function parseIsoDate(value: string): number {
   return time;
 }
 
-export function vialDiscardDate(firstUseDate: string): VialDiscardDate {
-  const firstUse = parseIsoDate(firstUseDate);
-  const discardBy = new Date(firstUse + VIAL_DISCARD_DAYS * MILLISECONDS_PER_DAY).toISOString().slice(0, 10);
-  return { firstUseDate, discardBy, days: VIAL_DISCARD_DAYS, source: VIAL_DISCARD_STATEMENT, note: VIAL_DISCARD_NOTE };
+interface DiscardContext {
+  readonly event: "mixing" | "first-use";
+  readonly storedAsLabeled?: boolean;
+}
+
+export function vialDiscardDate(date: string, presentation?: string, context?: DiscardContext): VialDiscardDate | null {
+  const mixedOn = parseIsoDate(date);
+  if (!isVialPresentation(presentation) || context?.event !== "mixing" || context.storedAsLabeled === false) return null;
+  const rule = VIAL_RULES[presentation];
+  const source = { text: rule.discard, sourceUrl: rule.label.url, pageDate: rule.label.labelDate };
+  if (presentation === "egrifta-sv") {
+    return {
+      mixedOn: date,
+      timing: "immediate",
+      discardBy: null,
+      days: 0,
+      source,
+      note: "Discard any unused solution immediately after mixing.",
+    };
+  }
+  if (context.storedAsLabeled !== true) return null;
+  const days = 7;
+  const discardBy = new Date(mixedOn + days * MILLISECONDS_PER_DAY).toISOString().slice(0, 10);
+  if (!ISO_DATE.test(discardBy)) return null;
+  return {
+    mixedOn: date,
+    timing: "date",
+    discardBy,
+    days,
+    source,
+    note: "Seven days after mixing, under the storage conditions on the Egrifta WR label.",
+  };
 }

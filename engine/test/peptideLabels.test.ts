@@ -94,8 +94,9 @@ const QUOTES = PRODUCTS.flatMap(({ product }) =>
 );
 
 describe("DailyMed labels for peptides with an FDA-approved product", () => {
-  test("eight labels are stored, one per current brand", () => {
-    expect(PRODUCTS.map(({ product }) => product.brand)).toEqual([
+  test("eight stored SPLs cover every current brand", () => {
+    expect(new Set(PRODUCTS.map(({ product }) => product.setId)).size).toBe(8);
+    expect([...new Set(PRODUCTS.map(({ product }) => product.brand))]).toEqual([
       "Ozempic",
       "Wegovy",
       "Rybelsus",
@@ -188,5 +189,41 @@ describe("peptideUses", () => {
     expect(text).toContain(product.url);
     expect(text).toContain(`label version ${product.version}, dated ${product.labelDate}`);
     expect(peptideUses(id as keyof typeof PEPTIDE_LABELS).at(-1)).toBe(PRESCRIBER_NOTICE);
+  });
+});
+
+describe("formulation-specific schedule excerpts", () => {
+  test("separates semaglutide schedules by brand, form and route and preserves the substitution warning", () => {
+    const entry = PEPTIDE_LABELS.semaglutide;
+    if (!entry.approved) throw new Error("semaglutide products missing");
+    const schedules = Object.fromEntries(entry.products.map((p) => [p.presentation, p.dosing.join(" ")]));
+    expect(Object.keys(schedules).sort()).toEqual([
+      "Ozempic oral tablet", "Ozempic subcutaneous injection", "Rybelsus oral tablet",
+      "Wegovy oral tablet", "Wegovy subcutaneous injection",
+    ]);
+    expect(schedules["Ozempic oral tablet"]).toContain("1.5 mg orally once daily");
+    expect(schedules["Rybelsus oral tablet"]).toContain("3 mg orally once daily");
+    for (const [name, dosing] of Object.entries(schedules)) {
+      if (name.endsWith("injection")) {
+        expect(dosing).toContain("once weekly");
+        expect(dosing).not.toContain("once daily");
+      } else {
+        expect(dosing).toContain("once daily");
+        expect(dosing).not.toContain("once weekly");
+        if (!name.startsWith("Wegovy")) expect(dosing).toContain("not substitutable on a mg-to-mg basis");
+      }
+    }
+  });
+
+  test("keeps tirzepatide escalation with its audience, interval and dose ceiling", () => {
+    const entry = PEPTIDE_LABELS.tirzepatide;
+    if (!entry.approved) throw new Error("tirzepatide products missing");
+    const [mounjaro, zepbound] = entry.products.map((p) => p.dosing.join(" "));
+    expect(mounjaro).toContain("at least 4 weeks");
+    expect(mounjaro).toContain("Adults: 15 mg");
+    expect(mounjaro).toContain("Pediatric patients 10 years of age and older: 10 mg");
+    expect(zepbound).toContain("at least 4 weeks");
+    expect(zepbound).toContain("Maximum Recommended Dosage: 15 mg");
+    expect(zepbound).toContain("Obstructive Sleep Apnea: 10 mg or 15 mg");
   });
 });

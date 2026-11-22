@@ -26,12 +26,11 @@ export const CO_USE_SECTIONS: readonly LabelSectionName[] = ["drug_interactions"
 export const CO_USE_CUE =
   /\b(?:tak(?:e|es|en|ing)|concomitant(?:ly)?|concurrent(?:ly)?|co-?administ(?:er|ered|ration)|in combination with|combined with|together with|along with|with other|used? with|receiving|interact(?:s|ions?)?|potentiates?|contraindicated|avoid(?:ed)?|do not (?:use|take)|may (?:increase|enhance|decrease|reduce))\b/i;
 
-// A drug's own name is specific. A group word or an everyday name ("antihistamines", "calcium") also turns up
-// where a label talks about treatment or lab values, so it only counts next to co-use wording.
-const KINDS_NEEDING_CO_USE: readonly InteractionMatchKind[] = ["common_name", "class_name", "class_phrase"];
-
-// A sentence about being allergic to a drug is not about taking two drugs together.
-const ALLERGY_SENTENCE = /\ballerg(?:y|ic|ies)\b/i;
+const CLAUSE_BREAK = /;|(?=\b(?:heart attack and stroke|stomach bleeding|allergy) (?:alert|warning)\b)|\bbut\b(?! particularly with)|\b(?:whereas|however|although|nevertheless)\b|,?\s+and\s+(?=(?:avoid|do not|monitor|ask|use caution|no |there (?:is|are)))/gi;
+const ALLERGY = /\ballerg(?:y|ic|ies)\b/i;
+const PROHIBITION = /\b(?:do|should|must) not (?:be (?:combined|co-?administered|taken|used)|take|use|administer|co-?administer|combine)\b/gi;
+const UNRESOLVED_POLARITY = /\b(?:no|not|neither|nor|never|without|lack(?:s|ed|ing)?|unknown|unclear|unaffected|unnecessary|except(?:ion|ing)?|excluding|other than|rather than|instead of|compared (?:to|with)|alone(?! but particularly with)|monotherapy)\b/i;
+const WARNING = /\b(?:avoid|(?:do|should|must) not (?:be (?:combined|co-?administered|taken|used)|take|use|administer|co-?administer|combine)|contraindicated|monitor|caution|ask (?:a |your )?(?:doctor|pharmacist)|potentiat\w*|interacts? with|(?:may|can|could) (?:increase|enhance|decrease|reduce|affect|interact)|(?:increas\w*|reduc\w*) (?:the )?(?:risk|effect|clearance|exposure|concentration)|may result in deterioration|life-threatening|synergism|antagonism)\b/i;
 const KIND_RANK: Readonly<Record<InteractionMatchKind, number>> = {
   ingredient_name: 0,
   common_name: 1,
@@ -76,17 +75,27 @@ function firstAllowedSpan(text: string, term: CompiledTerm): TextSpan | undefine
 }
 
 function matchesIn(sentence: LabelSentence, sentenceIndex: number, terms: readonly CompiledTerm[]): readonly SentenceMatch[] {
-  if (ALLERGY_SENTENCE.test(sentence.text)) return [];
-  const coUse = isAboutCoUse(sentence);
-  return terms
-    .filter((term) => coUse || !KINDS_NEEDING_CO_USE.includes(term.kind))
-    .flatMap((term) => {
-      const span = firstAllowedSpan(sentence.text, term);
-      if (span === undefined) return [];
-      const text = sentence.text.slice(span.start, span.end);
-      const found: FoundMatch = { text, kind: term.kind, ingredient: term.ingredient };
-      return [{ sentence, sentenceIndex, span, found, match: { ...found, term: term.term } }];
-    });
+  const matches: SentenceMatch[] = [];
+  // Commas often separate members of a drug list under a single warning.
+  let nextOffset = 0;
+  for (const text of sentence.text.split(CLAUSE_BREAK)) {
+    const offset = sentence.text.indexOf(text, nextOffset);
+    nextOffset = offset + text.length;
+    if (ALLERGY.test(text) || UNRESOLVED_POLARITY.test(text.replace(PROHIBITION, ""))) continue;
+    const coUse = CO_USE_CUE.test(text) || sentence.section === "drug_interactions";
+    const instruction = (coUse && WARNING.test(text)) ||
+      (sentence.section === "ask_doctor_or_pharmacist" && CO_USE_CUE.test(text)) ||
+      (/\b(?:the chance is higher if|risk is (?:higher|increased) if)\b/i.test(text) && CO_USE_CUE.test(text));
+    if (!instruction) continue;
+    for (const term of terms) {
+      const local = firstAllowedSpan(text, term);
+      if (!local) continue;
+      const span = { start: offset + local.start, end: offset + local.end };
+      const found = { text: text.slice(local.start, local.end), kind: term.kind, ingredient: term.ingredient };
+      matches.push({ sentence, sentenceIndex, span, found, match: { ...found, term: term.term } });
+    }
+  }
+  return matches;
 }
 
 function bestMatch(matches: readonly SentenceMatch[]): SentenceMatch | undefined {
@@ -113,7 +122,7 @@ function describe(labelOwner: CabinetItem, other: CabinetItem, section: LabelSec
 
 function explain(labelOwner: CabinetItem, other: CabinetItem, match: FoundMatch): string {
   const named = match.kind === "ingredient_name" ? match.ingredient : `"${match.text}"`;
-  return `The ${labelOwner.displayName} label has a warning about ${named}, and that covers ${other.displayName}, so check with a pharmacist before taking both.`;
+  return `The ${labelOwner.displayName} label mentions ${named} in this warning, so ask a pharmacist whether it applies to taking ${other.displayName} with it.`;
 }
 
 function flagForSection(

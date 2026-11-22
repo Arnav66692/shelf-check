@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "set_id": "163db29b-f035-6696-e063-6294a90a7e06",
+      "openfda": {
+        "product_ndc": [
+          "73684-110"
+        ]
+      },
+      "contraindications": [
+        "CONTRAINDICATIONS Carbinoxamine maleate is contraindicated in children younger than 2 years of age. Carbinoxamine maleate is contraindicated in nursing mothers. Carbinoxamine maleate is contraindicated in patients who are hypersensitive to the drug or on monoamine oxidase inhibitor therapy (see Drug Interactions )."
+      ],
+      "pediatric_use": [
+        "Pediatric Use Carbinoxamine maleate is contraindicated in children younger than 2 years of age (see CONTRAINDICATIONS ). Neonates have an increased susceptibility to anticholinergic side effects, such as CNS excitation, which may lead to convulsions. Carbinoxamine maleate may diminish mental alertness in children. In the young child, particularly, they may produce excitation."
+      ],
+      "dosage_and_administration": [
+        "DOSAGE AND ADMINISTRATION Carbinoxamine maleate is contraindicated in children younger than 2 years of age (see CONTRAINDICATIONS ). Carbinoxamine maleate should be taken on an empty stomach with water. DOSAGE SHOULD BE INDIVIDUALIZED ACCORDING TO THE NEEDS AND THE RESPONSE OF THE PATIENT. Carbinoxamine maleate dosage should be based on the severity of the condition and the response of the patient. The drug is well tolerated in adults in doses as high as 24 mg daily, in divided doses, over prolonged periods. On the other hand, some patients respond to as little as 4 mg daily. Clinical experience suggests the following dosage schedule: Usual Adult Dosage: 1 tablet (6 mg) 3 to 4 times daily."
+      ]
+    }
+  ]
+}

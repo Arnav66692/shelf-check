@@ -7,7 +7,7 @@ export type BarcodeParse =
       readonly upcA?: string;
       readonly ndcCandidates: readonly string[];
     }
-  | { readonly kind: "invalid"; readonly reason: string };
+  | { readonly kind: "invalid"; readonly reason: string; readonly reasonCode?: "invalid_checksum" };
 
 const UPC_A_LENGTH = 12;
 const EAN_13_LENGTH = 13;
@@ -44,7 +44,7 @@ export function parseBarcode(text: string): BarcodeParse {
     return { kind: "invalid", reason: `A barcode has 12, 13 or 14 digits, this one has ${digits.length}.` };
   }
   if (!hasValidCheckDigit(digits)) {
-    return { kind: "invalid", reason: "The last digit does not match the rest of the barcode. Scan it again." };
+    return { kind: "invalid", reasonCode: "invalid_checksum", reason: "The last digit does not match the rest of the barcode. Scan it again." };
   }
   if (upcA === undefined) return { kind: "gtin", searchUpc: digits, ndcCandidates: [] };
   return {

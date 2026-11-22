@@ -1,4 +1,8 @@
 {
+  "https://api.fda.gov/drug/ndc.json?search=product_ndc%3A(%2200093-1720%22%20%220093-1720%22)&limit=10": {
+    "status": 200,
+    "file": "bodies/warfarin-0093-1720.json"
+  },
   "https://api.fda.gov/drug/ndc.json?search=product_ndc%3A(%2250580-590%22)&limit=10": {
     "status": 200,
     "file": "bodies/api.fda.gov-4b24bd8b7c63f958.txt"

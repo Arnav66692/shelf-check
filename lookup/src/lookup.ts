@@ -1,4 +1,4 @@
-import { findByBarcode, findByNdc } from "./codes.ts";
+import { findByBarcode, findByCode, findByNdc } from "./codes.ts";
 import { createCachedJsonGetter, STATUS_NOT_FOUND, STATUS_OK } from "./http.ts";
 import type { FetchFn } from "./http.ts";
 import { getLabel, getLabelImages } from "./labels.ts";
@@ -32,7 +32,7 @@ function processEnvironment(): Environment {
 }
 
 function createSources(options: LookupOptions): Sources {
-  const fetchFn: FetchFn = options.fetch ?? ((url) => fetch(url));
+  const fetchFn: FetchFn = options.fetch ?? ((url, init) => fetch(url, init));
   const apiKey = options.apiKey ?? openFdaApiKeyFromEnv(options.env ?? processEnvironment());
   return {
     openfda: createCachedJsonGetter({
@@ -47,11 +47,14 @@ function createSources(options: LookupOptions): Sources {
   };
 }
 
-export function createLookup(options: LookupOptions = {}): Lookup {
+export function createLookup(options: LookupOptions = {}): Lookup & {
+  findByCode(text: string): Promise<CodeLookupResult | null>;
+} {
   const sources = createSources(options);
   return {
     searchByName: (query, searchOptions) => searchByName(sources, query, searchOptions),
     findByNdc: (text) => findByNdc(sources, text),
+    findByCode: (text) => findByCode(sources, text),
     findByBarcode: (digits) => findByBarcode(sources, digits),
     getLabel: (product) => getLabel(sources, product),
     getLabelImages: (product) => getLabelImages(sources, product),

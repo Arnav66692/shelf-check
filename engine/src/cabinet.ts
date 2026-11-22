@@ -1,7 +1,8 @@
+import { escapeRegExp } from "./text.ts";
 import { parseStrength } from "./sources/openfda.ts";
 import type { NdcActiveIngredient, NdcProduct, OpenFdaClient } from "./sources/openfda.ts";
 import type { RxNavClient } from "./sources/rxnav.ts";
-import type { CabinetItem, DrugClass, Ingredient, ItemKind } from "./types.ts";
+import type { CabinetItem, DrugClass, Ingredient, ItemKind, LabelSections } from "./types.ts";
 
 export const DEFAULT_CLASS_SOURCES: readonly string[] = ["ATC", "FDASPL"];
 const CLASS_TYPES_USED: readonly string[] = ["ATC1-4", "EPC"];
@@ -73,11 +74,24 @@ export async function resolveIdentity(
   return { name: base?.name.toLowerCase() ?? fallbackName, rxcui, classes };
 }
 
+export function labelStrengthBasis(ingredient: Ingredient, label: LabelSections | undefined): string | undefined {
+  const active = label?.active_ingredient ?? [];
+  const names = [ingredient.printedName, ingredient.name].filter((name): name is string => Boolean(name));
+  const candidates = names.filter((name, index) => names.findIndex((other) => other.toLowerCase() === name.toLowerCase()) === index);
+  const supported = candidates.filter((name) => {
+    const substance = escapeRegExp(name).replace(/hydrochloride/gi, "(?:hydrochloride|hcl)").replace(/hydrobromide/gi, "(?:hydrobromide|hbr)");
+    const pattern = new RegExp(`\\b${substance}\\s*,?\\s+${escapeRegExp(String(ingredient.value))}\\s*${escapeRegExp(ingredient.unit)}\\b`, "i");
+    return active.some((line) => pattern.test(line));
+  });
+  return supported.length === 1 ? supported[0] : undefined;
+}
+
 async function toIngredient(raw: NdcActiveIngredient, sources: CabinetSources): Promise<Ingredient> {
   const strength = parseStrength(raw.strength);
   const identity = await resolveIdentity([raw.name], raw.name.trim().toLowerCase(), sources);
   return {
     name: identity.name,
+    printedName: raw.name,
     value: strength.value,
     unit: strength.unit,
     per: strength.per,
@@ -104,7 +118,10 @@ export async function buildCabinetItem(request: CabinetItemRequest, sources: Cab
     displayName: request.displayName ?? product.brandName ?? product.genericName ?? request.productNdc,
     productNdc: product.productNdc,
     kind: kindOf(product, request.kind),
-    ingredients,
+    ingredients: ingredients.map((ingredient) => {
+      const strengthBasis = labelStrengthBasis(ingredient, label ?? undefined);
+      return strengthBasis ? { ...ingredient, strengthBasis } : ingredient;
+    }),
     verified: true,
     ...(label === null ? {} : { label }),
   };

@@ -1,10 +1,10 @@
 import { createLookup } from "../src/lookup.ts";
-import type { Lookup, LookupOptions } from "../src/lookup.ts";
+import type { LookupOptions } from "../src/lookup.ts";
 import type { FetchFn } from "../src/http.ts";
 import { createFixtureFetch } from "./fixtureFetch.ts";
 
 export interface OfflineLookup {
-  readonly lookup: Lookup;
+  readonly lookup: ReturnType<typeof createLookup>;
   readonly requested: () => readonly string[];
 }
 

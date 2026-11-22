@@ -10,6 +10,41 @@ function found(result: CodeLookupResult): CodeFound {
   return result;
 }
 
+describe("findByCode", () => {
+  test.each(["300931713018", "0300931713018", "00300931713018", "3 00931 71301 8"])(
+    "resolves printed barcode %s to the same warfarin package",
+    async (text) => {
+      expect(await offlineLookup().lookup.findByCode(text)).toMatchObject({
+        status: "found", products: [{ packageNdc: "0093-1713-01", matchedBy: "barcode" }],
+      });
+    },
+  );
+
+  test.each(["NDC 50580-590", "NDC: 50580 590", "50580 590", "50580–590"])(
+    "preserves the printed NDC segments in %s",
+    async (text) => {
+      expect(await offlineLookup().lookup.findByCode(text)).toMatchObject({
+        status: "found", tried: ["50580-590"], products: [{ productNdc: "50580-590", matchedBy: "ndc" }],
+      });
+    },
+  );
+
+  test.each(["000931720", "00093-1720"])("checks the unpadded warfarin product code for %s", async (text) => {
+    expect(await offlineLookup().lookup.findByCode(text)).toMatchObject({
+      status: "found", tried: ["00093-1720", "0093-1720"], products: [{ productNdc: "0093-1720" }],
+    });
+  });
+
+  test("returns a checksum error for a bad GTIN and leaves names to name search", async () => {
+    const { lookup, requested } = offlineLookup();
+    expect(await lookup.findByCode("00300931713019")).toMatchObject({
+      status: "not_found", reason: "invalid_checksum", message: expect.stringContaining("Scan it again"), tried: [],
+    });
+    expect(await lookup.findByCode("5-HTP 100 mg")).toBeNull();
+    expect(requested()).toEqual([]);
+  });
+});
+
 describe("findByNdc", () => {
   test("finds the product for a hyphenated product code with everything a confirmation card needs", async () => {
     const result = found(await offlineLookup().lookup.findByNdc("50580-590"));
@@ -203,7 +238,7 @@ describe("findByBarcode", () => {
     const { lookup, requested } = offlineLookup();
     const result = await lookup.findByBarcode("300931713019");
 
-    expect(result).toMatchObject({ status: "not_found", reason: "unrecognised_code" });
+    expect(result).toMatchObject({ status: "not_found", reason: "invalid_checksum", message: expect.stringContaining("Scan it again") });
     expect(requested()).toEqual([]);
   });
 });

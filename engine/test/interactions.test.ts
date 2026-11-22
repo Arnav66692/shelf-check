@@ -1,3 +1,4 @@
+import bisoprolol from "../fixtures/official/openfda-bisoprolol-interactions.json";
 import { describe, expect, test } from "vitest";
 import { interactionFlags, INTERACTION_SECTIONS, isAboutCoUse } from "../src/flags/interactions.ts";
 import type { CabinetItem, Flag } from "../src/types.ts";
@@ -143,4 +144,26 @@ describe("interaction flag", () => {
 
     expect(interactionFlags(items)).toEqual([]);
   });
+});
+
+test("requires affirmative co-use evidence in the clause naming the other drug", async () => {
+  const [owner, aspirin] = await loadCabinet("warfarin", "aspirin");
+  if (!owner || !aspirin) throw new Error("missing fixtures");
+  const cimetidine: CabinetItem = { ...aspirin, id: "cimetidine", ingredients: [{ name: "cimetidine", value: 200, unit: "mg" }] };
+  const negative = bisoprolol.drug_interactions.join(" ");
+  expect(negative).toContain("no clinically relevant interactions");
+  const run = (line: string, other: CabinetItem) => fromLabelOf(interactionFlags([
+    { ...owner, label: { drug_interactions: [line] } }, other,
+  ]), owner.id);
+  expect(run(negative, cimetidine)).toEqual([]);
+  expect(run("No interaction with cimetidine, but avoid concomitant use with aspirin.", cimetidine)).toEqual([]);
+  expect(run("Patients allergic to aspirin may have a rash, but avoid concomitant use with cimetidine.", cimetidine)).toHaveLength(1);
+  expect(run("Patients allergic to aspirin may have a rash, but avoid concomitant use with cimetidine.", aspirin)).toEqual([]);
+  expect(run("Cimetidine was included in this study.", cimetidine)).toEqual([]);
+  expect(run("An interaction with cimetidine has not been established.", cimetidine)).toEqual([]);
+  expect(run("Co-administration with cimetidine is not contraindicated.", cimetidine)).toEqual([]);
+  expect(run("Avoid acid reducers other than cimetidine.", cimetidine)).toEqual([]);
+  expect(run("Cimetidine increased the risk of dizziness when administered alone.", cimetidine)).toEqual([]);
+  expect(run("If anticoagulation is needed, avoid aspirin rather than cimetidine.", cimetidine)).toEqual([]);
+  expect(run("Do not use with cimetidine.", cimetidine)).toHaveLength(1);
 });

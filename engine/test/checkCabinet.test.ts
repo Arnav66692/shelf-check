@@ -6,7 +6,7 @@ describe("checkCabinet", () => {
   test("Tylenol plus NyQuil gives one duplicate flag and one daily total flag for acetaminophen", async () => {
     const items = await loadCabinet("tylenol", "nyquil");
 
-    const flags = checkCabinet(items);
+    const flags = checkCabinet(items, { ageYears: 35, conditions: [], allergies: [] });
 
     expect(flags.map((flag) => flag.type)).toEqual(["duplicate_ingredient", "daily_total"]);
     expect(flagsOfType(flags, "daily_total")[0]?.numbers?.["totalMgPerDayAtEachMaximum"]).toBe(5600);
@@ -59,7 +59,7 @@ describe("checkCabinet", () => {
       "loratadine",
     );
 
-    const flags = checkCabinet(items);
+    const flags = checkCabinet(items, { ageYears: 35, conditions: [], allergies: [] });
 
     expect(flags.length).toBeGreaterThan(0);
     for (const flag of flags) {

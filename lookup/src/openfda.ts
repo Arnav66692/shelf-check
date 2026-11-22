@@ -1,6 +1,7 @@
 import { MalformedResponseError, StrengthParseError } from "./errors.ts";
 import { childRecord, isRecord, numberField, recordArrayField, stringArrayField, stringField } from "./http.ts";
 import type { JsonResponse } from "./http.ts";
+import { EXTENDED_RELEASE } from "./query.ts";
 import { parseStrength } from "./strength.ts";
 import { LABEL_SECTION_NAMES } from "./types.ts";
 import type { IdentifiedProduct, LabelSections, MatchedBy, ProductIngredient, ProductKind } from "./types.ts";
@@ -58,9 +59,10 @@ function searchUrl(base: string, search: string, limit: number): string {
   return `${base}?search=${encodeURIComponent(search)}&limit=${limit}`;
 }
 
-export function ndcNameSearchUrl(tokens: readonly string[], limit: number): string {
+export function ndcNameSearchUrl(tokens: readonly string[], limit: number, forms: readonly string[] = []): string {
   const allTokens = `(${tokens.join(" AND ")})`;
-  return searchUrl(NDC_URL, `finished:true AND (brand_name:${allTokens} generic_name:${allTokens})`, limit);
+  const release = forms.includes(EXTENDED_RELEASE) ? ` AND dosage_form:"${EXTENDED_RELEASE}"` : "";
+  return searchUrl(NDC_URL, `finished:true AND (brand_name:${allTokens} generic_name:${allTokens})${release}`, limit);
 }
 
 export function ndcByProductUrl(productNdcs: readonly string[], limit: number): string {

@@ -9,18 +9,17 @@ import { labelByUpcUrl, ndcByPackageUrl, ndcByProductUrl, toDrugProduct, toLabel
 import type { NdcRecord } from "./openfda.ts";
 import { settle, supplementProduct } from "./search.ts";
 import type { Sources } from "./search.ts";
-import type { CodeLookupResult, IdentifiedProduct } from "./types.ts";
+import type { CodeLookupResult, IdentifiedProduct, NotFoundReason } from "./types.ts";
 
 const CODE_PAGE_SIZE = 10;
 const UPC_LABEL_LIMIT = 5;
 const MAX_SHARED_UPC_PRODUCTS = 10;
-const BARCODE_SUPPLEMENT_HITS = 10;
-const MAX_SUPPLEMENT_CHECKS = 3;
+const MAX_SUPPLEMENT_CHECKS = 10;
 const MAX_PRODUCTS_WITH_IMAGES = 3;
 const AMBIGUOUS_NOTE = " The digits fit more than one drug code, check the name and strength.";
 const BARCODE_MISS_MESSAGE = "No official record has this barcode. Search by name instead.";
 
-function notFound(reason: "no_match" | "unrecognised_code", message: string, tried: readonly string[]): CodeLookupResult {
+function notFound(reason: NotFoundReason, message: string, tried: readonly string[]): CodeLookupResult {
   return { status: "not_found", reason, message, tried };
 }
 
@@ -64,6 +63,17 @@ function packageMatches(
         .map((packageNdc) => toDrugProduct(record, { ...describe(packageNdc), packageNdc })),
     ),
   );
+}
+
+/** Returns null for name queries so callers can continue with name search. */
+export async function findByCode(sources: Sources, text: string): Promise<CodeLookupResult | null> {
+  const printed = text.trim();
+  if (/^ndc(?=\d|\b)/i.test(printed)) return findByNdc(sources, printed);
+  if (!/^\d[\d\s:#._‐-―-]*$/.test(printed)) return null;
+  const digits = printed.replace(/\D/g, "");
+  if (digits.length < 8) return null;
+  if (digits.length >= 12) return findByBarcode(sources, digits);
+  return findByNdc(sources, printed);
 }
 
 export async function findByNdc(sources: Sources, text: string): Promise<CodeLookupResult> {
@@ -120,24 +130,34 @@ function onMarketNewestFirst(left: SupplementHit, right: SupplementHit): number 
   return Number(left.offMarket) - Number(right.offMarket) || right.entryDate.localeCompare(left.entryDate);
 }
 
-async function firstSupplementWithUpc(sources: Sources, hits: readonly SupplementHit[], upcA: string): Promise<IdentifiedProduct | null> {
-  const [hit, ...rest] = hits;
-  if (hit === undefined) return null;
+async function findSupplementByBarcode(
+  sources: Sources,
+  upcA: string,
+  tried: readonly string[],
+  drugErrors: readonly LookupError[],
+): Promise<CodeLookupResult> {
+  const url = dsldSearchUrl(dsldBarcodeQuery(upcA), MAX_SUPPLEMENT_CHECKS);
+  const page = toSupplementPage(await sources.dsld(url), MAX_SUPPLEMENT_CHECKS);
+  const hits = [...page.hits].sort(
+    (left, right) => Number(right.upc === upcA) - Number(left.upc === upcA) || onMarketNewestFirst(left, right),
+  );
+  const errors = [...drugErrors];
   const confidenceNote = "The barcode matches this label in the NIH supplement label database.";
-  const product = await supplementProduct(sources, hit.id, { matchedBy: "barcode", confidenceNote });
-  return product.upc === upcA ? product : firstSupplementWithUpc(sources, rest, upcA);
-}
-
-async function findSupplementByBarcode(sources: Sources, upcA: string): Promise<readonly IdentifiedProduct[]> {
-  const page = toSupplementPage(await sources.dsld(dsldSearchUrl(dsldBarcodeQuery(upcA), BARCODE_SUPPLEMENT_HITS)));
-  const hits = [...page.hits].sort(onMarketNewestFirst).slice(0, MAX_SUPPLEMENT_CHECKS);
-  const product = await firstSupplementWithUpc(sources, hits, upcA);
-  return product === null ? [] : [product];
+  for (const hit of hits.slice(0, MAX_SUPPLEMENT_CHECKS)) {
+    const detail = await settle(supplementProduct(sources, hit.id, { matchedBy: "barcode", confidenceNote }));
+    if (!detail.ok) errors.push(detail.error);
+    else if (detail.value.upc === upcA) return found(sources, [detail.value], tried, errors);
+  }
+  if (errors[0] !== undefined) throw errors[0];
+  if (page.incomplete || hits.length > MAX_SUPPLEMENT_CHECKS) {
+    return notFound("incomplete_search", "Some NIH supplement labels could not be checked for this barcode. Search by name instead.", tried);
+  }
+  return notFound("no_match", BARCODE_MISS_MESSAGE, tried);
 }
 
 export async function findByBarcode(sources: Sources, text: string): Promise<CodeLookupResult> {
   const parsed = parseBarcode(text);
-  if (parsed.kind === "invalid") return notFound("unrecognised_code", parsed.reason, []);
+  if (parsed.kind === "invalid") return notFound(parsed.reasonCode ?? "unrecognised_code", parsed.reason, []);
   const { searchUpc, upcA, ndcCandidates } = parsed;
   const upc = upcA ?? searchUpc;
   const tried = [...ndcCandidates, searchUpc, ...(upcA === undefined ? [] : [dsldBarcodeQuery(upcA)])];
@@ -146,9 +166,7 @@ export async function findByBarcode(sources: Sources, text: string): Promise<Cod
   if (drugs.ok && drugs.value.length > 0) return found(sources, drugs.value, tried);
   const drugErrors = drugs.ok ? [] : [drugs.error];
 
-  const supplements = upcA === undefined ? [] : await findSupplementByBarcode(sources, upcA);
-  if (supplements.length > 0) return found(sources, supplements, tried, drugErrors);
-  const [drugError] = drugErrors;
-  if (drugError !== undefined) throw drugError;
+  if (upcA !== undefined) return findSupplementByBarcode(sources, upcA, tried, drugErrors);
+  if (!drugs.ok) throw drugs.error;
   return notFound("no_match", BARCODE_MISS_MESSAGE, tried);
 }

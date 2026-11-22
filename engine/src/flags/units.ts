@@ -33,8 +33,8 @@ export interface InjectionCheck {
 }
 
 export class InvalidDoseInputError extends Error {
-  constructor(field: string, value: number) {
-    super(`${field} must be a positive finite number, got ${value}.`);
+  constructor(field: string, value?: number) {
+    super(value === undefined ? field : `${field} must be a positive finite number, got ${value}.`);
     this.name = "InvalidDoseInputError";
   }
 }

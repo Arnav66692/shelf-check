@@ -1,7 +1,8 @@
-import { comparableToken, formMatches, parseQuery, tokenize } from "./query.ts";
-import type { ParsedQuery } from "./query.ts";
+import { comparableToken, EXTENDED_RELEASE, formMatches, matchesReleaseForm, parseQuery, supplementForm, tokenize } from "./query.ts";
+import type { NamedAmount, ParsedQuery } from "./query.ts";
 import { sameAmount, toMilligrams } from "./strength.ts";
-import type { IdentifiedProduct, ProductGroup, ProductIngredient, Quantity } from "./types.ts";
+import type { DeclaredAmount } from "./strength.ts";
+import type { IdentifiedProduct, ProductGroup, ProductIngredient } from "./types.ts";
 
 const BRAND_WEIGHT = 3;
 const GENERIC_WEIGHT = 1;
@@ -22,7 +23,7 @@ export interface Candidate {
   readonly name: string;
   readonly otherNames: string;
   readonly form?: string;
-  readonly amounts: readonly Quantity[];
+  readonly amounts: readonly (DeclaredAmount & { readonly ingredientTokens?: readonly string[] })[];
   readonly penalty: number;
 }
 
@@ -30,29 +31,56 @@ function comparableTokens(text: string): ReadonlySet<string> {
   return new Set(tokenize(text).map(comparableToken));
 }
 
+function matchesNamedAmount(candidate: Candidate, wanted: NamedAmount): boolean {
+  return candidate.amounts.some((amount) => {
+    if (!sameAmount(amount, wanted) || !amount.ingredientTokens) return false;
+    const name = amount.ingredientTokens;
+    return wanted.ingredientTokens.some((_, start, words) =>
+      words.slice(start).every((token, index) => name[index] === token),
+    );
+  });
+}
+
+function scoreStrength(candidate: Candidate, query: ParsedQuery): number {
+  if (query.strengths?.length) {
+    const hits = query.strengths.filter((wanted) => matchesNamedAmount(candidate, wanted)).length;
+    return STRENGTH_MISS + (STRENGTH_HIT - STRENGTH_MISS) * hits / query.strengths.length;
+  }
+  const strength = query.strength;
+  if (!strength) return 0;
+  return candidate.amounts.some((amount) => sameAmount(amount, strength)) ? STRENGTH_HIT : STRENGTH_MISS;
+}
+
 export function scoreCandidate(candidate: Candidate, query: ParsedQuery): number {
   const wanted = query.nameTokens.map(comparableToken);
-  const brandTokens = new Set(parseQuery(candidate.name).nameTokens.map(comparableToken));
+  const productName = parseQuery(candidate.name);
+  const brandTokens = new Set(productName.nameTokens.map(comparableToken));
   const otherTokens = comparableTokens(candidate.otherNames);
   const brandHits = wanted.filter((token) => brandTokens.has(token)).length;
   const otherHits = wanted.filter((token) => !brandTokens.has(token) && otherTokens.has(token)).length;
-  const extraWords = [...brandTokens].filter((token) => !wanted.includes(token)).length;
-  const strength = query.strength;
-  const strengthScore =
-    strength === undefined ? 0 : candidate.amounts.some((amount) => sameAmount(amount, strength)) ? STRENGTH_HIT : STRENGTH_MISS;
+  const extraRelease = productName.forms.includes(EXTENDED_RELEASE) && !query.forms.includes(EXTENDED_RELEASE);
+  const extraWords = [...brandTokens].filter((token) => !wanted.includes(token)).length + Number(extraRelease);
+  const strengthScore = scoreStrength(candidate, query);
   const form = candidate.form;
+  const dosageForms = query.forms.filter((wantedForm) => wantedForm !== EXTENDED_RELEASE);
   const formScore =
-    query.forms.length === 0 || form === undefined
+    dosageForms.length === 0 || form === undefined
       ? 0
-      : query.forms.some((wantedForm) => formMatches(wantedForm, form))
+      : dosageForms.some((wantedForm) => formMatches(wantedForm, form))
         ? FORM_HIT
         : FORM_MISS;
   const nameScore = wanted.length === 0 ? 0 : (BRAND_WEIGHT * brandHits + GENERIC_WEIGHT * otherHits) / wanted.length;
   return nameScore + strengthScore + formScore - EXTRA_WORD_PENALTY * Math.min(extraWords, MAX_EXTRA_WORDS) - candidate.penalty;
 }
 
-function declaredAmount(ingredient: ProductIngredient): readonly Quantity[] {
-  return ingredient.value === null ? [] : [{ value: ingredient.value, unit: ingredient.unit }];
+function declaredAmount(ingredient: ProductIngredient): readonly NamedAmount[] {
+  if (ingredient.value === null) return [];
+  return [{
+    value: ingredient.value,
+    unit: ingredient.unit,
+    ingredientTokens: tokenize(ingredient.rawName),
+    ...(ingredient.per === undefined ? {} : { per: ingredient.per }),
+  }];
 }
 
 export function productCandidate(product: IdentifiedProduct): Candidate {
@@ -81,14 +109,18 @@ export interface NamedListing {
 }
 
 export function listingCandidate(listing: NamedListing): Candidate {
-  const strength = parseQuery(listing.name).strength;
+  const { strength, strengths } = parseQuery(listing.name);
   return {
     name: listing.name,
     otherNames: listing.otherNames,
-    amounts: strength === undefined ? [] : [strength],
+    amounts: strengths ?? (strength === undefined ? [] : [strength]),
     penalty: listing.offMarket ? OFF_MARKET_PENALTY : 0,
     ...(listing.form === undefined ? {} : { form: listing.form }),
   };
+}
+
+function matchingForm(product: IdentifiedProduct): string | undefined {
+  return product.source === "dsld" ? supplementForm(product.form, product.displayName) : product.form;
 }
 
 function formKey(form: string | undefined): string {
@@ -115,7 +147,7 @@ export function compositionKey(product: IdentifiedProduct): string {
     .map((ingredient) => `${ingredient.rawName.toLowerCase().replace(/\s+/g, " ").trim()}=${amountKey(ingredient)}`)
     .sort()
     .join(";");
-  return `${product.kind}|${formKey(product.form)}|${ingredients}`;
+  return `${product.kind}|${formKey(matchingForm(product))}|${ingredients}`;
 }
 
 interface ScoredGroup {
@@ -142,6 +174,7 @@ function toScoredGroup(products: readonly IdentifiedProduct[], query: ParsedQuer
 
 export function groupProducts(products: readonly IdentifiedProduct[], query: ParsedQuery): readonly ScoredGroup[] {
   const byKey = products.reduce<ReadonlyMap<string, readonly IdentifiedProduct[]>>((groups, product) => {
+    if (!matchesReleaseForm(query, matchingForm(product))) return groups;
     const key = compositionKey(product);
     return new Map([...groups, [key, [...(groups.get(key) ?? []), product]]]);
   }, new Map());

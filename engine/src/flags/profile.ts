@@ -50,7 +50,7 @@ export const CONDITION_RULES: Readonly<Record<ConditionId, ConditionRule>> = {
   },
   kidney_disease: {
     label: "kidney disease",
-    phrases: ["kidney disease", "kidney problems?", "renal (?:impairment|disease|insufficiency)"],
+    phrases: ["kidney disease", "kidney problems?", "renal (?:impairment|disease|insufficiency)", "compromised renal function"],
   },
   high_blood_pressure: { label: "high blood pressure", phrases: ["high blood pressure"] },
   heart_disease: { label: "heart disease", phrases: ["heart disease", "heart problems?", "heart condition"] },
@@ -75,7 +75,7 @@ export const CONDITION_RULES: Readonly<Record<ConditionId, ConditionRule>> = {
 };
 
 const STRONGEST_FIRST: readonly LabelSectionName[] = ["boxed_warning", "contraindications", "do_not_use"];
-const CONDITION_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "ask_doctor", "warnings"];
+const CONDITION_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "ask_doctor", "warnings", "warnings_and_cautions"];
 const PREGNANCY_SECTIONS: readonly LabelSectionName[] = [
   ...STRONGEST_FIRST,
   "pregnancy_or_breast_feeding",
@@ -90,7 +90,7 @@ const BREASTFEEDING_SECTIONS: readonly LabelSectionName[] = [
   "warnings",
   "nursing_mothers",
 ];
-const AGE_SECTIONS: readonly LabelSectionName[] = ["do_not_use", "dosage_and_administration", "warnings"];
+const AGE_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "pediatric_use", "dosage_and_administration", "warnings"];
 const INGREDIENT_SECTIONS: readonly LabelSectionName[] = ["active_ingredient", "inactive_ingredient"];
 const ALLERGY_WARNING_SECTIONS: readonly LabelSectionName[] = [...STRONGEST_FIRST, "warnings"];
 
@@ -98,9 +98,10 @@ const ALCOHOL_PATTERN = /\b(?:3|three) or more alcoholic drinks\b/i;
 const PREGNANCY_PATTERN = /\bpregnan(?:t|cy)\b/i;
 const BREASTFEEDING_PATTERN = /\bbreast[- ]?feed(?:ing)?\b|\bnursing\b|\blactat(?:ion|ing)\b/i;
 const ALLERGY_WORDING = /\ballerg(?:y|ic|ies)\b/i;
+const UNCERTAIN_OR_NEGATIVE_DECLARATION = /\b(?:may|might|no|not|free|without|except|facility|equipment)\b/i;
 const MAX_SUPPORTING_QUOTES = 5;
 
-const AGE_NUMBER = "(\\d{1,2})";
+const AGE_NUMBER = "(\\d{1,3})";
 const YEARS = "(?:years?|yrs?\\.?)(?:\\s+of\\s+age)?";
 const RESTRICTION = "(do not use|do not give|ask a doctor|consult a doctor)";
 const AGE_CLAUSE_PATTERNS: readonly { readonly pattern: RegExp; readonly kind: AgeClauseKind }[] = [
@@ -110,12 +111,21 @@ const AGE_CLAUSE_PATTERNS: readonly { readonly pattern: RegExp; readonly kind: A
   { kind: "or_older", pattern: new RegExp(`\\bage\\s+${AGE_NUMBER}\\s+(?:or|and)\\s+(?:older|over)\\b`, "gi") },
   {
     kind: "not_intended_under",
-    pattern: new RegExp(`(not intended for use by|not for use by)\\s+\\w+\\s+under\\s+(?:the\\s+age\\s+of\\s+)?${AGE_NUMBER}\\b`, "gi"),
+    pattern: new RegExp(`(not intended for use by|not for use by)\\s+\\w+\\s+under\\s+(?:the\\s+age\\s+of\\s+)?${AGE_NUMBER}\\b(?!\\s+months?)`, "gi"),
   },
 ];
 // Inside "Do not use" the heading itself is the instruction, so the age line needs no verb after it.
 const UNDER_AGE_IN_DO_NOT_USE = new RegExp(`under\\s+${AGE_NUMBER}\\s*${YEARS}`, "gi");
 const DO_NOT_USE_WORDING = /do not (?:use|give)/i;
+const AGE_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+const UNDER_THRESHOLD = `(?:younger than|under|less than)\\s+(?<age>\\d{1,3}|${AGE_WORDS.join("|")})\\s*(?<unit>years?|months?)(?:\\s+of\\s+age)?`;
+const AUDIENCE = "(?:children|infants?|pediatric patients|patients|persons)";
+const AGE_END = "(?=\\s*(?:\\(see\\b[^)]*\\)|\\[see\\b[^\\]]*\\])?\\s*[.!]?\\s*$)";
+const INSTRUCTION_FIRST = "(?:is|are) contraindicated|contraindicated|do not (?:use|give)(?: this (?:product|medicine))?|ask a doctor before use";
+const RESTRICTIONS_WITH_UNITS = [
+  new RegExp(`\\b(?<instruction>${INSTRUCTION_FIRST})\\s+(?:in|to|for)\\s+${AUDIENCE}\\s+${UNDER_THRESHOLD}${AGE_END}`, "gi"),
+  new RegExp(`\\b${AUDIENCE}\\s+${UNDER_THRESHOLD}\\s*[:,–-]?\\s*(?<instruction>do not use|do not give|ask a doctor|consult a doctor)${AGE_END}`, "gi"),
+];
 
 type AgeClauseKind = "from_to_under" | "under" | "from_to" | "not_intended_under" | "or_older";
 const NO_UPPER_AGE = 200;
@@ -139,6 +149,7 @@ interface FlagWording {
   readonly title: string;
   readonly about: string;
   readonly explain: string;
+  readonly detail?: string;
   readonly severity?: Severity;
   readonly numbers?: FlagNumbers;
 }
@@ -182,7 +193,7 @@ function toFlag(item: CabinetItem, hits: readonly PhraseHit[], wording: FlagWord
       severity: wording.severity ?? severityForSection(section),
       itemIds: [item.id],
       title: wording.title,
-      detail: `${where} mentions ${wording.about} ("${best.text}"). Your profile says this applies to you. Ask a pharmacist or doctor before using ${item.displayName}.`,
+      detail: wording.detail ?? `${where} mentions ${wording.about} ("${best.text}"). Your profile says this applies to you. Ask a pharmacist or doctor before using ${item.displayName}.`,
       explain: wording.explain,
       quote: quoteOf(item, best),
       match: { text: best.text, term: wording.term, kind: wording.kind },
@@ -199,16 +210,37 @@ function conditionPattern(condition: ConditionId): RegExp {
 // "Ask a doctor if you have" and "Do not use if" address the reader. Running warning text may only mention the
 // condition, for example as a side effect, so the plain sentence does not claim more than that.
 const SECTIONS_ADDRESSED_TO_THE_READER: readonly LabelSectionName[] = ["contraindications", "do_not_use", "ask_doctor"];
+const CO_USE = /\b(?:co[- ]?administ\w*|concomitant\w*|in combination with|also taking|together with)\b/i;
 
 function conditionFlags(item: CabinetItem, condition: ConditionId): readonly Flag[] {
   const { label } = CONDITION_RULES[condition];
-  const hits = firstHitPerSentence(item, CONDITION_SECTIONS, conditionPattern(condition));
-  const isAddressed = hits[0] !== undefined && SECTIONS_ADDRESSED_TO_THE_READER.includes(hits[0].sentence.section);
-  return toFlag(item, hits, {
+  const hits = firstHitPerSentence(item, CONDITION_SECTIONS, conditionPattern(condition)).filter((hit) => {
+    if (hit.sentence.section !== "warnings_and_cautions") return true;
+    const lead = hit.sentence.text.slice(0, hit.span.start);
+    return /\bpatients? with\b[^.;:]{0,100}$/i.test(lead);
+  });
+  const isCombination = (hit: PhraseHit) => STRONGEST_FIRST.includes(hit.sentence.section) && CO_USE.test(hit.sentence.text);
+  const conditional = hits.find(isCombination);
+  const independent = hits.filter((hit) => !isCombination(hit));
+  if (conditional && !independent.some((hit) => severityForSection(hit.sentence.section) === "stop")) {
+    const statement = `The ${item.displayName} label says “${conditional.sentence.text.replace(/[.!?]+$/, "")}”.`;
+    return toFlag(item, [conditional, ...independent], {
+      kind: "condition",
+      term: condition,
+      title: `${item.displayName} and ${label}`,
+      about: label,
+      severity: "ask",
+      explain: statement,
+      detail: `${statement} Ask a pharmacist whether this combination warning applies to your medicines.`,
+    });
+  }
+  const isAddressed = independent[0] !== undefined && SECTIONS_ADDRESSED_TO_THE_READER.includes(independent[0].sentence.section);
+  return toFlag(item, independent, {
     kind: "condition",
     term: condition,
     title: `${item.displayName} and ${label}`,
     about: label,
+    ...(!isAddressed ? { detail: `Your profile lists ${label}. The ${item.displayName} label mentions it in the quoted warning.` } : {}),
     explain: isAddressed
       ? `The ${item.displayName} label has a warning for people with ${label}, which is in your profile.`
       : `The warnings on the ${item.displayName} label mention ${label}, which is in your profile, so read the quoted line.`,
@@ -257,31 +289,55 @@ function toAgeClause(hit: PhraseHit, kind: AgeClauseKind, groups: readonly (stri
   return { hit, fromYears: first, belowYears: kind === "from_to" ? second + 1 : second, severity };
 }
 
-function ageClausesIn(sentence: LabelSentence): readonly AgeClause[] {
+function ageClausesIn(item: CabinetItem, sentence: LabelSentence): readonly AgeClause[] {
+  const subjects = [item.displayName, ...item.ingredients.flatMap((ingredient) => [ingredient.name, ingredient.printedName])];
+  const heading = /^(?:contraindications|pediatric use|dosage and administration|boxed warning|warnings?)\b\s*:?\s*/i;
+  const withUnits = RESTRICTIONS_WITH_UNITS.flatMap((pattern) =>
+    [...sentence.text.matchAll(pattern)].flatMap((match): AgeClause[] => {
+      const { age, unit, instruction } = match.groups ?? {};
+      const subject = sentence.text.slice(0, match.index).replace(heading, "").trim().toLowerCase();
+      if (!age || !unit || !instruction) return [];
+      const isNamedProduct = subjects.some((name) => name?.trim().toLowerCase() === subject);
+      if (subject && !isNamedProduct && !/^(?:use|this product|this medicine)$/.test(subject)) return [];
+      const hit = { sentence, span: { start: match.index, end: match.index + match[0].length }, text: match[0] };
+      const threshold = /^\d/.test(age) ? Number(age) : AGE_WORDS.indexOf(age.toLowerCase());
+      const belowYears = threshold / (/^month/i.test(unit) ? 12 : 1);
+      const severity = /contraindicated|do not/i.test(instruction) ? "stop" : "ask";
+      return [{ hit, fromYears: 0, belowYears, severity }];
+    }),
+  );
+  if (sentence.section === "pediatric_use" || sentence.section === "contraindications" || sentence.section === "boxed_warning") {
+    return withUnits;
+  }
   const stated = AGE_CLAUSE_PATTERNS.flatMap(({ pattern, kind }) =>
     [...sentence.text.matchAll(pattern)].flatMap((found) => {
       const hit = { sentence, span: { start: found.index, end: found.index + found[0].length }, text: found[0] };
       return toAgeClause(hit, kind, found.slice(1)) ?? [];
     }),
   );
-  if (sentence.section !== "do_not_use") return stated;
+  if (sentence.section !== "do_not_use") return [...stated, ...withUnits];
   const implied = hitsIn(sentence, UNDER_AGE_IN_DO_NOT_USE).flatMap((hit): readonly AgeClause[] => {
     const belowYears = Number(/\d+/.exec(hit.text)?.[0]);
     return Number.isInteger(belowYears) ? [{ hit, fromYears: 0, belowYears, severity: "stop" }] : [];
   });
-  return [...stated, ...implied];
+  return [...stated, ...withUnits, ...implied];
 }
 
 function ageFlags(item: CabinetItem, ageYears: number): readonly Flag[] {
-  const applicable = AGE_SECTIONS.flatMap((section) => sectionSentences(item.label, section).flatMap(ageClausesIn)).filter(
+  const applicable = AGE_SECTIONS.flatMap((section) =>
+    sectionSentences(item.label, section).flatMap((sentence) => ageClausesIn(item, sentence)),
+  ).filter(
     (clause) => ageYears >= clause.fromYears && ageYears < clause.belowYears,
   );
   const strictest = [...applicable].sort((left, right) => Number(right.severity === "stop") - Number(left.severity === "stop"));
   const [clause] = strictest;
   if (clause === undefined) return [];
+  const below = /\bmonths?\b/i.test(clause.hit.text)
+    ? `${formatNumber(clause.belowYears * 12)} months`
+    : `${formatNumber(clause.belowYears)} years`;
   const range =
     clause.fromYears === 0
-      ? `under ${formatNumber(clause.belowYears)} years`
+      ? `under ${below}`
       : clause.belowYears === NO_UPPER_AGE
         ? `age ${formatNumber(clause.fromYears)} or older`
         : `from ${formatNumber(clause.fromYears)} to under ${formatNumber(clause.belowYears)} years`;
@@ -311,6 +367,52 @@ function allergenInIngredients(item: CabinetItem, allergen: string, pattern: Reg
   });
 }
 
+function structuredAllergen(item: CabinetItem, allergen: string): readonly Flag[] {
+  if (!item.productNdc && !item.dsldId) return [];
+  const normalized = allergen.toLowerCase();
+  for (const ingredient of item.ingredients) {
+    const names = [ingredient.name, ingredient.printedName, ...(ingredient.commonNames ?? [])];
+    const matched = names.find((name) => name?.trim().toLowerCase() === normalized);
+    if (!matched) continue;
+    const text = ingredient.printedName ?? matched;
+    const section = ingredient.printedName
+      ? (item.dsldId ? "dsld_ingredient" : "ndc_active_ingredient")
+      : "normalized_active_ingredient";
+    const record = item.dsldId ? `DSLD ${item.dsldId}` : `NDC ${item.productNdc}`;
+    const detail = `The ingredient record for ${item.displayName} (${record}) lists “${text}”, matching your allergy to ${allergen}.`;
+    return [{
+      type: "profile",
+      severity: "stop",
+      itemIds: [item.id],
+      title: `${item.displayName} contains ${allergen}`,
+      detail,
+      explain: detail,
+      match: { text: matched, term: allergen, kind: "allergen" },
+      quote: toQuote(item.id, { text, section }),
+    }];
+  }
+  return [];
+}
+
+function declaredAllergen(item: CabinetItem, allergen: string, pattern: RegExp): readonly Flag[] {
+  if (item.kind !== "supplement") return [];
+  const sections: readonly LabelSectionName[] = ["dsld_contains", "dsld_allergy_precautions", "warnings"];
+  const hits = firstHitPerSentence(item, sections, pattern).filter(({ sentence }) => {
+    const contents = /^contains\b\s*:?\s*(.+?)[.]?$/i.exec(sentence.text)?.[1];
+    if (!contents || UNCERTAIN_OR_NEGATIVE_DECLARATION.test(contents)) return false;
+    const names = contents.split(/[,;()&]|\band\b/i);
+    return names.some((name) => name.trim().toLowerCase() === allergen.toLowerCase());
+  });
+  return toFlag(item, hits, {
+    kind: "allergen",
+    term: allergen,
+    title: `${item.displayName} contains ${allergen}`,
+    about: `${allergen} in its Contains declaration`,
+    severity: "stop",
+    explain: `The ${item.displayName} label declares ${allergen}, which your profile lists as an allergy.`,
+  });
+}
+
 function allergenInAllergyWarning(item: CabinetItem, allergen: string, pattern: RegExp): readonly Flag[] {
   const hits = firstHitPerSentence(item, ALLERGY_WARNING_SECTIONS, pattern).filter((hit) =>
     ALLERGY_WORDING.test(hit.sentence.text),
@@ -327,7 +429,11 @@ function allergenInAllergyWarning(item: CabinetItem, allergen: string, pattern: 
 function allergyFlags(item: CabinetItem, allergen: string): readonly Flag[] {
   const pattern = termRegExp(allergen);
   const inIngredients = allergenInIngredients(item, allergen, pattern);
-  return inIngredients.length > 0 ? inIngredients : allergenInAllergyWarning(item, allergen, pattern);
+  if (inIngredients.length) return inIngredients;
+  const structured = structuredAllergen(item, allergen);
+  if (structured.length) return structured;
+  const declared = declaredAllergen(item, allergen, pattern);
+  return declared.length ? declared : allergenInAllergyWarning(item, allergen, pattern);
 }
 
 function validated(profile: HealthProfile): HealthProfile {

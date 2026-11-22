@@ -44,7 +44,7 @@ function fromBareDigits(digits: string): NdcParse {
   if (digits.length === 8) {
     return { kind: "product", candidates: [`${digits.slice(0, 4)}-${digits.slice(4)}`, `${digits.slice(0, 5)}-${digits.slice(5)}`] };
   }
-  if (digits.length === 9) return { kind: "product", candidates: [`${digits.slice(0, 5)}-${digits.slice(5)}`] };
+  if (digits.length === 9) return fromTwoParts(digits.slice(0, 5), digits.slice(5));
   if (digits.length >= UPC_LENGTH) return invalid(`${digits.length} digits looks like a barcode, not a drug code. Use the barcode lookup.`);
   return invalid(`A drug code has 8 to 11 digits, this one has ${digits.length}.`);
 }

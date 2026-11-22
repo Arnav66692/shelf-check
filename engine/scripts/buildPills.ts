@@ -1,13 +1,14 @@
 import { closeSync, fstatSync, mkdirSync, openSync, readFileSync, readSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { gunzipSync, inflateRawSync } from "node:zlib";
-import { isRecord, stringField } from "../src/sources/http.ts";
-import { encodePillFile, normaliseImprint, parsePillFile, pillColors, pillShapes } from "../src/pills.ts";
+import { isRecord, recordArrayField, stringField, stringArrayField } from "../src/sources/http.ts";
+import { encodePillFile, isPillForm, normaliseImprint, parsePillFile, pillColors, pillShapes } from "../src/pills.ts";
 import type { PillboxImageEntry, PillFile, PillKind, PillRecord, PillSource } from "../src/pills.ts";
 
 const FIXTURE_DIR = fileURLToPath(new URL("../fixtures/pills/", import.meta.url));
 const PILLBOX_PAGES = ["pillbox-page-0.json.gz", "pillbox-page-1.json.gz"];
 const PILLBOX_IMAGE_DIRECTORY = `${FIXTURE_DIR}pillbox-images-central-directory.bin`;
+const NDC_ZIP = fileURLToPath(new URL("../../data/drug-ndc.json.zip", import.meta.url));
 const DEFAULT_DAILYMED_ZIP = fileURLToPath(new URL("../../data/dm_spl_monthly_update_oct2026.zip", import.meta.url));
 const OUTPUT_DIR = fileURLToPath(new URL("../data/", import.meta.url));
 const OUTPUT_PATH = `${OUTPUT_DIR}pills.json`;
@@ -221,17 +222,19 @@ function readCharacteristics(holder: XmlElement): Characteristics | undefined {
 }
 
 function strengthOf(product: XmlElement | undefined): string {
-  return children(product, "ingredient")
-    .filter((ingredient) => ACTIVE_CLASSES.has(ingredient.attributes["classCode"] ?? ""))
-    .map((ingredient) => {
-      const name = allText(path(ingredient, "ingredientSubstance", "name"));
-      const numerator = path(ingredient, "quantity", "numerator");
-      const value = numerator?.attributes["value"];
-      const unit = numerator?.attributes["unit"];
-      return value === undefined ? name : `${name} ${value} ${unit === undefined || unit === "1" ? "" : unit}`.trim();
-    })
-    .filter((line) => line !== "")
-    .join("; ");
+  const strengths: string[] = [];
+  for (const ingredient of children(product, "ingredient")) {
+    const basis = ingredient.attributes["classCode"] ?? "";
+    if (!ACTIVE_CLASSES.has(basis)) continue;
+    // ACTIM and ACTIR quantities can refer to a different substance than the printed ingredient.
+    if (basis !== "ACTIB") return "";
+    const name = allText(path(ingredient, "ingredientSubstance", "name"));
+    const numerator = path(ingredient, "quantity", "numerator")?.attributes;
+    const denominator = path(ingredient, "quantity", "denominator")?.attributes;
+    if (!name || !numerator?.unit || !(Number(numerator.value) > 0) || denominator?.value !== "1" || denominator.unit !== "1") return "";
+    strengths.push(`${name} ${numerator.value} ${numerator.unit}`);
+  }
+  return strengths.join("; ");
 }
 
 function ndcOf(product: XmlElement | undefined): string | undefined {
@@ -250,11 +253,12 @@ function recordsFromProduct(outer: XmlElement, label: SplLabel): readonly PillRe
   const inner = child(outer, "manufacturedProduct");
   const ndc = ndcOf(inner);
   if (inner === undefined || ndc === undefined) return [];
-  const toRecord = (part: number, product: XmlElement | undefined, traits: Characteristics): PillRecord => ({
+  const toRecord = (part: number, product: XmlElement | undefined, oralDosageForm: string, traits: Characteristics): PillRecord => ({
     ndc,
     part,
     name: allText(child(product, "name")) || allText(child(inner, "name")),
     strength: strengthOf(product),
+    oralDosageForm,
     maker: label.maker,
     ...traits,
     setId: label.setId,
@@ -262,12 +266,14 @@ function recordsFromProduct(outer: XmlElement, label: SplLabel): readonly PillRe
     date: label.date,
     kind: label.kind,
   });
-  const whole = readCharacteristics(outer);
-  const parts = children(inner, "part").flatMap((part, index): readonly PillRecord[] => {
-    const traits = readCharacteristics(part);
-    return traits === undefined ? [] : [toRecord(index + 1, child(part, "partProduct"), traits)];
-  });
-  return [...(whole === undefined ? [] : [toRecord(0, inner, whole)]), ...parts];
+  const read = (holder: XmlElement, product: XmlElement | undefined, part: number): readonly PillRecord[] => {
+    const form = child(product, "formCode")?.attributes["displayName"] ?? "";
+    const routes = children(holder, "consumedIn").map((entry) => path(entry, "substanceAdministration", "routeCode")?.attributes["displayName"]);
+    if (!isPillForm(form) || routes.length === 0 || !routes.every((route) => route === "ORAL")) return [];
+    const traits = readCharacteristics(holder);
+    return traits === undefined ? [] : [toRecord(part, product, form, traits)];
+  };
+  return [...read(outer, inner, 0), ...children(inner, "part").flatMap((part, i) => read(part, child(part, "partProduct"), i + 1))];
 }
 
 function recordsFromSpl(xml: string, kind: PillKind, where: string): readonly PillRecord[] {
@@ -324,7 +330,26 @@ function optionalNumber(text: string | undefined): number | undefined {
   return text === undefined || text === "" || !Number.isFinite(parsed) ? undefined : parsed;
 }
 
-function pillboxRecord(raw: Record<string, unknown>, images: ReadonlyMap<string, PillboxImageEntry>): PillRecord | undefined {
+// The saved Pillbox rows omit the dosage form. Verify the same product and SPL set in the NDC directory.
+function oralPillForms(): ReadonlyMap<string, string> {
+  const archive = readFileSync(NDC_ZIP);
+  const read = bufferReader(archive);
+  const entry = zipDirectory(read, archive.length).find((file) => file.name.endsWith(".json"));
+  if (!entry) throw new PillSourceError("the NDC archive has no JSON directory");
+  const directory: unknown = JSON.parse(zipEntryBytes(read, entry).toString("utf8"));
+  if (!isRecord(directory) || !Array.isArray(directory.results)) throw new PillSourceError("the NDC directory has no results");
+  const forms = new Map<string, string>();
+  for (const row of recordArrayField(directory, "results")) {
+    const ndc = stringField(row, "product_ndc");
+    const form = stringField(row, "dosage_form");
+    const routes = stringArrayField(row, "route");
+    if (!ndc || !form || !isPillForm(form) || routes.length !== 1 || routes[0] !== "ORAL" || !isRecord(row.openfda)) continue;
+    for (const setId of stringArrayField(row.openfda, "spl_set_id")) forms.set(`${ndc}/${setId}`, form);
+  }
+  return forms;
+}
+
+function pillboxRecord(raw: Record<string, unknown>, forms: ReadonlyMap<string, string>, images: ReadonlyMap<string, PillboxImageEntry>): PillRecord | undefined {
   const where = `Pillbox record ${stringField(raw, "id") ?? "?"}`;
   const ndc = stringField(raw, "product_code");
   const setId = stringField(raw, "setid");
@@ -333,6 +358,8 @@ function pillboxRecord(raw: Record<string, unknown>, images: ReadonlyMap<string,
   if (ndc === undefined || setId === undefined || updatedAt === undefined || kind === undefined) {
     throw new PillSourceError(`${where} lacks product_code, setid, updated_at or source`);
   }
+  const oralDosageForm = forms.get(`${ndc}/${setId}`);
+  if (oralDosageForm === undefined || stringField(raw, "part_num") !== "0") return undefined;
   const imprint = stringField(raw, "splimprint") ?? "";
   const shape = (stringField(raw, "splshape_text") ?? "").trim().toUpperCase();
   if (imprint === "" && shape === "") return undefined;
@@ -342,6 +369,7 @@ function pillboxRecord(raw: Record<string, unknown>, images: ReadonlyMap<string,
   return {
     ndc,
     part: optionalNumber(stringField(raw, "part_num")) ?? 0,
+    oralDosageForm,
     name: stringField(raw, "medicine_name") ?? "",
     strength: (stringField(raw, "spl_strength") ?? "")
       .split(";")
@@ -384,7 +412,8 @@ function readPillbox(images: ReadonlyMap<string, PillboxImageEntry>): { readonly
     if (!Array.isArray(parsed)) throw new PillSourceError(`${page} is not a list`);
     return parsed.filter(isRecord);
   });
-  const records = rows.map((row) => pillboxRecord(row, images)).filter((record): record is PillRecord => record !== undefined);
+  const forms = oralPillForms();
+  const records = rows.map((row) => pillboxRecord(row, forms, images)).filter((record): record is PillRecord => record !== undefined);
   return { raw: rows.length, records };
 }
 
@@ -441,7 +470,7 @@ writeFileSync(OUTPUT_PATH, json);
 const pillboxRecords = [...pillboxByProduct.values()];
 const dailymedRecords = [...dailymedByProduct.values()];
 const withImprint = (records: readonly PillRecord[]) => records.filter((record) => normaliseImprint(record.imprint) !== "").length;
-console.log(`Pillbox: ${pillbox.raw} rows, ${pillbox.records.length} with imprint or shape, ${pillboxRecords.length} distinct product NDC and part, records dated up to ${pillboxDate}.`);
+console.log(`Pillbox: ${pillbox.raw} rows, ${pillbox.records.length} verified oral solids with imprint or shape, ${pillboxRecords.length} distinct product NDC and part, records dated up to ${pillboxDate}.`);
 console.log(`DailyMed: ${dailymed.labels} label zips, ${dailymed.records.length} product records, ${dailymedRecords.length} distinct product NDC and part, labels dated up to ${dailymedDate}.`);
 console.log(`Overlap on product NDC and part: ${overlap}. DailyMed wins those.`);
 console.log(`Merged: ${merged.length} records, ${withImprint(merged)} with an imprint.`);

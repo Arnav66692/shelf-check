@@ -11,6 +11,7 @@ const OFF_MARKET_NOTE = "DSLD marks this label version as off the market.";
 
 export interface SupplementHit {
   readonly id: string;
+  readonly upc?: string;
   readonly fullName: string;
   readonly brandName: string;
   readonly ingredientNames: readonly string[];
@@ -21,6 +22,7 @@ export interface SupplementHit {
 
 export interface SupplementPage {
   readonly hits: readonly SupplementHit[];
+  readonly incomplete?: boolean;
 }
 
 export interface SupplementMatch {
@@ -50,6 +52,7 @@ function toHit(raw: Record<string, unknown>): readonly SupplementHit[] {
   const fullName = stringField(source, "fullName");
   if (id === undefined || fullName === undefined) return [];
   const form = stringField(childRecord(source, "physicalState"), "langualCodeDescription");
+  const upc = upcDigits(source);
   return [
     {
       id,
@@ -59,15 +62,20 @@ function toHit(raw: Record<string, unknown>): readonly SupplementHit[] {
       offMarket: source["offMarket"] === OFF_MARKET,
       entryDate: stringField(source, "entryDate") ?? "",
       ...(form === undefined ? {} : { form }),
+      ...(upc === undefined ? {} : { upc }),
     },
   ];
 }
 
-export function toSupplementPage(response: JsonResponse): SupplementPage {
+export function toSupplementPage(response: JsonResponse, requestedSize?: number): SupplementPage {
   if (!isRecord(response.body) || !Array.isArray(response.body["hits"])) {
     throw new MalformedResponseError("dsld", response.url, "there is no hits list");
   }
-  return { hits: recordArrayField(response.body, "hits").flatMap(toHit) };
+  const hits = recordArrayField(response.body, "hits").flatMap(toHit);
+  const received = response.body["hits"].length;
+  const total = numberField(childRecord(response.body, "stats"), "count");
+  const moreHits = total === undefined ? requestedSize !== undefined && received >= requestedSize : total > received;
+  return { hits, ...(moreHits || hits.length < received ? { incomplete: true } : {}) };
 }
 
 function toIngredients(row: Record<string, unknown>): readonly ProductIngredient[] {

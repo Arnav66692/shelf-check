@@ -6,6 +6,7 @@ export * from "./errors.ts";
 export { createLookup, openFdaApiKeyFromEnv } from "./lookup.ts";
 export type { Environment, Lookup, LookupOptions } from "./lookup.ts";
 export type { FetchFn, FetchResponse } from "./http.ts";
+export { correctedQuery, parseQuery } from "./query.ts";
 export { parseStrength, PER_EACH_UNIT } from "./strength.ts";
 export type { Strength } from "./strength.ts";
 export { parseNdc } from "./ndc.ts";
@@ -23,6 +24,10 @@ export function searchByName(query: string, options?: NameSearchOptions): Promis
 
 export function findByNdc(text: string): Promise<CodeLookupResult> {
   return shared.findByNdc(text);
+}
+
+export function findByCode(text: string): Promise<CodeLookupResult | null> {
+  return shared.findByCode(text);
 }
 
 export function findByBarcode(digits: string): Promise<CodeLookupResult> {

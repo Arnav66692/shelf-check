@@ -81,7 +81,7 @@ export interface NameSearchResult {
   readonly sourceErrors: readonly LookupError[];
 }
 
-export type NotFoundReason = "no_match" | "unrecognised_code";
+export type NotFoundReason = "no_match" | "unrecognised_code" | "invalid_checksum" | "incomplete_search";
 
 export interface CodeFound {
   readonly status: "found";

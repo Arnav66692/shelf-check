@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-11-20",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "0093-1720",
+      "generic_name": "Warfarin Sodium",
+      "labeler_name": "Teva Pharmaceuticals USA, Inc.",
+      "brand_name": "Warfarin Sodium",
+      "active_ingredients": [
+        {
+          "name": "WARFARIN SODIUM",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0093-1720-01",
+          "description": "100 TABLET in 1 BOTTLE (0093-1720-01)",
+          "marketing_start_date": "20150512",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Teva Pharmaceuticals USA, Inc."
+        ],
+        "rxcui": [
+          "855288",
+          "855296",
+          "855302",
+          "855312",
+          "855318",
+          "855324",
+          "855332",
+          "855338",
+          "855344"
+        ],
+        "spl_set_id": [
+          "0cbce382-9c88-4f58-ae0f-532a841e8f95"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300931721013",
+          "0300931713018",
+          "0300931714015",
+          "0300931723017",
+          "0300931716019",
+          "0300931715012"
+        ],
+        "unii": [
+          "6153CWM0CL"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "b8c33971-54b3-4971-bf7f-1bec66999a29",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20150512",
+      "product_id": "0093-1720_b8c33971-54b3-4971-bf7f-1bec66999a29",
+      "application_number": "ANDA040616",
+      "brand_name_base": "Warfarin Sodium",
+      "pharm_class": [
+        "Vitamin K Antagonist [EPC]",
+        "Vitamin K Inhibitors [MoA]"
+      ]
+    }
+  ]
+}

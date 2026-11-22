@@ -6,7 +6,7 @@ export interface FetchResponse {
   text(): Promise<string>;
 }
 
-export type FetchFn = (url: string) => Promise<FetchResponse>;
+export type FetchFn = (url: string, init?: { readonly signal?: AbortSignal }) => Promise<FetchResponse>;
 
 export interface JsonResponse {
   readonly url: string;
@@ -29,17 +29,38 @@ const STATUS_RATE_LIMITED = 429;
 
 const NETWORK_ATTEMPTS = 3;
 const RETRY_PAUSE_MS = 400;
+const REQUEST_TIMEOUT_MS = 12_000;
 
 function pause(milliseconds: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+async function fetchBody(url: string, fetchFn: FetchFn): Promise<{ status: number; text: string }> {
+  const controller = new AbortController();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const deadline = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => {
+      const error = new Error(`Request timed out after ${REQUEST_TIMEOUT_MS} ms`);
+      controller.abort(error);
+      reject(error);
+    }, REQUEST_TIMEOUT_MS);
+  });
+  async function request() {
+    const response = await fetchFn(url, { signal: controller.signal });
+    return { status: response.status, text: await response.text() };
+  }
+  try {
+    return await Promise.race([request(), deadline]);
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function readBody(url: string, options: JsonGetterOptions): Promise<{ status: number; text: string }> {
   let lastCause: unknown;
   for (let attempt = 1; attempt <= NETWORK_ATTEMPTS; attempt += 1) {
     try {
-      const response = await options.fetch(options.decorateUrl ? options.decorateUrl(url) : url);
-      return { status: response.status, text: await response.text() };
+      return await fetchBody(options.decorateUrl ? options.decorateUrl(url) : url, options.fetch);
     } catch (cause) {
       lastCause = cause;
       if (attempt < NETWORK_ATTEMPTS) await pause(RETRY_PAUSE_MS * attempt);

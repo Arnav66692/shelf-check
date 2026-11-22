@@ -36,6 +36,7 @@ export interface RecallFile {
 export interface NdcRecallMatch {
   readonly match: "product_ndc";
   readonly matchedNdc: string;
+  readonly evidence: { readonly ndc: string; readonly field: "productDescription" | "codeInfo" };
   readonly recall: RecallRecord;
 }
 
@@ -122,14 +123,46 @@ function newestFirst<T extends { readonly recall: RecallRecord }>(matches: reado
   );
 }
 
+const NDC_CODE = /\d{4,5}-\d{3,4}(?:-\d{1,2})?(?![\w-])/;
+const LABELED_NDCS = new RegExp(
+  `\\bNDC(?:s| number(?:s)?| code(?:s)?)?(?:\\s+(?:bag|blister|carton|vial|bottle))?\\s*[:#-]?\\s*(${NDC_CODE.source}(?:\\s*(?:,|;|and|/)\\s*${NDC_CODE.source})*)`,
+  "gi",
+);
+
+const RECALL_INDEX = new WeakMap<readonly RecallRecord[], ReadonlyMap<string, readonly NdcRecallMatch[]>>();
+const QUALIFIED_CODES = /\b(?:unaffected|not affected|not recalled|except(?:ion|ing)?|exclud(?:e|ed|ing)|incorrect NDC|instead of)\b/i;
+
+function ndcIndex(recalls: readonly RecallRecord[]): ReadonlyMap<string, readonly NdcRecallMatch[]> {
+  const cached = RECALL_INDEX.get(recalls);
+  if (cached) return cached;
+  const index = new Map<string, NdcRecallMatch[]>();
+  for (const recall of recalls) {
+    if (QUALIFIED_CODES.test(recall.productDescription) || QUALIFIED_CODES.test(recall.codeInfo)) continue;
+    const seen = new Set<string>();
+    for (const field of ["productDescription", "codeInfo"] as const) {
+      for (const list of recall[field].matchAll(LABELED_NDCS)) {
+        const before = recall[field].slice(0, list.index);
+        if (/\b(?:source|original|manufacturer(?:[’']s)?|mfg\.?)\s*$/i.test(before)) continue;
+        for (const code of (list[1] ?? "").matchAll(new RegExp(NDC_CODE.source, "g"))) {
+          const ndc = code[0];
+          const product = ndc.split("-").slice(0, 2).join("-");
+          if (seen.has(product)) continue;
+          seen.add(product);
+          const matches = index.get(product) ?? [];
+          matches.push({ match: "product_ndc", matchedNdc: product, evidence: { ndc, field }, recall });
+          index.set(product, matches);
+        }
+      }
+    }
+  }
+  RECALL_INDEX.set(recalls, index);
+  return index;
+}
+
 export function findRecalls(item: CabinetItem, recalls: readonly RecallRecord[]): readonly NdcRecallMatch[] {
   const productNdc = item.productNdc?.trim();
-  if (productNdc === undefined || productNdc === "") return [];
-  return newestFirst(
-    recalls
-      .filter((recall) => recall.productNdcs.includes(productNdc))
-      .map((recall) => ({ match: "product_ndc" as const, matchedNdc: productNdc, recall })),
-  );
+  if (!productNdc || !/^\d{4,5}-\d{3,4}$/.test(productNdc)) return [];
+  return newestFirst(ndcIndex(recalls).get(productNdc) ?? []);
 }
 
 export function findRecallsByText(term: string, recalls: readonly RecallRecord[]): readonly NameRecallMatch[] {
@@ -146,5 +179,5 @@ export function findRecallsByText(term: string, recalls: readonly RecallRecord[]
 }
 
 export function recallCoverageNote(source: RecallSource): string {
-  return `Recalls are matched by product code only. ${source.recordsWithProductNdc} of the ${source.records} FDA drug recall records (file dated ${source.lastUpdated}) carry a product code, so a recall can exist without showing here. No match does not mean the product is safe.`;
+  return `Matches use explicitly listed NDCs. Check the package and lot against the recall. The FDA supplied harmonized product codes for ${source.recordsWithProductNdc} of the ${source.records} FDA drug recall records (file dated ${source.lastUpdated}). No match does not mean the product is safe.`;
 }

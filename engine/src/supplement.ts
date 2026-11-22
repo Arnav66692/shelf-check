@@ -10,6 +10,7 @@ export const DSLD_NO_AMOUNT_UNIT = "NP";
 const ROW_CATEGORIES_THAT_ARE_NOT_INGREDIENTS: readonly string[] = ["other", "blend"];
 const DIRECTIONS_STATEMENT = /^suggested\/recommended\/usage\/directions/i;
 const PRECAUTION_STATEMENT = /^precautions/i;
+const MILLIGRAMS = new Map([["g", 1000], ["mg", 1], ["mcg", 0.001]]);
 
 export class SupplementNotFoundError extends Error {
   constructor(dsldId: string) {
@@ -68,39 +69,67 @@ async function resolveRows(
   return resolved.flat();
 }
 
-function statedAmount(row: DsldIngredientRow): DsldQuantity | undefined {
-  return row.quantity.find((quantity) => quantity.unit !== DSLD_NO_AMOUNT_UNIT);
-}
-
 function unique(values: readonly string[]): readonly string[] {
   return values.filter((value, index) => values.findIndex((other) => other.toLowerCase() === value.toLowerCase()) === index);
 }
 
-function isSameBasis(left: DsldQuantity, right: DsldQuantity): boolean {
-  return (
-    left.unit === right.unit &&
-    left.servingSizeQuantity === right.servingSizeQuantity &&
-    left.servingSizeUnit === right.servingSizeUnit
-  );
+function massUnit(unit: string): string {
+  return unit.trim().toLowerCase()
+    .replace(/^(?:[µμu]g|micrograms?)$/, "mcg")
+    .replace(/^milligrams?$/, "mg")
+    .replace(/^grams?$/, "g");
 }
 
-// Separate rows for one ingredient (an extract and the plain herb) add up when they are stated the same way.
-function combinedAmount(sameIngredient: readonly ResolvedRow[]): DsldQuantity | undefined {
-  const amounts = sameIngredient.flatMap((resolved) => statedAmount(resolved.row) ?? []);
+function servingUnit(unit: string): string {
+  return unit.trim().toLowerCase().replace(/^(capsule|softgel|tablet|packet|drop|scoop)(?:\(s\)|s)$/, "$1");
+}
+
+type ServingAmount = DsldQuantity & { readonly servingSizeQuantity: number; readonly servingSizeUnit: string };
+
+function exactServingAmount(row: DsldIngredientRow): ServingAmount | undefined {
+  const [amount] = row.quantity;
+  if (row.quantity.length !== 1 || !amount || amount.unit === DSLD_NO_AMOUNT_UNIT) return undefined;
+  const { quantity, operator, servingSizeQuantity, servingSizeUnit } = amount;
+  if (operator !== undefined && operator !== "=") return undefined;
+  if (!servingSizeUnit || servingSizeQuantity === undefined || !Number.isFinite(servingSizeQuantity)) return undefined;
+  if (servingSizeQuantity <= 0 || !Number.isFinite(quantity) || quantity <= 0) return undefined;
+  return { ...amount, servingSizeQuantity, servingSizeUnit };
+}
+
+function combinedAmount(rows: readonly ResolvedRow[], servings: DailyServings | undefined): DsldQuantity | undefined {
+  const amounts = rows.map(({ row }) => exactServingAmount(row));
   const [first] = amounts;
-  if (first === undefined) return sameIngredient[0]?.row.quantity[0];
-  if (!amounts.every((amount) => isSameBasis(amount, first))) return first;
-  return { ...first, quantity: amounts.reduce((sum, amount) => sum + amount.quantity, 0) };
+  if (!first) return undefined;
+  const unit = massUnit(first.unit);
+  const firstScale = MILLIGRAMS.get(unit);
+  const perUnit = servingUnit(first.servingSizeUnit);
+  let quantity = 0;
+  for (const amount of amounts) {
+    if (!amount || servingUnit(amount.servingSizeUnit) !== perUnit) return undefined;
+    const rowUnit = massUnit(amount.unit);
+    let value = amount.quantity;
+    if (rowUnit !== unit) {
+      const rowScale = MILLIGRAMS.get(rowUnit);
+      if (firstScale === undefined || rowScale === undefined) return undefined;
+      value = value * rowScale / firstScale;
+    }
+    quantity += value * (first.servingSizeQuantity / amount.servingSizeQuantity);
+  }
+  if (!Number.isFinite(quantity)) return undefined;
+  const servingSizeUnit = servings && servingUnit(servings.unit) === perUnit ? servings.unit : first.servingSizeUnit;
+  return { ...first, unit: firstScale === undefined ? first.unit : unit, servingSizeUnit, quantity };
 }
 
-function toIngredient(name: string, sameIngredient: readonly ResolvedRow[]): Ingredient {
-  const amount = combinedAmount(sameIngredient);
+function toIngredient(name: string, sameIngredient: readonly ResolvedRow[], servings: DailyServings | undefined): Ingredient {
+  const amount = combinedAmount(sameIngredient, servings);
+  const printed = unique(sameIngredient.map(({ row }) => row.name));
   const identity = sameIngredient[0]?.identity;
   const commonNames = unique(sameIngredient.flatMap((resolved) => printedNames(resolved.row))).filter(
     (printed) => printed.toLowerCase() !== name,
   );
   return {
     name,
+    ...(printed.length === 1 && printed[0] !== undefined ? { strengthBasis: printed[0], printedName: printed[0] } : {}),
     value: amount?.quantity ?? 0,
     unit: amount?.unit ?? DSLD_NO_AMOUNT_UNIT,
     per: { value: amount?.servingSizeQuantity ?? 1, unit: amount?.servingSizeUnit ?? PER_EACH_UNIT },
@@ -110,17 +139,19 @@ function toIngredient(name: string, sameIngredient: readonly ResolvedRow[]): Ing
   };
 }
 
-function toIngredients(resolvedRows: readonly ResolvedRow[]): readonly Ingredient[] {
+function toIngredients(resolvedRows: readonly ResolvedRow[], servings: DailyServings | undefined): readonly Ingredient[] {
   const names = unique(resolvedRows.map((resolved) => resolved.identity.name));
   return names.map((name) =>
     toIngredient(
       name,
       resolvedRows.filter((resolved) => resolved.identity.name === name),
+      servings,
     ),
   );
 }
 
 export function dailyServingsOf(label: DsldLabel): DailyServings | undefined {
+  if (label.servingSizes.length !== 1) return undefined;
   const [serving] = label.servingSizes;
   const unitsPerServing = serving?.maxQuantity;
   const servingsPerDay = serving?.maxDailyServings;
@@ -140,6 +171,8 @@ export function supplementLabelSections(label: DsldLabel): LabelSections {
     ["inactive_ingredient", label.otherIngredients.flatMap((other) => [other.name, ...other.forms])],
     ["dosage_and_administration", statementsMatching(label, DIRECTIONS_STATEMENT)],
     ["warnings", statementsMatching(label, PRECAUTION_STATEMENT)],
+    ["dsld_contains", statementsMatching(label, /^formula re: contains$/i)],
+    ["dsld_allergy_precautions", statementsMatching(label, /^precautions re: allergies$/i)],
   ];
   return Object.fromEntries(sections.filter(([, paragraphs]) => paragraphs.length > 0));
 }
@@ -156,7 +189,7 @@ export async function supplementItemFromLabel(
     displayName: request.displayName ?? [label.brandName, label.fullName].filter((part) => part !== undefined).join(" "),
     dsldId: label.id,
     kind: "supplement",
-    ingredients: toIngredients(resolvedRows),
+    ingredients: toIngredients(resolvedRows, dailyServings),
     label: supplementLabelSections(label),
     verified: false,
     ...(dailyServings === undefined ? {} : { dailyServings }),

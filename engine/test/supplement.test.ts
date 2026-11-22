@@ -3,7 +3,8 @@ import { resolveIdentity } from "../src/cabinet.ts";
 import { dailyTotalFlags, labelledMaximum } from "../src/flags/dailyTotal.ts";
 import { duplicateFlags } from "../src/flags/duplicates.ts";
 import { interactionFlags } from "../src/flags/interactions.ts";
-import { buildSupplementItem, SupplementNotFoundError } from "../src/supplement.ts";
+import type { DsldQuantity } from "../src/sources/dsld.ts";
+import { buildSupplementItem, supplementItemFromLabel, SupplementNotFoundError } from "../src/supplement.ts";
 import type { CabinetItem, Flag } from "../src/types.ts";
 import { expectVerbatim, fixtureSources, loadMixedCabinet, loadSupplements, withoutLabel } from "./support/cabinet.ts";
 import { MISSING_DSLD_ID } from "./support/products.ts";
@@ -91,6 +92,26 @@ describe("buildSupplementItem", () => {
 });
 
 describe("supplement daily amounts", () => {
+  test("ginkgo includes every row across convertible mass units and serving sizes", async () => {
+    const sources = fixtureSources();
+    const label = await sources.dsld.getLabel("33452");
+    if (!label) throw new Error("missing ginkgo fixture");
+    const withSecondQuantity = async (quantity: readonly DsldQuantity[]) => {
+      const ingredientRows = label.ingredientRows.map((row, index) => index === 1 ? { ...row, quantity } : row);
+      const item = await supplementItemFromLabel({ id: "ginkgo", dsldId: label.id }, { ...label, ingredientRows }, sources);
+      return labelledMaximum(item, item.ingredients[0]!);
+    };
+
+    const perTwo = { quantity: 60_000, unit: "mcg", servingSizeQuantity: 2, servingSizeUnit: "capsules" };
+    expect(await withSecondQuantity([perTwo])).toMatchObject({ status: "parsed", mgPerDay: 330 });
+    for (const quantity of [
+      [], [{ ...perTwo, unit: "IU" }], [{ ...perTwo, unit: "NP" }], [{ ...perTwo, operator: "<" }],
+      [{ ...perTwo, servingSizeUnit: "tablets" }], [{ ...perTwo, servingSizeQuantity: 0 }],
+    ]) {
+      expect(await withSecondQuantity(quantity)).toMatchObject({ status: "not_parsed" });
+    }
+  });
+
   test("uses the servings per day the label record gives", async () => {
     const [stJohnsWort, melatonin3mg] = await loadSupplements("stJohnsWort", "melatonin3mg");
     if (stJohnsWort?.ingredients[0] === undefined || melatonin3mg?.ingredients[0] === undefined) throw new Error("fixtures missing");
@@ -172,9 +193,10 @@ describe("drug labels that name supplements", () => {
 
     expect(flags.map((flag) => [flag.itemIds[1], flag.quote?.section, flag.match?.kind, flag.match?.text])).toEqual([
       ["stJohnsWort", "drug_interactions", "common_name", "St. John’s wort"],
-      ["ginkgo", "drug_interactions", "common_name", "Ginkgo"],
+      ["ginkgo", "drug_interactions", "common_name", "ginkgo"],
       ["vitaminK", "drug_interactions", "common_name", "vitamin K"],
     ]);
+    expect(flags[1]?.quote?.text).toContain("can interact with warfarin");
     expect(flags[0]?.quote?.text).toBe(
       "Conversely, some botanicals may decrease the effects of warfarin sodium (e.g., co-enzyme Q 10 , St. John’s wort, ginseng).",
     );

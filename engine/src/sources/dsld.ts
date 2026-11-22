@@ -8,6 +8,7 @@ const STATUS_NO_MATCH = 404;
 export interface DsldQuantity {
   readonly quantity: number;
   readonly unit: string;
+  readonly operator?: string;
   readonly servingSizeQuantity?: number;
   readonly servingSizeUnit?: string;
 }
@@ -92,6 +93,7 @@ function toQuantity(raw: Record<string, unknown>): readonly DsldQuantity[] {
     {
       quantity,
       unit,
+      ...optional("operator", textField(raw, "operator")),
       ...optional("servingSizeQuantity", numberField(raw, "servingSizeQuantity")),
       ...optional("servingSizeUnit", textField(raw, "servingSizeUnit")),
     },
@@ -101,9 +103,10 @@ function toQuantity(raw: Record<string, unknown>): readonly DsldQuantity[] {
 function toIngredientRow(raw: Record<string, unknown>): DsldIngredientRow {
   const name = textField(raw, "name");
   if (name === undefined) throw new ResponseShapeError("DSLD label", "an ingredient row has no name");
+  const quantities = recordArrayField(raw, "quantity").flatMap(toQuantity);
   return {
     name,
-    quantity: recordArrayField(raw, "quantity").flatMap(toQuantity),
+    quantity: Array.isArray(raw.quantity) && raw.quantity.length === quantities.length ? quantities : [],
     forms: formNames(raw),
     nestedRows: recordArrayField(raw, "nestedRows").map(toIngredientRow),
     ...optional("ingredientGroup", textField(raw, "ingredientGroup")),

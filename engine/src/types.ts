@@ -16,11 +16,13 @@ export const LABEL_SECTION_NAMES = [
   "pregnancy_or_breast_feeding",
   "pregnancy",
   "nursing_mothers",
+  "pediatric_use",
   "inactive_ingredient",
   "information_for_patients",
 ] as const;
 
-export type LabelSectionName = (typeof LABEL_SECTION_NAMES)[number];
+export type LabelSectionName = (typeof LABEL_SECTION_NAMES)[number]
+  | "dsld_contains" | "dsld_allergy_precautions" | "dsld_ingredient" | "ndc_active_ingredient" | "normalized_active_ingredient";
 
 export type LabelSections = Readonly<Partial<Record<LabelSectionName, readonly string[]>>>;
 
@@ -38,6 +40,8 @@ export interface DrugClass {
 
 export interface Ingredient {
   readonly name: string;
+  readonly strengthBasis?: string;
+  readonly printedName?: string;
   readonly rxcui?: string;
   readonly value: number;
   readonly unit: string;

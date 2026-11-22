@@ -58,6 +58,12 @@ describe("parseNdc", () => {
     expect(parseNdc("50580590")).toEqual({ kind: "product", candidates: ["5058-0590", "50580-590"] });
   });
 
+  test("keeps the printed 5-4 code and tries each possible padding zero", () => {
+    const expected = { kind: "product", candidates: ["00093-0123", "0093-0123", "00093-123"] };
+    expect(parseNdc("00093-0123")).toEqual(expected);
+    expect(parseNdc("000930123")).toEqual(expected);
+  });
+
   test("rejects an 11-digit code with no padding zero", () => {
     expect(parseNdc("12345-6789-12").kind).toBe("invalid");
   });

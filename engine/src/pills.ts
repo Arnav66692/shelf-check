@@ -20,6 +20,7 @@ export interface PillRecord {
   readonly part: number;
   readonly name: string;
   readonly strength: string;
+  readonly oralDosageForm?: string;
   readonly maker: string;
   readonly imprint: string;
   readonly colors: readonly string[];
@@ -97,11 +98,12 @@ export const PILL_FILE_FIELDS = [
   "kind",
   "splImage",
   "pillboxImage",
+  "oralDosageForm",
 ] as const;
 
 type PillField = (typeof PILL_FILE_FIELDS)[number];
 
-const DICTIONARY_FIELDS = ["name", "strength", "maker", "colors", "shape", "setId", "source", "date", "kind"] as const;
+const DICTIONARY_FIELDS = ["name", "strength", "maker", "colors", "shape", "setId", "source", "date", "kind", "oralDosageForm"] as const;
 
 type DictionaryField = (typeof DICTIONARY_FIELDS)[number];
 type Cell = string | number | null;
@@ -111,6 +113,7 @@ const PRODUCT_NDC = /^\d{4,5}-[0-9A-Z]{3,4}$/;
 const COLOR_SEPARATOR = ";";
 
 export function normaliseImprint(text: string): string {
+  if (/^(?:none|no imprint|unmarked|blank|unknown|n\/a|not (?:listed|available|applicable))$/i.test(text.trim())) return "";
   return text.toUpperCase().replace(/[^A-Z0-9]/g, "");
 }
 
@@ -120,6 +123,7 @@ function isDictionaryField(field: PillField): field is DictionaryField {
 
 function rawCell(record: PillRecord, field: PillField): string | number | null {
   if (field === "colors") return record.colors.join(COLOR_SEPARATOR);
+  if (field === "oralDosageForm") return record.oralDosageForm ?? "";
   return record[field] ?? null;
 }
 
@@ -193,10 +197,10 @@ function parseImageZip(raw: unknown): PillboxImageZip {
 
 type Dictionaries = ReadonlyMap<DictionaryField, readonly string[]>;
 
-function parseDictionaries(raw: unknown): Dictionaries {
+function parseDictionaries(raw: unknown, fields: readonly PillField[]): Dictionaries {
   if (!isRecord(raw)) throw new PillFileShapeError("it has no dictionaries block");
   return new Map(
-    DICTIONARY_FIELDS.map((field) => {
+    DICTIONARY_FIELDS.filter((field) => fields.includes(field)).map((field) => {
       const values = raw[field];
       if (!Array.isArray(values) || !values.every((value) => typeof value === "string")) {
         throw new PillFileShapeError(`dictionary ${field} is not a list of text`);
@@ -210,10 +214,11 @@ function decodeRecord(
   row: unknown,
   index: number,
   dictionaries: Dictionaries,
+  fields: readonly PillField[],
 ): PillRecord {
   const where = `record ${index}`;
-  if (!Array.isArray(row) || row.length !== PILL_FILE_FIELDS.length) throw new PillFileShapeError(`${where} has the wrong number of fields`);
-  const cells = new Map(PILL_FILE_FIELDS.map((field, position) => [field, row[position] as unknown]));
+  if (!Array.isArray(row) || row.length !== fields.length) throw new PillFileShapeError(`${where} has the wrong number of fields`);
+  const cells = new Map(fields.map((field, position) => [field, row[position] as unknown]));
   const text = (field: PillField): string => {
     const cell = cells.get(field);
     const value = isDictionaryField(field) && typeof cell === "number" ? dictionaries.get(field)?.[cell] : cell;
@@ -239,6 +244,7 @@ function decodeRecord(
     part: optionalNumber("part") ?? 0,
     name: text("name"),
     strength: text("strength"),
+    ...(fields.includes("oralDosageForm") ? { oralDosageForm: text("oralDosageForm") } : {}),
     maker: text("maker"),
     imprint: text("imprint"),
     colors: colors === "" ? [] : colors.split(COLOR_SEPARATOR),
@@ -257,15 +263,17 @@ function decodeRecord(
 export function parsePillFile(raw: unknown): PillFile {
   if (!isRecord(raw)) throw new PillFileShapeError("it is not a JSON object");
   const fields = raw["fields"];
-  if (!Array.isArray(fields) || fields.join() !== PILL_FILE_FIELDS.join()) {
+  const legacy = PILL_FILE_FIELDS.filter((field) => field !== "oralDosageForm");
+  const expected = Array.isArray(fields) && fields.join() === legacy.join() ? legacy : PILL_FILE_FIELDS;
+  if (!Array.isArray(fields) || fields.join() !== expected.join()) {
     throw new PillFileShapeError(`its fields are not ${PILL_FILE_FIELDS.join(", ")}`);
   }
   if (!Array.isArray(raw["sources"]) || !Array.isArray(raw["records"])) throw new PillFileShapeError("it has no sources or records");
-  const dictionaries = parseDictionaries(raw["dictionaries"]);
+  const dictionaries = parseDictionaries(raw["dictionaries"], expected);
   return {
     sources: raw["sources"].map(parseSource),
     pillboxImageZip: parseImageZip(raw["pillbox_image_zip"]),
-    records: raw["records"].map((row, index) => decodeRecord(row, index, dictionaries)),
+    records: raw["records"].map((row, index) => decodeRecord(row, index, dictionaries, expected)),
   };
 }
 
@@ -287,7 +295,7 @@ export function imprintSides(imprint: string): readonly string[] {
 interface IndexedPill {
   readonly record: PillRecord;
   readonly imprintKeys: readonly string[];
-  readonly lookKey: string;
+  readonly lookKey?: string;
 }
 
 function imprintKeys(imprint: string): readonly string[] {
@@ -305,12 +313,19 @@ function strengthKey(strength: string): string {
     .join(";");
 }
 
+export function isPillForm(form: string | undefined): boolean {
+  return /^(?:TABLET|CAPSULE)(?:,|$)/i.test(form ?? "");
+}
+
 function indexPill(record: PillRecord): IndexedPill {
   const keys = imprintKeys(record.imprint);
+  const strength = strengthKey(record.strength);
+  const knownStrength = strength.split(";").every((line) => /^[A-Z][^;]*?\s+\d+(?:\.\d+)?\s*(?:MCG|MG|G|MEQ|IU|UNITS?)$/.test(line));
+  const canGroup = knownStrength && keys.some(Boolean) && record.colors.length > 0 && record.shape !== "";
   return {
     record,
     imprintKeys: keys,
-    lookKey: [[...keys].sort()[0] ?? "", record.colors.join(COLOR_SEPARATOR), record.shape, strengthKey(record.strength)].join("|"),
+    ...(canGroup ? { lookKey: [[...keys].sort()[0], record.colors.join(COLOR_SEPARATOR), record.shape, record.oralDosageForm, strength].join("|") } : {}),
   };
 }
 
@@ -319,7 +334,7 @@ const INDEX_CACHE = new WeakMap<readonly PillRecord[], readonly IndexedPill[]>()
 function indexed(records: readonly PillRecord[]): readonly IndexedPill[] {
   const cached = INDEX_CACHE.get(records);
   if (cached !== undefined) return cached;
-  const built = records.map(indexPill);
+  const built = records.filter((record) => isPillForm(record.oralDosageForm)).map(indexPill);
   INDEX_CACHE.set(records, built);
   return built;
 }
@@ -345,8 +360,8 @@ export function withinOneEdit(left: string, right: string): boolean {
 }
 
 function imprintMatch(queryKey: string, keys: readonly string[], useImprint: boolean): PillMatch | undefined {
-  if (keys.includes(queryKey)) return "exact_imprint";
   if (!useImprint) return "colour_and_shape";
+  if (keys.includes(queryKey)) return "exact_imprint";
   return keys.some((key) => withinOneEdit(queryKey, key)) ? "close_imprint" : undefined;
 }
 
@@ -365,7 +380,7 @@ function lower(text: string): string {
 function reasonFor(match: PillMatch, record: PillRecord, query: NormalisedQuery): string {
   const shown = imprintSides(record.imprint).join(" ");
   const imprintLine: Record<PillMatch, string> = {
-    exact_imprint: shown === "" ? "No imprint, as you entered." : `Imprint ${shown} matches what you typed.`,
+    exact_imprint: `Imprint ${shown} matches what you typed.`,
     close_imprint: `Imprint ${shown} is one character away from what you typed.`,
     colour_and_shape: "Matched on colour and shape only, not on the imprint.",
   };
@@ -402,8 +417,10 @@ interface ScoredPill {
 function scorePill(pill: IndexedPill, query: NormalisedQuery, useImprint: boolean): ScoredPill | undefined {
   const { record } = pill;
   const shapes = record.shape === "" ? [] : [record.shape];
+  if (!useImprint && (!agrees(record.colors, query.color) || !agrees(shapes, query.shape))) return undefined;
   if (disagrees(record.colors, query.color) || disagrees(shapes, query.shape)) return undefined;
-  const match = imprintMatch(query.key, pill.imprintKeys, useImprint);
+  if (!useImprint && query.key && !pill.imprintKeys.includes(query.key)) return undefined;
+  const match = imprintMatch(query.key, pill.imprintKeys, useImprint || query.key.length > 0);
   if (match === undefined) return undefined;
   const score =
     MATCH_POINTS[match] +
@@ -439,12 +456,13 @@ export function findPills(query: PillQuery, records: readonly PillRecord[]): rea
   const normalised = normaliseQuery(query);
   const useImprint = normalised.key.length >= MIN_IMPRINT_LENGTH;
   if (!useImprint && (normalised.color === undefined || normalised.shape === undefined)) return [];
-  const groups = new Map<string, ScoredPill[]>();
+  const groups = new Map<string | IndexedPill, ScoredPill[]>();
   for (const pill of indexed(records)) {
     const scored = scorePill(pill, normalised, useImprint);
     if (scored === undefined) continue;
-    const group = groups.get(pill.lookKey);
-    if (group === undefined) groups.set(pill.lookKey, [scored]);
+    const key = pill.lookKey ?? pill;
+    const group = groups.get(key);
+    if (group === undefined) groups.set(key, [scored]);
     else group.push(scored);
   }
   return [...groups.values()]

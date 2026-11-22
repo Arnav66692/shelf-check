@@ -23,7 +23,7 @@ export function requestCounts(): Readonly<Record<string, number>> {
     .reduce<Record<string, number>>((counts, host) => ({ ...counts, [host]: (counts[host] ?? 0) + 1 }), {});
 }
 
-export const recordingFetch: FetchFn = async (url) => {
+export const recordingFetch: FetchFn = async (url, init) => {
   const key = withoutApiKey(url);
   const known = readFixtureIndex()[key];
   if (known) return { status: known.status, text: async () => readFixtureBody(known) };
@@ -33,7 +33,7 @@ export const recordingFetch: FetchFn = async (url) => {
     throw new Error(`openFDA request cap of ${OPENFDA_REQUEST_CAP} reached, refusing ${key}`);
   }
   appendFileSync(REQUEST_LOG_PATH, `${JSON.stringify({ at: new Date().toISOString(), host, url: key })}\n`);
-  const response = await fetch(url);
+  const response = await fetch(url, init);
   const body = await response.text();
   const file = `bodies/${host}-${createHash("sha256").update(key).digest("hex").slice(0, HASH_LENGTH)}.txt`;
   writeFileSync(`${FIXTURE_DIR}${file}`, body);

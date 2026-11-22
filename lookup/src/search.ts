@@ -4,7 +4,7 @@ import type { SupplementHit, SupplementMatch } from "./dsld.ts";
 import { unique } from "./http.ts";
 import type { JsonGetter } from "./http.ts";
 import { ndcNameSearchUrl, toDrugProduct, toNdcPage } from "./openfda.ts";
-import { parseQuery } from "./query.ts";
+import { correctedQuery, matchesReleaseForm, parseQuery, supplementForm, withoutReleaseDescriptor } from "./query.ts";
 import type { ParsedQuery } from "./query.ts";
 import { groupProducts, listingCandidate, mergeRanked, namesEveryWord, scoreCandidate } from "./ranking.ts";
 import type { NamedListing } from "./ranking.ts";
@@ -42,8 +42,8 @@ interface DrugSearch {
   readonly correctedTokens?: readonly string[];
 }
 
-async function drugPage(sources: Sources, tokens: readonly string[]): Promise<DrugSearch> {
-  const page = toNdcPage(await sources.openfda(ndcNameSearchUrl(tokens, DRUG_PAGE_SIZE)));
+async function drugPage(sources: Sources, tokens: readonly string[], forms: readonly string[]): Promise<DrugSearch> {
+  const page = toNdcPage(await sources.openfda(ndcNameSearchUrl(tokens, DRUG_PAGE_SIZE, forms)));
   const originalMakersFirst = [...page.records].sort(
     (left, right) => Number(right.isOriginalPackager) - Number(left.isOriginalPackager),
   );
@@ -62,11 +62,11 @@ async function spellingCorrection(sources: Sources, tokens: readonly string[]): 
 }
 
 async function searchDrugs(sources: Sources, query: ParsedQuery): Promise<DrugSearch> {
-  const first = await drugPage(sources, query.nameTokens);
+  const first = await drugPage(sources, query.nameTokens, query.forms);
   if (first.products.length > 0) return first;
   const correctedTokens = await spellingCorrection(sources, query.nameTokens);
   if (correctedTokens.length === 0 || correctedTokens.join(" ") === query.nameTokens.join(" ")) return first;
-  return { ...(await drugPage(sources, correctedTokens)), correctedTokens };
+  return { ...(await drugPage(sources, correctedTokens, query.forms)), correctedTokens };
 }
 
 function newestOnMarketFirst(left: SupplementHit, right: SupplementHit): number {
@@ -77,7 +77,7 @@ function toListing(hit: SupplementHit): NamedListing {
   return {
     name: hit.fullName,
     otherNames: `${hit.brandName} ${hit.ingredientNames.join(" ")}`,
-    form: hit.form,
+    form: supplementForm(hit.form, hit.fullName),
     offMarket: hit.offMarket,
   };
 }
@@ -90,7 +90,7 @@ export function pickSupplementHits(hits: readonly SupplementHit[], query: Parsed
   }, new Map());
   return [...versions.values()]
     .map((hit) => ({ hit, candidate: listingCandidate(toListing(hit)) }))
-    .filter(({ candidate }) => namesEveryWord(candidate, query))
+    .filter(({ candidate }) => namesEveryWord(candidate, query) && matchesReleaseForm(query, candidate.form))
     .map(({ hit, candidate }, index) => ({ hit, index, score: scoreCandidate(candidate, query) }))
     .sort((left, right) => right.score - left.score || left.index - right.index)
     .slice(0, count)
@@ -101,16 +101,22 @@ export async function supplementProduct(sources: Sources, id: string, match: Sup
   return toSupplementProduct(id, toSupplementLabel(await sources.dsld(dsldLabelUrl(id))), match);
 }
 
-async function searchSupplements(sources: Sources, query: ParsedQuery, limit: number): Promise<readonly IdentifiedProduct[]> {
-  const page = toSupplementPage(await sources.dsld(dsldSearchUrl(query.text, SUPPLEMENT_PAGE_SIZE)));
-  const chosen = pickSupplementHits(page.hits, query, Math.min(limit, SUPPLEMENT_DETAIL_LIMIT));
+async function searchSupplements(sources: Sources, query: ParsedQuery, limit: number) {
+  async function matchingHits(text: string) {
+    const page = toSupplementPage(await sources.dsld(dsldSearchUrl(text, SUPPLEMENT_PAGE_SIZE)));
+    return pickSupplementHits(page.hits, query, Math.min(limit, SUPPLEMENT_DETAIL_LIMIT));
+  }
+  let chosen = await matchingHits(query.text);
+  if (chosen.length === 0) {
+    const broaderText = withoutReleaseDescriptor(query.text);
+    if (broaderText !== query.text) chosen = await matchingHits(broaderText);
+  }
   const match: SupplementMatch = { matchedBy: "name", confidenceNote: SUPPLEMENT_NAME_NOTE };
-  return Promise.all(chosen.map((hit) => supplementProduct(sources, hit.id, match)));
-}
-
-function correctedQuery(query: ParsedQuery, tokens: readonly string[]): ParsedQuery {
-  const strengthText = query.strength === undefined ? "" : ` ${query.strength.value} ${query.strength.unit}`;
-  return { ...query, nameTokens: tokens, text: `${tokens.join(" ")}${strengthText}` };
+  const details = await Promise.all(chosen.map((hit) => settle(supplementProduct(sources, hit.id, match))));
+  const products = details.flatMap((detail) => detail.ok ? [detail.value] : []);
+  const errors = details.flatMap((detail) => detail.ok ? [] : [detail.error]);
+  if (products.length === 0 && errors[0] !== undefined) throw errors[0];
+  return { products, errors };
 }
 
 function emptyResult(query: string): NameSearchResult {
@@ -128,15 +134,17 @@ export async function searchByName(sources: Sources, text: string, options: Name
   ]);
   const correctedTokens = drugs.ok ? drugs.value.correctedTokens : undefined;
   const query = correctedTokens === undefined ? typed : correctedQuery(typed, correctedTokens);
-  const retrySupplements = correctedTokens !== undefined && firstSupplements.ok && firstSupplements.value.length === 0;
+  const retrySupplements = correctedTokens !== undefined && firstSupplements.ok && firstSupplements.value.products.length === 0;
   const supplements = retrySupplements ? await settle(searchSupplements(sources, query, limit)) : firstSupplements;
 
-  const sourceErrors = [drugs, supplements].flatMap((outcome) => (outcome.ok ? [] : [outcome.error]));
-  const [firstError] = sourceErrors;
-  if (firstError !== undefined && sourceErrors.length === 2) throw firstError;
+  if (!drugs.ok && !supplements.ok) throw drugs.error;
+  const sourceErrors = [
+    ...(drugs.ok ? [] : [drugs.error]),
+    ...(supplements.ok ? supplements.value.errors : [supplements.error]),
+  ];
 
   const drugGroups = groupProducts(drugs.ok ? drugs.value.products : [], query);
-  const supplementGroups = groupProducts(supplements.ok ? supplements.value : [], query);
+  const supplementGroups = groupProducts(supplements.ok ? supplements.value.products : [], query);
   return {
     query: typed.text,
     groups: mergeRanked([drugGroups, supplementGroups], limit),

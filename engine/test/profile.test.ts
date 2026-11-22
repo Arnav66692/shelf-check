@@ -2,8 +2,11 @@ import { describe, expect, test } from "vitest";
 import { CONDITION_IDS, InvalidProfileError, profileFlags } from "../src/flags/profile.ts";
 import type { ConditionId, HealthProfile } from "../src/flags/profile.ts";
 import { checkCabinet } from "../src/index.ts";
+import carbinoxamine from "../fixtures/official/openfda-carbinoxamine-age-sections.json";
+import { createOpenFdaClient } from "../src/sources/openfda.ts";
+import { supplementItemFromLabel } from "../src/supplement.ts";
 import type { CabinetItem, Flag } from "../src/types.ts";
-import { expectVerbatim, loadCabinet, loadMixedCabinet, loadSupplements } from "./support/cabinet.ts";
+import { expectVerbatim, fixtureSources, loadCabinet, loadMixedCabinet, loadSupplements } from "./support/cabinet.ts";
 
 const NOTHING: HealthProfile = { conditions: [], allergies: [] };
 
@@ -93,18 +96,28 @@ describe("profile flags: conditions", () => {
     for (const quote of flag?.supportingQuotes ?? []) expectVerbatim(quote, items);
   });
 
-  test("a contraindication is a stop: lisinopril with diabetes, warfarin with bleeding problems", async () => {
+  test("the diabetes contraindication keeps its aliskiren prerequisite", async () => {
     const items = await loadCabinet("lisinoprilHctz", "warfarin");
 
     const flags = profileFlags(items, withConditions("diabetes", "stomach_ulcers_or_bleeding"));
 
-    expect(flags.map((flag) => [flag.itemIds[0], flag.match?.term, flag.severity, flag.quote?.section])).toEqual([
-      ["lisinoprilHctz", "diabetes", "stop", "contraindications"],
-      ["warfarin", "stomach_ulcers_or_bleeding", "stop", "contraindications"],
-    ]);
-    expect(flags[0]?.quote?.text).toBe(
+    const bleeding = flags.find((flag) => flag.itemIds[0] === "warfarin" && flag.match?.term === "stomach_ulcers_or_bleeding");
+    expect(bleeding).toMatchObject({ severity: "stop", quote: { section: "contraindications" } });
+    const diabetes = flags.find((flag) => flag.itemIds[0] === "lisinoprilHctz" && flag.match?.term === "diabetes");
+    expect(diabetes?.severity).toBe("ask");
+    expect(diabetes?.explain).toContain("aliskiren");
+    expect(diabetes?.detail).not.toContain("Your profile says this applies");
+    expect(diabetes?.quote?.text).toBe(
       "Do not coadminister aliskiren with lisinopril and hydrochlorothiazide tablets in patients with diabetes.",
     );
+  });
+
+  test("warfarin quotes renal monitoring from warnings and precautions", async () => {
+    const items = await loadCabinet("warfarin");
+    const [flag] = profileFlags(items, withConditions("kidney_disease"));
+    expect(flag).toMatchObject({ severity: "ask", quote: { section: "warnings_and_cautions" } });
+    const quotes = [flag?.quote, ...(flag?.supportingQuotes ?? [])];
+    expect(quotes.some((quote) => quote?.text.includes("More frequent monitoring"))).toBe(true);
   });
 
   test("high blood pressure is not flagged on a blood pressure medicine whose warnings never use that phrase", async () => {
@@ -174,6 +187,36 @@ describe("profile flags: alcohol, pregnancy and breast-feeding", () => {
 });
 
 describe("profile flags: age", () => {
+  test("carbinoxamine quotes the pediatric contraindication below the two-year boundary", async () => {
+    const source = createOpenFdaClient({ fetch: async () => ({ status: 200, text: async () => JSON.stringify(carbinoxamine) }) });
+    const label = await source.getLabel("73684-110");
+    const item: CabinetItem = { id: "73684-110", displayName: "Carbinoxamine maleate", kind: "rx", ingredients: [], verified: true };
+    for (const section of ["contraindications", "pediatric_use", "dosage_and_administration"] as const) {
+      const items = [{ ...item, label: { [section]: label?.[section] ?? [] } }];
+      expect(ageFlag(items, 1)).toMatchObject({ severity: "stop", quote: { section }, numbers: { belowYears: 2 } });
+      expectVerbatim(ageFlag(items, 1)?.quote, items);
+      expect(ageFlag(items, 2)).toBeUndefined();
+    }
+  });
+
+  test("boxed age restrictions respect the exact month boundary and negation", async () => {
+    const [base] = await loadCabinet("benadryl");
+    if (!base) throw new Error("missing label");
+    for (const text of ["Do not give to infants younger than 6 months of age.", "Infants younger than six months: do not use."]) {
+      const items = [{ ...base, label: { boxed_warning: [text] } }];
+      expect(ageFlag(items, 5 / 12)).toMatchObject({ severity: "stop", numbers: { belowYears: 0.5 } });
+      expect(ageFlag(items, 6 / 12)).toBeUndefined();
+    }
+    for (const text of [
+      "Use is not contraindicated in infants younger than 6 months.",
+      "Use is contraindicated in infants younger than 6 months with renal impairment.",
+      "For patients receiving sedatives, treatment is contraindicated in children younger than 2 years.",
+      "Intravenous use is contraindicated in children younger than 2 years.",
+    ]) {
+      expect(ageFlag([{ ...base, label: { boxed_warning: [text] } }], 0)).toBeUndefined();
+    }
+  });
+
   test("children under 12 years: flagged at 8, nothing at 12 or as an adult", async () => {
     const items = await loadCabinet("tylenol");
 
@@ -238,6 +281,36 @@ describe("profile flags: age", () => {
 });
 
 describe("profile flags: allergies", () => {
+  test("warfarin allergies match the normalized drug and its printed NDC ingredient", async () => {
+    const items = await loadCabinet("warfarin");
+    for (const allergy of ["warfarin", "Warfarin Sodium"]) {
+      const [flag] = profileFlags(items, { ...NOTHING, allergies: [allergy] });
+      expect(flag).toMatchObject({ severity: "stop", quote: { text: "WARFARIN SODIUM", section: "ndc_active_ingredient" } });
+    }
+    expect(profileFlags(items, { ...NOTHING, allergies: ["sodium"] })).toEqual([]);
+    const legacy = items.map((item) => ({ ...item, ingredients: item.ingredients.map(({ name, value, unit }) => ({ name, value, unit })) }));
+    const [flag] = profileFlags(legacy, { ...NOTHING, allergies: ["warfarin"] });
+    expect(flag).toMatchObject({ severity: "stop", quote: { text: "warfarin", section: "normalized_active_ingredient" } });
+  });
+
+  test("Bluebonnet's Contains declaration identifies cod and excludes uncertain or negative declarations", async () => {
+    const sources = fixtureSources();
+    const label = await sources.dsld.getLabel("177772");
+    if (!label) throw new Error("missing Bluebonnet fixture");
+    const request = { id: "vitaminD3", dsldId: label.id };
+    const item = await supplementItemFromLabel(request, label, sources);
+    const profile = { ...NOTHING, allergies: ["cod", "soy", "milk"] };
+    const flags = profileFlags([item], profile);
+    expect(flags).toHaveLength(1);
+    expect(flags[0]).toMatchObject({ severity: "stop", match: { term: "cod" }, quote: { text: "Contains: Fish (cod)" } });
+    expectVerbatim(flags[0]?.quote, [item]);
+    for (const notes of ["May contain cod.", "Free of cod.", "Contains no cod.", "Contains: soy. May contain cod."]) {
+      const statements = [{ type: "Precautions re: Allergies", notes }];
+      const changed = await supplementItemFromLabel(request, { ...label, statements }, sources);
+      expect(profileFlags([changed], { ...NOTHING, allergies: ["cod"] })).toEqual([]);
+    }
+  });
+
   test("an allergen in the active ingredients is a stop", async () => {
     const items = await loadCabinet("aspirin", "tylenol");
 

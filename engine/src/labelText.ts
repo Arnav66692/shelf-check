@@ -62,6 +62,12 @@ const SECTION_TITLES: Readonly<Record<LabelSectionName, string>> = {
   pregnancy_or_breast_feeding: "If pregnant or breast-feeding",
   pregnancy: "Pregnancy",
   nursing_mothers: "Nursing mothers",
+  pediatric_use: "Pediatric use",
+  dsld_contains: "DSLD formula contains statement",
+  dsld_allergy_precautions: "DSLD allergy precautions",
+  dsld_ingredient: "DSLD ingredient record",
+  ndc_active_ingredient: "NDC active ingredient record",
+  normalized_active_ingredient: "Normalized active ingredient record",
   inactive_ingredient: "Inactive ingredients",
   information_for_patients: "Information for patients",
 };

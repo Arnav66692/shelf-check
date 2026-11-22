@@ -1,7 +1,8 @@
+import { labelStrengthBasis } from "../cabinet.ts";
 import { sectionSentences, sentencesIn, toQuote } from "../labelText.ts";
 import type { LabelSentence } from "../labelText.ts";
 import { PER_EACH_UNIT } from "../sources/openfda.ts";
-import { escapeRegExp, formatNumber, termRegExp } from "../text.ts";
+import { escapeRegExp, formatNumber, splitSentences } from "../text.ts";
 import type {
   CabinetItem,
   DailyServings,
@@ -13,9 +14,10 @@ import type {
   Severity,
 } from "../types.ts";
 import { findDuplicatedIngredients } from "./duplicates.ts";
+import type { HealthProfile } from "./profile.ts";
 import type { DuplicatedIngredient, IngredientMember } from "./duplicates.ts";
 
-const NUMBER = "\\d+(?:\\.\\d+)?";
+const NUMBER = "(?:(?:\\d+\\s+)?\\d+/\\d+|\\d+(?:\\.\\d+)?)";
 const SOLID_UNITS = "tablets?|caplets?|capsules?|gelcaps?|geltabs?|softgels?|liquid[- ]?gels?|lozenges?";
 const VOLUME_UNITS = "mL|milliliters?|teaspoons?(?:ful)?|tablespoons?(?:ful)?";
 const DOSE_SIZE_UNITS = `${SOLID_UNITS}|${VOLUME_UNITS}`;
@@ -27,20 +29,15 @@ const LIMIT_PATTERN = new RegExp(
   `${LIMIT_LEAD_IN}\\s+(${NUMBER})\\s+(${LIMIT_UNITS})(?:\\s+of this product)?\\s+(?:in|per|every|within)\\s+(?:any\\s+|a\\s+)?${ONE_DAY}`,
   "gi",
 );
-const PER_DOSE_PATTERN = new RegExp(`(${NUMBER})\\s*(${DOSE_SIZE_UNITS})\\s+(?:per|each|in each)\\s+dose`, "i");
-const ADULT_DOSE_PATTERN = new RegExp(
-  `adults?\\s+(?:and|&)\\s+children\\s+12\\s+(?:years|yrs?\\.?)(?:\\s+of\\s+age)?\\s+(?:and|&|or)\\s+(?:over|older):?\\s+(?:take\\s+)?(${NUMBER})(?:\\s*(?:${DOSE_SIZE_UNITS}))?(?:\\s+(?:to|or)\\s+(${NUMBER}))?\\s*(${DOSE_SIZE_UNITS})`,
-  "i",
-);
-const AMOUNT = "\\d[\\d,]*(?:\\.\\d+)?";
+const DOSE_QUANTITY = `(${NUMBER})(?:\\s*(${DOSE_SIZE_UNITS})?\\s+(?:to|or)\\s+(${NUMBER}))?\\s*(${DOSE_SIZE_UNITS})\\b`;
+const DOSE_PREFIX = "^\\s*(?:directions\\s*[:.]?\\s*)?(?:take\\s+)?";
+const PER_DOSE = new RegExp(`${DOSE_PREFIX}${DOSE_QUANTITY}\\s+(?:per|each|in each)\\s+dose\\b`, "i");
+const ROW_DOSE = new RegExp(`^\\s*(?:take\\s+)?${DOSE_QUANTITY}(?:\\s+(?:per|each)\\s+dose)?(?=\\s*(?:$|[.(;•]|every\\b|at\\b|do not\\b))`, "i");
+const AMOUNT = "(?:\\d{1,3}(?:,\\d{3})+|\\d+)(?:\\.\\d+)?";
 const MASS_UNITS = "mg|milligrams?|g|grams?";
-const MAXIMUM_DAILY_MASS_PATTERN = new RegExp(
-  `maximum daily (?:dose|dosage|amount)[^.]{0,80}?(${AMOUNT})\\s*(${MASS_UNITS})(?![A-Za-z])`,
-  "i",
-);
+const MASS_CLAUSE = new RegExp(`^(?:(.+?)\\s+is\\s+|is\\s+)?(${AMOUNT})\\s*(${MASS_UNITS})(?:\\s*(?:/day|per day))?$`, "i");
 
 const DIRECTIONS_SECTION: LabelSectionName = "dosage_and_administration";
-const DOSE_SIZE_SECTIONS: readonly LabelSectionName[] = [DIRECTIONS_SECTION, "warnings"];
 const CEILING_SECTIONS: readonly LabelSectionName[] = ["warnings", "boxed_warning", DIRECTIONS_SECTION];
 
 const MG_PER_MASS_UNIT: Readonly<Record<string, number>> = {
@@ -114,67 +111,159 @@ function mgIn(amount: number, rawUnit: string, ingredient: Ingredient): Conversi
     : { ok: true, mg: (amount * mlPerUnit * strength.mg) / (per.value * mlPerStrength) };
 }
 
-function findLimits(item: CabinetItem): readonly LabelAmount[] {
-  return sectionSentences(item.label, DIRECTIONS_SECTION).flatMap((sentence) =>
-    [...sentence.text.matchAll(LIMIT_PATTERN)].flatMap((match) => {
-      const [matchedText, rawValue, unit] = match;
-      return rawValue === undefined || unit === undefined
-        ? []
-        : [{ value: toNumber(rawValue), unit, matchedText, quote: quoteAt(item, sentence, matchedText, match.index) }];
-    }),
-  );
+type AgeProfile = Pick<HealthProfile, "ageYears">;
+
+interface DirectionPart {
+  readonly text: string;
+  readonly paragraph: string;
+  readonly offset: number;
+  readonly isAgeRow: boolean;
 }
 
-function doseSizeIn(item: CabinetItem, sentence: LabelSentence): LabelAmount | undefined {
-  const perDose = PER_DOSE_PATTERN.exec(sentence.text);
-  if (perDose?.[1] !== undefined && perDose[2] !== undefined) {
-    const quote = quoteAt(item, sentence, perDose[0], perDose.index);
-    return { value: toNumber(perDose[1]), unit: perDose[2], matchedText: perDose[0], quote };
+const AUDIENCE = /\b(?:adults?\s+(?:and|&)\s+children|adults?|children|child|infants?|adolescents?|pediatric|neonates?)\b/gi;
+const YEARS = "(?:years?|yrs?\\.?)(?:\\s+of\\s+age)?";
+const OLDER = new RegExp(`^\\s*(\\d+)\\s+${YEARS}\\s+(?:and|or|&)\\s+(?:older|over)\\b`, "i");
+const RANGE = new RegExp(`^\\s*(\\d+)\\s*(?:to|[-–])\\s*(under\\s+)?(\\d+)\\s+${YEARS}\\b`, "i");
+const UNDER = new RegExp(`^\\s*under\\s+(\\d+)\\s+${YEARS}\\b`, "i");
+
+function ageRange(text: string): { from: number; below: number; length: number } | undefined {
+  const older = OLDER.exec(text);
+  if (older) return { from: Number(older[1]), below: Infinity, length: older[0].length };
+  const range = RANGE.exec(text);
+  if (range) return { from: Number(range[1]), below: Number(range[3]) + (range[2] ? 0 : 1), length: range[0].length };
+  const under = UNDER.exec(text);
+  if (under) return { from: 0, below: Number(under[1]), length: under[0].length };
+  return undefined;
+}
+
+function applicableDirections(paragraph: string, age: number | undefined): readonly DirectionPart[] | undefined {
+  if (/\b(?:weigh(?:t|s|ing)?|kilograms?|kg|pounds?|lbs?|months?|newborns?|elderly|geriatric)\b/i.test(paragraph)) return undefined;
+  const headings = [...paragraph.matchAll(AUDIENCE)];
+  const first = headings[0];
+  if (!first) {
+    if (/\b(?:age[ds]?|years?|yrs?)\b/i.test(paragraph)) return undefined;
+    return [{ text: paragraph, paragraph, offset: 0, isAgeRow: false }];
   }
-  const adult = ADULT_DOSE_PATTERN.exec(sentence.text);
-  if (adult?.[1] === undefined || adult[3] === undefined) return undefined;
-  const upperBound = Math.max(toNumber(adult[1]), adult[2] === undefined ? 0 : toNumber(adult[2]));
-  return { value: upperBound, unit: adult[3], matchedText: adult[0], quote: quoteAt(item, sentence, adult[0], adult.index) };
-}
-
-function findDoseSize(item: CabinetItem): LabelAmount | undefined {
-  return sentencesIn(item.label, DOSE_SIZE_SECTIONS)
-    .map((sentence) => doseSizeIn(item, sentence))
-    .find((doseSize) => doseSize !== undefined);
-}
-
-function resolveLimit(limit: LabelAmount, item: CabinetItem, ingredient: Ingredient, limitsFound: number): LabelledMaximum {
-  if (singular(limit.unit) !== DOSE_UNIT) {
-    const direct = mgIn(limit.value, limit.unit, ingredient);
-    return direct.ok
-      ? { status: "parsed", mgPerDay: direct.mg, limit, limitsFound }
-      : { status: "not_parsed", reason: direct.reason };
+  if (age === undefined || !Number.isFinite(age) || age < 0) return undefined;
+  const common = { text: paragraph.slice(0, first.index), paragraph, offset: 0, isAgeRow: false };
+  const selected: DirectionPart[] = [];
+  for (const [index, heading] of headings.entries()) {
+    const start = heading.index + heading[0].length;
+    const row = paragraph.slice(start, headings[index + 1]?.index);
+    const range = ageRange(row);
+    if (!range) return undefined;
+    if (age >= range.from && age < range.below) {
+      const body = row.slice(range.length).replace(/^[\s:]+/, "");
+      if (/^(?:do not use|ask|consult)\b/i.test(body)) return undefined;
+      selected.push({ text: body, paragraph, offset: start + row.length - body.length, isAgeRow: true });
+    }
   }
-  const doseSize = findDoseSize(item);
-  if (doseSize === undefined) {
-    return { status: "not_parsed", reason: `the label limits doses ("${limit.matchedText}") but no dose size could be read` };
-  }
-  const perDose = mgIn(doseSize.value, doseSize.unit, ingredient);
-  return perDose.ok
-    ? { status: "parsed", mgPerDay: limit.value * perDose.mg, limit, doseSize, limitsFound }
-    : { status: "not_parsed", reason: perDose.reason };
+  return selected.length === 1 ? [common, ...selected] : undefined;
 }
 
-function maximumFromMassStatement(item: CabinetItem, ingredient: Ingredient): LabelledMaximum | undefined {
-  const namesIngredient = termRegExp(ingredient.name);
-  const isAboutIngredient = (sentence: LabelSentence): boolean =>
-    item.ingredients.length === 1 || namesIngredient.test(sentence.text);
-  return sectionSentences(item.label, DIRECTIONS_SECTION)
-    .filter(isAboutIngredient)
-    .flatMap((sentence): readonly LabelledMaximum[] => {
-      const match = MAXIMUM_DAILY_MASS_PATTERN.exec(sentence.text);
-      const factor = match?.[2] === undefined ? undefined : MG_PER_MASS_UNIT[singular(match[2])];
-      if (match?.[1] === undefined || match[2] === undefined || factor === undefined) return [];
-      const quote = quoteAt(item, sentence, match[0], match.index);
-      const limit = { value: toNumber(match[1]), unit: match[2], matchedText: match[0], quote };
-      return [{ status: "parsed", mgPerDay: limit.value * factor, limit, limitsFound: 1 }];
-    })
-    .at(0);
+function amountAt(
+  item: CabinetItem, part: DirectionPart, text: string, offset: number, value: number, unit: string,
+): LabelAmount {
+  const index = part.offset + offset;
+  let start = 0;
+  for (const textOfSentence of splitSentences(part.paragraph)) {
+    start = part.paragraph.indexOf(textOfSentence, start);
+    if (index >= start && index + text.length <= start + textOfSentence.length) {
+      const sentence = { section: DIRECTIONS_SECTION, text: textOfSentence };
+      return { value, unit, matchedText: text, quote: quoteAt(item, sentence, text, index - start) };
+    }
+    start += textOfSentence.length;
+  }
+  return { value, unit, matchedText: text, quote: quoteAt(item, { section: DIRECTIONS_SECTION, text: part.text }, text, offset) };
+}
+
+function quantity(raw: string): number {
+  const fraction = /^(?:(\d+)\s+)?(\d+)\/(\d+)$/.exec(raw);
+  return fraction ? Number(fraction[1] ?? 0) + Number(fraction[2]) / Number(fraction[3]) : Number(raw);
+}
+
+function limitsIn(item: CabinetItem, part: DirectionPart): readonly LabelAmount[] {
+  return [...part.text.matchAll(LIMIT_PATTERN)].flatMap((match) => {
+    const [, raw, unit] = match;
+    return raw && unit ? [amountAt(item, part, match[0], match.index, quantity(raw), unit)] : [];
+  });
+}
+
+// openFDA flattens tables and bullets. Unread text around a cap may restrict
+// its audience, change the quantity, or start another row.
+const DIRECTION_PREFACE = /^(?:directions\b|do not take more than directed\b(?:\s*\(see overdose warning\s*\))?|the smallest effective dose should be used\b|drink a full glass of water with each dose\b|take only as directed\b|only use the dose cup provided\b|find right dose on chart below\b|ml\s*=\s*milliliter\b|take every \d+ to \d+ hours, or as directed by a doctor\b)/i;
+const SEPARATORS = /^[\s:.,;•■▪●◦]+/;
+const EVERY = "every\\s+\\d+(?:\\s+to\\s+\\d+)?\\s+(?:hours?|hrs?)";
+const DOSE_SCHEDULE = new RegExp(
+  `^(?:take\\s+)?${DOSE_QUANTITY}(?:\\s+(?:each|per|in each)\\s+dose)?` +
+    `(?:\\s+(?:at bedtime|daily|${EVERY}(?:\\s+or\\s+${DOSE_QUANTITY}\\s+${EVERY})?))?` +
+    "(?:\\s+while symptoms (?:last|persist))?", "i",
+);
+const CUP_NOTE = /^\(\d+x\d+ mL; Note: dosing cup needs to be filled to \d+ mL line twice for the \d+ mL dose\)/i;
+const PAIN_FEVER_DIRECTION = /^if pain or fever does not respond to 1 capsule, 2 capsules may be used\b/i;
+const CAP_SUFFIX = /^(?:unless directed by a doctor\b|do not use for more than \d+ days\b|age \(yr\) dose \(ml\))/i;
+
+function stripPhrases(text: string, pattern: RegExp): string {
+  let remaining = text.replace(SEPARATORS, "");
+  let match: RegExpExecArray | null;
+  while ((match = pattern.exec(remaining))) {
+    remaining = remaining.slice(match[0].length).replace(SEPARATORS, "");
+  }
+  return remaining;
+}
+
+function understoodCapContext(part: DirectionPart): boolean {
+  const limits = [...part.text.matchAll(LIMIT_PATTERN)];
+  if (limits.length > 1) return false;
+  const [limit] = limits;
+  if (limit) {
+    const suffix = part.text.slice(limit.index + limit[0].length);
+    if (stripPhrases(suffix, CAP_SUFFIX) !== "") return false;
+  }
+  let before = stripPhrases(part.text.slice(0, limit?.index), DIRECTION_PREFACE);
+  if (!before) return true;
+  const dose = DOSE_SCHEDULE.exec(before);
+  if (!dose) return false;
+  before = before.slice(dose[0].length).replace(SEPARATORS, "").trimEnd();
+  return !before || (CUP_NOTE.exec(before)?.[0] === before) || (PAIN_FEVER_DIRECTION.exec(before)?.[0] === before);
+}
+
+function doseIn(item: CabinetItem, part: DirectionPart): LabelAmount | undefined {
+  // A bare number is a dose only at the start of the selected dosage-table row.
+  const pattern = part.isAgeRow ? ROW_DOSE : PER_DOSE;
+  const match = pattern.exec(part.text);
+  const [, lower, lowerUnit, upper, unit] = match ?? [];
+  if (!match || !lower || !unit) return undefined;
+  if (lowerUnit && singular(lowerUnit) !== singular(unit)) return undefined;
+  const tail = part.text.slice(match[0].length);
+  if (/\b(?:if|except|alternatively|instead|or|per dose|each dose|depending)\b/i.test(tail)) return undefined;
+  const value = quantity(upper ?? lower);
+  if (!(quantity(lower) > 0 && Number.isFinite(value) && value >= quantity(lower))) return undefined;
+  const matched = match[0].trim();
+  return amountAt(item, part, matched, part.text.indexOf(matched), value, unit);
+}
+
+function maximumFromMassStatement(item: CabinetItem, ingredient: Ingredient, part: DirectionPart): LabelledMaximum | undefined {
+  const statement = /^(?:\s*(?:directions|dosage and administration)\s*[:.]?\s*)?\s*maximum daily (?:dose|dosage|amount)\s+(.+?)\.?\s*$/i.exec(part.text);
+  if (!statement?.[1]) return undefined;
+  const clauses = statement[1].replace(/^of\s+/i, "").split(/\s+and\s+/i);
+  const basis = strengthBasisOf(item, ingredient);
+  const found: LabelAmount[] = [];
+  for (const clause of clauses) {
+    const match = MASS_CLAUSE.exec(clause);
+    if (!match?.[2] || !match[3]) return undefined;
+    const name = match[1]?.trim().toLowerCase();
+    if (name === undefined && (item.ingredients.length !== 1 || clauses.length !== 1)) return undefined;
+    if (name !== undefined && !item.ingredients.some((candidate) => strengthBasisOf(item, candidate) === name)) return undefined;
+    if (name === undefined || name === basis) {
+      found.push(amountAt(item, part, clause, part.text.indexOf(clause), toNumber(match[2]), match[3]));
+    }
+  }
+  const [limit] = found;
+  const factor = limit && MG_PER_MASS_UNIT[singular(limit.unit)];
+  if (found.length !== 1 || !limit || !factor) return undefined;
+  const mgPerDay = limit.value * factor;
+  return Number.isFinite(mgPerDay) && mgPerDay > 0 ? { status: "parsed", mgPerDay, limit, limitsFound: 1 } : undefined;
 }
 
 const SERVINGS_UNIT = "servings";
@@ -195,6 +284,7 @@ function amountFromDailyServings(item: CabinetItem, ingredient: Ingredient): Lab
     return { status: "not_parsed", reason: `the amount is not stated per ${servings.unit}` };
   }
   const mgPerDay = (strength.mg / per.value) * servings.unitsPerServing * servings.servingsPerDay;
+  if (!Number.isFinite(mgPerDay) || mgPerDay <= 0) return { status: "not_parsed", reason: "the serving quantity is invalid" };
   const limit = {
     value: servings.servingsPerDay,
     unit: SERVINGS_UNIT,
@@ -204,27 +294,37 @@ function amountFromDailyServings(item: CabinetItem, ingredient: Ingredient): Lab
   return { status: "parsed", mgPerDay, limit, servings, limitsFound: 1 };
 }
 
-export function labelledMaximum(item: CabinetItem, ingredient: Ingredient): LabelledMaximum {
+export function labelledMaximum(item: CabinetItem, ingredient: Ingredient, profile?: AgeProfile): LabelledMaximum {
   if (item.kind === "supplement") return amountFromDailyServings(item, ingredient);
-  if (sectionSentences(item.label, DIRECTIONS_SECTION).length === 0) {
-    return { status: "not_parsed", reason: "the label has no directions text" };
+  const directions = item.label?.[DIRECTIONS_SECTION] ?? [];
+  const [paragraph] = directions;
+  if (!paragraph) return { status: "not_parsed", reason: "the label has no directions text" };
+  const parts = directions.length === 1 ? applicableDirections(paragraph, profile?.ageYears) : undefined;
+  if (!parts) return { status: "not_parsed", reason: "the applicable directions could not be established" };
+  const limits = parts.flatMap((part) => limitsIn(item, part));
+  const [limit] = limits;
+  if (!limit) {
+    const maximum = parts.length === 1 && parts[0] ? maximumFromMassStatement(item, ingredient, parts[0]) : undefined;
+    return maximum ?? { status: "not_parsed", reason: "no unambiguous daily maximum was found in the directions" };
   }
-  const limits = findLimits(item);
-  if (limits.length === 0) {
-    return (
-      maximumFromMassStatement(item, ingredient) ?? {
-        status: "not_parsed",
-        reason: "no daily maximum sentence was found in the directions",
-      }
-    );
+  if (!parts.every(understoodCapContext)) {
+    return { status: "not_parsed", reason: "the context of the daily limit could not be fully read" };
   }
-  const resolved = limits.map((limit) => resolveLimit(limit, item, ingredient, limits.length));
-  const parsed = resolved.flatMap((result) => (result.status === "parsed" ? [result] : []));
-  const highest = parsed.reduce<(typeof parsed)[number] | undefined>(
-    (best, result) => (best === undefined || result.mgPerDay > best.mgPerDay ? result : best),
-    undefined,
-  );
-  return highest ?? resolved[0] ?? { status: "not_parsed", reason: "no daily maximum sentence was found in the directions" };
+  if (limits.some((other) => other.value !== limit.value || singular(other.unit) !== singular(limit.unit))) {
+    return { status: "not_parsed", reason: "the applicable directions contain conflicting limits" };
+  }
+  let doseSize: LabelAmount | undefined;
+  if (singular(limit.unit) === DOSE_UNIT) {
+    const row = parts.find((part) => part.isAgeRow) ?? parts[0];
+    doseSize = row && doseIn(item, row);
+    if (!doseSize) return { status: "not_parsed", reason: "the applicable directions do not give a clear dose size" };
+  }
+  const doseOrLimit = doseSize ?? limit;
+  const amount = mgIn(doseOrLimit.value, doseOrLimit.unit, ingredient);
+  if (!amount.ok) return { status: "not_parsed", reason: amount.reason };
+  const mgPerDay = doseSize ? limit.value * amount.mg : amount.mg;
+  if (!Number.isFinite(mgPerDay) || mgPerDay <= 0) return { status: "not_parsed", reason: "the quantity is invalid" };
+  return { status: "parsed", mgPerDay, limit, limitsFound: limits.length, ...(doseSize ? { doseSize } : {}) };
 }
 
 export interface LabelledCeiling {
@@ -252,6 +352,7 @@ export function labelledCeiling(item: CabinetItem, ingredientName: string): Labe
 interface MemberMaximum {
   readonly member: IngredientMember;
   readonly maximum: LabelledMaximum;
+  readonly basis: string | undefined;
 }
 
 type ParsedMaximum = Extract<LabelledMaximum, { status: "parsed" }>;
@@ -271,6 +372,8 @@ interface GroupTotals {
   readonly parsed: readonly ParsedMember[];
   readonly lowest: ParsedMember | undefined;
   readonly total: number | null;
+  readonly commonBasis: string | undefined;
+  readonly knownSubtotal: number | null;
   readonly ceiling: MemberCeiling | undefined;
   readonly isOverCeiling: boolean;
 }
@@ -282,25 +385,47 @@ function lowestBy<T>(values: readonly T[], amountOf: (value: T) => number): T | 
   );
 }
 
-function totalsFor(group: DuplicatedIngredient): GroupTotals {
-  const entries = group.members.map((member) => ({ member, maximum: labelledMaximum(member.item, member.ingredient) }));
+function strengthBasisOf(item: CabinetItem, ingredient: Ingredient): string | undefined {
+  const stated = ingredient.strengthBasis?.trim().toLowerCase();
+  if (stated) return stated;
+  const name = ingredient.name.trim().toLowerCase();
+  const active = item.label?.active_ingredient ?? [];
+  if (item.kind === "supplement") {
+    return active.some((line) => line.trim().toLowerCase() === name) ? name : undefined;
+  }
+  return labelStrengthBasis(ingredient, item.label)?.toLowerCase();
+}
+
+function totalsFor(group: DuplicatedIngredient, profile?: AgeProfile): GroupTotals {
+  const entries = group.members.map((member) => {
+    const basis = strengthBasisOf(member.item, member.ingredient);
+    const maximum = labelledMaximum(member.item, member.ingredient, profile);
+    return { member, maximum, basis };
+  });
   const parsed = entries.flatMap((entry) =>
-    entry.maximum.status === "parsed" ? [{ member: entry.member, maximum: entry.maximum }] : [],
+    entry.maximum.status === "parsed" ? [{ ...entry, maximum: entry.maximum }] : [],
   );
-  const total =
-    parsed.length === entries.length ? parsed.reduce((sum, entry) => sum + entry.maximum.mgPerDay, 0) : null;
+  const commonBasis = parsed[0]?.basis;
+  const comparable = commonBasis !== undefined && parsed.every((entry) => entry.basis === commonBasis);
+  const combined = parsed.reduce((sum, entry) => sum + entry.maximum.mgPerDay, 0);
+  const total = comparable && parsed.length === entries.length && Number.isFinite(combined) ? combined : null;
   const ceilings = group.members.flatMap((member) => {
     const ceiling = labelledCeiling(member.item, group.name);
     return ceiling === undefined ? [] : [{ member, ceiling }];
   });
   const ceiling = lowestBy(ceilings, (entry) => entry.ceiling.mgPerDay);
+  const sameAsCeiling = parsed.filter((entry) => entry.basis === group.name);
+  const subtotal = sameAsCeiling.reduce((sum, entry) => sum + entry.maximum.mgPerDay, 0);
+  const knownSubtotal = sameAsCeiling.length > 0 && Number.isFinite(subtotal) ? subtotal : null;
   return {
     entries,
     parsed,
-    lowest: lowestBy(parsed, (entry) => entry.maximum.mgPerDay),
+    commonBasis: comparable ? commonBasis : undefined,
+    lowest: comparable ? lowestBy(parsed, (entry) => entry.maximum.mgPerDay) : undefined,
     total,
     ceiling,
-    isOverCeiling: total !== null && ceiling !== undefined && total > ceiling.ceiling.mgPerDay,
+    knownSubtotal,
+    isOverCeiling: knownSubtotal !== null && ceiling !== undefined && knownSubtotal > ceiling.ceiling.mgPerDay,
   };
 }
 
@@ -319,39 +444,42 @@ function numbersFor(totals: GroupTotals): FlagNumbers {
     lowestMaxMgPerDay: totals.lowest?.maximum.mgPerDay ?? null,
     totalMgPerDayAtEachMaximum: totals.total,
     labelWarningMgPerDay: totals.ceiling?.ceiling.mgPerDay ?? null,
+    ...(totals.total === null && totals.knownSubtotal !== null ? { knownSubtotalMgPerDay: totals.knownSubtotal } : {}),
   };
 }
 
-function describeMember(entry: MemberMaximum, ingredientName: string): string {
+function describeMember(entry: MemberMaximum): string {
   const name = entry.member.item.displayName;
   if (entry.maximum.status === "not_parsed") {
     return `${name}: no daily maximum could be read from the label, because ${entry.maximum.reason}.`;
   }
-  const { limit, doseSize, mgPerDay, limitsFound, servings } = entry.maximum;
+  const ingredientName = entry.basis ?? "the labelled ingredient";
+  const { limit, doseSize, mgPerDay, servings } = entry.maximum;
   if (servings !== undefined) {
     return `${name}: the directions say "${limit.matchedText}" and the label record gives ${formatNumber(servings.unitsPerServing)} ${servings.unit} ${formatNumber(servings.servingsPerDay)} time(s) a day, which is ${formatNumber(mgPerDay)} mg of ${ingredientName} a day.`;
   }
   const dose = doseSize === undefined ? "" : ` with the dose size "${doseSize.matchedText}"`;
-  const choice = limitsFound > 1 ? " The directions print more than one limit and the highest is used." : "";
-  return `${name}: the label says "${limit.matchedText}"${dose}, which is ${formatNumber(mgPerDay)} mg of ${ingredientName} in 24 hours.${choice}`;
+  return `${name}: the label says "${limit.matchedText}"${dose}, which is ${formatNumber(mgPerDay)} mg of ${ingredientName} in 24 hours.`;
 }
 
-function detailFor(totals: GroupTotals, ingredientName: string): string {
+function detailFor(totals: GroupTotals): string {
   const lowestLine =
     totals.lowest === undefined
       ? []
       : [`The lowest labelled maximum is ${formatNumber(totals.lowest.maximum.mgPerDay)} mg.`];
   const totalLine =
     totals.total === null
-      ? "A combined total cannot be worked out because at least one label maximum could not be read. Nothing was guessed."
-      : `If each product were taken at its own labelled maximum, the total would be ${formatNumber(totals.total)} mg of ${ingredientName} in 24 hours.`;
-  const over = totals.isOverCeiling ? " The combined total is above that amount." : "";
+      ? "A combined total cannot be worked out because one or more amounts or strength bases could not be verified. Nothing was guessed."
+      : `If each product were taken at its own labelled maximum, the total would be ${formatNumber(totals.total)} mg of ${totals.commonBasis} in 24 hours.`;
+  const over = totals.isOverCeiling && totals.knownSubtotal !== null
+    ? ` The readable maxima alone total ${formatNumber(totals.knownSubtotal)} mg, above that amount.`
+    : "";
   const ceilingLine =
     totals.ceiling === undefined
       ? []
       : [`The ${totals.ceiling.member.item.displayName} label warns about "${totals.ceiling.ceiling.matchedText}".${over}`];
   return [
-    ...totals.entries.map((entry) => describeMember(entry, ingredientName)),
+    ...totals.entries.map(describeMember),
     ...lowestLine,
     totalLine,
     ...ceilingLine,
@@ -361,9 +489,12 @@ function detailFor(totals: GroupTotals, ingredientName: string): string {
 
 function explainFor(totals: GroupTotals, ingredientName: string): string {
   if (totals.total === null) {
+    if (totals.isOverCeiling && totals.knownSubtotal !== null && totals.ceiling) {
+      return `The readable maxima alone total ${formatNumber(totals.knownSubtotal)} mg of ${ingredientName} a day, above the label warning of ${formatNumber(totals.ceiling.ceiling.mgPerDay)} mg, and the full total is unknown.`;
+    }
     return `These products share ${ingredientName}, but the labels do not give enough to add up a daily amount.`;
   }
-  const sum = `Taken at the most each label allows, these products add up to ${formatNumber(totals.total)} mg of ${ingredientName} a day`;
+  const sum = `Taken at the most each label allows, these products add up to ${formatNumber(totals.total)} mg of ${totals.commonBasis} a day`;
   return totals.isOverCeiling && totals.ceiling !== undefined
     ? `${sum}, which is more than the ${formatNumber(totals.ceiling.ceiling.mgPerDay)} mg a day that a label warns about.`
     : `${sum}.`;
@@ -384,15 +515,15 @@ function quotesFor(totals: GroupTotals): readonly Quote[] {
   return quotes.filter((quote, index) => quotes.findIndex((other) => isSameQuote(other, quote)) === index);
 }
 
-function toFlag(group: DuplicatedIngredient): Flag {
-  const totals = totalsFor(group);
+function toFlag(group: DuplicatedIngredient, profile?: AgeProfile): Flag {
+  const totals = totalsFor(group, profile);
   const supportingQuotes = quotesFor(totals);
   return {
     type: "daily_total",
     severity: severityFor(totals),
     itemIds: group.members.map((member) => member.item.id),
     title: `${group.name} daily total across ${group.members.length} products`,
-    detail: detailFor(totals, group.name),
+    detail: detailFor(totals),
     explain: explainFor(totals, group.name),
     numbers: numbersFor(totals),
     ...(totals.lowest === undefined ? {} : { quote: totals.lowest.maximum.limit.quote }),
@@ -400,6 +531,6 @@ function toFlag(group: DuplicatedIngredient): Flag {
   };
 }
 
-export function dailyTotalFlags(items: readonly CabinetItem[]): readonly Flag[] {
-  return findDuplicatedIngredients(items).map(toFlag);
+export function dailyTotalFlags(items: readonly CabinetItem[], profile?: AgeProfile): readonly Flag[] {
+  return findDuplicatedIngredients(items).map((group) => toFlag(group, profile));
 }

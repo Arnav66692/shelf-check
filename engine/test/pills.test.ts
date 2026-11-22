@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { gunzipSync } from "node:zlib";
 import { describe, expect, test } from "vitest";
 import {
   findPills,
@@ -110,43 +111,43 @@ describe("parsePillFile", () => {
 });
 
 describe("findPills ranking", () => {
-  const temazepam = onlyRecord("0603-5892");
+  const temazepam = onlyRecord("63629-8602");
 
   test("an exact imprint, typed with spaces and either side first, ranks the real product first", () => {
-    for (const imprint of ["5892 V", "v 5892", "5892v"]) {
-      const [first] = findPills({ imprint, color: "PINK", shape: "CAPSULE" }, RECORDS);
+    for (const imprint of ["15mg Novel121", "novel121 15mg", "15mgnovel121"]) {
+      const [first] = findPills({ imprint, color: "BLUE", shape: "CAPSULE" }, RECORDS);
       expect(first?.match).toBe("exact_imprint");
       expect(first && listed(first).map((record) => record.ndc)).toContain(temazepam.ndc);
     }
   });
 
   test("exact matches come before one-character differences, which are marked close imprint", () => {
-    const candidates = findPills({ imprint: "5892V", shape: "CAPSULE" }, RECORDS);
+    const candidates = findPills({ imprint: "15mgNovel121", shape: "CAPSULE" }, RECORDS);
     const firstClose = candidates.findIndex((candidate) => candidate.match === "close_imprint");
     const lastExact = candidates.map((candidate) => candidate.match).lastIndexOf("exact_imprint");
     expect(lastExact).toBeGreaterThanOrEqual(0);
     if (firstClose >= 0) expect(firstClose).toBeGreaterThan(lastExact);
 
-    const close = findPills({ imprint: "5893V", color: "PINK", shape: "CAPSULE" }, RECORDS);
+    const close = findPills({ imprint: "15mgNovel122", color: "BLUE", shape: "CAPSULE" }, RECORDS);
     const found = close.find((candidate) => listed(candidate).some((record) => record.ndc === temazepam.ndc));
     expect(found?.match).toBe("close_imprint");
     expect(found?.reason).toContain("one character away");
   });
 
   test("colour and shape filter out records that disagree and lift the ones that agree", () => {
-    const pinkOnly = findPills({ imprint: "5892V", color: "PINK" }, RECORDS);
+    const pinkOnly = findPills({ imprint: "15mgNovel121", color: "BLUE" }, RECORDS);
     expect(pinkOnly.length).toBeGreaterThan(0);
     for (const candidate of pinkOnly) {
       for (const record of listed(candidate)) {
-        expect(record.colors.length === 0 || record.colors.includes("PINK")).toBe(true);
+        expect(record.colors.length === 0 || record.colors.includes("BLUE")).toBe(true);
       }
     }
-    expect(findPills({ imprint: "5892V", color: "GREEN", shape: "CAPSULE" }, RECORDS).some((candidate) =>
+    expect(findPills({ imprint: "15mgNovel121", color: "GREEN", shape: "CAPSULE" }, RECORDS).some((candidate) =>
       listed(candidate).some((record) => record.ndc === temazepam.ndc),
     )).toBe(false);
 
-    const plain = findPills({ imprint: "5892V" }, RECORDS).find((candidate) => candidate.product.ndc === temazepam.ndc);
-    const described = findPills({ imprint: "5892V", color: "PINK", shape: "CAPSULE" }, RECORDS).find(
+    const plain = findPills({ imprint: "15mgNovel121" }, RECORDS).find((candidate) => candidate.product.ndc === temazepam.ndc);
+    const described = findPills({ imprint: "15mgNovel121", color: "BLUE", shape: "CAPSULE" }, RECORDS).find(
       (candidate) => candidate.product.ndc === temazepam.ndc,
     );
     expect(plain && described && described.score > plain.score).toBe(true);
@@ -201,4 +202,36 @@ describe("check on 200 sampled records (queries come from the same records, so t
     console.log(`(b) one character changed: right product NDC in top ${TOP} for ${found} of ${picked.length}. No bar.`);
     expect(picked).toHaveLength(SAMPLE_SIZE);
   });
+});
+
+test("requires affirmative traits and a supported oral solid for a pill match", () => {
+  const blank = findPills({ imprint: "", color: "WHITE", shape: "ROUND" }, RECORDS);
+  expect(blank.length).toBeGreaterThan(0);
+  expect(blank.every((candidate) => candidate.match === "colour_and_shape")).toBe(true);
+  const distinct = findPills({ imprint: "", color: "BLUE", shape: "TRAPEZOID" }, RECORDS);
+  expect(distinct.flatMap(listed).every((record) => record.colors.includes("BLUE") && record.shape === "TRAPEZOID")).toBe(true);
+  expect(findPills({ imprint: "none" }, RECORDS)).toEqual([]);
+  expect(findPills({ imprint: "BI 31" }, RECORDS).flatMap(listed).map((r) => r.ndc)).not.toContain("52817-610");
+});
+
+test("keeps lookalikes with unknown strengths as individual named candidates", () => {
+  const alternatives = ["0093-3303", "0093-3305"].map((ndc, page): PillRecord => {
+    const archive = readFileSync(new URL(`../fixtures/pills/pillbox-page-${page}.json.gz`, import.meta.url));
+    const rows: Record<string, string>[] = JSON.parse(gunzipSync(archive).toString("utf8"));
+    const row = rows.find((record) => record.product_code === ndc && record.splimprint === "b;944");
+    if (!row || row.spl_strength || !row.medicine_name || !row.author || !row.setid) throw new Error("missing fixture");
+    return {
+      ndc, part: Number(row.part_num), name: row.medicine_name, maker: row.author, setId: row.setid,
+      imprint: row.splimprint ?? "", colors: row.splcolor_text?.split(";") ?? [], shape: row.splshape_text ?? "",
+      strength: "", date: row.updated_at?.slice(0, 10) ?? "", source: "pillbox", kind: "prescription",
+    };
+  });
+  const query = { imprint: "b 944", color: "WHITE", shape: "ROUND" };
+  expect(findPills(query, alternatives)).toEqual([]);
+  // Even if an oral form is later verified, it supplies no evidence about strength.
+  const hits = findPills(query, alternatives.map((record) => ({ ...record, oralDosageForm: "TABLET" })));
+  expect(hits.map((c) => c.product.name).sort()).toEqual(alternatives.map((r) => r.name).sort());
+  expect(hits.every((c) => c.sameLook.length === 0)).toBe(true);
+  const partial = alternatives.map((r) => ({ ...r, oralDosageForm: "TABLET", strength: "Component A 1 mg; Component B unknown" }));
+  expect(findPills(query, partial).every((c) => c.sameLook.length === 0)).toBe(true);
 });

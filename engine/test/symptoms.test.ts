@@ -92,3 +92,38 @@ describe("isEmergency", () => {
     );
   });
 });
+
+test("screens every word for red flags before matching cabinet products", async () => {
+  const items = await loadCabinet("nyquil");
+  const prefix = "I have a cough. " + "I am writing this down. ".repeat(30);
+  expect(isEmergency(prefix + "shortness of\nbreath")).toBe(true);
+  for (const phrase of [
+    "shortness of breath", "can't breathe", "trouble breathing", "chest pressure",
+    "face drooping", "slurred speech", "worst headache", "suicidal", "overdose",
+    "unconscious", "seizure", "coughing up blood", "vomiting blood", "severe bleeding",
+    "anaphylaxis", "throat swelling",
+  ]) {
+    expect(isEmergency(prefix + phrase), phrase).toBe(true);
+    expect(matchSymptoms(prefix + phrase, items), phrase).toEqual([]);
+  }
+});
+
+test("uses only affirmed symptoms and retains uncertain emergency mentions", async () => {
+  const items = await loadCabinet("tylenol", "nyquil");
+  expect(matchSymptoms("I have no fever or headache, only a rash", items)).toEqual([]);
+  expect(isEmergency("No chest pain, just a headache")).toBe(false);
+  expect(symptomsMentioned("I don't have a fever but I have a headache")).toEqual(["headache"]);
+  expect(isEmergency("No chest pain earlier but I have chest pain now")).toBe(true);
+  expect(isEmergency("No cough, I am not sure if this is chest pressure")).toBe(true);
+  expect(isEmergency("I can't rule out a seizure")).toBe(true);
+  expect(isEmergency("No, chest pain")).toBe(true);
+  expect(isEmergency("I do not have no chest pressure")).toBe(true);
+  expect(isEmergency("No chest pain?")).toBe(true);
+  expect(isEmergency("No chest pain relief from a cough medicine")).toBe(true);
+  expect(isEmergency("I can't say no chest pain")).toBe(true);
+  expect(symptomsMentioned("I am fever-free")).toEqual([]);
+  expect(symptomsMentioned("Maybe fever or headache")).toEqual([]);
+  const [tylenol] = items;
+  if (!tylenol) throw new Error("missing fixture");
+  expect(matchSymptoms("headache", [{ ...tylenol, label: { indications_and_usage: ["For fever but not for headache."] } }])).toEqual([]);
+});

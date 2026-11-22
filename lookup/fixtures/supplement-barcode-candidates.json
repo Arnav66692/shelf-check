@@ -1,0 +1,21 @@
+{
+  "stats": { "count": 4 },
+  "hits": [
+    {
+      "_id": "332395",
+      "_source": { "fullName": "Melatonin 2 mg", "entryDate": "2025-06-25", "offMarket": 0 }
+    },
+    {
+      "_id": "299064",
+      "_source": { "fullName": "Melatonin-SR", "entryDate": "2023-11-22", "offMarket": 0 }
+    },
+    {
+      "_id": "239571",
+      "_source": { "fullName": "Melatonin 3 mg", "entryDate": "2020-11-21", "offMarket": 0 }
+    },
+    {
+      "_id": "65690",
+      "_source": { "fullName": "Melatonin 10 mg", "entryDate": "2016-10-22", "offMarket": 0, "upcSku": "0 33984 01956 0" }
+    }
+  ]
+}

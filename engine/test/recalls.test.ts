@@ -74,18 +74,15 @@ describe("parseRecallFile", () => {
 });
 
 describe("findRecalls", () => {
-  test("the recorded warfarin product 0093-1720 has two real Class II recalls, matched by product NDC", async () => {
+  test("warfarin matches the listed strengths and skips other products in the harmonized family", async () => {
     const [warfarin] = await loadCabinet("warfarin");
     if (warfarin === undefined) throw new Error("fixture missing");
 
-    const matches = findRecalls(warfarin, FILE.recalls);
-
-    expect(matches.map((match) => match.recall.recallNumber).sort()).toEqual(["D-0200-2024", "D-0201-2024"]);
-    for (const match of matches) {
-      expect(match.match).toBe("product_ndc");
-      expect(match.matchedNdc).toBe("0093-1720");
-      expect(match.recall.productNdcs).toContain("0093-1720");
-      expect(match.recall).toMatchObject({
+    expect(findRecalls(warfarin, FILE.recalls)).toEqual([]);
+    for (const [productNdc, id] of [["0093-1714", "D-0200-2024"], ["0093-1721", "D-0201-2024"]] as const) {
+      const [match] = findRecalls({ ...warfarin, productNdc }, FILE.recalls).filter((m) => m.recall.recallNumber === id);
+      expect(match).toMatchObject({ match: "product_ndc", matchedNdc: productNdc, evidence: { ndc: productNdc + "-01", field: "productDescription" } });
+      expect(match?.recall).toMatchObject({
         classification: "Class II",
         status: "Terminated",
         recallingFirm: "CARDINAL HEALTHCARE",
@@ -119,7 +116,7 @@ describe("findRecalls", () => {
 
     const matches = findRecalls(busiest, FILE.recalls);
 
-    expect(matches).toHaveLength(42);
+    expect(matches).toHaveLength(11);
     expect(dates(matches)).toEqual(newestFirst(dates(matches)));
   });
 });
@@ -156,4 +153,15 @@ describe("findRecallsByText", () => {
     expect(findRecallsByText("epitalon", FILE.recalls)).toEqual([]);
     expect(findRecallsByText("  ", FILE.recalls)).toEqual([]);
   });
+});
+
+test("uses explicitly labeled affected package codes and abstains on family-only evidence", async () => {
+  const [item] = await loadCabinet("warfarin");
+  if (!item) throw new Error("missing fixture");
+  const ids = (productNdc: string) => findRecalls({ ...item, productNdc }, FILE.recalls).map((m) => m.recall.recallNumber);
+  expect(ids("68001-542")).toContain("D-0173-2027");
+  expect(ids("55154-3558")).not.toContain("D-0709-2026");
+  expect(ids("55154-3560")).toContain("D-0709-2026");
+  expect(ids("57237-0019")).not.toContain("D-0165-2025");
+  expect(ids("70518-0937")).toContain("D-0165-2025");
 });

@@ -22,7 +22,7 @@ export function checkCabinet(items: readonly CabinetItem[], profile?: HealthProf
   requireUniqueIds(items);
   return sortBySeverity([
     ...duplicateFlags(items),
-    ...dailyTotalFlags(items),
+    ...dailyTotalFlags(items, profile),
     ...interactionFlags(items),
     ...(profile === undefined ? [] : profileFlags(items, profile)),
   ]);
