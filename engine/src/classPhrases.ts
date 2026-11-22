@@ -1,4 +1,5 @@
 import { commonNamesFor } from "./supplementNames.ts";
+import { mechanismTermsFor, type MechanismTerm } from "./mechanismClasses.ts";
 import type { DrugClass, Ingredient, InteractionMatchKind } from "./types.ts";
 
 interface ClassPhraseRule {
@@ -8,7 +9,7 @@ interface ClassPhraseRule {
   readonly memberName?: RegExp;
 }
 
-// Hand-written wording that labels use for a class. The class membership itself always comes from RxClass.
+// These label aliases use RxClass membership. Clinical mechanism phrases are in mechanismClasses.ts.
 export const CLASS_PHRASE_RULES: readonly ClassPhraseRule[] = [
   {
     atcPrefixes: ["M01A"],
@@ -93,6 +94,7 @@ export interface SearchTerm {
   readonly kind: InteractionMatchKind;
   readonly ingredient: string;
   readonly drugClass?: DrugClass;
+  readonly mechanism?: MechanismTerm;
   readonly notFollowedBy?: RegExp;
 }
 
@@ -134,6 +136,7 @@ export function searchTermsFor(ingredient: Ingredient): readonly SearchTerm[] {
   return [
     ...ownName,
     ...commonNames,
+    ...mechanismTermsFor(ingredient).map((mechanism) => ({ ...toTerm("class_phrase")(mechanism.term), mechanism })),
     ...classes.flatMap((drugClass) => classNamesFor([drugClass]).map((name) => ({ ...toTerm("class_name")(name), drugClass }))),
     ...CLASS_PHRASE_RULES.flatMap((rule) => {
       if (rule.memberName && !rule.memberName.test(ingredient.name)) return [];

@@ -63,6 +63,7 @@ export interface CabinetItem {
   readonly id: string;
   readonly displayName: string;
   readonly productNdc?: string;
+  readonly routes?: readonly string[];
   readonly dsldId?: string;
   readonly kind: ItemKind;
   readonly ingredients: readonly Ingredient[];

@@ -1,5 +1,6 @@
 import { searchTermsFor } from "../classPhrases.ts";
 import type { SearchTerm } from "../classPhrases.ts";
+import { mechanismSpanAllowed, type MechanismTerm } from "../mechanismClasses.ts";
 import { isNutritionIngredient } from "../supplementNames.ts";
 import { sectionSentences, sectionTitle, toQuote } from "../labelText.ts";
 import type { LabelSentence } from "../labelText.ts";
@@ -66,6 +67,7 @@ interface SentenceMatch {
   readonly match: TermMatch;
   readonly serious: boolean;
   readonly drugClass?: DrugClass;
+  readonly mechanism?: MechanismTerm;
 }
 
 export function isAboutCoUse(sentence: LabelSentence): boolean {
@@ -74,19 +76,48 @@ export function isAboutCoUse(sentence: LabelSentence): boolean {
 
 function termsAbout(other: CabinetItem, labelOwner: CabinetItem): readonly CompiledTerm[] {
   const ownNames = new Set(labelOwner.ingredients.map((ingredient) => ingredient.name.toLowerCase()));
+  // Clinical mechanism rows describe systemic exposure. Local-only NDC products
+  // (e.g. ketoconazole shampoo) should not inherit the systemic drug's warning.
+  const localOnly = other.routes?.length && other.routes.every((route) =>
+    /^(?:topical|cutaneous|ophthalmic|otic(?: \(auricular\))?|dental|periodontal|irrigation)$/i.test(route));
   return other.ingredients
     .filter((ingredient) => other.kind !== "supplement" || !isNutritionIngredient(ingredient))
     .filter((ingredient) => !ownNames.has(ingredient.name.toLowerCase()))
     .flatMap(searchTermsFor)
-    .map((term) => ({ ...term, pattern: new RegExp(termRegExp(term.term).source, "gi") }));
+    .filter((term) => !localOnly || !term.mechanism)
+    // An electrolyte in a combination drug (for example, a bowel preparation)
+    // does not establish that the product is used for potassium supplementation.
+    .filter((term) => term.mechanism?.term !== "potassium supplement" || other.kind === "supplement" || other.ingredients.length === 1)
+    .map((term) => ({ ...term, pattern: new RegExp((term.mechanism?.pattern ?? termRegExp(term.term)).source, "gi") }));
 }
 
-function firstAllowedSpan(text: string, term: CompiledTerm): TextSpan | undefined {
+function describesOwner(before: string, after: string, owner: CabinetItem): boolean {
+  if (/\bthis\s+$/i.test(before)) return true;
+  const example = /^\s*(?:[(,]\s*)?(?:such as|including|e\.g\.,?)\s+(.+?)(?:[,.);]|\s+(?:may|can|could|will|increase\w*|decrease\w*|reduce\w*)\b|$)/i.exec(after);
+  if (example?.[1] && !CO_USE_CUE.test(before) && namesLabelOwner(example[1], owner)) return true;
+  const predicate = /\s+(?:is|are|acts? as)\s+(?:also\s+)?(?:an?\s+)?$/i.exec(before);
+  if (!predicate) return false;
+  const subject = before.slice(0, predicate.index);
+  return /\b(?:it|this (?:product|medicine|medication|drug))$/i.test(subject) ||
+    [owner.displayName, ...owner.ingredients.map((ingredient) => ingredient.name)]
+      .some((name) => new RegExp(termRegExp(name).source + "$", "i").test(subject));
+}
+
+function firstAllowedSpan(text: string, term: CompiledTerm, owner: CabinetItem): TextSpan | undefined {
   return [...text.matchAll(term.pattern)]
     .map((hit) => ({ start: hit.index, end: hit.index + hit[0].length }))
     .find((span) => {
+      const before = text.slice(0, span.start);
       const after = text.slice(span.end);
       if (term.notFollowedBy?.test(after)) return false;
+      if (term.mechanism && !mechanismSpanAllowed(text, span.start, span.end, term.mechanism)) return false;
+      if (term.kind === "class_name" || term.kind === "class_phrase") {
+        // Appositives classify the named drug in a study or explain the label owner's activity.
+        if (describesOwner(before, after, owner) || /(?:^as |[,(]\s*)(?:an? )$/i.test(before)) return false;
+      }
+      // A qualifier restricts the population even when an older, broader class alias matches.
+      if (/^diuretics?$/i.test(term.term) && /\bpotassium[- ](?:sparing|retaining)\s+$/i.test(before)) return false;
+      if (/^potassium$/i.test(term.term) && /^[- ](?:sparing|retaining|channels?)\b/i.test(after)) return false;
       if (/^insulins?$/i.test(term.term)) {
         return INSULIN_CONTEXT.test(text.slice(0, span.start)) && INSULIN_END.test(after);
       }
@@ -121,13 +152,14 @@ function matchesIn(sentence: LabelSentence, sentenceIndex: number, terms: readon
     const otherTarget = AVOID_OTHER_TARGET.exec(text);
     const afterCondition = AVOID_AFTER_CONDITION.exec(text);
     for (const term of terms) {
-      const local = firstAllowedSpan(text, term);
+      const local = firstAllowedSpan(text, term, owner);
       if (!local) continue;
       if (otherTarget?.[1] && local.start >= otherTarget.index + otherTarget[0].length && !namesLabelOwner(otherTarget[1], owner)) continue;
       if (afterCondition?.[1] && local.end <= afterCondition.index + afterCondition[0].indexOf(",") && !namesLabelOwner(afterCondition[1], owner)) continue;
       const span = { start: offset + local.start, end: offset + local.end };
       const found = { text: text.slice(local.start, local.end), kind: term.kind, ingredient: term.ingredient };
       matches.push({ sentence, sentenceIndex, span, found, serious, match: { ...found, term: term.term },
+        ...(term.mechanism ? { mechanism: term.mechanism } : {}),
         ...(term.drugClass ? { drugClass: term.drugClass } : {}) });
     }
   }
@@ -138,21 +170,25 @@ function bestMatch(matches: readonly SentenceMatch[]): SentenceMatch | undefined
   return matches.reduce<SentenceMatch | undefined>((best, candidate) => {
     if (best === undefined) return candidate;
     if (candidate.serious !== best.serious) return candidate.serious ? candidate : best;
+    if (candidate.found.kind.startsWith("class_") && best.found.kind.startsWith("class_") &&
+        Boolean(candidate.mechanism) !== Boolean(best.mechanism)) return candidate.mechanism ? candidate : best;
     const rankGap = KIND_RANK[candidate.found.kind] - KIND_RANK[best.found.kind];
     const isBetter = rankGap < 0 || (rankGap === 0 && candidate.sentenceIndex < best.sentenceIndex);
     return isBetter ? candidate : best;
   }, undefined);
 }
 
-function linkFor(other: CabinetItem, match: FoundMatch): string {
+function linkFor(other: CabinetItem, best: SentenceMatch): string {
+  const match = best.found;
   if (match.kind === "ingredient_name") return `names ${match.ingredient}, which is in ${other.displayName}`;
   if (match.kind === "common_name") {
     return `names "${match.text}". ${other.displayName} lists ${match.ingredient} under that name`;
   }
+  if (best.mechanism) return `mentions "${match.text}". ${other.displayName} contains ${match.ingredient}`;
   return `mentions "${match.text}". ${other.displayName} contains ${match.ingredient}, which RxClass lists in that drug group`;
 }
 
-function describe(labelOwner: CabinetItem, other: CabinetItem, section: LabelSectionName, match: FoundMatch): string {
+function describe(labelOwner: CabinetItem, other: CabinetItem, section: LabelSectionName, match: SentenceMatch): string {
   const where = `the "${sectionTitle(section)}" section of the ${labelOwner.displayName} label`;
   return `${where.charAt(0).toUpperCase()}${where.slice(1)} ${linkFor(other, match)}. Ask a pharmacist or doctor before taking both.`;
 }
@@ -163,14 +199,17 @@ function explain(labelOwner: CabinetItem, other: CabinetItem, match: FoundMatch)
 }
 
 function classExplanation(other: CabinetItem, best: SentenceMatch): string | undefined {
-  if (!best.drugClass) return undefined;
   const { ingredient, text } = best.found;
+  if (best.mechanism) {
+    return `${other.displayName} contains ${ingredient}. Its class for this warning is “${best.mechanism.term}”, based on ${best.mechanism.source}.`;
+  }
+  if (!best.drugClass) return undefined;
   // This OTC warning identifies a particular member by name. Make the distinction
   // explicit without applying a bare mention of warfarin to other anticoagulants.
   if (/^blood[- ]thinning$/i.test(text) && /^\s+drug\s+warfarin\b/i.test(best.sentence.text.slice(best.span.end))) {
     return `${other.displayName} contains ${ingredient}, a blood thinner. The label names warfarin, another blood thinner.`;
   }
-  return `RxClass lists ${ingredient} in ${other.displayName} under “${best.drugClass.name}”. The label mentions “${text}”.`;
+  return `RxClass (${best.drugClass.source}, ${best.drugClass.type}) lists ${ingredient} in ${other.displayName} under “${best.drugClass.name}”. The label mentions “${text}”.`;
 }
 
 // OTC Drug Facts often puts the consequence just before "The chance is higher if".
@@ -184,6 +223,23 @@ function withBleedingContext(match: SentenceMatch, previous: LabelSentence | und
   if (match.span.end > risks.length || !paragraphs.some((paragraph) => paragraph.includes(text))) return match;
   const offset = previous.text.length + 1;
   return { ...match, serious: true, sentence: { ...match.sentence, text }, span: { start: offset + match.span.start, end: offset + match.span.end } };
+}
+
+// The table establishes membership. If the other label independently states the
+// same mechanism as a complete sentence, show that product's wording as well.
+function membershipQuote(other: CabinetItem, best: SentenceMatch) {
+  if (!best.mechanism) return undefined;
+  const assertion = new RegExp(`${termRegExp(best.found.ingredient).source} is an? (${best.mechanism.pattern.source})[.]?$`, "i");
+  // openFDA can flatten the preceding SPL section heading into this sentence.
+  const substrateHeading = /^(?:\d+(?:\.\d+)*\s+)?(?:effects of [\w -]+ on other drugs\s+)?(?:certain )?CYP\w+ substrates?$/i;
+  const needsStrong = best.mechanism.term.startsWith("strong ");
+  for (const sentence of sectionSentences(other.label, "drug_interactions")) {
+    const hit = assertion.exec(sentence.text);
+    if (!hit?.[1] || (needsStrong && !/^(?:strong|potent)\b/i.test(hit[1])) || /\bmoderate\b/i.test(hit[1])) continue;
+    const prefix = sentence.text.slice(0, hit.index).trim();
+    if (prefix === "" || substrateHeading.test(prefix)) return toQuote(other.id, { ...sentence, text: hit[0] });
+  }
+  return undefined;
 }
 
 function flagForSection(
@@ -200,6 +256,7 @@ function flagForSection(
   const best = bestMatch(matches);
   if (best === undefined) return [];
   const matchedBecause = classExplanation(other, best);
+  const supportingQuote = membershipQuote(other, best);
   const quote = toQuote(labelOwner.id, best.sentence, best.span);
   // When the named drug and serious consequence are far apart, preserve both.
   const showsDanger = SERIOUS_HARM.test(quote.excerpt) || AVOID_COMBINATION.test(quote.excerpt);
@@ -210,9 +267,10 @@ function flagForSection(
       severity: best.serious ? "stop" : severityForSection(section),
       itemIds: [labelOwner.id, other.id],
       title: `${labelOwner.displayName} and ${other.displayName}`,
-      detail: describe(labelOwner, other, section, best.found),
+      detail: describe(labelOwner, other, section, best),
       explain: explain(labelOwner, other, best.found),
       quote: needsFullWarning ? { ...quote, excerpt: quote.text } : quote,
+      ...(supportingQuote ? { supportingQuotes: [supportingQuote] } : {}),
       match: best.match,
       ...(matchedBecause ? { matchedBecause } : {}),
     },

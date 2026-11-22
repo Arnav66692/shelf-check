@@ -136,6 +136,7 @@ export async function buildCabinetItem(request: CabinetItemRequest, sources: Cab
     id: request.id,
     displayName: request.displayName ?? product.brandName ?? product.genericName ?? request.productNdc,
     productNdc: product.productNdc,
+    ...(product.routes === undefined ? {} : { routes: product.routes }),
     kind: kindOf(product, request.kind),
     ingredients: ingredients.map((ingredient) => {
       const strengthBasis = labelStrengthBasis(ingredient, resolved.label);

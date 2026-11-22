@@ -1,0 +1,147 @@
+{
+  "nourianz": {
+    "productNdc": "42747-602",
+    "displayName": "NOURIANZ",
+    "setId": "a7d008cb-b273-4049-a5d2-9c6902910d58",
+    "version": 6,
+    "ingredient": "istradefylline",
+    "value": 20,
+    "unit": "mg",
+    "drug_interactions": [
+      "Strong CYP3A4 inducers: Avoid use ( 2.3 , 7.1 )."
+    ]
+  },
+  "lysodren": {
+    "productNdc": "76336-080",
+    "displayName": "Lysodren",
+    "setId": "f0cd76e9-460c-450e-b094-172e636f340a",
+    "version": 15,
+    "ingredient": "mitotane",
+    "value": 500,
+    "unit": "mg",
+    "drug_interactions": [
+      "7.2 Effects of LYSODREN on Other Drugs Certain CYP3A substrates Mitotane is a strong CYP3A inducer."
+    ]
+  },
+  "nilotinib": {
+    "productNdc": "31722-779",
+    "displayName": "Nilotinib",
+    "setId": "86dc5507-ae0a-43d2-8d5e-5b0568ce9c5e",
+    "version": 3,
+    "ingredient": "nilotinib",
+    "value": 150,
+    "unit": "mg",
+    "drug_interactions": [
+      "Avoid concomitant use of strong CYP3A inhibitors with nilotinib."
+    ]
+  },
+  "pitolisant": {
+    "productNdc": "70748-386",
+    "displayName": "PITOLISANT",
+    "setId": "6fb94d86-5154-4b69-8470-d1145d426312",
+    "version": 10,
+    "ingredient": "pitolisant",
+    "value": 4.45,
+    "unit": "mg",
+    "drug_interactions": [
+      "7 DRUG INTERACTIONS Strong CYP2D6 Inhibitors: Increased exposure of pitolisant tablets; reduce the maximum recommended dose of pitolisant tablets by half ( 2.6 , 7.1 ) Strong CYP3A4 Inducers: Decreased exposure of pitolisant tablets; consider dosage adjustment of pitolisant tablets ( 2.6 , 7.1 )."
+    ]
+  },
+  "gavreto": {
+    "productNdc": "71332-006",
+    "displayName": "Gavreto",
+    "setId": "16edd46e-28b8-f06d-e063-6394a90ae31b",
+    "version": 8,
+    "ingredient": "pralsetinib",
+    "value": 100,
+    "unit": "mg",
+    "drug_interactions": [
+      "Avoid coadministration of GAVRETO with a strong or moderate CYP3A and/or P-gp inhibitor."
+    ]
+  },
+  "dextroamphetamine": {
+    "productNdc": "0406-8958",
+    "displayName": "DEXTROAMPHETAMINE SULFATE",
+    "setId": "e05cf690-d45a-4696-a1bf-40c9350cc084",
+    "version": 25,
+    "ingredient": "dextroamphetamine",
+    "value": 5,
+    "unit": "mg",
+    "drug_interactions": [
+      "The concomitant use of dextroamphetamine sulfate tablets and serotonergic drugs increases the risk of serotonin syndrome."
+    ]
+  },
+  "potassiumCitrate": {
+    "productNdc": "0591-2682",
+    "displayName": "Potassium Citrate",
+    "setId": "ac173781-486b-461c-97ae-8b5c69e20792",
+    "version": 12,
+    "ingredient": "potassium citrate",
+    "value": 5,
+    "unit": "meq",
+    "drug_interactions": [
+      "Concomitant administration of potassium citrate and a potassium-sparing diuretic (such as triamterene, spironolactone or amiloride) should be avoided since the simultaneous administration of these agents can produce severe hyperkalemia."
+    ]
+  },
+  "abiraterone": {
+    "productNdc": "72789-213",
+    "displayName": "Abiraterone",
+    "setId": "413c645e-074d-4276-b39a-d83521077602",
+    "version": 17,
+    "ingredient": "abiraterone acetate",
+    "value": 250,
+    "unit": "mg",
+    "drug_interactions": [
+      "Avoid concomitant strong CYP3A4 inducers during abiraterone acetate treatment.",
+      "In a dedicated drug interaction trial, co-administration of ketoconazole, a strong inhibitor of CYP3A4, had no clinically meaningful effect on the pharmacokinetics of abiraterone [see Clinical Pharmacology (12.3) ] ."
+    ]
+  },
+  "fidaxomicin": {
+    "productNdc": "0054-0795",
+    "displayName": "Fidaxomicin",
+    "setId": "d773c5ee-9361-49b0-871b-af34f3f936be",
+    "version": 2,
+    "ingredient": "fidaxomicin",
+    "value": 200,
+    "unit": "mg",
+    "drug_interactions": [
+      "Based on these results, fidaxomicin may be co-administered with P-gp inhibitors and no dose adjustment is recommended."
+    ]
+  },
+  "nubeqa": {
+    "productNdc": "50419-395",
+    "displayName": "NUBEQA",
+    "setId": "1a7cb212-56e4-4b9d-a73d-bfee7fe4735e",
+    "version": 24,
+    "ingredient": "darolutamide",
+    "value": 300,
+    "unit": "mg",
+    "drug_interactions": [
+      "Combined P-gp and Strong CYP3A Inhibitors : Monitor patients more frequently for NUBEQA adverse reactions."
+    ]
+  },
+  "xalkori": {
+    "productNdc": "0069-0251",
+    "displayName": "Xalkori",
+    "setId": "2a51b0de-47d6-455e-a94c-d2c737b04ff7",
+    "version": 47,
+    "ingredient": "crizotinib",
+    "value": 20,
+    "unit": "mg",
+    "drug_interactions": [
+      "Use caution with concomitant use of moderate CYP3A inhibitors."
+    ]
+  },
+  "xospata": {
+    "productNdc": "0469-1425",
+    "displayName": "Xospata",
+    "setId": "b5ff59aa-9c0d-49a8-9053-1f179b482383",
+    "version": 11,
+    "ingredient": "gilteritinib",
+    "value": 40,
+    "unit": "mg",
+    "drug_interactions": [
+      "Avoid concomitant use of XOSPATA with combined P-gp and strong CYP3A inducers."
+    ]
+  }
+}

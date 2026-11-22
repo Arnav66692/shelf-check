@@ -14,6 +14,7 @@ describe("buildCabinetItem", () => {
     const [nyquil] = await loadCabinet("nyquil");
 
     expect(nyquil?.kind).toBe("otc");
+    expect(nyquil?.routes).toEqual(["ORAL"]);
     expect(nyquil?.verified).toBe(true);
     expect(nyquil?.ingredients.map(({ name, value, unit, per }) => ({ name, value, unit, per }))).toEqual([
       { name: "acetaminophen", value: 650, unit: "mg", per: { value: 30, unit: "mL" } },
