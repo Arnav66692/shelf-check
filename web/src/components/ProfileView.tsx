@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { CONDITION_LABELS, type ConditionId, type Profile } from "@/lib/model";
-import { useProfile } from "@/lib/store";
+import { useHousehold, useProfile } from "@/lib/store";
+import { AgeField, readAge } from "./Questionnaire";
 
 const CONDITION_IDS = Object.keys(CONDITION_LABELS) as ConditionId[];
 
@@ -21,6 +23,9 @@ function Check({ label, checked, onChange }: { label: string; checked: boolean; 
 
 export function ProfileView() {
   const { profile, save } = useProfile();
+  const { active } = useHousehold();
+  const [ageDraft, setAgeDraft] = useState<{ personId: string; text: string } | null>(null);
+  const ageText = ageDraft?.personId === active.id ? ageDraft.text : (profile.ageYears?.toString() ?? "");
   const update = (patch: Partial<Profile>) => save({ ...profile, ...patch });
   const toggleCondition = (id: ConditionId, on: boolean) =>
     update({ conditions: on ? [...profile.conditions, id] : profile.conditions.filter((item) => item !== id) });
@@ -53,18 +58,14 @@ export function ProfileView() {
       </div>
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
-        <label className="grid gap-1 font-bold">
-          Age in years
-          <input
-            className="field font-normal"
-            inputMode="numeric"
-            value={profile.ageYears ?? ""}
-            onChange={(event) => {
-              const digits = event.target.value.replace(/\D/g, "").slice(0, 3);
-              update({ ageYears: digits === "" ? undefined : Number(digits) });
-            }}
-          />
-        </label>
+        <AgeField
+          text={ageText}
+          onChange={(next) => {
+            setAgeDraft({ personId: active.id, text: next });
+            const age = readAge(next);
+            if (!("error" in age)) update({ ageYears: age.years });
+          }}
+        />
         <label className="grid gap-1 font-bold">
           Allergies, separated by commas
           <input

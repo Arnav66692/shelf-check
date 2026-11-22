@@ -50,7 +50,7 @@ export function PersonSwitcher() {
             maxLength={30}
           />
           <button type="submit" className="underline font-medium hover:text-ink">
-            Add
+            Create cabinet
           </button>
           <button type="button" className="underline" onClick={() => setAdding(false)}>
             Cancel
@@ -60,7 +60,7 @@ export function PersonSwitcher() {
         <>
           {canAdd && (
             <button type="button" className="underline font-medium hover:text-ink" onClick={() => setAdding(true)}>
-              Add a person
+              Add someone you care for
             </button>
           )}
           <TextSizeToggle />

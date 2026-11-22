@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ApiError, fetchLabelImages, searchProducts, suggestFromPhoto } from "@/lib/api";
@@ -160,7 +161,7 @@ export function AddView() {
 
   function confirm(product: Product) {
     add(product);
-    router.push("/");
+    router.push(`/?added=${encodeURIComponent(product.id)}`);
   }
 
   return (
@@ -199,6 +200,7 @@ export function AddView() {
                 capture="environment"
                 className="sr-only"
                 aria-label="Photo of the label"
+                tabIndex={-1}
                 onChange={(event) => runPhoto(event.target.files?.[0])}
               />
             </>
@@ -261,9 +263,18 @@ export function AddView() {
         {!chosen && <p className="mt-4 text-ink-soft">Pick a result to see its official record here.</p>}
         {chosen && (
           <div className="mt-4 grid gap-4">
-            <button ref={confirmButton} type="button" className="btn" onClick={() => confirm(chosen)}>
-              Yes, add it to my cabinet
-            </button>
+            {items.some((item) => item.id === chosen.id) ? (
+              <p className="facts">
+                Already in your cabinet.{" "}
+                <Link href="/" className="underline font-bold">
+                  Go to the cabinet
+                </Link>
+              </p>
+            ) : (
+              <button ref={confirmButton} type="button" className="btn" onClick={() => confirm(chosen)}>
+                Yes, add it to my cabinet
+              </button>
+            )}
             <ProductPanel product={chosen} />
             <LabelPicture product={chosen} />
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ApiError, checkCabinet, type CheckResult } from "@/lib/api";
 import { useCabinet, useProfile, useSupply } from "@/lib/store";
@@ -22,6 +23,7 @@ type CheckState = { status: "checking" } | Outcome;
 
 export function CabinetView() {
   const { items, remove, replaceAll } = useCabinet();
+  const addedId = useSearchParams().get("added");
   const { profile } = useProfile();
   const { supply } = useSupply();
   const today = useToday();
@@ -56,8 +58,8 @@ export function CabinetView() {
         <SeedHead className="pointer-events-none absolute right-[-18%] sm:right-[-4%] top-[-4%] h-[92%] w-[110%] sm:w-[68%] opacity-90" />
         <div className="relative max-w-[440px] rise" style={{ animationDelay: "calc(var(--intro-delay) + 100ms)" }}>
           <p className="text-[0.82rem] uppercase tracking-[0.1em] leading-relaxed text-ink">
-            Tylenol and NyQuil both contain acetaminophen, and most people never notice. Shelf Check reads the official
-            labels of everything you take together, and quotes the line that matters.
+            Tylenol and NyQuil both contain acetaminophen, and neither box tells you the other one does. Shelf Check
+            reads the official labels of everything you take together, and quotes the line that matters.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             <Link href="/add?sample=1" className="btn">
@@ -123,6 +125,10 @@ export function CabinetView() {
   const asks = flags.filter((flag) => flag.severity === "ask").length;
   const notes = flags.filter((flag) => flag.severity === "info").length;
   const unchecked = state.status === "done" ? state.result.unchecked : [];
+  const added = items.find((item) => item.id === addedId);
+  const involvesAdded = (flag: { itemIds: readonly string[] }) => added !== undefined && flag.itemIds.includes(added.id);
+  const addedFlags = flags.filter(involvesAdded);
+  const orderedItems = added ? [added, ...items.filter((item) => item.id !== added.id)] : items;
 
   return (
     <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
@@ -134,6 +140,21 @@ export function CabinetView() {
           </h2>
           <ReadAloud lines={spoken} />
         </div>
+        {added && (
+          <p className="facts mt-4 text-[1.02rem]" role="status">
+            Added <strong>{added.displayName}</strong>.{" "}
+            {state.status !== "done"
+              ? "Checking it against the rest of your cabinet."
+              : addedFlags.length === 0
+                ? "No label here warns about it with your other products."
+                : `${addedFlags.length === 1 ? "1 warning involves it. It is" : `${addedFlags.length} warnings involve it. They are`} marked New. `}
+            {state.status === "done" && addedFlags.length > 0 && (
+              <a className="underline font-bold" href={`#flag-${addedFlags[0].id.replace(/[^a-z0-9]+/gi, "-")}`}>
+                Show {addedFlags.length === 1 ? "it" : "the first one"}
+              </a>
+            )}
+          </p>
+        )}
         <div className="facts mt-4" aria-live="polite">
           {state.status === "checking" && <p>Reading the labels of your {items.length} products together.</p>}
           {state.status === "done" && (
@@ -186,7 +207,7 @@ export function CabinetView() {
         )}
         <ul className="mt-4 grid gap-4">
           {flags.map((flag) => (
-            <FlagRow key={flag.id} flag={flag} items={items} />
+            <FlagRow key={flag.id} flag={flag} items={items} isNew={involvesAdded(flag)} />
           ))}
         </ul>
       </section>
@@ -215,10 +236,11 @@ export function CabinetView() {
           </span>
         </div>
         <div className="mt-4 grid gap-4">
-          {items.map((item) => (
+          {orderedItems.map((item) => (
             <ProductPanel
               key={item.id}
               product={item}
+              badge={item.id === added?.id ? "New" : undefined}
               disposal={state.status === "done" ? state.result.disposal[item.id] : undefined}
               extra={<SupplyFields productId={item.id} />}
               action={

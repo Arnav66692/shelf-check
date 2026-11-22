@@ -50,13 +50,18 @@ export interface PillImagesResponse {
 type Search =
   | { status: "idle" }
   | { status: "loading" }
-  | { status: "done"; result: PillSearchResponse }
+  | { status: "done"; result: PillSearchResponse; imprintEntered: boolean }
   | { status: "failed"; message: string };
 
 const LOAD_FAILED = "The pill list could not load. Try again in a moment.";
 const POISON_HELP =
   "If someone may have swallowed a pill that is not theirs, call Poison Help at 1-800-222-1222 now. If they collapse, have a seizure or cannot breathe, call 911.";
 const GUESS_LINE = "This is an educated guess from the imprint, colour and shape. A pharmacist can confirm it.";
+const COUNTERFEIT_LINE =
+  "Fake pills that look like this are common and can contain fentanyl. If this pill did not come from a pharmacy, do not take it. Call Poison Help, 1-800-222-1222. If someone took it and is very sleepy or breathing slowly, call 911.";
+const CONTROLLED_NAMES =
+  /\b(oxycodone|hydrocodone|oxymorphone|hydromorphone|morphine|fentanyl|codeine|tramadol|tapentadol|methadone|buprenorphine|meperidine|levorphanol|percocet|vicodin|norco|roxicodone|oxycontin|dilaudid|opana|alprazolam|xanax|clonazepam|klonopin|diazepam|valium|lorazepam|ativan|temazepam|triazolam|chlordiazepoxide|clorazepate|oxazepam|estazolam|flurazepam|midazolam|clobazam|amphetamine|dextroamphetamine|methamphetamine|lisdexamfetamine|adderall|vyvanse|desoxyn|methylphenidate|dexmethylphenidate|ritalin|concerta|focalin|phentermine)\b/i;
+const NO_IMPRINT_REASON = "Matched on colour and shape only, because no imprint was typed.";
 const MATCH_LABEL: Record<PillMatch, string> = {
   exact_imprint: "Imprint matches",
   close_imprint: "Close imprint",
@@ -191,14 +196,44 @@ function SameLook({ result }: { result: PillResult }) {
   );
 }
 
-function ResultPanel({ result, rank }: { result: PillResult; rank: number }) {
+function isCommonlyFaked(record: PillRecord): boolean {
+  return CONTROLLED_NAMES.test(`${record.name} ${record.strength}`);
+}
+
+function CounterfeitWarning() {
+  return (
+    <div className="facts" role="alert" style={{ borderColor: "var(--stop)" }}>
+      <span className="px-2.5 py-1 text-sm font-semibold uppercase tracking-wide bg-[var(--stop)] text-[var(--on-bright)] rounded-[3px]">
+        Stop
+      </span>
+      <p className="mt-2 text-lg font-bold">{COUNTERFEIT_LINE}</p>
+      <p className="mt-1 text-sm text-ink-soft">
+        At least one guess below is an opioid, a benzodiazepine or a stimulant. The DEA warns that fake pills made to
+        look like these often contain fentanyl.{" "}
+        <a className="underline" href="https://www.dea.gov/onepill" target="_blank" rel="noopener noreferrer">
+          DEA One Pill Can Kill
+        </a>
+        .
+      </p>
+    </div>
+  );
+}
+
+function withoutImprintClaim(reason: string): string {
+  const rest = reason.replace(/^Imprint [^.]*\.\s*/, "").replace(/^Matched on colour and shape only[^.]*\.\s*/, "");
+  return rest === "" ? NO_IMPRINT_REASON : `${NO_IMPRINT_REASON} ${rest}`;
+}
+
+function ResultPanel({ result, rank, imprintEntered }: { result: PillResult; rank: number; imprintEntered: boolean }) {
   const { product } = result;
+  const match: PillMatch = imprintEntered ? result.match : "colour_and_shape";
+  const reason = imprintEntered ? result.reason : withoutImprintClaim(result.reason);
   const sides = imprintSides(product.imprint);
   const ingredients = product.strength.split(";").map((line) => line.trim()).filter((line) => line !== "");
   return (
     <article className="facts">
       <p className="text-sm font-bold uppercase tracking-wide">
-        Guess {rank}, {MATCH_LABEL[result.match]}
+        Guess {rank}, {MATCH_LABEL[match]}
       </p>
       <h2 className="facts-title">{product.name}</h2>
       <PillPicture result={result} />
@@ -221,7 +256,7 @@ function ResultPanel({ result, rank }: { result: PillResult; rank: number }) {
       <Row label="Shape" value={product.shape === "" ? "Not listed" : lower(product.shape)} />
       {product.sizeMm !== undefined && <Row label="Size" value={`${product.sizeMm} mm`} />}
       <Row label="Source" value={`${SOURCE_LABEL[product.source]}, dated ${product.date}`} />
-      <p className="mt-3">{result.reason}</p>
+      <p className="mt-3">{reason}</p>
       <p className="mt-1 text-sm text-ink-soft">{PILL_GUESS_NOTICE}</p>
       <a
         className="mt-2 inline-block underline font-bold"
@@ -253,8 +288,11 @@ function Results({ search }: { search: Search }) {
   if (search.status === "loading") return <p className="text-ink-soft">Searching the pill list.</p>;
   if (search.status === "failed") return <p role="alert">{search.message}</p>;
   const { candidates, sources } = search.result;
+  const faked = candidates.some((result) => isCommonlyFaked(result.product));
   return (
     <>
+      <p className="font-bold">{POISON_HELP}</p>
+      {faked && <CounterfeitWarning />}
       <p className="font-bold">
         {candidates.length === 0
           ? "No pill in the list matches. Check the imprint, or try without colour and shape."
@@ -262,7 +300,12 @@ function Results({ search }: { search: Search }) {
       </p>
       <SourceNote sources={sources} />
       {candidates.map((result, index) => (
-        <ResultPanel key={`${result.product.ndc}-${result.product.part}`} result={result} rank={index + 1} />
+        <ResultPanel
+          key={`${result.product.ndc}-${result.product.part}`}
+          result={result}
+          rank={index + 1}
+          imprintEntered={search.imprintEntered}
+        />
       ))}
     </>
   );
@@ -297,9 +340,10 @@ export function PillFinder() {
     latest.current = request;
     setSearch({ status: "loading" });
     const params = new URLSearchParams({ imprint, color, shape });
+    const imprintEntered = imprint.replace(/[^a-z0-9]/gi, "").length > 0;
     try {
       const result = await getJson<PillSearchResponse>(`/api/pills?${params.toString()}`);
-      if (latest.current === request) setSearch({ status: "done", result });
+      if (latest.current === request) setSearch({ status: "done", result, imprintEntered });
     } catch (error) {
       if (latest.current === request) setSearch({ status: "failed", message: error instanceof Error ? error.message : LOAD_FAILED });
     }

@@ -82,12 +82,12 @@ function InsulinOther({ strength }: { strength: InsulinStrength }) {
       {strength === "U-500" ? (
         <p>
           U-500 insulin is five times stronger than U-100. Do not use the unit marks on a U-100 syringe for it. Use the
-          U-500 syringe or the U-500 pen your pharmacy gave you, and follow your pharmacist's instructions.
+          U-500 syringe or the U-500 pen your pharmacy gave you, and follow your pharmacist&apos;s instructions.
         </p>
       ) : (
         <p>
           The marks on a U-100 syringe only match U-100 insulin. Do not draw this insulin into a U-100 syringe by its unit
-          marks. Use the pen or syringe made for this strength, and follow your pharmacist's instructions.
+          marks. Use the pen or syringe made for this strength, and follow your pharmacist&apos;s instructions.
         </p>
       )}
       <p>No syringe mark is shown for this insulin.</p>

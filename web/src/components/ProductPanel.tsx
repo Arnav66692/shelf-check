@@ -12,15 +12,20 @@ export function ProductPanel({
   action,
   disposal,
   extra,
+  badge,
 }: {
   product: Product;
   action?: React.ReactNode;
   disposal?: string;
   extra?: React.ReactNode;
+  badge?: string;
 }) {
   return (
     <article className="facts">
-      <h3 className="facts-title">{product.displayName}</h3>
+      <h3 className="facts-title">
+        {product.displayName}
+        {badge && <span className="label text-leaf ml-3">{badge}</span>}
+      </h3>
       <div className="facts-head">Active ingredients{product.form ? ` (${product.form.toLowerCase()})` : ""}</div>
       <div>
         {product.ingredients.map((ingredient) => (

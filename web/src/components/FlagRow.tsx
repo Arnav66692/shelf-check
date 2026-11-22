@@ -70,18 +70,19 @@ function QuoteBlock({ quote, items, terms }: { quote: FlagQuote; items: readonly
   );
 }
 
-export function FlagRow({ flag, items }: { flag: Flag; items: readonly Product[] }) {
+export function FlagRow({ flag, items, isNew = false }: { flag: Flag; items: readonly Product[]; isNew?: boolean }) {
   const names = flag.itemIds
     .map((id) => items.find((item) => item.id === id)?.displayName)
     .filter((name): name is string => Boolean(name));
   const first = flag.quotes.slice(0, QUOTES_SHOWN_FIRST);
   const rest = flag.quotes.slice(QUOTES_SHOWN_FIRST);
   return (
-    <li className="facts">
+    <li className="facts scroll-mt-6" id={`flag-${flag.id.replace(/[^a-z0-9]+/gi, "-")}`}>
       <div className="flex flex-wrap items-center gap-3">
         <span className={`px-2.5 py-1 text-sm font-semibold uppercase tracking-wide ${SEVERITY_STYLE[flag.severity]}`}>
           {SEVERITY_LABEL[flag.severity]}
         </span>
+        {isNew && <span className="label text-leaf">New</span>}
         <h3 className="text-lg font-semibold leading-tight">{flag.title}</h3>
       </div>
       <p className="mt-2">{flag.explain}</p>

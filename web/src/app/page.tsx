@@ -1,5 +1,10 @@
+import { Suspense } from "react";
 import { CabinetView } from "@/components/CabinetView";
 
 export default function CabinetPage() {
-  return <CabinetView />;
+  return (
+    <Suspense>
+      <CabinetView />
+    </Suspense>
+  );
 }

@@ -71,6 +71,40 @@ async function genericForBrand(name: string): Promise<string | null> {
 
 export type FindResult = { readonly products: readonly Product[]; readonly note?: string };
 
+async function spellingSuggestion(name: string): Promise<string | null> {
+  try {
+    const found = (await rxnavJson(`/spellingsuggestions.json?name=${encodeURIComponent(name)}`)) as {
+      suggestionGroup?: { suggestionList?: { suggestion?: string[] } };
+    } | null;
+    return found?.suggestionGroup?.suggestionList?.suggestion?.[0] ?? null;
+  } catch (error) {
+    console.error("spelling suggestion failed", error);
+    return null;
+  }
+}
+
+async function retries(query: string): Promise<string[]> {
+  const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const collapsed = words.map((word) => word.replace(/(.)\1+/g, "$1")).join(" ");
+  const suggested = await spellingSuggestion(query);
+  const shorter = words.length > 1 ? words.slice(0, -1).join(" ") : null;
+  const tries = [collapsed, suggested, shorter].filter((value): value is string => !!value && value !== query.toLowerCase());
+  return [...new Set(tries)];
+}
+
+async function closeSpelling(query: string): Promise<FindResult | null> {
+  for (const attempt of await retries(query)) {
+    const found = await searchByName(attempt, { limit: RESULT_LIMIT });
+    if (found.groups.length > 0) {
+      return {
+        products: found.groups.map((group) => toProduct(group.product, group.makerCount)),
+        note: `Nothing matched "${query}". Showing results for "${attempt}". Pick the one that matches your label.`,
+      };
+    }
+  }
+  return null;
+}
+
 function fromCode(result: CodeLookupResult): FindResult {
   if (result.status === "not_found") return { products: [], note: result.message };
   return { products: result.products.slice(0, RESULT_LIMIT).map((record) => toProduct(record)) };
@@ -99,6 +133,8 @@ export async function findProducts(rawQuery: string): Promise<FindResult> {
         };
       }
     }
+    const close = await closeSpelling(query);
+    if (close) return close;
   }
   const products = found.groups.map((group) => toProduct(group.product, group.makerCount));
   const corrected = found.correctedQuery ? `Showing results for "${found.correctedQuery}".` : undefined;

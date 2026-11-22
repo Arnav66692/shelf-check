@@ -2,6 +2,13 @@ const MODEL_URL = process.env.CAUSES_MODEL_URL ?? "http://127.0.0.1:11434/api/ch
 const MODEL = process.env.CAUSES_MODEL ?? "qwen3-vl:8b";
 const TIMEOUT_MS = 60_000;
 const MAX_CAUSES = 5;
+export const MAX_SYMPTOM_TEXT_LENGTH = 400;
+export const TEXT_TOO_LONG = `Please describe how you feel in ${MAX_SYMPTOM_TEXT_LENGTH} characters or fewer, so every word can be checked.`;
+const MEDICINE_ACTION =
+  /\b(stop|stopping|quit|discontinue|start|starting|begin|take|taking|took|use|using|increase|increasing|decrease|decreasing|reduce|lower|raise|double|skip|switch|switching|change|changing|adjust|resume|try)\b/i;
+const MEDICINE_WORD =
+  /\b(medicines?|medications?|meds|drugs?|pills?|tablets?|capsules?|doses?|dosage|prescriptions?|prescribed|antibiotics?|insulin|inhaler|painkillers?|pain relievers?|ibuprofen|acetaminophen|paracetamol|aspirin|naproxen|antihistamines?|steroids?|supplements?|vitamins?|mg)\b/i;
+const REMOVED_NOTE = "Some answers were left out because they talked about taking or changing a medicine.";
 const MAX_ANSWER_TOKENS = 500;
 // The local model spends its whole budget on hidden reasoning for text-only questions unless its answer is started for it.
 const ANSWER_START = '{"causes":[';
@@ -17,6 +24,18 @@ function isCause(value: unknown): value is PossibleCause {
   if (typeof value !== "object" || value === null) return false;
   const candidate = value as Partial<PossibleCause>;
   return typeof candidate.name === "string" && typeof candidate.why === "string";
+}
+
+export function givesMedicineAdvice(cause: PossibleCause): boolean {
+  return [cause.name, cause.why].some((text) => MEDICINE_ACTION.test(text) && MEDICINE_WORD.test(text));
+}
+
+export function safeCauses(values: readonly unknown[]): CausesResult {
+  const shaped = values.filter(isCause);
+  const causes = shaped.filter((cause) => !givesMedicineAdvice(cause)).slice(0, MAX_CAUSES);
+  const removed = causes.length < Math.min(shaped.length, MAX_CAUSES);
+  if (causes.length === 0) return { causes: [], note: removed ? REMOVED_NOTE : "The language model gave no usable list." };
+  return removed ? { causes, note: REMOVED_NOTE } : { causes };
 }
 
 export async function possibleCauses(symptomText: string): Promise<CausesResult> {
@@ -49,8 +68,7 @@ export async function possibleCauses(symptomText: string): Promise<CausesResult>
   const payload = (await response.json().catch(() => null)) as { message?: { content?: string } } | null;
   try {
     const parsed = JSON.parse(ANSWER_START + (payload?.message?.content ?? "")) as { causes?: unknown };
-    const causes = Array.isArray(parsed.causes) ? parsed.causes.filter(isCause).slice(0, MAX_CAUSES) : [];
-    return causes.length > 0 ? { causes } : { causes: [], note: "The language model gave no usable list." };
+    return safeCauses(Array.isArray(parsed.causes) ? parsed.causes : []);
   } catch {
     return { causes: [], note: "The language model gave no usable list." };
   }

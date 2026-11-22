@@ -32,7 +32,7 @@ function interactionStep(flag: Flag): string {
   if (flag.prescribed) {
     return `Ask a pharmacist before taking the non-prescription product with your prescribed medicine. ${KEEP_TAKING}`;
   }
-  return "Ask a pharmacist before taking these on the same day. Show them the quoted line.";
+  return "Ask a pharmacist before taking these together. Taking them at different times of day does not make it safe. Show them the quoted line.";
 }
 
 function prescribedStep(flag: Flag): string | undefined {

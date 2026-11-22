@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CONDITION_LABELS, EMPTY_PROFILE, type ConditionId, type Profile } from "@/lib/model";
-import { useQuestionnaire } from "@/lib/store";
+import { useQuestionnaire, type Person } from "@/lib/store";
 
 const CONDITION_IDS = Object.keys(CONDITION_LABELS) as ConditionId[];
 
@@ -16,6 +16,50 @@ const GOALS = [
 ] as const;
 
 type Answers = { name: string; profile: Profile; goal: string };
+type Draft = { personId: string; step: number; answers: Answers; ageText: string };
+
+const MAX_AGE_YEARS = 120;
+const WHOLE_YEARS = /^\d{1,3}$/;
+const AGE_ERROR = `Type the age in whole years, from 0 to ${MAX_AGE_YEARS}. For a baby under 1 year, type 0. This age is not saved until it is fixed.`;
+
+export function readAge(text: string): { years: number | undefined } | { error: string } {
+  const trimmed = text.trim();
+  if (trimmed === "") return { years: undefined };
+  if (!WHOLE_YEARS.test(trimmed)) return { error: AGE_ERROR };
+  const years = Number(trimmed);
+  return years <= MAX_AGE_YEARS ? { years } : { error: AGE_ERROR };
+}
+
+export function AgeField({ text, onChange }: { text: string; onChange: (next: string) => void }) {
+  const age = readAge(text);
+  const error = "error" in age ? age.error : null;
+  return (
+    <label className="grid gap-1 font-bold">
+      Age in whole years
+      <input
+        className="field font-normal"
+        inputMode="numeric"
+        value={text}
+        aria-invalid={error !== null}
+        onChange={(event) => onChange(event.target.value)}
+      />
+      {error && (
+        <span role="alert" className="text-sm font-bold text-[var(--stop)]">
+          {error}
+        </span>
+      )}
+    </label>
+  );
+}
+
+function freshDraft(person: Person): Draft {
+  return {
+    personId: person.id,
+    step: 0,
+    answers: { name: person.name === "Me" ? "" : person.name, profile: person.profile ?? EMPTY_PROFILE, goal: GOALS[0].href },
+    ageText: person.profile?.ageYears?.toString() ?? "",
+  };
+}
 
 function Choice({ label, checked, onChange, type = "checkbox", name }: {
   label: string;
@@ -41,14 +85,17 @@ function Choice({ label, checked, onChange, type = "checkbox", name }: {
 export function Questionnaire() {
   const router = useRouter();
   const { active, finish } = useQuestionnaire();
-  const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<Answers>(() => ({
-    name: active.name === "Me" ? "" : active.name,
-    profile: active.profile ?? EMPTY_PROFILE,
-    goal: GOALS[0].href,
-  }));
+  const [saved, setSaved] = useState<Draft | null>(null);
+  const draft = saved?.personId === active.id ? saved : freshDraft(active);
+  const switched = saved !== null && saved.personId !== active.id;
+  const { step, answers } = draft;
 
+  const change = (update: (current: Draft) => Draft) =>
+    setSaved((previous) => update(previous?.personId === active.id ? previous : freshDraft(active)));
+  const setStep = (next: number) => change((current) => ({ ...current, step: next }));
+  const setAnswers = (update: (current: Answers) => Answers) => change((current) => ({ ...current, answers: update(current.answers) }));
   const setProfile = (patch: Partial<Profile>) => setAnswers((current) => ({ ...current, profile: { ...current.profile, ...patch } }));
+  const ageError = "error" in readAge(draft.ageText);
   const toggleCondition = (id: ConditionId, on: boolean) =>
     setProfile({
       conditions: on ? [...answers.profile.conditions, id] : answers.profile.conditions.filter((item) => item !== id),
@@ -70,18 +117,17 @@ export function Questionnaire() {
               onChange={(event) => setAnswers((current) => ({ ...current, name: event.target.value }))}
             />
           </label>
-          <label className="grid gap-1 font-bold">
-            Age in years
-            <input
-              className="field font-normal"
-              inputMode="numeric"
-              value={answers.profile.ageYears ?? ""}
-              onChange={(event) => {
-                const digits = event.target.value.replace(/\D/g, "").slice(0, 3);
-                setProfile({ ageYears: digits === "" ? undefined : Number(digits) });
-              }}
-            />
-          </label>
+          <AgeField
+            text={draft.ageText}
+            onChange={(next) => {
+              const age = readAge(next);
+              change((current) => ({
+                ...current,
+                ageText: next,
+                answers: "error" in age ? current.answers : { ...current.answers, profile: { ...current.answers.profile, ageYears: age.years } },
+              }));
+            }}
+          />
           <p className="text-sm text-ink-soft">Some labels have warnings for children and for people over 60.</p>
         </div>
       ),
@@ -154,12 +200,18 @@ export function Questionnaire() {
   const last = step === steps.length - 1;
 
   function next() {
+    if (ageError) {
+      setStep(0);
+      return;
+    }
+    if (draft.personId !== active.id) return;
     if (!last) {
       setStep(step + 1);
       return;
     }
     const allergies = answers.profile.allergies.map((item) => item.trim()).filter((item) => item !== "");
     finish(answers.name, { ...answers.profile, allergies });
+    setSaved(null);
     router.push(answers.goal);
   }
 
@@ -168,6 +220,11 @@ export function Questionnaire() {
       <p className="text-sm text-ink-soft">
         {step + 1} of {steps.length}. Your answers are saved in this browser, not in an account.
       </p>
+      {switched && (
+        <p className="mt-2 facts" role="status">
+          You switched to {active.name}, so these questions started over for them.
+        </p>
+      )}
       <h1 className="mt-2 text-3xl font-medium narrow">{steps[step].title}</h1>
       <div className="facts mt-5">{steps[step].body}</div>
       <div className="mt-6 flex flex-wrap gap-3">
