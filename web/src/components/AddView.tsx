@@ -263,7 +263,7 @@ export function AddView() {
                         type="button"
                         onClick={() => choose(product)}
                         aria-pressed={selected}
-                        className={`w-full text-left px-3 py-2.5 border border-[var(--rule)] ${selected ? "bg-[var(--ink)] text-[var(--paper)]" : "bg-[var(--panel)] hover:border-leaf"}`}
+                        className={`row-item w-full text-left py-3.5 ${selected ? "is-selected" : ""}`}
                       >
                         <span className="font-semibold">{product.displayName}</span>
                         {owned && <span className="ml-2 text-sm">In your cabinet</span>}

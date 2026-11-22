@@ -110,7 +110,7 @@ export function SiteHeader() {
             id="more-tools"
             ref={panel}
             style={{ position: "fixed" }}
-            className="facts !bg-[var(--panel)] fixed right-[var(--margin)] top-[calc(var(--margin)+84px)] sm:top-[calc(var(--margin)+40px)] w-[260px] grid gap-1 p-3 z-50"
+            className="facts !bg-[var(--panel)] !px-5 !border !border-[var(--hair)] fixed right-[var(--margin)] top-[calc(var(--margin)+84px)] sm:top-[calc(var(--margin)+40px)] w-[260px] grid gap-1 p-3 z-50"
           >
             {TOOL_LINKS.map((link) => (
               <Link

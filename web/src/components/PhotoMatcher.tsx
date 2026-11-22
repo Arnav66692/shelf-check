@@ -165,7 +165,7 @@ export function PhotoMatcher({ file, onPick, onClose }: { file: File; onPick: (m
                   <button
                     type="button"
                     onClick={() => onPick(match)}
-                    className="group w-full text-left grid grid-cols-[28px_minmax(0,1fr)] gap-3 px-3 py-2.5 border border-[var(--hair)] hover:border-[var(--accent)] transition-colors"
+                    className="group w-full text-left grid grid-cols-[28px_minmax(0,1fr)] gap-3 py-3 row-item"
                   >
                     <span className={`font-[family-name:var(--font-display)] text-[13px] font-medium tracking-[0.15em] ${index === 0 ? "text-accent" : "text-muted"}`}>
                       {String(index + 1).padStart(2, "0")}
