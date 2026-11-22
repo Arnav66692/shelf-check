@@ -11,7 +11,7 @@ import "./globals.css";
 
 const body = Nunito_Sans({ variable: "--font-body", subsets: ["latin"], weight: ["300", "400", "600"] });
 const display = localFont({
-  variable: "--font-display",
+  variable: "--font-title",
   src: [
     { path: "../fonts/Telma-300.woff2", weight: "300", style: "normal" },
     { path: "../fonts/Telma-400.woff2", weight: "400", style: "normal" },
