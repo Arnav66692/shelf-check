@@ -71,7 +71,7 @@ function CausesList({ causes }: { causes: Causes | null }) {
       <h2 className="text-2xl font-medium narrow">Possible causes to ask a doctor about</h2>
       <p className="mt-2 text-sm">
         Not a diagnosis and not professional medical advice. A language model wrote this list from your words alone. It
-        cannot examine you and it can be wrong. It never tells you to start, stop or change a medicine.
+        cannot examine you and it can be wrong. Answers that talk about taking or changing a medicine are left out.
       </p>
       {causes === "loading" && <p className="mt-2 text-ink-soft">Thinking about possible causes.</p>}
       {causes !== "loading" && causes.note && <p className="mt-2 text-sm text-ink-soft">{causes.note}</p>}

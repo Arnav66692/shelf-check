@@ -179,12 +179,15 @@ function SameLook({ result }: { result: PillResult }) {
   return (
     <details className="mt-3">
       <summary className="cursor-pointer underline font-bold">
-        Same look and strength under {total} other product {total === 1 ? "code" : "codes"}
+        {result.product.strength.trim() === "" ? "Same look, strength not listed," : "Same look and strength"} under {total} other
+        product {total === 1 ? "code" : "codes"}
       </summary>
       <ul className="mt-2">
         {shown.map((record) => (
           <li key={`${record.ndc}-${record.part}`} className="facts-row text-sm">
-            <span>{record.maker}</span>
+            <span>
+              <span className="font-bold">{record.name}</span>, {record.maker}
+            </span>
             <span className="text-right">
               {record.ndc}, {record.source === "dailymed" ? "DailyMed" : "Pillbox"} {record.date}
             </span>

@@ -29,7 +29,7 @@ function ProductPanel({ product }: { product: ProductLabel }) {
   return (
     <section className="mt-4">
       <div className="facts-row">
-        <span className="font-bold">{product.brand}</span>
+        <span className="font-bold">{product.presentation}</span>
         <span className="text-right">FDA-approved label</span>
       </div>
       <LabelSection title="What the label says it is for" lines={product.indications} />
@@ -54,7 +54,7 @@ export function PeptideUses({ peptideId }: { peptideId: PeptideId }) {
     <div className="facts">
       <h2 className="facts-title">What it is approved for</h2>
       {entry.notice && <p className="mt-3">{entry.notice}</p>}
-      {entry.approved && entry.products.map((product) => <ProductPanel key={product.setId} product={product} />)}
+      {entry.approved && entry.products.map((product) => <ProductPanel key={product.presentation} product={product} />)}
       {!entry.approved && entry.proposedUse && (
         <figure className="mt-3">
           <h4 className="facts-head">Proposed in a nomination to the FDA</h4>

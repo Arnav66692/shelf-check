@@ -96,7 +96,7 @@ function InsulinOther({ strength }: { strength: InsulinStrength }) {
 }
 
 function VialResult({ check, draw }: { check: InjectionCheck; draw: Draw }) {
-  const blocked = check.flags.some((flag) => flag.severity === "stop");
+  const blocked = check.drawTo === null || check.flags.some((flag) => flag.severity === "stop" || flag.type === "dose_volume");
   return (
     <div className="mt-4 grid gap-4">
       {check.flags.map((flag) => (
@@ -104,7 +104,7 @@ function VialResult({ check, draw }: { check: InjectionCheck; draw: Draw }) {
       ))}
       <div className="facts">
         {blocked ? (
-          <p className="font-bold">No syringe mark is shown until the two ways the dose is written agree.</p>
+          <p className="font-bold">No syringe mark is shown. Read the notice above and ask the pharmacist.</p>
         ) : (
           <Syringe draw={draw} />
         )}

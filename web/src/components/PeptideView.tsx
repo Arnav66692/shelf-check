@@ -2,12 +2,27 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import type { MassUnit } from "@engine/flags/reconstitution.ts";
+import {
+  checkReconstitutedDose,
+  vialDiscardDate,
+  type MassUnit,
+  UnverifiedDrawError,
+  type ReconstitutedDoseCheck,
+  type VialPresentation,
+} from "@engine/flags/reconstitution.ts";
+import { InvalidDoseInputError } from "@engine/flags/units.ts";
+import type { Flag } from "@engine/types.ts";
 import { PEPTIDES, PEPTIDE_STANDING_NOTICE, type Peptide, type PeptideId } from "@engine/peptides.ts";
-import { EGRIFTA_SV_LABEL, EGRIFTA_WR_LABEL, hasMarketedProduct, PEPTIDE_LABELS } from "@engine/peptideLabels.ts";
+import {
+  EGRIFTA_SV_LABEL,
+  EGRIFTA_WR_LABEL,
+  hasMarketedProduct,
+  PEPTIDE_LABELS,
+  type ProductLabel,
+} from "@engine/peptideLabels.ts";
 import { PeptideRecalls } from "./PeptideRecalls";
 import { PeptideUses } from "./PeptideUses";
-import { formatAmount, Notice, parseAmount, planDraw, Syringe, type Draw } from "./Syringe";
+import { formatAmount, Notice, parseAmount, planDraw, SeverityBadge, Syringe, type Draw } from "./Syringe";
 import type { Product } from "@/lib/model";
 import { useCabinet } from "@/lib/store";
 
@@ -21,31 +36,25 @@ const STATUS_LINE: Record<Peptide["fdaStatus"], string> = {
   no_statement_found: "No FDA statement about this ingredient was found. That does not mean it is safe.",
 };
 const MCG_PER_MG = 1000;
-const MILLISECONDS_PER_DAY = 86_400_000;
-const SAME_DOSE_TOLERANCE = 0.01;
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
 const USE_LABEL_DATE = "Use the date on your label or ask your pharmacist.";
 const OTHER_VIAL_ID = "other_vial";
 
-type DiscardRule =
-  | { readonly kind: "days_after_mixing"; readonly days: number; readonly quote: string }
-  | { readonly kind: "immediate"; readonly quote: string };
-
 type Presentation =
   | { readonly id: string; readonly label: string; readonly kind: "ready"; readonly note: string }
   | {
-      readonly id: string;
+      readonly id: VialPresentation;
       readonly label: string;
       readonly kind: "kit";
       readonly brand: string;
-      readonly mgPerMl: number;
       readonly vialMg: number;
+      readonly diluentMl: number;
+      readonly diluent: string;
+      readonly diluentName: string;
       readonly labelDoseMg: number;
       readonly mixQuote: string;
       readonly doseQuote: string;
-      readonly discard: DiscardRule;
-      readonly sourceUrl: string;
-      readonly sourceDate: string;
+      readonly storage?: string;
     }
   | { readonly id: typeof OTHER_VIAL_ID; readonly label: string; readonly kind: "vial" };
 
@@ -88,39 +97,31 @@ const PRESENTATIONS: Partial<Record<PeptideId, readonly Presentation[]>> = {
   ],
   tesamorelin: [
     {
-      id: "egrifta_wr",
+      id: "egrifta-wr",
       label: "Egrifta WR kit, 11.6 mg vial",
       kind: "kit",
       brand: "Egrifta WR",
-      mgPerMl: 8,
       vialMg: 11.6,
+      diluentMl: 1.3,
+      diluent: "supplied-bacteriostatic-water-for-injection",
+      diluentName: "the bacteriostatic water that came in the kit",
       labelDoseMg: 1.28,
       mixQuote: "Reconstitute 1 vial of EGRIFTA WR lyophilized powder with 1.3 mL of diluent (8 mg per mL).",
       doseQuote: "One dose of EGRIFTA WR is 1.28 mg in 0.16 mL of the reconstituted solution.",
-      discard: {
-        kind: "days_after_mixing",
-        days: 7,
-        quote: "Discard unused solution of EGRIFTA WR 7 days after mixing.",
-      },
-      sourceUrl: EGRIFTA_WR_LABEL.url,
-      sourceDate: EGRIFTA_WR_LABEL.labelDate,
+      storage: "kept at room temperature, 20°C to 25°C (68°F to 77°F), and never frozen, as the label says",
     },
     {
-      id: "egrifta_sv",
+      id: "egrifta-sv",
       label: "Egrifta SV kit, 2 mg vial",
       kind: "kit",
       brand: "Egrifta SV",
-      mgPerMl: 4,
       vialMg: 2,
+      diluentMl: 0.5,
+      diluent: "supplied-sterile-water-for-injection",
+      diluentName: "the sterile water that came in the kit",
       labelDoseMg: 1.4,
       mixQuote: "Reconstitute 1 vial of EGRIFTA SV lyophilized powder with 0.5 mL of diluent (2 mg per 0.5 mL).",
       doseQuote: "The dose of EGRIFTA SV is 1.4 mg (0.35 mL of the reconstituted solution) injected subcutaneously once daily.",
-      discard: {
-        kind: "immediate",
-        quote: "Administer 0.35 mL of EGRIFTA SV immediately following reconstitution and throw away any unused solution and diluent.",
-      },
-      sourceUrl: EGRIFTA_SV_LABEL.url,
-      sourceDate: EGRIFTA_SV_LABEL.labelDate,
     },
     OTHER_VIAL,
   ],
@@ -143,16 +144,12 @@ function labelDoseUnit(peptideId: PeptideId): MassUnit {
   return match?.[1] === "mcg" ? "mcg" : "mg";
 }
 
-function toMg(value: number, unit: MassUnit): number {
-  return unit === "mg" ? value : value / MCG_PER_MG;
+function kitLabel(id: VialPresentation): ProductLabel {
+  return id === "egrifta-wr" ? EGRIFTA_WR_LABEL : EGRIFTA_SV_LABEL;
 }
 
-function addDays(isoDate: string, days: number): string | null {
-  const [, year, month, day] = ISO_DATE.exec(isoDate) ?? [];
-  if (year === undefined || month === undefined || day === undefined) return null;
-  const start = Date.UTC(Number(year), Number(month) - 1, Number(day));
-  if (new Date(start).toISOString().slice(0, 10) !== isoDate) return null;
-  return new Date(start + days * MILLISECONDS_PER_DAY).toISOString().slice(0, 10);
+function toMg(value: number, unit: MassUnit): number {
+  return unit === "mg" ? value : value / MCG_PER_MG;
 }
 
 function Source({ url, date, label = "FDA page" }: { url: string; date: string; label?: string }) {
@@ -255,39 +252,135 @@ function DrawResult({ result }: { result: DrawPlan }) {
   );
 }
 
-function DiscardDate({ rule, sourceUrl, sourceDate }: { rule: DiscardRule; sourceUrl: string; sourceDate: string }) {
-  const [mixed, setMixed] = useState("");
-  const quote = (
-    <figure>
-      <blockquote className="quote">{rule.quote}</blockquote>
-      <Source url={sourceUrl} date={sourceDate} label="DailyMed label" />
-    </figure>
+function Confirm({ label, checked, onChange }: { label: string; checked: boolean; onChange: (next: boolean) => void }) {
+  return (
+    <label className="flex items-start gap-3">
+      <input type="checkbox" className="mt-1 h-5 w-5 accent-[var(--leaf)]" checked={checked} onChange={(event) => onChange(event.target.checked)} />
+      <span>{label}</span>
+    </label>
   );
-  if (rule.kind === "immediate") {
-    return (
-      <div className="facts">
-        <h2 className="facts-head">When to throw it away</h2>
-        <p className="mt-2">Use it right after mixing and throw away what is left. Do not keep it for another day.</p>
-        <div className="mt-2">{quote}</div>
-      </div>
-    );
+}
+
+function safeDiscardDate(mixed: string, presentation: VialPresentation, storedAsLabeled: boolean | undefined) {
+  if (!ISO_DATE.test(mixed)) return null;
+  try {
+    return vialDiscardDate(mixed, presentation, { event: "mixing", storedAsLabeled });
+  } catch {
+    return null;
   }
-  const discardBy = addDays(mixed, rule.days);
+}
+
+function DiscardDate({ kit }: { kit: Extract<Presentation, { kind: "kit" }> }) {
+  const [mixed, setMixed] = useState("");
+  const [storedAsLabeled, setStoredAsLabeled] = useState(false);
+  const discard = safeDiscardDate(mixed, kit.id, kit.storage ? storedAsLabeled : undefined);
   return (
     <div className="facts">
       <h2 className="facts-head">When to throw it away</h2>
-      <label className="mt-2 grid gap-1 font-bold">
-        Day you mixed this vial
-        <input className="field font-normal" type="date" value={mixed} onChange={(event) => setMixed(event.target.value)} />
-      </label>
-      {discardBy && (
+      <div className="mt-2 grid gap-3">
+        <label className="grid gap-1 font-bold">
+          Day you mixed this vial
+          <input className="field font-normal" type="date" value={mixed} onChange={(event) => setMixed(event.target.value)} />
+        </label>
+        {kit.storage && <Confirm label={`Since mixing, the vial was ${kit.storage}.`} checked={storedAsLabeled} onChange={setStoredAsLabeled} />}
+      </div>
+      {discard?.timing === "date" && discard.discardBy && (
         <div className="facts-row mt-2">
           <span>Throw away what is left on</span>
-          <span className="font-bold">{discardBy}</span>
+          <span className="font-bold">{discard.discardBy}</span>
         </div>
       )}
-      <div className="mt-2">{quote}</div>
-      <p className="mt-2 text-sm text-ink-soft">If the pharmacy or the prescriber gives a shorter time, follow the shorter time.</p>
+      {discard?.timing === "immediate" && (
+        <p className="mt-2 font-bold">Use it right after mixing and throw away what is left. Do not keep it for another day.</p>
+      )}
+      {discard === null && <p className="mt-2 text-ink-soft">{USE_LABEL_DATE}</p>}
+      {discard && (
+        <figure className="mt-2">
+          <blockquote className="quote">{discard.source.text}</blockquote>
+          <Source url={discard.source.sourceUrl} date={discard.source.pageDate} label="DailyMed label" />
+        </figure>
+      )}
+      {discard?.timing === "date" && (
+        <p className="mt-2 text-sm text-ink-soft">If the pharmacy or the prescriber gives a shorter time, follow the shorter time.</p>
+      )}
+    </div>
+  );
+}
+
+type KitOutcome =
+  | { readonly kind: "waiting"; readonly message: string }
+  | { readonly kind: "blocked"; readonly message: string; readonly flags: readonly Flag[] }
+  | { readonly kind: "draw"; readonly check: ReconstitutedDoseCheck; readonly draw: Draw };
+
+function kitOutcome(kit: Extract<Presentation, { kind: "kit" }>, doseMg: number, mixedAsLabeled: boolean): KitOutcome {
+  try {
+    const check = checkReconstitutedDose({
+      itemId: kit.id,
+      vial: {
+        presentation: kit.id,
+        vialAmount: kit.vialMg,
+        vialUnit: "mg",
+        diluentMl: kit.diluentMl,
+        diluent: mixedAsLabeled ? kit.diluent : undefined,
+      },
+      dose: { value: doseMg, unit: "mg" },
+    });
+    if (check === undefined) {
+      return {
+        kind: "waiting",
+        message: `Tick the box to confirm you mixed the vial with ${kit.diluentMl} mL of ${kit.diluentName}. Without that, the strength after mixing is not known and no mark is shown.`,
+      };
+    }
+    return { kind: "draw", check, draw: planDraw(check.dose.mL) };
+  } catch (caught) {
+    if (!(caught instanceof InvalidDoseInputError)) throw caught;
+    const flags = caught instanceof UnverifiedDrawError ? caught.flags : [];
+    return { kind: "blocked", message: caught.message, flags };
+  }
+}
+
+function KitResult({ outcome }: { outcome: KitOutcome }) {
+  if (outcome.kind === "waiting") return <p className="facts text-ink-soft">{outcome.message}</p>;
+  if (outcome.kind === "blocked") {
+    if (outcome.flags.length === 0) {
+      return (
+        <Notice severity="stop" title="No syringe mark for this dose">
+          <p>{outcome.message} No syringe mark is shown.</p>
+        </Notice>
+      );
+    }
+    return (
+      <>
+        {outcome.flags.map((flag) => (
+          <div key={flag.title} className="facts" role="alert">
+            <SeverityBadge severity={flag.severity} />
+            <h3 className="mt-2 text-lg font-semibold">{flag.title}</h3>
+            <p className="mt-1">{flag.detail} No syringe mark is shown.</p>
+            {flag.source && (
+              <figure className="mt-2">
+                <blockquote className="quote">{flag.source.text}</blockquote>
+                <Source url={flag.source.sourceUrl} date={flag.source.pageDate} label="DailyMed label" />
+              </figure>
+            )}
+          </div>
+        ))}
+      </>
+    );
+  }
+  return (
+    <div className="facts">
+      <h2 className="facts-head">Where the plunger stops</h2>
+      <Syringe draw={outcome.draw} />
+      <div className="facts-row">
+        <span>Strength after mixing, from the label</span>
+        <span className="font-bold">{formatAmount(outcome.check.reconstitution.concentrationMgPerMl)} mg per mL</span>
+      </div>
+      <div className="facts-row">
+        <span>Your dose</span>
+        <span className="font-bold">
+          {formatAmount(outcome.check.dose.mg)} mg, which is {formatAmount(outcome.check.dose.mL)} mL
+        </span>
+      </div>
     </div>
   );
 }
@@ -295,13 +388,13 @@ function DiscardDate({ rule, sourceUrl, sourceDate }: { rule: DiscardRule; sourc
 function KitCalculator({ kit, defaultUnit }: { kit: Extract<Presentation, { kind: "kit" }>; defaultUnit: MassUnit }) {
   const [dose, setDose] = useState("");
   const [doseUnit, setDoseUnit] = useState<MassUnit>(defaultUnit);
+  const [mixedAsLabeled, setMixedAsLabeled] = useState(false);
   const read = readMass(dose, doseUnit, "Dose");
-  const result: DrawPlan = read.error
-    ? { kind: "invalid", message: read.error }
+  const outcome: KitOutcome = read.error
+    ? { kind: "blocked", message: read.error, flags: [] }
     : read.mg === undefined
       ? { kind: "waiting", message: "Type the dose your prescriber gave you. The syringe appears here." }
-      : plan(read.mg, kit.vialMg, kit.mgPerMl);
-  const differs = read.mg !== undefined && Math.abs(read.mg / kit.labelDoseMg - 1) > SAME_DOSE_TOLERANCE;
+      : kitOutcome(kit, read.mg, mixedAsLabeled);
 
   return (
     <>
@@ -312,26 +405,19 @@ function KitCalculator({ kit, defaultUnit }: { kit: Extract<Presentation, { kind
             <p>{kit.mixQuote}</p>
             <p>{kit.doseQuote}</p>
           </blockquote>
-          <Source url={kit.sourceUrl} date={kit.sourceDate} label="DailyMed label" />
+          <Source url={kitLabel(kit.id).url} date={kitLabel(kit.id).labelDate} label="DailyMed label" />
         </figure>
-        <p className="mt-2 text-sm text-ink-soft">
-          The strength after mixing below comes from this label, not from the water you add. Mix only as the kit
-          instructions say.
-        </p>
-        <div className="mt-3">
+        <div className="mt-3 grid gap-3">
+          <Confirm
+            label={`I mixed this vial with ${kit.diluentMl} mL of ${kit.diluentName}, as the label says.`}
+            checked={mixedAsLabeled}
+            onChange={setMixedAsLabeled}
+          />
           <AmountField label="Dose your prescriber gave you" value={dose} onChange={setDose} unit={doseUnit} onUnit={setDoseUnit} placeholder={`For example ${kit.labelDoseMg}`} />
         </div>
       </div>
-      {differs && result.kind === "draw" && (
-        <Notice severity="ask" title={`This is not the ${kit.brand} label dose`}>
-          <p>
-            The label dose is {formatAmount(kit.labelDoseMg)} mg. Your dose is {formatAmount(read.mg ?? 0)} mg. Check it with
-            the pharmacist before injecting.
-          </p>
-        </Notice>
-      )}
-      <DrawResult result={result} />
-      <DiscardDate rule={kit.discard} sourceUrl={kit.sourceUrl} sourceDate={kit.sourceDate} />
+      <KitResult outcome={outcome} />
+      <DiscardDate kit={kit} />
     </>
   );
 }
