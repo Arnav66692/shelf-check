@@ -56,7 +56,7 @@ export function GrowingHeadline({ lines, children }: { lines: readonly [string, 
     <div className="h-[200vh] flex flex-col justify-end mt-[min(12.5%,320px)] -mb-[36%] max-[999px]:h-auto max-[999px]:mb-0">
       <div ref={block} className="sticky bottom-0 overflow-hidden grid gap-4 pb-8" style={{ ["--p" as string]: "0" }}>
         <h2 className="display">
-          <span className="block text-[var(--fs-h2)]">{lines[0]}</span>
+          <span className="block text-[length:var(--fs-h2)]">{lines[0]}</span>
           <span
             className="block"
             style={{ fontSize: `calc(min(12.5vw, 240px) * min(1, ${LINE_TWO_START} + ${1 - LINE_TWO_START} * var(--p)))` }}

@@ -34,7 +34,7 @@ export function SiteFooter() {
       <div className="border-t border-b border-[var(--rule)]">
         <Link
           href="/start"
-          className="block py-10 text-center italic uppercase leading-[0.88] tracking-[-0.04em] text-[var(--fs-band)] font-[100] hover:font-[900] transition-[font-weight] duration-[400ms]"
+          className="block py-10 text-center italic uppercase leading-[0.88] tracking-[-0.04em] text-[length:var(--fs-band)] font-[100] hover:font-[900] transition-[font-weight] duration-[400ms]"
         >
           Start your cabinet
         </Link>
