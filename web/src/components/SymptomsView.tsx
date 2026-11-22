@@ -145,6 +145,11 @@ function Matches({ result, items }: { result: FullResult; items: readonly Produc
           Your cabinet is empty. <Link className="underline font-bold" href="/add">Add what you own</Link> first.
         </p>
       )}
+      {items.length > 0 && result.matches.length === 0 && hidden.length > 0 && (
+        <p className="mt-2">
+          Nothing in your cabinet is labelled for this at this age. Ask a pharmacist what is safe for them.
+        </p>
+      )}
       {items.length > 0 && result.matches.length === 0 && hidden.length === 0 && (
         <p className="mt-2">
           None of your labels list this under Uses. Ask a pharmacist what is safe for this, and call a doctor if it gets
@@ -295,6 +300,9 @@ export function SymptomsView() {
                 not included below.
               </p>
             )}
+            <p className="facts font-semibold">
+              If breathing, the lips, the throat or how awake someone is seems wrong, call 911 now.
+            </p>
             <Matches result={result} items={items} />
             {result.flags.length > 0 && (
               <section id="before-you-take">

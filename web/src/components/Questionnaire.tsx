@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CONDITION_LABELS, EMPTY_PROFILE, type ConditionId, type Profile } from "@/lib/model";
-import { useQuestionnaire, type Person } from "@/lib/store";
+import { leaveExample, useQuestionnaire, type Person } from "@/lib/store";
 
 const CONDITION_IDS = Object.keys(CONDITION_LABELS) as ConditionId[];
 
@@ -83,6 +83,7 @@ function Choice({ label, checked, onChange, type = "checkbox", name }: {
 }
 
 export function Questionnaire() {
+  useEffect(() => leaveExample(), []);
   const router = useRouter();
   const { active, finish } = useQuestionnaire();
   const [saved, setSaved] = useState<Draft | null>(null);

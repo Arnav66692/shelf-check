@@ -125,6 +125,41 @@ export function activeCabinetSize(): number {
   return activePerson(readHousehold()).cabinet.length;
 }
 
+export const EXAMPLE_NAME = "Example";
+
+// The example always lives in its own "Example" person, so it never mixes with a real cabinet.
+export function openExample(products: readonly Product[]): boolean {
+  const current = readHousehold();
+  const existing = current.people.find((person) => person.name === EXAMPLE_NAME);
+  if (existing) {
+    writeHousehold({
+      activeId: existing.id,
+      people: current.people.map((person) => (person.id === existing.id ? { ...person, cabinet: [...products], supply: {} } : person)),
+    });
+    return true;
+  }
+  const active = activePerson(current);
+  const isBlank = active.cabinet.length === 0 && active.name === "Me" && current.people.length === 1;
+  if (!isBlank && current.people.length >= MAX_PEOPLE) return false;
+  const id = `p${Date.now().toString(36)}`;
+  const example = { ...EMPTY_PERSON, id, name: EXAMPLE_NAME, cabinet: [...products] };
+  writeHousehold({ activeId: id, people: [...current.people, example] });
+  return true;
+}
+
+// Starting your own cabinet moves off the example to a real person.
+export function leaveExample(): void {
+  const current = readHousehold();
+  if (activePerson(current).name !== EXAMPLE_NAME) return;
+  const real = current.people.find((person) => person.name !== EXAMPLE_NAME);
+  if (real) {
+    writeHousehold({ ...current, activeId: real.id });
+    return;
+  }
+  const id = `p${Date.now().toString(36)}`;
+  writeHousehold({ activeId: id, people: [...current.people, { ...EMPTY_PERSON, id, name: "Me" }] });
+}
+
 function subscribe(onChange: () => void): () => void {
   window.addEventListener(CHANGE_EVENT, onChange);
   window.addEventListener("storage", onChange);

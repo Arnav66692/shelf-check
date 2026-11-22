@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { ApiError, fetchLabelImages, searchProducts, suggestFromPhoto } from "@/lib/api";
 import { formatStrength, type Product } from "@/lib/model";
 import sampleProducts from "@/lib/sampleProducts.json";
-import { activeCabinetSize, useCabinet, useHousehold } from "@/lib/store";
+import { openExample, useCabinet } from "@/lib/store";
 import { BarcodeScanner } from "./BarcodeScanner";
 import { ProductPanel } from "./ProductPanel";
 
@@ -67,8 +67,7 @@ const PHOTO_READER = process.env.NEXT_PUBLIC_PHOTO_READER === "1";
 export function AddView() {
   const router = useRouter();
   const params = useSearchParams();
-  const { items, add, replaceAll } = useCabinet();
-  const { addPerson } = useHousehold();
+  const { items, add } = useCabinet();
   const generation = useRef(0);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Results>({ status: "idle" });
@@ -83,10 +82,9 @@ export function AddView() {
   useEffect(() => {
     if (params.get("sample") !== "1" || sampleStarted.current) return;
     sampleStarted.current = true;
-    if (activeCabinetSize() > 0) addPerson("Example");
-    replaceAll(SAMPLE_PRODUCTS);
+    openExample(SAMPLE_PRODUCTS);
     router.replace("/");
-  }, [params, replaceAll, addPerson, router]);
+  }, [params, router]);
 
   async function search(rawText: string) {
     const text = rawText.trim();
