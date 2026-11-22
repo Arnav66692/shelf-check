@@ -30,7 +30,7 @@ const EMERGENCY_RULES = {
   },
   breathing_difficulty: {
     phrases: ["shortness of breath", "short of breath", "trouble breathing", "can't breathe", "cannot breathe", "not breathing", "difficulty breathing", "blue lips"],
-    pattern: /hard to breathe|(?:cant|cannot) (?:catch my breath|get enough air)|turning blue|gurgling|gasping for (?:air|breath)/,
+    pattern: /hard to breathe|(?:cant|cannot) (?:catch my breath|get enough air)|turning blue|gurgling|gasping for (?:air|breath)|(?:lips?|face|skin) (?:look |looks |are |is |turning |turned )?(?:blue|gray|grey)|breathing (?:really |very |so )?(?:fast|hard)|struggling to breathe|(?:cant|cannot) catch (?:his|her|their) breath/,
   },
   stroke_signs: {
     phrases: ["stroke", "face drooping", "slurred speech"],
@@ -43,7 +43,7 @@ const EMERGENCY_RULES = {
   },
   severe_headache: {
     phrases: ["worst headache of my life", "worst headache", "severe headache", "sudden headache"],
-    pattern: /headache (?:with|and) (?:a |my )?stiff neck|stiff neck (?:with|and) (?:a )?headache|headache (?:with |and )?(?:a |my )?stiff neck|stiff neck[a-z ]{0,30}fever|pregnant[a-z ]{0,60}(?:seeing spots|blurry vision|bad headache|severe headache)/,
+    pattern: /headache (?:with|and) (?:a |my )?stiff neck|stiff neck (?:with|and) (?:a )?headache|headache (?:with |and )?(?:a |my )?stiff neck|stiff neck[a-z ]{0,30}fever|pregnant[a-z ]{0,60}(?:seeing spots|blurry vision|bad headache|severe headache)|fever[a-z ]{0,20}stiff neck/,
   },
   bleeding: {
     phrases: ["vomiting blood", "coughing blood", "coughing up blood", "severe bleeding"],
@@ -51,7 +51,7 @@ const EMERGENCY_RULES = {
   },
   drug_reaction: {
     phrases: ["serotonin syndrome", "rhabdomyolysis", "digoxin toxicity"],
-    pattern: /(?:dark|brown|cola|tea)[- ]?colou?red (?:pee|urine)|(?:pee|urine) is (?:dark )?brown|dark brown (?:pee|urine)|(?:confused|twitching|shivering|rigid|agitated)[^.]{0,80}(?:tramadol|zoloft|sertraline|ssri|maoi|prozac|lexapro)|heart (?:is )?(?:beating )?(?:super|very|really|so) slow|(?:faint|dizzy|fainting|passing out)[^.]{0,30}digoxin|(?:skin|rash)[a-z ]{0,20}(?:peeling|blistering)|blistering rash|(?:fever)[a-z ]{0,20}muscles (?:are |feel )?(?:stiff|rigid)|muscles (?:are |feel )?(?:stiff|rigid) after (?:starting|taking)|lithium[a-z ]{0,30}(?:shaking|throwing up|vomiting|confused)|yellow (?:eyes|skin)|(?:eyes|skin) (?:are |is |turning |look )?yellow|blood sugar (?:is |was |of |at )?(?:[1-4]\d|5[0-4])\b|erection[a-z ]{0,30}(?:[4-9]|\d{2}) hours|heart (?:rate )?(?:is )?(?:over|above) (?:1[5-9]\d|2\d\d)|heart is going crazy|burning (?:hot|up) and acting (?:crazy|strange|weird|confused)/,
+    pattern: /(?:dark|brown|cola|tea)[- ]?colou?red (?:pee|urine)|(?:pee|urine) is (?:dark )?brown|dark brown (?:pee|urine)|(?:confused|twitching|shivering|rigid|agitated)[^.]{0,80}(?:tramadol|zoloft|sertraline|ssri|maoi|prozac|lexapro)|heart (?:is )?(?:beating )?(?:super|very|really|so) slow|(?:faint|dizzy|fainting|passing out)[^.]{0,30}digoxin|(?:skin|rash)[a-z ]{0,20}(?:peeling|blistering)|blistering rash|(?:fever)[a-z ]{0,20}muscles (?:are |feel )?(?:stiff|rigid)|muscles (?:are |feel )?(?:stiff|rigid) after (?:starting|taking)|lithium[a-z ]{0,30}(?:shaking|throwing up|vomiting|confused)|yellow (?:eyes|skin)|(?:eyes|skin) (?:are |is |turning |look )?yellow|blood sugar (?:is |was |of |at )?(?:[1-4]\d|5[0-4])\b|erection[a-z ]{0,30}(?:[4-9]|\d{2}) hours|heart (?:rate )?(?:is )?(?:over|above) (?:1[5-9]\d|2\d\d)|heart is going crazy|burning (?:hot|up) and acting (?:crazy|strange|weird|confused)|(?:purple|dark red) (?:rash|spots)|rash (?:that )?(?:does not|doesnt|wont) fade|(?:not|hasnt|has not|havent|have not) (?:peed|urinated|had a wet diaper)|no wet diapers?|(?:very|really|so) hard to wake|hard to wake (?:up)?|lethargic|floppy/,
   },
   loss_of_consciousness: { phrases: ["unresponsive", "unconscious", "fainting", "fainted", "passed out"] },
 } as const;

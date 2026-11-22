@@ -282,3 +282,20 @@ test("round 5 plain-language emergencies are caught", () => {
     expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
   }
 });
+
+test("round 5 red flags for children and breathing are caught", () => {
+  for (const text of [
+    "fever of 104 and she is very hard to wake up",
+    "my son has a fever and a stiff neck",
+    "fever and a purple rash that does not fade",
+    "she has a fever and is not drinking and has not peed all day",
+    "my baby is breathing fast and her lips look blue",
+  ]) expect(screenEmergency(text).emergency, text).toBe(true);
+  for (const ordinary of ["my 4 year old has a fever and a cough", "runny nose and a mild headache", "heartburn after dinner", "my neck is a bit stiff from sleeping wrong"]) {
+    expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+  }
+});
+
+test("a stiff neck or a limp alone is not an emergency", () => {
+  for (const ordinary of ["i have a stiff neck from sleeping on the couch", "i have a limp since my ankle sprain"]) expect(screenEmergency(ordinary).emergency, ordinary).toBe(false);
+});
