@@ -13,7 +13,7 @@ const LABEL_SAYS_STOP = /\b(?:contraindicated|(?:is |are )?not recommended|do no
 const HOLD_DOSE = "The label says not to use these together, or not to use it with this health detail. Call the prescriber or pharmacist today, before the next dose, and ask what to do. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const ALLERGY_STEP = "The label says not to take it if you are allergic to it. Do not take the next dose until you have talked to the prescriber or pharmacist today. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const HYPERKALEMIA = /\bhyperkalemia\b/i;
-const BLOOD_THINNER_EFFECT = /\b(?:effects?|response|activity) of (?:warfarin|oral anticoagulants?)|\banticoagulant effects?\b/i;
+const BLOOD_THINNER_EFFECT = /\b(?:effects?|response|activity) of (?:warfarin|oral anticoagulants?)|\banticoagulant effects?\b|\bprolong\w* (?:the )?prothrombin time/i;
 const SEDATION = /\brespiratory depression|profound sedation|\bcoma\b/i;
 const CROSS_ALLERGY_STEP = "The label warns that people with this allergy may also react to this medicine. Tell the prescriber or pharmacist about the allergy today, before the next dose. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const SPACE_APART = /\b\d+\s*(?:to\s*\d+\s*)?hours?\s+(?:before|after|apart)\b|\bseparate\b.*\bdoses?\b/i;
@@ -33,7 +33,7 @@ function isAllergy(flag: Flag): boolean {
 }
 
 function quoteSaysStop(flag: Flag): boolean {
-  return mentions(flag, LABEL_SAYS_STOP);
+  return mentions(flag, LABEL_SAYS_STOP) || flag.quotes.some((quote) => quote.section === "contraindications");
 }
 
 function labelSaysStop(flag: Flag): boolean {
@@ -114,6 +114,9 @@ export function nextStep(flag: Flag): string {
         ? "Talk to a licensed prescriber or pharmacist before using it."
         : "Ask a doctor or pharmacist before using this, and tell them about the health detail it mentions.";
     case "label_tag":
+      if (flag.title === "Alcohol" && mentions(flag, /\b(?:respiratory depression|coma|death|fatal)\b/i)) {
+        return "Do not drink alcohol while taking this. The label warns that together they can slow breathing, which can be fatal.";
+      }
       return LABEL_TAG_STEPS[flag.title] ?? "Read the quoted line before you combine this with what it mentions.";
     case "recall":
       return "Compare the lot number on your bottle with the recall. If it matches, stop using it and call your pharmacy.";

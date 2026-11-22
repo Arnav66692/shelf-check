@@ -36,7 +36,7 @@ function underThreeMonthsInText(text: string): boolean {
 // "my 3 year old has a fever" says the age even when the profile does not.
 function childAgeInText(text: string): number | undefined {
   const years = AGE_IN_YEARS.exec(text);
-  if (years && (CHILD.test(text) || /\byears?[- ]old\b|\by\/?o\b/i.test(text))) {
+  if (years && (CHILD.test(text) || /\b(?:years?|yrs?)[- ]old\b|\by\/?o\b/i.test(text))) {
     const age = Number(years[1]);
     return age < CHILD_AGE_YEARS ? age : undefined;
   }

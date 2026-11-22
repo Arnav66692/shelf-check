@@ -99,6 +99,30 @@ export async function buildCabinet(products: readonly Product[]): Promise<BuiltC
   return { items, unchecked, recallSubjects: [...items, ...failed] };
 }
 
+// People type allergies as "Penicillin (hives)", "Sulfa drugs - rash" or a brand name like "Keflex".
+function cleanAllergy(allergy: string): string {
+  return allergy
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/\s+[-–:]\s+.*$/, "")
+    .replace(/\b(?:allergy|allergies|allergic|to)\b/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const BRAND_ALLERGENS: Readonly<Record<string, string>> = {
+  keflex: "cephalexin", bactrim: "sulfa", septra: "sulfa", motrin: "ibuprofen", advil: "ibuprofen",
+  aleve: "naproxen", naprosyn: "naproxen", augmentin: "amoxicillin", amoxil: "amoxicillin", zithromax: "azithromycin",
+  "z-pak": "azithromycin", zpak: "azithromycin", cipro: "ciprofloxacin", levaquin: "levofloxacin", tylenol: "acetaminophen",
+  coumadin: "warfarin", bayer: "aspirin", ecotrin: "aspirin", vicodin: "hydrocodone", norco: "hydrocodone",
+  percocet: "oxycodone", celebrex: "celecoxib", toradol: "ketorolac", lasix: "furosemide", macrobid: "nitrofurantoin",
+  flagyl: "metronidazole", benadryl: "diphenhydramine", "tylenol 3": "codeine", "tylenol with codeine": "codeine",
+};
+
+function withGenericName(allergy: string): readonly string[] {
+  const generic = BRAND_ALLERGENS[allergy.toLowerCase()];
+  return generic ? [allergy, generic] : [allergy];
+}
+
 export function toHealthProfile(profile: Profile): HealthProfile {
   return {
     ageYears: profile.ageYears,
@@ -106,9 +130,7 @@ export function toHealthProfile(profile: Profile): HealthProfile {
     breastfeeding: profile.breastfeeding,
     drinksThreeOrMoreDaily: profile.drinksThreeOrMoreDaily,
     conditions: profile.conditions,
-    allergies: profile.allergies
-      .map((allergy) => allergy.replace(/\([^)]*\)/g, " ").replace(/\b(?:allergy|allergic|to)\b/gi, " ").replace(/\s+/g, " ").trim())
-      .filter((allergy) => allergy !== ""),
+    allergies: profile.allergies.map(cleanAllergy).filter((allergy) => allergy !== "").flatMap(withGenericName),
   };
 }
 

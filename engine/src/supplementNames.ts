@@ -28,6 +28,11 @@ interface CommonNameRule {
 export const COMMON_NAME_RULES: readonly CommonNameRule[] = [
   { appliesTo: /st\.? john['’]?s wort|hypericum/i, names: [{ term: "St. John's wort" }, { term: "Hypericum perforatum" }] },
   { appliesTo: /ginkgo/i, names: [{ term: "ginkgo" }] },
+  // Nitrate labels and the sildenafil label name these by class, and RxClass can miss the record.
+  {
+    appliesTo: /^(?:nitroglycerin|isosorbide (?:mono|di)nitrate|amyl nitrite)/i,
+    names: [{ term: "nitric oxide donors" }, { term: "organic nitrates" }, { term: "nitrates" }],
+  },
   { appliesTo: /fish oil|omega-3|eicosapenta|docosahexa/i, names: [{ term: "fish oil" }, { term: "omega-3" }] },
   {
     appliesTo: /vitamin k|phytonadione|phylloquinone|menaquinone|vitamin mk/i,
