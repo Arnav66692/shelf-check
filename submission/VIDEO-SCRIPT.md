@@ -42,7 +42,7 @@ The "almost half" is 45.6 percent of 500 adults (Wolf et al., J Gen Intern Med 2
 **Screen:** on a card, point at "What to do". Then open Symptoms, type "my husband is very sleepy and his breathing is slow after his pain pills", and show the Poison Help screen with its naloxone line (clip 4). Then Dose check (in More): choose "No, another medicine in a vial", strength 2.5, dose 0.125 mg, then 50 marks on a U-100 syringe in the second box. It stops with "0.125 mg and 50 units are not the same dose" and shows no syringe mark (clip 5).
 
 **Say:**
-> Every card says what to do next. When the label says two medicines should not be taken together, it tells you to call before the next dose. If you type something that sounds like an emergency, like someone breathing slowly after pain pills, it sends you to Poison Help, naloxone and 911 instead of suggesting a medicine. And the dose check catches the 5 versus 50 unit mix-up the FDA has warned about.
+> Every card says what to do next. When the label says two medicines should not be taken together, it tells you to call before the next dose. If you type something that sounds like an emergency, like someone breathing slowly after pain pills, it sends you to Poison Help, naloxone and 911 instead of suggesting a medicine. And when the instructions give a dose two ways, the dose check catches the 5 versus 50 unit mix-up the FDA has warned about.
 
 ## 5. How we know it works (1:20 to 1:45)
 

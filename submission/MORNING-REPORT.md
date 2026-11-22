@@ -33,7 +33,8 @@ These are AI judges, not real people. The Impact and Video scores cannot go high
 - Many fewer false alarms and better matches across 30 saved real cabinets (NyQuil with Benadryl, Zyrtec with Benadryl, alcohol lines, NSAID class, niacin, calcium channel blockers).
 - Search fixes: "baby aspirin", "children's", "infant", "vitamin d" and common misspellings.
 - Phone layout, the Enter screen keeps keyboard focus, read aloud skips the menus.
-- Tests: engine 764 passing, lookup 113 passing.
+- Tests: engine 764 passing, lookup 113 passing. The axe accessibility check is clean on every page at laptop and phone size, run on the live site at 6 AM.
+- All 6 demo clips were re-recorded on the live site at 6:10 AM, at 125 percent so the text reads on video.
 
 ## Honest results
 
@@ -46,7 +47,7 @@ These are AI judges, not real people. The Impact and Video scores cannot go high
 
 1. **Real-person test** (about 30 minutes). Follow `submission/USER-TEST.md` with two people, using the notes in `submission/USER-TEST-NOTES.md`. Write down the numbers. Then fill in the one Devpost line about it with only those numbers.
 2. **Record the video.** Follow `submission/VIDEO-SCRIPT.md`. Clips of every screen are in `submission/clips/` if you want to use them. Upload to YouTube.
-3. **Devpost.** The story is pasted into the draft and saved, but not submitted. Read it, add the video link and the user-test line, tick the terms box, and press Submit before 12:00 PM PT. I cannot tick the terms box or submit.
+3. **Devpost.** The updated story was pasted into the draft and saved at 6:15 AM, but not submitted. Read it, add the video link and the user-test line, tick the terms box, and press Submit before 12:00 PM PT. I cannot tick the terms box or submit.
 4. **Reddit posts** in `submission/REDDIT-POSTS.md`, if you want real feedback before judging.
 
 ## The other looks
