@@ -1,5 +1,5 @@
 import { createRequire } from "module";
-const require = createRequire("/Users/arnavsingh/.claude/skills/gstack/package.json");
+const require = createRequire(process.env.PLAYWRIGHT_PACKAGE_JSON ?? `${process.env.HOME}/.claude/skills/gstack/package.json`);
 const { chromium } = require("playwright-core");
 const browser = await chromium.launch({ executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", headless: true });
 const page = await (await browser.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
