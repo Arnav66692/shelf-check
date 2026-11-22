@@ -20,7 +20,8 @@ const AGE_IN_MONTHS = /\b(\d+)\s*(?:-\s*)?(?:months?|mos?)\s*old\b/i;
 const UNDER_AGE_RULE =
   /\b(?:under|younger than|less than|below)\s+(\d+)\s*(?:years?|yrs?)?(?:\s+of\s+age)?(?:\s+old)?\s*[:,.-]?\s*(?:do not (?:use|give|take)|ask a doctor|consult a doctor|not recommended)/g;
 const ADULT_ROW = /\b(?:adults (?:and|&) children|children)\s+(\d+)\s*(?:years?|yrs?)?(?:\s+of\s+age)?\s+(?:and|or|&)\s+(?:over|older)/g;
-const YOUNGER_ROW = /\bchildren\s+(\d+)\s*(?:years?|yrs?)?\s*(?:to|-)\s*(?:under\s+)?(\d+)/g;
+// A younger row only counts as a dose when it gives one, not when it says to ask a doctor or not to use.
+const YOUNGER_ROW = /\bchildren\s+(\d+)\s*(?:years?|yrs?)?\s*(?:to|-)\s*(?:under\s+)?(\d+)(?!\s*(?:years?|yrs?)?(?:\s+of\s+age)?\s*[:,-]?\s*(?:ask a doctor|do not use|consult a doctor))/g;
 
 type Hidden = { readonly itemId: string; readonly reason: string };
 
@@ -34,12 +35,22 @@ function underThreeMonthsInText(text: string): boolean {
 }
 
 // "my 3 year old has a fever" says the age even when the profile does not.
+const WORD_AGES: Readonly<Record<string, number>> = {
+  one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12,
+};
+const AGE_IN_WORDS = /\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)[- ](?:years?|yrs?)[- ]old\b/i;
+const AGE_IN_MONTHS_ANY = /\b(\d{1,2})\s*(?:-\s*)?(?:months?|mos?|mo)\b(?:\s*-?\s*old)?/i;
+
 function childAgeInText(text: string): number | undefined {
   const years = AGE_IN_YEARS.exec(text);
-  if (years && (CHILD.test(text) || /\b(?:years?|yrs?)[- ]old\b|\by\/?o\b/i.test(text))) {
+  if (years && (CHILD.test(text) || /\b(?:years?|yrs?)[- ]old\b|\dy\/?o\b|\by\/?o\b/i.test(text))) {
     const age = Number(years[1]);
     return age < REYE_MAX_AGE ? age : undefined;
   }
+  const words = AGE_IN_WORDS.exec(text);
+  if (words?.[1]) return WORD_AGES[words[1].toLowerCase()];
+  const months = AGE_IN_MONTHS_ANY.exec(text);
+  if (months) return Math.floor(Number(months[1]) / 12);
   return /\btoddler\b/i.test(text) ? 1 : undefined;
 }
 
@@ -71,8 +82,9 @@ function warnsAboutReye(item: CabinetItem): boolean {
   return [label.warnings, label.do_not_use, label.ask_doctor].some((texts) => (texts ?? []).some((text) => /\breye['’]?s syndrome\b/i.test(text)));
 }
 
+// A Check now pair, allergy or health card about this product means it is not suggested.
 function hasStop(flags: readonly Flag[], itemId: string): boolean {
-  return flags.some((flag) => flag.severity === "stop" && flag.type === "interaction" && flag.itemIds.includes(itemId));
+  return flags.some((flag) => flag.severity === "stop" && (flag.type === "interaction" || flag.type === "profile") && flag.itemIds.includes(itemId));
 }
 
 function splitByAge(matches: readonly SymptomMatch[], profile: Profile, aboutChild = false): { shown: SymptomMatch[]; hidden: Hidden[] } {

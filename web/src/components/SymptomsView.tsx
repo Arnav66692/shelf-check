@@ -153,8 +153,8 @@ function Matches({ result, items }: { result: FullResult; items: readonly Produc
       )}
       {items.length > 0 && result.matches.length === 0 && hidden.length === 0 && (
         <p className="mt-2">
-          None of your labels list this under Uses. Ask a pharmacist what is safe for this, and call a doctor if it gets
-          worse or does not get better.
+          None of your labels list this under Uses. If this came on suddenly or is severe, call 911 now. Otherwise ask a
+          pharmacist what is safe for this.
         </p>
       )}
       <ul className="mt-3 grid gap-3">
@@ -302,8 +302,9 @@ export function SymptomsView() {
               </p>
             )}
             <p className="facts font-semibold">
-              Call 911 now for a seizure, bleeding that will not stop, blue or gray lips or skin, a closing throat, or
-              someone who is hard to wake. For a possible overdose or poisoning, call Poison Help at 1-800-222-1222. If
+              Call 911 now for chest pain or pressure, a drooping face, sudden trouble seeing or speaking, trouble
+              breathing or finishing a sentence, a seizure, bleeding that will not stop, blue or gray lips or skin, a
+              closing throat, or someone who is hard to wake. For a possible overdose or poisoning, call Poison Help at 1-800-222-1222. If
               you are thinking about hurting yourself, call or text 988.
             </p>
             <Matches result={result} items={items} />
