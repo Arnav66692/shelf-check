@@ -137,9 +137,8 @@ export async function POST(request: Request): Promise<Response> {
   }
   try {
     const cabinet = await buildCabinet(products);
-    const { shown, hidden } = splitByAge(matchSymptoms(text, cabinet.items), profile, CHILD.test(text));
-    const shownIds = new Set(shown.map((match) => match.item.id));
-    const hiddenIds = new Set(hidden.map((entry) => entry.itemId));
+    const byAge = splitByAge(matchSymptoms(text, cabinet.items), profile, CHILD.test(text));
+    const ageHiddenIds = new Set(byAge.hidden.map((entry) => entry.itemId));
     const recalls = await recallFlags(cabinet.recallSubjects);
     const flags = [
       ...recalls.filter((flag) => flag.severity === "stop"),
@@ -147,17 +146,25 @@ export async function POST(request: Request): Promise<Response> {
       ...tagFlags(cabinet.items),
       ...recalls.filter((flag) => flag.severity !== "stop"),
     ];
+    // A product that a Check now warning in this cabinet is about is not suggested. Its warning stays on screen.
+    const blocked = byAge.shown.filter((match) => hasStop(flags, match.item.id));
+    const shown = byAge.shown.filter((match) => !hasStop(flags, match.item.id));
+    const hidden = [
+      ...byAge.hidden,
+      ...blocked.map((match) => ({
+        itemId: match.item.id,
+        reason: "A Check now warning in your cabinet is about this product. Read it below and ask a pharmacist what to use instead.",
+      })),
+    ];
+    const relevantIds = new Set([...shown, ...blocked].map((match) => match.item.id));
     return Response.json({
       emergency: false,
       childDoctor,
       forChild,
-      // A product with a Check now warning in this cabinet comes last, after the ones without one.
-      matches: [...shown]
-        .sort((a, b) => Number(hasStop(flags, a.item.id)) - Number(hasStop(flags, b.item.id)))
-        .map((match) => ({ itemId: match.item.id, uses: match.quote.excerpt })),
+      matches: shown.map((match) => ({ itemId: match.item.id, uses: match.quote.excerpt })),
       hidden,
       // A warning that needs a product already left out for this age does not apply.
-      flags: onlyFor(flags, shownIds).filter((flag) => !flag.itemIds.some((id) => hiddenIds.has(id))),
+      flags: onlyFor(flags, relevantIds).filter((flag) => !flag.itemIds.some((id) => ageHiddenIds.has(id))),
       unchecked: cabinet.unchecked,
     });
   } catch (error) {

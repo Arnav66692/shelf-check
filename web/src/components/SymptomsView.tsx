@@ -147,7 +147,8 @@ function Matches({ result, items }: { result: FullResult; items: readonly Produc
       )}
       {items.length > 0 && result.matches.length === 0 && hidden.length > 0 && (
         <p className="mt-2">
-          Nothing in your cabinet is labelled for this at this age. Ask a pharmacist what is safe for them.
+          Nothing in your cabinet can be suggested for this right now, for the reasons below. Ask a pharmacist what is
+          safe to use.
         </p>
       )}
       {items.length > 0 && result.matches.length === 0 && hidden.length === 0 && (
@@ -168,7 +169,7 @@ function Matches({ result, items }: { result: FullResult; items: readonly Produc
       </ul>
       {hidden.length > 0 && (
         <div className="facts mt-3">
-          <h3 className="facts-head">Left out for this age</h3>
+          <h3 className="facts-head">Left out</h3>
           <ul className="mt-2 grid gap-2">
             {hidden.map((entry) => (
               <li key={entry.itemId}>
