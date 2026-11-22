@@ -51,6 +51,9 @@ function scoreStrength(candidate: Candidate, query: ParsedQuery): number {
   return candidate.amounts.some((amount) => sameAmount(amount, strength)) ? STRENGTH_HIT : STRENGTH_MISS;
 }
 
+const CHILD_WORD = /^(?:infants?|child(?:ren)?s?|pediatric|kids?|junior|jr)$/i;
+const CHILD_ONLY_PENALTY = EXTRA_WORD_PENALTY * 2;
+
 export function scoreCandidate(candidate: Candidate, query: ParsedQuery): number {
   const wanted = query.nameTokens.map(comparableToken);
   const productName = parseQuery(candidate.name);
@@ -70,7 +73,10 @@ export function scoreCandidate(candidate: Candidate, query: ParsedQuery): number
         ? FORM_HIT
         : FORM_MISS;
   const nameScore = wanted.length === 0 ? 0 : (BRAND_WEIGHT * brandHits + GENERIC_WEIGHT * otherHits) / wanted.length;
-  return nameScore + strengthScore + formScore - EXTRA_WORD_PENALTY * Math.min(extraWords, MAX_EXTRA_WORDS) - candidate.penalty;
+  // Adult products come first unless the search asks for a child's version.
+  const childOnly = [...brandTokens].some((token) => CHILD_WORD.test(token)) && !wanted.some((token) => CHILD_WORD.test(token));
+  return nameScore + strengthScore + formScore - EXTRA_WORD_PENALTY * Math.min(extraWords, MAX_EXTRA_WORDS) -
+    (childOnly ? CHILD_ONLY_PENALTY : 0) - candidate.penalty;
 }
 
 function declaredAmount(ingredient: ProductIngredient): readonly NamedAmount[] {

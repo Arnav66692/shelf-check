@@ -79,3 +79,13 @@ test("a combination liquid's shared volume applies to both listed amounts", () =
     scoreCandidate(candidate, parseQuery("acetaminophen/dextromethorphan 160/5 mg per mL")),
   );
 });
+
+test("adult products rank above infants' and children's versions unless the search names a child", () => {
+  const candidate = (name: string) => ({ name, otherNames: "acetaminophen", amounts: [], penalty: 0 });
+  const adult = candidate("TYLENOL Extra Strength");
+  const infant = candidate("Infants TYLENOL");
+  const child = candidate("Childrens TYLENOL");
+  expect(scoreCandidate(adult, parseQuery("tylenol"))).toBeGreaterThan(scoreCandidate(infant, parseQuery("tylenol")));
+  expect(scoreCandidate(adult, parseQuery("tylenol"))).toBeGreaterThan(scoreCandidate(child, parseQuery("tylenol")));
+  expect(scoreCandidate(child, parseQuery("childrens tylenol"))).toBeGreaterThan(scoreCandidate(adult, parseQuery("childrens tylenol")));
+});
