@@ -179,6 +179,7 @@ function ChapterBody({ chapter }: { chapter: Chapter }) {
       return (
         <Split chapter={chapter} title="Every label, read together">
           <span className="block">The same drug hiding in two products, with the daily total. Labels that warn about something else you own, like warfarin and St. John&apos;s Wort. Warnings for your health, from four questions. FDA recalls on that exact product. Expired or nearly empty bottles.</span>
+          <span className="block mt-3 text-ink-soft">It only knows what the labels say. In our test it caught about 1 in 4 major drug interactions, so show your list to a pharmacist too.</span>
         </Split>
       );
     case "decides":

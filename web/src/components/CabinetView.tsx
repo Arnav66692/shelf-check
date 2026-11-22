@@ -152,6 +152,10 @@ export function CabinetView() {
                   ? "This checker can miss real interactions. Print this list and ask a pharmacist to look it over."
                   : `${stops > 0 && asks > 0 ? `${asks} more to ask about, ` : ""}${notes} ${notes === 1 ? "note" : "notes"} to read. Every one quotes the label it came from.`}
               </p>
+              <p className="mt-1 text-sm text-ink-soft">
+                It only knows what the labels say. In our test it caught about 1 in 4 major drug interactions, so show this
+                list to a pharmacist too.
+              </p>
               {topFlag && (
                 <p className="mt-4 border-t border-[var(--rule)] pt-3">
                   <span className="label">First, </span>
