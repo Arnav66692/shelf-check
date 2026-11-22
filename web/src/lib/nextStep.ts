@@ -70,6 +70,9 @@ function interactionStep(flag: Flag): string {
   if (flag.severity === "stop" && mentions(flag, BLOOD_THINNER_EFFECT)) {
     return "This can change how well the blood thinner works, which can lead to a clot or to bleeding. Do not start or stop the other product without asking the pharmacist, and ask whether you need an INR blood test. Call 911 for signs of a stroke, chest pain, or bleeding that will not stop.";
   }
+  if (flag.severity !== "stop" && leadMentions(flag, /\bINR monitoring\b[^.]*\bbotanicals?\b/i)) {
+    return "Tell the prescriber or pharmacist before you start or stop this supplement, and ask whether you need an INR blood test.";
+  }
   if (labelSaysStop(flag) && flag.prescribed) return HOLD_DOSE;
   if ((flag.highlight ?? []).some((term) => MAOI.test(term) || /phenelzine|tranylcypromine|isocarboxazid|selegiline|rasagiline|linezolid/i.test(term))) {
     return "Do not take these within 2 weeks of an MAOI unless the doctor who prescribed it says so. Ask a pharmacist now.";

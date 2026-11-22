@@ -390,8 +390,30 @@ function flagsForPair(labelOwner: CabinetItem, other: CabinetItem): readonly Fla
     flags.findIndex((earlier) => squash(earlier.quote?.text ?? "") === squash(flag.quote?.text ?? "")) === index);
 }
 
+const INR_WITH_BOTANICALS = /\bINR monitoring\b[^.]*\bbotanicals?\b/i;
+
+// The warfarin label asks for closer INR checks when any botanical is started or stopped, without naming each one.
+function warfarinSupplementFlag(labelOwner: CabinetItem, other: CabinetItem): Flag | undefined {
+  if (other.kind !== "supplement" || !labelOwner.ingredients.some((ingredient) => /^warfarin\b/i.test(ingredient.name))) return undefined;
+  const sentence = (["drug_interactions", "warnings_and_cautions"] as const)
+    .flatMap((section) => sectionSentences(labelOwner.label, section))
+    .find((candidate) => INR_WITH_BOTANICALS.test(candidate.text));
+  if (!sentence) return undefined;
+  const explain = `The ${labelOwner.displayName} label asks for more frequent INR blood tests when any herbal or dietary supplement is started or stopped.`;
+  return {
+    type: "interaction", severity: "ask", itemIds: [labelOwner.id, other.id],
+    title: `${labelOwner.displayName} and ${other.displayName}`,
+    detail: explain, explain, quote: toQuote(labelOwner.id, sentence),
+  };
+}
+
 export function interactionFlags(items: readonly CabinetItem[]): readonly Flag[] {
-  return items.flatMap((labelOwner) =>
+  const named = items.flatMap((labelOwner) =>
     items.filter((other) => other.id !== labelOwner.id).flatMap((other) => flagsForPair(labelOwner, other)),
   );
+  const pairs = new Set(named.map((flag) => [...flag.itemIds].sort().join("+")));
+  const general = items.flatMap((labelOwner) => items
+    .filter((other) => other.id !== labelOwner.id && !pairs.has([labelOwner.id, other.id].sort().join("+")))
+    .flatMap((other) => warfarinSupplementFlag(labelOwner, other) ?? []));
+  return [...named, ...general];
 }

@@ -38,7 +38,10 @@ describe("buildSupplementItem", () => {
     const [warfarin] = await loadMixedCabinet(["warfarin"], []);
     if (!warfarin) throw new Error("missing warfarin fixture");
     expect(warfarin.label?.warnings_and_cautions?.join(" ")).toMatch(/cholesterol microemboli/i);
-    expect(interactionFlags([warfarin, fishOil])).toEqual([]);
+    // Only the label's general INR note about any botanical, never the cholesterol warning.
+    const flags = interactionFlags([warfarin, fishOil]);
+    expect(flags.every((flag) => /INR monitoring/i.test(flag.quote?.text ?? "") && flag.severity === "ask")).toBe(true);
+    expect(flags.some((flag) => /cholesterol/i.test(flag.quote?.text ?? ""))).toBe(false);
     // The same rule also applies to previously saved cabinet items.
     const legacy = { ...fishOil, ingredients: [{ name: "cholesterol", value: 15, unit: "mg" }] };
     const warning = { ...warfarin, label: { drug_interactions: ["Avoid concomitant use with cholesterol."] } };
@@ -244,7 +247,9 @@ describe("drug labels that name supplements", () => {
       .join(" ");
 
     expect(warfarinText).not.toMatch(/fish oil|omega-3|vitamin D|melatonin/i);
-    expect(interactionFlags(items)).toEqual([]);
+    // No named warning, only the label's general note to check INR when a botanical starts or stops.
+    const flags = interactionFlags(items);
+    expect(flags.every((flag) => flag.severity === "ask" && /INR monitoring[^.]*botanicals?/i.test(flag.quote?.text ?? ""))).toBe(true);
   });
 
   test("calcium in a supplement does not match the calcium uremic arteriolopathy warning on warfarin", async () => {

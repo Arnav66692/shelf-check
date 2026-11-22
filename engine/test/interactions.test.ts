@@ -363,3 +363,12 @@ test("lithium salts match labels that say lithium, and a raised prothrombin time
   const fluconazole = { ...drug("fluconazole"), label: { drug_interactions: ["Coumarin-type anticoagulants: Prothrombin time may be increased in patients receiving concomitant fluconazole and warfarin."] } };
   expect(fromLabelOf(interactionFlags([fluconazole, drug("warfarin")]), "fluconazole")[0]?.severity).toBe("stop");
 });
+
+test("warfarin with a supplement its label does not name gets an INR note, and only when nothing more specific was found", () => {
+  const warfarin = { ...drug("warfarin"), label: { drug_interactions: ["More frequent INR monitoring should be performed when starting or stopping botanicals."] } };
+  const fishOil: CabinetItem = { ...drug("fish oil"), kind: "supplement" };
+  const flags = interactionFlags([warfarin, fishOil]);
+  expect(flags).toHaveLength(1);
+  expect(flags[0]).toMatchObject({ severity: "ask", itemIds: ["warfarin", "fish oil"] });
+  expect(interactionFlags([warfarin, drug("metoprolol")])).toEqual([]);
+});
