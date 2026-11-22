@@ -21,6 +21,8 @@ const DOSE_CHANGE = /\b(?:reduce|decrease|lower|adjust)\w* (?:the )?(?:\w+ )?(?:
 const PAIR_SAYS_STOP = /\b(?:contraindicated|(?:is |are )?not recommended|do not (?:use|take|start|give)|should not be (?:used|taken|given|coadministered|co-administered)|avoid (?:co-?administration|concomitant|use|taking)|must not)\b/i;
 const CONTRAST_DYE = /\b(?:iodinated contrast|contrast (?:agents?|imaging|dye|media))\b/i;
 const LEVEL_CHECK = /\b(?:monitor|check|measure)\w* (?:the )?(?:serum |plasma |blood )?(?:[\w-]+ )?(?:levels?|concentrations?)\b/i;
+const BLEEDING = /\bbleed\w*|\bhemorrhag\w*|\bhematoma/i;
+const SEROTONIN = /\bserotonin syndrome\b|\bserotonergic\b/i;
 const SEDATION = /\brespiratory depression|profound sedation|\bcoma\b/i;
 const CROSS_ALLERGY_STEP = "The label warns that people with this allergy may also react to this medicine. Tell the prescriber or pharmacist about the allergy today, before the next dose. If you have trouble breathing, swelling of the face or throat, or a severe rash, call 911.";
 const SPACE_APART = /\b\d+\s*(?:to\s*\d+\s*)?hours?\s+(?:before|after|apart)\b|\bseparate\b.*\bdoses?\b/i;
@@ -103,6 +105,17 @@ function interactionStep(flag: Flag): string {
   if (flag.allPrescribed && flag.severity === "stop") {
     return "The label warns of serious harm when these are taken together. Call the prescriber or pharmacist today, before the next dose, to confirm the plan.";
   }
+  // A Check now pair with a non-prescription product: say not to take it yet, and what to watch for.
+  const hold = flag.prescribed
+    ? "Do not take the non-prescription product with your prescribed medicine until a pharmacist says it is safe, and keep taking the prescribed one unless the prescriber says otherwise."
+    : "Do not take these together until a pharmacist says it is safe.";
+  if (flag.severity === "stop" && mentions(flag, BLEEDING)) {
+    return `${hold} Watch for bleeding: black or bloody stools, blood in the urine, coughing or throwing up blood, or bruising you cannot explain. Call 911 for bleeding that will not stop.`;
+  }
+  if (flag.severity === "stop" && mentions(flag, SEROTONIN)) {
+    return `${hold} Call 911 for a fast heartbeat, high fever, sweating, confusion, or stiff or twitching muscles.`;
+  }
+  if (flag.severity === "stop") return `${hold} Ask them today what to use instead.`;
   if (flag.allPrescribed) {
     return `These may be prescribed together on purpose. Make sure the prescriber and pharmacist know you take both, and ask if anything should change. ${KEEP_TAKING}`;
   }
