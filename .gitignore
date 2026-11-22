@@ -24,3 +24,4 @@ benchmark/cache-rerun2/
 results/matcher3/*.pt
 .gstack/
 benchmark/cache-b2/
+submission/clips/

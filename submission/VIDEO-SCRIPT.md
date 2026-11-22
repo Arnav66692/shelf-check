@@ -6,6 +6,8 @@ This version matches the live site after the Nov 21 night update (dark night-sky
 
 ## Before you hit record
 
+- Silent screen recordings of sections 1 to 5 are ready in `submission/clips/` (1440x900 mp4, recorded from the live site). You can narrate over them instead of clicking live, and only record section 6 (your code) yourself.
+
 - Open https://shelf-check-nu.vercel.app in a private window, so the short opening animation plays and nothing is saved from before.
 - A real Tylenol and a real NyQuil (or any acetaminophen cold medicine) on the desk, labels facing the camera. If you do not have them, skip the bottles and start on the site.
 - `engine/src/flags/dailyTotal.ts` open in your editor, for section 6. Have a terminal ready in `engine/`.
