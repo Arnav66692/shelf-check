@@ -114,9 +114,9 @@ const AGE_NUMBER = "(\\d{1,3})";
 const YEARS = "(?:years?|yrs?\\.?)(?:\\s+of\\s+age)?";
 const RESTRICTION = "(do not use|do not give|ask a doctor|consult a doctor)";
 const AGE_CLAUSE_PATTERNS: readonly { readonly pattern: RegExp; readonly kind: AgeClauseKind }[] = [
-  { kind: "from_to_under", pattern: new RegExp(`${AGE_NUMBER}\\s+to\\s+under\\s+${AGE_NUMBER}\\s*${YEARS}\\s*:?\\s*${RESTRICTION}`, "gi") },
-  { kind: "under", pattern: new RegExp(`(?<!to\\s)under\\s+${AGE_NUMBER}\\s*${YEARS}\\s*:?\\s*${RESTRICTION}`, "gi") },
-  { kind: "from_to", pattern: new RegExp(`${AGE_NUMBER}\\s+to\\s+${AGE_NUMBER}\\s*${YEARS}\\s*:?\\s*${RESTRICTION}`, "gi") },
+  { kind: "from_to_under", pattern: new RegExp(`${AGE_NUMBER}\\s+to\\s+under\\s+${AGE_NUMBER}\\s*${YEARS}\\s*[:•■▪●]?\\s*${RESTRICTION}`, "gi") },
+  { kind: "under", pattern: new RegExp(`(?<!to\\s)under\\s+${AGE_NUMBER}\\s*${YEARS}\\s*[:•■▪●]?\\s*${RESTRICTION}`, "gi") },
+  { kind: "from_to", pattern: new RegExp(`${AGE_NUMBER}\\s+to\\s+${AGE_NUMBER}\\s*${YEARS}\\s*[:•■▪●]?\\s*${RESTRICTION}`, "gi") },
   { kind: "or_older", pattern: new RegExp(`\\bage\\s+${AGE_NUMBER}\\s+(?:or|and)\\s+(?:older|over)\\b`, "gi") },
   {
     kind: "not_intended_under",

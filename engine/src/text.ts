@@ -1,4 +1,5 @@
-const SENTENCE_BOUNDARY = /(?<=[.!?][)\]"'”’]?)\s+(?=[A-Z0-9(\["“])|\s*[•■▪●◦♦]\s*/g;
+// A bullet that only introduces an age instruction ("children under 12 years ■ ask a doctor") stays in the sentence.
+const SENTENCE_BOUNDARY = /(?<=[.!?][)\]"'”’]?)\s+(?=[A-Z0-9(\["“])|\s*[•■▪●◦♦]\s*(?!\s*(?:[Aa]sk a doctor|[Dd]o not (?:use|give)|[Cc]onsult a doctor)\b)/g;
 // Recognizable transitions between flattened Drug Facts bullets. A bare "if"
 // often qualifies the preceding instruction and is not, by itself, a boundary.
 const DRUG_FACTS_BULLET = /(?<=\b(?:in |for )?children under \d+ years?(?: of age)?)\s+(?=if you (?:are (?:now )?taking|have ever had)\b|with any other\b)|(?<=\bto make a child sleepy)\s+(?=with any other\b)|(?<=\beven one used on (?:the )?skin)\s+(?=(?:in|for) children under\b)|(?<=\bpain reliever\/fever reducer)\s+(?=right before or after heart surgery\b)/gi;

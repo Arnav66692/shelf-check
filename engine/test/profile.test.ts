@@ -629,3 +629,12 @@ test("angioedema with one ACE inhibitor flags another ACE inhibitor whose label 
   };
   expect(profileFlags([enalapril], { ...NOTHING, allergies: ["lisinopril"] })[0]).toMatchObject({ severity: "stop" });
 });
+
+test("an age line split by a bullet before ask a doctor still gives an age card", () => {
+  const apap: CabinetItem = {
+    id: "apap", displayName: "Acetaminophen 500 mg", kind: "otc", verified: true, ingredients: [{ name: "acetaminophen", value: 500, unit: "mg" }],
+    label: { dosage_and_administration: ["Directions do not take more than directed ■ adults and children 12 years and over ■ take 2 caplets every 6 hours ■ children under 12 years ■ ask a doctor"] },
+  };
+  expect(ageFlag([apap], 8)).toMatchObject({ severity: "ask" });
+  expect(ageFlag([apap], 30)).toBeUndefined();
+});
