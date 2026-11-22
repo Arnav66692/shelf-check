@@ -111,7 +111,7 @@ describe("checkReconstitutedDose", () => {
     expect(flags[0]).toMatchObject({ type: "unit_mismatch", severity: "stop", itemIds: ["vial"] });
     expect(flags[0]?.numbers?.["factor"]).toBeCloseTo(0.001, 10);
     expect(flags[0]?.detail).toContain("0.25 mg (250 mcg) and 0.25 mcg");
-    expect(flags[0]?.detail).toContain("A gap of 1000 times is what happens when mg and mcg are swapped.");
+    expect(flags[0]?.detail).toContain("A gap of 1,000 times is what happens when mg and mcg are swapped.");
     expect(flags[0]?.source).toBe(UNIT_CONFUSION_STATEMENT);
   });
 

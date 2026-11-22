@@ -305,7 +305,7 @@ describe("daily maximum evidence", () => {
     if (!tylenol || !nyquil) throw new Error("fixtures missing");
     const [flag] = dailyTotalFlags([tylenol, nyquil, { ...withoutLabel(tylenol), id: "unreadable" }], adultProfile);
     expect(flag).toMatchObject({ severity: "stop", numbers: { totalMgPerDayAtEachMaximum: null, knownSubtotalMgPerDay: 5600, labelWarningMgPerDay: 4000 } });
-    expect(flag?.explain).toContain("5600");
-    expect(flag?.explain).toContain("4000");
+    expect(flag?.explain).toContain("5,600");
+    expect(flag?.explain).toContain("4,000");
   });
 });

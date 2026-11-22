@@ -54,7 +54,7 @@ export function joinNames(names: readonly string[]): string {
 }
 
 export function formatNumber(value: number): string {
-  return String(Number(value.toFixed(4)));
+  return Number(value.toFixed(4)).toLocaleString("en-US", { maximumFractionDigits: 4 });
 }
 
 export const MAX_EXCERPT_LENGTH = 240;
