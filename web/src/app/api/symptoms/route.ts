@@ -13,6 +13,7 @@ const YOUNG_INFANT_MONTHS = 3;
 const FEVER = /\b(fever|feverish|temperature|hot to the touch)\b/i;
 const BABY = /\b(baby|babies|newborn|infant)\b/i;
 const CHILD = /\b(baby|babies|newborn|infant|toddler|child|children|kid|kids|son|daughter)\b/i;
+const AGE_IN_YEARS = /\b(\d{1,2})\s*(?:-\s*)?(?:years?|yrs?|y\/?o)\b(?:\s*-?\s*old)?/i;
 const AGE_IN_DAYS = /\b(\d+)\s*(?:-\s*)?(?:days?)\s*old\b/i;
 const AGE_IN_WEEKS = /\b(\d+)\s*(?:-\s*)?(?:weeks?|wks?)\s*old\b/i;
 const AGE_IN_MONTHS = /\b(\d+)\s*(?:-\s*)?(?:months?|mos?)\s*old\b/i;
@@ -30,6 +31,16 @@ function underThreeMonthsInText(text: string): boolean {
   if (weeks && Number(weeks[1]) < WEEKS_IN_THREE_MONTHS) return true;
   const months = AGE_IN_MONTHS.exec(text);
   return months !== null && Number(months[1]) < YOUNG_INFANT_MONTHS;
+}
+
+// "my 3 year old has a fever" says the age even when the profile does not.
+function childAgeInText(text: string): number | undefined {
+  const years = AGE_IN_YEARS.exec(text);
+  if (years && (CHILD.test(text) || /\byears?[- ]old\b|\by\/?o\b/i.test(text))) {
+    const age = Number(years[1]);
+    return age < CHILD_AGE_YEARS ? age : undefined;
+  }
+  return /\btoddler\b/i.test(text) ? 1 : undefined;
 }
 
 function needsChildDoctor(text: string, profile: Profile): boolean {
@@ -83,7 +94,9 @@ export async function POST(request: Request): Promise<Response> {
   if (text.length < 3 || products === null) {
     return Response.json({ error: "Say how you feel in a few words." }, { status: 400 });
   }
-  const profile = readProfile(body?.profile);
+  const saved = readProfile(body?.profile);
+  const statedAge = childAgeInText(text);
+  const profile = statedAge === undefined ? saved : { ...saved, ageYears: statedAge };
   const screen = screenEmergency(text, profile.ageYears !== undefined ? { ageMonths: profile.ageYears * 12 } : undefined);
   if (screen.emergency) {
     return Response.json({
@@ -97,7 +110,7 @@ export async function POST(request: Request): Promise<Response> {
     });
   }
   const childDoctor = needsChildDoctor(text, profile);
-  const forChild = CHILD.test(text) && (profile.ageYears === undefined || profile.ageYears >= CHILD_AGE_YEARS);
+  const forChild = statedAge === undefined && CHILD.test(text) && (profile.ageYears === undefined || profile.ageYears >= CHILD_AGE_YEARS);
   if (childDoctor) {
     return Response.json({ emergency: false, childDoctor, forChild, matches: [], flags: [], hidden: [], unchecked: [] });
   }
