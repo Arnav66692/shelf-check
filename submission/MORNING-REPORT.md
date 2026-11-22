@@ -19,6 +19,16 @@ AI judge scores on the EvoHacks rubric, out of 60, each from a fresh simulated j
 
 These are AI judges, not real people. The Impact and Video scores cannot go higher until you run the real-person test and record the video. Those are the biggest open points left.
 
+## Added on Nov 22 from 11:09 to 11:28 AM PT, branch orano-look
+
+This is on branch orano-look, not on main, so https://shelf-check-nu.vercel.app does not show it until main is updated and deployed.
+
+- New look, inspired by the Orano innovation slider and rebuilt in original code: white, blue, red and green, a wireframe model for each tool.
+- Zephyr, our own image model, on the Add page. The run 3 model in the browser, 8 bit, WebGPU or WASM, photo never uploaded. 76.2 percent first guess and 91.1 percent top five on the 2,283 test photos (`results/matcher-web/result.json`). It misses the 90 percent bar set before training, so it shows 5 choices and you pick. Not preregistered, scored after the run 4 test.
+- Learning center, `/learn`. Nine parts per medicine, every line quoted from the FDA label, "The label does not say." when empty, no ranking. 17 tests pass.
+- Find care, `/care`. OpenStreetMap map of pharmacies, urgent care and ERs sorted by how you feel, 911 first for an emergency, and "Call to ask if they have it in stock" for each pharmacy.
+- Docs fix: run 3 was the DINOv2 small model (`PREREG-TRAINED-3.md`, `train_matcher.py`), not the base model as the tested page and README said before.
+
 ## What changed overnight
 
 - Nine rounds of an AI pharmacist review on real cabinets, plus a final safety sweep. Every dangerous item it found is fixed and live:
@@ -40,7 +50,7 @@ These are AI judges, not real people. The Impact and Video scores cannot go high
 
 - Benchmark, 40 doubled acetaminophen pairs: 40 of 40 caught.
 - Benchmark, 40 new major interactions: 10 of 40 in the final run against the live site, which meets the bar of 10. The same frozen pairs over the night: 10, 10, 9, 9, 10, so it sits right at the bar. False alarms on 40 harmless pairs: 0 every time.
-- Trained photo matcher: best 85.7 percent first guess against a 90 percent bar. Failed, not used in the app. The page and README say so.
+- Trained photo matcher: best 85.7 percent first guess (run 4) against a 90 percent bar. Failed. Run 4 needs Apple Vision and SIFT on a Mac, so it is not in the app. Run 3 is in the app as Zephyr, at 76.2 percent first guess in the browser, and only suggests 5 choices. The page and README say so.
 - Known gaps: some QT-prolonging pairs, levothyroxine with iron, losartan with potassium supplements, some search misses for rare products, and some Eliquis plus supplement pairs that the labels do not name.
 
 ## What only you can do (in this order)

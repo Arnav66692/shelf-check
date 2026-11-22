@@ -36,6 +36,9 @@ Every warning quotes the line from the label it came from, so you can show it to
 - an injection dose check that shows where the plunger should stop, and catches the 5 units versus 50 units mix-up the FDA has warned about when your instructions give the dose two ways
 - family profiles, a printable list for your doctor, read aloud, larger text, barcode scanning, and safe disposal from the FDA flush list
 - a peptide screen that quotes the FDA label for approved peptides like Ozempic and Mounjaro, and says plainly when a peptide has no approved use or dose
+- Zephyr, our own image model, which runs inside your browser on the Add page. Take a photo of a box and it shows the 5 closest official labels. You pick yours and check it against the bottle. The photo never leaves your device, and Zephyr only suggests, it never adds anything by itself
+- a learning center for each medicine in your cabinet, in nine parts: the active ingredient, what it is for, how it works, when it starts working and how long it lasts, how to take it, food and drink, side effects, rest, sleep and driving, and who should not take it. Every line is quoted word for word from the FDA label. When the label is silent the page says "The label does not say." It never ranks one medicine over another
+- Find care, a map of pharmacies, urgent care and emergency rooms near you, sorted by how you feel. If you pick an emergency, 911 comes first. No public list shows which pharmacy has which medicine in stock, so each pharmacy has a "Call to ask if they have it in stock" button instead of a guess
 
 It is a safety check and not medical advice. It never says anything is safe, because a label can be silent about a real risk.
 
@@ -49,7 +52,11 @@ The part that decides the warnings is a rules engine in TypeScript, and no AI mo
 - the FDA's published statements and the WADA 2026 Prohibited List for peptides, quoted word for word and checked against saved copies by tests
 - the NLM Pillbox archive and DailyMed product data for the pill finder, 83,912 records
 
-The engine has 764 tests that run on saved real label records, and the product lookup has 113 more. The app is Next.js and TypeScript, deployed on Vercel.
+- OpenStreetMap for Find care: Nominatim to turn a place name into a location, Overpass to find pharmacies, urgent care and hospitals, and a Leaflet map with OpenStreetMap tiles
+
+The engine has 764 tests that run on saved real label records, the product lookup has 113 more, and the learning center has 17. The app is Next.js and TypeScript, deployed on Vercel.
+
+The look is an original rebuild inspired by the Orano innovation slider: white, with blue, red and green, and a wireframe model for each tool. No code, images or models were copied from it.
 
 For reading a photo of a label I tested before building, with the pass bar written down before every test:
 
@@ -62,7 +69,9 @@ For reading a photo of a label I tested before building, with the pass bar writt
 
 The cross-check only marks a reading as matched when the drug code it read points to an FDA record and the ingredients and strengths it read from the printed text are exactly that record's. Everything else goes back to you to check by eye.
 
-I also trained my own image model. I fine-tuned DINOv2 on 3,588 products from the FDA label archive, using made up phone photos of each official label, and scored each run on 2,169 to 2,283 photos of products it had never seen. The first run went from 4.1 percent to 78.0 percent right on the first guess, and 91.3 percent in the top five. That missed the 90 percent bar I set before training. A second run with a bigger model only fit one round of training in its time limit and reached 69.8 percent. A third run trained the bigger model properly and reached 78.3 percent. A fourth added text read off the photo and keypoint matching on top of it and reached 85.7 percent on the first guess and 95.6 percent in the top five, still short of the bar. None of them is in the app, so the camera only suggests and you confirm.
+I also trained my own image model. I fine-tuned DINOv2 on 3,588 products from the FDA label archive, using made up phone photos of each official label, and scored each run on 2,169 to 2,283 photos of products it had never seen. The first run went from 4.1 percent to 78.0 percent right on the first guess, and 91.3 percent in the top five. That missed the 90 percent bar I set before training. A second run with a bigger model only fit one round of training in its time limit and reached 69.8 percent. A third run went back to the small model with the time spent on training and reached 78.3 percent. A fourth added text read off the photo and keypoint matching on top of it and reached 85.7 percent on the first guess and 95.6 percent in the top five, still short of the bar.
+
+On the last morning I put the run 3 model in the app as Zephyr. It is exported to ONNX, shrunk to 8 bit numbers (25 MB), and runs in the browser with onnxruntime-web, on the graphics chip through WebGPU when the browser has it and on the processor when it does not. On the same 2,283 test photos it picks the right product first 76.2 percent of the time and has it in the top five 91.1 percent of the time. That misses the 90 percent bar I set before training, so Zephyr ships only as a suggestion tool. It shows 5 choices and you pick. The browser version uses the whole photo with no crop and compares against one clean image per product, which likely explains why it scores a little under run 3's 78.3. I scored it after the run 4 test was done, so it was not preregistered. The run 4 hybrid scored higher, but it needs Apple's Vision text reader and SIFT keypoint matching on a Mac, so it cannot run in a browser and is not in the app. All of these test photos are made by my own renderer from official label images, not real phone photos of real bottles, so real photos would likely score lower.
 
 ## Does it catch real problems?
 
@@ -109,24 +118,26 @@ Set the bar before you test, because it stops you from moving it after. And for 
 
 ## What's next
 
-No real users have tested it yet, so that comes first: people who manage medicines for a parent or a kid, with a pharmacist checking the answers. Then turning label warnings that name a drug type or effect into the drugs they cover, which is where most missed interactions come from, and testing the photo reader on real phone photos of real bottles.
+No real users have tested it yet, so that comes first: people who manage medicines for a parent or a kid, with a pharmacist checking the answers. Then turning label warnings that name a drug type or effect into the drugs they cover, which is where most missed interactions come from, and testing the photo reader and Zephyr on real phone photos of real bottles.
 
 ## Built with
 
-typescript, next.js, react, tailwind css, node.js, python, pytorch, fastapi, ollama, qwen3-vl, dinov2, zxing, vitest, vercel, openfda, dailymed, rxnorm, nih-dsld, nlm-pillbox
+typescript, next.js, react, tailwind css, node.js, python, pytorch, onnx, onnxruntime-web, webgpu, fastapi, ollama, qwen3-vl, dinov2, zxing, leaflet, openstreetmap, vitest, vercel, openfda, dailymed, rxnorm, nih-dsld, nlm-pillbox
 
 ## Try it out
 
 - Live site: https://shelf-check-nu.vercel.app
 - Code: https://github.com/Arnav66692/shelf-check
 
-The live site runs everything except the photo reader and the possible causes list, which need the local vision model on my laptop. They are not in the video, and the rest of the site works without them.
+The site runs everything except the label photo reader and the possible causes list, which need the local vision model on my laptop. They are not in the video, and the rest of the site works without them. Zephyr does not need my laptop, because it runs in your browser.
 
 ## Built during the event, and what was not
 
 All of the code, the tests, the data processing and the trained model were made during EvoHacks 2, on November 21 and 22, 2026. Nothing from my earlier projects was reused. The first commit in the repo is from 4:10 PM on November 21, seven hours after the start, because I worked without git until the first deploy. It adds 80,159 lines, and about 63,000 of those are saved FDA label records, test fixtures and notes, not code.
 
-Not made by me: the open weight models Qwen3-VL 8B, Florence-2 and DINOv2, the open source libraries listed above, and the public data from the FDA, NIH, NLM and WADA.
+The engine, lookup, benchmarks and the four training runs were built on November 21 and overnight. On the morning of November 22, after that overnight work, I built the Zephyr browser export, the learning center, the Find care map and the new look. Those commits are from 11:09 AM to 11:28 AM PT on November 22, and this write-up was updated after them, all before the 12:00 PM PT deadline. Nothing was built after the deadline.
+
+Not made by me: the open weight models Qwen3-VL 8B, Florence-2 and DINOv2, the open source libraries listed above, OpenStreetMap map data and tiles, and the public data from the FDA, NIH, NLM and WADA. The look is inspired by the Orano innovation slider and rebuilt in original code.
 
 ## AI use
 
@@ -144,3 +155,5 @@ None used.
 - Interaction reference: DDInter, https://ddinter.scbdd.com
 - 5 units versus 50 units: FDA alert on compounded semaglutide dosing errors, https://www.fda.gov/drugs/human-drug-compounding/fda-alerts-health-care-providers-compounders-and-patients-dosing-errors-associated-compounded
 - Test results: the results and benchmark folders and the preregistration files in the repo
+- Zephyr in the browser, 76.2 and 91.1 percent on 2,283 photos: results/matcher-web/result.json, the output of tools/matcher_eval.py
+- Run 3, 78.3 and 91.7 percent: results/matcher3/report.json

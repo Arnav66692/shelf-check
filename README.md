@@ -17,6 +17,10 @@ A safety check, not medical advice. No warning does not mean safe, because a lab
 | `web/` | The Next.js app. |
 | `reader_service.py`, `readers.py`, `verify.py` | The local photo reader and the cross-check that decides when a reading counts as matched. |
 | `train_matcher.py`, `render.py`, `extract_labels.py` | Training our own label matcher (DINOv2) on made up phone photos of official label images. |
+| `tools/matcher_export.py`, `tools/matcher_eval.py` | Export the run 3 model to ONNX (8 bit) for the browser, and score that exact file. Result in `results/matcher-web/result.json`. |
+| `web/public/matcher/` | Zephyr, the exported model, its gallery of official label images and the web worker that runs it with onnxruntime-web. |
+| `web/src/server/learn/` | The learning center. Picks label lines for each section and quotes them word for word. 17 tests. |
+| `web/src/app/api/care/route.ts`, `web/src/components/care/` | Find care. OpenStreetMap search (Nominatim and Overpass) and the Leaflet map. |
 | `PREREG*.md`, `PREREG.sha256` | The pass bars, written and hashed before each test ran. |
 | `results/` | Test results. |
 | `submission/` | The video script, code walkthrough and Devpost text. |
@@ -44,6 +48,16 @@ cd engine && npm install && npm test
 ```bash
 cd lookup && npm install && npm test
 ```
+
+```bash
+node --test web/src/server/learn/lesson.test.ts
+```
+
+## What is new on Nov 22
+
+- **Zephyr**, our own image model, on the Add page ("Match a photo with Zephyr"). The run 3 DINOv2 small model, exported to ONNX at 8 bit, running in the browser with onnxruntime-web (WebGPU, or WASM when WebGPU is missing). The photo is never uploaded. It shows the 5 closest official labels and you confirm one.
+- **Learning center**, `/learn` and `/learn/[setId]`. Nine parts per medicine, every line quoted word for word from the FDA label through openFDA. An empty part says "The label does not say." It never ranks medicines.
+- **Find care**, `/care`. Pharmacies, urgent care and emergency rooms near you on an OpenStreetMap map, sorted by how you feel. An emergency puts 911 first. No stock data exists, so each pharmacy shows "Call to ask if they have it in stock".
 
 Photo reader and possible causes (optional, run on a Mac with Ollama):
 
@@ -82,12 +96,15 @@ Each bar was written down before the test ran (see the `PREREG` files).
 | Qwen3-VL 8B on the same 20 | 17 of 20 right | 18 | Failed |
 | Qwen3-VL 8B on 100 new tablet and capsule labels | 82 fully right, 5 confidently wrong | 90, at most 3 wrong | Failed |
 | Cross-check on 100 more new labels | 61 marked matched, 0 of those wrong | 50, at most 1 wrong | Passed |
-| Our trained DINOv2 matcher, run 1 (small model), 2,175 held out photos | 78.0% first guess, 91.3% top five (untrained 4.1%) | 90%, 97% | Failed, not used in the app |
+| Our trained DINOv2 matcher, run 1 (small model), 2,175 held out photos | 78.0% first guess, 91.3% top five (untrained 4.1%) | 90%, 97% | Failed |
 | Run 2 (base model, one round), 2,169 new held out photos | 69.8% first guess, 84.1% top five (untrained 15.2%) | 90%, 97% | Failed |
-| Run 3 (base model, best of 20 rounds), 2,283 new held out photos | 78.3% first guess, 91.7% top five (untrained 14.2%) | 90%, 97% | Failed |
-| Run 4 (run 3 plus text read off the photo and keypoint matching, `PREREG-TRAINED-4.md`), same 2,283 photos | 85.7% first guess, 95.6% top five | 90%, 97% | Failed, not used in the app |
+| Run 3 (back to the small model, best of 20 rounds, `PREREG-TRAINED-3.md`), 2,283 new held out photos | 78.3% first guess, 91.7% top five (untrained 14.2%) | 90%, 97% | Failed |
+| Run 4 (run 3 plus text read off the photo and keypoint matching, `PREREG-TRAINED-4.md`), same 2,283 photos | 85.7% first guess, 95.6% top five | 90%, 97% | Failed, not in the app |
+| Zephyr: run 3 exported to ONNX, 8 bit, in the browser, same 2,283 photos (`results/matcher-web/result.json`) | 76.2% first guess, 91.1% top five | 90% first guess | Failed, ships as a suggestion tool that shows 5 choices |
 
-The test images are official label artwork, not phone photos of real bottles, so real photos would likely score lower. With 61 matched and none wrong, the true error rate could still be about 5 percent, which is why the app always asks you to confirm.
+Zephyr is the run 3 model only. It uses the whole photo with no crop and compares against one clean image per product, which likely explains why it scores a little under run 3. It was scored after the run 4 test was done, so that score was not preregistered. The run 4 hybrid scored higher, but it needs Apple's Vision text reader and SIFT keypoint matching on a Mac (`results/matcher4/`), so it cannot run in a browser and is not in the app.
+
+The test photos are made by our renderer from official label images, not phone photos of real bottles, so real photos would likely score lower. With 61 matched and none wrong, the true error rate could still be about 5 percent, which is why the app always asks you to confirm.
 
 ## Data sources
 
@@ -95,7 +112,10 @@ The test images are official label artwork, not phone photos of real bottles, so
 - NIH: RxNorm and RxClass (https://lhncbc.nlm.nih.gov/RxNav), Dietary Supplement Label Database (https://dsld.od.nih.gov)
 - NLM Pillbox archive, frozen in 2020
 - WADA 2026 Prohibited List
+- OpenStreetMap: Nominatim, Overpass and map tiles, for Find care
 
 ## Credits
 
-Open weight models Qwen3-VL 8B, Florence-2 and DINOv2. Libraries: Next.js, React, Tailwind CSS, ZXing, PyTorch, Transformers, FastAPI, Vitest. Built with an AI coding agent (Claude Code), with code review help from Codex. The visual style follows byotone.com, measured and rebuilt in original code with no copied code, images or audio. The fonts are free stand-ins (General Sans, Space Mono, Courier Prime). Two earlier looks are kept on the branches flora-look and heartbeat-look.
+Open weight models Qwen3-VL 8B, Florence-2 and DINOv2. Libraries: Next.js, React, Tailwind CSS, ZXing, PyTorch, Transformers, ONNX Runtime Web, Leaflet, FastAPI, Vitest. Map data and tiles from OpenStreetMap contributors. Built with an AI coding agent (Claude Code), with code review help from Codex.
+
+The look on this branch (orano-look) is inspired by the Orano innovation slider: white, blue, red and green, with a wireframe model for each tool. It is an original rebuild. No code, images or models were copied. The fonts are Saira and Nunito Sans. The earlier byotone-inspired look is on main, and two older looks are kept on the branches flora-look and heartbeat-look.
