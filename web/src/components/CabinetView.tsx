@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ApiError, checkCabinet, type CheckResult } from "@/lib/api";
-import { useCabinet, useProfile, useSupply } from "@/lib/store";
+import { EXAMPLE_NAME, useCabinet, useHousehold, useProfile, useSupply } from "@/lib/store";
 import { supplyFlags } from "@/lib/supply";
 import { nextStep } from "@/lib/nextStep";
 import { useToday } from "@/lib/today";
@@ -21,6 +21,7 @@ type CheckState = { status: "checking" } | Outcome;
 
 export function CabinetView() {
   const { items, remove, replaceAll } = useCabinet();
+  const { active } = useHousehold();
   const addedId = useSearchParams().get("added");
   const { profile } = useProfile();
   const { supply } = useSupply();
@@ -89,6 +90,14 @@ export function CabinetView() {
           </h2>
           <ReadAloud lines={spoken} />
         </div>
+        {active.name === EXAMPLE_NAME && (
+          <p className="facts mt-4 flex flex-wrap items-center gap-3">
+            <span>This is an example cabinet, so you can see how the warnings work.</span>
+            <Link href="/start" className="btn">
+              Start my own
+            </Link>
+          </p>
+        )}
         {added && (
           <p ref={bannerRef} tabIndex={-1} className="facts mt-4 text-[1.02rem] focus:outline-none" role="status">
             Added <strong>{added.displayName}</strong>.{" "}

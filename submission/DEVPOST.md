@@ -31,7 +31,7 @@ You build a list of everything in your medicine cabinet, including prescriptions
 
 Every warning quotes the line from the label it came from, so you can show it to a pharmacist. There's also:
 
-- a symptoms screen that finds what you already own that is labelled for how you feel, and sends emergency symptoms straight to a call 911 screen
+- a symptoms screen that finds what you already own that is labelled for how you feel, and sends emergency phrases it recognizes to a call 911, 988 or Poison Help screen (it is a list of phrases, not a diagnosis, so every result also shows when to call 911)
 - a pill finder for a pill you can't identify, by imprint, colour and shape, with Poison Help at the top
 - an injection dose check that catches the 5 units versus 50 units mix-up the FDA has warned about
 - family profiles, a printable list for your doctor, read aloud, larger text, barcode scanning, and safe disposal from the FDA flush list
