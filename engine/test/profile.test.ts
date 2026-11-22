@@ -558,3 +558,12 @@ describe("profile flags: input and wiring", () => {
     expect(JSON.stringify([items, profile])).toBe(before);
   });
 });
+
+test("an allergy to one NSAID flags another NSAID whose label says not to use it after a reaction to any other pain reliever", async () => {
+  const items = await loadCabinet("ibuprofen");
+  const [flag] = profileFlags(items, { ...NOTHING, allergies: ["naproxen"] }).filter((f) => f.match?.kind === "allergen");
+  expect(flag).toMatchObject({ severity: "stop" });
+  expect(flag?.quote?.text).toMatch(/allergic reaction to any other pain reliever\/fever reducer$/);
+  expectVerbatim(flag?.quote, items);
+  expect(profileFlags(items, { ...NOTHING, allergies: ["acetaminophen"] }).filter((f) => f.match?.kind === "allergen")).toEqual([]);
+});

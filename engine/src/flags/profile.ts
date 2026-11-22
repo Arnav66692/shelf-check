@@ -4,7 +4,7 @@ import { formatNumber, termRegExp } from "../text.ts";
 import type { TextSpan } from "../text.ts";
 import type { CabinetItem, Flag, FlagNumbers, LabelSectionName, ProfileMatchKind, Quote, Severity } from "../types.ts";
 import { severityForSection } from "./severity.ts";
-import { allergyFamily, isNsaid } from "./allergyFamilies.ts";
+import { allergyFamily, isNsaid, isNsaidName } from "./allergyFamilies.ts";
 
 export const CONDITION_IDS = [
   "liver_disease",
@@ -544,7 +544,23 @@ function allergyFlags(item: CabinetItem, allergen: string): readonly Flag[] {
   const declared = declaredAllergen(item, allergen, pattern);
   if (declared.length) return declared;
   const warning = allergenInAllergyWarning(item, allergen, pattern);
-  return warning.length ? warning : familyAllergen(item, allergen);
+  if (warning.length) return warning;
+  const family = familyAllergen(item, allergen);
+  return family.length ? family : otherPainRelieverAllergy(item, allergen);
+}
+
+// OTC NSAID labels say not to use them after an allergic reaction to any other pain reliever.
+function otherPainRelieverAllergy(item: CabinetItem, allergen: string): readonly Flag[] {
+  if (!isNsaidName(allergen) || !item.ingredients.some(isNsaid)) return [];
+  const [hit] = firstHitPerSentence(item, ["do_not_use", "warnings"], /\ballergic reaction to (?:any )?other pain relievers?(?:\/fever reducers?)?/i);
+  if (!hit) return [];
+  const explain = `Your profile lists an allergy to ${allergen}. The ${item.displayName} label says not to use it if you have had an allergic reaction to any other pain reliever.`;
+  return [{
+    type: "profile", severity: "stop", itemIds: [item.id],
+    title: `${item.displayName} and an allergy to ${allergen}`,
+    detail: explain, explain, quote: quoteOf(item, hit),
+    match: { text: hit.text, term: allergen, kind: "allergen" },
+  }];
 }
 
 function validated(profile: HealthProfile): HealthProfile {

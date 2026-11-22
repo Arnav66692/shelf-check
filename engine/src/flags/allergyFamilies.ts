@@ -70,3 +70,8 @@ export function allergyFamily(ingredient: Ingredient, allergen: string): string 
 export function isNsaid(ingredient: Ingredient): boolean {
   return belongsTo(ingredient, NSAIDS);
 }
+
+// An allergy to one NSAID, by its drug name, typed in the profile.
+export function isNsaidName(allergen: string): boolean {
+  return NSAIDS.ingredients.test(allergen.trim()) && !/^aspirin$/i.test(allergen.trim());
+}
