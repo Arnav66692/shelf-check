@@ -12,8 +12,8 @@ A safety check, not medical advice. No warning does not mean safe, because a lab
 
 | Folder or file | What it is |
 |---|---|
-| `engine/` | The rules engine in TypeScript. Duplicates, daily totals, interactions, health profile warnings, supplements, label tags, recalls, disposal, peptides, injection math, pill matching. No AI model decides any warning. 746 tests. |
-| `lookup/` | Finds the official record for a product by name, drug code (NDC) or barcode, across openFDA, DailyMed, RxNorm and the NIH supplement database. 111 tests. |
+| `engine/` | The rules engine in TypeScript. Duplicates, daily totals, interactions, health profile warnings, supplements, label tags, recalls, disposal, peptides, injection math, pill matching. No AI model decides any warning. 764 tests. |
+| `lookup/` | Finds the official record for a product by name, drug code (NDC) or barcode, across openFDA, DailyMed, RxNorm and the NIH supplement database. 113 tests. |
 | `web/` | The Next.js app. |
 | `reader_service.py`, `readers.py`, `verify.py` | The local photo reader and the cross-check that decides when a reading counts as matched. |
 | `train_matcher.py`, `render.py`, `extract_labels.py` | Training our own label matcher (DINOv2) on made up phone photos of official label images. |
@@ -67,7 +67,7 @@ Bars written and hashed before the first run (`benchmark/PREREG.md`). First run 
 | Same pairs: daily total in mg | 27 of 40 | 15 of 40 | none | Measured |
 | 40 major interactions from DDInter | 8 of 40 | 4 of 40 | none | Weak |
 | 40 pairs DDInter does not list: false alarms | 1 of 40 | 1 of 40 | at most 4 | Passed |
-| 40 new major pairs, with drug class matching (`benchmark/PREREG-B2.md`) | not run | 10 of 40 | at least 10 | Passed |
+| 40 new major pairs, with drug class matching (`benchmark/PREREG-B2.md`) | not run | 10 of 40 (reruns on Nov 22: 10, 9, 9, 10, last one on the live site) | at least 10 | Passed, at the bar |
 | 40 new unlisted pairs: false alarms | not run | 0 of 40 | at most 4 | Passed |
 
 Shelf Check only flags what a label states. Most missed interactions are described on the labels by drug type or effect rather than by name.

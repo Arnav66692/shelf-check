@@ -2,7 +2,7 @@
 
 Hard limit 3:00. The spoken words come to about 2:30 at a normal pace, which leaves room for clicking and loading. The words are a draft in your voice, change anything that does not sound like you. The rules require the part where you explain your code, so do not cut section 6.
 
-This version matches the live site after the Nov 22 morning update: the dark charcoal look with mint text, the Enter screen, the moving dots behind the home page, and the chapters A to H down the left side.
+This version matches the live site after the Nov 22 morning update: the dark charcoal look with mint text, the Enter screen, the moving dots behind the home page, and the chapters A to H across the top.
 
 ## Before you hit record
 
@@ -32,7 +32,7 @@ The "almost half" is 45.6 percent of 500 adults (Wolf et al., J Gen Intern Med 2
 
 ## 3. Adding something (0:30 to 0:50)
 
-**Screen:** click Add. Type "st johns wort", pick the first result, show its official NIH record, click "Yes, add it to my cabinet". The cabinet opens with "Added St. John's Wort. 2 warnings involve it. They are marked New. Show the first one". Click "Show the first one". It jumps to "Check now, Warfarin Sodium and St. John's Wort", whose What to do line says it can change how well the blood thinner works and lead to a clot or bleeding (clip 3).
+**Screen:** click Add. Type "st johns wort", pick the first result, show its official NIH record, click "Yes, add it to my cabinet". The cabinet opens with "Added St. John's Wort. 1 warning involves it. It is marked New. 1 note mentions it. Show it". Click "Show it". It jumps to "Check now, Warfarin Sodium and St. John's Wort", whose What to do line says it can change how well the blood thinner works and lead to a clot or bleeding (clip 3).
 
 **Say:**
 > You add what you own by name, label code or barcode, and you confirm it against its official FDA or NIH record. Here I'm adding a supplement, and it tells me right away that the warfarin label warns about it, and why it matters: it can change how well the blood thinner works.
@@ -51,7 +51,7 @@ The "almost half" is 45.6 percent of 500 adults (Wolf et al., J Gen Intern Med 2
 **Say:**
 > I set a pass bar before every test. On 40 random products paired with Tylenol, it caught the double dose every time. Drug interactions are harder, because labels warn about a whole drug group instead of naming the drug, so I taught it the FDA's drug groups. On 40 new major pairs it now catches about 10. That's still weak, and the page says so. For reading photos, the best vision model was confidently wrong 5 times in 100, so a reading only counts when the drug code and the printed ingredients match one FDA record, and on 100 new labels that made zero mistakes.
 
-Numbers as of Nov 22 morning: 40 of 40 doubled acetaminophen pairs caught, 10 of 40 new major interactions, 0 false alarms in 40, and the trained matcher at 85.7 percent first guess against a 90 percent bar. If the page shows different numbers, say those.
+Numbers as of Nov 22 morning: 40 of 40 doubled acetaminophen pairs caught, 10 of 40 new major interactions in the last run (9 in two reruns), 0 false alarms in 40, and the trained matcher at 85.7 percent first guess against a 90 percent bar. If the page shows different numbers, say those.
 
 ## 6. The code (1:45 to 2:30)
 

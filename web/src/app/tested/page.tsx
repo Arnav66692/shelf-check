@@ -9,7 +9,7 @@ const IMPACT = [
   { test: "Same 40 pairs: a daily total worked out in mg", first: "27 of 40", now: "15 of 40", bar: "none set", verdict: "Measured. Now refuses numbers it cannot read for sure" },
   { test: "40 major interactions from an independent database", first: "8 of 40", now: "4 of 40", bar: "none set", verdict: "Weak. See below" },
   { test: "40 pairs with no listed interaction: false alarms", first: "1 of 40", now: "1 of 40", bar: "at most 4", verdict: "Passed both times" },
-  { test: "40 new major interactions, after adding drug class matching", first: "10 of 40", now: "10 of 40", bar: "at least 10", verdict: "Passed, at the bar, and again after the Nov 22 fixes" },
+  { test: "40 new major interactions, after adding drug class matching", first: "10 of 40", now: "10 of 40", bar: "at least 10", verdict: "Passed in the last run, at the bar. Two of five reruns got 9" },
   { test: "40 new pairs with no listed interaction: false alarms", first: "0 of 40", now: "0 of 40", bar: "at most 4", verdict: "Passed, and again after the Nov 22 fixes" },
 ] as const;
 
@@ -74,8 +74,9 @@ export default function TestedPage() {
         drug in your cabinet that is one. We wrote a new bar first and tested it on 40 new pairs it had never seen.
         On Nov 22 we also taught it to read a warning together with the &quot;Examples include&quot; line or bulleted
         list under it, which is how labels name rifampin with the birth control pill or aspirin with methotrexate.
-        We reran the same 80 new pairs after that change: still 10 of 40 caught and 0 false alarms. Both of these runs
-        called a local build of the same code, not this website.
+        We reran the same 80 new pairs four more times as we fixed things on Nov 22. Major interactions caught went
+        10, 10, 9, 9 and 10 of 40, so it sits right at the bar and twice fell one short. False alarms stayed at 0 of
+        40 every time. The last run, at 6 AM PT on Nov 22, called this website.
       </p>
       <p className="mt-2">
         What this means: Shelf Check is reliable at the problem it was built for, the same drug hiding in two
@@ -155,7 +156,7 @@ export default function TestedPage() {
       <h2 className="mt-8 text-2xl font-medium narrow">Matching a photo to the official label</h2>
       <p className="mt-2">
         We trained our own image model on 3,588 products from the FDA label archive, using made-up phone photos of
-        each official label, and scored it on about 2,170 photos of products it had never seen. Each run picked its
+        each official label, and scored each run on 2,169 to 2,283 photos of products it had never seen. Each run picked its
         own unseen products.
       </p>
       <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Trained matcher results">

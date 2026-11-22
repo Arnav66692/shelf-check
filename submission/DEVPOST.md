@@ -49,7 +49,7 @@ The part that decides the warnings is a rules engine in TypeScript, and no AI mo
 - the FDA's published statements and the WADA 2026 Prohibited List for peptides, quoted word for word and checked against saved copies by tests
 - the NLM Pillbox archive and DailyMed product data for the pill finder, 83,912 records
 
-The engine has 746 tests that run on saved real label records, and the product lookup has 111 more. The app is Next.js and TypeScript, deployed on Vercel.
+The engine has 764 tests that run on saved real label records, and the product lookup has 113 more. The app is Next.js and TypeScript, deployed on Vercel.
 
 For reading a photo of a label I tested before building, with the pass bar written down before every test:
 
@@ -62,7 +62,7 @@ For reading a photo of a label I tested before building, with the pass bar writt
 
 The cross-check only marks a reading as matched when the drug code it read points to an FDA record and the ingredients and strengths it read from the printed text are exactly that record's. Everything else goes back to you to check by eye.
 
-I also trained my own image model. I fine-tuned DINOv2 on 3,588 products from the FDA label archive, using made up phone photos of each official label, and scored it on about 2,170 photos of products it had never seen. The first run went from 4.1 percent to 78.0 percent right on the first guess, and 91.3 percent in the top five. That missed the 90 percent bar I set before training. A second run with a bigger model only fit one round of training in its time limit and reached 69.8 percent. A third run trained the bigger model properly and reached 78.3 percent. A fourth added text read off the photo and keypoint matching on top of it and reached 85.7 percent on the first guess and 95.6 percent in the top five, still short of the bar. None of them is in the app, so the camera only suggests and you confirm.
+I also trained my own image model. I fine-tuned DINOv2 on 3,588 products from the FDA label archive, using made up phone photos of each official label, and scored each run on 2,169 to 2,283 photos of products it had never seen. The first run went from 4.1 percent to 78.0 percent right on the first guess, and 91.3 percent in the top five. That missed the 90 percent bar I set before training. A second run with a bigger model only fit one round of training in its time limit and reached 69.8 percent. A third run trained the bigger model properly and reached 78.3 percent. A fourth added text read off the photo and keypoint matching on top of it and reached 85.7 percent on the first guess and 95.6 percent in the top five, still short of the bar. None of them is in the app, so the camera only suggests and you confirm.
 
 ## Does it catch real problems?
 
@@ -74,7 +74,7 @@ I ran the app on random real products and pairs, with the bars written down and 
 | Same 40 pairs: a daily total worked out in mg | 27 of 40 | 15 of 40 | none | Measured |
 | 40 major interactions from the DDInter database | 8 of 40 | 4 of 40 | none | Weak |
 | 40 pairs DDInter does not list: false alarms | 1 of 40 | 1 of 40 | at most 4 | Passed both times |
-| 40 new major pairs, after adding drug class matching | not run | 10 of 40 | at least 10 | Passed |
+| 40 new major pairs, after adding drug class matching | not run | 10 of 40 (5 reruns: 10, 10, 9, 9, 10) | at least 10 | Passed, at the bar |
 | 40 new unlisted pairs: false alarms | not run | 0 of 40 | at most 4 | Passed |
 
 The fixes made the engine refuse to add up a number or claim an interaction unless the label clearly supports it. That first dropped the daily totals to 5 of 40. I then taught it common label wording around the limit, like "see overdose warning", which brought it to 15. I did that after looking at the misses, so the 15 is not a clean test. Fewer answers, but none of them guessed.
@@ -93,7 +93,7 @@ Before the deadline I had the app attacked from three sides, and fixed what they
 
 What changed because of that: emergency phrases like "I took too much tylenol" or "my lips are swelling" now go straight to Poison Help, 988 or 911, allergies match whole drug families, the dose check refuses to draw a mark it cannot measure, the app says to hold the next dose and call the prescriber today when the label says not to combine two medicines or you are allergic, and otherwise never tells you to stop a prescribed medicine on your own, misspelled brand names still find the product, and after you add something the cabinet tells you which warnings are new. Every warning has a plain "What to do" line, there is a larger text switch and a read aloud button, and an automated accessibility check (axe, WCAG 2.1 AA) finds no problems on any page at laptop or phone size.
 
-A second round of the same AI pharmacist review, on 43 cabinets, found 7 interactions the app still missed. One was rifampin with the birth control pill, where the pill label names the danger in one sentence and lists rifampin in the "Examples include" line after it. The app now reads those lines and bulleted lists together with the warning above them, so all 7 show. It also catches 18 more plain-language emergencies, like "his breathing is slow after his pain pills", and shows a naloxone line. I reran the 80 benchmark pairs after these fixes: still 10 of 40 major interactions caught and 0 false alarms in 40, so the fixes did not add false alarms.
+A second round of the same AI pharmacist review, on 43 cabinets, found 7 interactions the app still missed. One was rifampin with the birth control pill, where the pill label names the danger in one sentence and lists rifampin in the "Examples include" line after it. The app now reads those lines and bulleted lists together with the warning above them, so all 7 show. It also catches 18 more plain-language emergencies, like "his breathing is slow after his pain pills", and shows a naloxone line. I reran the 80 benchmark pairs after each round of fixes. Major interactions caught went 10, 10, 9, 9 and 10 of 40, so it sits right at the bar and twice fell one short. False alarms stayed at 0 of 40 every time. The last run was against the live site.
 
 ## Challenges I ran into
 
