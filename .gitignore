@@ -31,3 +31,14 @@ results/matcher4/queries_x2s/
 results/matcher4/ocr_tool/vision_ocr
 results/matcher4/*.pt
 results/matcher4/ocr/
+
+reviews/
+submission/*
+!submission/USER-TEST.md
+!submission/USER-TEST-NOTES.md
+!submission/USER-TEST.sha256
+docs/
+benchmark/cache-*/
+benchmark/*log*.txt
+*.dbg.tmp.*
+results/matcher2/resume.json
