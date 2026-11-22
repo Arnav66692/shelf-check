@@ -74,6 +74,9 @@ const MECHANISMS: readonly MechanismRule[] = [
   { term: "serotonergic drug", pattern: /\bserotonergic (?:drugs?|agents?|medic(?:ation|ine)s?|substances?)\b/i,
     epcs: ["Serotonin Reuptake Inhibitor", "Serotonin and Norepinephrine Reuptake Inhibitor",
       "Serotonin-1b and Serotonin-1d Receptor Agonist"] },
+  // Labels list these as serotonergic drugs by name, and their EPCs do not say so.
+  { term: "serotonergic drug", pattern: /\bserotonergic (?:drugs?|agents?|medic(?:ation|ine)s?|substances?)\b/i,
+    members: ["dextromethorphan", "tramadol", "trazodone", "buspirone", "lithium", "fentanyl", "meperidine", "methadone", "tryptophan", "linezolid"] },
   { term: "SNRI", pattern: /\b(?:SNRIs?|serotonin[- ](?:and )?norepinephrine reuptake inhibitors?)\b/i,
     epcs: ["Serotonin and Norepinephrine Reuptake Inhibitor"] },
   { term: "triptan", pattern: /\btriptans?\b/i, epcs: ["Serotonin-1b and Serotonin-1d Receptor Agonist"] },
