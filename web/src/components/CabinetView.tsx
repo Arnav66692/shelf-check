@@ -7,8 +7,11 @@ import { useCabinet, useProfile, useSupply } from "@/lib/store";
 import { supplyFlags } from "@/lib/supply";
 import { useToday } from "@/lib/today";
 import { FlagRow } from "./FlagRow";
+import { Intro } from "./Intro";
 import { ProductPanel } from "./ProductPanel";
 import { ReadAloud } from "./ReadAloud";
+import { Reveal } from "./Reveal";
+import { SeedHead } from "./SeedHead";
 import { SupplyFields } from "./SupplyFields";
 
 const SEVERITY_ORDER = ["stop", "ask", "info"];
@@ -43,27 +46,64 @@ export function CabinetView() {
 
   if (items.length === 0) {
     return (
-      <section className="pt-10 max-w-[720px]">
-        <h1 className="text-[clamp(2.2rem,6vw,3.6rem)] font-extrabold leading-[1.02] tracking-tight narrow">
-          Two bottles can hide the same drug.
-        </h1>
-        <p className="mt-5 text-lg">
-          Tylenol and NyQuil both contain acetaminophen, and most people never notice. Add every medicine and
-          supplement you take, or that someone you care for takes, and Shelf Check reads their official labels
-          together. It shows double doses, labels that warn about each other, and warnings meant for you, each one
-          quoted from the label so you can show a pharmacist.
-        </p>
-        <div className="mt-7 flex flex-wrap gap-3">
-          <Link href="/add?sample=1" className="btn">
-            See an example cabinet
-          </Link>
-          <Link href="/start" className="btn btn-quiet">
-            Start my own, four questions
-          </Link>
+      <section className="relative -mx-4 sm:-mx-8 min-h-[calc(100svh-150px)] grid content-between gap-8 px-4 sm:px-8 pt-6 pb-4 overflow-x-clip">
+        <Intro />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-[-10%] top-[8%] h-[38%] w-[95%] rotate-[24deg] rounded-[50%] bg-[radial-gradient(closest-side,rgba(58,104,235,0.38),rgba(40,80,210,0.12)_55%,transparent)] blur-[30px]"
+        />
+        <SeedHead className="pointer-events-none absolute right-[-18%] sm:right-[-4%] top-[-4%] h-[92%] w-[110%] sm:w-[68%] opacity-90" />
+        <div className="relative max-w-[440px] rise" style={{ animationDelay: "calc(var(--intro-delay) + 100ms)" }}>
+          <p className="text-[0.82rem] uppercase tracking-[0.1em] leading-relaxed text-ink">
+            Tylenol and NyQuil both contain acetaminophen, and most people never notice. Shelf Check reads the official
+            labels of everything you take together, and quotes the line that matters.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            <Link href="/add?sample=1" className="btn">
+              See an example cabinet
+            </Link>
+            <Link href="/start" className="btn btn-quiet">
+              Start my own
+            </Link>
+          </div>
+          <p className="mt-3 text-sm text-ink-soft">
+            About two minutes, four questions. Your list stays in this browser. It is sent to our server only to run
+            the check, and is not stored there.
+          </p>
         </div>
-        <p className="mt-4 text-sm text-ink-soft">
-          Takes about two minutes. Your list stays in this browser. It is sent to our server only to run the check, and is not stored there.
-        </p>
+        <div className="relative grid gap-6 lg:grid-cols-[1fr_380px] lg:items-end">
+          <h1 className="font-medium uppercase leading-[0.98] tracking-[0.01em] text-leaf text-[clamp(2.4rem,7.4vw,5.6rem)]">
+            <Reveal lines={["Two bottles."]} delay={60} />
+            <span className="block pl-[1.2em]">
+              <Reveal lines={["Same drug."]} delay={200} />
+            </span>
+          </h1>
+          <div className="facts rise text-[0.8rem] uppercase tracking-[0.1em]" style={{ animationDelay: "calc(var(--intro-delay) + 450ms)" }}>
+            <div className="flex items-center justify-between gap-3">
+              <span>Example cabinet check</span>
+              <span className="flex items-center gap-2 text-leaf">
+                <span className="live-dot" aria-hidden="true" />
+                Label quoted
+              </span>
+            </div>
+            <p className="mt-2 text-ink-soft normal-case tracking-normal text-[0.9rem]">
+              Tylenol Extra Strength and NyQuil Cold and Flu both contain acetaminophen.
+            </p>
+            <div className="mt-3 flex items-center gap-3">
+              <span className="text-ink-soft">At label max</span>
+              <span className="relative flex-1 h-px bg-[var(--rule)]">
+                <span className="absolute left-0 top-[-1px] h-[3px] w-full bg-[var(--stop)] rounded-full" />
+                <span className="absolute left-[71%] top-[-4px] h-[9px] w-px bg-ink" />
+              </span>
+            </div>
+            <div className="mt-2 flex justify-between text-ink-soft tabular-nums">
+              <span>
+                <span className="text-[var(--stop)]">5,600 mg</span> a day
+              </span>
+              <span>label warns past 4,000 mg</span>
+            </div>
+          </div>
+        </div>
       </section>
     );
   }
@@ -82,7 +122,7 @@ export function CabinetView() {
       <h1 className="sr-only">Your medicine cabinet and its warnings</h1>
       <section aria-labelledby="warnings-title">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <h2 id="warnings-title" className="text-3xl font-extrabold narrow">
+          <h2 id="warnings-title" className="text-3xl font-medium narrow">
             Warnings
           </h2>
           <ReadAloud lines={spoken} />
@@ -91,7 +131,7 @@ export function CabinetView() {
           {state.status === "checking" && <p>Reading the labels of your {items.length} products together.</p>}
           {state.status === "done" && (
             <>
-              <p className="text-lg font-extrabold">
+              <p className="text-lg font-semibold">
                 {stops > 0
                   ? `${stops} ${stops === 1 ? "thing" : "things"} to check with a pharmacist before the next dose.`
                   : asks > 0
@@ -136,7 +176,7 @@ export function CabinetView() {
 
       <section aria-labelledby="cabinet-title">
         <div className="flex items-baseline justify-between gap-4">
-          <h2 id="cabinet-title" className="text-3xl font-extrabold narrow">
+          <h2 id="cabinet-title" className="text-3xl font-medium narrow">
             Your cabinet
           </h2>
           <span className="flex gap-5">

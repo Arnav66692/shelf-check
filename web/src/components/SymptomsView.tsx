@@ -45,7 +45,7 @@ export function SymptomsView() {
 
   return (
     <div className="pt-6 max-w-[860px]">
-      <h1 className="text-3xl font-extrabold narrow">What do you have for this?</h1>
+      <h1 className="text-3xl font-medium narrow">What do you have for this?</h1>
       <p className="mt-3">
         Say how you feel. Shelf Check looks through the labels of what you already own for products labelled for it,
         and shows the warnings that apply before you take one.
@@ -90,7 +90,7 @@ export function SymptomsView() {
         {result && !result.emergency && (
           <>
             <section>
-              <h2 className="text-2xl font-extrabold narrow">In your cabinet for this</h2>
+              <h2 className="text-2xl font-medium narrow">In your cabinet for this</h2>
               {items.length === 0 && (
                 <p className="mt-2">
                   Your cabinet is empty. <Link className="underline font-bold" href="/add">Add what you own</Link> first.
@@ -104,7 +104,7 @@ export function SymptomsView() {
                   const item = items.find((candidate) => candidate.id === match.itemId);
                   return (
                     <li key={match.itemId} className="facts">
-                      <h3 className="text-lg font-extrabold">{item?.displayName ?? "A product you own"}</h3>
+                      <h3 className="text-lg font-semibold">{item?.displayName ?? "A product you own"}</h3>
                       <blockquote className="quote mt-2">{match.uses}</blockquote>
                       <p className="mt-1 text-sm text-ink-soft">From the Uses section of its label.</p>
                     </li>
@@ -115,7 +115,7 @@ export function SymptomsView() {
 
             {result.flags.length > 0 && (
               <section>
-                <h2 className="text-2xl font-extrabold narrow">Before you take one</h2>
+                <h2 className="text-2xl font-medium narrow">Before you take one</h2>
                 <ul className="mt-3 grid gap-3">
                   {result.flags.map((flag) => (
                     <FlagRow key={flag.id} flag={flag} items={items} />
@@ -126,7 +126,7 @@ export function SymptomsView() {
 
             {(causes === "loading" || (causes !== null && causes.causes.length > 0)) && (
             <section>
-              <h2 className="text-2xl font-extrabold narrow">Possible causes to ask a doctor about</h2>
+              <h2 className="text-2xl font-medium narrow">Possible causes to ask a doctor about</h2>
               <p className="mt-2 text-sm">
                 Not a diagnosis and not professional medical advice. A language model wrote this list from your words
                 alone. It cannot examine you and it can be wrong.
@@ -136,7 +136,7 @@ export function SymptomsView() {
               <ul className="mt-3 grid gap-2">
                 {(causes !== "loading" && causes ? causes.causes : []).map((cause) => (
                   <li key={cause.name} className="py-2 border-b border-hair">
-                    <span className="font-extrabold">{cause.name}.</span> {cause.why}
+                    <span className="font-semibold">{cause.name}.</span> {cause.why}
                   </li>
                 ))}
               </ul>

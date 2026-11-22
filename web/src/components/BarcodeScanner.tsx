@@ -260,7 +260,7 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
       </h2>
       <video
         ref={videoRef}
-        className="mt-3 block w-full aspect-[4/3] object-cover bg-ink border-2 border-ink"
+        className="mt-3 block w-full aspect-[4/3] object-cover bg-black border border-[var(--rule)] rounded-[6px]"
         aria-label="Live camera view for scanning the barcode"
         playsInline
         muted

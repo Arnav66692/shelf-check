@@ -20,7 +20,7 @@ export function SupplyFields({ productId }: { productId: string }) {
           Expires
           <input
             type="month"
-            className="w-full min-w-0 border-2 border-ink bg-[var(--panel)] px-2 py-1"
+            className="w-full min-w-0 border border-[var(--rule)] rounded-[6px] bg-[var(--panel)] px-2 py-1"
             value={current.expires ?? ""}
             onChange={(event) => update({ expires: event.target.value || undefined })}
           />
@@ -29,7 +29,7 @@ export function SupplyFields({ productId }: { productId: string }) {
           Doses left
           <input
             inputMode="numeric"
-            className="w-full min-w-0 border-2 border-ink bg-[var(--panel)] px-2 py-1"
+            className="w-full min-w-0 border border-[var(--rule)] rounded-[6px] bg-[var(--panel)] px-2 py-1"
             value={current.dosesLeft ?? ""}
             onChange={(event) => update({ dosesLeft: toNumber(event.target.value) })}
           />
@@ -38,7 +38,7 @@ export function SupplyFields({ productId }: { productId: string }) {
           Doses a day
           <input
             inputMode="decimal"
-            className="w-full min-w-0 border-2 border-ink bg-[var(--panel)] px-2 py-1"
+            className="w-full min-w-0 border border-[var(--rule)] rounded-[6px] bg-[var(--panel)] px-2 py-1"
             value={current.dosesPerDay ?? ""}
             onChange={(event) => update({ dosesPerDay: toNumber(event.target.value) })}
           />

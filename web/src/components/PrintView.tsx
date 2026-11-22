@@ -41,7 +41,7 @@ export function PrintView() {
   return (
     <div className="pt-6 max-w-[820px]">
       <div className="flex flex-wrap items-baseline justify-between gap-4 print:hidden">
-        <h1 className="text-3xl font-extrabold narrow">List for your pharmacist or doctor</h1>
+        <h1 className="text-3xl font-medium narrow">List for your pharmacist or doctor</h1>
         <button type="button" className="btn" onClick={() => window.print()}>
           Print
         </button>
@@ -52,7 +52,7 @@ export function PrintView() {
         {items.length === 0 && <p className="mt-2">Nothing in the cabinet yet.</p>}
         {items.map((item) => (
           <div key={item.id} className="py-2 border-b border-hair last:border-b-0">
-            <div className="font-extrabold">{item.displayName}</div>
+            <div className="font-semibold">{item.displayName}</div>
             <div className="text-sm">
               {item.ingredients.map((ingredient) => `${ingredient.name} ${formatStrength(ingredient)}`).join(", ") ||
                 "No structured ingredients on record"}
@@ -79,7 +79,7 @@ export function PrintView() {
         {current?.result && warnings.length === 0 && <p className="mt-2">No label warnings found between these.</p>}
         {warnings.map((flag) => (
           <div key={flag.id} className="py-2 border-b border-hair last:border-b-0">
-            <div className="font-extrabold">{flag.title}</div>
+            <div className="font-semibold">{flag.title}</div>
             <div className="text-sm">{flag.explain}</div>
             {flag.quotes[0] && <div className="quote mt-1 text-sm">{flag.quotes[0].excerpt}</div>}
           </div>

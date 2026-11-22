@@ -44,7 +44,7 @@ export function DoseView() {
   return (
     <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
       <section>
-        <h1 className="text-3xl font-extrabold narrow">Dose check for injections</h1>
+        <h1 className="text-3xl font-medium narrow">Dose check for injections</h1>
         <p className="mt-3">
           Vials are labelled in milligrams per millilitre. Doses get written in milligrams, millilitres or syringe
           units. The FDA has reports of people drawing 50 units when the dose was 5. Type what your vial and your
@@ -85,7 +85,7 @@ export function DoseView() {
       </section>
 
       <section aria-live="polite">
-        <h2 className="text-3xl font-extrabold narrow">Where the plunger stops</h2>
+        <h2 className="text-3xl font-medium narrow">Where the plunger stops</h2>
         {outcome.error && <p className="mt-4 text-ink-soft">{outcome.error}</p>}
         {outcome.check && (
           <div className="mt-4 grid gap-4">
@@ -106,8 +106,8 @@ export function DoseView() {
             </div>
             {outcome.check.flags.map((flag) => (
               <div key={flag.title} className="facts" role="alert">
-                <span className="px-2.5 py-1 text-sm font-extrabold uppercase tracking-wide bg-[var(--stop)] text-white">Stop</span>
-                <h3 className="mt-2 text-lg font-extrabold">{flag.title}</h3>
+                <span className="px-2.5 py-1 text-sm font-semibold uppercase tracking-wide bg-[var(--stop)] text-[var(--on-bright)] rounded-[3px]">Stop</span>
+                <h3 className="mt-2 text-lg font-semibold">{flag.title}</h3>
                 <p className="mt-1">{flag.detail}</p>
               </div>
             ))}

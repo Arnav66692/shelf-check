@@ -8,9 +8,9 @@ const SEVERITY_LABEL: Record<Severity, string> = {
 };
 
 const SEVERITY_STYLE: Record<Severity, string> = {
-  stop: "bg-[var(--stop)] text-white",
-  ask: "bg-[var(--ask)] text-white",
-  info: "bg-ink text-white",
+  stop: "bg-[var(--stop)] text-[var(--on-bright)] rounded-[3px]",
+  ask: "bg-[var(--ask)] text-[var(--on-bright)] rounded-[3px]",
+  info: "bg-[var(--ok)] text-[var(--on-bright)] rounded-[3px]",
 };
 
 const SECTION_NAMES: Record<string, string> = {
@@ -79,10 +79,10 @@ export function FlagRow({ flag, items }: { flag: Flag; items: readonly Product[]
   return (
     <li className="facts">
       <div className="flex flex-wrap items-center gap-3">
-        <span className={`px-2.5 py-1 text-sm font-extrabold uppercase tracking-wide ${SEVERITY_STYLE[flag.severity]}`}>
+        <span className={`px-2.5 py-1 text-sm font-semibold uppercase tracking-wide ${SEVERITY_STYLE[flag.severity]}`}>
           {SEVERITY_LABEL[flag.severity]}
         </span>
-        <h3 className="text-lg font-extrabold leading-tight">{flag.title}</h3>
+        <h3 className="text-lg font-semibold leading-tight">{flag.title}</h3>
       </div>
       <p className="mt-2">{flag.explain}</p>
       <p className="mt-2 font-bold">What to do: {nextStep(flag)}</p>

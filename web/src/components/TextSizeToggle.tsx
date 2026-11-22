@@ -31,7 +31,7 @@ export function TextSizeToggle() {
   }
 
   return (
-    <button type="button" className="underline font-bold" onClick={toggle} aria-pressed={large}>
+    <button type="button" className="underline font-medium hover:text-ink" onClick={toggle} aria-pressed={large}>
       {large ? "Normal text" : "Larger text"}
     </button>
   );

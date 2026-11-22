@@ -20,7 +20,7 @@ const MATCHER = [
 export default function TestedPage() {
   return (
     <div className="pt-6 max-w-[900px]">
-      <h1 className="text-3xl font-extrabold narrow">How we tested</h1>
+      <h1 className="text-3xl font-medium narrow">How we tested</h1>
       <p className="mt-3 text-lg">
         We wanted a camera that reads a label and can be trusted. We wrote the pass bar down before each test. Every
         reader missed it alone. So the camera only suggests, you confirm against the official record, and the warnings
@@ -28,14 +28,14 @@ export default function TestedPage() {
         how well the warnings catch real problems, including where they fall short.
       </p>
 
-      <h2 className="mt-8 text-2xl font-extrabold narrow">Does it catch real problems?</h2>
+      <h2 className="mt-8 text-2xl font-medium narrow">Does it catch real problems?</h2>
       <p className="mt-2">
         We ran the live app on random real products and pairs, with the bars written down before the run.
       </p>
       <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Impact test results">
         <table className="w-full text-left min-w-[640px]">
           <thead>
-            <tr className="border-b-[3px] border-ink">
+            <tr className="border-b border-[var(--rule)]">
               <th className="py-2 pr-4">Test</th>
               <th className="py-2 pr-4">Result</th>
               <th className="py-2 pr-4">Bar</th>
@@ -66,11 +66,11 @@ export default function TestedPage() {
         pair are in the benchmark folder of the code.
       </p>
 
-      <h2 className="mt-8 text-2xl font-extrabold narrow">Reading labels from a picture</h2>
+      <h2 className="mt-8 text-2xl font-medium narrow">Reading labels from a picture</h2>
       <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Reader test results">
         <table className="w-full text-left min-w-[640px]">
           <thead>
-            <tr className="border-b-[3px] border-ink">
+            <tr className="border-b border-[var(--rule)]">
               <th className="py-2 pr-4">Reader</th>
               <th className="py-2 pr-4">Test set</th>
               <th className="py-2 pr-4">Fully right</th>
@@ -96,7 +96,7 @@ export default function TestedPage() {
         are official FDA label artwork, not phone photos, so real photos would likely score lower.
       </p>
 
-      <h2 className="mt-8 text-2xl font-extrabold narrow">The cross-check that passed</h2>
+      <h2 className="mt-8 text-2xl font-medium narrow">The cross-check that passed</h2>
       <p className="mt-2">
         A label states the same facts more than once. The app marks a photo reading as matched only when the drug code
         it read points to an FDA record, and the ingredients and strengths it read from the printed text are exactly
@@ -129,7 +129,7 @@ export default function TestedPage() {
         true error rate could still be as high as about 5 percent, so you confirm every product anyway.
       </p>
 
-      <h2 className="mt-8 text-2xl font-extrabold narrow">Matching a photo to the official label</h2>
+      <h2 className="mt-8 text-2xl font-medium narrow">Matching a photo to the official label</h2>
       <p className="mt-2">
         We trained our own image model on 3,588 products from the FDA label archive, using made-up phone photos of
         each official label, and scored it on 2,175 photos of products it had never seen.
@@ -137,7 +137,7 @@ export default function TestedPage() {
       <div className="facts mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Trained matcher results">
         <table className="w-full text-left min-w-[480px]">
           <thead>
-            <tr className="border-b-[3px] border-ink">
+            <tr className="border-b border-[var(--rule)]">
               <th className="py-2 pr-4">Model</th>
               <th className="py-2 pr-4">Right product first</th>
               <th className="py-2">Right product in top 5</th>
@@ -158,7 +158,7 @@ export default function TestedPage() {
         Training took it from 4 percent to 78 percent. That missed the bar, so it is not in the app.
       </p>
 
-      <h2 className="mt-8 text-2xl font-extrabold narrow">What the warnings are built on</h2>
+      <h2 className="mt-8 text-2xl font-medium narrow">What the warnings are built on</h2>
       <ul className="mt-2 grid gap-2">
         <li>Drug records and label text come from the FDA through openFDA and DailyMed.</li>
         <li>Supplement labels come from the NIH Dietary Supplement Label Database.</li>

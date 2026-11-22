@@ -104,7 +104,7 @@ function PeptideDetails({ peptideId, picker }: { peptideId: PeptideId; picker: R
 
   return (
     <div className="pt-6">
-      <h1 className="text-3xl font-extrabold narrow">Peptide check</h1>
+      <h1 className="text-3xl font-medium narrow">Peptide check</h1>
       <p className="mt-3 facts max-w-[900px]">{PEPTIDE_STANDING_NOTICE}</p>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
@@ -184,8 +184,8 @@ function PeptideDetails({ peptideId, picker }: { peptideId: PeptideId; picker: R
           )}
           {outcome.check?.flags.map((flag) => (
             <div key={flag.title} className="facts" role="alert">
-              <span className="px-2.5 py-1 text-sm font-extrabold uppercase tracking-wide bg-[var(--stop)] text-white">Stop</span>
-              <h3 className="mt-2 text-lg font-extrabold">{flag.title}</h3>
+              <span className="px-2.5 py-1 text-sm font-semibold uppercase tracking-wide bg-[var(--stop)] text-[var(--on-bright)] rounded-[3px]">Stop</span>
+              <h3 className="mt-2 text-lg font-semibold">{flag.title}</h3>
               <p className="mt-1">{flag.detail}</p>
             </div>
           ))}
@@ -253,7 +253,7 @@ export function PeptideView() {
   if (peptideId === "") {
     return (
       <div className="pt-6">
-        <h1 className="text-3xl font-extrabold narrow">Peptide check</h1>
+        <h1 className="text-3xl font-medium narrow">Peptide check</h1>
         <p className="mt-3 facts max-w-[900px]">{PEPTIDE_STANDING_NOTICE}</p>
         <div className="mt-8 max-w-[480px]">{picker}</div>
         <p className="mt-3 text-ink-soft">

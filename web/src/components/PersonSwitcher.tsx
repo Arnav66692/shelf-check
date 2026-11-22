@@ -20,11 +20,11 @@ export function PersonSwitcher() {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-      <label className="flex items-center gap-2 font-bold">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.78rem] uppercase tracking-[0.12em] text-ink-soft">
+      <label className="flex items-center gap-2 font-medium">
         Cabinet of
         <select
-          className="border-2 border-ink bg-[var(--panel)] px-2 py-1 font-normal"
+          className="border border-[var(--rule)] rounded-[6px] bg-[var(--panel)] px-2 py-1 font-normal normal-case tracking-normal text-ink text-sm"
           value={active.id}
           onChange={(event) => select(event.target.value)}
         >
@@ -42,14 +42,14 @@ export function PersonSwitcher() {
           </label>
           <input
             id="person-name"
-            className="border-2 border-ink bg-[var(--panel)] px-2 py-1"
+            className="border border-[var(--rule)] rounded-[6px] bg-[var(--panel)] px-2 py-1"
             placeholder="Name"
             value={name}
             onChange={(event) => setName(event.target.value)}
             autoFocus
             maxLength={30}
           />
-          <button type="submit" className="underline font-bold">
+          <button type="submit" className="underline font-medium hover:text-ink">
             Add
           </button>
           <button type="button" className="underline" onClick={() => setAdding(false)}>
@@ -59,7 +59,7 @@ export function PersonSwitcher() {
       ) : (
         <>
           {canAdd && (
-            <button type="button" className="underline font-bold" onClick={() => setAdding(true)}>
+            <button type="button" className="underline font-medium hover:text-ink" onClick={() => setAdding(true)}>
               Add a person
             </button>
           )}

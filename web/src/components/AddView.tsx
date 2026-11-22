@@ -33,7 +33,7 @@ function LabelPicture({ product }: { product: Product }) {
   if (!source) return null;
   if (source.toLowerCase().endsWith(".pdf")) {
     return (
-      <object data={source} type="application/pdf" className="w-full h-[340px] border-2 border-ink bg-[var(--panel)]">
+      <object data={source} type="application/pdf" className="w-full h-[340px] border border-[var(--rule)] rounded-[6px] bg-[var(--panel)]">
         <a className="underline font-bold" href={source} target="_blank" rel="noreferrer">
           Open the official label picture
         </a>
@@ -50,7 +50,7 @@ function LabelPicture({ product }: { product: Product }) {
             key={picture}
             src={picture}
             alt={`Picture ${index + 1} from the official record for ${product.displayName}`}
-            className="w-full h-[160px] object-contain bg-[var(--panel)] border-2 border-ink"
+            className="w-full h-[160px] object-contain bg-[var(--panel)] border border-[var(--rule)] rounded-[6px]"
             loading="lazy"
           />
         ))}
@@ -155,7 +155,7 @@ export function AddView() {
   return (
     <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       <section>
-        <h1 className="text-3xl font-extrabold narrow">Add a medicine</h1>
+        <h1 className="text-3xl font-medium narrow">Add a medicine</h1>
         <form onSubmit={runSearch} className="mt-4 flex flex-col sm:flex-row gap-3">
           <label className="sr-only" htmlFor="query">
             Name, drug code or barcode number
@@ -221,9 +221,9 @@ export function AddView() {
                         type="button"
                         onClick={() => choose(product)}
                         aria-pressed={selected}
-                        className={`w-full text-left px-3 py-2.5 border-2 border-ink ${selected ? "bg-ink text-[var(--panel)]" : "bg-[var(--panel)] hover:bg-[var(--paper)]"}`}
+                        className={`w-full text-left px-3 py-2.5 border border-[var(--rule)] rounded-[6px] ${selected ? "bg-leaf text-[var(--on-bright)]" : "bg-[var(--panel)] hover:border-leaf"}`}
                       >
-                        <span className="font-extrabold">{product.displayName}</span>
+                        <span className="font-semibold">{product.displayName}</span>
                         {owned && <span className="ml-2 text-sm">In your cabinet</span>}
                         {product.readerAgreement === "verified" && <span className="ml-2 text-sm">Code and label text agree</span>}
                         <span className="block text-sm">{describe(product)}</span>
@@ -242,7 +242,7 @@ export function AddView() {
       </section>
 
       <section aria-live="polite" ref={confirmPanel} className="scroll-mt-6">
-        <h2 className="text-3xl font-extrabold narrow">Does this match your bottle?</h2>
+        <h2 className="text-3xl font-medium narrow">Does this match your bottle?</h2>
         {!chosen && <p className="mt-4 text-ink-soft">Pick a result to see its official record here.</p>}
         {chosen && (
           <div className="mt-4 grid gap-4">

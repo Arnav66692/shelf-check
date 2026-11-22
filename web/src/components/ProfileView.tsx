@@ -27,7 +27,7 @@ export function ProfileView() {
 
   return (
     <div className="pt-6 max-w-[760px]">
-      <h1 className="text-3xl font-extrabold narrow">About you</h1>
+      <h1 className="text-3xl font-medium narrow">About you</h1>
       <p className="mt-3">
         Labels carry warnings for certain people. Tick what applies and Shelf Check will show the label lines written
         for you. This is saved in this browser, not in an account.

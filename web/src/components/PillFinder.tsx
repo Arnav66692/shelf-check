@@ -105,7 +105,7 @@ function Picture({ src, alt, caption }: { src: string; alt: string; caption: str
   return (
     <figure className="mb-3">
       {/* eslint-disable-next-line @next/next/no-img-element -- pill pictures come from NLM servers at unknown sizes */}
-      <img src={src} alt={alt} loading="lazy" className="block w-full max-w-[280px] border-2 border-[var(--rule)] bg-white" />
+      <img src={src} alt={alt} loading="lazy" className="block w-full max-w-[280px] border border-[var(--rule)] rounded-[6px] bg-white" />
       <figcaption className="mt-1 text-sm text-ink-soft">{caption}</figcaption>
     </figure>
   );
@@ -307,7 +307,7 @@ export function PillFinder() {
 
   return (
     <div className="pt-6">
-      <h1 className="text-3xl font-extrabold narrow">Pill finder</h1>
+      <h1 className="text-3xl font-medium narrow">Pill finder</h1>
       <div className="mt-4 facts max-w-[900px]" role="note">
         <p className="font-bold text-lg">{POISON_HELP}</p>
       </div>

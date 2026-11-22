@@ -168,7 +168,7 @@ export function Questionnaire() {
       <p className="text-sm text-ink-soft">
         {step + 1} of {steps.length}. Your answers are saved in this browser, not in an account.
       </p>
-      <h1 className="mt-2 text-3xl font-extrabold narrow">{steps[step].title}</h1>
+      <h1 className="mt-2 text-3xl font-medium narrow">{steps[step].title}</h1>
       <div className="facts mt-5">{steps[step].body}</div>
       <div className="mt-6 flex flex-wrap gap-3">
         {step > 0 && (
