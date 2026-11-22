@@ -110,7 +110,7 @@ function Picture({ src, alt, caption }: { src: string; alt: string; caption: str
   return (
     <figure className="mb-3">
       {/* eslint-disable-next-line @next/next/no-img-element -- pill pictures come from NLM servers at unknown sizes */}
-      <img src={src} alt={alt} loading="lazy" className="block w-full max-w-[280px] border border-[var(--rule)] rounded-[6px] bg-white" />
+      <img src={src} alt={alt} loading="lazy" className="block w-full max-w-[280px] border border-[var(--rule)] bg-white" />
       <figcaption className="mt-1 text-sm text-ink-soft">{caption}</figcaption>
     </figure>
   );
@@ -206,7 +206,7 @@ function isCommonlyFaked(record: PillRecord): boolean {
 function CounterfeitWarning() {
   return (
     <div className="facts" role="alert" style={{ borderColor: "var(--stop)" }}>
-      <span className="px-2.5 py-1 text-sm font-semibold uppercase tracking-wide bg-[var(--stop)] text-[var(--on-bright)] rounded-[3px]">
+      <span className="px-2.5 py-1 text-[13px] italic font-[900] uppercase tracking-[-0.02em] bg-[var(--stop)] text-white rounded-full">
         Stop
       </span>
       <p className="mt-2 text-lg font-bold">{COUNTERFEIT_LINE}</p>

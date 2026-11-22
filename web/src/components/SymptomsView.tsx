@@ -36,7 +36,7 @@ function contextKey(text: string, personId: string, items: readonly Product[], p
 function ChildDoctor() {
   return (
     <section className="facts" role="alert" style={{ borderColor: "var(--stop)" }}>
-      <h2 className="facts-title" style={{ borderColor: "var(--stop)", color: "var(--stop)" }}>
+      <h2 className="facts-title" style={{ borderColor: "var(--stop)", color: "var(--stop-text)" }}>
         Call your child&apos;s doctor now
       </h2>
       <p className="mt-3 text-lg font-bold">
@@ -52,8 +52,8 @@ function ChildDoctor() {
 
 function Emergency({ poison, selfHarm }: { poison: boolean; selfHarm: boolean }) {
   return (
-    <section className="facts" role="alert" style={{ borderColor: "var(--stop)", boxShadow: "inset 2px 0 0 var(--stop)" }}>
-      <h2 className="facts-title" style={{ borderColor: "var(--stop)", color: "var(--stop)" }}>
+    <section className="facts" role="alert" style={{ borderColor: "var(--stop)" }}>
+      <h2 className="facts-title" style={{ borderColor: "var(--stop)", color: "var(--stop-text)" }}>
         This can be an emergency
       </h2>
       {poison && (
@@ -227,7 +227,7 @@ export function SymptomsView() {
           Check
         </button>
       </form>
-      <p id="symptoms-count" className={`mt-1 text-sm ${tooLong ? "font-bold text-[var(--stop)]" : "text-ink-soft"}`}>
+      <p id="symptoms-count" className={`mt-1 text-sm ${tooLong ? "font-bold text-[var(--stop-text)]" : "text-ink-soft"}`}>
         {text.trim().length} of {MAX_TEXT_LENGTH} characters.{tooLong ? ` ${TOO_LONG}` : ""}
       </p>
 

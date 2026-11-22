@@ -41,15 +41,15 @@ export function formatAmount(value: number): string {
 
 const SEVERITY_LABEL: Record<Severity, string> = { stop: "Stop", ask: "Ask first", info: "Note" };
 const SEVERITY_STYLE: Record<Severity, string> = {
-  stop: "bg-[var(--stop)]",
-  ask: "bg-[var(--ask)]",
+  stop: "bg-[var(--stop)] text-white",
+  ask: "bg-[var(--ask)] text-black",
   info: "bg-[var(--ok)]",
 };
 
 export function SeverityBadge({ severity }: { severity: Severity }) {
   return (
     <span
-      className={`px-2.5 py-1 text-sm font-semibold uppercase tracking-wide text-[var(--on-bright)] rounded-[3px] ${SEVERITY_STYLE[severity]}`}
+      className={`px-2.5 py-1 text-[13px] italic font-[900] uppercase tracking-[-0.02em] rounded-full ${SEVERITY_STYLE[severity]}`}
     >
       {SEVERITY_LABEL[severity]}
     </span>

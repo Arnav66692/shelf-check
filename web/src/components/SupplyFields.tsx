@@ -5,7 +5,7 @@ import { countedDate, todayIso, type CountedSupply } from "@/lib/supply";
 import { useSupply } from "@/lib/store";
 
 const NUMBER_TEXT = /^(?:\d+\.?\d*|\.\d+)$/;
-const INPUT_CLASS = "w-full min-w-0 border border-[var(--rule)] rounded-[6px] bg-[var(--panel)] px-2 py-1";
+const INPUT_CLASS = "w-full min-w-0 border border-[var(--rule)] bg-[var(--panel)] px-2 py-1";
 
 type CountField = "dosesLeft" | "dosesPerDay";
 type Draft = { readonly text: string; readonly stored: number | undefined };
@@ -46,7 +46,7 @@ function CountInput({
           if (!("error" in read)) onCommit(read.value);
         }}
       />
-      {error && <span className="text-[var(--stop)] font-bold">{error}</span>}
+      {error && <span className="text-[var(--stop-text)] font-bold">{error}</span>}
     </label>
   );
 }

@@ -24,7 +24,7 @@ export function ProductPanel({
     <article className="facts">
       <h3 className="facts-title">
         {product.displayName}
-        {badge && <span className="label text-leaf ml-3">{badge}</span>}
+        {badge && <span className="label text-ink ml-3">{badge}</span>}
       </h3>
       <div className="facts-head">Active ingredients{product.form ? ` (${product.form.toLowerCase()})` : ""}</div>
       <div>
@@ -42,7 +42,7 @@ export function ProductPanel({
           {product.productNdc ? `, NDC ${product.productNdc}` : ""}
         </div>
         <div>{KIND_LINE[product.kind]}</div>
-        {product.note && <div className={`mt-1 ${/^exact match/i.test(product.note) ? "text-ink-soft" : "text-[var(--ask)]"}`}>{product.note}</div>}
+        {product.note && <div className={`mt-1 ${/^exact match/i.test(product.note) ? "text-ink-soft" : "text-[var(--stop-text)]"}`}>{product.note}</div>}
         {product.sameAsCount && product.sameAsCount > 1 ? (
           <div className="mt-1">
             {product.sameAsCount - 1} other {product.sameAsCount === 2 ? "maker sells" : "makers sell"} the same ingredients

@@ -24,7 +24,7 @@ export function PersonSwitcher() {
       <label className="flex items-center gap-2 font-medium">
         Cabinet of
         <select
-          className="border border-[var(--rule)] rounded-[6px] bg-[var(--panel)] px-2 py-1 font-normal normal-case tracking-normal text-ink text-sm"
+          className="border border-[var(--rule)] bg-[var(--panel)] px-2 py-1 font-normal normal-case tracking-normal text-ink text-sm"
           value={active.id}
           onChange={(event) => select(event.target.value)}
         >
@@ -42,7 +42,7 @@ export function PersonSwitcher() {
           </label>
           <input
             id="person-name"
-            className="border border-[var(--rule)] rounded-[6px] bg-[var(--panel)] px-2 py-1"
+            className="border border-[var(--rule)] bg-[var(--panel)] px-2 py-1"
             placeholder="Name"
             value={name}
             onChange={(event) => setName(event.target.value)}

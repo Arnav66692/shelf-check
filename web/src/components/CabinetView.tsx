@@ -9,11 +9,9 @@ import { supplyFlags } from "@/lib/supply";
 import { nextStep } from "@/lib/nextStep";
 import { useToday } from "@/lib/today";
 import { FlagRow } from "./FlagRow";
-import { Intro } from "./Intro";
+import { Landing } from "./Landing";
 import { ProductPanel } from "./ProductPanel";
 import { ReadAloud } from "./ReadAloud";
-import { Reveal } from "./Reveal";
-import { SeedHead } from "./SeedHead";
 import { SupplyFields } from "./SupplyFields";
 
 const SEVERITY_ORDER = ["stop", "ask", "info"];
@@ -47,69 +45,7 @@ export function CabinetView() {
 
   const state: CheckState = settled?.key === requestKey ? settled.outcome : { status: "checking" };
 
-  if (items.length === 0) {
-    return (
-      <section className="relative -mx-4 sm:-mx-8 min-h-[calc(100svh-150px)] grid content-between gap-8 px-4 sm:px-8 pt-6 pb-4 overflow-x-clip">
-        <Intro />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-[-10%] top-[8%] h-[38%] w-[95%] rotate-[24deg] rounded-[50%] bg-[radial-gradient(closest-side,rgba(58,104,235,0.38),rgba(40,80,210,0.12)_55%,transparent)] blur-[30px]"
-        />
-        <SeedHead className="pointer-events-none absolute right-[-18%] sm:right-[-4%] top-[-4%] h-[92%] w-[110%] sm:w-[68%] opacity-90" />
-        <div className="relative max-w-[440px] rise" style={{ animationDelay: "calc(var(--intro-delay) + 100ms)" }}>
-          <p className="text-[0.82rem] uppercase tracking-[0.1em] leading-relaxed text-ink">
-            Tylenol and NyQuil both contain acetaminophen, and neither box tells you the other one does. Shelf Check
-            reads the official labels of everything you take together, and quotes the line that matters.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            <Link href="/add?sample=1" className="btn">
-              See an example cabinet
-            </Link>
-            <Link href="/start" className="btn btn-quiet">
-              Start my own
-            </Link>
-          </div>
-          <p className="mt-3 text-sm text-ink-soft">
-            About two minutes, four questions. Your list stays in this browser. It is sent to our server only to run
-            the check, and is not stored there.
-          </p>
-        </div>
-        <div className="relative grid gap-6 lg:grid-cols-[1fr_380px] lg:items-end">
-          <h1 className="font-medium uppercase leading-[0.98] tracking-[0.01em] text-leaf text-[clamp(2.4rem,7.4vw,5.6rem)]">
-            <Reveal lines={["Two bottles."]} delay={60} />
-            <span className="block pl-[1.2em]">
-              <Reveal lines={["Same drug."]} delay={200} />
-            </span>
-          </h1>
-          <div className="facts rise text-[0.8rem] uppercase tracking-[0.1em]" style={{ animationDelay: "calc(var(--intro-delay) + 450ms)" }}>
-            <div className="flex items-center justify-between gap-3">
-              <span>Example cabinet check</span>
-              <span className="flex items-center gap-2 text-leaf">
-                <span className="live-dot" aria-hidden="true" />
-                Label quoted
-              </span>
-            </div>
-            <p className="mt-2 text-ink-soft normal-case tracking-normal text-[0.9rem]">
-              Tylenol Extra Strength and NyQuil Cold and Flu both contain acetaminophen.
-            </p>
-            <div className="mt-3 flex items-center gap-3">
-              <span className="text-ink-soft">At label max</span>
-              <span className="relative flex-1 h-px bg-[var(--rule)]">
-                <span className="absolute left-0 top-[-1px] h-[3px] w-full bg-[var(--stop)] rounded-full" />
-                <span className="absolute left-[71%] top-[-4px] h-[9px] w-px bg-ink" />
-              </span>
-            </div>
-            <div className="mt-2 flex justify-between text-ink-soft tabular-nums">
-              <span>
-                <span className="text-[var(--stop)]">5,600 mg</span> a day
-              </span>
-              <span>label warns past 4,000 mg</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  if (items.length === 0) return <Landing />;
 
   const labelFlags = state.status === "done" ? state.result.flags : [];
   const flags = [...(today ? supplyFlags(items, supply, today) : []), ...labelFlags].sort(
@@ -129,11 +65,16 @@ export function CabinetView() {
   const involvesAdded = (flag: { itemIds: readonly string[] }) => added !== undefined && flag.itemIds.includes(added.id);
   const addedFlags = flags.filter(involvesAdded);
   const orderedItems = added ? [added, ...items.filter((item) => item.id !== added.id)] : items;
+  const checkedCount = items.length - unchecked.length;
+  const topFlag = flags.find((flag) => flag.severity === "stop") ?? flags.find((flag) => flag.severity === "ask");
+  const urgent = flags.filter((flag) => flag.severity !== "info");
+  const infoFlags = flags.filter((flag) => flag.severity === "info");
+  const anchor = (id: string) => `#flag-${id.replace(/[^a-z0-9]+/gi, "-")}`;
 
   return (
-    <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+    <div className="pt-6 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
       <h1 className="sr-only">Your medicine cabinet and its warnings</h1>
-      <section aria-labelledby="warnings-title">
+      <section aria-labelledby="warnings-title" className="min-w-0">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
           <h2 id="warnings-title" className="text-3xl font-medium narrow">
             Warnings
@@ -161,9 +102,9 @@ export function CabinetView() {
             <>
               <div className="flex items-center justify-between gap-3 label">
                 <span>Label check</span>
-                <span className="flex items-center gap-2 text-leaf">
+                <span className="flex items-center gap-2 text-ink">
                   <span className="live-dot" aria-hidden="true" />
-                  {items.length} {items.length === 1 ? "product" : "products"} read
+                  {checkedCount} of {items.length} {items.length === 1 ? "product" : "products"} checked
                 </span>
               </div>
               <p className="mt-2 text-lg font-semibold">
@@ -176,7 +117,7 @@ export function CabinetView() {
                       : "No label here warns about another product in this cabinet."}
               </p>
               {unchecked.length > 0 && (
-                <p className="mt-1 text-[var(--ask)]">
+                <p className="mt-1 text-[var(--stop-text)]">
                   Not checked, because no official label text was found: {unchecked.join(", ")}. Warnings about these are
                   missing. Ask a pharmacist to look at them.
                 </p>
@@ -186,10 +127,22 @@ export function CabinetView() {
                   ? "Labels can miss real risks. Print this list and ask a pharmacist to look it over."
                   : `${stops > 0 && asks > 0 ? `${asks} more to ask about, ` : ""}${notes} ${notes === 1 ? "note" : "notes"} to read. Every one quotes the label it came from.`}
               </p>
-              <div className="mt-3 flex flex-wrap gap-3">
+              {topFlag && (
+                <p className="mt-4 border-t border-[var(--rule)] pt-3">
+                  <span className="label">First, </span>
+                  <a className="underline font-bold" href={anchor(topFlag.id)}>
+                    {topFlag.title}
+                  </a>
+                  . {nextStep(topFlag)}
+                </p>
+              )}
+              <div className="mt-4 flex flex-wrap gap-3">
                 <Link href="/print" className="btn btn-quiet">
                   Print for your pharmacist
                 </Link>
+                <a href="#cabinet-title" className="btn btn-quiet">
+                  See your {items.length} products
+                </a>
               </div>
             </>
           )}
@@ -206,18 +159,30 @@ export function CabinetView() {
           </p>
         )}
         <ul className="mt-4 grid gap-4">
-          {flags.map((flag) => (
+          {urgent.map((flag) => (
             <FlagRow key={flag.id} flag={flag} items={items} isNew={involvesAdded(flag)} />
           ))}
         </ul>
+        {infoFlags.length > 0 && (
+          <details className="mt-4 border border-[var(--rule)]" open={infoFlags.some(involvesAdded) || urgent.length === 0}>
+            <summary className="cursor-pointer px-6 py-4 italic font-[900] uppercase tracking-[-0.04em]">
+              {infoFlags.length} {infoFlags.length === 1 ? "note" : "notes"} to read, like alcohol and drowsiness
+            </summary>
+            <ul className="grid gap-4 px-4 pb-4">
+              {infoFlags.map((flag) => (
+                <FlagRow key={flag.id} flag={flag} items={items} isNew={involvesAdded(flag)} />
+              ))}
+            </ul>
+          </details>
+        )}
       </section>
 
-      <section aria-labelledby="cabinet-title">
-        <div className="flex items-baseline justify-between gap-4">
+      <section aria-labelledby="cabinet-title" className="min-w-0">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
           <h2 id="cabinet-title" className="text-3xl font-medium narrow">
             Your cabinet
           </h2>
-          <span className="flex gap-5">
+          <span className="flex flex-wrap gap-x-5 gap-y-1">
             <Link href="/print" className="underline font-bold">
               Print list
             </Link>

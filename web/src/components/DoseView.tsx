@@ -154,7 +154,7 @@ export function DoseView() {
     : vialOutcome(concentration, doseValue, doseUnit, alsoValue, alsoUnit);
 
   return (
-    <div className="pt-6 grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+    <div className="pt-6 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
       <section>
         <h1 className="text-3xl font-medium narrow">Dose check for injections</h1>
         <p className="mt-3">
@@ -166,11 +166,11 @@ export function DoseView() {
           <fieldset className="grid gap-2">
             <legend className="font-bold">Is this insulin?</legend>
             <label className="flex items-center gap-3">
-              <input type="radio" name="insulin" className="h-5 w-5 accent-[var(--leaf)]" checked={!isInsulin} onChange={() => setIsInsulin(false)} />
+              <input type="radio" name="insulin" className="h-5 w-5 accent-[var(--ink)]" checked={!isInsulin} onChange={() => setIsInsulin(false)} />
               No, another medicine in a vial
             </label>
             <label className="flex items-center gap-3">
-              <input type="radio" name="insulin" className="h-5 w-5 accent-[var(--leaf)]" checked={isInsulin} onChange={() => setIsInsulin(true)} />
+              <input type="radio" name="insulin" className="h-5 w-5 accent-[var(--ink)]" checked={isInsulin} onChange={() => setIsInsulin(true)} />
               Yes, insulin
             </label>
           </fieldset>

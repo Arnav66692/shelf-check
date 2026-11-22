@@ -44,7 +44,7 @@ export function AgeField({ text, onChange }: { text: string; onChange: (next: st
         onChange={(event) => onChange(event.target.value)}
       />
       {error && (
-        <span role="alert" className="text-sm font-bold text-[var(--stop)]">
+        <span role="alert" className="text-sm font-bold text-[var(--stop-text)]">
           {error}
         </span>
       )}

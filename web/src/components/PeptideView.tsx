@@ -255,7 +255,7 @@ function DrawResult({ result }: { result: DrawPlan }) {
 function Confirm({ label, checked, onChange }: { label: string; checked: boolean; onChange: (next: boolean) => void }) {
   return (
     <label className="flex items-start gap-3">
-      <input type="checkbox" className="mt-1 h-5 w-5 accent-[var(--leaf)]" checked={checked} onChange={(event) => onChange(event.target.checked)} />
+      <input type="checkbox" className="mt-1 h-5 w-5 accent-[var(--ink)]" checked={checked} onChange={(event) => onChange(event.target.checked)} />
       <span>{label}</span>
     </label>
   );
