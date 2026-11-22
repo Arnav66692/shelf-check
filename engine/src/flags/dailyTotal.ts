@@ -588,8 +588,12 @@ function quotesFor(totals: GroupTotals): readonly Quote[] {
   return quotes.filter((quote, index) => quotes.findIndex((other) => isSameQuote(other, quote)) === index);
 }
 
+const ADULT_AGE_WHEN_UNKNOWN = 18;
+const ADULT_ASSUMPTION = " This uses the adult directions because no age is set. Add an age in About you if this is for a child.";
+
 function toFlag(group: DuplicatedIngredient, profile?: AgeProfile): Flag {
-  const totals = totalsFor(group, profile);
+  const assumedAdult = profile?.ageYears === undefined;
+  const totals = totalsFor(group, assumedAdult ? { ageYears: ADULT_AGE_WHEN_UNKNOWN } : profile);
   const supportingQuotes = quotesFor(totals);
   return {
     type: "daily_total",
@@ -597,7 +601,7 @@ function toFlag(group: DuplicatedIngredient, profile?: AgeProfile): Flag {
     itemIds: group.members.map((member) => member.item.id),
     title: `${group.name} daily total across ${group.members.length} products`,
     detail: detailFor(totals),
-    explain: explainFor(totals, group.name),
+    explain: `${explainFor(totals, group.name)}${assumedAdult && totals.total !== null ? ADULT_ASSUMPTION : ""}`,
     numbers: numbersFor(totals),
     ...(totals.reference ? { source: totals.reference } : {}),
     ...(totals.lowest === undefined ? {} : { quote: totals.lowest.maximum.limit.quote }),

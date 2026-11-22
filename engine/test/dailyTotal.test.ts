@@ -191,7 +191,15 @@ describe("daily maximum evidence", () => {
     const cabinet = await loadCabinet("benadryl", "tylenolPm");
     const maxAt = (ageYears?: number) => checkCabinet(cabinet, { ...adultProfile, ageYears })
       .find((flag) => flag.type === "daily_total")?.numbers?.["maxMgPerDay.benadryl"];
-    expect([maxAt(5), maxAt(6), maxAt(8), maxAt(11.9), maxAt(12), maxAt()]).toEqual([null, 150, 150, 150, 300, null]);
+    expect([maxAt(5), maxAt(6), maxAt(8), maxAt(11.9), maxAt(12), maxAt()]).toEqual([null, 150, 150, 150, 300, 300]);
+  });
+
+  test("with no age set, uses the adult row and says so", async () => {
+    const cabinet = await loadCabinet("tylenol", "nyquil");
+    const flag = checkCabinet(cabinet, { ...adultProfile, ageYears: undefined }).find((entry) => entry.type === "daily_total");
+    expect(flag?.numbers?.["totalMgPerDayAtEachMaximum"]).toBe(5600);
+    expect(flag?.severity).toBe("stop");
+    expect(flag?.explain).toContain("no age is set");
   });
 
   test("binds each age row to its own daily cap and abstains on weight rows", async () => {
